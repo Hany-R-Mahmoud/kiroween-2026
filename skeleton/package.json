@@ -1,0 +1,7 @@
+{
+  "name": "@kiroween/skeleton",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Shared horror lore engine: content packs, seeded RNG, puzzle generator, hints, theme packs, auth and progress."
+}

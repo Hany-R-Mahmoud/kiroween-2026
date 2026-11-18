@@ -1,0 +1,10 @@
+{
+  "name": "kiroween-2026",
+  "private": true,
+  "version": "0.0.0",
+  "packageManager": "pnpm@9.15.9",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "check:content": "node scripts/check-legend.mjs --all"
+  }
+}

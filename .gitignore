@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Env files (keep the example)
+.env
+.env.*
+!.env.example
+
+# Build output
+dist/
+build/
+.output/
+.vercel/
+.tanstack/
+.nitro/
+.turbo/
+.cache/
+coverage/
+*.tsbuildinfo
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# OS and editor
+.DS_Store
+.idea/

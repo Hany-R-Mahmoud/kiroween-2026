@@ -1,0 +1,7 @@
+{
+  "name": "@kiroween/game",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Single-player point-and-click investigation game built on the skeleton."
+}
