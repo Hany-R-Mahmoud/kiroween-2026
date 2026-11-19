@@ -2,7 +2,7 @@ import { canEnter, finishRun, listMyRuns, myCompletedWorlds, RunError, startRun,
 import { redirect, isNotFound, isRedirect, notFound } from '@tanstack/react-router';
 import { createServerFn } from '@tanstack/react-start';
 import { getRequest, setResponseStatus } from '@tanstack/react-start/server';
-import { resolveLocale } from '@kiroween/skeleton/client';
+import { legendUrl, resolveLocale } from '@kiroween/skeleton/client';
 import { getCatalogue, runDeps } from './db';
 import { getEnv } from './env';
 import { authMiddleware, requireUser } from './middleware';
@@ -41,7 +41,14 @@ export const getHall = createServerFn({ method: 'GET' })
     safely(async () => {
       const { visitor } = context;
       const guestWorld = getEnv().guestWorld;
-      const doors = (await getCatalogue()).map((l) => ({ id: l.id, title: l.title, region: l.region, open: canEnter({ kind: 'legend', id: l.id }, visitor, guestWorld) }));
+      const atlasOrigin = getEnv().atlasOrigin;
+      const doors = (await getCatalogue()).map((l) => ({
+        id: l.id,
+        title: l.title,
+        region: l.region,
+        open: canEnter({ kind: 'legend', id: l.id }, visitor, guestWorld),
+        atlasHref: `${atlasOrigin}${legendUrl(l.id)}`, // the atlas is open to everyone, so every door links to it
+      }));
       return { name: visitor.kind === 'user' ? visitor.name : null, tutorialOpen: canEnter({ kind: 'tutorial' }, visitor, guestWorld), doors };
     }),
   );

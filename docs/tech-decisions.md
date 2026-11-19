@@ -28,7 +28,7 @@ Versions read from the npm registry during Phase 0 and Phase 1 setup. All pins a
 
 ## App packages
 
-Installed in `apps/game` in Phase 2; pins and reasons are under "Game app under `/game`" below. Re-check versions when `apps/atlas` is created.
+Installed in `apps/game` in Phase 2 and in `apps/atlas` in Phase 3, at the same pins; reasons are under "Game app under `/game`" and "Phase 3: the atlas" below.
 
 ## Database connections
 
@@ -57,6 +57,7 @@ Reason: Neon's connection-pooling documentation lists schema migrations as a dir
 | `pnpm --filter @kiroween/skeleton db:migrate` | applies migrations with `DATABASE_URL_UNPOOLED` | |
 | `pnpm --filter @kiroween/skeleton db:import` | imports all legends, one transaction each | named `db:import` because `pnpm import` is a pnpm built-in |
 | `pnpm --filter @kiroween/skeleton db:check-models` | prints yes or no per legend: the stored `legends.model` equals the parsed legend | Phase 2; reads with `DATABASE_URL_UNPOOLED` |
+| `pnpm --filter @kiroween/skeleton db:check-reader` | as the atlas reader role (`ATLAS_DATABASE_URL`): prints yes or no for 18 privilege checks and 14 read checks (page data from Neon equals the content file) | Phase 3; writes are tried inside a transaction that is always rolled back |
 
 ## Scripts (game app)
 
@@ -126,3 +127,89 @@ Pins added for the game app (exact): `@tanstack/react-start` 1.169.5, `@tanstack
 ### `runs` has no foreign keys (owner approved, Phase 2)
 
 `runs.legend_id` and `runs.true_version_id` are plain text, not foreign keys. The importer replaces a legend by delete then insert; a foreign key would cascade-delete every player's runs on each `db:import`, or block the import. The server checks the legend id against the catalogue, and the true version comes from the generator. `runs.user_id` has no foreign key into `neon_auth` either, because that schema belongs to Neon's managed auth.
+
+## Atlas app at the root (Phase 3, Task 2 spike)
+
+- `apps/atlas` runs on port 3001 locally with no base path; it owns `/`. Same pins as the game (Start 1.169.5, Router 1.170.46, React 19.3.1, Tailwind 4.3.5, Vite 8.3.8, TypeScript 6.0.3, Vitest 5.1.1).
+- **No `start.ts`.** Without it, Start keeps its default CSRF check on server functions. Proved in dev and build: same-origin 200, cross-site 403, no headers 403.
+- **`trailingSlash: 'preserve'`** on the router. The default (`never`) answered `/game/` with a 307 to `/game`, which would be a redirect under the game's path. Now `/game`, `/game/`, `/game/x` and `/game/legends/banshee` all get the atlas 404, in dev and build.
+- **Images under `/media`** (`apps/atlas/vite.media.ts`):
+  - In dev, a Vite middleware serves a request only when it is exactly `assetUrl(<id from the file name>)`, checked on the raw, undecoded path. Everything else under `/media` gets 404, including `..`, `%2e%2e`, other extensions, wrong folders and double slashes.
+  - At build time, the client environment's `writeBundle` copies each `assets/**/*.webp` that sits at its canonical path into `dist/client/media/`. All 423 are copied. This is build output, git-ignored, and nothing in `assets/` is copied or changed in the repo.
+  - `apps/atlas/scripts/serve-build.mjs` serves `dist/client` (including `/media`) and passes the rest to the built server. A malformed `%`-sequence is caught as `URIError` and is not treated as a file.
+- **Hash landing.** The router scrolls to the hash itself (`defaultHashScrollIntoView` defaults to true), and the browser does the same for plain in-page links. `AnchorFocus` therefore only moves focus to the section's `[data-anchor-heading]` with `preventScroll` and sets `data-landed` for 2 seconds. Checked in headless Chrome (dev and build): loading `#b` and clicking an in-page link both scroll to the section and focus its heading, and so does reduced motion.
+- Finding outside this phase's scope: the game's `scripts/serve-build.mjs` calls `decodeURIComponent` without catching `URIError`, so one malformed request path can crash that local server. It is local-only, and the game may change only in two places this phase, so it is not changed.
+
+## Phase 3: the atlas
+
+### Pins (`apps/atlas`)
+- The game's pins, so the workspace has one Start: `@tanstack/react-start` 1.169.5 (npm had 1.169.7; upgrade both apps together), `@tanstack/react-router` 1.170.46, React 19.3.1, Tailwind 4.3.5, Vite 8.3.8, Vitest 5.1.1, TypeScript 6.0.3, `@vitejs/plugin-react` 6.3.0.
+- 22 `@fontsource/*` packages, exact 5.3.x, all OFL-1.1: Abril Fatface, Amiri, Bad Script, Cormorant Garamond, Crimson Pro, Gowun Batang, IM Fell English, IM Fell English SC, Inter, Libre Baskerville, Marck Script, Nanum Myeongjo, Noto Naskh Arabic, Noto Serif, Noto Serif Devanagari, Noto Serif JP, Old Standard TT, PT Serif, Playfair Display SC, Shippori Mincho, Source Serif 4, Yatra One. These are every family the 12 theme packs name, fallbacks included.
+- Not added: no map library, no auth package, no Markdown library, no image library.
+
+### Database
+- Migration `0002_versions_ordinal` (owner approved): `ADD COLUMN "ordinal" integer DEFAULT 0 NOT NULL`, then `DROP DEFAULT`. drizzle-kit's generated `ADD COLUMN … NOT NULL` fails on a filled table, so the file was edited by hand; the snapshot (not null, no default) matches the final column. The importer writes the file position (`plan.ts`). One `db:import` was run on `dev-skeleton-core`.
+- **Reader role** (per branch; production needs the same statements and its own password):
+  ```sql
+  CREATE ROLE atlas_reader NOLOGIN;
+  GRANT CONNECT ON DATABASE neondb TO atlas_reader;
+  GRANT USAGE ON SCHEMA public TO atlas_reader;
+  GRANT SELECT (id, title, region, map_lat, map_lng, era, scare_level, reading_time_min, one_line_hook, cold_open, documented_closing, theme) ON legends TO atlas_reader;
+  GRANT SELECT ON chapters, versions, documented_told, sources, anchors TO atlas_reader;
+  GRANT SELECT (legend_id, id, usage, size) ON assets TO atlas_reader;
+  CREATE ROLE atlas_web LOGIN IN ROLE atlas_reader;
+  ```
+  - There is no `ALTER DEFAULT PRIVILEGES`, so a future table is never readable by accident. `runs`, the game tables, `neon_auth` and the answer-bearing `legends.model` are not readable.
+  - Roles made in the Console, API or MCP (`create_postgres_role`) get `neon_superuser`. `neon roles create --access read_only` grants every table in `public`, including `runs`.
+  - Setting the password, found on the dev branch:
+    - The Console's Reset password did not apply to this SQL-made role.
+    - Neon refuses the SCRAM hash that psql's `\password` sends (plain-text passwords only).
+    - What worked: a local script over the owner's connection, with the password sent as a parameter, so it is never typed into the SQL Editor or kept in its history.
+- Atlas queries (`skeleton/src/db/atlasRead.ts`) name every column, because `select *` on `legends` is refused for the role. One legend's page is read in one transaction.
+
+### Images
+- One URL prefix for both apps: `/media/<folder rule>/<asset-id>.webp` (`assetUrl` in the skeleton). The atlas's build files use `/assets/` and the game's use `/game/`, so nothing clashes.
+- `apps/atlas/vite.media.ts`: in dev it serves only a request that equals `assetUrl(<id from the file name>)`, checked on the raw path. At build time it copies the 423 canonical files into `dist/client/media/` (build output, git-ignored). Nothing in `assets/` is copied or changed in the repo. Production serving is the deployment phase.
+- Every image has its real width and height (a test checks each stored size against the WebP header). The hero is preloaded with high fetch priority; everything else is lazy.
+
+### Fonts
+- `apps/atlas/src/fonts.ts` maps each family to its Fontsource stylesheets (400, plus 400 italic where it exists), imported with `?url`. A legend page links only its own families; the root links the base three (IM Fell English SC, Source Serif 4, Inter).
+- Each stylesheet holds every subset as a `unicode-range` face with `font-display: swap`, so a page downloads only the chunks its text uses. The build carries 533 woff2 files; no font comes from a third-party CDN.
+- `themeFonts` reads every known family a pack names, in order. A family named "for English" goes first (naddaha: Crimson Pro, then Noto Naskh Arabic).
+
+### Themes and contrast
+- `resolveTheme` (skeleton) reads `role #hex` pairs from the pack and checks WCAG AA:
+  - ink (body text) and accent (links) against background and surface, 4.5:1;
+  - base muted (secondary text), 4.5:1;
+  - glow (large headings), 3:1.
+- A failing role uses the base token, and if that also fails, the ink; it throws rather than return a colour below AA.
+- Result: the pack accent fails as a link colour for baba-yaga (3.12:1 on background, 2.68:1 on surface), yuki-onna (3.59, 2.86), jersey-devil (3.91 on surface) and draugr (4.33 on surface). Those four use the base accent `#e0a84b`. Every other role on every pack passes.
+- The variables go on `<body>`, so the header and footer take the theme too. Text blocks use `unicode-bidi: plaintext`, so English text reads correctly inside a right-to-left page.
+
+### Map data
+- Natural Earth v5.1.2, `ne_110m_land` and `ne_110m_admin_0_countries`, from the project's GitHub tag (`raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/`). **Public domain** (naturalearthdata.com terms of use: no permission needed, credit optional). README credit: "Made with Natural Earth."
+- `apps/atlas/scripts/build-geo.mjs` wrote two committed files:
+  - `public/world-land.svg`: 49.7 KB, equirectangular, latitudes 84 to -58, drawn as a CSS mask over a token colour.
+  - `src/geo/countries.json`: 160 KB, continent plus polygons, server only.
+- `continentOf` gives the containing country's continent, or for a point at sea (the Flying Dutchman's Cape Point pin) the nearest country's.
+
+### Variables
+- `ATLAS_DATABASE_URL` (atlas): the reader role's pooled string.
+- `PUBLIC_ORIGIN` (atlas, optional): https, or `http://localhost[:port]`, with no path. It is the only source of absolute Open Graph URLs; the `Host` header is never used. Empty means no `og:image` and no `og:url`.
+- `ATLAS_ORIGIN` (game, optional): an http(s) origin, put in front of the hall's atlas links. Empty on the shared domain.
+- `FEATURE_ARABIC`: the same rule in both apps.
+
+### Known duplication
+- `apps/atlas/src/i18n/t.ts` (the `translate` function) and the root-`.env` Vite plugin are copies of the game's, because the game could change in only two places this phase. Both can move into the skeleton later.
+- The game's `serve-build.mjs` does not catch `URIError` from `decodeURIComponent`, so one malformed request path can crash that local-only server; the atlas's copy catches it.
+
+## Scripts (atlas app)
+
+| Script | What it does |
+|---|---|
+| `pnpm --filter @kiroween/atlas dev` | dev server on `http://localhost:3001/` |
+| `pnpm --filter @kiroween/atlas build` | production build into `apps/atlas/dist/` (with `dist/client/media/`) |
+| `pnpm --filter @kiroween/atlas start` | serves that build locally (`scripts/serve-build.mjs`). It does not read `.env`: set the variables in the environment |
+| `pnpm --filter @kiroween/atlas test` / `typecheck` | Vitest / `tsc --noEmit` |
+| `node apps/atlas/scripts/build-geo.mjs <folder>` | rebuilds the two geo files from the Natural Earth GeoJSON |
+| `pnpm --dir skeleton exec tsx ../apps/atlas/scripts/smoke.ts [base] [--og <origin>]` | the smoke check against a running atlas |

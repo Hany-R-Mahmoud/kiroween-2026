@@ -16,6 +16,9 @@ describe.each(allLegends.map((l) => [l.id, l] as const))('import plan for %s', (
     expect(planLegend(l, HASH)).toEqual(plan);
   });
 
+  it('numbers versions 1 to n in the order of the legend file', () => {
+    expect(plan.versions.map((v) => [v.ordinal, v.id])).toEqual(l.versions.map((v, i) => [i + 1, v.id]));
+  });
   it('has one row per element of the legend', () => {
     expect(planCounts(plan)).toMatchObject({
       legends: 1,

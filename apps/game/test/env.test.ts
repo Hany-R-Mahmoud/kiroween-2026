@@ -36,8 +36,20 @@ describe('parseEnv', () => {
     ['NEON_AUTH_COOKIE_SECRET', { NEON_AUTH_COOKIE_SECRET: 'x'.repeat(31) }],
     ['GUEST_WORLD', { GUEST_WORLD: '../etc' }],
     ['FEATURE_ARABIC', { FEATURE_ARABIC: 'yes' }],
+    ['ATLAS_ORIGIN', { ATLAS_ORIGIN: 'http://localhost:3001/' }],
+    ['ATLAS_ORIGIN', { ATLAS_ORIGIN: 'https://atlas.example.org/legends' }],
+    ['ATLAS_ORIGIN', { ATLAS_ORIGIN: 'https://atlas.example.org?x=1' }],
+    ['ATLAS_ORIGIN', { ATLAS_ORIGIN: 'ftp://atlas.example.org' }],
+    ['ATLAS_ORIGIN', { ATLAS_ORIGIN: 'javascript:alert(1)' }],
+    ['ATLAS_ORIGIN', { ATLAS_ORIGIN: 'not a url' }],
   ])('names %s when it is missing or wrong', (variable, over) => {
     expect(failure({ ...base, ...over }).variable).toBe(variable);
+  });
+
+  it('ATLAS_ORIGIN is optional: empty by default, an http or https origin when set', () => {
+    expect(parseEnv(base).atlasOrigin).toBe('');
+    expect(parseEnv({ ...base, ATLAS_ORIGIN: 'http://localhost:3001' }).atlasOrigin).toBe('http://localhost:3001');
+    expect(parseEnv({ ...base, ATLAS_ORIGIN: 'https://atlas.example.org' }).atlasOrigin).toBe('https://atlas.example.org');
   });
 
   it('never includes the value in the message', () => {
@@ -48,6 +60,7 @@ describe('parseEnv', () => {
       { NEON_AUTH_COOKIE_SECRET: marker },
       { GUEST_WORLD: `${marker}/x` },
       { FEATURE_ARABIC: marker },
+      { ATLAS_ORIGIN: `https://${marker}.invalid/x` },
     ])
       expect(failure({ ...base, ...over }).message).not.toContain(marker);
   });

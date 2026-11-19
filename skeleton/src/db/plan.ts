@@ -43,7 +43,7 @@ export function planLegend(l: Legend, contentHash: string): Plan {
     },
     anchors: planAnchors(l),
     chapters: l.chapters.map((c) => ({ id: c.id, legendId, ordinal: c.ordinal, anchor: c.anchor, title: c.title, sourceIds: c.sources, body: c.text, hook: c.hook })),
-    versions: l.versions.map((v) => ({ id: v.id, legendId, sourceType: v.sourceType, era: v.era, claim: v.claim, conflicts: v.conflicts, sourceId: v.sourceId, anchor: v.anchor, paragraph: v.paragraph })),
+    versions: l.versions.map((v, i) => ({ id: v.id, legendId, ordinal: i + 1, sourceType: v.sourceType, era: v.era, claim: v.claim, conflicts: v.conflicts, sourceId: v.sourceId, anchor: v.anchor, paragraph: v.paragraph })),
     documentedTold: l.documentedTold.rows.map((r, i) => ({ legendId, ordinal: i + 1, documented: r.documented, told: r.told })),
     facts: l.facts.map((f) => ({ id: f.id, legendId, statement: f.statement, confidence: f.confidence, anchor: f.anchor, versionId: f.versionId, answer: f.answer, wrongAnswers: f.wrongAnswers, difficulty: f.difficulty })),
     factPuzzleTypes: l.facts.flatMap((f) => f.puzzleTypes.map((puzzleType) => ({ factId: f.id, puzzleType }))),

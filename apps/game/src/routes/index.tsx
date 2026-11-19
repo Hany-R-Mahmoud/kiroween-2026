@@ -25,20 +25,21 @@ function Hall() {
           <span>{t('hall.tutorial')}</span>
         </li>
         {doors.map((d) => (
-          <li key={d.id}>
-            {d.open ? (
-              <Link to="/world/$target" params={{ target: d.id }} className={`${doorBase} border-accent hover:bg-surface focus-visible:outline-2 focus-visible:outline-glow`} aria-label={t('door.enter', { title: d.title })}>
-                <span className="font-ui text-xs uppercase text-accent">{t('door.open')}</span>
-                <span className="font-display text-xl">{d.title}</span>
-                <span className="text-sm text-muted">{d.region}</span>
-              </Link>
-            ) : (
-              <div className={`${doorBase} border-surface opacity-80`}>
-                <span className="font-ui text-xs uppercase text-muted">{t('door.locked')}</span>
-                <span className="font-display text-xl">{d.title}</span>
-                <span className="text-sm text-muted">{d.region}</span>
-              </div>
-            )}
+          // Two sibling links (enter, read) instead of one link around the card: links cannot be nested.
+          <li key={d.id} className={`${doorBase} ${d.open ? 'border-accent' : 'border-surface'}`}>
+            <span className={`font-ui text-xs uppercase ${d.open ? 'text-accent' : 'text-muted'}`}>{d.open ? t('door.open') : t('door.locked')}</span>
+            <span className="font-display text-xl">{d.title}</span>
+            <span className="text-sm text-muted">{d.region}</span>
+            <span className="flex flex-wrap gap-x-4 font-ui text-sm">
+              {d.open && (
+                <Link to="/world/$target" params={{ target: d.id }} className="inline-flex min-h-11 items-center text-accent underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-glow" aria-label={t('door.enter', { title: d.title })}>
+                  {t('door.enterShort')}
+                </Link>
+              )}
+              <a href={d.atlasHref} className="inline-flex min-h-11 items-center text-ink underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-glow" aria-label={t('door.read', { title: d.title })}>
+                {t('door.readShort')}
+              </a>
+            </span>
           </li>
         ))}
       </ul>

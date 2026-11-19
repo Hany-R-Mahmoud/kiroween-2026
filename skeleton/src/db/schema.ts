@@ -59,6 +59,8 @@ export const chapters = pgTable('chapters', {
 export const versions = pgTable('versions', {
   id: text('id').primaryKey(),
   legendId: legendId(),
+  // position in the legend file, from 1: the atlas shows versions in the author's order (Phase 3)
+  ordinal: integer('ordinal').notNull(),
   sourceType: text('source_type').notNull(),
   era: text('era').notNull(),
   claim: text('claim').notNull(),

@@ -1,0 +1,148 @@
+@import 'tailwindcss';
+@import '@kiroween/skeleton/design/tokens.css';
+
+/* Everything below reads the token variables, so a legend page's theme (set on <body>) restyles it. Logical properties
+   only (steering: i18n-rtl.md). */
+@layer base {
+  html {
+    color-scheme: dark;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    caret-color: var(--color-glow);
+    scrollbar-color: var(--color-muted) var(--color-bg);
+    accent-color: var(--color-accent);
+  }
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-bg);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-glow);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  a {
+    color: var(--color-accent);
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+  }
+  a:hover {
+    text-decoration-thickness: 2px;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+    line-height: 1.15;
+  }
+  p,
+  dd,
+  li {
+    text-wrap: pretty;
+  }
+  /* Story text is English (decision 22) and untranslated UI falls back to English, so with dir="rtl" each block takes
+     its direction from its own first letter; otherwise "3 of 5" reads "of 5 3". Arabic text stays right to left. */
+  p,
+  dd,
+  dt,
+  li,
+  h1,
+  h2,
+  h3,
+  caption,
+  th,
+  td {
+    unicode-bidi: plaintext;
+  }
+  /* a landed section clears the top edge */
+  [id] {
+    scroll-margin-block-start: 1.5rem;
+  }
+}
+
+@layer components {
+  /* the reading column: 65-75 characters. `ch` is the width of "0", which is narrow in some pack fonts (Crimson Pro
+     gave 86 characters), so an em cap keeps every face inside the range */
+  .measure {
+    max-inline-size: min(68ch, 34em);
+  }
+  .story p {
+    margin-block-end: 1.1em;
+    line-height: 1.7;
+    font-size: 1.0625rem;
+    hanging-punctuation: first;
+  }
+  .story p:last-child {
+    margin-block-end: 0;
+  }
+  .dramatization {
+    display: inline-block;
+    margin-inline-end: 0.4em;
+    padding-inline: 0.45em;
+    border: 1px solid var(--color-muted);
+    border-radius: 2px;
+    font-family: var(--font-ui);
+    font-size: 0.75em;
+    font-style: normal;
+    letter-spacing: 0.02em;
+    line-height: 1.6;
+    color: var(--color-ink);
+    vertical-align: 0.1em;
+  }
+  .plate {
+    border: 1px solid color-mix(in oklab, var(--color-muted) 55%, transparent);
+    padding: 0.4rem;
+    background-color: var(--color-surface);
+  }
+  .plate img {
+    display: block;
+    inline-size: 100%;
+    block-size: auto;
+  }
+  /* the land outline is a mask, so its colour is a token and the SVG file holds no colour */
+  .land {
+    background-color: color-mix(in oklab, var(--color-muted) 45%, var(--color-surface));
+    mask: url('/world-land.svg') center / 100% 100% no-repeat;
+  }
+  .map-card {
+    margin: auto;
+    max-inline-size: min(28rem, calc(100vw - 2rem));
+    padding: 1.25rem;
+    border: 1px solid var(--color-muted);
+    border-radius: 12px;
+    background-color: var(--color-surface);
+    color: var(--color-ink);
+    box-shadow: 0 1.25rem 3rem rgb(0 0 0 / 0.55);
+  }
+  .map-card::backdrop {
+    background-color: rgb(0 0 0 / 0.45);
+  }
+  /* landing on an anchor: a static mark always, a short glow only when motion is welcome */
+  :target,
+  [data-landed] {
+    outline: 1px solid color-mix(in oklab, var(--color-glow) 60%, transparent);
+    outline-offset: 0.75rem;
+    border-radius: 4px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+  [data-landed] {
+    animation: landed 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  @keyframes landed {
+    from {
+      outline-color: var(--color-glow);
+      outline-offset: 0.25rem;
+    }
+  }
+}

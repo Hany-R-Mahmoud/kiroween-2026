@@ -12,7 +12,25 @@ export const Route = createRootRoute({
     links: [{ rel: 'stylesheet', href: appCss }],
   }),
   component: RootComponent,
+  notFoundComponent: NotFound,
 });
+/** Shown inside the shell for any unknown path under /game (Phase 3: the dev log warned the root had none). */
+function NotFound() {
+  const t = useT();
+  return (
+    <section aria-labelledby="not-found-title" className="flex flex-col gap-4">
+      <h1 id="not-found-title" className="font-display text-3xl text-glow">
+        {t('notFound.heading')}
+      </h1>
+      <p>{t('notFound.body')}</p>
+      <p>
+        <Link to="/" className="text-accent underline underline-offset-4">
+          {t('notFound.hall')}
+        </Link>
+      </p>
+    </section>
+  );
+}
 
 const navLink = 'inline-flex min-h-11 items-center rounded px-3 text-ink underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-glow';
 
