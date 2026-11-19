@@ -13,8 +13,8 @@ Save every generated image under its asset ID as the file name, in the folder th
 
 ## File rules
 
-- Name: `<asset-id>.png` (for example `banshee-game-scene-01.png`). Use `.webp` only for final exports.
-- Transparent backgrounds stay PNG with alpha.
+- Name: `<asset-id>.webp` (for example `banshee-game-scene-01.webp`). The PNG originals stay outside the repo, in the pack's `assets/visual-assets/` zips, and `kiroween-2026-pack/scripts/convert-assets.py` makes the WebP files.
+- Transparent images keep their alpha channel in WebP. When a background came baked into the image, it was cut out with macOS Vision before conversion.
 - Keep the exact size listed in the legend file.
 - Before saving, check: no text or letters, no logos, no likeness of a film, game or real person, no gore.
 - Keep a note of the tool and the date used for each batch in `assets/LOG.md` so the README can disclose it.
