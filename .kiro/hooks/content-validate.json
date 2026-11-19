@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Validate legend on save",
+      "description": "When a legend file in content/legends/ is saved, check it against content/legend-format.md and report problems. Never rewrites story text.",
+      "trigger": "PostFileSave",
+      "matcher": "(^|/)content/legends/[^/]+\\.md$",
+      "action": {
+        "type": "agent",
+        "prompt": "A legend file was saved. Run `node scripts/check-legend.mjs <saved file path>` and show the output. The script checks against content/legend-format.md: all sections 0-11 present; 5-7 chapters each with a correct anchor, a sources line, a Hook line and 400-700 words; at least 24 facts (valid puzzle types, 3+ wrong answers, anchors that exist, at least 6 version-specific, no [R] fact in a true-or-told slot); at least 3 lead chains; at least 12 hotspots with at least 5 decoys; 3-5 versions; at least 6 sources; every S<n> tag used is defined in the Sources table. Then do two checks the script cannot do, by reading the file: (1) at least 4 facts are on the documented side and at least 4 on the told side; (2) every imagined scene starts with [Dramatization]. Report each problem with its location. Do NOT edit, rewrite or fix the legend file. If everything passes, say so in one line."
+      }
+    }
+  ]
+}

@@ -3,5 +3,8 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "description": "Worldwide legends atlas built on the skeleton."
+  "description": "Worldwide legends atlas built on the skeleton.",
+  "scripts": {
+    "test": "echo \"no tests yet\""
+  }
 }

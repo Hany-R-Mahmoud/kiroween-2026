@@ -65,6 +65,7 @@ Disclosure line for the README and write-up: "Legend research drafts and visual 
 | Custom agents | Lore researcher (drafts new legends in the contract format); game balance reviewer (checks puzzle difficulty and fear pacing) |
 | MCP | Neon MCP for schema, migrations and content import |
 | Kiro powers | Use any relevant powers for the stack and note them in the write-up |
+| Skills | Every phase prompt names a small set of global skills (from `~/.kiro/skills`) for that phase: docs check, test quality, security, guard pass, final verification. Skills never override the spec, steering or the prompt. Note them in the write-up |
 
 ## Rules checklist
 

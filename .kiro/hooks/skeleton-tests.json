@@ -1,0 +1,16 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Run skeleton tests on save",
+      "description": "When a TypeScript file under skeleton/src/ is saved, run the skeleton test suite. Reports failures to the agent. Edits nothing.",
+      "trigger": "PostFileSave",
+      "matcher": "(^|/)skeleton/src/.*\\.ts$",
+      "timeout": 120,
+      "action": {
+        "type": "command",
+        "command": "out=$(pnpm --filter @kiroween/skeleton test 2>&1); code=$?; if [ \"$code\" -ne 0 ]; then printf '%s\\n' \"$out\" | grep -E 'FAIL|AssertionError|Error:|Test Files|Tests ' | head -60 >&2; exit \"$code\"; fi; printf '%s\\n' \"$out\" | grep -E 'Test Files|Tests '"
+      }
+    }
+  ]
+}
