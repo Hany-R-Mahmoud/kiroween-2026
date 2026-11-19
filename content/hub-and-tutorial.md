@@ -81,7 +81,7 @@ A small study behind the hall: a desk with a locked drawer, a corkboard of pinne
 
 ### The Keeper's Note (atlas entry)
 
-Short fictional entry, one chapter of about 300 words, labelled "Fiction: the story of this archive". Anchor `keepers-note--ch-1`. It must contain three distinct details that can serve as the drawer code (a year, a number of keys, a room count), each tied to a different phrase so hints can point at them. Written in the same documentary voice.
+The text is in [keepers-note.md](keepers-note.md). Short fictional entry, one chapter of about 300 words, labelled "Fiction: the story of this archive". Anchor `keepers-note--ch-1`. It must contain three distinct details that can serve as the drawer code (a year, a number of keys, a room count), each tied to a different phrase so hints can point at them. Written in the same documentary voice.
 
 ## Atlas shell
 
