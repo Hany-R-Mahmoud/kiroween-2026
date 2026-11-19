@@ -214,8 +214,8 @@ The documented column rests on one scholarly article, a university statement and
 |---|---|---|---|---|---|---|---|
 | f-01 | The witness in Canóvanas gave her description in the second week of August 1995. | chupacabra--ch-3 | v-witness | date-or-number | August 1995 | March 1995; July 1995; November 1995 | 2 |
 | f-02 | In Radford's summary, the most famous description was of a creature about four feet tall. | chupacabra--ch-3 | v-witness | date-or-number | four feet | two feet; six feet; eight feet | 2 |
-| f-03 | The described creature was a biped, walking upright on two legs. | chupacabra--ch-3 | v-witness | object-match | two legs, upright | four legs, low to the ground; wings and a tail; many legs | 1 |
-| f-04 | The creature in the description had long spikes down its back. | chupacabra--ch-3 | v-witness | symbol | spikes along the back | a mane; a shell; feathers | 1 |
+| f-03 | The described creature was a biped, walking upright on two legs. | chupacabra--ch-3 | v-witness | object-match | a biped | four legs, low to the ground; wings and a tail; many legs | 1 |
+| f-04 | The creature in the description had long spikes down its back. | chupacabra--ch-3 | v-witness | symbol | spikes | a mane; a shell; feathers | 1 |
 | f-05 | The creature in the description had no ears or nose, only two small airholes. | chupacabra--ch-3 | v-witness | object-match | two small airholes | a long snout; a beak; large ears | 2 |
 | f-06 | The description gave three fingers or toes on each limb. | chupacabra--ch-3 | v-witness | date-or-number | three | two; five; four | 2 |
 | f-07 | The Canóvanas description was published in a 1997 book by Scott Corrales. | chupacabra--ch-3 | v-witness | who-said-it | Scott Corrales | Benjamin Radford; Silverio Pérez; Mike Forstner | 3 |
@@ -228,7 +228,7 @@ The documented column rests on one scholarly article, a university statement and
 | f-14 | The film Species reached Puerto Rico on 7 July 1995, according to Radford. | chupacabra--ch-4 | v-film | date-or-number | 7 July 1995 | 7 August 1995; 7 March 1995; 25 December 1995 | 3 |
 | f-15 | Radford lists more than a dozen features shared by the description and the film creature. | chupacabra--ch-4 | v-film | date-or-number | more than a dozen | two; five; none | 3 |
 | f-16 | Radford's argument is that the description matches the creature in the film Species. | chupacabra--ch-4 | v-film | who-said-it | Benjamin Radford | Scott Corrales; Mike Forstner; Silverio Pérez | 2 |
-| f-17 | Radford's 2011 book is Tracking the Chupacabra. | chupacabra--ch-4 | v-film | original-name | Tracking the Chupacabra | Chupacabras and Other Mysteries; Slaying the Vampire; The Goat Sucker | 3 |
+| f-17 | Radford set out his argument in this magazine in May and June 2011. | chupacabra--ch-4 | v-film | original-name | the Skeptical Inquirer | the Fortean Times; Popular Science; the Saturday Review | 3 |
 | f-18 | Radford wrote that the early witnesses saw wildly different things and called them all the same name. | chupacabra--ch-5 | all | who-said-it | Benjamin Radford | Silverio Pérez; John Tomeček; José Soto | 3 |
 | f-19 | The Texas form of the chupacabra was a four-legged canid reported from the mid-2000s. | chupacabra--ch-6 | v-mange | object-match | a four-legged canid | a winged bird; an upright biped; a large cat | 2 |
 | f-20 | Texas State University reported on 2 November 2007 that the Cuero animal's DNA matched a coyote. | chupacabra--ch-6 | v-mange | date-or-number | 2 November 2007 | 7 July 1995; 1 January 1996; 15 October 2024 | 3 |
@@ -248,8 +248,9 @@ The documented column rests on one scholarly article, a university statement and
 | f-34 | The description of the creature was an upright biped with spikes. | chupacabra--ch-3 | v-witness | true-or-told | documented as a description (Corrales, 1997) | documented as a photograph; proved as a real animal; told only in Texas | 3 |
 | f-35 | Radford presents the film link as his own argument about the description. | chupacabra--ch-4 | v-film | true-or-told | documented as one researcher's view | proved by the witness; proved by Texas State; told only by the radio | 3 |
 | f-36 | Colavito traces the goat-sucker name to a small bird, the nightjar, called the chotacabra in Puerto Rico. | chupacabra--ch-5 | v-radio | object-match | a small bird, the nightjar | a bat; a snake; a fox | 2 |
+| f-37 | Radford lists an upright stance among the features the description shares with Sil, the creature in the film Species. | chupacabra--ch-4 | v-film | object-match | an upright stance | a long tail; feathered wings; a hard shell | 2 |
 
-Version-specific facts: f-01 to f-07, f-13, f-26, f-34 (v-witness); f-09 to f-12, f-25, f-36 (v-radio); f-14 to f-17, f-35 (v-film); f-19 to f-23, f-33 (v-mange); f-30 (v-lab). Documented side: f-01 to f-23, f-28, f-33 to f-36. Reported by reference works `[R]`: f-24 to f-27 (never used in a true-or-told slot). Told side: f-29 to f-32 (f-10 is documented).
+Version-specific facts: f-01 to f-07, f-13, f-26, f-34 (v-witness); f-09 to f-12, f-25, f-36 (v-radio); f-14 to f-17, f-35, f-37 (v-film); f-19 to f-23, f-33 (v-mange); f-30 (v-lab). Documented side: f-01 to f-23, f-28, f-33 to f-36. Reported by reference works `[R]`: f-24 to f-27 (never used in a true-or-told slot). Told side: f-29 to f-32 (f-10 is documented).
 
 ---
 
@@ -323,7 +324,7 @@ can be true when: never. v-lab blames real institutions, so the seed must never 
 | h-05 | scene-farm | Kitchen radio on the table | Meaningful | f-09, f-10; lead-2 | Asks who is credited with the name and whether it was new. |
 | h-06 | scene-farm | Faded drawing pinned to a post | Meaningful (swappable) | f-02 to f-06; lead-1 | Asks about height, limbs, fingers and the spikes of the description. |
 | h-07 | scene-town | Newspaper stand with blank pages | Meaningful | f-01, f-11, f-24 | Asks the month of the witness and how long the story stayed on the island. |
-| h-08 | scene-town | Blank poster board by the cinema wall | Meaningful | f-14, f-15; lead-3 | Asks the release date and how many features were listed. |
+| h-08 | scene-town | Blank poster board by the cinema wall | Meaningful | f-14, f-15, f-37; lead-3 | Asks the release date and how many features were listed. |
 | h-09 | scene-town | Radio shop window | Decoy | none | A row of dark sets; one hums and falls silent. |
 | h-10 | scene-town | Wooden bench | Decoy | none | Nothing is there but a folded umbrella. |
 | h-11 | scene-town | Bicycle against the wall | Decoy | none | The bell rings once; nothing is learned. |
@@ -345,7 +346,7 @@ Swappable hotspots: h-01, h-02, h-06, h-12, h-14, h-18. In a run, the seed may t
 |---|---|---|
 | p-1 When and how many | date-or-number | f-01, f-02, f-06, f-11, f-13, f-14, f-20 |
 | p-2 Where | original-name | f-08, f-12, f-17, f-27, f-28 |
-| p-3 What was seen | object-match | f-03, f-05, f-19 |
+| p-3 What was seen | object-match | f-03, f-05, f-19, f-36, f-37 |
 | p-4 Who said it | who-said-it | f-07, f-09, f-16, f-18, f-21, f-22 |
 | p-5 Documented or told | true-or-told | f-10, f-29, f-30, f-31, f-32, f-33, f-34, f-35 |
 

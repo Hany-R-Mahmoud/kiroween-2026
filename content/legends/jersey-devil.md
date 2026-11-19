@@ -326,7 +326,7 @@ The player stands on a pale sand road at dusk in the New Jersey pines, beside a 
 | h-12 | scene-3 | Pinned clipping about hoofprints | Meaningful (swappable) | lead-3 step 2; f-19, f-20 | Gives the date range and an hour. |
 | h-13 | scene-3 | Trolley schedule | Meaningful (swappable) | lead-3 step 3; f-22 | Highlights a stop; player confirms the town. |
 | h-14 | scene-3 | Rolled show poster | Meaningful (swappable) | lead-4 step 1; f-25 | Unrolls to a corner of two streets. |
-| h-15 | scene-3 | Cage chain and invoice | Meaningful (swappable) | lead-4 step 2; f-27, f-28 | Names the animal; smudges the wing material. |
+| h-15 | scene-3 | Cage chain and invoice | Meaningful (swappable) | lead-4 steps 2 and 3; f-27, f-28 | Names the animal; smudges the wing material. |
 | h-16 | scene-3 | Cabinet of plaster hooves | Decoy | none | Rattles; a false "gotcha." |
 | h-17 | scene-3 | Teacup on the desk | Decoy | none | Steam rises; nothing else. |
 

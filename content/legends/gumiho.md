@@ -232,19 +232,19 @@ The record is clearest where it is a page: a Chinese classic, a Korean history e
 | f-26 | That the white fox of 659 was a nine-tailed gumiho is not in the text, which gives no tails. | gumiho--ch-1 | all | true-or-told | told | documented in the Samguk sagi; documented by the Shanhaijing; documented by Cho Hee-woong | 2 |
 | f-27 | The Shanhaijing records the nine-tailed fox on Qingqiu Mountain. | gumiho--ch-2 | v-qingqiu | true-or-told | documented (in the Shanhaijing) | told only by later novelists; told in a bead tale; unknown | 2 |
 | f-28 | The encyclopedia entry records the fox bead tale in two types. | gumiho--ch-3 | all | true-or-told | documented (in the Encyclopedia of Korean Culture) | told only in modern drama; told in the fox sister tale; unknown | 2 |
-| f-29 | The fox bead tale entry was written by Cho Hee-woong. | gumiho--ch-3 | v-bead | who-said-it | Cho Hee-woong | Yu Jin-a; Kim Jun-hui; Guo Pu | 3 |
-| f-30 | The transformation-tale entry that lists the fox sister was written by Yu Jin-a. | gumiho--ch-5 | v-sister | who-said-it | Yu Jin-a | Cho Hee-woong; Kim Jun-hui; Guo Pu | 3 |
+| f-29 | The fox bead tale entry was written by Cho Hee-woong. | gumiho--ch-3 | all | who-said-it | Cho Hee-woong | Yu Jin-a; Kim Jun-hui; Guo Pu | 3 |
+| f-30 | The transformation-tale entry that lists the fox sister was written by Yu Jin-a. | gumiho--ch-5 | all | who-said-it | Yu Jin-a | Cho Hee-woong; Kim Jun-hui; Guo Pu | 3 |
 | f-31 | The fox bead entry was written in 1995. | gumiho--ch-3 | v-bead | date-or-number | 1995 | 2022; 2023; 659 | 3 |
 | f-32 | In the first type, the fox at first refuses to kiss him, he threatens to end it, she gives in, and he takes the bead. | gumiho--ch-3 | v-bead | ritual-order | refuses, threat, gives in, bead taken | bead taken, refuses, threat, gives in; threat, refuses, bead taken, gives in; gives in, refuses, threat, bead taken | 2 |
 | f-33 | In the second type, the fox wants to ascend to heaven, not to become human. | gumiho--ch-4 | v-ascend | true-or-told | documented (in the encyclopedia) | told only in modern drama; told in the fox sister tale; unknown | 2 |
 | f-34 | That the fox in the bead tale wishes to become human is not stated in the entry. | gumiho--ch-4 | all | true-or-told | told | documented in the entry; documented in the Samguk sagi; documented by the Shanhaijing | 2 |
-| f-35 | [R] Guo Pu is reported to say that a fox becomes a celestial fox at a thousand years. | gumiho--ch-2 | all | date-or-number | one thousand years | one hundred; five hundred; nine | 3 |
-| f-36 | [R] A reference work says a Japanese fox grows another tail after a hundred years. | gumiho--ch-6 | all | date-or-number | one hundred years | fifty years; one thousand; nine | 3 |
+| f-35 | [R] Guo Pu is reported to say that a fox becomes a celestial fox at a thousand years. | gumiho--ch-2 | all | date-or-number | a thousand years | a hundred years; five hundred years; nine years | 3 |
+| f-36 | [R] A reference work says a Japanese fox grows another tail after a hundred years. | gumiho--ch-6 | all | date-or-number | a hundred years | fifty years; a thousand years; nine years | 3 |
 | f-37 | [R] Korean texts name a nine-tailed fox by that count only from the Goryeo period onward. | gumiho--ch-1 | all | object-match | the Goryeo period | the Baekje period; the Joseon period; the Silla period | 3 |
 | f-38 | [R] The nine-tailed fox Daji was brought to Joseon in the seventeenth century. | gumiho--ch-2 | all | date-or-number | the seventeenth century | the twelfth century; the fifteenth century; the nineteenth century | 3 |
 | f-39 | The Samguk sagi entry records several foxes entering the palace. | gumiho--ch-1 | all | true-or-told | documented (in the Samguk sagi) | told only in the fox sister tale; told in later novels; unknown | 2 |
 
-Version-specific facts: f-01 to f-04, f-27 (v-qingqiu); f-07 to f-09, f-23, f-29, f-31, f-32 (v-bead); f-11 to f-13, f-33 (v-ascend); f-14 to f-16 (v-local); f-17 to f-22, f-30 (v-sister). Documented side: f-01 to f-06, f-08 to f-15, f-17, f-18, f-22 to f-24, f-27 to f-33, f-39. Reported by reference works `[R]`: f-19 to f-21, f-35 to f-38. Told side: f-07, f-16, f-25, f-26, f-34.
+Version-specific facts: f-01 to f-04, f-27 (v-qingqiu); f-07 to f-09, f-23, f-31, f-32 (v-bead); f-11 to f-13, f-33 (v-ascend); f-14 to f-16 (v-local); f-17 to f-22 (v-sister). Documented side: f-01 to f-06, f-08 to f-15, f-17, f-18, f-22 to f-24, f-27 to f-33, f-39. Reported by reference works `[R]`: f-19 to f-21, f-35 to f-38. Told side: f-07, f-16, f-25, f-26, f-34.
 
 ---
 
@@ -311,18 +311,18 @@ can be true when: never (a version that names a real person as protagonist is on
 
 | hotspot_id | scene_id | Object | Meaningful or decoy | Linked fact_ids or lead step | What happens on tap |
 |---|---|---|---|---|---|
-| h-01 | scene-courtyard | Woman's shadow on a paper door | Meaningful (swappable) | f-24; lead-4 step 1 | Asks what the characters of her name mean. |
+| h-01 | scene-courtyard | Woman's shadow on a paper door | Meaningful (swappable) | f-17, f-24; lead-4 steps 1 to 3 | Asks what the characters of her name mean. |
 | h-02 | scene-courtyard | Hanging paper lantern | Decoy | none | The flame bends and steadies; nothing hidden. |
-| h-03 | scene-courtyard | Low writing desk with a brush | Meaningful | f-29, f-30, f-31; lead-5 step 1 | Asks who wrote the entry and in which year. |
+| h-03 | scene-courtyard | Low writing desk with a brush | Meaningful | f-13, f-29, f-30, f-31; lead-2; lead-5 step 1 | Asks who wrote the entry and in which year. |
 | h-04 | scene-courtyard | Earthen jar | Decoy | none | A dry jar; the lid rocks once. |
 | h-05 | scene-courtyard | Stone step | Decoy | none | A plain step; nothing under it. |
 | h-06 | scene-bridge | Small stone bridge | Meaningful (swappable) | f-32; lead-1 step 2 | Asks the order of the kiss, the refusal and the bead. |
 | h-07 | scene-bridge | Autumn reeds | Decoy | none | The reeds hiss; nothing in them. |
 | h-08 | scene-bridge | Stone wall stretch | Decoy | none | Cold moss; nothing hidden. |
 | h-09 | scene-bridge | Flat river stone | Decoy | none | A smooth stone; nothing under it. |
-| h-10 | scene-forest | Glowing bead above a stone | Meaningful | f-08, f-23; lead-1 step 1 | Asks what the young man looked at and what the bead is called. |
+| h-10 | scene-forest | Glowing bead above a stone | Meaningful | f-08, f-23; lead-1 steps 1 and 3 | Asks what the young man looked at and what the bead is called. |
 | h-11 | scene-forest | Full moon in the branches | Meaningful (swappable) | f-05, f-06; lead-3 step 3 | Asks which year a white fox sat at a desk. |
-| h-12 | scene-courtyard | Bamboo book box | Meaningful | f-01 to f-04, f-39; lead-3 step 1 | Asks which mountain the old book names and what cry it gives. |
+| h-12 | scene-courtyard | Bamboo book box | Meaningful | f-01 to f-04, f-39; lead-3 steps 1 and 2 | Asks which mountain the old book names and what cry it gives. |
 | h-13 | scene-forest | Trail rock | Decoy | none | A mossy rock; nothing carved. |
 | h-14 | scene-bridge | Bare pine bough | Decoy | none | A dry bough; an owl is not there. |
 

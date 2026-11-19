@@ -1,6 +1,6 @@
 # Hub, tutorial and shared assets
 
-The four legend files cover each legend's world. This file covers what sits around them: the archive house (hub), the tutorial room, the atlas shell and the shared UI. Follow the art direction in [legend-format.md](legend-format.md).
+The twelve legend files cover each legend's world. This file covers what sits around them: the archive house (hub), the tutorial room, the atlas shell and the shared UI. Follow the art direction in [legend-format.md](legend-format.md).
 
 ## The archive house (hub)
 
@@ -24,7 +24,7 @@ The four legend files cover each legend's world. This file covers what sits arou
 ### Hub scene
 
 `hub-game-scene-01` · the archive hall, panorama 8:3, 4096×1536.
-Left to right: a reading desk with a brass lamp; a tall shelf of boxed files and jars; the four legend doors spaced across the hall; a grandfather clock showing the hours until dawn; a glass relic cabinet with four empty slots; a window with moonlight and fog.
+Left to right: a reading desk with a brass lamp; a tall shelf of boxed files and jars; twelve legend doors spaced evenly across the hall in three groups of four, each carved differently; a grandfather clock showing the hours until dawn; a glass relic cabinet with twelve empty slots; a window with moonlight and fog.
 
 ### Hub hotspots
 
@@ -38,10 +38,18 @@ Left to right: a reading desk with a brass lamp; a tall shelf of boxed files and
 | hub-door-baba-yaga | Door 2 | meaningful | Enters the Baba Yaga world |
 | hub-door-jersey-devil | Door 3 | meaningful | Enters the Jersey Devil world |
 | hub-door-banshee | Door 4 | meaningful | Enters the Banshee world |
+| hub-door-chupacabra | Door 5 | meaningful | Enters the Chupacabra world |
+| hub-door-draugr | Door 6 | meaningful | Enters the Draugr world |
+| hub-door-el-coco | Door 7 | meaningful | Enters the El Coco world |
+| hub-door-gumiho | Door 8 | meaningful | Enters the Gumiho world |
+| hub-door-naddaha | Door 9 | meaningful | Enters the Naddaha world |
+| hub-door-spring-heeled-jack | Door 10 | meaningful | Enters the Spring-heeled Jack world |
+| hub-door-vetala | Door 11 | meaningful | Enters the Vetala world |
+| hub-door-yuki-onna | Door 12 | meaningful | Enters the Yuki-onna world |
 | hub-jars | Specimen jars | decoy | Something moves inside, then nothing |
 | hub-window | Fogged window | decoy | A handprint appears and fades |
 
-Doors 2–4 show a lock until the tutorial is done. Guests can open the tutorial and one door; the others show a sign-in prompt.
+Every door shows a lock until the tutorial is done. After that, guests can open one door, the guest world (Banshee by default, set by `GUEST_WORLD`); the other eleven show a sign-in prompt. Signed-in players can open all twelve.
 
 ## Tutorial room
 
@@ -93,4 +101,4 @@ Short fictional entry, one chapter of about 300 words, labelled "Fiction: the st
 | shared-game-ui-frame-01 | Dialog frame for spirit speech | 1600×900 | transparent | Torn parchment panel with burnt edges and a thin ink border, empty center, painterly | Text |
 | shared-game-ui-key-01 | Hall key (tutorial reward) | 1024×1024 | transparent | Heavy iron skeleton key with a ribbon tag, painterly, candle-lit from the left | Text on tag |
 | shared-game-ui-dawn-01 | Ending screen | 2400×1350 | opaque | The archive house seen from outside at first light, fog lifting, warm sunrise breaking through #F4D58D over cold blue night #7FA7B5, painterly, peaceful | People, text |
-| hub-game-door-frame-01..04 | Door frames, one per legend, styled by that legend's theme pack | 1024×2048 | transparent | See each legend's theme pack: a tall wooden door whose carvings and hardware reflect the legend's culture, closed, painterly, lit from the left by candlelight | Text, symbols of religion |
+| hub-game-door-frame-01..12 | Door frames, one per legend, styled by that legend's theme pack | 1024×2048 | transparent | See each legend's theme pack: a tall wooden door whose carvings and hardware reflect the legend's culture, closed, painterly, lit from the left by candlelight | Text, symbols of religion |

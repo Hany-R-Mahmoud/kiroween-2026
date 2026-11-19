@@ -233,10 +233,10 @@ The record is clearest where it is a page: the sagas can be read, and the farms,
 |---|---|---|---|---|---|---|---|
 | f-01 | Thorhall is advised by Skapti the Lawman and takes the worker he sends. | draugr--ch-2 | v-grettis | who-said-it | Skapti the Lawman | Hoskuld; Snorri; Jókull | 2 |
 | f-02 | Glámr's farm is Thorhall-stead (Þórhallsstaðir) in Shady-vale. | draugr--ch-2 | v-grettis | original-name | Thorhall-stead | Hvamm; Hrappstead; Herdholt | 2 |
-| f-03 | Glámr is a Swede. | draugr--ch-2 | v-grettis | original-name | Sweden | Norway; Ireland; Denmark | 1 |
-| f-04 | Glámr has wolf-grey hair. | draugr--ch-2 | v-grettis | object-match | wolf-grey hair | red hair; a white beard; a black cap | 2 |
+| f-03 | Glámr is a Swede. | draugr--ch-2 | v-grettis | original-name | a Swede | a Norwegian; an Irishman; a Dane | 1 |
+| f-04 | Glámr has wolf-grey hair. | draugr--ch-2 | all | object-match | wolf-grey hair | red hair; a white beard; a black cap | 2 |
 | f-05 | Glámr goes out into a snowstorm on Yule eve and does not come back. | draugr--ch-2 | v-grettis | date-or-number | Yule eve | midsummer; the first day of harvest; a spring evening | 1 |
-| f-06 | Glámr's body is too heavy for the men to move. | draugr--ch-2 | v-grettis | symbol | heaviness | a cold wind; a red glow; a bell sound | 1 |
+| f-06 | Glámr's body is too heavy for the men to move. | draugr--ch-2 | v-grettis | symbol | weight | a cold wind; a red glow; a bell sound | 1 |
 | f-07 | Thorgaut is the second shepherd and is found dead at midwinter. | draugr--ch-2 | v-grettis | original-name | Thorgaut | Thorod; Thorir; Thord | 2 |
 | f-08 | Grettir's kinsman who warns him is Jókull at Tongue. | draugr--ch-2 | v-grettis | who-said-it | Jókull | Skapti; Arnkel; Kiartan | 2 |
 | f-09 | On the first night Glámr kills Grettir's horse. | draugr--ch-3 | v-grettis | object-match | his horse | his dog; his shield; his boat | 2 |
@@ -253,7 +253,7 @@ The record is clearest where it is a page: the sagas can be read, and the farms,
 | f-20 | At Fróðá, Kiartan brings charges against Thorir Wooden-leg. | draugr--ch-5 | v-eyrbyggja | who-said-it | Kiartan | Thord Kausi; Snorri; Thurid | 2 |
 | f-21 | A half-moon circles the Fróðá hall at the hour of the fires for a week. | draugr--ch-5 | v-eyrbyggja | date-or-number | a week | three nights; a month; twelve days | 2 |
 | f-22 | Of thirty servants at Fróðá, eighteen are dead by harvest. | draugr--ch-5 | v-eyrbyggja | date-or-number | eighteen | thirty; five; seven | 3 |
-| f-23 | A seal's head rises through the floor of the fire hall. | draugr--ch-5 | v-eyrbyggja | object-match | a seal's head | a wolf's head; a bull's head; a hand | 2 |
+| f-23 | A seal's head rises through the floor of the fire hall. | draugr--ch-5 | all | object-match, symbol | a seal's head | a wolf's head; a bull's head; a hand | 2 |
 | f-24 | Hrappr asks to be buried standing in the doorway of his fire hall. | draugr--ch-4 | v-laxdaela | object-match | the doorway of his fire hall | the gate of the farm; a headland; the sheepfold | 1 |
 | f-25 | Hrappr's wife who carries out the request is Vigdis. | draugr--ch-4 | v-laxdaela | who-said-it | Vigdis | Thurid; Thorgunna; Thorgrima | 2 |
 | f-26 | Hoskuld has Hrappr's body moved to a remote place. | draugr--ch-4 | v-laxdaela | who-said-it | Hoskuld | Olaf; Trefill; Thorstein Swart | 2 |
@@ -261,8 +261,8 @@ The record is clearest where it is a page: the sagas can be read, and the farms,
 | f-28 | Olaf strikes at Hrappr's ghost with a spear, and the shaft breaks. | draugr--ch-4 | v-laxdaela | object-match | a spear | a sword; an axe; a staff | 2 |
 | f-29 | [R] Ármann Jakobsson's article "Vampires and Watchmen" is dated 2011. | draugr--ch-1 | v-scholars | date-or-number | 2011 | 1946; 1938; 1892 | 3 |
 | f-30 | [R] Chadwick's "Norse Ghosts" appeared in 1946. | draugr--ch-1 | v-scholars | date-or-number | 1946 | 2011; 1869; 1938 | 3 |
-| f-31 | [R] Haugbúi means mound-dweller. | draugr--ch-1 | v-scholars | original-name | mound-dweller | again-walker; watchman; shepherd | 2 |
-| f-32 | [R] Aptrganga is glossed as an again-walker or revenant. | draugr--ch-1 | v-scholars | original-name | again-walker | mound-dweller; troll; door-warden | 2 |
+| f-31 | [R] Haugbúi means mound-dweller. | draugr--ch-1 | all | original-name | mound-dweller | again-walker; watchman; shepherd | 2 |
+| f-32 | [R] Aptrganga is glossed as an again-walker or revenant. | draugr--ch-1 | all | original-name | again-walker | mound-dweller; troll; door-warden | 2 |
 | f-33 | [R] A 1938 play titled Fróðá draws its plot from Eyrbyggja saga. | draugr--ch-6 | all | date-or-number | 1938 | 1946; 2011; 1869 | 3 |
 | f-34 | Fróðá is ended by a door-court, a legal hearing at the door. | draugr--ch-5 | v-eyrbyggja | true-or-told | documented (in Eyrbyggja saga) | told only by modern writers; told in a folk song; unknown | 2 |
 | f-35 | Glámr's words about Grettir's fear of the dark are in Grettis saga. | draugr--ch-3 | v-grettis | true-or-told | documented (in Grettis saga) | told only by later poets; told in Laxdæla saga; unknown | 2 |
@@ -272,7 +272,7 @@ The record is clearest where it is a page: the sagas can be read, and the farms,
 | f-39 | That the sagas record real events at real farms is not settled by the texts. | draugr--ch-7 | all | true-or-told | told | documented in each saga; proved by Skapti; recorded at the Thing | 3 |
 | f-40 | That the draugr and the haugbúi were clearly separate figures in every writer's mind is a modern convenience. | draugr--ch-1 | v-scholars | true-or-told | told | documented in all three sagas; proved by a manuscript; recorded by Olaf | 3 |
 
-Version-specific facts: f-01 to f-12, f-35, f-37 (v-grettis); f-13 to f-23, f-34, f-36 (v-eyrbyggja); f-24 to f-28, f-38 (v-laxdaela); f-29 to f-32, f-40 (v-scholars). Documented side: f-01 to f-28, f-34, f-35. Reported by reference works `[R]`: f-29 to f-33. Told side: f-36 to f-40.
+Version-specific facts: f-01 to f-03, f-05 to f-12, f-35, f-37 (v-grettis); f-13 to f-22, f-34, f-36 (v-eyrbyggja); f-24 to f-28, f-38 (v-laxdaela); f-29, f-30, f-40 (v-scholars). Documented side: f-01 to f-28, f-34, f-35. Reported by reference works `[R]`: f-29 to f-33. Told side: f-36 to f-40.
 
 ---
 
@@ -324,20 +324,20 @@ can be true when: the seed picks v-scholars
 
 - `scene-yard` (the farmyard in snow): From left to right, a stack of peat and a sledge, a turf-walled house with a door under a sod roof, a cattle barn with one broken wall board, a stall with an empty horse rail, a stone wall half buried in drifts, a stick with notches leaning on a post, a tall dark gap in the sky where the moon sits above the ridge. Mood: still, cold, watched. Light: full moon on snow, one lantern at the door.
 - `scene-hall` (the long hall at night): From left to right, the high seat with a worn fur, a doorway with a narrow frame, a low central fire in a stone trough, a bench knocked askew, a wooden bowl of dried fish, a small bundle of folded bed-linen, a hammer on a peg, a smoke-hole with a pale thread of dust, a bench with a wool blanket. Mood: tense, close. Light: the low fire and one thin moonbeam through the smoke-hole.
-- `scene-fjord` (the path above the fjord): From left to right, a low headland with a high stone wall, a marker stone with painted marks and no letters, a driftwood bench, the moonlit fjord with a distant boat, a small turf door with a latch ring, a gull's feather on a rock. Mood: wide, quiet. Light: the moon on water and a faint farm lamp in the distance.
+- `scene-fjord` (the path above the fjord): From left to right, a low headland with a high stone wall, a marker stone with painted marks and no letters, a driftwood bench with a bundle of notes tied in wool, the moonlit fjord with a distant boat, a small turf door with a latch ring, a gull's feather on a rock. Mood: wide, quiet. Light: the moon on water and a faint farm lamp in the distance.
 
 **Hotspots**
 
 | hotspot_id | scene_id | Object | Meaningful or decoy | Linked fact_ids or lead step | What happens on tap |
 |---|---|---|---|---|---|
-| h-01 | scene-yard | Sledge by the peat | Meaningful (swappable) | f-15 | Asks how the body was drawn to the dale. |
+| h-01 | scene-yard | Sledge by the peat | Meaningful (swappable) | f-15; lead-2 step 1 | Asks how the body was drawn to the dale. |
 | h-02 | scene-yard | Empty horse rail | Meaningful | f-09; lead-1 step 2 | Asks what was lost on the first night. |
 | h-03 | scene-yard | Notched tally stick | Meaningful (swappable) | f-22; lead-2 step 2 | A number puzzle: how many of the servants were lost. |
-| h-04 | scene-yard | Turf door under a sod roof | Meaningful | f-24; lead-3 step 1 | Asks where a man chose to be set. |
+| h-04 | scene-yard | Turf door under a sod roof | Meaningful | f-24, f-26; lead-3 steps 1 and 3 | Asks where a man chose to be set. |
 | h-05 | scene-yard | Peat stack | Decoy | none | A heap of fuel; nothing hidden. |
 | h-06 | scene-yard | Lantern at the door | Decoy | none | The flame dips once and steadies. |
 | h-07 | scene-hall | High seat with a fur | Meaningful | f-13 | Asks where the old man was found. |
-| h-08 | scene-hall | Narrow doorframe | Meaningful | f-14, f-10; lead-1 step 1 | Asks what had to be broken, and what fell outside. |
+| h-08 | scene-hall | Narrow doorframe | Meaningful | f-14, f-10, f-11; lead-1 steps 1 and 3 | Asks what had to be broken, and what fell outside. |
 | h-09 | scene-hall | Hammer on a peg | Meaningful (swappable) | f-23 | Asks what rose through the floor. |
 | h-10 | scene-hall | Bundle of bed-linen | Decoy | lead-2 (false trail) | Soft cloth; points to Fróðá, explains nothing about the shepherd. |
 | h-11 | scene-hall | Wooden bowl of dried fish | Decoy | none | Dry and empty of meaning. |
@@ -346,8 +346,8 @@ can be true when: the seed picks v-scholars
 | h-14 | scene-fjord | Spear with a broken shaft | Meaningful | f-28; lead-3 step 2 | Asks what the lord struck with. |
 | h-15 | scene-fjord | Marker stone with painted marks | Decoy | lead-4 (false trail) | Marks with no letters; explains nothing. |
 | h-16 | scene-fjord | Gull's feather | Decoy | none | A feather; the wind moves it. |
-| h-17 | scene-fjord | Small turf door with latch ring | Meaningful | f-20, f-34 | Asks who brought the charge at the door. |
-| h-18 | scene-fjord | Driftwood bench | Decoy | none | Sea-grey wood; empty. |
+| h-17 | scene-fjord | Small turf door with latch ring | Meaningful | f-20, f-34; lead-2 step 3 | Asks who brought the charge at the door. |
+| h-18 | scene-fjord | Driftwood bench with a bundle of notes | Meaningful | f-29, f-30, f-31, f-32; lead-4 | A bundle of scholars' notes tied with wool; two years are inked on the outside. |
 
 Swappable hotspots: h-01, h-03, h-09, h-13. In a run, the seed may turn one of these into a decoy and make a decoy such as h-10 or h-15 meaningful.
 
@@ -357,10 +357,10 @@ Swappable hotspots: h-01, h-03, h-09, h-13. In a run, the seed may turn one of t
 
 | slot | puzzle_type | Fact fill |
 |---|---|---|
-| p-1 The farm and the shepherd | original-name | f-02, f-03, f-07, f-08, f-17 |
+| p-1 The farm and the shepherd | original-name | f-02, f-03, f-07, f-08, f-17, f-31, f-32 |
 | p-2 What was in the room | object-match | f-04, f-09, f-13, f-14, f-15, f-18, f-23, f-24, f-28 |
 | p-3 Numbers and years | date-or-number | f-05, f-21, f-22, f-27, f-29, f-30 |
-| p-4 The sign of the walker | symbol | f-06, f-10, f-11 |
+| p-4 The sign of the walker | symbol | f-06, f-10, f-11, f-23 |
 | p-5 Told or recorded | true-or-told | f-34, f-35, f-36, f-37, f-38, f-39, f-40 |
 
 **Breaking the curse:** The final puzzle is the shape's last question. The player chooses, from a row of carved tokens, the one detail that matches the true account: in v-grettis the moon and the doorway; in v-eyrbyggja the door-court; in v-laxdaela the standing burial. A right answer lets the shape turn and walk back into the dark. The relic earned is a plain iron door-latch ring on a worn leather cord, kept clean and cold.
@@ -415,7 +415,7 @@ Shared style line (repeat in every prompt): painterly digital illustration with 
 | draugr-atlas-marker-01 | map marker icon | 512x512 (1:1) | transparent | Small painted icon of a turf-roofed house under a half-moon, thick ink outline, amber dot, centred, palette #E6E8E3 #B0803E #0A0F1A #4B5E6B, 1:1 | text, realistic style, logos |
 | draugr-game-scene-01 | game scene yard | 4096x1536 (8:3) | opaque panorama | Wide painterly Icelandic farmyard in snow at night: stack of peat and a sledge, turf house with a sod-roofed door, cattle barn with one broken board, empty horse rail, half-buried stone wall, notched stick on a post, lantern at the door, full moon over the ridge, room for hotspots, no characters, no text, palette #0A0F1A #1C2733 #E6E8E3 #B0803E #CFE0E8, 8:3, film grain | characters, text, UI, gore, a draugr figure |
 | draugr-game-scene-02 | game scene hall | 4096x1536 (8:3) | opaque panorama | Wide painterly interior of a long Icelandic hall at night: high seat with a fur, narrow doorframe showing blue snow, low central fire in a stone trough, bench knocked askew, wooden bowl of dried fish, bundle of folded linen, hammer on a peg, smoke-hole with a moonbeam, no characters, no text, palette #0A0F1A #1C2733 #B0803E #CFE0E8 #2B2620, 8:3, film grain | characters, text, UI, gore, church objects |
-| draugr-game-scene-03 | game scene fjord | 4096x1536 (8:3) | opaque panorama | Wide painterly moonlit fjord path: low headland with a high drystone wall, a marker stone with painted marks and no letters, driftwood bench, small boat far on the water, a small turf door with an iron latch ring, gull's feather on a rock, no characters, no text, palette #0A0F1A #1C2733 #E6E8E3 #4B5E6B #CFE0E8, 8:3, film grain | characters, text, UI, graves, mounds, burial markers |
+| draugr-game-scene-03 | game scene fjord | 4096x1536 (8:3) | opaque panorama | Wide painterly moonlit fjord path: low headland with a high drystone wall, a marker stone with painted marks and no letters, driftwood bench with a bundle of notes tied in wool, small boat far on the water, a small turf door with an iron latch ring, gull's feather on a rock, no characters, no text, palette #0A0F1A #1C2733 #E6E8E3 #4B5E6B #CFE0E8, 8:3, film grain | characters, text, UI, graves, mounds, burial markers |
 | draugr-game-hotspot-01 | h-01 sledge | 1024x1024 | transparent | Plain wooden sledge with a coiled rope, snow on the runners, moonlit from the right, painterly sprite, palette #2B2620 #E6E8E3 #4B5E6B, 1:1 | text, people |
 | draugr-game-hotspot-02 | h-02 horse rail | 1024x1024 | transparent | Wooden horse rail with a loose halter rope hanging, no animal, lantern light from the left, palette #2B2620 #B0803E #E6E8E3, 1:1 | text, animal, people |
 | draugr-game-hotspot-03 | h-03 tally stick | 1024x1024 | transparent | Wooden stick with rows of notches leaning on a post, no letters, palette #2B2620 #E6E8E3 #B0803E, 1:1 | readable text, runes |
@@ -433,7 +433,7 @@ Shared style line (repeat in every prompt): painterly digital illustration with 
 | draugr-game-hotspot-15 | h-15 marker stone | 1024x1024 | transparent | Rough standing stone with a few painted dots and bars and no letters, moonlit, palette #4B5E6B #E6E8E3 #2B2620, 1:1 | readable text, runes, graves |
 | draugr-game-hotspot-16 | h-16 gull's feather | 1024x1024 | transparent | A single grey gull's feather on a flat rock, moonlit, palette #E6E8E3 #4B5E6B #1C2733, 1:1 | text, birds |
 | draugr-game-hotspot-17 | h-17 turf door with latch ring | 1024x1024 | transparent | Small turf-framed door with an iron latch ring and a thin frost edge, palette #2B2620 #B0803E #E6E8E3, 1:1 | figures, text |
-| draugr-game-hotspot-18 | h-18 driftwood bench | 1024x1024 | transparent | Bench of grey driftwood planks, moonlit, palette #4B5E6B #E6E8E3 #2B2620, 1:1 | people, text |
+| draugr-game-hotspot-18 | h-18 driftwood bench with notes | 1024x1024 | transparent | Bench of grey driftwood planks with a bundle of folded papers tied in grey wool on the seat, no readable writing, moonlit, palette #4B5E6B #E6E8E3 #2B2620, 1:1 | people, text |
 | draugr-game-spirit-01 | spirit figure | 1600x2400 (2:3) | transparent | Original full-body shape: a huge dark figure standing heavy and still, seen against a large pale moon, a broad hunched silhouette with thick shoulders wrapped in dark sodden cloth and no armor, no clear face, only two small points of light for eyes, pale frost on its edges, painterly, palette #0A0F1A #1C2733 #CFE0E8 #E6E8E3, 2:3 | gore, wounds, glowing armor, horned helmets, shields, axes, blue-glowing eyes in a skull, the Skyrim draugr, any Marvel draugr, any God of War draugr, any film, TV, comic or game draugr design, text |
 | draugr-game-spirit-02 | spirit close variant | 1600x2400 (2:3) | transparent | Close view of the same dark heavy shape: wide shoulders filling the frame, a pale moonlit edge, two small points of light for eyes, no mouth detail, no skull, painterly, palette #0A0F1A #1C2733 #CFE0E8 #E6E8E3, 2:3 | gore, a skull, a human face, any known draugr design, text |
 | draugr-game-relic-01 | relic: iron latch ring | 1024x1024 | transparent | Plain iron door-latch ring on a worn leather cord, cold frost sheen, soft moon glow, palette #4B5E6B #E6E8E3 #CFE0E8, 1:1 | text, hands |

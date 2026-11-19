@@ -217,19 +217,19 @@ The documented column rests on newspapers and scholarly summaries. The told colu
 | f-13 | The West Kent Guardian of 13 January 1838 called him "Spring John". | spring-heeled-jack--ch-3 | v-press | original-name | Spring John | Steel Jack; Spring Jack; Jumping Jack | 3 |
 | f-14 | The Times of 22 February 1838 is dated by Mackley as using the name "Spring-heeled Jack". | spring-heeled-jack--ch-3 | v-press | date-or-number | 22 February 1838 | 9 January 1838; 13 January 1838; 26 February 1838 | 3 |
 | f-15 | The Times report of 22 February 1838 describes a large helmet and a tight white oilskin-like dress. | spring-heeled-jack--ch-3 | v-press | object-match | a large helmet and a white oilskin dress | a crown and a red velvet coat; a wide hat and a black coat; an iron mask and a green cloak | 2 |
-| f-16 | The Morning Post report of 7 March 1838 says the figure carried a lamp like a policeman's bull's-eye. | spring-heeled-jack--ch-3 | v-press | object-match | a lamp like a bull's-eye lantern | a long staff; a bell; a rattle | 2 |
+| f-16 | The Morning Post report of 7 March 1838 says the figure carried a lamp like a policeman's bull's-eye. | spring-heeled-jack--ch-3 | v-press | object-match | a lamp like a policeman's bull's-eye | a long staff; a bell; a rattle | 2 |
 | f-17 | A police officer said the flame could be made by blowing through a tube with spirits of wine and sulphur. | spring-heeled-jack--ch-3 | v-press | object-match | a tube with spirits of wine and sulphur | a pair of bellows; a candle in a mask; a lantern with a red lens | 2 |
 | f-18 | The first melodrama about the figure was staged at the Royal Pavilion Theatre on 26 February 1838. | spring-heeled-jack--ch-4 | all | date-or-number | 26 February 1838 | 9 January 1838; 22 February 1838; 4 April 1838 | 3 |
 | f-19 | Mayhew's Punch showman said the devil figure was commonly called "Spring-heeled Jack". | spring-heeled-jack--ch-4 | v-street | object-match | the devil figure in Punch | the crocodile; the policeman; the hangman | 2 |
-| f-20 | A story in the Franklin's Miscellany of 27 January 1838 set Jack in a public house on Peckham Rye. | spring-heeled-jack--ch-2 | v-press | original-name | Peckham Rye | Barnes Common; Hammersmith; Old Ford | 3 |
+| f-20 | The Morning Chronicle said a similar statement from this place would probably turn out as thin as the rest. | spring-heeled-jack--ch-2 | v-press | original-name | Peckham | Barnes Common; Hammersmith; Old Ford | 3 |
 | f-21 | The serial Spring-Heel'd Jack: The Terror of London was published by the Newsagents Publishing Company. | spring-heeled-jack--ch-5 | v-dreadful | who-said-it | the Newsagents Publishing Company | the Aldine Publishing Company; the Boy's Standard; the West Kent Guardian | 3 |
 | f-22 | In the serial the cloak is reversible: black to hide, white to confront. | spring-heeled-jack--ch-5 | v-dreadful | object-match | a reversible cloak, black and white | a red hood; a bat cloak; a grey shawl | 2 |
 | f-23 | In the 1878 serial the man behind the mask is named Jack Dacre. | spring-heeled-jack--ch-5 | v-dreadful | original-name | Jack Dacre | Jack Sheppard; Jack Wraydon; Jack Turner | 3 |
-| f-24 | The 1904 Aldine serial ran for twelve parts. | spring-heeled-jack--ch-5 | v-dreadful | date-or-number | twelve | forty-eight; forty; six | 3 |
+| f-24 | The 1904 Aldine serial ran for twelve parts. | spring-heeled-jack--ch-5 | v-dreadful | date-or-number | 12 | 48; 40; 6 | 3 |
 | f-25 | In March and April 1877 sentries at Aldershot reported a figure that leapt away. | spring-heeled-jack--ch-6 | v-army | date-or-number | 1877 | 1838; 1861; 1904 | 2 |
 | f-26 | In December 1878 the leaper at Colchester was said to be a junior officer. | spring-heeled-jack--ch-6 | v-army | original-name | Colchester | Aldershot; Lincoln; Everton | 3 |
 | f-27 | The last traditional report came from Everton, Liverpool, in September 1904. | spring-heeled-jack--ch-6 | all | original-name | Everton | Kensington; Lincoln; Peckham | 2 |
-| f-28 | Beatrix Potter's journal of 1 March 1877 describes young men called Spring-heeled Jacks near Manchester. | spring-heeled-jack--ch-6 | v-street | who-said-it | Beatrix Potter | Henry Mayhew; Karl Bell; Charlton Lea | 3 |
+| f-28 | Beatrix Potter's journal of 1 March 1877 describes young men called Spring-heeled Jacks near Manchester. | spring-heeled-jack--ch-6 | all | who-said-it | Beatrix Potter | Henry Mayhew; Karl Bell; Charlton Lea | 3 |
 | f-29 | [R] In autumn 1877 a picture in the Illustrated Police News showed the figure at Newport Arch, Lincoln, in a sheepskin. | spring-heeled-jack--ch-6 | v-army | object-match | a sheepskin | a bear skin; a white sheet; polished armour | 3 |
 | f-30 | The idea that the Marquess of Waterford was the leaper is an unproven later claim. | spring-heeled-jack--ch-5 | v-marquess | true-or-told | told | documented in the Times; documented by the Morning Herald; proved in 1884 | 2 |
 | f-31 | The idea that a group of aristocrats made a bet to frighten many people to death was printed without support. | spring-heeled-jack--ch-2 | v-press | true-or-told | told | documented in the Times; recorded by Mayhew; proved at Aldershot | 2 |
@@ -240,7 +240,7 @@ The documented column rests on newspapers and scholarly summaries. The told colu
 | f-36 | An 1884 article in All the Year Round said no shadow of proof supports the Waterford theory. | spring-heeled-jack--ch-5 | v-marquess | who-said-it | All the Year Round | the Sun; the Satirist; the Illustrated Police News | 3 |
 | f-37 | The Northampton Mercury of 30 December 1837 reported a figure said to appear in nine parishes. | spring-heeled-jack--ch-1 | v-press | date-or-number | nine | three; seven; twelve | 3 |
 
-Version-specific facts: f-02 to f-17, f-20 (v-press); f-08, f-19, f-28, f-33, f-35 (v-street); f-21 to f-24 (v-dreadful); f-30, f-36 (v-marquess); f-25, f-26, f-29 (v-army); f-37 (v-press). Documented side: f-01 to f-28, f-36, f-37. Reported by reference works `[R]`: f-29 (never used in a true-or-told slot). Told side: f-30 to f-35.
+Version-specific facts: f-02 to f-17, f-20 (v-press); f-08, f-19, f-33, f-35 (v-street); f-21 to f-24 (v-dreadful); f-30, f-36 (v-marquess); f-25, f-26, f-29 (v-army); f-37 (v-press). Documented side: f-01 to f-28, f-36, f-37. Reported by reference works `[R]`: f-29 (never used in a true-or-told slot). Told side: f-30 to f-35.
 
 ---
 
@@ -310,23 +310,23 @@ can be true when: the seed picks v-army
 | h-01 | scene-lane | Gas lamp in fog | Decoy | none | The flame bends and steadies; nothing is learned. |
 | h-02 | scene-lane | Covered cab with shaded lamps | Meaningful (swappable) | f-05 | Asks who wrote about a gentleman in a cab with a servant. |
 | h-03 | scene-lane | Boots in the shop window | Decoy | lead-2 (false trail) | A display only; the soles are plain. |
-| h-04 | scene-lane | Chalk marks on a wall | Decoy | lead-2 (false trail) | Scribbles; they do not match any report. |
+| h-04 | scene-lane | Chalk marks on a wall | Meaningful (swappable) | f-08; lead-2 step 1 | A child's chalk drawing of a leaping figure breathing flame; the tale went from town to town. |
 | h-05 | scene-lane | Playbill board with blank sheets | Meaningful | f-18 | Asks which date the first stage play was announced. |
 | h-06 | scene-lane | Dropped cloak on the railing | Meaningful (swappable) | f-15 | Asks what the early reports said he wore. |
-| h-07 | scene-mansion | Newspaper stand with blank pages | Meaningful | f-01; lead-1 step 1 | Asks which date the paper printed the letter report. |
-| h-08 | scene-mansion | Folded letter on the desk | Meaningful | f-03, f-04; lead-1 step 2 | Asks the signature and the three disguises. |
+| h-07 | scene-mansion | Newspaper stand with blank pages | Meaningful | f-01, f-32; lead-1 step 1 | Asks which date the paper printed the letter report. |
+| h-08 | scene-mansion | Folded letter on the desk | Meaningful | f-03, f-04; lead-1 steps 2 and 3 | Asks the signature and the three disguises. |
 | h-09 | scene-mansion | Stack of letters tied with string | Meaningful (swappable) | f-05, f-06 | Asks who else wrote and which sum a paper named. |
 | h-10 | scene-mansion | Policeman's lantern | Meaningful | f-16, f-17 | Asks what lamp a report named and how flame could be made. |
 | h-11 | scene-mansion | Clock face with no numerals | Decoy | none | The hands do not move. |
 | h-12 | scene-mansion | Pie cart | Decoy | none | Smells of pastry; nothing here. |
-| h-13 | scene-roofs | Chimney pots in a row | Decoy | none | Smoke drifts; nothing here. |
+| h-13 | scene-roofs | Chimney pots in a row | Meaningful | f-33; lead-2 steps 2 and 3 | Smoke drifts over the pots; the story says he leapt these roofs, but no one who saw it is named. |
 | h-14 | scene-roofs | Weathervane | Decoy | none | It swings once in the wind and stops. |
 | h-15 | scene-roofs | Sentry box beside a wall | Meaningful | f-25, f-26; lead-5 | Asks the year of the sentry reports and the second camp. |
 | h-16 | scene-roofs | Bundle of penny serials | Meaningful (swappable) | f-21 to f-24; lead-3 | Asks publisher, cloak, or name behind the mask. |
 | h-17 | scene-roofs | Punch booth | Meaningful (swappable) | f-19 | Asks which figure the showman renamed. |
 | h-18 | scene-roofs | Sheepskin on a post | Meaningful | f-29 | Asks which skin a picture of 1877 showed. |
 
-Swappable hotspots: h-02, h-06, h-09, h-16, h-17. In a run, the seed may turn one of these into a decoy and make a decoy such as h-03 or h-04 meaningful.
+Swappable hotspots: h-02, h-04, h-06, h-09, h-16, h-17. In a run, the seed may turn one of the lane hotspots into a decoy and make the boots (h-03) meaningful.
 
 **Spirit encounter:** The figure never comes near. A tall silhouette in a long cloak stands on a rooftop at a great distance, its head a faint dark shape with two pale blue points of light. It does not speak. Questions come as folded newspaper slips that blow along the lane, each ending in a question about what was printed and when. A wrong answer makes the fog thicken and the fear meter rise with a distant hollow thud, like a leap. A right answer clears a patch of fog and the silhouette steps a little further away. At the end it leaps out of sight and the slips fall still.
 
@@ -335,8 +335,8 @@ Swappable hotspots: h-02, h-06, h-09, h-16, h-17. In a run, the seed may turn on
 | slot | puzzle_type | Fact fill |
 |---|---|---|
 | p-1 The letter | date-or-number | f-01, f-06, f-14, f-18, f-37 |
-| p-2 Who wrote | original-name | f-02, f-03, f-12, f-13, f-20 |
-| p-3 What was seen | object-match | f-04, f-09, f-11, f-15, f-16 |
+| p-2 Who wrote | original-name | f-02, f-03, f-12, f-13, f-20, f-08, f-23, f-26, f-27 |
+| p-3 What was seen | object-match | f-04, f-09, f-11, f-15, f-16, f-19, f-22, f-29 |
 | p-4 Who said it | who-said-it | f-05, f-21, f-28, f-36 |
 | p-5 Printed or only told | true-or-told | f-07, f-30, f-31, f-32, f-33, f-34 |
 
@@ -354,8 +354,8 @@ Swappable hotspots: h-02, h-06, h-09, h-16, h-17. In a run, the seed may turn on
 | slot | hint 1 (free, in scene) | hint 2 (costs fear, opens atlas) |
 |---|---|---|
 | p-1 | The first day of the story is printed on the paper at the stand. | Opens spring-heeled-jack--ch-2. |
-| p-2 | The signature on the letter names a place, not a person. | Opens spring-heeled-jack--ch-2. |
-| p-3 | Three disguises were named in the wager. | Opens spring-heeled-jack--ch-3. |
+| p-2 | The answer is a name or a place that was printed at the time. | Opens spring-heeled-jack--versions. |
+| p-3 | Think about what he was said to wear, carry or look like. | Opens spring-heeled-jack--versions. |
 | p-4 | Some names belong to people who wrote letters; others to makers of serials. | Opens spring-heeled-jack--ch-5. |
 | p-5 | A tale repeated many times is not the same as a tale recorded once. | Opens spring-heeled-jack--ch-7. |
 

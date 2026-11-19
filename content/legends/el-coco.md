@@ -111,7 +111,7 @@ In Portugal the word appears as Coca as well as coco. Bluteau's entry of 1712 be
 
 In Brazil the figure is Cuca. Mortoza's 2018 study, titled in English "Cuca, the Bogeywoman of Brasil", devotes most of its length to the words coco, coca and cuca, and presents Cuca as the most popular bogey of Brazil (S10). It finds her roots in the Iberian Peninsula. It records Cascudo's flat claim that coco, coca and cuca are one and the same being, and it shows that the Houaiss dictionary of Portuguese keeps the three words in overlapping fields of meaning: coca for a pumpkin and for a bogey, cuca for a head, and also, in Brazil, a way to speak of an old and ugly woman (S10). The pumpkin matters. A hollowed gourd with holes for eyes and a mouth is the same object as the empty face that Sandmann found behind the Portuguese coco, and a fruit-shaped head is a head.
 
-The study adds that Cuca became a literary figure through Monteiro Lobato's children's book O Saci, and a television star in the series Sítio do Pica-pau Amarelo (S10). Those later portraits are a separate matter. They are authored characters with fixed designs, and they are not the nursery figure, which has none.
+The study adds that Cuca became a literary figure through Monteiro Lobato's children's book O Saci (1921), and a television star in the series Sítio do Pica-pau Amarelo (S10). Those later portraits are a separate matter. They are authored characters with fixed designs, and they are not the nursery figure, which has none.
 
 Two details are worth a line each. In Galicia and in the Portuguese town of Monção, a festival dragon carries the same name, Coca, and shares nothing with the nursery figure except the word (S10). And the Diccionario de Autoridades of 1729 has its own entry Coca, with the sense of a processional serpent figure (S10). Those belong to a different story.
 
@@ -213,20 +213,20 @@ The record is clearest where it is a page: dictionaries, a chronicle, a collecti
 | f-02 | Barros says the name coco was put on child-scares by women. | el-coco--ch-4 | v-barros | who-said-it | women | sailors; shipwrights; physicians | 2 |
 | f-03 | The edition of Barros's Third Decade read here is dated 1563. | el-coco--ch-4 | v-barros | date-or-number | 1563 | 1611; 1712; 1799 | 3 |
 | f-04 | Oviedo, about 1526, compares the three holes to a little monkey's gesture. | el-coco--ch-4 | v-monkey | who-said-it | Oviedo | Barros; Bluteau; Rodríguez Marín | 3 |
-| f-05 | Covarrubias says the name came from the face a monkey pulls when she is angry. | el-coco--ch-4 | v-monkey | object-match | a monkey's angry face | a skull; a nose between two eyes; an owl's face | 2 |
+| f-05 | Covarrubias says the name came from the face a monkey pulls when she is angry. | el-coco--ch-4 | v-monkey | object-match | the face a monkey pulls when angry | a skull; a nose between two eyes; an owl's face | 2 |
 | f-06 | Covarrubias gives the monkey's sound as "ko ko". | el-coco--ch-4 | v-monkey | original-name | ko ko | cu-cu; ca-ca; coo-coo | 3 |
 | f-07 | Covarrubias printed his Tesoro in Madrid in 1611. | el-coco--ch-1 | all | date-or-number | 1611 | 1563; 1729; 1799 | 1 |
 | f-08 | Covarrubias lists the bogey sense of coco as an entry separate from the fruit. | el-coco--ch-1 | all | true-or-told | documented (in Covarrubias) | told only by later folklorists; told in a lullaby; unknown | 2 |
 | f-09 | That the Coco has a fixed face or body is not stated in any source read. | el-coco--ch-1 | all | true-or-told | told | documented by Covarrubias; documented by Bluteau; recorded by Rodríguez Marín | 2 |
 | f-10 | Goya's Coco print is plate number 3. | el-coco--ch-3 | v-goya | date-or-number | 3 | 1; 4; 25 | 1 |
-| f-11 | The Caprichos series has eighty plates. | el-coco--ch-3 | v-goya | date-or-number | 80 | 64; 85; 100 | 2 |
+| f-11 | The Caprichos series has eighty plates. | el-coco--ch-3 | v-goya | date-or-number | eighty | sixty-four; eighty-five; a hundred | 2 |
 | f-12 | The first sale notice for the Caprichos is dated 6 February 1799. | el-coco--ch-3 | v-goya | date-or-number | 6 February 1799 | 19 February 1799; 6 January 1799; 6 February 1803 | 2 |
 | f-13 | The Caprichos were offered at a perfume and liquor shop on the calle del Desengaño. | el-coco--ch-3 | v-goya | object-match | a perfume and liquor shop | a printing house; a church porch; a bookbinder's | 2 |
 | f-14 | Goya made plate 3 with etching and burnished aquatint. | el-coco--ch-3 | v-goya | original-name | aquatint | woodcut; lithography; mezzotint | 2 |
 | f-15 | One manuscript commentary calls plate 3 a criticism of badly managed early education. | el-coco--ch-3 | v-goya | object-match | early education | the price of bread; the theatre; the army | 2 |
 | f-16 | The preparatory drawing for plate 3 is dated about 1797 to 1798. | el-coco--ch-3 | v-goya | date-or-number | about 1797 to 1798 | 1803 to 1805; 1611 to 1612; 1819 | 3 |
 | f-17 | The copperplate of plate 3 is kept at the Calcografía Nacional under the number 174. | el-coco--ch-3 | v-goya | date-or-number | 174 | 80; 320; 3 | 3 |
-| f-18 | In the 1882 Spanish cradle song, the Coco carries off children who sleep little. | el-coco--ch-2 | v-cradle | symbol | carries off children who sleep little | eats children who cry; guards the cradle; sings at the window | 2 |
+| f-18 | In the 1882 Spanish cradle song, the Coco carries off children who sleep little. | el-coco--ch-2 | v-cradle | symbol | carry off children who sleep too little | eats children who cry; guards the cradle; sings at the window | 2 |
 | f-19 | The Puerto Rican cradle song in the 1882 collection says el cuco. | el-coco--ch-2 | v-cradle | original-name | cuco | coca; papão; cuca | 2 |
 | f-20 | The Portuguese verse tells the papão to leave a roof. | el-coco--ch-2 | v-cradle | object-match | a roof | a window; a doorway; a cradle | 1 |
 | f-21 | A well-known Brazilian lullaby says that Cuca will come to get the baby. | el-coco--ch-2 | v-cradle | original-name | Cuca | Coco; Coca; Papão | 1 |
@@ -305,9 +305,9 @@ can be true when: the seed picks v-cradle
 
 | hotspot_id | scene_id | Object | Meaningful or decoy | Linked fact_ids or lead step | What happens on tap |
 |---|---|---|---|---|---|
-| h-01 | scene-nursery | Empty cradle with a folded blanket | Meaningful | f-18, f-31; lead-4 step 1 | Asks what the song said the figure does to a child who will not sleep. |
+| h-01 | scene-nursery | Empty cradle with a folded blanket | Meaningful | f-18, f-31; lead-4 steps 1 and 3 | Asks what the song said the figure does to a child who will not sleep. |
 | h-02 | scene-nursery | Candle on a stool | Decoy | none | The flame bends and steadies; nothing hidden. |
-| h-03 | scene-nursery | Coconut on the sill | Meaningful (swappable) | f-01, f-05, f-24; lead-1 step 1 | Asks what the three marks look like, depending on who is telling it. |
+| h-03 | scene-nursery | Coconut on the sill | Meaningful (swappable) | f-01, f-05, f-24; lead-1 steps 1 and 3; lead-2 step 3 | Asks what the three marks look like, depending on who is telling it. |
 | h-04 | scene-nursery | Hooded shadow on the wall | Meaningful (swappable) | f-35 | Asks what the old word is said to have been shown by: a hood, a mask or something else. |
 | h-05 | scene-nursery | Wooden toy horse | Decoy | none | A plain toy; nothing hidden. |
 | h-06 | scene-street | Roof tiles above the shutters | Meaningful | f-20, f-21; lead-4 step 2 | Asks where the mother told the figure to go. |
@@ -315,8 +315,8 @@ can be true when: the seed picks v-cradle
 | h-08 | scene-street | Doorway with a heavy bolt | Decoy | none | The bolt is stuck; nothing behind it. |
 | h-09 | scene-street | Clay water jug | Decoy | none | A dry jug; the lid rocks once. |
 | h-10 | scene-street | Iron lamp bracket | Decoy | none | A rusted bracket; nothing hangs from it. |
-| h-11 | scene-workshop | Copper plate on the bench | Meaningful | f-10, f-14, f-17; lead-3 step 1 | Asks the plate's number and how the dark was made. |
-| h-12 | scene-workshop | Open dictionary on the lectern | Meaningful (swappable) | f-07, f-08, f-25; lead-2 step 1 | Asks which year it was printed and what it lists on its separate entries. |
+| h-11 | scene-workshop | Copper plate on the bench | Meaningful | f-10, f-13, f-14, f-17; lead-3 steps 1 and 3 | Asks the plate's number and how the dark was made. |
+| h-12 | scene-workshop | Open dictionary on the lectern | Meaningful (swappable) | f-07, f-08, f-25; lead-2 steps 1 and 2 | Asks which year it was printed and what it lists on its separate entries. |
 | h-13 | scene-workshop | Drawing in red chalk | Meaningful | f-16; lead-3 step 2 | Asks the date of the drawing. |
 | h-14 | scene-workshop | Ink pot and rag | Decoy | none | Black ink; the rag is clean. |
 

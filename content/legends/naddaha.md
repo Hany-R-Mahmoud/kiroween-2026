@@ -216,11 +216,11 @@ The record is clearest where it is a page: a book, a catalogue entry, a film lis
 | f-09 | El-Shamy's Folktales of Egypt was published by the University of Chicago Press. | naddaha--ch-4 | all | object-match | University of Chicago Press | Harrap; Peter Owen; a Cairo newspaper | 2 |
 | f-10 | The voice calls a man by his first name. | naddaha--ch-1 | v-path | symbol | his name | a song; a bell; his father's name | 1 |
 | f-11 | The voice is soft and sleepy, yet carries far. | naddaha--ch-2 | v-path | symbol | a soft, sleepy voice | a shout; a laugh; a wail | 1 |
-| f-12 | The unaffected companion pulls the called man back. | naddaha--ch-2 | v-path | weakness | a companion who stays beside him | a lantern held high; a loud bell; a closed gate | 2 |
+| f-12 | The unaffected companion pulls the called man back. | naddaha--ch-2 | all | weakness | his companion holds him back | a lantern held high; a loud bell; a closed gate | 2 |
 | f-13 | The usual telling has two men walking together. | naddaha--ch-2 | v-path | date-or-number | two | one; three; seven | 1 |
 | f-14 | In the home telling, the called man is uneasy for several nights before he leaves late at night. | naddaha--ch-3 | v-home | date-or-number | several nights | a single hour; one evening; a full season | 2 |
 | f-15 | She is described, in rare sightings, in a loose, nearly see-through dress. | naddaha--ch-2 | v-path | object-match | a loose, nearly see-through dress | a red veil; a black cloak; a white scarf | 2 |
-| f-16 | In the home telling, the called man is at home, in a house close to the water. | naddaha--ch-3 | v-home | original-name | in his own house | in the market; on a boat; at the waterwheel | 2 |
+| f-16 | In the home telling, the called man is at home, in a house close to the water. | naddaha--ch-3 | v-home | original-name | inside their homes | in the market; on a boat; at the waterwheel | 2 |
 | f-17 | [R] The name al-Naddaha is reported to mean "the one who calls". | naddaha--ch-1 | all | original-name | the one who calls | the singer; the watcher; the weaver | 2 |
 | f-18 | [R] Yusuf Idris's prose work al-Naddaha is dated 1969. | naddaha--ch-5 | v-modern | date-or-number | 1969 | 1927; 1975; 1991 | 2 |
 | f-19 | [R] A film called al-Naddaha is listed for 1975. | naddaha--ch-5 | v-modern | date-or-number | 1975 | 1969; 1927; 1980 | 2 |
@@ -247,7 +247,7 @@ The record is clearest where it is a page: a book, a catalogue entry, a film lis
 | f-41 | That the story keeps children away from the water at night is the use as told. | naddaha--ch-1 | all | true-or-told | told | documented in Amin's dictionary; documented by Blackman; recorded in a court file | 2 |
 | f-42 | [D] Ahmad Amin's dictionary was published in Cairo in 1953. | naddaha--ch-4 | all | date-or-number | 1953 | 1927; 1969; 1980 | 2 |
 
-Version-specific facts: f-02 to f-07, f-28 (v-blackman); f-10 to f-13, f-15, f-34 (v-path); f-14, f-16, f-30 (v-home); f-18 to f-25, f-27, f-33 (v-modern). Documented side: f-01 to f-09, f-28, f-29, f-36 to f-38, f-40, f-42. Reported `[R]`: f-17 to f-25 and f-27. Told side: f-10 to f-16, f-30 to f-35, f-39, f-41.
+Version-specific facts: f-02 to f-07, f-28 (v-blackman); f-10, f-11, f-13, f-15, f-34 (v-path); f-14, f-16, f-30 (v-home); f-18 to f-25, f-27, f-33 (v-modern). Documented side: f-01 to f-09, f-28, f-29, f-36 to f-38, f-40, f-42. Reported `[R]`: f-17 to f-25 and f-27. Told side: f-10 to f-16, f-30 to f-35, f-39, f-41.
 
 ---
 
@@ -305,7 +305,7 @@ can be true when: the seed picks v-modern
 
 | hotspot_id | scene_id | Object | Meaningful or decoy | Linked fact_ids or lead step | What happens on tap |
 |---|---|---|---|---|---|
-| h-01 | scene-edge | Lantern on the doorway | Meaningful (swappable) | f-16; lead-2 step 1 | Asks where a man might sit and wait for a voice. |
+| h-01 | scene-edge | Lantern on the doorway | Meaningful (swappable) | f-16; lead-2 steps 1 and 3 | Asks where a man might sit and wait for a voice. |
 | h-02 | scene-edge | Clay water-jar | Meaningful | f-03; lead-3 step 1 | Asks who would not fill it at a certain spot. |
 | h-03 | scene-edge | Wall with tally lines | Meaningful (swappable) | f-14; lead-2 step 2 | A counting puzzle: how long was the waiting. |
 | h-04 | scene-edge | Pair of worn sandals | Meaningful | f-13; lead-1 step 1 | Asks how many walked home together. |
@@ -319,8 +319,8 @@ can be true when: the seed picks v-modern
 | h-12 | scene-canal | Tall reeds | Decoy | none | The reeds sway though the air is still. |
 | h-13 | scene-nile | Small wooden boat | Decoy | none | Empty and dry on the mud. |
 | h-14 | scene-nile | Lantern left on the ground | Meaningful (swappable) | f-10, f-11 | Asks what the voice uses and how it sounds. |
-| h-15 | scene-nile | Folded film bill pinned to a post | Decoy | lead-4 (false trail) | A year and two names; explains nothing about the old belief. |
-| h-16 | scene-nile | Flat reed mat with a few coins | Meaningful | f-06; lead-3 step 2 | Asks what the double left in a widow's hand. |
+| h-15 | scene-nile | Folded film bill pinned to a post | Meaningful (swappable) | f-19, f-20, f-21; lead-4 | A year and two names; it tells of a film, not of the old belief. |
+| h-16 | scene-nile | Flat reed mat with a few coins | Meaningful | f-06; lead-3 steps 2 and 3 | Asks what the double left in a widow's hand. |
 | h-17 | scene-nile | Pale shape among distant reeds | Meaningful | f-15, f-34 | Never moves; asks one question about what can pull a man back. |
 | h-18 | scene-nile | Fallen palm frond | Decoy | none | A frond; the breeze moves it. |
 

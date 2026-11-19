@@ -224,17 +224,17 @@ The record is thin where it matters most. Nobody wrote down who first imagined t
 | f-007 | The hut's lock is a mouth full of sharp teeth. | baba-yaga--ch-1 | v-donor | object-match | a mouth with teeth | an iron padlock; a brass ring; a carved bear head | 2 |
 | f-008 | Baba Yaga travels in a mortar, steers with a pestle and sweeps her tracks with a broom. | baba-yaga--ch-1 | all | object-match | mortar, pestle, broom | sled, whip, lantern; cart, reins, sickle; boat, oar, net | 1 |
 | f-009 | Folklorist Toporkov suggests the pestle may have been her first tool, with the mortar added later. | baba-yaga--ch-1 | all | true-or-told | told (a scholar's guess) | documented in 1755; proven by the tales; shown on the lubok prints | 3 |
-| f-010 | The three riders are white, red and black. | baba-yaga--ch-4 | v-donor | symbol | white, red, black | green, gold, blue; white, grey, silver; red, blue, yellow | 1 |
-| f-011 | The white rider is the bright day. | baba-yaga--ch-4 | v-donor | symbol | day | night; sun; dawn rain | 1 |
-| f-012 | The red rider is the red sun. | baba-yaga--ch-4 | v-donor | symbol | sun | day; night; fire | 2 |
-| f-013 | The black rider is the dark night. | baba-yaga--ch-4 | v-donor | symbol | night | day; sun; storm | 1 |
+| f-010 | The three riders are white, red and black. | baba-yaga--ch-4 | all | symbol | white, red, black | green, gold, blue; white, grey, silver; red, blue, yellow | 1 |
+| f-011 | The white rider is the bright day. | baba-yaga--ch-4 | all | symbol | day | night; sun; dawn rain | 1 |
+| f-012 | The red rider is the red sun. | baba-yaga--ch-4 | all | symbol | sun | day; night; fire | 2 |
+| f-013 | The black rider is the dark night. | baba-yaga--ch-4 | all | symbol | night | day; sun; storm | 1 |
 | f-014 | The helper that does the chores overnight is a small doll given by the girl's mother. | baba-yaga--ch-3 | v-donor | object-match | the doll | a cat; a bell; a spindle | 1 |
-| f-015 | The doll works only after it is fed first. | baba-yaga--ch-3 | v-donor | weakness | it must be fed | it must be named; it must be sung to; it must be hidden in sunlight | 2 |
-| f-016 | The first task list includes sweeping, cooking, washing and sifting oats. | baba-yaga--ch-3 | v-donor | ritual-order | sweep, cook, wash, sift oats | plant, weave, bake, sew; sing, dance, paint, carve; sail, fish, salt, smoke | 3 |
-| f-017 | The second job is to clean hay of soil and every ear of grain. | baba-yaga--ch-3 | v-donor | ritual-order | clean the hay | fill a well; mend a net; count the geese | 3 |
-| f-018 | The third task is to prepare poppy oil. | baba-yaga--ch-3 | v-donor | ritual-order | poppy oil | honey wax; flax thread; birch tar | 3 |
+| f-015 | The doll works only after it is fed first. | baba-yaga--ch-3 | all | weakness | fed first | named first; sung to first; hidden in sunlight first | 2 |
+| f-016 | The first task list includes sweeping, cooking, washing and sifting oats. | baba-yaga--ch-3 | all | ritual-order | sweep, cook, wash, sift oats | plant, weave, bake, sew; sing, dance, paint, carve; sail, fish, salt, smoke | 3 |
+| f-017 | The second job is to clean hay of soil and every ear of grain. | baba-yaga--ch-3 | all | ritual-order | clean the hay | fill a well; mend a net; count the geese | 3 |
+| f-018 | The third task is to prepare poppy oil. | baba-yaga--ch-3 | all | ritual-order | poppy oil | honey wax; flax thread; birch tar | 3 |
 | f-019 | Three pairs of invisible hands carry the oats and poppies away. | baba-yaga--ch-3 | v-donor | date-or-number | three pairs | one pair; five pairs; seven pairs | 2 |
-| f-020 | Vasilisa credits her mother's blessing for her success. | baba-yaga--ch-4 | v-donor | weakness | a mother's blessing | her stepsister's help; a gift of salt; her father's sword | 1 |
+| f-020 | Vasilisa credits her mother's blessing for her success. | baba-yaga--ch-4 | all | weakness | a mother's blessing | her stepsister's help; a gift of salt; her father's sword | 1 |
 | f-021 | Baba Yaga sends the blessed girl away with a skull on a staff as fire. | baba-yaga--ch-4 | v-donor | object-match | a skull on a staff | a gold coal; a lit candle; a bronze lamp | 2 |
 | f-022 | In The Maiden Tsar there are three Baba Yaga sisters. | baba-yaga--ch-5 | v-devourer | date-or-number | three sisters | two sisters; seven sisters; one sister | 2 |
 | f-023 | The hero escapes the third sister by blowing three horns that summon a firebird. | baba-yaga--ch-5 | v-devourer | object-match | three horns | a silver whistle; a drum; a bell | 3 |
@@ -248,7 +248,7 @@ The record is thin where it matters most. Nobody wrote down who first imagined t
 | f-031 | The idea that her fence bones belonged to earlier visitors is an inference, not in the tale. | baba-yaga--ch-1 | all | true-or-told | told | documented by Afanasyev; documented in Lomonosov; proven by the tale | 2 |
 | f-032 | The idea that Baba Yaga is an ancient mother goddess, or a figure of death and rebirth, is an interpretation, not a record. | baba-yaga--ch-7 | all | true-or-told | told | documented in Afanasyev; recorded in the 1755 grammar; stated in Vasilisa the Beautiful | 2 |
 
-Version-specific facts: f-006, f-007, f-010 to f-021 (v-donor), f-022, f-023 (v-devourer), f-024 (v-scholar), f-025, f-026 (v-lubok). Documented side: f-003, f-022, f-023, f-024, f-027, f-028, f-029, f-030. Reported by reference works `[R]`: f-001, f-002, f-004, f-005, f-025. Told side: f-009, f-026, f-031, f-032.
+Version-specific facts: f-006, f-007, f-014, f-019, f-021 (v-donor), f-022, f-023 (v-devourer), f-024 (v-scholar), f-025, f-026 (v-lubok). Documented side: f-003, f-022, f-023, f-024, f-027, f-028, f-029, f-030. Reported by reference works `[R]`: f-001, f-002, f-004, f-005, f-025. Told side: f-009, f-026, f-031, f-032.
 
 ---
 
@@ -266,7 +266,7 @@ can be true when: the seed picks v-donor
 ```
 lead-id: lead-2
 starts from: v-devourer
-steps: 1) Find the three horns on the wall-hook. 2) Count the sisters' portraits. 3) Pick which sister the visitor met.
+steps: 1) Find the three horns on the wall-hook. 2) Count the horns: one for each sister. 3) Pick which sister the visitor met.
 dead end: the horns are not carved from any horn, they are painted wooden props; the third sister's door has no chores list at all.
 contradiction: f-022 and f-023 at baba-yaga--ch-5 show horns belong to the hero's escape, not to the chores of Vasilisa's tale; f-014 at baba-yaga--ch-3 puts the doll as the helper in v-donor.
 can be true when: the seed picks v-devourer
@@ -313,18 +313,18 @@ can be true when: the seed picks v-scholar
 | h-05 | scene-clearing | Crooked well | Decoy | none | Echoes a faint voice that says nothing useful; raises fear a little. |
 | h-06 | scene-clearing | Weather-beaten birch | Decoy | none | A crow flies off; a harmless scare. |
 | h-07 | scene-hut-inside | Doll in the niche | Meaningful | f-014, f-015 | Offers to be fed; player chooses the food, wrong choice raises fear. |
-| h-08 | scene-hut-inside | Three bowls on the table | Meaningful (swappable) | f-016, f-017, f-018 | Player orders the three tasks as the tale tells them. |
-| h-09 | scene-hut-inside | Oat sack and sieve | Meaningful | f-016 | Sifting mini-puzzle; shows the first task list. |
+| h-08 | scene-hut-inside | Three bowls on the table | Meaningful (swappable) | f-016, f-017, f-018; lead-1 steps 2 and 3 | Player orders the three tasks as the tale tells them. |
+| h-09 | scene-hut-inside | Oat sack and sieve | Decoy (swappable) | none | A sack of oats and a sieve; the order of the chores is not here. |
 | h-10 | scene-hut-inside | Three pairs of hands on the wall | Meaningful (swappable) | f-019 | Count the pairs of hands. |
-| h-11 | scene-hut-inside | Shelf of jars | Decoy | lead-4 (false trail) | Labels read donor, ambiguous, evil; opens a drawer with a note, no answer. |
-| h-12 | scene-hut-inside | Painted horns on the wall-hook | Decoy | lead-2 (false trail) | Pretend horns; a dead end that points to ch-5. |
+| h-11 | scene-hut-inside | Shelf of jars | Meaningful (swappable) | f-024; lead-4 | Labels read donor, ambiguous, evil; the drawer under them holds a scholar's sorting note. |
+| h-12 | scene-hut-inside | Painted horns on the wall-hook | Meaningful (swappable) | f-022, f-023; lead-2 | Three horns on one hook, one for each sister; the tale says they call a firebird. |
 | h-13 | scene-night-yard | Mortar and pestle | Meaningful | f-008, f-009 | Shows which came first as a told claim; true-or-told puzzle. |
-| h-14 | scene-night-yard | Cracked print pinned to a post | Decoy | lead-3 (false trail) | Shows a ruler in costume; dead end. |
+| h-14 | scene-night-yard | Cracked print pinned to a post | Meaningful | f-025; lead-3 | Shows a ruler in costume; one collector read prints like this as a jab at the court. |
 | h-15 | scene-night-yard | Cellar hatch | Decoy | none | Opens on a cold draught and a tiny hidden cat; harmless. |
 | h-16 | scene-night-yard | Skull on a staff | Meaningful | f-021 | Final relic puzzle: answer how the girl passed. |
 | h-17 | scene-night-yard | Straw pile | Decoy | none | Rustles; a hedgehog runs out. |
 
-Swappable hotspots: h-01, h-04, h-08, h-10. In a run, the seed may turn one of these into a decoy and make a decoy such as h-11 or h-12 meaningful.
+Swappable hotspots: h-08, h-10, h-11, h-12, with the decoy h-09 as their partner (h-01 and h-04 are marked swappable but have no decoy partner in their scene). In a run, the seed may turn one of the hut hotspots into a decoy and make the oat sack meaningful.
 
 **Spirit encounter:** The old woman arrives at dusk in her mortar, sweeping her tracks. She never attacks. She sniffs, says there is a visitor, and sets work. Each puzzle is one of her chores. A wrong answer makes her stop sweeping and look at you for a moment, and the fear meter rises with a low creak of the hut's legs. A right answer lets her grunt and move on, and the fear meter eases. At the end she asks the only question that matters: how was it done? The right reply, as the tale tells it, is the mother's blessing.
 
