@@ -66,6 +66,13 @@ describe.each(allLegends.map((l) => [l.id, l] as const))('import plan for %s', (
   });
 });
 
+describe('legend model in the plan (R4.8)', () => {
+  it.each(allLegends.map((l) => [l.id, l] as const))('%s: the legends row carries the parsed legend, unchanged by a JSON round trip', (_id, l) => {
+    const model = planLegend(l, HASH).legends.model;
+    expect(JSON.parse(JSON.stringify(model))).toEqual(l);
+  });
+});
+
 describe('plan details', () => {
   it('stores a "never" lead and a true-chain lead the way the model has them', () => {
     const plan = planLegend(legendById('chupacabra'), HASH);
@@ -124,6 +131,26 @@ describe('importLegend', () => {
     expect(everything).not.toContain('s3cr3t-value');
     expect(everything).not.toContain('ep-example-host');
     expect(e.cause).toBeUndefined();
+  });
+
+  it('reads the SQLSTATE from the error Drizzle 0.45 wraps around the pg error, and drops the SQL and parameters', async () => {
+    const pgCause = Object.assign(new Error(`duplicate key ${SECRET}`), { code: '23505', detail: SECRET });
+    const drizzleWrapped = Object.assign(new Error(`Failed query: insert into "chapters" params: ${SECRET}`), { query: 'insert into "chapters" ...', params: [SECRET], cause: pgCause });
+    const calls: string[] = [];
+    const tx = {
+      delete: () => ({ where: async () => void calls.push('delete') }),
+      insert: () => ({
+        values: async () => {
+          throw drizzleWrapped;
+        },
+      }),
+    };
+    const db = { transaction: async (fn: (t: typeof tx) => Promise<void>) => fn(tx) } as unknown as Db;
+    const err = await importLegend(db, legendById('banshee'), HASH).catch((e: unknown) => e);
+    expect(err).toBeInstanceOf(ImportError);
+    expect((err as ImportError).sqlState).toBe('23505');
+    expect((err as ImportError).message).toBe('import failed for banshee at legends (SQLSTATE 23505)');
+    expect(JSON.stringify({ m: (err as ImportError).message, c: (err as ImportError).cause })).not.toMatch(/s3cr3t-value|insert into|params/);
   });
 
   it('a failure after the delete step (the test hook) is reported as a transaction failure and no insert ran', async () => {

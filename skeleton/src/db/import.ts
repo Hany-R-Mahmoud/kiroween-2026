@@ -4,6 +4,7 @@ import type { Legend } from '../model/schema.ts';
 import type { Db, Tx } from './client.ts';
 import { planCounts, planLegend, type Plan } from './plan.ts';
 import { anchors, assets, chapters, documentedTold, facts, factPuzzleTypes, fearEvents, hotspots, leads, legends, puzzleSlots, scenes, sources, versions } from './schema.ts';
+import { pgError } from './pgError.ts';
 
 /**
  * Names the legend and table, plus the SQLSTATE code. It never carries the driver's message or error object,
@@ -27,7 +28,8 @@ export interface TestHooks {
   afterDelete?: () => void | Promise<void>;
 }
 
-const sqlState = (e: unknown): string | undefined => (typeof e === 'object' && e !== null && 'code' in e && typeof e.code === 'string' ? e.code : undefined);
+// reads the code from Drizzle's wrapped error too (Drizzle 0.45 puts the pg error in `cause`)
+const sqlState = (e: unknown): string | undefined => pgError(e).code;
 
 async function insertRows(tx: Tx, legendId: string, name: string, table: PgTable, rows: object[]): Promise<void> {
   if (!rows.length) return;

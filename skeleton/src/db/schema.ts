@@ -1,4 +1,5 @@
-import { boolean, doublePrecision, integer, jsonb, pgEnum, pgTable, primaryKey, serial, smallint, text, timestamp } from 'drizzle-orm/pg-core';
+import { sql } from 'drizzle-orm';
+import { boolean, check, doublePrecision, index, integer, jsonb, pgEnum, pgTable, primaryKey, serial, smallint, text, timestamp, uniqueIndex, uuid } from 'drizzle-orm/pg-core';
 import type { Legend } from '../model/schema.ts';
 
 // Ids are namespaced `<legend-id>:<raw id>`. Every child table cascades from `legends`, so replacing
@@ -28,6 +29,9 @@ export const legends = pgTable('legends', {
   finalPuzzle: jsonb('final_puzzle').$type<Legend['world']['finalPuzzle']>().notNull(),
   contentHash: text('content_hash').notNull(),
   importedAt: timestamp('imported_at', { withTimezone: true }).notNull().defaultNow(),
+  // The parsed Legend, read back with legendSchema.parse. The generator depends on the order of leads, facts and
+  // versions, which the relational tables above do not keep, so runs are generated from this copy.
+  model: jsonb('model').$type<Legend>(),
 });
 
 const legendId = () => text('legend_id').notNull().references(() => legends.id, { onDelete: 'cascade' });
@@ -176,3 +180,38 @@ export const sources = pgTable(
   },
   (t) => [primaryKey({ columns: [t.legendId, t.id] })],
 );
+
+export const runStatusEnum = pgEnum('run_status', ['in_progress', 'won', 'restarted', 'abandoned']);
+
+// Player history. `legend_id` and `true_version_id` are plain text, not foreign keys: the importer replaces a legend by
+// deleting and re-inserting it, and a foreign key would either delete every player's runs on import (cascade) or
+// block the import (restrict). The server checks the legend id against the catalogue before inserting.
+// `user_id` is the Neon Auth user id from a verified session; there is no foreign key into the neon_auth schema.
+export const runs = pgTable(
+  'runs',
+  {
+    id: uuid('id').primaryKey().defaultRandom(),
+    userId: text('user_id').notNull(),
+    legendId: text('legend_id').notNull(),
+    seed: text('seed').notNull(),
+    trueVersionId: text('true_version_id').notNull(),
+    status: runStatusEnum('status').notNull().default('in_progress'),
+    slotsSolved: smallint('slots_solved').notNull().default(0),
+    hint2Uses: smallint('hint2_uses').notNull().default(0),
+    wrongAnswers: smallint('wrong_answers').notNull().default(0),
+    highestFear: smallint('highest_fear').notNull().default(0),
+    score: integer('score').notNull().default(0),
+    startedAt: timestamp('started_at', { withTimezone: true }).notNull().defaultNow(),
+    finishedAt: timestamp('finished_at', { withTimezone: true }),
+  },
+  (t) => [
+    index('runs_user_idx').on(t.userId),
+    // at most one run in progress per user and world (R4.9); a racing second start fails with 23505 on this index
+    uniqueIndex('runs_one_in_progress').on(t.userId, t.legendId).where(sql`${t.status} = 'in_progress'`),
+    check('runs_counts_non_negative', sql`${t.slotsSolved} >= 0 and ${t.hint2Uses} >= 0 and ${t.wrongAnswers} >= 0 and ${t.highestFear} >= 0 and ${t.score} >= 0`),
+    check('runs_finished_when_closed', sql`(${t.status} = 'in_progress') = (${t.finishedAt} is null)`),
+  ],
+);
+
+/** Name of the partial unique index, used to recognise a racing start (SQLSTATE 23505). */
+export const ONE_IN_PROGRESS_INDEX = 'runs_one_in_progress';

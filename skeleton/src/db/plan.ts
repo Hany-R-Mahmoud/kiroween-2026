@@ -39,6 +39,7 @@ export function planLegend(l: Legend, contentHash: string): Plan {
       id: l.id, title: m.title, region: m.region, countryTheme: m.countryTheme, mapLat: m.mapPoint.lat, mapLng: m.mapPoint.lng, era: m.era,
       scareLevel: m.scareLevel, readingTimeMin: m.readingTimeMin, oneLineHook: m.oneLineHook, coldOpen: l.coldOpen,
       documentedClosing: l.documentedTold.closing, setting: l.world.setting, spirit: l.world.spirit, theme: l.theme, finalPuzzle: l.world.finalPuzzle, contentHash,
+      model: l, // the whole parsed legend, written in the same transaction as the rows (R4.8)
     },
     anchors: planAnchors(l),
     chapters: l.chapters.map((c) => ({ id: c.id, legendId, ordinal: c.ordinal, anchor: c.anchor, title: c.title, sourceIds: c.sources, body: c.text, hook: c.hook })),

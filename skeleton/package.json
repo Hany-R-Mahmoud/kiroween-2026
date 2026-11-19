@@ -4,14 +4,19 @@
   "version": "0.0.0",
   "type": "module",
   "description": "Shared horror lore engine: content packs, seeded RNG, puzzle generator, hints, theme packs, auth and progress.",
-  "exports": { ".": "./src/index.ts" },
+  "exports": {
+    ".": "./src/index.ts",
+    "./client": "./src/client.ts",
+    "./design/tokens.css": "./src/design/tokens.css"
+  },
   "scripts": {
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
     "audit:content": "tsx scripts/audit.ts",
     "db:import": "tsx scripts/import.ts",
     "db:generate": "drizzle-kit generate",
-    "db:migrate": "drizzle-kit migrate"
+    "db:migrate": "drizzle-kit migrate",
+    "db:check-models": "tsx scripts/check-models.ts"
   },
   "dependencies": {
     "dotenv": "18.0.10",

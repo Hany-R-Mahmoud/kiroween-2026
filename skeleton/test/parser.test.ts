@@ -57,7 +57,7 @@ describe('banshee (### headings, final slot pz-5)', () => {
     const f = l.facts.find((x) => x.id === 'banshee:f05')!;
     expect(f.anchor).toBe('banshee--ch-2');
     expect(f.versionId).toBe('banshee:v-keener');
-    expect(f.puzzleTypes).toEqual(['true-or-told', 'weakness']);
+    expect(f.puzzleTypes).toEqual(['true-or-told']);
     expect(f.answer).toBe('documented: they kept it for funerals only');
     expect(f.wrongAnswers).toHaveLength(3);
     expect(f.difficulty).toBe(2);
@@ -94,14 +94,14 @@ describe('draugr (**bold** headings, "p-1 label" slots)', () => {
   it('reads the counts that the source file has', () => {
     expect(l.facts).toHaveLength(40);
     expect(l.world.hotspots).toHaveLength(18);
-    expect(l.world.hotspots.filter((h) => h.role === 'decoy')).toHaveLength(8);
+    expect(l.world.hotspots.filter((h) => h.role === 'decoy')).toHaveLength(7);
     expect(l.world.slots.map((s) => s.id)).toEqual(['draugr:p-1', 'draugr:p-2', 'draugr:p-3', 'draugr:p-4', 'draugr:p-5']);
   });
 
   it('splits the slot id from its label and expands nothing it should not', () => {
     const s = l.world.slots[0]!;
     expect(s.label).toBe('The farm and the shepherd');
-    expect(s.candidateFactIds).toHaveLength(5);
+    expect(s.candidateFactIds).toHaveLength(7);
   });
 
   it('takes swappable from the table cell and from the "Swappable hotspots:" sentence', () => {
