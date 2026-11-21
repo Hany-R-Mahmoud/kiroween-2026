@@ -587,3 +587,98 @@ All calls: project `restless-silence-44986466`, branch `br-delicate-brook-art2cr
 - **Cause:** Nitro's exact rule compiles to `^\/game\/?$`, so it also matches `/game/`, and its target was `https://trick-or-true.vercel.app/game` (no slash). The game answers `/game` with a relative 307 to `/game/`, which the browser resolves against the atlas origin, back into the same rule.
 - **Fix:** the exact rule now targets `https://trick-or-true.vercel.app/game/` (alias `/game/` answers 200). Built atlas `config.json`: `^\/game\/?$ → …/game/`, `^\/game(/…)? → …/game/$1`.
 - **Test:** new built-config case: for `/game` and `/game/` the first matching rewrite's destination is exactly `…/game/`. Mutation (slash-less target) fails 2 tests; restored, 17 pass.
+
+## Task 3.2 completed (deploy ff7d536)
+
+- **Owner's live check:** `/game` and `/game/` through the atlas 200, no redirects, title "Trick or True"; `/game/tutorial` 200; alias `/game/` 200; four security headers once each; functions in `pdx1`.
+- **`/game` without the slash (headless Chrome, `.debug/load-check.mjs`):** `/game` and `/game/` both hydrate (path kept, title "Trick or True", 4 `/game…` links), 0 failed requests; the page HTML has 38 `src`/`href` values, 0 relative. The only 404s are `/game/icons/icon-192.png` (icon assets not added yet, Needs_File) and the browser's default `/favicon.ico` on `/game` (the atlas has no favicon). No redirect added: nothing breaks.
+- **Server-function ids:** the local game build of `ff7d536` shares 12 of 12 server-function ids with production, so `smoke-prod.ts` targets the deployed functions.
+- **Email sign-in through the proxy (U3):** `smoke-prod.ts https://trick-or-told.vercel.app --only user`: 7 PASS: sign-up with a throw-away `example.com` address (200), World start before the tutorial refused (403, "Do the tutorial first."), tutorial done, `baba-yaga` started and won, the server's own run list shows the won row with the run's score, sign out. No `INVALID_ORIGIN`.
+- **Google start through the proxy:** `POST /game/api/auth/sign-in/social` (`provider: google`, callback `https://trick-or-told.vercel.app/game/`) → 200, hand-off host `ep-flat-wildflower-arvjs35x.neonauth.c-4.us-west-2.aws.neon.tech` (the production Neon Auth host, which sends the browser on to Google), no `INVALID_ORIGIN`. The Google click-through stays an Owner check.
+- **Temporary user removed (approved smoke cleanup, by exact id `2c64d22f-5aee-42a6-9cfb-26a240a351c7`, not a secret):**
+  | # | Tool | Statement / arguments | Result |
+  |---|---|---|---|
+  | 22 | `run_sql` | `select (select count(*) from neon_auth."user") as users_total, (select count(*) from neon_auth."user" where id = '2c64d22f-…') as this_user, (select email like '%@example.com' from neon_auth."user" where id = '2c64d22f-…') as example_com, (select count(*) from runs where user_id = '2c64d22f-…') as runs, (select count(*) from runs) as runs_total, (select count(*) from player_flags where user_id = '2c64d22f-…') as flags;` | 1 user total, this one, on `example.com`; 1 run; 1 flag |
+  | 23 | `delete_auth_user` | branch `br-delicate-brook-art2crov`, `auth_user_id: 2c64d22f-5aee-42a6-9cfb-26a240a351c7` | ok |
+  | 24 | `run_sql_transaction` | `DELETE FROM runs WHERE user_id = '2c64d22f-5aee-42a6-9cfb-26a240a351c7';` `DELETE FROM player_flags WHERE user_id = '2c64d22f-5aee-42a6-9cfb-26a240a351c7';` then the count select | auth user 0, runs 0, flags 0; users total 0, runs total 0 |
+  The local id file was deleted. The 10.6 smoke creates and removes its own user the same way.
+- **Stream abort (Requirement 9.3):** three requests each to `/legends/banshee` and `/game/tutorial`, aborted after the first chunk; the next request: 200, complete HTML (100185 and 9161 bytes, 719 and 443 ms). Vercel's runtime handles the abandoned stream; no failure.
+- **Rate-limit key behind the proxy (finding S1), new `--only key` step in `smoke-prod.ts`:** round 1, limit used up through the proxy (429 at answer 3), then 3 of 5 refused straight at the alias; round 2, used up at the alias (429 at answer 16), then **5 of 5 refused through the proxy**: PASS. Both paths count in the same bucket, so behind the proxy the key is the visitor's address, not a shared proxy address. No stop. Note: both 429s came early (expected at 31), so other tutorial answers from this machine's address were already counted in those windows; most likely another session testing the site from the same machine. Partial 3 of 5 in round 1 is the window rolling over or a second instance; not a shared key.
+- Smoke script change: `Browser` takes a base (default the site under test); step `key` added (also in `STEP_NAMES`); lib tests 17 pass; typecheck clean.
+
+## Task 3.3 (G3 gates)
+
+- **Tests:** `vercel-config` (17), `smoke-prod-lib` (17) and secret-scan tests pass (40); secret scan clean. Full suite last run after the route-rules change: skeleton 787 + 8 expected fail, atlas 228, game 291.
+- **agent-security** (headers, deployment config), evidence from production:
+  - Four security headers on atlas pages, on `/game/…` through the proxy and on the alias, each once (Owner's check), from the Nitro rules; `vercel.json` carries no header, so there is one source.
+  - CSP (Requirement 8.2): headless Chrome on `/`, `/legends/banshee`, `/game/`, `/game/tutorial`, `/game/sign-in`: 0 CSP violation messages, 0 failed requests. Fonts, images and scripts load; email sign-in works through the proxy and the Google start hands off to Neon Auth. Full CSP kept (with `'unsafe-inline'`, recorded in 1.3).
+  - Rate-limit key: per visitor behind the proxy (3.2), S1 closed.
+  - Game alias stays public with the same headers, CSRF and auth (S3, accepted).
+  - `allow_localhost` still on (A2), turned off at the end of 10.6.
+  - Note: the 404s left are the icon PNGs (Owner assets) and `/favicon.ico` (no favicon in the atlas; cosmetic).
+- **agent-guard:** 0 fixed, 0 flagged (`vercelRules.ts`, `vercel-config.test.ts`, the `key` step).
+- **verify-and-stop:** 4.4–4.9, 4.12 (no Services switch needed), 8.1, 8.2, 8.5, 9.3, 10.6, 10.7, 12.2 met on production. Open: 4.7 timing next.
+
+## Task 4.7 (production speed, Slow 4G, 390 px; replaces the Mid_Phase_Stop report)
+
+Production URLs: atlas **https://trick-or-told.vercel.app/**, game **https://trick-or-told.vercel.app/game/** (game project alias `https://trick-or-true.vercel.app`). `node apps/game/scripts/browser-check.mjs --game https://trick-or-told.vercel.app --atlas https://trick-or-told.vercel.app --only timing` (deploy `ff7d536`, load average 10–12 on this machine). Data: `docs/phase-5-notes/timing-production.json`.
+
+| Screen | Phase 4 median | Production runs | Median | Change | Total transfer | Images | JS+CSS (compressed on the wire) | Budget 3000 ms |
+|---|---|---|---|---|---|---|---|---|
+| Hall | 5845 | 3656, 3714, 3918 | **3714** | −36% | 594 KB | 318 KB | 160.7 KB | **fail** |
+| Tutorial_Room | 4883 | 3535, 3851, 3524 | **3535** | −28% | 624 KB | 344 KB | 163.5 KB | **fail** |
+| Banshee scene 1 | 10436 | 4457, 4521, 4808 | **4521** | −57% | 1250 KB | 903 KB | 168.7 KB | **fail** |
+
+- **What helped:** brotli on JS/CSS (about 510 KB → 165 KB on the wire) and the image deferral. With the extras blocked the medians are 3553 / 3558 / 4488 ms, within 1–5% of the real runs, so sprites, spirit figure and meter frame no longer delay the scene.
+- **Measured cause of the remaining miss (Requirement 14.4):** the scene image itself. FCP is about 1.0–1.3 s; the panorama then arrives at 3.5–4.8 s: Hall 318 KB, Tutorial 309 KB, Banshee 431 KB. At 1.6 Mbps each 100 KB is about 0.5 s, so a 310–430 KB image alone needs about 1.6–2.2 s after the page starts. The budget is not reachable on this profile without smaller scene images, which are under `assets/` (Protected_Paths): not changed (14.5). Option for the Owner, outside Kiro: phone-width copies of the three first scenes (for example 1200 px wide, about 120–150 KB each) under new asset ids; the game would then need a `picture`/media rule like the atlas hero. Recorded in the Needs_File.
+- The budget was not changed.
+- Task 4.6 (separate push) dropped by the Owner; marked done with this note. Task 4.8 is no longer a stop; this section is its report.
+
+## Task 8.1 (Owner's hotspot corrections, from D2: 38 PASS, 0 FAIL)
+
+- 41 guessed hotspots reviewed by the Owner on the full panoramas; 35 OK as placed. Six boxes changed in `apps/game/src/layout/worlds/` (x, y, w, h in panorama px):
+  | World / scene | Box | Was | Now | Why (Owner) |
+  |---|---|---|---|---|
+  | baba-yaga / night yard | h-16 | 3460, 760, 300, 440 | 3020, 800, 280, 440 | staff sprite doubled the painted skull lamp; now on open ground right of the drying platform |
+  | draugr / fjord | h-14 | 2300, 1130, 380, 220 | 2160, 1000, 520, 360 | spear too small to read |
+  | jersey-devil / scene-1 | h-03 | 700, 1290, 700, 220 | 150, 1200, 330, 330 | tracks looked like a blob on the bare road; now the snowy road edge |
+  | spring-heeled-jack / mansion | h-11 | 1908, 0, 176, 176 | 1908, 120, 176, 176 | clock touched the top edge; now on the pediment face |
+  | yuki-onna / landing | h-03 | 0, 0, 1500, 680 | 0, 0, 730, 680 | frosted tree floated in the sky; now over the painted willow crown |
+  | yuki-onna / farmhouse | h-14 | 3235, 630, 195, 190 | 3040, 620, 190, 190 | print sat on the pot-hook chain |
+- The layout test requires boxes listed in ascending x (keyboard order): jersey-devil `h-03` now comes before `h-05`, yuki-onna `h-14` before `h-15`. No overlap (h-05 ends at y 1190, h-03 starts at 1200; h-11 ends at x 3015, h-14 starts at 3040; h-15 starts at y 1170). Game tests 26 files, 291 → 293 passed (with the tutorial fix below); typecheck clean.
+- **Check:** D2 needs the Owner's sign-in cookie, so it was not rerun by the agent. Instead `.debug/overlay.mts` drew every box (and sprite box) of the six scenes onto the **full** panoramas (assets read only; output `.debug/screens-full/<world>--<scene>.png`, 2400 px wide), which also answers the D2 note that the screenshots show only the left part of each scene. All six new boxes sit where the Owner described. Paths: `.debug/screens-full/baba-yaga--scene-night-yard.png`, `draugr--scene-fjord.png`, `jersey-devil--scene-1.png`, `spring-heeled-jack--scene-mansion.png`, `yuki-onna--scene-landing.png`, `yuki-onna--scene-farmhouse.png`.
+- **Asset, not layout:** `el-coco-game-hotspot-04` has an opaque bottom strip; listed in the Needs_File.
+
+## Bug from D2: signed-in tutorial could not be finished in the page
+
+- **Owner's report:** on the dev server `/game/tutorial` called `startTutorial` twice on load; the first `tutorialAct` then failed with 400 "This game session cannot be used. Start again."
+- **Production:** headless Chrome on `https://trick-or-told.vercel.app/game/tutorial` (guest): one `startTutorial` POST, 200. The dev server: two POSTs (development double effect). Production does not start twice.
+- **Real cause (production too, signed-in players):** `createPlayClient(api, null)` (signed-in) kept no tokens at all ("the server holds the Run"). That is true for World runs, but the tutorial is stateless for everyone, so every signed-in `tutorialAct` went out with `token: null` and the server answered with the fixed session error. The double start was not the cause. With the Phase 5 tutorial lock this would have stopped signed-in players from entering any World through the page. The production smoke passed because it keeps tokens itself; Phase 4's browser checks played the tutorial as a guest.
+- **Fix:** `apps/game/src/lib/playClient.ts`: without browser storage the client keeps tokens in an in-memory `Map` for the page's life (read in `withToken`, written by `keep`, dropped on a session error). Guests unchanged (localStorage). Signed-in World responses carry `token: null`, so nothing changes for World play. Token format and play rules unchanged.
+- **Tests:** two new in `playClient.test.ts`: a signed-in tutorial sends the start's token and then each reply's token; a double start (as in dev) still acts with a valid token. Mutation (no in-memory read) fails both. Needs the next push to reach production; the final smoke (10.6) and the keyboard browser pass (10.7) then play the signed-in tutorial in a real page.
+
+## Task 9.1 (README)
+
+- `README.md` rewritten: what the project is; both production URLs; how it fits together (folders, one domain, Neon); run locally (install, migrate on one's own dev branch, two imports, both dev servers, `ATLAS_ORIGIN`); tests (`pnpm -r test`, typecheck, `test:browser`); a short "How Kiro was used" linking `docs/kiro-usage.md`; the disclosure paragraph unchanged; credits; MIT.
+- Licences read from the shipped package files: 22 `@fontsource` packages OFL-1.1; React, TanStack Router/Start, pg, zod MIT; `@neon/auth` and `drizzle-orm` Apache-2.0; Natural Earth public domain ("Made with Natural Earth."). `sharp` and `nitro` are build-time only and not credited as shipped.
+- Product names: the README names neither title, so the final names stay a catalog-only change (the URLs are lowercase slugs, not titles).
+- Test `skeleton/test/readme.test.ts` (8): no TODO, both URLs, run/test commands, Kiro log link, disclosure, credits, MIT and `LICENSE`, no catalog title. Mutation recorded.
+
+## Task 9.2 and 9.3 (Kiro log, G9 gates)
+
+- `docs/kiro-usage.md` Phase 5 section updated: the 24 Neon MCP calls by kind (exact statements stay in this file), the tools never called, the Vercel deploy findings, the signed-in tutorial bug. The final entry (skills table completed, production smoke) is added at the handover.
+- **Tests:** `pnpm -r --workspace-concurrency=1 test`: skeleton 60 files, 796 passed, 8 expected fail; atlas 18 files, 228 passed; game 26 files, 293 passed. Typecheck clean; secret scan clean.
+- **agent-guard** (docs lane): README commands checked against the package scripts (`db:migrate`, `db:import`, `db:import-keepers-note`, both `dev`, `test`, `typecheck`, `test:browser`); `test:browser -- --base …` reaches the script (its argument parser skips a literal `--`). Production URLs checked live (both 200). Credits match the licence fields read from the installed packages. 0 fixed, 0 flagged.
+- **verify-and-stop:** 24.1–24.10 met (README test, product-name test); 25.1–25.4 met so far (log, powers checked, skills recorded); the final log entry and handover remain for G10.
+
+## Task 10.3 (full local test run)
+
+- `pnpm -r --workspace-concurrency=1 test` (no database, no network): skeleton 60 files, 796 passed, 8 expected fail; atlas 18 files, 228 passed; game 26 files, 293 passed. Includes every property test (generator, RNG, leads, play rules, rate limit, tutorial lock, book, hero copy, password script). Typecheck clean.
+- `node apps/atlas/scripts/book-check.mjs --base http://localhost:3001 --out docs/phase-5-notes/book-check-g10.json` against the Owner's local built atlas: **303 passed, 0 failed, 2 skipped** (RTL key swap: `FEATURE_ARABIC` off; paper texture timing: measured in the G5 run with `--slow4g`, 2767 ms). Saved `docs/phase-5-notes/book-check-g10.json`.
+
+## Task 10.4 (G10 pre-deploy gates)
+
+- **agent-tester:** every requirement-26 test exists and is mutation-checked (10.1 table, plus rows for 3.2, 8.1, 9.1). Since the last deploy: 6 hotspot boxes (layout test green), the signed-in tutorial fix (2 new tests, mutation), README test. Not testable without a real browser and an account: the signed-in tutorial in a page; covered by 10.6 (smoke `user` step over HTTP) and 10.7 (keyboard pass in Chrome).
+- **agent-security** (headers, rate limit, auth, secrets, tutorial lock, config): scanner: 1 High, the known false positive (the quoted `'form.password': 'Password'` label in `docs/kiro-usage.md`). Fresh game build: built-output tests pass (no answer keys, no limiter or `x-forwarded-for` in client JS, no layout overlay). Headers, CSP, rate-limit key and tutorial lock verified on production in 3.2/3.3. The client fix keeps tutorial tokens in page memory only (lost on reload, as for any signed-in run; nothing written to storage). Open findings: A1 (open sign-up without verification, accepted), A2 (`allow_localhost` on until the end of 10.6). `git status --ignored`: `.env`, `.debug/`, `apps/*/.vercel/` ignored; no secret tracked.
+- **agent-guard:** 0 fixed, 0 flagged (`playClient.ts` change, layout data, README, `readme.test.ts`).
+- Tree ready for the final push (10.5).

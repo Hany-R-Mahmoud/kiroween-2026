@@ -4,7 +4,7 @@ import { normalise } from '../src/generator/normalise.ts';
 import type { AtlasLegend } from '../src/atlas/view.ts';
 
 // ---- arguments ---------------------------------------------------------------------------------------------------------
-export const STEP_NAMES = ['headers', 'guest', 'user', 'anchor', 'leak', 'burst'] as const;
+export const STEP_NAMES = ['headers', 'guest', 'user', 'anchor', 'leak', 'burst', 'key'] as const;
 export type StepName = (typeof STEP_NAMES)[number];
 export type ParsedArgs = { ok: true; base: string; skipBurst: boolean; only: StepName | null } | { ok: false; error: string };
 

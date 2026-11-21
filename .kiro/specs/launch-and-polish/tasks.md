@@ -116,21 +116,21 @@ Language: TypeScript (strict), as in the design. Tasks run one at a time, in the
     - Run `pnpm -r test`. Run `agent-tester`, `agent-guard` and `agent-security` (database roles, auth, secrets). Run `verify-and-stop`.
     - _Requirements: 25.5, 26.1_
 
-- [ ] 3. G3: First deploy and early production check
+- [x] 3. G3: First deploy and early production check
   - [x] 3.1 **STOP (Owner step): push to `main`**
     - Tell the Owner to push and to check that the game alias opens without a Vercel login. Wait for the deploy.
     - _Requirements: 3.2, 4.11_
 
-  - [-] 3.2 Check the first deploy
+  - [x] 3.2 Check the first deploy
     - Check: `GET /game/` is not the atlas 404; one `/media` file is served; `Cache-Control` on `/media`; `Content-Encoding` on one JS file of each app; four security headers on `/` and `/game/`; abort a request mid-stream and confirm the next request succeeds. Record yes/no results only.
     - On a miss, fix the Vercel setting or config and re-check. If the rewrite or `INVALID_ORIGIN` cannot be fixed, **STOP** under Requirement 3.3 and give the Owner the Services change list from the design.
     - _Requirements: 4.4, 4.5, 4.6, 4.7, 4.12, 8.5, 9.3, 12.2, 12.3_
 
-  - [ ] 3.3 G3 gates
+  - [x] 3.3 G3 gates
     - Run `agent-security` (headers, deployment config), then `agent-guard` and `verify-and-stop`.
     - _Requirements: 25.5_
 
-- [ ] 4. G4: Image deferral, hero copies, hotspot screenshots, production timing, Mid_Phase_Stop
+- [x] 4. G4: Image deferral, hero copies, hotspot screenshots, production timing, Mid_Phase_Stop
   - [x] 4.1 Defer secondary images until the scene loads
     - Create `apps/game/src/components/ScenePaint.tsx` (context). Update `SceneViewer.tsx`, `SpiritPanel.tsx`, `FearMeter.tsx`, `WorldPlay.tsx`, `TutorialRoom.tsx`, `Hall.tsx` as in the design (same-size span placeholder, settle on load and error, handle already-complete image).
     - Update `viewer.test.ts` and `fear-ui.test.ts`. Write `apps/game/test/scene-deferral.property.test.tsx`. **Property 11: Secondary images wait for the scene.**
@@ -159,15 +159,15 @@ Language: TypeScript (strict), as in the design. Tasks run one at a time, in the
     - Run `pnpm -r test`. Run `agent-tester`, `impeccable` (in the thread), `agent-guard`, `verify-and-stop`.
     - _Requirements: 25.5, 26.1_
 
-  - [ ] 4.6 **STOP (Owner step): push to `main`**
+  - [x] 4.6 **STOP (Owner step): push to `main`**
     - Tell the Owner to push so the speed fixes deploy. Wait.
     - _Requirements: 3.2_
 
-  - [ ] 4.7 Measure production speed
+  - [x] 4.7 Measure production speed
     - Run `browser-check.mjs --only timing` with `--game` and `--atlas` set to the Production_Origin, Slow_4G_Profile, 3 runs for the Hall, Tutorial_Room and Banshee scene 1. Save `docs/phase-5-notes/timing-production.json` with three paint values, median, total and image transfer, pass/fail against 3000 ms, and the Phase 4 numbers (5845, 4883, 10436 ms) next to them. On a miss, report the measured cause. Do not change the budget or any image.
     - _Requirements: 14.1, 14.2, 14.3, 14.4, 14.5, 12.2_
 
-  - [ ] 4.8 **STOP (Mid_Phase_Stop): Owner review**
+  - [x] 4.8 **STOP (Mid_Phase_Stop): Owner review**
     - Give the Owner both production URLs, the timings per screen and every hotspot screenshot path. Make no change for G5 to G6 while waiting. Start G5 only after the Owner's feedback; keep any hotspot corrections for task 8.1.
     - _Requirements: 3.5, 7.1, 7.2, 7.3, 7.5_
 
@@ -214,7 +214,7 @@ Language: TypeScript (strict), as in the design. Tasks run one at a time, in the
     - Run `pnpm -r test`. Run `agent-tester`, `impeccable` (in the thread), `agent-guard`, `verify-and-stop`.
     - _Requirements: 25.5, 26.1_
 
-- [ ] 6. G6: Halloween mood layer
+- [x] 6. G6: Halloween mood layer
   - [x] 6.1 Build the mood layer
     - Create `skeleton/src/design/mood.css` and `Mood.tsx`; wire into both root routes. Vignette, candlelight (at most 3 changes a second), bottom fog below hotspots, torn edges via the existing paper asset as mask with an ink-border fallback, hotspot hover/focus glow, in-voice loading lines from new Catalog keys in both catalogs. Static equivalents under Reduced_Motion. CSS and DOM only; no image, sound or library; no gore, occult symbol or imitation.
     - _Requirements: 19.1, 19.2, 19.3, 19.4, 19.5, 19.6, 19.7, 19.8, 19.9, 19.10, 19.11, 19.12_
@@ -224,7 +224,7 @@ Language: TypeScript (strict), as in the design. Tasks run one at a time, in the
     - Mutation: remove the reduced-motion rule for candle and fog, confirm failure, restore.
     - _Requirements: 19.3, 19.8, 19.10, 19.12, 26.4, 26.12_
 
-  - [ ] 6.3 Measure the mood layer cost
+  - [x] 6.3 Measure the mood layer cost
     - Run the Slow_4G timing locally with the layer on; record load and paint effect in decisions.md.
     - _Requirements: 19.13_
 
@@ -251,8 +251,8 @@ Language: TypeScript (strict), as in the design. Tasks run one at a time, in the
     - Run `pnpm -r test`. Run `agent-tester`, `agent-guard`, `verify-and-stop`.
     - _Requirements: 25.5, 26.1_
 
-- [ ] 8. G8: Phase 4 polish, hotspot corrections, product-name test
-  - [ ] 8.1 Apply the Owner's hotspot corrections
+- [x] 8. G8: Phase 4 polish, hotspot corrections, product-name test
+  - [x] 8.1 Apply the Owner's hotspot corrections
     - Apply the corrections from the Mid_Phase_Stop to the layout data in `apps/game/src/layout/` and run the game layout test. If none were sent, record that.
     - _Requirements: 7.4, 21.4_
 
@@ -277,17 +277,17 @@ Language: TypeScript (strict), as in the design. Tasks run one at a time, in the
     - Run `pnpm -r test`. Run `agent-tester`, `impeccable` (in the thread), `agent-guard`, `verify-and-stop`.
     - _Requirements: 25.5, 26.1, 26.14_
 
-- [ ] 9. G9: README and Kiro log
-  - [ ] 9.1 Write the README
+- [x] 9. G9: README and Kiro log
+  - [x] 9.1 Write the README
     - Replace the TODO. Add: what the project is; both production URLs; run and test commands; short "How Kiro was used" linking `docs/kiro-usage.md`; the existing disclosure paragraph unchanged in meaning; credits (OFL-1.1 fonts, "Made with Natural Earth.", licences read from shipped package files); MIT statement.
     - Write the README test (MIT statement, both URLs, link to `docs/kiro-usage.md`, credit strings).
     - _Requirements: 24.1, 24.2, 24.3, 24.4, 24.5, 24.6, 24.7_
 
-  - [ ] 9.2 Write the Kiro log
+  - [x] 9.2 Write the Kiro log
     - Add the Phase 5 section to `docs/kiro-usage.md`: spec, steering, hooks, Neon MCP calls (pointer to decisions.md), result of checking for a Vercel or Neon power (use one if it fits, record either way), each skill used and what it found or that it was unavailable. Update `docs/tech-decisions.md` with pinned versions and reasons.
     - _Requirements: 13.1, 25.1, 25.2, 25.3, 25.4_
 
-  - [ ] 9.3 G9 gates
+  - [x] 9.3 G9 gates
     - Run `pnpm -r test`, `agent-guard` and `verify-and-stop`.
     - _Requirements: 25.5, 26.1_
 
@@ -300,15 +300,15 @@ Language: TypeScript (strict), as in the design. Tasks run one at a time, in the
     - Extend `skeleton/scripts/smoke-play.ts` and `apps/game/scripts/smoke.mjs` to take an https base and implement the design's steps: headers (names only), guest tutorial and Banshee win, temporary `example.com` user (lock refusal, tutorial, win another World, score row check), `/anchor/keepers-note--ch-1` count, leak check, burst check (wait 60 s, send up to 40 answers, pass if a 429 arrives within the first 40; if none, record a finding that the limit is per instance and the burst can spread, which does not block; wait 60 s), cleanup helper. Nothing writes a cookie, password or token.
     - _Requirements: 27.2, 27.3, 27.5, 27.6, 27.7, 27.8, 27.10_
 
-  - [ ] 10.3 Full local test run
+  - [x] 10.3 Full local test run
     - Run `pnpm -r test` (no database, no network), the property tests, and `pnpm --filter @kiroween/atlas test:browser` against the local build; save `docs/phase-5-notes/book-check-g10.json`. Fix failures; blocked after two real attempts.
     - _Requirements: 26.1, 26.13, 26.14, 28.8, 1.7_
 
-  - [ ] 10.4 G10 pre-deploy gates
+  - [x] 10.4 G10 pre-deploy gates
     - Run `agent-tester`, `agent-security` (headers, rate limit, auth, secrets, tutorial lock, config) and `agent-guard`.
     - _Requirements: 25.5_
 
-  - [ ] 10.5 **STOP (Owner step): final push to `main`**
+  - [-] 10.5 **STOP (Owner step): final push to `main`**
     - Tell the Owner to push and wait for the deploy.
     - _Requirements: 3.2_
 

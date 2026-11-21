@@ -307,6 +307,11 @@
         "executionId": "9ceb9a05-a24c-4f5d-99bb-f44251a4c50f",
         "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
         "timestamp": 1795266443465
+      },
+      {
+        "executionId": "6cb16d58-914c-4af5-8b41-76f984779037",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795292187951
       }
     ],
     "10.1 Close the mutation record": [
@@ -416,6 +421,143 @@
         "executionId": "7fe2fdfd-f3ae-4223-bf04-d16b09fe7cdb",
         "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
         "timestamp": 1795277851313
+      },
+      {
+        "executionId": "55d75e12-ebb4-48e3-befb-c025fc81b887",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795285850928
+      }
+    ],
+    "3.3 G3 gates": [
+      {
+        "executionId": "55d75e12-ebb4-48e3-befb-c025fc81b887",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795285932261
+      }
+    ],
+    "3. G3: First deploy and early production check": [
+      {
+        "executionId": "55d75e12-ebb4-48e3-befb-c025fc81b887",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795285932388
+      }
+    ],
+    "4.7 Measure production speed": [
+      {
+        "executionId": "55d75e12-ebb4-48e3-befb-c025fc81b887",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795285933257
+      },
+      {
+        "executionId": "55d75e12-ebb4-48e3-befb-c025fc81b887",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795286137208
+      }
+    ],
+    "4.6 **STOP (Owner step): push to `main`**": [
+      {
+        "executionId": "55d75e12-ebb4-48e3-befb-c025fc81b887",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795285945195
+      }
+    ],
+    "4.8 **STOP (Mid_Phase_Stop): Owner review**": [
+      {
+        "executionId": "55d75e12-ebb4-48e3-befb-c025fc81b887",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795286147753
+      }
+    ],
+    "4. G4: Image deferral, hero copies, hotspot screenshots, production timing, Mid_Phase_Stop": [
+      {
+        "executionId": "55d75e12-ebb4-48e3-befb-c025fc81b887",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795286147821
+      }
+    ],
+    "6.3 Measure the mood layer cost": [
+      {
+        "executionId": "55d75e12-ebb4-48e3-befb-c025fc81b887",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795286159081
+      }
+    ],
+    "6. G6: Halloween mood layer": [
+      {
+        "executionId": "55d75e12-ebb4-48e3-befb-c025fc81b887",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795286159163
+      }
+    ],
+    "8.1 Apply the Owner's hotspot corrections": [
+      {
+        "executionId": "6cb16d58-914c-4af5-8b41-76f984779037",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795290899255
+      },
+      {
+        "executionId": "6cb16d58-914c-4af5-8b41-76f984779037",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795291602240
+      }
+    ],
+    "8. G8: Phase 4 polish, hotspot corrections, product-name test": [
+      {
+        "executionId": "6cb16d58-914c-4af5-8b41-76f984779037",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795291602473
+      }
+    ],
+    "9.1 Write the README": [
+      {
+        "executionId": "6cb16d58-914c-4af5-8b41-76f984779037",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795292101703
+      }
+    ],
+    "9.3 G9 gates": [
+      {
+        "executionId": "6cb16d58-914c-4af5-8b41-76f984779037",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795292611546
+      }
+    ],
+    "9. G9: README and Kiro log": [
+      {
+        "executionId": "6cb16d58-914c-4af5-8b41-76f984779037",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795292611614
+      }
+    ],
+    "10.3 Full local test run": [
+      {
+        "executionId": "6cb16d58-914c-4af5-8b41-76f984779037",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795292612566
+      },
+      {
+        "executionId": "23bfe6c6-b031-4a1f-ad0b-bf11d905c6ba",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795295533651
+      }
+    ],
+    "10.4 G10 pre-deploy gates": [
+      {
+        "executionId": "23bfe6c6-b031-4a1f-ad0b-bf11d905c6ba",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795295534660
+      },
+      {
+        "executionId": "23bfe6c6-b031-4a1f-ad0b-bf11d905c6ba",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795295735160
+      }
+    ],
+    "10.5 **STOP (Owner step): final push to `main`**": [
+      {
+        "executionId": "23bfe6c6-b031-4a1f-ad0b-bf11d905c6ba",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795295736063
       }
     ]
   }

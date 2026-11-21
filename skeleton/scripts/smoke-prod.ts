@@ -14,6 +14,7 @@ import { parseKeepersNoteOrThrow } from '../src/keepers/parse.ts';
 import { loadLegends } from '../src/parser/loadLegends.ts';
 import { rawId } from '../src/play/engine.ts';
 import { TOO_MANY_TRIES_MESSAGE } from '../src/play/rateLimit.ts';
+import { GAME_PROJECT_ORIGIN } from '../src/deploy/vercelRules.ts';
 import { createRng } from '../src/rng/rng.ts';
 import { score } from '../src/score/score.ts';
 import type { Action, PlayView, SlotView } from '../src/play/types.ts';
@@ -66,14 +67,16 @@ let fnIds: Map<string, string> | null = null;
 
 class Browser {
   private jar = new Map<string, string>();
+  /** `base` defaults to the site under test; the key step also talks to the game project's own alias. */
+  constructor(private readonly base: string = BASE) {}
   private cookies(): string {
     return [...this.jar].map(([k, v]) => `${k}=${v}`).join('; ');
   }
   async http(path: string, init: RequestInit = {}): Promise<Response> {
-    const res = await fetch(BASE + path, {
+    const res = await fetch(this.base + path, {
       redirect: 'manual',
       ...init,
-      headers: { cookie: this.cookies(), origin: ORIGIN, 'sec-fetch-site': 'same-origin', ...((init.headers as Record<string, string>) ?? {}) },
+      headers: { cookie: this.cookies(), origin: new URL(this.base).origin, 'sec-fetch-site': 'same-origin', ...((init.headers as Record<string, string>) ?? {}) },
     });
     for (const c of res.headers.getSetCookie()) {
       const [pair] = c.split(';');
@@ -370,9 +373,46 @@ async function stepBurst(): Promise<void> {
   await sleep(WINDOW_WAIT_MS);
 }
 
+/**
+ * Finding S1: which address keys the tutorial limit behind the atlas proxy. Exhaust the limit through the site under test,
+ * then answer straight at the game alias from the same machine. Refused there too: the key is this visitor's own address
+ * (not a shared proxy address). Accepted there: retry in the other direction once; still accepted is a FINDING to stop on.
+ * Prints statuses only, never an address.
+ */
+async function exhaust(via: Browser, token: string): Promise<number | null> {
+  for (let i = 1; i <= BURST_ANSWERS; i++) if ((await via.fn('tutorialAct', { token, action: { kind: 'answer', value: '0' } })).status === 429) return i;
+  return null;
+}
+async function refusedCount(via: Browser, token: string, n = 5): Promise<number> {
+  let refused = 0;
+  for (let i = 0; i < n; i++) if ((await via.fn('tutorialAct', { token, action: { kind: 'answer', value: '0' } })).status === 429) refused++;
+  return refused;
+}
+async function stepKey(): Promise<void> {
+  if (new URL(BASE).origin === GAME_PROJECT_ORIGIN) return void report('SKIP', 'key: run against the atlas origin, not the game alias');
+  for (const [first, second, label] of [[new Browser(), new Browser(GAME_PROJECT_ORIGIN), 'proxy then alias'], [new Browser(GAME_PROJECT_ORIGIN), new Browser(), 'alias then proxy']] as const) {
+    console.log(`INFO  waiting ${WINDOW_WAIT_MS / 1000} s so the rate-limit window is fresh`);
+    await sleep(WINDOW_WAIT_MS);
+    const t1 = await first.fn<{ token: string }>('startTutorial', { token: null });
+    const t2 = await second.fn<{ token: string }>('startTutorial', { token: null });
+    if (!t1.value || !t2.value) return check('key: guest tutorial sessions start on both addresses', false, `status ${t1.status}/${t2.status}`);
+    const at = await exhaust(first, t1.value.token);
+    if (at === null) {
+      report('FINDING', `key (${label}): no 429 in ${BURST_ANSWERS} answers: ${BURST_FINDING}`);
+      continue;
+    }
+    const refused = await refusedCount(second, t2.value.token);
+    if (refused === 5) return check('key: the limit behind the proxy is keyed on the visitor, not a shared proxy address', true, `${label}: 429 at answer ${at}; then 5 of 5 refused on the other address`);
+    console.log(`INFO  key (${label}): 429 at answer ${at}; then ${refused} of 5 refused on the other address`);
+  }
+  report('FINDING', 'key: the proxy and direct requests did not share a bucket in either order: visitors behind the proxy may share one key, or the requests reached different instances (stop and review)');
+  console.log(`INFO  waiting ${WINDOW_WAIT_MS / 1000} s so the window is clear`);
+  await sleep(WINDOW_WAIT_MS);
+}
+
 // ---- run ------------------------------------------------------------------------------------------------------------------------------------
-const STEPS: [StepName, () => Promise<void>][] = [['headers', stepHeaders], ['guest', stepGuest], ['user', stepUser], ['anchor', stepAnchor], ['leak', stepLeak], ['burst', stepBurst]];
-const needsIds = (s: StepName): boolean => s === 'guest' || s === 'user' || s === 'leak' || s === 'burst';
+const STEPS: [StepName, () => Promise<void>][] = [['headers', stepHeaders], ['guest', stepGuest], ['user', stepUser], ['anchor', stepAnchor], ['leak', stepLeak], ['burst', stepBurst], ['key', stepKey]];
+const needsIds = (s: StepName): boolean => s === 'guest' || s === 'user' || s === 'leak' || s === 'burst' || s === 'key';
 for (const [name, run] of STEPS) {
   if (!stepEnabled(name, args)) {
     if (args.only === null) report('SKIP', `step ${name}`, 'flag');

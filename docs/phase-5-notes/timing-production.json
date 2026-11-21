@@ -1,0 +1,79 @@
+{
+  "measured": "2026-11-21, production https://trick-or-told.vercel.app (deploy ff7d536), browser-check.mjs --only timing",
+  "profile": "Slow 4G: 1.6 Mbps down, 750 kbps up, 150 ms RTT, 4x CPU throttle, cache off, 390 px",
+  "budgetMs": 3000,
+  "screens": [
+    {
+      "screen": "Hall",
+      "scenePaintMs": [
+        3656,
+        3714,
+        3918
+      ],
+      "medianMs": 3714,
+      "phase4MedianMs": 5845,
+      "improvementPct": 36,
+      "totalTransferBytes": 594331,
+      "imageTransferBytes": 317685,
+      "sceneImageBytes": 317685,
+      "sceneImageArrivedMs": [
+        3609,
+        3839
+      ],
+      "fcpMs": [
+        1184,
+        1200,
+        1324
+      ],
+      "result": "fail"
+    },
+    {
+      "screen": "Tutorial_Room",
+      "scenePaintMs": [
+        3535,
+        3851,
+        3524
+      ],
+      "medianMs": 3535,
+      "phase4MedianMs": 4883,
+      "improvementPct": 28,
+      "totalTransferBytes": 624154,
+      "imageTransferBytes": 344403,
+      "sceneImageBytes": 308863,
+      "sceneImageArrivedMs": [
+        3466,
+        3630
+      ],
+      "fcpMs": [
+        936,
+        1020,
+        1028
+      ],
+      "result": "fail"
+    },
+    {
+      "screen": "Banshee scene 1",
+      "scenePaintMs": [
+        4457,
+        4521,
+        4808
+      ],
+      "medianMs": 4521,
+      "phase4MedianMs": 10436,
+      "improvementPct": 57,
+      "totalTransferBytes": 1250449,
+      "imageTransferBytes": 903261,
+      "sceneImageBytes": 431388,
+      "sceneImageArrivedMs": [
+        4411,
+        4758
+      ],
+      "fcpMs": [
+        952,
+        1056,
+        1384
+      ],
+      "result": "fail"
+    }
+  ]
+}

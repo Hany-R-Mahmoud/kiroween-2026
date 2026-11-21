@@ -152,7 +152,9 @@ export interface PlayClient {
 
 /**
  * `storage` is the browser's localStorage for a guest, or null for a signed-in player (nothing is kept in the
- * browser then: the server holds the Run). A refused token is cleared and the call is made once more without it,
+ * browser then: the server holds the Run). The tutorial is stateless for everyone, so a signed-in client keeps its
+ * tutorial token in memory for the page's life (Phase 5 fix: without it every signed-in tutorial action was sent
+ * with no token and refused with the session error). A refused token is cleared and the call is made once more without it,
  * so a stale or expired token starts a fresh run instead of trapping the player.
  */
 export function createPlayClient(api: PlayApi, storage: Store | null): PlayClient {
@@ -165,14 +167,19 @@ export function createPlayClient(api: PlayApi, storage: Store | null): PlayClien
     return p;
   };
 
+  const memory = new Map<string, string>();
   const keep = (key: string, token: string | null): void => {
-    if (!storage) return;
+    if (!storage) {
+      if (token === null) memory.delete(key);
+      else memory.set(key, token);
+      return;
+    }
     if (token === null) clearToken(storage, key);
     else writeToken(storage, key, token);
   };
 
   const withToken = async <T extends { token: string | null }>(key: string, send: (token: string | null) => Promise<T>): Promise<T> => {
-    const stored = storage ? readToken(storage, key) : null;
+    const stored = storage ? readToken(storage, key) : (memory.get(key) ?? null);
     try {
       const r = await send(stored);
       keep(key, r.token);
@@ -180,6 +187,7 @@ export function createPlayClient(api: PlayApi, storage: Store | null): PlayClien
     } catch (e) {
       if (stored === null || !isSessionError(e)) throw e;
       if (storage) clearToken(storage, key);
+      else memory.delete(key);
       const r = await send(null);
       keep(key, r.token);
       return r;

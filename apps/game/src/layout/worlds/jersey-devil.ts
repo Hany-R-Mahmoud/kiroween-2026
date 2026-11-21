@@ -12,8 +12,8 @@ const jerseyDevil: WorldLayout = {
       sceneId: 'scene-1',
       assetId: 'jersey-devil-game-scene-01',
       hotspots: [
+        h('h-03', 150, 1200, 330, 330),
         h('h-05', 205, 800, 470, 390),
-        h('h-03', 700, 1290, 700, 220),
         h('h-02', 800, 930, 200, 180),
         h('h-06', 822, 660, 176, 200),
         h('h-01', 1180, 880, 300, 180),

@@ -146,6 +146,21 @@ describe('client', () => {
     await createPlayClient(api, null).start('banshee');
     expect(api.calls[0]).toEqual({ legendId: 'banshee', token: null });
   });
+  it('signed in: the tutorial sends the token the start returned, and each action the token the last reply returned', async () => {
+    const api = fakeApi({ tutorialAct: (a: { data: unknown }) => (api.calls.push(a.data), Promise.resolve({ view: { fear: 0, hint1: { text: 'x', highlight: [] }, solved: false }, reply: null, token: tok('v') } as TutorialResponse)) });
+    const c = createPlayClient(api, null);
+    await c.startTutorial();
+    await c.actTutorial({ kind: 'drawer' });
+    await c.actTutorial({ kind: 'answer', value: '1' });
+    expect(api.calls).toEqual([{ token: null }, { token: tok('t'), action: { kind: 'drawer' } }, { token: tok('v'), action: { kind: 'answer', value: '1' } }]);
+  });
+  it('signed in: a page that starts the tutorial twice (dev double effect) still acts with a valid token', async () => {
+    const api = fakeApi();
+    const c = createPlayClient(api, null);
+    await Promise.all([c.startTutorial(), c.startTutorial()]);
+    await c.actTutorial({ kind: 'answer', value: '1' });
+    expect(api.calls).toEqual([{ token: null }, { token: tok('t') }, { token: tok('t'), action: { kind: 'answer', value: '1' } }]);
+  });
   it('tutorial: stores the receipt, then redeems it once and drops it', async () => {
     const s = memory();
     const api = fakeApi();

@@ -40,3 +40,5 @@ Each important new test is checked by breaking its rule by hand, running the tes
 | 3.2 | `skeleton/test/vercel-config.test.ts` | atlas `/game/**` proxy rule removed, VERCEL=1 rebuild | 2 failed (rule test; built output: /game paths before the server) | yes, 16 passed |
 | 3.2 | `skeleton/test/vercel-config.test.ts` | game route rules emptied (no headers), VERCEL=1 rebuild | 3 failed (rule test; built game headers; …) | yes, 16 passed |
 | 3.2 | `skeleton/test/vercel-config.test.ts` | exact `/game` proxy target back to slash-less `…/game`, VERCEL=1 rebuild | 2 failed (rule value; built: /game and /game/ never map to slash-less /game) | yes, 17 passed |
+| 8.1 | `apps/game/test/playClient.test.ts` | signed-in client reads no in-memory token (`: null` instead of `memory.get(key)`) | 2 failed (signed-in tutorial tokens; double start) | yes, 24 passed |
+| 9.1 | `skeleton/test/readme.test.ts` | game production URL line removed from the README | 1 failed (gives both production URLs) | yes, 8 passed |

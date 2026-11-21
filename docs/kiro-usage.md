@@ -512,12 +512,22 @@ Written at the end of Block A (task 9.2). The production database, deploy and pr
 
 ### Neon MCP
 
-- No Neon MCP call yet. The production database steps (2.1, 2.3, 2.4, 2.6) run at Stop B with the Owner present; each call will be recorded with its exact statement in `decisions.md`.
+All production database work went through the Neon MCP server, 24 calls so far, each with its exact statement in `docs/phase-5-notes/decisions.md` (tasks 2.1, 2.3, 2.4, 2.6, 3.2):
+- read: `list_projects`, `list_branches`, `list_postgres_databases`, `get_database_tables`, `list_postgres_roles`, `get_neon_auth_config`;
+- schema and roles: `run_sql_transaction` once per migration file (0000 to 0003) and once for the six reader-role statements, `run_sql` for `CREATE ROLE atlas_web …` and the checks;
+- auth: `provision_neon_auth`, `update_auth_plugins_organization` (off), `add_auth_trusted_domain` (both origins);
+- smoke cleanup: `delete_auth_user` and `run_sql_transaction` deleting the temporary user's rows by exact id.
+Never called: `get_connection_string`, `create_credential`, `reset_postgres_role_password`, `prepare_database_migration`. Content imports and the `atlas_web` password ran in the Owner's terminal, because they need a connection string the agent must not see.
 
 ### Powers
 
 - Checked the Kiro docs on 2026-11-21 (`kiro.dev/docs/powers`). The registry lists a Neon power (alongside Datadog, Dynatrace, Figma, Netlify, Postman, Supabase, Stripe, Strands SDK and AWS Aurora); no Vercel power is listed.
 - Neon power: not installed. The workspace already has the Neon MCP server configured in `.kiro/settings/mcp.json` (used since Phase 2), which provides the tools the production steps need. Installing the power would add a second copy of the same server for no new capability. Vercel: none fits; Vercel docs were read with `read-the-damn-docs` instead.
+
+### Deploy findings (Vercel)
+
+- The first deploy showed that Vercel serves Nitro's Build Output, whose own catch-all route came before the `vercel.json` rewrites and headers. Routing and headers moved into Nitro route rules (`skeleton/src/deploy/vercelRules.ts`), found by reading the installed Nitro Vercel preset source. A second deploy fixed a `/game/` redirect loop (the exact rule must target `/game/`).
+- A dev-server report from the Owner led to a real bug: signed-in players' tutorial tokens were never kept, so the tutorial could not be finished in the page (fixed in the play client, with tests).
 
 ### Phase 5 skills (so far)
 

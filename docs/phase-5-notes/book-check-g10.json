@@ -1,0 +1,2673 @@
+{
+  "base": "http://localhost:3001",
+  "generatedAt": "2026-11-21T20:37:52.334Z",
+  "summary": {
+    "pass": 303,
+    "fail": 0,
+    "skipped": 2
+  },
+  "checks": [
+    {
+      "name": "legend list",
+      "result": "pass",
+      "numbers": {
+        "legends": 12
+      }
+    },
+    {
+      "name": "baba-yaga@390 page count and spread",
+      "result": "pass",
+      "numbers": {
+        "pages": 44,
+        "columns": 1
+      }
+    },
+    {
+      "name": "baba-yaga@390 no horizontal page scroll",
+      "result": "pass",
+      "numbers": {
+        "sw": 390,
+        "iw": 390
+      }
+    },
+    {
+      "name": "baba-yaga@390 chapters start at page boundaries",
+      "result": "pass",
+      "numbers": {
+        "chapters": 7,
+        "off_boundary": 0
+      }
+    },
+    {
+      "name": "baba-yaga@390 anchors found",
+      "result": "pass",
+      "numbers": {
+        "anchors": 16
+      }
+    },
+    {
+      "name": "baba-yaga@390 every anchor lands visible and focused",
+      "result": "pass",
+      "numbers": {
+        "anchors": 16,
+        "failed": 0
+      }
+    },
+    {
+      "name": "baba-yaga@390 buttons turn pages",
+      "result": "pass",
+      "numbers": {
+        "before": 1,
+        "next": 2,
+        "prev": 1
+      }
+    },
+    {
+      "name": "baba-yaga@390 arrow keys, Home, End, PageUp, PageDown",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1,
+        "d": 2,
+        "e": 1,
+        "f": 44,
+        "g": 1
+      }
+    },
+    {
+      "name": "baba-yaga@390 swipe turns pages",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1
+      }
+    },
+    {
+      "name": "baba-yaga@390 indicator text",
+      "result": "pass",
+      "numbers": {
+        "page": 1,
+        "count": 44
+      }
+    },
+    {
+      "name": "baba-yaga@390 toggle keeps the chapter",
+      "result": "pass",
+      "numbers": {
+        "scroll_view_shows_chapter": 1,
+        "pages_view_shows_chapter": 1
+      }
+    },
+    {
+      "name": "baba-yaga@390 ink and paper contrast >= 4.5",
+      "result": "pass",
+      "numbers": {
+        "body_on_floor": 5.47,
+        "body_on_tint": 12.67,
+        "heading_on_floor": 4.8,
+        "heading_on_tint": 11.13,
+        "link_on_floor": 4.8,
+        "link_on_tint": 11.13
+      }
+    },
+    {
+      "name": "baba-yaga@1280 page count and spread",
+      "result": "pass",
+      "numbers": {
+        "pages": 19,
+        "columns": 2
+      }
+    },
+    {
+      "name": "baba-yaga@1280 no horizontal page scroll",
+      "result": "pass",
+      "numbers": {
+        "sw": 1280,
+        "iw": 1280
+      }
+    },
+    {
+      "name": "baba-yaga@1280 chapters start at page boundaries",
+      "result": "pass",
+      "numbers": {
+        "chapters": 7,
+        "off_boundary": 0
+      }
+    },
+    {
+      "name": "baba-yaga@1280 anchors found",
+      "result": "pass",
+      "numbers": {
+        "anchors": 16
+      }
+    },
+    {
+      "name": "baba-yaga@1280 every anchor lands visible and focused",
+      "result": "pass",
+      "numbers": {
+        "anchors": 16,
+        "failed": 0
+      }
+    },
+    {
+      "name": "baba-yaga@1280 buttons turn pages",
+      "result": "pass",
+      "numbers": {
+        "before": 1,
+        "next": 2,
+        "prev": 1
+      }
+    },
+    {
+      "name": "baba-yaga@1280 arrow keys, Home, End, PageUp, PageDown",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1,
+        "d": 2,
+        "e": 1,
+        "f": 19,
+        "g": 1
+      }
+    },
+    {
+      "name": "baba-yaga@1280 swipe turns pages",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1
+      }
+    },
+    {
+      "name": "baba-yaga@1280 indicator text",
+      "result": "pass",
+      "numbers": {
+        "page": 1,
+        "count": 19
+      }
+    },
+    {
+      "name": "baba-yaga@1280 toggle keeps the chapter",
+      "result": "pass",
+      "numbers": {
+        "scroll_view_shows_chapter": 1,
+        "pages_view_shows_chapter": 1
+      }
+    },
+    {
+      "name": "baba-yaga@1280 hash wins on resize",
+      "result": "pass",
+      "numbers": {
+        "inside_after_resize": 1
+      }
+    },
+    {
+      "name": "baba-yaga@1280 ink and paper contrast >= 4.5",
+      "result": "pass",
+      "numbers": {
+        "body_on_floor": 5.47,
+        "body_on_tint": 12.67,
+        "heading_on_floor": 4.8,
+        "heading_on_tint": 11.13,
+        "link_on_floor": 4.8,
+        "link_on_tint": 11.13
+      }
+    },
+    {
+      "name": "draugr@390 page count and spread",
+      "result": "pass",
+      "numbers": {
+        "pages": 44,
+        "columns": 1
+      }
+    },
+    {
+      "name": "draugr@390 no horizontal page scroll",
+      "result": "pass",
+      "numbers": {
+        "sw": 390,
+        "iw": 390
+      }
+    },
+    {
+      "name": "draugr@390 chapters start at page boundaries",
+      "result": "pass",
+      "numbers": {
+        "chapters": 7,
+        "off_boundary": 0
+      }
+    },
+    {
+      "name": "draugr@390 anchors found",
+      "result": "pass",
+      "numbers": {
+        "anchors": 16
+      }
+    },
+    {
+      "name": "draugr@390 every anchor lands visible and focused",
+      "result": "pass",
+      "numbers": {
+        "anchors": 16,
+        "failed": 0
+      }
+    },
+    {
+      "name": "draugr@390 buttons turn pages",
+      "result": "pass",
+      "numbers": {
+        "before": 1,
+        "next": 2,
+        "prev": 1
+      }
+    },
+    {
+      "name": "draugr@390 arrow keys, Home, End, PageUp, PageDown",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1,
+        "d": 2,
+        "e": 1,
+        "f": 44,
+        "g": 1
+      }
+    },
+    {
+      "name": "draugr@390 swipe turns pages",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1
+      }
+    },
+    {
+      "name": "draugr@390 indicator text",
+      "result": "pass",
+      "numbers": {
+        "page": 1,
+        "count": 44
+      }
+    },
+    {
+      "name": "draugr@390 toggle keeps the chapter",
+      "result": "pass",
+      "numbers": {
+        "scroll_view_shows_chapter": 1,
+        "pages_view_shows_chapter": 1
+      }
+    },
+    {
+      "name": "draugr@390 ink and paper contrast >= 4.5",
+      "result": "pass",
+      "numbers": {
+        "body_on_floor": 5.47,
+        "body_on_tint": 12.67,
+        "heading_on_floor": 4.8,
+        "heading_on_tint": 11.13,
+        "link_on_floor": 4.8,
+        "link_on_tint": 11.13
+      }
+    },
+    {
+      "name": "draugr@1280 page count and spread",
+      "result": "pass",
+      "numbers": {
+        "pages": 19,
+        "columns": 2
+      }
+    },
+    {
+      "name": "draugr@1280 no horizontal page scroll",
+      "result": "pass",
+      "numbers": {
+        "sw": 1280,
+        "iw": 1280
+      }
+    },
+    {
+      "name": "draugr@1280 chapters start at page boundaries",
+      "result": "pass",
+      "numbers": {
+        "chapters": 7,
+        "off_boundary": 0
+      }
+    },
+    {
+      "name": "draugr@1280 anchors found",
+      "result": "pass",
+      "numbers": {
+        "anchors": 16
+      }
+    },
+    {
+      "name": "draugr@1280 every anchor lands visible and focused",
+      "result": "pass",
+      "numbers": {
+        "anchors": 16,
+        "failed": 0
+      }
+    },
+    {
+      "name": "draugr@1280 buttons turn pages",
+      "result": "pass",
+      "numbers": {
+        "before": 1,
+        "next": 2,
+        "prev": 1
+      }
+    },
+    {
+      "name": "draugr@1280 arrow keys, Home, End, PageUp, PageDown",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1,
+        "d": 2,
+        "e": 1,
+        "f": 19,
+        "g": 1
+      }
+    },
+    {
+      "name": "draugr@1280 swipe turns pages",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1
+      }
+    },
+    {
+      "name": "draugr@1280 indicator text",
+      "result": "pass",
+      "numbers": {
+        "page": 1,
+        "count": 19
+      }
+    },
+    {
+      "name": "draugr@1280 toggle keeps the chapter",
+      "result": "pass",
+      "numbers": {
+        "scroll_view_shows_chapter": 1,
+        "pages_view_shows_chapter": 1
+      }
+    },
+    {
+      "name": "draugr@1280 hash wins on resize",
+      "result": "pass",
+      "numbers": {
+        "inside_after_resize": 1
+      }
+    },
+    {
+      "name": "draugr@1280 ink and paper contrast >= 4.5",
+      "result": "pass",
+      "numbers": {
+        "body_on_floor": 5.47,
+        "body_on_tint": 12.67,
+        "heading_on_floor": 4.8,
+        "heading_on_tint": 11.13,
+        "link_on_floor": 4.8,
+        "link_on_tint": 11.13
+      }
+    },
+    {
+      "name": "el-coco@390 page count and spread",
+      "result": "pass",
+      "numbers": {
+        "pages": 50,
+        "columns": 1
+      }
+    },
+    {
+      "name": "el-coco@390 no horizontal page scroll",
+      "result": "pass",
+      "numbers": {
+        "sw": 390,
+        "iw": 390
+      }
+    },
+    {
+      "name": "el-coco@390 chapters start at page boundaries",
+      "result": "pass",
+      "numbers": {
+        "chapters": 7,
+        "off_boundary": 0
+      }
+    },
+    {
+      "name": "el-coco@390 anchors found",
+      "result": "pass",
+      "numbers": {
+        "anchors": 16
+      }
+    },
+    {
+      "name": "el-coco@390 every anchor lands visible and focused",
+      "result": "pass",
+      "numbers": {
+        "anchors": 16,
+        "failed": 0
+      }
+    },
+    {
+      "name": "el-coco@390 buttons turn pages",
+      "result": "pass",
+      "numbers": {
+        "before": 1,
+        "next": 2,
+        "prev": 1
+      }
+    },
+    {
+      "name": "el-coco@390 arrow keys, Home, End, PageUp, PageDown",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1,
+        "d": 2,
+        "e": 1,
+        "f": 50,
+        "g": 1
+      }
+    },
+    {
+      "name": "el-coco@390 swipe turns pages",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1
+      }
+    },
+    {
+      "name": "el-coco@390 indicator text",
+      "result": "pass",
+      "numbers": {
+        "page": 1,
+        "count": 50
+      }
+    },
+    {
+      "name": "el-coco@390 toggle keeps the chapter",
+      "result": "pass",
+      "numbers": {
+        "scroll_view_shows_chapter": 1,
+        "pages_view_shows_chapter": 1
+      }
+    },
+    {
+      "name": "el-coco@390 ink and paper contrast >= 4.5",
+      "result": "pass",
+      "numbers": {
+        "body_on_floor": 5.47,
+        "body_on_tint": 12.67,
+        "heading_on_floor": 4.8,
+        "heading_on_tint": 11.13,
+        "link_on_floor": 4.8,
+        "link_on_tint": 11.13
+      }
+    },
+    {
+      "name": "el-coco@1280 page count and spread",
+      "result": "pass",
+      "numbers": {
+        "pages": 20,
+        "columns": 2
+      }
+    },
+    {
+      "name": "el-coco@1280 no horizontal page scroll",
+      "result": "pass",
+      "numbers": {
+        "sw": 1280,
+        "iw": 1280
+      }
+    },
+    {
+      "name": "el-coco@1280 chapters start at page boundaries",
+      "result": "pass",
+      "numbers": {
+        "chapters": 7,
+        "off_boundary": 0
+      }
+    },
+    {
+      "name": "el-coco@1280 anchors found",
+      "result": "pass",
+      "numbers": {
+        "anchors": 16
+      }
+    },
+    {
+      "name": "el-coco@1280 every anchor lands visible and focused",
+      "result": "pass",
+      "numbers": {
+        "anchors": 16,
+        "failed": 0
+      }
+    },
+    {
+      "name": "el-coco@1280 buttons turn pages",
+      "result": "pass",
+      "numbers": {
+        "before": 1,
+        "next": 2,
+        "prev": 1
+      }
+    },
+    {
+      "name": "el-coco@1280 arrow keys, Home, End, PageUp, PageDown",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1,
+        "d": 2,
+        "e": 1,
+        "f": 20,
+        "g": 1
+      }
+    },
+    {
+      "name": "el-coco@1280 swipe turns pages",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1
+      }
+    },
+    {
+      "name": "el-coco@1280 indicator text",
+      "result": "pass",
+      "numbers": {
+        "page": 1,
+        "count": 20
+      }
+    },
+    {
+      "name": "el-coco@1280 toggle keeps the chapter",
+      "result": "pass",
+      "numbers": {
+        "scroll_view_shows_chapter": 1,
+        "pages_view_shows_chapter": 1
+      }
+    },
+    {
+      "name": "el-coco@1280 hash wins on resize",
+      "result": "pass",
+      "numbers": {
+        "inside_after_resize": 1
+      }
+    },
+    {
+      "name": "el-coco@1280 ink and paper contrast >= 4.5",
+      "result": "pass",
+      "numbers": {
+        "body_on_floor": 5.47,
+        "body_on_tint": 12.67,
+        "heading_on_floor": 4.8,
+        "heading_on_tint": 11.13,
+        "link_on_floor": 4.8,
+        "link_on_tint": 11.13
+      }
+    },
+    {
+      "name": "naddaha@390 page count and spread",
+      "result": "pass",
+      "numbers": {
+        "pages": 38,
+        "columns": 1
+      }
+    },
+    {
+      "name": "naddaha@390 no horizontal page scroll",
+      "result": "pass",
+      "numbers": {
+        "sw": 390,
+        "iw": 390
+      }
+    },
+    {
+      "name": "naddaha@390 chapters start at page boundaries",
+      "result": "pass",
+      "numbers": {
+        "chapters": 6,
+        "off_boundary": 0
+      }
+    },
+    {
+      "name": "naddaha@390 anchors found",
+      "result": "pass",
+      "numbers": {
+        "anchors": 15
+      }
+    },
+    {
+      "name": "naddaha@390 every anchor lands visible and focused",
+      "result": "pass",
+      "numbers": {
+        "anchors": 15,
+        "failed": 0
+      }
+    },
+    {
+      "name": "naddaha@390 buttons turn pages",
+      "result": "pass",
+      "numbers": {
+        "before": 1,
+        "next": 2,
+        "prev": 1
+      }
+    },
+    {
+      "name": "naddaha@390 arrow keys, Home, End, PageUp, PageDown",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1,
+        "d": 2,
+        "e": 1,
+        "f": 38,
+        "g": 1
+      }
+    },
+    {
+      "name": "naddaha@390 swipe turns pages",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1
+      }
+    },
+    {
+      "name": "naddaha@390 indicator text",
+      "result": "pass",
+      "numbers": {
+        "page": 1,
+        "count": 38
+      }
+    },
+    {
+      "name": "naddaha@390 toggle keeps the chapter",
+      "result": "pass",
+      "numbers": {
+        "scroll_view_shows_chapter": 1,
+        "pages_view_shows_chapter": 1
+      }
+    },
+    {
+      "name": "naddaha@390 ink and paper contrast >= 4.5",
+      "result": "pass",
+      "numbers": {
+        "body_on_floor": 5.47,
+        "body_on_tint": 12.67,
+        "heading_on_floor": 4.8,
+        "heading_on_tint": 11.13,
+        "link_on_floor": 4.8,
+        "link_on_tint": 11.13
+      }
+    },
+    {
+      "name": "naddaha@1280 page count and spread",
+      "result": "pass",
+      "numbers": {
+        "pages": 16,
+        "columns": 2
+      }
+    },
+    {
+      "name": "naddaha@1280 no horizontal page scroll",
+      "result": "pass",
+      "numbers": {
+        "sw": 1280,
+        "iw": 1280
+      }
+    },
+    {
+      "name": "naddaha@1280 chapters start at page boundaries",
+      "result": "pass",
+      "numbers": {
+        "chapters": 6,
+        "off_boundary": 0
+      }
+    },
+    {
+      "name": "naddaha@1280 anchors found",
+      "result": "pass",
+      "numbers": {
+        "anchors": 15
+      }
+    },
+    {
+      "name": "naddaha@1280 every anchor lands visible and focused",
+      "result": "pass",
+      "numbers": {
+        "anchors": 15,
+        "failed": 0
+      }
+    },
+    {
+      "name": "naddaha@1280 buttons turn pages",
+      "result": "pass",
+      "numbers": {
+        "before": 1,
+        "next": 2,
+        "prev": 1
+      }
+    },
+    {
+      "name": "naddaha@1280 arrow keys, Home, End, PageUp, PageDown",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1,
+        "d": 2,
+        "e": 1,
+        "f": 16,
+        "g": 1
+      }
+    },
+    {
+      "name": "naddaha@1280 swipe turns pages",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1
+      }
+    },
+    {
+      "name": "naddaha@1280 indicator text",
+      "result": "pass",
+      "numbers": {
+        "page": 1,
+        "count": 16
+      }
+    },
+    {
+      "name": "naddaha@1280 toggle keeps the chapter",
+      "result": "pass",
+      "numbers": {
+        "scroll_view_shows_chapter": 1,
+        "pages_view_shows_chapter": 1
+      }
+    },
+    {
+      "name": "naddaha@1280 hash wins on resize",
+      "result": "pass",
+      "numbers": {
+        "inside_after_resize": 1
+      }
+    },
+    {
+      "name": "naddaha@1280 ink and paper contrast >= 4.5",
+      "result": "pass",
+      "numbers": {
+        "body_on_floor": 5.47,
+        "body_on_tint": 12.67,
+        "heading_on_floor": 4.8,
+        "heading_on_tint": 11.13,
+        "link_on_floor": 4.8,
+        "link_on_tint": 11.13
+      }
+    },
+    {
+      "name": "gumiho@390 page count and spread",
+      "result": "pass",
+      "numbers": {
+        "pages": 49,
+        "columns": 1
+      }
+    },
+    {
+      "name": "gumiho@390 no horizontal page scroll",
+      "result": "pass",
+      "numbers": {
+        "sw": 390,
+        "iw": 390
+      }
+    },
+    {
+      "name": "gumiho@390 chapters start at page boundaries",
+      "result": "pass",
+      "numbers": {
+        "chapters": 7,
+        "off_boundary": 0
+      }
+    },
+    {
+      "name": "gumiho@390 anchors found",
+      "result": "pass",
+      "numbers": {
+        "anchors": 18
+      }
+    },
+    {
+      "name": "gumiho@390 every anchor lands visible and focused",
+      "result": "pass",
+      "numbers": {
+        "anchors": 18,
+        "failed": 0
+      }
+    },
+    {
+      "name": "gumiho@390 buttons turn pages",
+      "result": "pass",
+      "numbers": {
+        "before": 1,
+        "next": 2,
+        "prev": 1
+      }
+    },
+    {
+      "name": "gumiho@390 arrow keys, Home, End, PageUp, PageDown",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1,
+        "d": 2,
+        "e": 1,
+        "f": 49,
+        "g": 1
+      }
+    },
+    {
+      "name": "gumiho@390 swipe turns pages",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1
+      }
+    },
+    {
+      "name": "gumiho@390 indicator text",
+      "result": "pass",
+      "numbers": {
+        "page": 1,
+        "count": 49
+      }
+    },
+    {
+      "name": "gumiho@390 toggle keeps the chapter",
+      "result": "pass",
+      "numbers": {
+        "scroll_view_shows_chapter": 1,
+        "pages_view_shows_chapter": 1
+      }
+    },
+    {
+      "name": "gumiho@390 ink and paper contrast >= 4.5",
+      "result": "pass",
+      "numbers": {
+        "body_on_floor": 5.47,
+        "body_on_tint": 12.67,
+        "heading_on_floor": 4.8,
+        "heading_on_tint": 11.13,
+        "link_on_floor": 4.8,
+        "link_on_tint": 11.13
+      }
+    },
+    {
+      "name": "gumiho@1280 page count and spread",
+      "result": "pass",
+      "numbers": {
+        "pages": 21,
+        "columns": 2
+      }
+    },
+    {
+      "name": "gumiho@1280 no horizontal page scroll",
+      "result": "pass",
+      "numbers": {
+        "sw": 1280,
+        "iw": 1280
+      }
+    },
+    {
+      "name": "gumiho@1280 chapters start at page boundaries",
+      "result": "pass",
+      "numbers": {
+        "chapters": 7,
+        "off_boundary": 0
+      }
+    },
+    {
+      "name": "gumiho@1280 anchors found",
+      "result": "pass",
+      "numbers": {
+        "anchors": 18
+      }
+    },
+    {
+      "name": "gumiho@1280 every anchor lands visible and focused",
+      "result": "pass",
+      "numbers": {
+        "anchors": 18,
+        "failed": 0
+      }
+    },
+    {
+      "name": "gumiho@1280 buttons turn pages",
+      "result": "pass",
+      "numbers": {
+        "before": 1,
+        "next": 2,
+        "prev": 1
+      }
+    },
+    {
+      "name": "gumiho@1280 arrow keys, Home, End, PageUp, PageDown",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1,
+        "d": 2,
+        "e": 1,
+        "f": 21,
+        "g": 1
+      }
+    },
+    {
+      "name": "gumiho@1280 swipe turns pages",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1
+      }
+    },
+    {
+      "name": "gumiho@1280 indicator text",
+      "result": "pass",
+      "numbers": {
+        "page": 1,
+        "count": 21
+      }
+    },
+    {
+      "name": "gumiho@1280 toggle keeps the chapter",
+      "result": "pass",
+      "numbers": {
+        "scroll_view_shows_chapter": 1,
+        "pages_view_shows_chapter": 1
+      }
+    },
+    {
+      "name": "gumiho@1280 hash wins on resize",
+      "result": "pass",
+      "numbers": {
+        "inside_after_resize": 1
+      }
+    },
+    {
+      "name": "gumiho@1280 ink and paper contrast >= 4.5",
+      "result": "pass",
+      "numbers": {
+        "body_on_floor": 5.47,
+        "body_on_tint": 12.67,
+        "heading_on_floor": 4.8,
+        "heading_on_tint": 11.13,
+        "link_on_floor": 4.8,
+        "link_on_tint": 11.13
+      }
+    },
+    {
+      "name": "spring-heeled-jack@390 page count and spread",
+      "result": "pass",
+      "numbers": {
+        "pages": 49,
+        "columns": 1
+      }
+    },
+    {
+      "name": "spring-heeled-jack@390 no horizontal page scroll",
+      "result": "pass",
+      "numbers": {
+        "sw": 390,
+        "iw": 390
+      }
+    },
+    {
+      "name": "spring-heeled-jack@390 chapters start at page boundaries",
+      "result": "pass",
+      "numbers": {
+        "chapters": 7,
+        "off_boundary": 0
+      }
+    },
+    {
+      "name": "spring-heeled-jack@390 anchors found",
+      "result": "pass",
+      "numbers": {
+        "anchors": 18
+      }
+    },
+    {
+      "name": "spring-heeled-jack@390 every anchor lands visible and focused",
+      "result": "pass",
+      "numbers": {
+        "anchors": 18,
+        "failed": 0
+      }
+    },
+    {
+      "name": "spring-heeled-jack@390 buttons turn pages",
+      "result": "pass",
+      "numbers": {
+        "before": 1,
+        "next": 2,
+        "prev": 1
+      }
+    },
+    {
+      "name": "spring-heeled-jack@390 arrow keys, Home, End, PageUp, PageDown",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1,
+        "d": 2,
+        "e": 1,
+        "f": 49,
+        "g": 1
+      }
+    },
+    {
+      "name": "spring-heeled-jack@390 swipe turns pages",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1
+      }
+    },
+    {
+      "name": "spring-heeled-jack@390 indicator text",
+      "result": "pass",
+      "numbers": {
+        "page": 1,
+        "count": 49
+      }
+    },
+    {
+      "name": "spring-heeled-jack@390 toggle keeps the chapter",
+      "result": "pass",
+      "numbers": {
+        "scroll_view_shows_chapter": 1,
+        "pages_view_shows_chapter": 1
+      }
+    },
+    {
+      "name": "spring-heeled-jack@390 ink and paper contrast >= 4.5",
+      "result": "pass",
+      "numbers": {
+        "body_on_floor": 5.47,
+        "body_on_tint": 12.67,
+        "heading_on_floor": 4.8,
+        "heading_on_tint": 11.13,
+        "link_on_floor": 4.8,
+        "link_on_tint": 11.13
+      }
+    },
+    {
+      "name": "spring-heeled-jack@1280 page count and spread",
+      "result": "pass",
+      "numbers": {
+        "pages": 20,
+        "columns": 2
+      }
+    },
+    {
+      "name": "spring-heeled-jack@1280 no horizontal page scroll",
+      "result": "pass",
+      "numbers": {
+        "sw": 1280,
+        "iw": 1280
+      }
+    },
+    {
+      "name": "spring-heeled-jack@1280 chapters start at page boundaries",
+      "result": "pass",
+      "numbers": {
+        "chapters": 7,
+        "off_boundary": 0
+      }
+    },
+    {
+      "name": "spring-heeled-jack@1280 anchors found",
+      "result": "pass",
+      "numbers": {
+        "anchors": 18
+      }
+    },
+    {
+      "name": "spring-heeled-jack@1280 every anchor lands visible and focused",
+      "result": "pass",
+      "numbers": {
+        "anchors": 18,
+        "failed": 0
+      }
+    },
+    {
+      "name": "spring-heeled-jack@1280 buttons turn pages",
+      "result": "pass",
+      "numbers": {
+        "before": 1,
+        "next": 2,
+        "prev": 1
+      }
+    },
+    {
+      "name": "spring-heeled-jack@1280 arrow keys, Home, End, PageUp, PageDown",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1,
+        "d": 2,
+        "e": 1,
+        "f": 20,
+        "g": 1
+      }
+    },
+    {
+      "name": "spring-heeled-jack@1280 swipe turns pages",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1
+      }
+    },
+    {
+      "name": "spring-heeled-jack@1280 indicator text",
+      "result": "pass",
+      "numbers": {
+        "page": 1,
+        "count": 20
+      }
+    },
+    {
+      "name": "spring-heeled-jack@1280 toggle keeps the chapter",
+      "result": "pass",
+      "numbers": {
+        "scroll_view_shows_chapter": 1,
+        "pages_view_shows_chapter": 1
+      }
+    },
+    {
+      "name": "spring-heeled-jack@1280 hash wins on resize",
+      "result": "pass",
+      "numbers": {
+        "inside_after_resize": 1
+      }
+    },
+    {
+      "name": "spring-heeled-jack@1280 ink and paper contrast >= 4.5",
+      "result": "pass",
+      "numbers": {
+        "body_on_floor": 5.47,
+        "body_on_tint": 12.67,
+        "heading_on_floor": 4.8,
+        "heading_on_tint": 11.13,
+        "link_on_floor": 4.8,
+        "link_on_tint": 11.13
+      }
+    },
+    {
+      "name": "banshee@390 page count and spread",
+      "result": "pass",
+      "numbers": {
+        "pages": 57,
+        "columns": 1
+      }
+    },
+    {
+      "name": "banshee@390 no horizontal page scroll",
+      "result": "pass",
+      "numbers": {
+        "sw": 390,
+        "iw": 390
+      }
+    },
+    {
+      "name": "banshee@390 chapters start at page boundaries",
+      "result": "pass",
+      "numbers": {
+        "chapters": 7,
+        "off_boundary": 0
+      }
+    },
+    {
+      "name": "banshee@390 anchors found",
+      "result": "pass",
+      "numbers": {
+        "anchors": 16
+      }
+    },
+    {
+      "name": "banshee@390 every anchor lands visible and focused",
+      "result": "pass",
+      "numbers": {
+        "anchors": 16,
+        "failed": 0
+      }
+    },
+    {
+      "name": "banshee@390 buttons turn pages",
+      "result": "pass",
+      "numbers": {
+        "before": 1,
+        "next": 2,
+        "prev": 1
+      }
+    },
+    {
+      "name": "banshee@390 arrow keys, Home, End, PageUp, PageDown",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1,
+        "d": 2,
+        "e": 1,
+        "f": 57,
+        "g": 1
+      }
+    },
+    {
+      "name": "banshee@390 swipe turns pages",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1
+      }
+    },
+    {
+      "name": "banshee@390 indicator text",
+      "result": "pass",
+      "numbers": {
+        "page": 1,
+        "count": 57
+      }
+    },
+    {
+      "name": "banshee@390 toggle keeps the chapter",
+      "result": "pass",
+      "numbers": {
+        "scroll_view_shows_chapter": 1,
+        "pages_view_shows_chapter": 1
+      }
+    },
+    {
+      "name": "banshee@390 ink and paper contrast >= 4.5",
+      "result": "pass",
+      "numbers": {
+        "body_on_floor": 5.47,
+        "body_on_tint": 12.67,
+        "heading_on_floor": 4.8,
+        "heading_on_tint": 11.13,
+        "link_on_floor": 4.8,
+        "link_on_tint": 11.13
+      }
+    },
+    {
+      "name": "banshee@1280 page count and spread",
+      "result": "pass",
+      "numbers": {
+        "pages": 22,
+        "columns": 2
+      }
+    },
+    {
+      "name": "banshee@1280 no horizontal page scroll",
+      "result": "pass",
+      "numbers": {
+        "sw": 1280,
+        "iw": 1280
+      }
+    },
+    {
+      "name": "banshee@1280 chapters start at page boundaries",
+      "result": "pass",
+      "numbers": {
+        "chapters": 7,
+        "off_boundary": 0
+      }
+    },
+    {
+      "name": "banshee@1280 anchors found",
+      "result": "pass",
+      "numbers": {
+        "anchors": 16
+      }
+    },
+    {
+      "name": "banshee@1280 every anchor lands visible and focused",
+      "result": "pass",
+      "numbers": {
+        "anchors": 16,
+        "failed": 0
+      }
+    },
+    {
+      "name": "banshee@1280 buttons turn pages",
+      "result": "pass",
+      "numbers": {
+        "before": 1,
+        "next": 2,
+        "prev": 1
+      }
+    },
+    {
+      "name": "banshee@1280 arrow keys, Home, End, PageUp, PageDown",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1,
+        "d": 2,
+        "e": 1,
+        "f": 22,
+        "g": 1
+      }
+    },
+    {
+      "name": "banshee@1280 swipe turns pages",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1
+      }
+    },
+    {
+      "name": "banshee@1280 indicator text",
+      "result": "pass",
+      "numbers": {
+        "page": 1,
+        "count": 22
+      }
+    },
+    {
+      "name": "banshee@1280 toggle keeps the chapter",
+      "result": "pass",
+      "numbers": {
+        "scroll_view_shows_chapter": 1,
+        "pages_view_shows_chapter": 1
+      }
+    },
+    {
+      "name": "banshee@1280 hash wins on resize",
+      "result": "pass",
+      "numbers": {
+        "inside_after_resize": 1
+      }
+    },
+    {
+      "name": "banshee@1280 ink and paper contrast >= 4.5",
+      "result": "pass",
+      "numbers": {
+        "body_on_floor": 5.47,
+        "body_on_tint": 12.67,
+        "heading_on_floor": 4.8,
+        "heading_on_tint": 11.13,
+        "link_on_floor": 4.8,
+        "link_on_tint": 11.13
+      }
+    },
+    {
+      "name": "chupacabra@390 page count and spread",
+      "result": "pass",
+      "numbers": {
+        "pages": 50,
+        "columns": 1
+      }
+    },
+    {
+      "name": "chupacabra@390 no horizontal page scroll",
+      "result": "pass",
+      "numbers": {
+        "sw": 390,
+        "iw": 390
+      }
+    },
+    {
+      "name": "chupacabra@390 chapters start at page boundaries",
+      "result": "pass",
+      "numbers": {
+        "chapters": 7,
+        "off_boundary": 0
+      }
+    },
+    {
+      "name": "chupacabra@390 anchors found",
+      "result": "pass",
+      "numbers": {
+        "anchors": 18
+      }
+    },
+    {
+      "name": "chupacabra@390 every anchor lands visible and focused",
+      "result": "pass",
+      "numbers": {
+        "anchors": 18,
+        "failed": 0
+      }
+    },
+    {
+      "name": "chupacabra@390 buttons turn pages",
+      "result": "pass",
+      "numbers": {
+        "before": 1,
+        "next": 2,
+        "prev": 1
+      }
+    },
+    {
+      "name": "chupacabra@390 arrow keys, Home, End, PageUp, PageDown",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1,
+        "d": 2,
+        "e": 1,
+        "f": 50,
+        "g": 1
+      }
+    },
+    {
+      "name": "chupacabra@390 swipe turns pages",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1
+      }
+    },
+    {
+      "name": "chupacabra@390 indicator text",
+      "result": "pass",
+      "numbers": {
+        "page": 1,
+        "count": 50
+      }
+    },
+    {
+      "name": "chupacabra@390 toggle keeps the chapter",
+      "result": "pass",
+      "numbers": {
+        "scroll_view_shows_chapter": 1,
+        "pages_view_shows_chapter": 1
+      }
+    },
+    {
+      "name": "chupacabra@390 ink and paper contrast >= 4.5",
+      "result": "pass",
+      "numbers": {
+        "body_on_floor": 5.47,
+        "body_on_tint": 12.67,
+        "heading_on_floor": 4.8,
+        "heading_on_tint": 11.13,
+        "link_on_floor": 4.8,
+        "link_on_tint": 11.13
+      }
+    },
+    {
+      "name": "chupacabra@1280 page count and spread",
+      "result": "pass",
+      "numbers": {
+        "pages": 21,
+        "columns": 2
+      }
+    },
+    {
+      "name": "chupacabra@1280 no horizontal page scroll",
+      "result": "pass",
+      "numbers": {
+        "sw": 1280,
+        "iw": 1280
+      }
+    },
+    {
+      "name": "chupacabra@1280 chapters start at page boundaries",
+      "result": "pass",
+      "numbers": {
+        "chapters": 7,
+        "off_boundary": 0
+      }
+    },
+    {
+      "name": "chupacabra@1280 anchors found",
+      "result": "pass",
+      "numbers": {
+        "anchors": 18
+      }
+    },
+    {
+      "name": "chupacabra@1280 every anchor lands visible and focused",
+      "result": "pass",
+      "numbers": {
+        "anchors": 18,
+        "failed": 0
+      }
+    },
+    {
+      "name": "chupacabra@1280 buttons turn pages",
+      "result": "pass",
+      "numbers": {
+        "before": 1,
+        "next": 2,
+        "prev": 1
+      }
+    },
+    {
+      "name": "chupacabra@1280 arrow keys, Home, End, PageUp, PageDown",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1,
+        "d": 2,
+        "e": 1,
+        "f": 21,
+        "g": 1
+      }
+    },
+    {
+      "name": "chupacabra@1280 swipe turns pages",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1
+      }
+    },
+    {
+      "name": "chupacabra@1280 indicator text",
+      "result": "pass",
+      "numbers": {
+        "page": 1,
+        "count": 21
+      }
+    },
+    {
+      "name": "chupacabra@1280 toggle keeps the chapter",
+      "result": "pass",
+      "numbers": {
+        "scroll_view_shows_chapter": 1,
+        "pages_view_shows_chapter": 1
+      }
+    },
+    {
+      "name": "chupacabra@1280 hash wins on resize",
+      "result": "pass",
+      "numbers": {
+        "inside_after_resize": 1
+      }
+    },
+    {
+      "name": "chupacabra@1280 ink and paper contrast >= 4.5",
+      "result": "pass",
+      "numbers": {
+        "body_on_floor": 5.47,
+        "body_on_tint": 12.67,
+        "heading_on_floor": 4.8,
+        "heading_on_tint": 11.13,
+        "link_on_floor": 4.8,
+        "link_on_tint": 11.13
+      }
+    },
+    {
+      "name": "flying-dutchman@390 page count and spread",
+      "result": "pass",
+      "numbers": {
+        "pages": 58,
+        "columns": 1
+      }
+    },
+    {
+      "name": "flying-dutchman@390 no horizontal page scroll",
+      "result": "pass",
+      "numbers": {
+        "sw": 390,
+        "iw": 390
+      }
+    },
+    {
+      "name": "flying-dutchman@390 chapters start at page boundaries",
+      "result": "pass",
+      "numbers": {
+        "chapters": 7,
+        "off_boundary": 0
+      }
+    },
+    {
+      "name": "flying-dutchman@390 anchors found",
+      "result": "pass",
+      "numbers": {
+        "anchors": 18
+      }
+    },
+    {
+      "name": "flying-dutchman@390 every anchor lands visible and focused",
+      "result": "pass",
+      "numbers": {
+        "anchors": 18,
+        "failed": 0
+      }
+    },
+    {
+      "name": "flying-dutchman@390 buttons turn pages",
+      "result": "pass",
+      "numbers": {
+        "before": 1,
+        "next": 2,
+        "prev": 1
+      }
+    },
+    {
+      "name": "flying-dutchman@390 arrow keys, Home, End, PageUp, PageDown",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1,
+        "d": 2,
+        "e": 1,
+        "f": 58,
+        "g": 1
+      }
+    },
+    {
+      "name": "flying-dutchman@390 swipe turns pages",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1
+      }
+    },
+    {
+      "name": "flying-dutchman@390 indicator text",
+      "result": "pass",
+      "numbers": {
+        "page": 1,
+        "count": 58
+      }
+    },
+    {
+      "name": "flying-dutchman@390 toggle keeps the chapter",
+      "result": "pass",
+      "numbers": {
+        "scroll_view_shows_chapter": 1,
+        "pages_view_shows_chapter": 1
+      }
+    },
+    {
+      "name": "flying-dutchman@390 ink and paper contrast >= 4.5",
+      "result": "pass",
+      "numbers": {
+        "body_on_floor": 5.47,
+        "body_on_tint": 12.67,
+        "heading_on_floor": 4.8,
+        "heading_on_tint": 11.13,
+        "link_on_floor": 4.8,
+        "link_on_tint": 11.13
+      }
+    },
+    {
+      "name": "flying-dutchman@1280 page count and spread",
+      "result": "pass",
+      "numbers": {
+        "pages": 24,
+        "columns": 2
+      }
+    },
+    {
+      "name": "flying-dutchman@1280 no horizontal page scroll",
+      "result": "pass",
+      "numbers": {
+        "sw": 1280,
+        "iw": 1280
+      }
+    },
+    {
+      "name": "flying-dutchman@1280 chapters start at page boundaries",
+      "result": "pass",
+      "numbers": {
+        "chapters": 7,
+        "off_boundary": 0
+      }
+    },
+    {
+      "name": "flying-dutchman@1280 anchors found",
+      "result": "pass",
+      "numbers": {
+        "anchors": 18
+      }
+    },
+    {
+      "name": "flying-dutchman@1280 every anchor lands visible and focused",
+      "result": "pass",
+      "numbers": {
+        "anchors": 18,
+        "failed": 0
+      }
+    },
+    {
+      "name": "flying-dutchman@1280 buttons turn pages",
+      "result": "pass",
+      "numbers": {
+        "before": 1,
+        "next": 2,
+        "prev": 1
+      }
+    },
+    {
+      "name": "flying-dutchman@1280 arrow keys, Home, End, PageUp, PageDown",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1,
+        "d": 2,
+        "e": 1,
+        "f": 24,
+        "g": 1
+      }
+    },
+    {
+      "name": "flying-dutchman@1280 swipe turns pages",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1
+      }
+    },
+    {
+      "name": "flying-dutchman@1280 indicator text",
+      "result": "pass",
+      "numbers": {
+        "page": 1,
+        "count": 24
+      }
+    },
+    {
+      "name": "flying-dutchman@1280 toggle keeps the chapter",
+      "result": "pass",
+      "numbers": {
+        "scroll_view_shows_chapter": 1,
+        "pages_view_shows_chapter": 1
+      }
+    },
+    {
+      "name": "flying-dutchman@1280 hash wins on resize",
+      "result": "pass",
+      "numbers": {
+        "inside_after_resize": 1
+      }
+    },
+    {
+      "name": "flying-dutchman@1280 ink and paper contrast >= 4.5",
+      "result": "pass",
+      "numbers": {
+        "body_on_floor": 5.47,
+        "body_on_tint": 12.67,
+        "heading_on_floor": 4.8,
+        "heading_on_tint": 11.13,
+        "link_on_floor": 4.8,
+        "link_on_tint": 11.13
+      }
+    },
+    {
+      "name": "jersey-devil@390 page count and spread",
+      "result": "pass",
+      "numbers": {
+        "pages": 53,
+        "columns": 1
+      }
+    },
+    {
+      "name": "jersey-devil@390 no horizontal page scroll",
+      "result": "pass",
+      "numbers": {
+        "sw": 390,
+        "iw": 390
+      }
+    },
+    {
+      "name": "jersey-devil@390 chapters start at page boundaries",
+      "result": "pass",
+      "numbers": {
+        "chapters": 7,
+        "off_boundary": 0
+      }
+    },
+    {
+      "name": "jersey-devil@390 anchors found",
+      "result": "pass",
+      "numbers": {
+        "anchors": 16
+      }
+    },
+    {
+      "name": "jersey-devil@390 every anchor lands visible and focused",
+      "result": "pass",
+      "numbers": {
+        "anchors": 16,
+        "failed": 0
+      }
+    },
+    {
+      "name": "jersey-devil@390 buttons turn pages",
+      "result": "pass",
+      "numbers": {
+        "before": 1,
+        "next": 2,
+        "prev": 1
+      }
+    },
+    {
+      "name": "jersey-devil@390 arrow keys, Home, End, PageUp, PageDown",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1,
+        "d": 2,
+        "e": 1,
+        "f": 53,
+        "g": 1
+      }
+    },
+    {
+      "name": "jersey-devil@390 swipe turns pages",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1
+      }
+    },
+    {
+      "name": "jersey-devil@390 indicator text",
+      "result": "pass",
+      "numbers": {
+        "page": 1,
+        "count": 53
+      }
+    },
+    {
+      "name": "jersey-devil@390 toggle keeps the chapter",
+      "result": "pass",
+      "numbers": {
+        "scroll_view_shows_chapter": 1,
+        "pages_view_shows_chapter": 1
+      }
+    },
+    {
+      "name": "jersey-devil@390 ink and paper contrast >= 4.5",
+      "result": "pass",
+      "numbers": {
+        "body_on_floor": 5.47,
+        "body_on_tint": 12.67,
+        "heading_on_floor": 4.8,
+        "heading_on_tint": 11.13,
+        "link_on_floor": 4.8,
+        "link_on_tint": 11.13
+      }
+    },
+    {
+      "name": "jersey-devil@1280 page count and spread",
+      "result": "pass",
+      "numbers": {
+        "pages": 22,
+        "columns": 2
+      }
+    },
+    {
+      "name": "jersey-devil@1280 no horizontal page scroll",
+      "result": "pass",
+      "numbers": {
+        "sw": 1280,
+        "iw": 1280
+      }
+    },
+    {
+      "name": "jersey-devil@1280 chapters start at page boundaries",
+      "result": "pass",
+      "numbers": {
+        "chapters": 7,
+        "off_boundary": 0
+      }
+    },
+    {
+      "name": "jersey-devil@1280 anchors found",
+      "result": "pass",
+      "numbers": {
+        "anchors": 16
+      }
+    },
+    {
+      "name": "jersey-devil@1280 every anchor lands visible and focused",
+      "result": "pass",
+      "numbers": {
+        "anchors": 16,
+        "failed": 0
+      }
+    },
+    {
+      "name": "jersey-devil@1280 buttons turn pages",
+      "result": "pass",
+      "numbers": {
+        "before": 1,
+        "next": 2,
+        "prev": 1
+      }
+    },
+    {
+      "name": "jersey-devil@1280 arrow keys, Home, End, PageUp, PageDown",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1,
+        "d": 2,
+        "e": 1,
+        "f": 22,
+        "g": 1
+      }
+    },
+    {
+      "name": "jersey-devil@1280 swipe turns pages",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1
+      }
+    },
+    {
+      "name": "jersey-devil@1280 indicator text",
+      "result": "pass",
+      "numbers": {
+        "page": 1,
+        "count": 22
+      }
+    },
+    {
+      "name": "jersey-devil@1280 toggle keeps the chapter",
+      "result": "pass",
+      "numbers": {
+        "scroll_view_shows_chapter": 1,
+        "pages_view_shows_chapter": 1
+      }
+    },
+    {
+      "name": "jersey-devil@1280 hash wins on resize",
+      "result": "pass",
+      "numbers": {
+        "inside_after_resize": 1
+      }
+    },
+    {
+      "name": "jersey-devil@1280 ink and paper contrast >= 4.5",
+      "result": "pass",
+      "numbers": {
+        "body_on_floor": 5.47,
+        "body_on_tint": 12.67,
+        "heading_on_floor": 4.8,
+        "heading_on_tint": 11.13,
+        "link_on_floor": 4.8,
+        "link_on_tint": 11.13
+      }
+    },
+    {
+      "name": "vetala@390 page count and spread",
+      "result": "pass",
+      "numbers": {
+        "pages": 45,
+        "columns": 1
+      }
+    },
+    {
+      "name": "vetala@390 no horizontal page scroll",
+      "result": "pass",
+      "numbers": {
+        "sw": 390,
+        "iw": 390
+      }
+    },
+    {
+      "name": "vetala@390 chapters start at page boundaries",
+      "result": "pass",
+      "numbers": {
+        "chapters": 7,
+        "off_boundary": 0
+      }
+    },
+    {
+      "name": "vetala@390 anchors found",
+      "result": "pass",
+      "numbers": {
+        "anchors": 16
+      }
+    },
+    {
+      "name": "vetala@390 every anchor lands visible and focused",
+      "result": "pass",
+      "numbers": {
+        "anchors": 16,
+        "failed": 0
+      }
+    },
+    {
+      "name": "vetala@390 buttons turn pages",
+      "result": "pass",
+      "numbers": {
+        "before": 1,
+        "next": 2,
+        "prev": 1
+      }
+    },
+    {
+      "name": "vetala@390 arrow keys, Home, End, PageUp, PageDown",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1,
+        "d": 2,
+        "e": 1,
+        "f": 45,
+        "g": 1
+      }
+    },
+    {
+      "name": "vetala@390 swipe turns pages",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1
+      }
+    },
+    {
+      "name": "vetala@390 indicator text",
+      "result": "pass",
+      "numbers": {
+        "page": 1,
+        "count": 45
+      }
+    },
+    {
+      "name": "vetala@390 toggle keeps the chapter",
+      "result": "pass",
+      "numbers": {
+        "scroll_view_shows_chapter": 1,
+        "pages_view_shows_chapter": 1
+      }
+    },
+    {
+      "name": "vetala@390 ink and paper contrast >= 4.5",
+      "result": "pass",
+      "numbers": {
+        "body_on_floor": 5.47,
+        "body_on_tint": 12.67,
+        "heading_on_floor": 4.8,
+        "heading_on_tint": 11.13,
+        "link_on_floor": 4.8,
+        "link_on_tint": 11.13
+      }
+    },
+    {
+      "name": "vetala@1280 page count and spread",
+      "result": "pass",
+      "numbers": {
+        "pages": 19,
+        "columns": 2
+      }
+    },
+    {
+      "name": "vetala@1280 no horizontal page scroll",
+      "result": "pass",
+      "numbers": {
+        "sw": 1280,
+        "iw": 1280
+      }
+    },
+    {
+      "name": "vetala@1280 chapters start at page boundaries",
+      "result": "pass",
+      "numbers": {
+        "chapters": 7,
+        "off_boundary": 0
+      }
+    },
+    {
+      "name": "vetala@1280 anchors found",
+      "result": "pass",
+      "numbers": {
+        "anchors": 16
+      }
+    },
+    {
+      "name": "vetala@1280 every anchor lands visible and focused",
+      "result": "pass",
+      "numbers": {
+        "anchors": 16,
+        "failed": 0
+      }
+    },
+    {
+      "name": "vetala@1280 buttons turn pages",
+      "result": "pass",
+      "numbers": {
+        "before": 1,
+        "next": 2,
+        "prev": 1
+      }
+    },
+    {
+      "name": "vetala@1280 arrow keys, Home, End, PageUp, PageDown",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1,
+        "d": 2,
+        "e": 1,
+        "f": 19,
+        "g": 1
+      }
+    },
+    {
+      "name": "vetala@1280 swipe turns pages",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1
+      }
+    },
+    {
+      "name": "vetala@1280 indicator text",
+      "result": "pass",
+      "numbers": {
+        "page": 1,
+        "count": 19
+      }
+    },
+    {
+      "name": "vetala@1280 toggle keeps the chapter",
+      "result": "pass",
+      "numbers": {
+        "scroll_view_shows_chapter": 1,
+        "pages_view_shows_chapter": 1
+      }
+    },
+    {
+      "name": "vetala@1280 hash wins on resize",
+      "result": "pass",
+      "numbers": {
+        "inside_after_resize": 1
+      }
+    },
+    {
+      "name": "vetala@1280 ink and paper contrast >= 4.5",
+      "result": "pass",
+      "numbers": {
+        "body_on_floor": 5.47,
+        "body_on_tint": 12.67,
+        "heading_on_floor": 4.8,
+        "heading_on_tint": 11.13,
+        "link_on_floor": 4.8,
+        "link_on_tint": 11.13
+      }
+    },
+    {
+      "name": "yuki-onna@390 page count and spread",
+      "result": "pass",
+      "numbers": {
+        "pages": 47,
+        "columns": 1
+      }
+    },
+    {
+      "name": "yuki-onna@390 no horizontal page scroll",
+      "result": "pass",
+      "numbers": {
+        "sw": 390,
+        "iw": 390
+      }
+    },
+    {
+      "name": "yuki-onna@390 chapters start at page boundaries",
+      "result": "pass",
+      "numbers": {
+        "chapters": 7,
+        "off_boundary": 0
+      }
+    },
+    {
+      "name": "yuki-onna@390 anchors found",
+      "result": "pass",
+      "numbers": {
+        "anchors": 16
+      }
+    },
+    {
+      "name": "yuki-onna@390 every anchor lands visible and focused",
+      "result": "pass",
+      "numbers": {
+        "anchors": 16,
+        "failed": 0
+      }
+    },
+    {
+      "name": "yuki-onna@390 buttons turn pages",
+      "result": "pass",
+      "numbers": {
+        "before": 1,
+        "next": 2,
+        "prev": 1
+      }
+    },
+    {
+      "name": "yuki-onna@390 arrow keys, Home, End, PageUp, PageDown",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1,
+        "d": 2,
+        "e": 1,
+        "f": 47,
+        "g": 1
+      }
+    },
+    {
+      "name": "yuki-onna@390 swipe turns pages",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1
+      }
+    },
+    {
+      "name": "yuki-onna@390 indicator text",
+      "result": "pass",
+      "numbers": {
+        "page": 1,
+        "count": 47
+      }
+    },
+    {
+      "name": "yuki-onna@390 toggle keeps the chapter",
+      "result": "pass",
+      "numbers": {
+        "scroll_view_shows_chapter": 1,
+        "pages_view_shows_chapter": 1
+      }
+    },
+    {
+      "name": "yuki-onna@390 ink and paper contrast >= 4.5",
+      "result": "pass",
+      "numbers": {
+        "body_on_floor": 5.47,
+        "body_on_tint": 12.67,
+        "heading_on_floor": 4.8,
+        "heading_on_tint": 11.13,
+        "link_on_floor": 4.8,
+        "link_on_tint": 11.13
+      }
+    },
+    {
+      "name": "yuki-onna@1280 page count and spread",
+      "result": "pass",
+      "numbers": {
+        "pages": 19,
+        "columns": 2
+      }
+    },
+    {
+      "name": "yuki-onna@1280 no horizontal page scroll",
+      "result": "pass",
+      "numbers": {
+        "sw": 1280,
+        "iw": 1280
+      }
+    },
+    {
+      "name": "yuki-onna@1280 chapters start at page boundaries",
+      "result": "pass",
+      "numbers": {
+        "chapters": 7,
+        "off_boundary": 0
+      }
+    },
+    {
+      "name": "yuki-onna@1280 anchors found",
+      "result": "pass",
+      "numbers": {
+        "anchors": 16
+      }
+    },
+    {
+      "name": "yuki-onna@1280 every anchor lands visible and focused",
+      "result": "pass",
+      "numbers": {
+        "anchors": 16,
+        "failed": 0
+      }
+    },
+    {
+      "name": "yuki-onna@1280 buttons turn pages",
+      "result": "pass",
+      "numbers": {
+        "before": 1,
+        "next": 2,
+        "prev": 1
+      }
+    },
+    {
+      "name": "yuki-onna@1280 arrow keys, Home, End, PageUp, PageDown",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1,
+        "d": 2,
+        "e": 1,
+        "f": 19,
+        "g": 1
+      }
+    },
+    {
+      "name": "yuki-onna@1280 swipe turns pages",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1
+      }
+    },
+    {
+      "name": "yuki-onna@1280 indicator text",
+      "result": "pass",
+      "numbers": {
+        "page": 1,
+        "count": 19
+      }
+    },
+    {
+      "name": "yuki-onna@1280 toggle keeps the chapter",
+      "result": "pass",
+      "numbers": {
+        "scroll_view_shows_chapter": 1,
+        "pages_view_shows_chapter": 1
+      }
+    },
+    {
+      "name": "yuki-onna@1280 hash wins on resize",
+      "result": "pass",
+      "numbers": {
+        "inside_after_resize": 1
+      }
+    },
+    {
+      "name": "yuki-onna@1280 ink and paper contrast >= 4.5",
+      "result": "pass",
+      "numbers": {
+        "body_on_floor": 5.47,
+        "body_on_tint": 12.67,
+        "heading_on_floor": 4.8,
+        "heading_on_tint": 11.13,
+        "link_on_floor": 4.8,
+        "link_on_tint": 11.13
+      }
+    },
+    {
+      "name": "keepers-note@390 page count and spread",
+      "result": "pass",
+      "numbers": {
+        "pages": 3,
+        "columns": 1
+      }
+    },
+    {
+      "name": "keepers-note@390 no horizontal page scroll",
+      "result": "pass",
+      "numbers": {
+        "sw": 390,
+        "iw": 390
+      }
+    },
+    {
+      "name": "keepers-note@390 chapters start at page boundaries",
+      "result": "pass",
+      "numbers": {
+        "chapters": 1,
+        "off_boundary": 0
+      }
+    },
+    {
+      "name": "keepers-note@390 anchors found",
+      "result": "pass",
+      "numbers": {
+        "anchors": 1
+      }
+    },
+    {
+      "name": "keepers-note@390 every anchor lands visible and focused",
+      "result": "pass",
+      "numbers": {
+        "anchors": 1,
+        "failed": 0
+      }
+    },
+    {
+      "name": "keepers-note@390 buttons turn pages",
+      "result": "pass",
+      "numbers": {
+        "before": 1,
+        "next": 2,
+        "prev": 1
+      }
+    },
+    {
+      "name": "keepers-note@390 arrow keys, Home, End, PageUp, PageDown",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1,
+        "d": 2,
+        "e": 1,
+        "f": 3,
+        "g": 1
+      }
+    },
+    {
+      "name": "keepers-note@390 swipe turns pages",
+      "result": "pass",
+      "numbers": {
+        "a": 1,
+        "b": 2,
+        "c": 1
+      }
+    },
+    {
+      "name": "keepers-note@390 indicator text",
+      "result": "pass",
+      "numbers": {
+        "page": 1,
+        "count": 3
+      }
+    },
+    {
+      "name": "keepers-note@390 toggle keeps the chapter",
+      "result": "pass",
+      "numbers": {
+        "scroll_view_shows_chapter": 1,
+        "pages_view_shows_chapter": 1
+      }
+    },
+    {
+      "name": "keepers-note@390 ink and paper contrast >= 4.5",
+      "result": "pass",
+      "numbers": {
+        "body_on_floor": 5.47,
+        "body_on_tint": 12.67,
+        "heading_on_floor": 4.8,
+        "heading_on_tint": 11.13
+      }
+    },
+    {
+      "name": "keepers-note@1280 page count and spread",
+      "result": "pass",
+      "numbers": {
+        "pages": 1,
+        "columns": 2
+      }
+    },
+    {
+      "name": "keepers-note@1280 no horizontal page scroll",
+      "result": "pass",
+      "numbers": {
+        "sw": 1280,
+        "iw": 1280
+      }
+    },
+    {
+      "name": "keepers-note@1280 chapters start at page boundaries",
+      "result": "pass",
+      "numbers": {
+        "chapters": 1,
+        "off_boundary": 0
+      }
+    },
+    {
+      "name": "keepers-note@1280 anchors found",
+      "result": "pass",
+      "numbers": {
+        "anchors": 1
+      }
+    },
+    {
+      "name": "keepers-note@1280 every anchor lands visible and focused",
+      "result": "pass",
+      "numbers": {
+        "anchors": 1,
+        "failed": 0
+      }
+    },
+    {
+      "name": "keepers-note@1280 buttons turn pages",
+      "result": "pass",
+      "numbers": {},
+      "note": "single page"
+    },
+    {
+      "name": "keepers-note@1280 arrow keys, Home, End, PageUp, PageDown",
+      "result": "pass",
+      "numbers": {},
+      "note": "single page"
+    },
+    {
+      "name": "keepers-note@1280 swipe turns pages",
+      "result": "pass",
+      "numbers": {},
+      "note": "single page"
+    },
+    {
+      "name": "keepers-note@1280 indicator text",
+      "result": "pass",
+      "numbers": {
+        "page": 1,
+        "count": 1
+      }
+    },
+    {
+      "name": "keepers-note@1280 toggle keeps the chapter",
+      "result": "pass",
+      "numbers": {
+        "scroll_view_shows_chapter": 1,
+        "pages_view_shows_chapter": 1
+      }
+    },
+    {
+      "name": "keepers-note@1280 hash wins on resize",
+      "result": "pass",
+      "numbers": {
+        "inside_after_resize": 1
+      }
+    },
+    {
+      "name": "keepers-note@1280 ink and paper contrast >= 4.5",
+      "result": "pass",
+      "numbers": {
+        "body_on_floor": 5.47,
+        "body_on_tint": 12.67,
+        "heading_on_floor": 4.8,
+        "heading_on_tint": 11.13
+      }
+    },
+    {
+      "name": "baba-yaga turn transition normal",
+      "result": "pass",
+      "numbers": {
+        "ms": 300
+      }
+    },
+    {
+      "name": "baba-yaga turn transition reduced motion",
+      "result": "pass",
+      "numbers": {
+        "ms": 0
+      }
+    },
+    {
+      "name": "baba-yaga arrow keys swap in RTL",
+      "result": "skipped",
+      "numbers": {},
+      "note": "Arabic flag path not reachable (server has FEATURE_ARABIC off)"
+    },
+    {
+      "name": "anchor route keepers-note--ch-1",
+      "result": "pass",
+      "numbers": {
+        "elements": 1
+      }
+    },
+    {
+      "name": "paper texture on Slow 4G",
+      "result": "skipped",
+      "numbers": {},
+      "note": "run with --slow4g"
+    }
+  ]
+}
