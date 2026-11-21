@@ -10,6 +10,7 @@ import { createDb } from '../src/db/client.ts';
 import { pgError } from '../src/db/pgError.ts';
 import { loadLegends } from '../src/parser/loadLegends.ts';
 import { REPO_ROOT } from './env.ts';
+import { READABLE_TABLES, REFUSED } from './reader-checks.ts';
 
 config({ path: `${REPO_ROOT}.env`, quiet: true });
 const url = process.env['ATLAS_DATABASE_URL'];
@@ -18,18 +19,6 @@ if (!url) {
   process.exit(2);
 }
 const READ_OK = 'select id, title, theme, cold_open from legends limit 1';
-const REFUSED: [string, string][] = [
-  ['legends.model is refused', 'select model from legends limit 1'],
-  ['legends.final_puzzle is refused', 'select final_puzzle from legends limit 1'],
-  ['assets.prompt is refused', 'select prompt from assets limit 1'],
-  ['runs is refused', 'select count(*) from runs'],
-  ['facts is refused', 'select count(*) from facts'],
-  ['neon_auth."user" is refused', 'select count(*) from neon_auth."user"'],
-  ['an INSERT into legends is refused', "insert into legends (id) values ('reader-role-check')"],
-  ['an UPDATE of chapters is refused', "update chapters set title = title where id = 'none'"],
-  ['a DELETE from versions is refused', "delete from versions where id = 'none'"],
-  ['CREATE TABLE in public is refused', 'create table reader_role_check (x int)'],
-];
 /** A fixed label for a connection failure, from known phrases only; the error's own text is never printed. */
 function kindOf(e: unknown): string {
   const m = e instanceof Error ? e.message.toLowerCase() : '';
@@ -57,7 +46,7 @@ try {
   const who = await client.query<{ u: string; superuser: string }>("select current_user as u, current_setting('is_superuser') as superuser");
   line(who.rows[0]?.u === 'atlas_web' && who.rows[0]?.superuser === 'off', 'is atlas_web and not a superuser');
   line((await client.query(READ_OK)).rowCount === 1, 'the display columns of legends are readable');
-  for (const table of ['chapters', 'versions', 'documented_told', 'sources', 'anchors'])
+  for (const table of READABLE_TABLES)
     line(((await client.query(`select count(*)::int as n from ${table}`)).rows[0] as { n: number }).n > 0, `${table} is readable`);
   for (const [label, sql] of REFUSED) {
     await client.query('begin');

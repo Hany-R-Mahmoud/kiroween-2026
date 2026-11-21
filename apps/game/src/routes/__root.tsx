@@ -1,5 +1,6 @@
 import { createRootRoute, HeadContent, Link, Outlet, Scripts, useRouter } from '@tanstack/react-router';
 import { signOut } from '../auth/client';
+import { BASE_FONTS, fontLinks } from '../fonts';
 import { translate } from '../i18n/t';
 import { useT } from '../i18n/useT';
 import { getShell } from '../server/functions';
@@ -9,7 +10,7 @@ export const Route = createRootRoute({
   loader: () => getShell(),
   head: () => ({
     meta: [{ charSet: 'utf-8' }, { name: 'viewport', content: 'width=device-width, initial-scale=1' }, { title: translate('en', 'app.title') }],
-    links: [{ rel: 'stylesheet', href: appCss }],
+    links: [{ rel: 'stylesheet', href: appCss }, ...fontLinks(BASE_FONTS)],
   }),
   component: RootComponent,
   notFoundComponent: NotFound,

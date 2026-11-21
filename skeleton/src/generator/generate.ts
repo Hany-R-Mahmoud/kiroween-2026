@@ -66,7 +66,7 @@ function buildSlot(l: Legend, s: Slot, fact: Fact, rng: Rng, seed: string, trueV
     anchor: fact.anchor,
     question: makeQuestion(fact, s),
     ...makeOptions(fact, rng.fork(`options:${s.id}`), l.id, seed),
-    ...makeHints(l, s.id, trueVersionId, seed, swaps, hotspots),
+    ...makeHints(l, s.id, fact.anchor, trueVersionId, seed, swaps, hotspots),
     hotspotIds: [...serving.filter(linkingFact), ...serving.filter((h) => !linkingFact(h))].map((h) => h.id),
   };
 }

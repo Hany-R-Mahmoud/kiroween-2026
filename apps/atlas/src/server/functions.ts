@@ -1,5 +1,5 @@
-import { findAnchorLegend, getAtlasLegend, listLegends } from '@kiroween/skeleton';
-import { isLegendId, resolveLocale, resolveTheme } from '@kiroween/skeleton/client';
+import { findAnchorLegend, getAtlasLegend, getKeepersNote, isKeepersNoteAnchorStored, listLegends } from '@kiroween/skeleton';
+import { isKeepersNoteId, isLegendId, resolveLocale, resolveTheme } from '@kiroween/skeleton/client';
 import { isNotFound, isRedirect, notFound, redirect } from '@tanstack/react-router';
 import { createServerFn } from '@tanstack/react-start';
 import { getRequest, setResponseStatus } from '@tanstack/react-start/server';
@@ -51,9 +51,15 @@ export const getLegend = createServerFn({ method: 'GET' })
   .handler(({ data: id }) =>
     safely(async () => {
       if (!isLegendId(id)) throw notFound();
+      // The Keeper's Note is not a legend row: it is read from its own table, before the legend lookup (R3.4).
+      if (isKeepersNoteId(id)) {
+        const note = await getKeepersNote(database());
+        if (!note) throw notFound();
+        return { kind: 'note' as const, note };
+      }
       const legend = await getAtlasLegend(database(), id);
       if (!legend) throw notFound();
-      return { legend, theme: resolveTheme(legend.theme) };
+      return { kind: 'legend' as const, legend, theme: resolveTheme(legend.theme) };
     }),
   );
 
@@ -61,7 +67,7 @@ export const resolveAnchorFn = createServerFn({ method: 'GET' })
   .validator(stringParam)
   .handler(({ data: anchor }) =>
     safely(async () => {
-      const result = await resolveAnchor(anchor, (a) => findAnchorLegend(database(), a));
+      const result = await resolveAnchor(anchor, async (a) => (await findAnchorLegend(database(), a)) ?? ((await isKeepersNoteAnchorStored(database(), a)) ? 'keepers-note' : null));
       if (result.kind === 'notFound') throw notFound();
       throw redirect({ href: result.href });
     }),

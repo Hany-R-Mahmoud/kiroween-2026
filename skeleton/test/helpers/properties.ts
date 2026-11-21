@@ -130,9 +130,9 @@ export const PROPERTIES: Record<string, Property> = {
     run.slots.flatMap((s) => {
       const out: string[] = [];
       if (!l.anchors.includes(s.hint2.anchor)) out.push(`${s.slotId}: hint 2 anchor ${s.hint2.anchor} is not a deep-link target`);
-      const base = l.world.slots.find((x) => x.id === s.slotId)!;
-      if (base.hint2Anchor !== `${l.id}--versions` && s.hint2.anchor !== base.hint2Anchor) out.push(`${s.slotId}: hint 2 anchor was changed`);
-      if (base.hint2Anchor === `${l.id}--versions` && s.hint2.anchor !== base.hint2Anchor && s.hint2.anchor !== `${l.id}--versions--${run.trueVersionId.slice(l.id.length + 1)}`) out.push(`${s.slotId}: bare versions anchor refined to the wrong version`);
+      // Requirement 5.7: Hint 2 opens the chosen fact's anchor; a bare versions anchor is refined to the true version's.
+      const want = s.anchor === `${l.id}--versions` ? `${l.id}--versions--${run.trueVersionId.slice(l.id.length + 1)}` : s.anchor;
+      if (s.hint2.anchor !== want) out.push(`${s.slotId}: hint 2 anchor ${s.hint2.anchor} is not the chosen fact's anchor ${want}`);
       for (const id of s.hint1.highlight) {
         const h = run.hotspots.find((x) => x.id === id);
         if (!h) out.push(`${s.slotId}: highlight ${id} does not exist`);

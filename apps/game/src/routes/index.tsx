@@ -1,48 +1,62 @@
-import { createFileRoute, Link } from '@tanstack/react-router';
-import { getHall } from '../server/functions';
+import { createFileRoute, getRouteApi, useNavigate, useRouter } from '@tanstack/react-router';
+import { useEffect, useState } from 'react';
+import { HallView, type HallTarget } from '../components/Hall';
+import { ThemeRoot } from '../components/ThemeRoot';
 import { useT } from '../i18n/useT';
+import { cursesLeft, mergeBroken } from '../lib/hall';
+import { guestHallState, playClientFor } from '../lib/play';
+import { getHall } from '../server/functions';
 
 export const Route = createFileRoute('/')({
   loader: () => getHall(),
   component: Hall,
 });
 
-const doorBase = 'flex min-h-11 flex-col gap-1 rounded border p-3';
+const root = getRouteApi('__root__');
 
 function Hall() {
-  const { name, tutorialOpen, doors } = Route.useLoaderData();
+  const data = Route.useLoaderData();
+  const { mediaBase } = root.useLoaderData();
   const t = useT();
+  const navigate = useNavigate();
+  const router = useRouter();
+  const signedIn = data.name !== null;
+  // A guest's tutorial receipt and broken worlds live in the browser (R1.12, R2.12), so they are read after the first render.
+  const [guest, setGuest] = useState({ tutorialDone: false, brokenWorlds: [] as string[] });
+
+  useEffect(() => {
+    if (!signedIn) {
+      setGuest(guestHallState(window.localStorage));
+      return;
+    }
+    // After sign-in, a stored tutorial receipt is sent once; the hall then reloads its data.
+    void playClientFor(true)
+      .redeemStoredReceipt()
+      .then((redeemed) => (redeemed ? router.invalidate() : undefined));
+  }, [signedIn, router]);
+
+  const tutorialDone = signedIn ? data.tutorialDone === true : guest.tutorialDone;
+  const broken = mergeBroken(data.brokenWorlds, signedIn ? [] : guest.brokenWorlds);
+  const curses = cursesLeft(broken);
+
+  const onNavigate = (target: HallTarget) => {
+    if (target.to === 'tutorial') void navigate({ to: '/tutorial' });
+    else if (target.to === 'signin') void navigate({ to: '/sign-in' });
+    else void navigate({ to: '/world/$target', params: { target: target.legendId } });
+  };
+
   return (
-    <section aria-labelledby="hall-heading" className="flex flex-col gap-4">
-      <h1 id="hall-heading" className="font-display text-3xl text-glow">
-        {t('hall.heading')}
-      </h1>
-      <p>{t('hall.intro')}</p>
-      <p className="text-muted">{name === null ? t('hall.guest') : t('hall.greeting', { name })}</p>
-      <ul className="grid gap-3 sm:grid-cols-2">
-        <li className={`${doorBase} border-accent`}>
-          <span className="font-ui text-xs uppercase text-accent">{tutorialOpen ? t('door.open') : t('door.locked')}</span>
-          <span>{t('hall.tutorial')}</span>
-        </li>
-        {doors.map((d) => (
-          // Two sibling links (enter, read) instead of one link around the card: links cannot be nested.
-          <li key={d.id} className={`${doorBase} ${d.open ? 'border-accent' : 'border-surface'}`}>
-            <span className={`font-ui text-xs uppercase ${d.open ? 'text-accent' : 'text-muted'}`}>{d.open ? t('door.open') : t('door.locked')}</span>
-            <span className="font-display text-xl">{d.title}</span>
-            <span className="text-sm text-muted">{d.region}</span>
-            <span className="flex flex-wrap gap-x-4 font-ui text-sm">
-              {d.open && (
-                <Link to="/world/$target" params={{ target: d.id }} className="inline-flex min-h-11 items-center text-accent underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-glow" aria-label={t('door.enter', { title: d.title })}>
-                  {t('door.enterShort')}
-                </Link>
-              )}
-              <a href={d.atlasHref} className="inline-flex min-h-11 items-center text-ink underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-glow" aria-label={t('door.read', { title: d.title })}>
-                {t('door.readShort')}
-              </a>
-            </span>
-          </li>
-        ))}
-      </ul>
-    </section>
+    <ThemeRoot theme={null} className="flex flex-col gap-4">
+      <h1 className="sr-only">{t('app.title')}</h1>
+      <p className="text-muted">{data.name === null ? t('hall.guest') : t('hall.greeting', { name: data.name })}</p>
+      <HallView
+        data={{ doors: data.doors, relics: data.relics, ledger: data.ledger, current: data.current }}
+        mediaBase={mediaBase}
+        tutorialDone={tutorialDone}
+        broken={broken}
+        curses={curses}
+        onNavigate={onNavigate}
+      />
+    </ThemeRoot>
   );
 }

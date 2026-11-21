@@ -7,6 +7,7 @@ export const en = {
   'nav.label': 'Atlas',
   'nav.home': 'All legends',
   'footer.fiction': 'The archive house around these pages is fiction. The legends are real folklore, and each one cites its sources.',
+  'footer.keepersNote': "The Keeper's Note: the story of this archive",
   'footer.map': 'Map outline made with Natural Earth (public domain).',
   'home.intro': 'Each legend is told in chapters: the oldest records, the witnesses, the versions that disagree, and a last word on what is documented and what is only told.',
   'home.mapHeading': 'Where the legends are told',

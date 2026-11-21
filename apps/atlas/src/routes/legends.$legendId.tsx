@@ -1,5 +1,6 @@
 import { assetUrl, legendUrl } from '@kiroween/skeleton/client';
 import { createFileRoute } from '@tanstack/react-router';
+import { KeepersNotePage } from '../components/KeepersNotePage';
 import { LegendPage } from '../components/LegendPage';
 import { fontLinks } from '../fonts';
 import { translate } from '../i18n/t';
@@ -10,6 +11,11 @@ export const Route = createFileRoute('/legends/$legendId')({
   loader: ({ params }) => getLegend({ data: params.legendId }),
   head: ({ loaderData, matches }) => {
     if (!loaderData) return {};
+    if (loaderData.kind === 'note') {
+      const { note } = loaderData;
+      const title = translate('en', 'page.legend', { title: note.title, app: translate('en', 'app.title') });
+      return { meta: [{ title }, { name: 'description', content: note.oneLineHook }, { property: 'og:title', content: title }, { property: 'og:description', content: note.oneLineHook }] };
+    }
     const { legend, theme } = loaderData;
     // Absolute og: URLs only from PUBLIC_ORIGIN, never from the request's Host header (R9.1); without it, none.
     const origin = (matches[0]?.loaderData as { publicOrigin?: string } | undefined)?.publicOrigin ?? '';
@@ -31,6 +37,7 @@ export const Route = createFileRoute('/legends/$legendId')({
 });
 
 function Legend() {
-  const { legend } = Route.useLoaderData();
-  return <LegendPage legend={legend} t={useT()} />;
+  const data = Route.useLoaderData();
+  const t = useT();
+  return data.kind === 'note' ? <KeepersNotePage note={data.note} t={t} /> : <LegendPage legend={data.legend} t={t} />;
 }

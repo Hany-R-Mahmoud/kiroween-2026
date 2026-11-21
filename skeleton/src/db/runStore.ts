@@ -12,7 +12,7 @@ export function toStoreError(e: unknown): Error {
   return new StoreUnavailableError();
 }
 
-const guard = async <T>(work: () => Promise<T>): Promise<T> => {
+export const guard = async <T>(work: () => Promise<T>): Promise<T> => {
   try {
     return await work();
   } catch (e) {

@@ -92,8 +92,9 @@ const lockedDoors = (html.match(/Locked: sign in to enter/g) ?? []).length;
 check('guest hall: twelve legends, only the guest world open', res.status === 200 && openDoors.length === 1 && lockedDoors === 11, `open: ${openDoors.join(', ')}; locked: ${lockedDoors}`);
 res = await http('/game/world/draugr');
 check('guest asks for another world: redirect, no world data', res.status === 307 && !strip(await res.text()).includes('Draugr'), `status ${res.status}`);
-let fn = await serverFn('startRunFn', { legendId: 'banshee' });
-check('guest cannot start a run (no session)', fn.status === 401 && fn.message === 'Sign in to save your progress.', `status ${fn.status}`);
+let fn = await serverFn('startWorld', { legendId: 'draugr', token: null });
+check('guest asks for another world through the play function: refused, no world data', fn.status !== 200 && fn.value === undefined, `status ${fn.status}`);
+check('the removed run functions have no endpoint', fnId('startRunFn') === undefined && fnId('finishRunFn') === undefined);
 fn = await serverFn('listMyRunsFn');
 check('guest cannot list runs', fn.status === 401, `status ${fn.status}`);
 
@@ -119,28 +120,22 @@ check('an endpoint the app does not use is not forwarded', res.status === 404, `
 // --- 3. signed in: access and runs through the real server functions
 res = await http('/game/world/draugr');
 check('signed in: another world opens with its title', res.status === 200 && strip(await res.text()).includes('Draugr'), `status ${res.status}`);
-const first = await serverFn('startRunFn', { legendId: 'draugr' });
-check('start a run', first.status === 200 && first.value?.status === 'in_progress', `status ${first.status}`);
-const second = await serverFn('startRunFn', { legendId: 'draugr' });
-check('start again: a new run', second.status === 200 && second.value?.id !== first.value?.id, `status ${second.status}`);
-fn = await serverFn('startRunFn', { legendId: 'draugr', seed: 'mine' });
+const first = await serverFn('startWorld', { legendId: 'draugr', token: null });
+check('start a world: a view with no seed and no token', first.status === 200 && first.value?.view?.status === 'in_progress' && first.value?.token === null && !JSON.stringify(first.value).includes('seed'), `status ${first.status}`);
+const second = await serverFn('startWorld', { legendId: 'draugr', token: null });
+check('start again: the run in progress resumes', second.status === 200 && JSON.stringify(second.value?.view) === JSON.stringify(first.value?.view), `status ${second.status}`);
+fn = await serverFn('startWorld', { legendId: 'draugr', token: null, seed: 'mine' });
 check('a client-sent seed is refused', fn.status === 400, `status ${fn.status}`);
-fn = await serverFn('finishRunFn', { runId: second.value?.id, status: 'won', slotsSolved: 5, hint2Uses: 1, wrongAnswers: 2, highestFear: 30, score: 99999 });
+fn = await serverFn('worldAct', { legendId: 'draugr', token: null, action: { kind: 'hint1', slotId: 'x' }, score: 99999 });
 check('a client-sent score is refused', fn.status === 400, `status ${fn.status}`);
-fn = await serverFn('finishRunFn', { runId: randomUUID(), status: 'won', slotsSolved: 5, hint2Uses: 0, wrongAnswers: 0, highestFear: 0 });
-check('finishing a run that is not yours or does not exist: not found', fn.status === 404, `status ${fn.status}`);
-const done = await serverFn('finishRunFn', { runId: second.value?.id, status: 'won', slotsSolved: 5, hint2Uses: 1, wrongAnswers: 2, highestFear: 30 });
-check('finish the run: score computed on the server', done.status === 200 && done.value?.score === 515, `score ${done.value?.score} (5 x 100 + 50 - 15 - 20 = 515)`);
-fn = await serverFn('finishRunFn', { runId: second.value?.id, status: 'abandoned', slotsSolved: 0, hint2Uses: 0, wrongAnswers: 0, highestFear: 0 });
-check('a run is finished once', fn.status === 404, `status ${fn.status}`);
 const list = await serverFn('listMyRunsFn');
 const statuses = (list.value ?? []).map((r) => r.status).sort().join(',');
-check('list my runs: the first was abandoned when the second started', list.status === 200 && statuses === 'abandoned,won', statuses);
+check('list my runs: one run in progress', list.status === 200 && statuses === 'in_progress', statuses);
 const completed = await serverFn('myCompletedWorldsFn');
-check('my completed worlds', completed.status === 200 && completed.value?.length === 1 && completed.value[0].legendId === 'draugr' && completed.value[0].bestScore === 515);
+check('my completed worlds: none yet', completed.status === 200 && completed.value?.length === 0);
 res = await http('/game/account');
 html = strip(await res.text());
-check('account page shows the user’s runs', res.status === 200 && html.includes('Your progress') && html.includes('Curse broken'));
+check('account page shows the user’s runs', res.status === 200 && html.includes('Your progress'));
 
 // --- 4. sign out
 res = await authPost('sign-out', {});

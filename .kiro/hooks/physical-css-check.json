@@ -1,0 +1,16 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Report physical CSS on save",
+      "description": "When a .tsx or .css file under apps/ or skeleton/ is saved, report physical left/right CSS (ml-, pr-, text-left, margin-left, left:, and so on) per .kiro/steering/i18n-rtl.md. Uses the same patterns as the logical-css tests. Reports only, edits nothing.",
+      "trigger": "PostFileSave",
+      "matcher": "(^|/)(apps|skeleton)/.*\\.(tsx|css)$",
+      "timeout": 30,
+      "action": {
+        "type": "command",
+        "command": "node scripts/check-physical-css.mjs"
+      }
+    }
+  ]
+}

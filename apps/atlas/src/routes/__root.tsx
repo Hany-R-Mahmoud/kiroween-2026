@@ -74,6 +74,11 @@ function Shell({ children }: { children: ReactNode }) {
       <footer className="mx-auto mt-16 flex max-w-6xl flex-col gap-1 border-t border-surface px-4 py-6 font-ui text-xs text-muted">
         <p>{t('footer.fiction')}</p>
         <p>{t('footer.map')}</p>
+        <p>
+          <Link to="/legends/$legendId" params={{ legendId: 'keepers-note' }} className="inline-flex min-h-11 items-center">
+            {t('footer.keepersNote')}
+          </Link>
+        </p>
       </footer>
       <AnchorFocus />
     </>

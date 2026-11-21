@@ -1,6 +1,6 @@
 # Kiro usage log
 
-Factual record of how Kiro features were used in Phases 0 to 2. It feeds the final write-up. The sections after "Skills" are the running log written while the work was done.
+Factual record of how Kiro features were used in Phases 0 to 4. It feeds the final write-up. The sections after "Skills" are the running log written while the work was done.
 
 ## Phase 0 (setup)
 
@@ -37,6 +37,19 @@ Factual record of how Kiro features were used in Phases 0 to 2. It feeds the fin
 - **Property-based testing (fast-check)**: `atlasUrl` and the anchor format, 100 runs, next to the Phase 1 and 2 properties.
 - **Headless Chrome over the DevTools protocol** (a helper script outside the repo, no dependency) for screenshots at phone and desktop widths, the hash-focus check, real key presses for the map card, and the right-to-left pass.
 - Skills and their findings: see "Phase 3 skills" at the end of the running log.
+
+## Phase 4 (game play)
+
+- **Spec**: `.kiro/specs/game-play/` (requirements, design, tasks), made in that order and approved step by step before any code. The tasks file groups the work into waves; the orchestrator moved each task through queued, in progress and completed.
+- **Orchestrated task execution**: the orchestrator handed one task at a time to a spec-task sub-agent. Sub-agents ran one at a time, never in parallel, and each reported back before the next started. Sub-agents did not change task status and did not start sub-agents of their own.
+- **Custom agent**: `game-balance-reviewer` (`.kiro/agents/game-balance-reviewer.md`), read-only apart from `docs/phase-4-notes/balance.md`. Details and findings in the running log below.
+- **Hook**: `physical-css-check` (`.kiro/hooks/physical-css-check.json`), a `PostFileSave` command hook that reports physical left/right CSS in `apps/` and `skeleton/`. Details in the running log below.
+- **Steering**: all five files in `.kiro/steering/` applied. `tech.md` (seeded RNG only, no secrets in code, the skeleton holds shared logic, property tests after generator changes), `product.md` (single player, the game cannot be solved without the atlas, the access rule), `i18n-rtl.md` (logical CSS, catalog keys; also the source of the hook's pattern list), `design.md` (contrast, 44 px targets, reduced motion), `content.md` (read-only `content/`).
+- **MCP (Neon)**: not recorded in the Phase 4 notes as used. The Phase 4 migration (`0003`) and the Keeper's Note import were checked with throwaway scripts against `dev-skeleton-core` (`docs/phase-4-notes/migration.md`), not through the MCP.
+- **Property-based testing (fast-check)**: properties for secrecy of the play payload, answers and hints, leads and the final puzzle, fear, score, the token codec, the tutorial and receipt, pan and media, and the hall rules. A scripted atlas-only player must win every legend (Property 14); eight legends are expected failures (`it.fails`, exact set) because of known content findings (`fairness.md`).
+- **Headless Chrome over the DevTools protocol** (`apps/game/scripts/browser-check.mjs`, no dependency added): keyboard-only play, 390 px touch, reduced motion, Slow 4G timing. 43 of 46 checks passed; the 3 misses are the 3.0 s first-view budget (hall 5.8 s, tutorial 4.9 s, Banshee 10.4 s), recorded as findings. Three bugs found there were fixed with tests (touch drag stopping after about 23 px, unreadable spirit panel at 390 px, spirit figure hiding "Pan right").
+- **Smoke check**: `skeleton/scripts/smoke-play.ts` through the real server functions against `dev-skeleton-core`: 26 of 26 steps passed; the test user was deleted by exact id.
+- Skills and their findings: see "Phase 4 skills" at the end of the running log.
 
 ## Skills
 
@@ -412,3 +425,72 @@ Not used: agent-pilot, agent-orchestrator, agent-implementer, agent-superpowers,
   - a rest-spread that leaked columns into the view;
   - duplicated token rendering in two components, merged.
 - **verify-and-stop**: final verification; results in `docs/phase-3-handover.md`.
+
+## Phase 4 running log (game play)
+
+### Spec
+- `.kiro/specs/game-play/` (requirements, design, tasks).
+
+### Group A (preflight, task 1.1): docs read on 2026-11-20
+Details and status per page: `docs/phase-4-notes/docs-read.md`.
+- **read-the-damn-docs**:
+  - TanStack Start: server functions, middleware, CSRF (authentication server primitives). Only search summaries and the installed 1.169.5 types could be read; `tanstack.com` did not resolve.
+  - Node `crypto`: `createCipheriv`, `createDecipheriv`, `setAAD`, `getAuthTag`, `setAuthTag` for AES-256-GCM (read). Find: pass `authTagLength: 16` on the decipher.
+  - MDN: Pointer events, `setPointerCapture`, `lostpointercapture`, `touch-action` (search summaries only; `developer.mozilla.org` did not resolve).
+  - Drizzle: migrations, `drizzle-kit generate`, `drizzle-kit migrate` (read). Find: the docs show a folder-per-migration layout, the installed `drizzle-kit` 0.31.11 writes flat files.
+  - Neon: Drizzle migrations and Drizzle connection guides (search summaries only; `neon.com` did not resolve).
+
+### Custom agent and hook (tasks 10.1 to 10.5)
+Docs read on 2026-11-20 (`kiro.dev` custom-agents configuration reference, hooks, hook types). Details: `docs/phase-4-notes/kiro-docs.md`.
+
+#### Custom agent: `game-balance-reviewer`
+- **File:** `.kiro/agents/game-balance-reviewer.md`.
+- **Format and why:** Markdown with YAML front matter (`name`, `description`, `tools`, `resources`, `permissions`, `welcomeMessage`); the body is the system prompt. This is the format the current Kiro docs give. Only current fields are used, not the CLI 2.x legacy ones (`allowedTools`, `toolsSettings`). No YAML package is a dependency, so each field is one `key: value` line with a JSON-style value (valid YAML). A test, `skeleton/test/balance-reviewer-agent.test.ts`, parses the file.
+- **Permissions:** `tools: ["read", "write"]`. `fs_write` is allowed only for `docs/phase-4-notes/balance.md` and denied for everything else. `shell` and `web_fetch` are denied. The prompt also forbids editing `content/` and `assets/`, reading `.env`, and fixing findings. Resources: `fear.ts`, `fearTable.ts`, `fairness.md`, `docs/planning/01-decisions.md`.
+- **What it reviews, per World:** puzzle difficulty, fear pacing against the `FEAR` constants, dead-end fairness.
+- **How it was run:** the sub-agent tool cannot launch a custom agent file by name, so the review (task 10.4) adopted the agent's prompt and hard rules in the main thread. Shell was used only for a temporary probe test (300 generated and 20 played seeds per legend), deleted afterwards. Nothing in `content/`, `assets/` or the constants was changed. Record: `docs/phase-4-notes/decisions.md` (10.4).
+- **Findings** (`docs/phase-4-notes/balance.md`, all twelve Worlds):
+  - 300 of 300 seeds generated per legend with no `GeneratorError`; every contradiction anchor resolves.
+  - Worst-case fear is 78 to 87 in every World, below `FEAR.max` (100). No constant needs to change.
+  - `true-or-told` slots act as paid guesses (major, X-1); they are the slot named in the lost runs. Banshee, chupacabra, el-coco, naddaha, spring-heeled-jack and vetala have a worst severity of major; the other six, minor.
+  - Notes and minor items: hotspot fear is rare (X-2), some contradictions list one anchor twice (X-3), no dead end points at a `--versions` anchor (X-4), three never-true leads are always offered (X-6).
+  - Suggested fixes are advice for the content owner and were not applied.
+
+#### Hook: physical CSS on save
+- **File:** `.kiro/hooks/physical-css-check.json` (format `v1`, same shape as the two existing hooks).
+- **Trigger and matcher:** `PostFileSave`; matcher `(^|/)(apps|skeleton)/.*\.(tsx|css)$`; timeout 30 s.
+- **Script:** `node scripts/check-physical-css.mjs` (type shim `scripts/check-physical-css.d.mts`). It reports physical left/right CSS per `.kiro/steering/i18n-rtl.md`, edits nothing, exits 1 with findings on stderr and 0 when clean or out of scope.
+- **Testing:** `apps/game/test/physical-css-hook.test.ts` covers a failing and a clean sample, and asserts every pattern's source appears in `apps/game/test/logical-css.test.ts` so the two lists cannot drift.
+- **Why no existing hook covered it:** `.kiro/hooks/` held only `skeleton-tests.json` and `content-validate.json`; the rule existed only as steering text (`kiro-docs.md`). Record: `docs/phase-4-notes/decisions.md` (10.3).
+
+### Phase 4 skills
+Skills used in this thread only. None started sub-agents of its own.
+
+- **read-the-damn-docs** (`docs/phase-4-notes/docs-read.md`, `kiro-docs.md`):
+  - Network limits: `tanstack.com`, `developer.mozilla.org` and `neon.com` did not resolve. For TanStack Start (3 pages), MDN (4 pages) and Neon (2 pages) only search summaries and the installed package types were read, and that was reported as such. The Kiro docs (custom agents reference, hooks, hook types) and the Node `crypto` and Drizzle migration pages were read.
+  - Finds: pass `authTagLength: 16` on the AES-GCM decipher (Node 26 refuses other tag lengths without it); the installed `drizzle-kit` 0.31.11 writes flat migration files, while the docs show a folder per migration; the current Kiro agent format is Markdown with YAML front matter and `permissions.rules`, not the CLI 2.x legacy fields; there was no existing physical-CSS hook.
+- **ponytail**: not used in Phase 4. The Phase 4 notes record no ponytail pass, so nothing is claimed for it.
+- **agent-security** (with agent-guard, `guard-2.20.md`, `guard-5.5.md`):
+  - guard-2.20 (play core): `decode` threw a bare `0` in five places; it now uses one `reject()` helper with the fixed `PlayError('session')`. No answer leak, no client-controlled score or count, token checks complete. Residual risks recorded, not changed: a guest can replay an older token to retry a wrong answer; tutorial answers have no rate limit; unknown store errors must be mapped to `unavailable` by the server layer.
+  - guard-5.5 (server layer): a validator that threw `notFound()` ran outside `safely()` and could send a framework message to the client (medium; fixed, the shape check now runs inside `safely()`). `getShell` was outside `safely()` and could expose an `EnvError` variable name (low; fixed). `serve-build.mjs` crashed on a handler rejection (low; now a fixed 500). Two source tests added. Residual: `serve-build.mjs` listens on all interfaces (local script), tutorial answers unthrottled, malformed JSON bodies are rejected by Start before our code.
+- **impeccable** (`docs/phase-4-notes/impeccable-review.md`, task 9.13): the owner's brief said `agent-impeccable`; the catalog has no such name, so `impeccable` was loaded. Reviewer sub-agents off, mode Operate; its launcher and screenshot tools were not run, so this pass was a code and CSS read plus a contrast run over all 12 packs. Fixed in the game app: `MotionToggle` had no styles or 44 px target; short Hall links under 44 px; the focus ring clipped on the scene tabs; busy buttons flickered struck-through; `70vh` viewport overshoot (added `70dvh`). Polish items not fixed then: spring-heeled-jack glow on surface 2.8:1 (a skeleton `resolveTheme` change), start failure left "loading" forever (fixed later in 9.14), spirit panel text over the frame, CSS order of two spirit rules, ending dialog without Escape, reward slot copy. The items needing a real browser were passed to task 11.2, which then found the three bugs listed above.
+- **agent-tester** (`mutations.md`, `tester-review.md`, tasks 11.3 and 11.4):
+  - 11.3: 37 numbered hand mutations (plus 6b and 11b), each restored and compared byte for byte with a backup. Five were not caught at first: the token lifetime and fear constants (#15, #16, #17; pinned by new tests), a missing `.strict()` on the answer action (#19), and a tutorial Hint 2 anchor shown too early (#24). #11 (legend id removed from the AAD only) is equivalent, because the payload check covers it; removing both is caught (11b). No test was weakened.
+  - 11.4: seven weak tests fixed. Layout negative cases asserted only "some problem"; loops over empty sets could pass (layouts, reader grants, fear table, four source scans); `WORLD_COUNT` was derived from the code under test; no test proved a Run needs no database or network (added an offline test). A requirement-to-test map is in the file. Final runs: skeleton 48 files, 701 passed, 8 expected fail; atlas 10 files, 161 passed; game 20 files, 256 passed.
+- **agent-guard** (`guard-2.20.md`, `3.7`, `4.3`, `5.5`, `6.9`, `7.9`, `9.14`; clean-code, test and security lanes, no sub-agents):
+  - 2.20: see agent-security above.
+  - 3.7: a duplicated `guard` wrapper in `playStore.ts` (now imported); `getKeepersNote` filtered on nothing but `limit(1)` (now `id = 'keepers-note'`). Left alone: `keepers_note_details.ordinal` has no unique constraint (the migration was already applied).
+  - 4.3: an atlas test imported a deep skeleton path; now a typed literal from `@kiroween/skeleton/client`.
+  - 5.5: see agent-security above.
+  - 6.9: merged duplicate PageUp/PageDown branches; one `MIN_TARGET_PX` constant for the repeated 44; a missing `FocusEvent` import.
+  - 7.9: `getWorldInfo` sent unused story prose (`world.spirit`) to the browser (removed); hardcoded separators in Hall names (new catalog keys); focus not restored when panels closed and not taken by the restart notice and ending panel (new `lib/focus.ts`); duplicated code; new `client-boundary.test.ts` that fails if client code imports server modules or skeleton values.
+  - 9.14: eleven copies of the sprite box helper merged into `squareSpriteBox`; duplicated region helper merged; a stale comment; the layout check never verified the sprite stays inside its tap box (check and mutation test added); two duplicate tests removed; a start failure showed "loading" forever (new `StartRetry` with a retry button).
+- **verify-and-stop**: final check in task 11.7, run in one thread with no sub-agents. Typecheck, the three suites (skeleton 701 pass and 8 expected fail, atlas 161, game 256), `db:check-reader`, `db:check-models` and both builds all pass. `vercel.json` and `assets/` are unchanged, the secret scan passes and `GAME_TOKEN_KEY` is empty in `.env.example`. Known findings: 12 `content/legends` files edited by the owner, eight legends not winnable on every seed, and the first view missing the 3.0 s Slow 4G budget (hall 5.8 s, tutorial 4.9 s, Banshee 10.4 s). No lint script exists. Evidence table: `docs/phase-4-notes/verify.md`.
+- **Not available or not used**: `agent-impeccable` is not in the catalog (replaced by `impeccable`). ponytail was not used. agent-pilot, agent-orchestrator, agent-implementer, agent-superpowers and any skill that starts its own sub-agents were not used, as in Phase 3.
+
+### Phase 4 process notes
+- Sub-agents ran one at a time. The `game-balance-reviewer` file could not be launched by name through the sub-agent tool, so its review (task 10.4) adopted the file's prompt and hard rules in the main thread.
+- One Phase 1 generator change, owner-approved: Hint 2 now uses the anchor of the fact the Run chose, not the slot's authored anchor (requirement 5.7; Property 7 found that in about 60% of slot-instances the linked chapter did not contain the answer). Only `generate.ts` and `hints.ts` changed, plus the three test expectations listed in `docs/phase-4-notes/phase1-changes.md`.
+- One owner-approved `db:import` on `dev-skeleton-core` for the owner's content rewrite of the twelve legends, run by the orchestrator. The boundary check (task 11.5) could not find it in the notes, which is why it is stated here.
+- Migration `0003` and the Keeper's Note import were applied to `dev-skeleton-core` only.
+- Secret handling: a boundary-check command (task 11.5) that did not exclude `.env` printed the local `GAME_TOKEN_KEY` line into a session log. The file is git-ignored and untracked, so nothing reached the repo. Recommend rotating the local `GAME_TOKEN_KEY` if that session log is stored anywhere shared. The value is not repeated here.

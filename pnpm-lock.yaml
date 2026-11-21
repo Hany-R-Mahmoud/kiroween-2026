@@ -122,6 +122,72 @@ importers:
 
   apps/game:
     dependencies:
+      '@fontsource/abril-fatface':
+        specifier: 5.3.0
+        version: 5.3.0
+      '@fontsource/amiri':
+        specifier: 5.3.0
+        version: 5.3.0
+      '@fontsource/bad-script':
+        specifier: 5.3.0
+        version: 5.3.0
+      '@fontsource/cormorant-garamond':
+        specifier: 5.3.0
+        version: 5.3.0
+      '@fontsource/crimson-pro':
+        specifier: 5.3.0
+        version: 5.3.0
+      '@fontsource/gowun-batang':
+        specifier: 5.3.0
+        version: 5.3.0
+      '@fontsource/im-fell-english':
+        specifier: 5.3.0
+        version: 5.3.0
+      '@fontsource/im-fell-english-sc':
+        specifier: 5.3.0
+        version: 5.3.0
+      '@fontsource/inter':
+        specifier: 5.3.0
+        version: 5.3.0
+      '@fontsource/libre-baskerville':
+        specifier: 5.3.0
+        version: 5.3.0
+      '@fontsource/marck-script':
+        specifier: 5.3.0
+        version: 5.3.0
+      '@fontsource/nanum-myeongjo':
+        specifier: 5.3.0
+        version: 5.3.0
+      '@fontsource/noto-naskh-arabic':
+        specifier: 5.3.0
+        version: 5.3.0
+      '@fontsource/noto-serif':
+        specifier: 5.3.0
+        version: 5.3.0
+      '@fontsource/noto-serif-devanagari':
+        specifier: 5.3.0
+        version: 5.3.0
+      '@fontsource/noto-serif-jp':
+        specifier: 5.3.1
+        version: 5.3.1
+      '@fontsource/old-standard-tt':
+        specifier: 5.3.0
+        version: 5.3.0
+      '@fontsource/playfair-display-sc':
+        specifier: 5.3.0
+        version: 5.3.0
+      '@fontsource/pt-serif':
+        specifier: 5.3.0
+        version: 5.3.0
+      '@fontsource/shippori-mincho':
+        specifier: 5.3.0
+        version: 5.3.0
+      '@fontsource/source-serif-4':
+        specifier: 5.3.1
+        version: 5.3.1
+      '@fontsource/yatra-one':
+        specifier: 5.3.0
+        version: 5.3.0
       '@kiroween/skeleton':
         specifier: workspace:*
         version: link:../../skeleton

@@ -8,6 +8,7 @@ const base = {
   DATABASE_URL: `${scheme}://u:p@db.invalid/neondb`,
   NEON_AUTH_BASE_URL: 'https://auth.invalid/neondb/auth',
   NEON_AUTH_COOKIE_SECRET: secret,
+  GAME_TOKEN_KEY: Buffer.alloc(32, 7).toString('base64'),
 };
 
 const failure = (source: Record<string, string | undefined>): EnvError => {
@@ -34,6 +35,10 @@ describe('parseEnv', () => {
     ['NEON_AUTH_BASE_URL', { NEON_AUTH_BASE_URL: 'not a url' }],
     ['NEON_AUTH_COOKIE_SECRET', { NEON_AUTH_COOKIE_SECRET: undefined }],
     ['NEON_AUTH_COOKIE_SECRET', { NEON_AUTH_COOKIE_SECRET: 'x'.repeat(31) }],
+    ['GAME_TOKEN_KEY', { GAME_TOKEN_KEY: undefined }],
+    ['GAME_TOKEN_KEY', { GAME_TOKEN_KEY: Buffer.alloc(31, 7).toString('base64') }],
+    ['GAME_TOKEN_KEY', { GAME_TOKEN_KEY: Buffer.alloc(33, 7).toString('base64') }],
+    ['GAME_TOKEN_KEY', { GAME_TOKEN_KEY: 'not base64!' }],
     ['GUEST_WORLD', { GUEST_WORLD: '../etc' }],
     ['FEATURE_ARABIC', { FEATURE_ARABIC: 'yes' }],
     ['ATLAS_ORIGIN', { ATLAS_ORIGIN: 'http://localhost:3001/' }],
@@ -44,6 +49,10 @@ describe('parseEnv', () => {
     ['ATLAS_ORIGIN', { ATLAS_ORIGIN: 'not a url' }],
   ])('names %s when it is missing or wrong', (variable, over) => {
     expect(failure({ ...base, ...over }).variable).toBe(variable);
+  });
+
+  it('decodes GAME_TOKEN_KEY to 32 bytes', () => {
+    expect(parseEnv(base).tokenKey.length).toBe(32);
   });
 
   it('ATLAS_ORIGIN is optional: empty by default, an http or https origin when set', () => {
@@ -58,6 +67,7 @@ describe('parseEnv', () => {
       { DATABASE_URL: `https://${marker}.invalid` },
       { NEON_AUTH_BASE_URL: `http://${marker}.invalid` },
       { NEON_AUTH_COOKIE_SECRET: marker },
+      { GAME_TOKEN_KEY: marker },
       { GUEST_WORLD: `${marker}/x` },
       { FEATURE_ARABIC: marker },
       { ATLAS_ORIGIN: `https://${marker}.invalid/x` },

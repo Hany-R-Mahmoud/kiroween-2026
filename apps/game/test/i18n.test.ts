@@ -12,6 +12,11 @@ const files = (dir: string): string[] =>
     return statSync(p).isDirectory() ? files(p) : /\.tsx?$/.test(f) && !f.endsWith('.gen.ts') ? [p] : [];
   });
 
+const HARDCODED = [
+  />\s*[A-Za-z][^<>{}]*</, // text between > and < that contains a letter, outside braces
+  /^\s+[A-Z][a-z]+(?: [A-Za-z]+)*\s*$/, // a capitalised word or phrase alone on a JSX line
+];
+
 describe('message catalog', () => {
   it('every t("…") key used in the app exists in English', () => {
     const used = new Set<string>();
@@ -32,10 +37,17 @@ describe('message catalog', () => {
 
   it('no visible text is hardcoded in JSX: element text is only {…} expressions', () => {
     const offenders: string[] = [];
+    expect(files(SRC).filter((x) => x.endsWith('.tsx')).length, 'no .tsx files scanned').toBeGreaterThan(5);
     for (const f of files(SRC).filter((x) => x.endsWith('.tsx')))
       for (const [i, line] of readFileSync(f, 'utf8').split('\n').entries())
-        // text between > and < that contains a letter, outside braces
-        if (/>\s*[A-Za-z][^<>{}]*</.test(line)) offenders.push(`${f.slice(SRC.length)}:${i + 1}`);
+        if (HARDCODED.some((re) => re.test(line))) offenders.push(`${f.slice(SRC.length)}:${i + 1}`);
     expect(offenders).toEqual([]);
+  });
+
+  it('the scan catches text between tags and text alone on a JSX line', () => {
+    for (const bad of ['<p>Hello</p>', '  <span> Read more </span>', '            Africa', '    Read the legend'])
+      expect(HARDCODED.some((re) => re.test(bad)), bad).toBe(true);
+    for (const good of ["<p>{t('x.y')}</p>", '    {legend.title}', '    token.text', '    ) : (', "import { A } from 'b';", '  // A comment'])
+      expect(HARDCODED.some((re) => re.test(good)), good).toBe(false);
   });
 });

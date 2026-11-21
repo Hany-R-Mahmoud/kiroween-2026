@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AccountRouteImport } from './routes/account'
 import { Route as SignInRouteImport } from './routes/sign-in'
 import { Route as SignUpRouteImport } from './routes/sign-up'
+import { Route as TutorialRouteImport } from './routes/tutorial'
 import { Route as WorldTargetRouteImport } from './routes/world.$target'
 import { Route as ApiAuthSplatRouteImport } from './routes/api.auth.$'
 
@@ -36,6 +37,11 @@ const SignUpRoute = SignUpRouteImport.update({
   path: '/sign-up',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TutorialRoute = TutorialRouteImport.update({
+  id: '/tutorial',
+  path: '/tutorial',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WorldTargetRoute = WorldTargetRouteImport.update({
   id: '/world/$target',
   path: '/world/$target',
@@ -52,6 +58,7 @@ export interface FileRoutesByFullPath {
   '/account': typeof AccountRoute
   '/sign-in': typeof SignInRoute
   '/sign-up': typeof SignUpRoute
+  '/tutorial': typeof TutorialRoute
   '/world/$target': typeof WorldTargetRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
 }
@@ -60,6 +67,7 @@ export interface FileRoutesByTo {
   '/account': typeof AccountRoute
   '/sign-in': typeof SignInRoute
   '/sign-up': typeof SignUpRoute
+  '/tutorial': typeof TutorialRoute
   '/world/$target': typeof WorldTargetRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
 }
@@ -69,6 +77,7 @@ export interface FileRoutesById {
   '/account': typeof AccountRoute
   '/sign-in': typeof SignInRoute
   '/sign-up': typeof SignUpRoute
+  '/tutorial': typeof TutorialRoute
   '/world/$target': typeof WorldTargetRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
 }
@@ -79,6 +88,7 @@ export interface FileRouteTypes {
     | '/account'
     | '/sign-in'
     | '/sign-up'
+    | '/tutorial'
     | '/world/$target'
     | '/api/auth/$'
   fileRoutesByTo: FileRoutesByTo
@@ -87,6 +97,7 @@ export interface FileRouteTypes {
     | '/account'
     | '/sign-in'
     | '/sign-up'
+    | '/tutorial'
     | '/world/$target'
     | '/api/auth/$'
   id:
@@ -95,6 +106,7 @@ export interface FileRouteTypes {
     | '/account'
     | '/sign-in'
     | '/sign-up'
+    | '/tutorial'
     | '/world/$target'
     | '/api/auth/$'
   fileRoutesById: FileRoutesById
@@ -104,6 +116,7 @@ export interface RootRouteChildren {
   AccountRoute: typeof AccountRoute
   SignInRoute: typeof SignInRoute
   SignUpRoute: typeof SignUpRoute
+  TutorialRoute: typeof TutorialRoute
   WorldTargetRoute: typeof WorldTargetRoute
   ApiAuthSplatRoute: typeof ApiAuthSplatRoute
 }
@@ -138,6 +151,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SignUpRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tutorial': {
+      id: '/tutorial'
+      path: '/tutorial'
+      fullPath: '/tutorial'
+      preLoaderRoute: typeof TutorialRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/world/$target': {
       id: '/world/$target'
       path: '/world/$target'
@@ -160,6 +180,7 @@ const rootRouteChildren: RootRouteChildren = {
   AccountRoute: AccountRoute,
   SignInRoute: SignInRoute,
   SignUpRoute: SignUpRoute,
+  TutorialRoute: TutorialRoute,
   WorldTargetRoute: WorldTargetRoute,
   ApiAuthSplatRoute: ApiAuthSplatRoute,
 }

@@ -1,0 +1,44 @@
+/*
+ * Theme surfaces (design: "Hub theme"). The base tokens (palette, fonts) live in the skeleton's tokens.css and are not
+ * redefined here. The Hall and the Tutorial_Room use them as they are, with no pack and no fallback path. A World root
+ * sets the legend's resolved variables inline (lib/theme.ts), which override the same names for everything inside it, so
+ * components keep using the variables and never a raw colour. Logical properties only.
+ */
+.hub-theme,
+.world-theme {
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  /* semantic roles every screen uses; they point at tokens a legend pack does not override */
+  --fear-fill: var(--color-danger); /* non-text: the fear meter fill, 3:1 on the background only */
+  --error-ink: var(--color-danger-ink); /* danger text: 4.5:1 */
+  --caption-ink: var(--color-cold); /* spirit captions: 4.5:1 */
+}
+.hub-theme h1,
+.hub-theme h2,
+.world-theme h1,
+.world-theme h2 {
+  font-family: var(--font-display);
+  color: var(--color-glow); /* headings are 24 px and up, so 3:1 applies */
+}
+.hub-theme :is(button, input, label, nav),
+.world-theme :is(button, input, label, nav) {
+  font-family: var(--font-ui);
+}
+.hub-theme a,
+.world-theme a {
+  color: var(--color-accent);
+}
+.hub-theme .text-muted,
+.world-theme .text-muted {
+  color: var(--color-muted);
+}
+.fear-meter-fill {
+  background-color: var(--fear-fill);
+}
+.error-text {
+  color: var(--error-ink);
+}
+.spirit-caption {
+  color: var(--caption-ink);
+}

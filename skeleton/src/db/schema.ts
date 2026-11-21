@@ -205,6 +205,9 @@ export const runs = pgTable(
     score: integer('score').notNull().default(0),
     startedAt: timestamp('started_at', { withTimezone: true }).notNull().defaultNow(),
     finishedAt: timestamp('finished_at', { withTimezone: true }),
+    // Phase 4: signed-in Play state for one Run. '{}' on Phase 2 rows; `rev` is the optimistic-concurrency counter.
+    playState: jsonb('play_state').notNull().default(sql`'{}'::jsonb`),
+    rev: integer('rev').notNull().default(0),
   },
   (t) => [
     index('runs_user_idx').on(t.userId),
@@ -214,6 +217,46 @@ export const runs = pgTable(
     check('runs_finished_when_closed', sql`(${t.status} = 'in_progress') = (${t.finishedAt} is null)`),
   ],
 );
+
+// Phase 4: the Keeper's Note atlas page. Separate from `legends` so the atlas role can read the chapter and never the
+// tutorial answers in `keepers_note_details`.
+export const keepersNote = pgTable(
+  'keepers_note',
+  {
+    id: text('id').primaryKey(),
+    title: text('title').notNull(),
+    label: text('label').notNull(),
+    readingTimeMin: integer('reading_time_min').notNull(),
+    oneLineHook: text('one_line_hook').notNull(),
+    chapterTitle: text('chapter_title').notNull(),
+    anchor: text('anchor').notNull().unique(),
+    body: text('body').notNull(),
+    hook: text('hook').notNull(),
+    contentHash: text('content_hash').notNull(),
+    importedAt: timestamp('imported_at', { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [
+    check('keepers_note_id_check', sql`${t.id} = 'keepers-note'`),
+    check('keepers_note_reading_time_check', sql`${t.readingTimeMin} > 0`),
+    check('keepers_note_anchor_check', sql`${t.anchor} = 'keepers-note--ch-1'`),
+  ],
+);
+
+// Tutorial drawer answers: not readable by the atlas role.
+export const keepersNoteDetails = pgTable('keepers_note_details', {
+  detailId: text('detail_id').primaryKey(),
+  ordinal: integer('ordinal').notNull(),
+  phrase: text('phrase').notNull(),
+  question: text('question').notNull(),
+  answer: text('answer').notNull(),
+  alsoAccept: text('also_accept').array().notNull().default(sql`'{}'`),
+});
+
+// Tutorial done flag for signed-in users. No foreign key into neon_auth, like `runs`.
+export const playerFlags = pgTable('player_flags', {
+  userId: text('user_id').primaryKey(),
+  tutorialDoneAt: timestamp('tutorial_done_at', { withTimezone: true }),
+});
 
 /** Name of the partial unique index, used to recognise a racing start (SQLSTATE 23505). */
 export const ONE_IN_PROGRESS_INDEX = 'runs_one_in_progress';

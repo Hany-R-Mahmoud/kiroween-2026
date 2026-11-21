@@ -1,0 +1,85 @@
+/* World screen: panels, notebook, leads, ending. Logical properties only; colours come from the theme variables. */
+.world-play {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.world-stage {
+  position: relative;
+}
+.world-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  border: 1px solid var(--color-accent, #e0a84b);
+  border-radius: 0.5rem;
+  background: var(--color-surface, #1c1620);
+  color: var(--color-ink, #e9e1d3);
+}
+.world-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-block-size: 44px;
+  min-inline-size: 44px;
+  padding-inline: 0.75rem;
+  border: 1px solid var(--color-accent, #e0a84b);
+  border-radius: 0.5rem;
+  background: var(--color-bg, #0e0b10);
+  color: var(--color-accent, #e0a84b);
+  font-family: var(--font-ui, inherit);
+  text-align: start;
+  text-decoration: none;
+  cursor: pointer;
+}
+.world-button:disabled,
+.world-button[aria-disabled='true'] {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+/* Only a truly unavailable choice (an option already tried) is struck through; a busy button just dims. */
+.world-button:disabled {
+  text-decoration: line-through;
+}
+.world-button:focus-visible {
+  outline: 3px solid var(--color-glow, #f4d58d);
+  outline-offset: 2px;
+}
+.world-slots,
+.world-leads,
+.world-options,
+.world-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.world-steps {
+  list-style: decimal;
+  padding-inline-start: 1.25rem;
+}
+.world-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.world-slot-title {
+  margin: 0;
+  font-family: var(--font-display, inherit);
+}
+.world-option {
+  inline-size: 100%;
+}
+.world-hint,
+.world-spirit-line {
+  font-style: italic;
+}
+.world-ending .world-relic {
+  margin: 0;
+}

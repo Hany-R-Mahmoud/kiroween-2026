@@ -1,25 +1,140 @@
-import { createFileRoute, Link } from '@tanstack/react-router';
-import { enterWorld } from '../server/functions';
-import { useT } from '../i18n/useT';
+import { createFileRoute, getRouteApi, isRedirect, useNavigate } from '@tanstack/react-router';
+import { useEffect, useReducer, useRef, useState } from 'react';
+import { FearOverlay, type FearRequest } from '../components/FearOverlay';
+import { MotionToggle, useReducedMotion } from '../components/MotionToggle';
+import { ThemeRoot } from '../components/ThemeRoot';
+import { WorldPlay } from '../components/WorldPlay';
+import { fontLinks } from '../fonts';
+import { fearEventsOf, worldLayout } from '../layout';
+import { initialWorldState, playClientFor, worldReducer, type PlayClient } from '../lib/play';
+import { themeColorMeta } from '../lib/theme';
+import { atlasHref, chooseFearEvent, markedIds, reducedLineOf, triggerOf, type FearContext } from '../lib/world';
+import { getWorldInfo } from '../server/functions';
+import type { Action } from '@kiroween/skeleton/client';
 
-// Stub world page: the loader asks the server, which applies the access rule and returns only the title (R3.4).
 export const Route = createFileRoute('/world/$target')({
-  loader: ({ params }) => enterWorld({ data: params.target }),
+  // `?layout=1` shows the tap boxes in a dev build only (the overlay code is dead in production).
+  validateSearch: (search: Record<string, unknown>): { layout?: 1 } => (search.layout === 1 || search.layout === '1' ? { layout: 1 } : {}),
+  // The server applies the access rule: a guest at a world other than the guest world is redirected and gets no data (R3.4).
+  loader: ({ params }) => getWorldInfo({ data: params.target }),
+  head: ({ loaderData }) => ({
+    meta: loaderData ? themeColorMeta(loaderData.theme) : [],
+    links: loaderData ? fontLinks(loaderData.theme.families) : [],
+  }),
   component: World,
 });
 
+const root = getRouteApi('__root__');
+
+type Started = Awaited<ReturnType<PlayClient['start']>>;
+interface Send {
+  (client: PlayClient): Promise<Started>;
+}
+
 function World() {
-  const { title } = Route.useLoaderData();
-  const t = useT();
+  const info = Route.useLoaderData();
+  const search = Route.useSearch();
+  const { mediaBase, name } = root.useLoaderData();
+  const navigate = useNavigate();
+  const { reduced, setSetting } = useReducedMotion();
+  const [state, dispatch] = useReducer(worldReducer, initialWorldState);
+  const [sceneIndex, setSceneIndex] = useState(0);
+  const [chosen, setChosen] = useState<string | null>(null);
+  // Calls queue in the client library, so several can be pending at once; the screen is busy until all are done.
+  const [pending, setPending] = useState(0);
+  const busy = pending > 0;
+  const [failed, setFailed] = useState(false);
+  const [fear, setFear] = useState<FearRequest | null>(null);
+  const client = useRef<PlayClient | null>(null);
+  const played = useRef(new Set<string>());
+  const runNo = useRef(0);
+  const entries = fearEventsOf(info.id);
+
+  const play = (ctx: FearContext) => {
+    const entry = chooseFearEvent(entries, ctx, played.current);
+    if (!entry) return;
+    played.current.add(entry.id);
+    setFear({ key: `${runNo.current}:${entry.id}`, entry, reducedMotionLine: reducedLineOf(info.fearEvents, entry) });
+  };
+
+  const run = async (send: Send) => {
+    client.current ??= playClientFor(name === null);
+    setPending((n) => n + 1);
+    setFailed(false);
+    try {
+      const r = await send(client.current);
+      dispatch({ kind: 'response', response: r });
+      if (r.ended?.status === 'restarted') {
+        // A new Seed: the room starts over, so its events and chosen puzzle start over too.
+        runNo.current += 1;
+        played.current = new Set();
+        setChosen(null);
+      }
+      const ctx = triggerOf(r.reply);
+      if (ctx) play(ctx);
+      return r;
+    } catch (e) {
+      if (isRedirect(e)) void navigate({ to: '/sign-in' });
+      else setFailed(true);
+      return null;
+    } finally {
+      setPending((n) => n - 1);
+    }
+  };
+  const act = (action: Action) => run((c) => c.act(info.id, action));
+
+  useEffect(() => {
+    // One start per visit: a signed-in player resumes from the server, a guest from the token in this browser.
+    void run((c) => c.start(info.id));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [info.id]);
+
+  const onScene = (index: number) => {
+    setSceneIndex(index);
+    if (state.view) play({ kind: 'scene-enter', scene: index + 1 });
+  };
+
+  const onHint2 = (slotId: string) =>
+    void act({ kind: 'hint2', slotId }).then((r) => {
+      // Open the chapter in a new tab on the first use. The link in the notebook covers a blocked pop-up and any reopening (free).
+      if (r?.reply?.kind === 'hint2' && r.reply.charged) {
+        const href = atlasHref(mediaBase, r.reply.anchor);
+        if (href) window.open(href, '_blank', 'noopener');
+      }
+    });
+
   return (
-    <section aria-labelledby="world-heading" className="flex flex-col gap-4">
-      <h1 id="world-heading" className="font-display text-3xl text-glow">
-        {title}
-      </h1>
-      <p>{t('world.comingLater')}</p>
-      <Link to="/" className="inline-flex min-h-11 items-center text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-glow">
-        {t('world.back')}
-      </Link>
-    </section>
+    <ThemeRoot theme={info.theme} className="flex flex-col gap-4">
+      <WorldPlay
+        legendId={info.id}
+        title={info.title}
+        mediaBase={mediaBase}
+        scenes={info.scenes}
+        hotspots={info.hotspots}
+        layout={worldLayout(info.id)}
+        sceneIndex={sceneIndex}
+        onScene={onScene}
+        view={state.view}
+        reply={state.reply}
+        marked={markedIds(state.view)}
+        relic={info.relic}
+        restartNotice={state.restartNotice}
+        chosenSlot={chosen}
+        busy={busy}
+        failed={failed}
+        onRetry={() => void run((c) => c.start(info.id))}
+        outline={import.meta.env.DEV && search.layout === 1}
+        onChoose={setChosen}
+        onTap={(hotspotId) => void act({ kind: 'tap', hotspotId })}
+        onHint1={(slotId) => void act({ kind: 'hint1', slotId })}
+        onHint2={onHint2}
+        onAnswer={(slotId, option) => void act({ kind: 'answer', slotId, option })}
+        onFollow={(leadId) => void act({ kind: 'follow', leadId })}
+        onDismissRestart={() => dispatch({ kind: 'dismiss-restart' })}
+        onHall={() => void navigate({ to: '/' })}
+      />
+      <FearOverlay request={fear} reduced={reduced} />
+      <MotionToggle reduced={reduced} onChange={setSetting} />
+    </ThemeRoot>
   );
 }

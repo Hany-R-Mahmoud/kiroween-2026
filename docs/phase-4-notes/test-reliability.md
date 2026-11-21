@@ -1,0 +1,5 @@
+# Skeleton test reliability under load (task 8A.4)
+
+- **Cause.** The play property files run hundreds of full Runs. The atlas player file takes about 150 s on an idle 8-core machine and the others about 1 to 2 minutes. Each file set a fixed `testTimeout` (120 s, 300 s for the atlas player) and vitest ran up to all files at once. With two dev servers also using the CPU, the heavy files slowed each other and passed those wall-clock limits. A file run alone had the whole CPU and passed.
+- **Change.** `skeleton/vitest.config.ts`: `testTimeout` 900 s, `hookTimeout` 120 s, `maxWorkers` 4. The nine `vi.setConfig({ testTimeout })` lines in `test/play-*.test.ts` now say 900_000. No iteration count, property, seed or constant changed.
+- **Result.** Atlas and game dev servers running (they started on ports 3002 and 3003 because 3001 was already in use by another process, which I did not touch): `vitest run` in `skeleton`: 47 files passed, 694 tests passed, 8 expected fail, 168 s. Both servers stopped by terminal id.

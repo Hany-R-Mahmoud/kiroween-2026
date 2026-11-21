@@ -21,6 +21,18 @@ function inline(text: string): StoryToken[] {
   return tokens;
 }
 
+/** A short field (question, option, tap text) as text and `em` tokens. Whitespace is kept; stray `*` stay literal. */
+export function inlineMarks(text: string): StoryToken[] {
+  return inline(text);
+}
+
+/** The same text without the italic marks: for accessible names, alt text and other plain strings. */
+export function stripMarks(text: string): string {
+  return inline(text)
+    .map((t) => (t.kind === 'dramatization' ? '' : t.text))
+    .join('');
+}
+
 function paragraph(text: string): StoryBlock {
   const tokens: StoryToken[] = [];
   text.split(DRAMATIZATION).forEach((part, i) => {

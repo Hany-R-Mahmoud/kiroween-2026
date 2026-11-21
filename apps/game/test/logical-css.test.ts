@@ -26,6 +26,7 @@ const files = (dir: string): string[] =>
 describe('logical CSS only', () => {
   it('no physical-direction utility or property appears in apps/game/src', () => {
     const hits: string[] = [];
+    expect(files(SRC).length, 'no source files scanned').toBeGreaterThan(10);
     for (const f of files(SRC))
       for (const [i, line] of readFileSync(f, 'utf8').split('\n').entries())
         for (const re of PHYSICAL) if (re.test(line)) hits.push(`${f.slice(SRC.length)}:${i + 1} ${re}`);

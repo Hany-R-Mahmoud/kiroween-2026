@@ -1,3 +1,4 @@
+import { hint2Anchor } from '../src/generator/hints.ts';
 import { describe, expect, it } from 'vitest';
 import { auditLegend, generate, GeneratorError, type Legend, type Run } from '../src/index.ts';
 import { makeFixture } from './helpers/fixture.ts';
@@ -70,9 +71,8 @@ describe('errors name legend, slot and seed, and never return a partial run', ()
   });
 
   it('a hint 2 anchor outside the deep-link set throws hint-anchor', () => {
-    const l = makeFixture();
-    l.world.slots[0]!.hint2Anchor = 'fx--ch-9';
-    expect(() => generate(l, 'a')).toThrowError(expect.objectContaining({ code: 'hint-anchor' }));
+    // Hint 2 opens the chosen fact's anchor; the generator's other checks reject such a fact first, so test the check itself.
+    expect(() => hint2Anchor(makeFixture(), 'fx--ch-9', 'fx:v-a', 'a')).toThrowError(expect.objectContaining({ code: 'hint-anchor' }));
   });
 
   it('too few decoys throws hotspot-invariant', () => {
@@ -113,7 +113,9 @@ describe('rules checked on named cases', () => {
   });
 
   it('the bare versions anchor is refined to the true version', () => {
-    const r = good('refine');
+    const l = makeFixture();
+    for (const f of l.facts.filter((x) => l.world.slots.find((sl) => sl.id === 'fx:s4')!.candidateFactIds.includes(x.id))) f.anchor = 'fx--versions'; // Hint 2 opens the chosen fact's anchor
+    const r = generate(l, 'refine');
     expect(r.slots.find((s) => s.slotId === 'fx:s4')!.hint2.anchor).toBe(`fx--versions--${r.trueVersionId.slice(3)}`);
   });
 

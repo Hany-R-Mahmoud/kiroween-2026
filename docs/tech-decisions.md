@@ -158,7 +158,10 @@ Pins added for the game app (exact): `@tanstack/react-start` 1.169.5, `@tanstack
   GRANT SELECT ON chapters, versions, documented_told, sources, anchors TO atlas_reader;
   GRANT SELECT (legend_id, id, usage, size) ON assets TO atlas_reader;
   CREATE ROLE atlas_web LOGIN IN ROLE atlas_reader;
+  -- Phase 4 (migration 0003, appended to the migration file):
+  GRANT SELECT ON keepers_note TO atlas_reader;
   ```
+  - Phase 4 adds one privilege: SELECT on `keepers_note`. `keepers_note_details`, `player_flags` and `runs` stay unreadable.
   - There is no `ALTER DEFAULT PRIVILEGES`, so a future table is never readable by accident. `runs`, the game tables, `neon_auth` and the answer-bearing `legends.model` are not readable.
   - Roles made in the Console, API or MCP (`create_postgres_role`) get `neon_superuser`. `neon roles create --access read_only` grants every table in `public`, including `runs`.
   - Setting the password, found on the dev branch:

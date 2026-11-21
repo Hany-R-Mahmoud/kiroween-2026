@@ -1,0 +1,150 @@
+/* Fear overlay, fear meter and spirit panel. Logical properties only. The overlay never takes input. */
+.fear-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  display: grid;
+  place-items: end center;
+  padding-block-end: 4rem;
+}
+.fear-overlay-flash {
+  position: absolute;
+  inset: 0;
+  background: #000;
+  opacity: 0;
+}
+.fear-overlay[data-motion='full'] .fear-overlay-flash {
+  animation: fear-flash 1200ms ease-out 1 both;
+}
+.fear-overlay-caption {
+  position: relative;
+  max-inline-size: min(32rem, 90%);
+  padding-block: 0.5rem;
+  padding-inline: 1rem;
+  background: var(--color-surface);
+  color: var(--caption-ink, var(--color-cold));
+  font-family: var(--font-body);
+  text-align: center;
+  opacity: 0;
+}
+.fear-overlay[data-motion='full'] .fear-overlay-caption {
+  animation: fear-caption-full 3000ms ease-in-out 1 both;
+}
+.fear-overlay[data-motion='reduced'] .fear-overlay-caption {
+  animation: fear-fade 3000ms linear 1 both;
+}
+/* One lighting change = one flash. Two dips in 1.2 s is under 2 per second. */
+@keyframes fear-flash {
+  0% { opacity: 0; }
+  10% { opacity: 0.55; }
+  40% { opacity: 0; }
+  60% { opacity: 0.35; }
+  100% { opacity: 0; }
+}
+@keyframes fear-caption-full {
+  0% { opacity: 0; }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { opacity: 0; }
+}
+/* Reduced motion: opacity only, fades of at most 400 ms (13.3% of 3000 ms), no movement, no flicker. */
+@keyframes fear-fade {
+  0% { opacity: 0; }
+  13% { opacity: 1; }
+  87% { opacity: 1; }
+  100% { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fear-overlay-flash { animation: none; opacity: 0; }
+}
+
+.fear-meter {
+  position: relative;
+  inline-size: min(100%, 16rem);
+  aspect-ratio: 4 / 1;
+}
+.fear-meter-frame {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  pointer-events: none;
+}
+.fear-meter-track {
+  position: absolute;
+  inset-block: 30%;
+  inset-inline: 8%;
+  overflow: hidden;
+}
+.fear-meter-fill {
+  block-size: 100%;
+  transition: inline-size 300ms linear;
+}
+@media (prefers-reduced-motion: reduce) {
+  .fear-meter-fill { transition: none; }
+}
+.fear-meter-text {
+  display: block;
+  color: var(--color-ink);
+}
+
+.spirit-corner {
+  position: absolute;
+  /* Sits above the pan buttons (44 px high plus the 0.5rem gap), which it hid at 390 px (task 11.2 finding). */
+  inset-block-end: 3.5rem;
+  inset-inline-end: 0;
+  inline-size: clamp(5rem, 18vw, 9rem);
+  pointer-events: none;
+}
+.spirit-corner img,
+.spirit-close img {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+}
+.spirit-panel {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(5rem, 9rem);
+  gap: 1rem;
+  align-items: end;
+  padding-block: 2rem;
+  padding-inline: 2.5rem;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.spirit-panel-body {
+  color: var(--color-ink);
+  /* The painted frame is light parchment and the ink is light: a scrim of the theme surface keeps the text readable (task 11.2 finding). */
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  background: color-mix(in srgb, var(--color-surface) 90%, transparent);
+}
+.spirit-panel-body p {
+  margin-block: 0 0.5rem;
+}
+/* A media query has no inline-size feature; `max-inline-size` there never matched, so the figure and a 118 px text column showed at 390 px. */
+@media (max-width: 30rem) {
+  .spirit-panel { grid-template-columns: minmax(0, 1fr); padding-inline: 1.5rem; }
+  .spirit-close { display: none; }
+}
+
+/* The motion setting: a 44 px target with a larger checkbox. */
+.motion-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-block-size: 44px;
+  font-family: var(--font-ui);
+  cursor: pointer;
+}
+.motion-toggle input {
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
+  accent-color: var(--color-accent);
+}
+.motion-toggle input:focus-visible {
+  outline: 3px solid var(--color-glow);
+  outline-offset: 2px;
+}

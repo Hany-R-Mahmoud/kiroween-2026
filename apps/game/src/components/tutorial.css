@@ -1,0 +1,24 @@
+/* Tutorial room. Logical properties only. */
+.tutorial-stage {
+  position: relative;
+}
+[data-lit='true'] .tutorial-stage .scene-image {
+  filter: brightness(1.25);
+}
+.tutorial-code {
+  min-block-size: 44px;
+  padding-inline: 0.75rem;
+  border: 1px solid var(--color-accent, #e0a84b);
+  border-radius: 0.5rem;
+  background: var(--color-bg, #0e0b10);
+  color: var(--color-ink, #e9e1d3);
+  font-family: var(--font-ui, inherit);
+}
+.tutorial-reward {
+  align-items: flex-start;
+}
+.hall-cabinet-slot[data-glow='true'] {
+  border-color: var(--color-glow, #f4d58d);
+  box-shadow: 0 0 12px 2px var(--color-glow, #f4d58d);
+  outline: 2px solid var(--color-glow, #f4d58d);
+}

@@ -23,11 +23,12 @@ export function hint2Anchor(l: Legend, anchor: string, trueVersionId: string, se
   return refined;
 }
 
-export function makeHints(l: Legend, slotId: string, trueVersionId: string, seed: string, swaps: [string, string][], finalHotspots: readonly Hotspot[]): HintRun {
+/** Hint 2 opens the anchor of the fact the Run chose for the slot (requirement 5.7), so the answer is always in the linked text. */
+export function makeHints(l: Legend, slotId: string, factAnchor: string, trueVersionId: string, seed: string, swaps: [string, string][], finalHotspots: readonly Hotspot[]): HintRun {
   const s = l.world.slots.find((x) => x.id === slotId)!;
   return {
     hint1: { text: s.hint1.text, highlight: remapHighlights(s.hint1.highlight, swaps, finalHotspots) },
-    hint2: { anchor: hint2Anchor(l, s.hint2Anchor, trueVersionId, seed) },
+    hint2: { anchor: hint2Anchor(l, factAnchor, trueVersionId, seed) },
   };
 }
 

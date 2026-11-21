@@ -1,0 +1,1027 @@
+{
+  "results": [
+    "INFO  browser Chrome/157.0.8103.79; driver: Node v24.13.1 WebSocket over the DevTools protocol",
+    "INFO  --- (1) keyboard only: hall, tutorial, hall, Banshee ---",
+    "PASS  hall pans with the arrow keys  (x 0 -> -480 -> -240)",
+    "PASS  focus pans the focused hotspot into view",
+    "PASS  Enter on a locked hall door opens the tutorial",
+    "PASS  Space activates a tutorial hotspot and its panel takes focus",
+    "PASS  Escape closes the panel and returns focus to the hotspot",
+    "PASS  Hint 1 by keyboard shows its text in a panel",
+    "PASS  Hint 2 opens the atlas tab at the chapter anchor  (1 atlas tab(s), href path /legends/keepers-note)",
+    "PASS  fear meter (tutorial, after Hint 2): fill is inside its frame and equals value/100  ({\"frame\":[256,64],\"trackInsideFrame\":true,\"track\":[215,26],\"fillRatio\":0.1,\"valuenow\":\"10\"})",
+    "PASS  the drawer code, typed as digits from the atlas text, opens the drawer  (4 candidate(s) read from the chapter)",
+    "PASS  back in the hall, the Banshee door is open after the tutorial  (Enter The Banshee)",
+    "PASS  Banshee: curse broken with the keyboard alone  (1 run(s), 0 restart(s), 5 Hint 2 use(s), 3 wrong answer(s), 5 atlas tab(s))",
+    "PASS  Back to the hall from the ending, by keyboard",
+    "PASS  no mouse, pointer or touch input was used  ({})",
+    "INFO  --- (2) 390 px touch pass ---",
+    "PASS  hall: no horizontal page scroll at 390 px  ({\"doc\":390,\"body\":390,\"inner\":390})",
+    "PASS  hall: the panorama loaded  (4096x1536)",
+    "PASS  hall: every hotspot target is at least 44 x 44 CSS px  (18 hotspots)",
+    "INFO  hall: controls under 44 px: none",
+    "PASS  hall: a finger drag pans the scene  (x 0 -> -278)",
+    "PASS  hall: dragging back restores the pan",
+    "PASS  hall: a drag that starts on a hotspot does not activate it",
+    "PASS  hall: a tap on a hotspot opens its panel",
+    "PASS  hall: the scene height follows the dynamic viewport (dvh rule present, height = min(70dvh, 36rem))  ({\"found\":true,\"h\":576,\"inner\":844,\"expected\":576})",
+    "PASS  tutorial: no horizontal page scroll at 390 px  ({\"doc\":390,\"body\":390,\"inner\":390})",
+    "PASS  tutorial: the panorama loaded",
+    "PASS  tutorial: every hotspot target is at least 44 x 44 CSS px  (7 hotspots)",
+    "INFO  tutorial: controls under 44 px: none",
+    "PASS  tutorial: a tap on the candle lights it",
+    "PASS  banshee: no horizontal page scroll at 390 px  ({\"doc\":390,\"body\":390,\"inner\":390})",
+    "PASS  banshee: the first panorama loaded",
+    "PASS  banshee scene 1: every hotspot target is at least 44 x 44 CSS px  (6 hotspots)",
+    "INFO  banshee scene 1: controls under 44 px: none",
+    "PASS  banshee: a finger drag pans the scene",
+    "PASS  banshee: touch taps on hotspots reach the server and show a result  (3 taps)",
+    "PASS  spirit panel: question text stays inside the painted frame at 390 px  ({\"panelW\":358,\"panelH\":380,\"padInline\":\"24px / 24px\",\"padBlock\":\"32px / 32px\",\"textInside\":true,\"bodyW\":310,\"scrollOverflow\":false,\"fontSize\":\"16px\",\"color\":\"rgb(232, 226, 208)\"})",
+    "PASS  banshee: still no horizontal page scroll with the question panel open  ({\"doc\":390,\"body\":390,\"inner\":390})",
+    "PASS  fear meter: the fill sits inside the frame and its width equals value/100  ({\"frame\":[256,64],\"trackInsideFrame\":true,\"track\":[215,26],\"fillRatio\":0,\"valuenow\":\"0\"})",
+    "INFO  --- (3) reduced motion ---",
+    "PASS  control (motion allowed): the event flashes and runs the flash keyframes  ({\"mode\":\"full\",\"flashMax\":0.525583,\"flashAnim\":[\"fear-flash\"],\"capAnim\":[\"fear-caption-full\"],\"fearAnimations\":[\"fear-flash\",\"fear-caption-full\"],\"caption\":\"Something moves at the edge of sight.\",\"samples\":35})",
+    "PASS  reduced motion: the overlay is in reduced mode and a caption shows  (caption \"Something moves at the edge of sight.\")",
+    "PASS  reduced motion: no flash runs on a fear event (flash opacity stays 0, no fear-flash animation)  ({\"flashMax\":0,\"flashAnim\":[\"none\"],\"running\":[\"fear-fade\"]})",
+    "PASS  reduced motion: only the opacity fade runs  ([\"fear-fade\"])",
+    "INFO  --- (4) panorama timing on Slow 4G (1.6 Mbps down, 150 ms RTT) with 4x CPU throttle, cache off, 390 px phone ---",
+    "INFO  scene files under assets/: 38, largest 482648 bytes",
+    "INFO  hall: scene paint 5823, 5871, 5845 ms (median 5845); scene image /media/hub/hub-game-scene-01.webp 317558 bytes arrived at 5793, 5828, 5806 ms; FCP 1664, 1708, 1680 ms; total transfer 933261 bytes in 20 requests, of which images 317558, js and css 495749 (158054 gzipped)",
+    "FAIL  hall: first scene view within the 3.0 s budget on Slow 4G (finding if not)  (median 5845 ms)",
+    "INFO  tutorial: scene paint 5240, 4883, 4861 ms (median 4883); scene image /media/hub/tutorial-game-scene-01.webp 308672 bytes arrived at 5199, 4834, 4785 ms; FCP 1076, 728, 656 ms; total transfer 957650 bytes in 25 requests, of which images 344164, js and css 502606 (160765 gzipped)",
+    "FAIL  tutorial: first scene view within the 3.0 s budget on Slow 4G (finding if not)  (median 4883 ms)",
+    "INFO  banshee first scene: scene paint 11597, 10407, 10436 ms (median 10436); scene image /media/banshee/game/banshee-game-scene-01.webp 431134 bytes arrived at 11535, 10341, 10362 ms; FCP 2932, 1736, 1760 ms; total transfer 1906353 bytes in 34 requests, of which images 1209927, js and css 518929 (165958 gzipped)",
+    "FAIL  banshee first scene: first scene view within the 3.0 s budget on Slow 4G (finding if not)  (median 10436 ms)",
+    "INFO  hall with sprites, spirit figures and meter frame blocked (diagnostic): scene paint 5820, 5891, 5902 ms (median 5891); transfer 933261 bytes",
+    "INFO  tutorial with sprites, spirit figures and meter frame blocked (diagnostic): scene paint 5273, 4925, 4856 ms (median 4925); transfer 922156 bytes",
+    "INFO  banshee first scene with sprites, spirit figures and meter frame blocked (diagnostic): scene paint 7993, 6790, 6838 ms (median 6838); transfer 1127560 bytes",
+    "PASS  banshee: only Banshee and shared images are requested on first load (8.9)  (9 images)",
+    "PASS  banshee: scenes 2 and 3 are not fetched on first load  (/media/banshee/game/banshee-game-scene-01.webp)",
+    "INFO  --- right-to-left pass (FEATURE_ARABIC=true, lang cookie ar) ---",
+    "PASS  rtl: the root is dir=rtl and lang=ar  (rtl ar)",
+    "PASS  rtl: the scene viewport stays ltr (painted image, physical pan) and starts at pan 0  (direction ltr, x 0)",
+    "PASS  rtl: no horizontal page scroll at 390 px  (overflow 0)",
+    "INFO  rtl: pan buttons in DOM order with their x: [{\"text\":\"‹Pan left\",\"x\":16},{\"text\":\"Pan right›\",\"x\":266}]",
+    "PASS  rtl: a finger drag still pans (drag left moves the scene left)"
+  ],
+  "numbers": {
+    "focusRing": {
+      "w": "3px",
+      "st": "solid",
+      "c": "rgb(244, 213, 141)"
+    },
+    "fearMeterAfterHint2": {
+      "frame": [
+        256,
+        64
+      ],
+      "trackInsideFrame": true,
+      "track": [
+        215,
+        26
+      ],
+      "fillRatio": 0.1,
+      "valuenow": "10"
+    },
+    "keyboardWorld": {
+      "won": true,
+      "runs": 1,
+      "hint2": 5,
+      "wrong": 3,
+      "atlasTabs": 5,
+      "restarts": 0,
+      "problem": ""
+    },
+    "hotspotsHall": [
+      {
+        "id": "hub-lamp",
+        "w": 71,
+        "h": 79
+      },
+      {
+        "id": "hub-desk-ledger",
+        "w": 143,
+        "h": 75
+      },
+      {
+        "id": "hub-jars",
+        "w": 105,
+        "h": 135
+      },
+      {
+        "id": "hub-door-dutchman",
+        "w": 66,
+        "h": 308
+      },
+      {
+        "id": "hub-door-baba-yaga",
+        "w": 66,
+        "h": 308
+      },
+      {
+        "id": "hub-door-jersey-devil",
+        "w": 66,
+        "h": 308
+      },
+      {
+        "id": "hub-door-banshee",
+        "w": 68,
+        "h": 308
+      },
+      {
+        "id": "hub-door-chupacabra",
+        "w": 66,
+        "h": 308
+      },
+      {
+        "id": "hub-door-draugr",
+        "w": 66,
+        "h": 308
+      },
+      {
+        "id": "hub-door-el-coco",
+        "w": 68,
+        "h": 308
+      },
+      {
+        "id": "hub-door-gumiho",
+        "w": 66,
+        "h": 308
+      },
+      {
+        "id": "hub-door-naddaha",
+        "w": 79,
+        "h": 308
+      },
+      {
+        "id": "hub-door-spring-heeled-jack",
+        "w": 68,
+        "h": 308
+      },
+      {
+        "id": "hub-door-vetala",
+        "w": 66,
+        "h": 308
+      },
+      {
+        "id": "hub-door-yuki-onna",
+        "w": 66,
+        "h": 308
+      },
+      {
+        "id": "hub-clock",
+        "w": 79,
+        "h": 338
+      },
+      {
+        "id": "hub-cabinet",
+        "w": 113,
+        "h": 263
+      },
+      {
+        "id": "hub-window",
+        "w": 143,
+        "h": 443
+      }
+    ],
+    "spiritPanel390": {
+      "panelW": 358,
+      "panelH": 380,
+      "padInline": "24px / 24px",
+      "padBlock": "32px / 32px",
+      "textInside": true,
+      "bodyW": 310,
+      "scrollOverflow": false,
+      "fontSize": "16px",
+      "color": "rgb(232, 226, 208)"
+    },
+    "fearMeter390": {
+      "frame": [
+        256,
+        64
+      ],
+      "trackInsideFrame": true,
+      "track": [
+        215,
+        26
+      ],
+      "fillRatio": 0,
+      "valuenow": "0"
+    },
+    "motion": {
+      "full": {
+        "mode": "full",
+        "flashMax": 0.525583,
+        "flashAnim": [
+          "fear-flash"
+        ],
+        "capAnim": [
+          "fear-caption-full"
+        ],
+        "fearAnimations": [
+          "fear-flash",
+          "fear-caption-full"
+        ],
+        "caption": "Something moves at the edge of sight.",
+        "samples": 35
+      },
+      "reduced": {
+        "mode": "reduced",
+        "flashMax": 0,
+        "flashAnim": [
+          "none"
+        ],
+        "capAnim": [
+          "fear-fade"
+        ],
+        "fearAnimations": [
+          "fear-fade"
+        ],
+        "caption": "Something moves at the edge of sight.",
+        "samples": 35
+      }
+    },
+    "sceneSizes": [
+      {
+        "file": "baba-yaga/baba-yaga-game-scene-01.webp",
+        "bytes": 421910
+      },
+      {
+        "file": "baba-yaga/baba-yaga-game-scene-02.webp",
+        "bytes": 357130
+      },
+      {
+        "file": "baba-yaga/baba-yaga-game-scene-03.webp",
+        "bytes": 330250
+      },
+      {
+        "file": "banshee/banshee-game-scene-01.webp",
+        "bytes": 430910
+      },
+      {
+        "file": "banshee/banshee-game-scene-02.webp",
+        "bytes": 441756
+      },
+      {
+        "file": "banshee/banshee-game-scene-03.webp",
+        "bytes": 327016
+      },
+      {
+        "file": "chupacabra/chupacabra-game-scene-01.webp",
+        "bytes": 361116
+      },
+      {
+        "file": "chupacabra/chupacabra-game-scene-02.webp",
+        "bytes": 324320
+      },
+      {
+        "file": "chupacabra/chupacabra-game-scene-03.webp",
+        "bytes": 471210
+      },
+      {
+        "file": "draugr/draugr-game-scene-01.webp",
+        "bytes": 421568
+      },
+      {
+        "file": "draugr/draugr-game-scene-02.webp",
+        "bytes": 312298
+      },
+      {
+        "file": "draugr/draugr-game-scene-03.webp",
+        "bytes": 321128
+      },
+      {
+        "file": "el-coco/el-coco-game-scene-01.webp",
+        "bytes": 265416
+      },
+      {
+        "file": "el-coco/el-coco-game-scene-02.webp",
+        "bytes": 318318
+      },
+      {
+        "file": "el-coco/el-coco-game-scene-03.webp",
+        "bytes": 262500
+      },
+      {
+        "file": "flying-dutchman/flying-dutchman-game-scene-01.webp",
+        "bytes": 247460
+      },
+      {
+        "file": "flying-dutchman/flying-dutchman-game-scene-02.webp",
+        "bytes": 414002
+      },
+      {
+        "file": "flying-dutchman/flying-dutchman-game-scene-03.webp",
+        "bytes": 356156
+      },
+      {
+        "file": "gumiho/gumiho-game-scene-01.webp",
+        "bytes": 322002
+      },
+      {
+        "file": "gumiho/gumiho-game-scene-02.webp",
+        "bytes": 414250
+      },
+      {
+        "file": "gumiho/gumiho-game-scene-03.webp",
+        "bytes": 331466
+      },
+      {
+        "file": "hub/hub-game-scene-01.webp",
+        "bytes": 317352
+      },
+      {
+        "file": "hub/tutorial-game-scene-01.webp",
+        "bytes": 308466
+      },
+      {
+        "file": "jersey-devil/jersey-devil-game-scene-01.webp",
+        "bytes": 482648
+      },
+      {
+        "file": "jersey-devil/jersey-devil-game-scene-02.webp",
+        "bytes": 418866
+      },
+      {
+        "file": "jersey-devil/jersey-devil-game-scene-03.webp",
+        "bytes": 324824
+      },
+      {
+        "file": "naddaha/naddaha-game-scene-01.webp",
+        "bytes": 343562
+      },
+      {
+        "file": "naddaha/naddaha-game-scene-02.webp",
+        "bytes": 327770
+      },
+      {
+        "file": "naddaha/naddaha-game-scene-03.webp",
+        "bytes": 337356
+      },
+      {
+        "file": "spring-heeled-jack/spring-heeled-jack-game-scene-01.webp",
+        "bytes": 276666
+      },
+      {
+        "file": "spring-heeled-jack/spring-heeled-jack-game-scene-02.webp",
+        "bytes": 279272
+      },
+      {
+        "file": "spring-heeled-jack/spring-heeled-jack-game-scene-03.webp",
+        "bytes": 283722
+      },
+      {
+        "file": "vetala/vetala-game-scene-01.webp",
+        "bytes": 328292
+      },
+      {
+        "file": "vetala/vetala-game-scene-02.webp",
+        "bytes": 318026
+      },
+      {
+        "file": "vetala/vetala-game-scene-03.webp",
+        "bytes": 393878
+      },
+      {
+        "file": "yuki-onna/yuki-onna-game-scene-01.webp",
+        "bytes": 440006
+      },
+      {
+        "file": "yuki-onna/yuki-onna-game-scene-02.webp",
+        "bytes": 291182
+      },
+      {
+        "file": "yuki-onna/yuki-onna-game-scene-03.webp",
+        "bytes": 274344
+      }
+    ],
+    "timing": {
+      "hall": {
+        "runs": [
+          {
+            "url": "http://localhost:3200/game/",
+            "scenePaintMs": 5823,
+            "fcpMs": 1664,
+            "sceneImageMs": 5793,
+            "sceneImage": "/media/hub/hub-game-scene-01.webp",
+            "sceneBytes": 317558,
+            "totalBytes": 933261,
+            "imageBytes": 317558,
+            "requests": 20,
+            "codeCssBytes": 495749,
+            "codeCssGzipBytes": 158054,
+            "imageUrls": [
+              "/media/hub/hub-game-scene-01.webp"
+            ],
+            "imageDone": [
+              {
+                "f": "hub-game-scene-01.webp",
+                "bytes": 317558,
+                "endMs": 5792
+              }
+            ]
+          },
+          {
+            "url": "http://localhost:3200/game/",
+            "scenePaintMs": 5871,
+            "fcpMs": 1708,
+            "sceneImageMs": 5828,
+            "sceneImage": "/media/hub/hub-game-scene-01.webp",
+            "sceneBytes": 317558,
+            "totalBytes": 933261,
+            "imageBytes": 317558,
+            "requests": 20,
+            "codeCssBytes": 495749,
+            "codeCssGzipBytes": 158054,
+            "imageUrls": [
+              "/media/hub/hub-game-scene-01.webp"
+            ],
+            "imageDone": [
+              {
+                "f": "hub-game-scene-01.webp",
+                "bytes": 317558,
+                "endMs": 5827
+              }
+            ]
+          },
+          {
+            "url": "http://localhost:3200/game/",
+            "scenePaintMs": 5845,
+            "fcpMs": 1680,
+            "sceneImageMs": 5806,
+            "sceneImage": "/media/hub/hub-game-scene-01.webp",
+            "sceneBytes": 317558,
+            "totalBytes": 933261,
+            "imageBytes": 317558,
+            "requests": 20,
+            "codeCssBytes": 495749,
+            "codeCssGzipBytes": 158054,
+            "imageUrls": [
+              "/media/hub/hub-game-scene-01.webp"
+            ],
+            "imageDone": [
+              {
+                "f": "hub-game-scene-01.webp",
+                "bytes": 317558,
+                "endMs": 5806
+              }
+            ]
+          }
+        ],
+        "medianScenePaintMs": 5845
+      },
+      "tutorial": {
+        "runs": [
+          {
+            "url": "http://localhost:3200/game/tutorial",
+            "scenePaintMs": 5240,
+            "fcpMs": 1076,
+            "sceneImageMs": 5199,
+            "sceneImage": "/media/hub/tutorial-game-scene-01.webp",
+            "sceneBytes": 308672,
+            "totalBytes": 957648,
+            "imageBytes": 344164,
+            "requests": 25,
+            "codeCssBytes": 502606,
+            "codeCssGzipBytes": 160765,
+            "imageUrls": [
+              "/media/hub/tutorial-game-scene-01.webp",
+              "/media/shared/shared-game-ui-fear-01.webp"
+            ],
+            "imageDone": [
+              {
+                "f": "tutorial-game-scene-01.webp",
+                "bytes": 308672,
+                "endMs": 5199
+              },
+              {
+                "f": "shared-game-ui-fear-01.webp",
+                "bytes": 35492,
+                "endMs": 6215
+              }
+            ]
+          },
+          {
+            "url": "http://localhost:3200/game/tutorial",
+            "scenePaintMs": 4883,
+            "fcpMs": 728,
+            "sceneImageMs": 4834,
+            "sceneImage": "/media/hub/tutorial-game-scene-01.webp",
+            "sceneBytes": 308672,
+            "totalBytes": 957648,
+            "imageBytes": 344164,
+            "requests": 25,
+            "codeCssBytes": 502606,
+            "codeCssGzipBytes": 160765,
+            "imageUrls": [
+              "/media/hub/tutorial-game-scene-01.webp",
+              "/media/shared/shared-game-ui-fear-01.webp"
+            ],
+            "imageDone": [
+              {
+                "f": "tutorial-game-scene-01.webp",
+                "bytes": 308672,
+                "endMs": 4833
+              },
+              {
+                "f": "shared-game-ui-fear-01.webp",
+                "bytes": 35492,
+                "endMs": 5913
+              }
+            ]
+          },
+          {
+            "url": "http://localhost:3200/game/tutorial",
+            "scenePaintMs": 4861,
+            "fcpMs": 656,
+            "sceneImageMs": 4785,
+            "sceneImage": "/media/hub/tutorial-game-scene-01.webp",
+            "sceneBytes": 308672,
+            "totalBytes": 957650,
+            "imageBytes": 344164,
+            "requests": 25,
+            "codeCssBytes": 502606,
+            "codeCssGzipBytes": 160765,
+            "imageUrls": [
+              "/media/hub/tutorial-game-scene-01.webp",
+              "/media/shared/shared-game-ui-fear-01.webp"
+            ],
+            "imageDone": [
+              {
+                "f": "tutorial-game-scene-01.webp",
+                "bytes": 308672,
+                "endMs": 4784
+              },
+              {
+                "f": "shared-game-ui-fear-01.webp",
+                "bytes": 35492,
+                "endMs": 5778
+              }
+            ]
+          }
+        ],
+        "medianScenePaintMs": 4883
+      },
+      "banshee first scene": {
+        "runs": [
+          {
+            "url": "http://localhost:3200/game/world/banshee",
+            "scenePaintMs": 11597,
+            "fcpMs": 2932,
+            "sceneImageMs": 11535,
+            "sceneImage": "/media/banshee/game/banshee-game-scene-01.webp",
+            "sceneBytes": 431134,
+            "totalBytes": 1906353,
+            "imageBytes": 1209927,
+            "requests": 34,
+            "codeCssBytes": 518929,
+            "codeCssGzipBytes": 165958,
+            "imageUrls": [
+              "/media/banshee/game/banshee-game-scene-01.webp",
+              "/media/banshee/game/banshee-game-hotspot-02.webp",
+              "/media/banshee/game/banshee-game-hotspot-04.webp",
+              "/media/banshee/game/banshee-game-hotspot-01.webp",
+              "/media/banshee/game/banshee-game-hotspot-05.webp",
+              "/media/banshee/game/banshee-game-hotspot-06.webp",
+              "/media/banshee/game/banshee-game-hotspot-03.webp",
+              "/media/banshee/game/banshee-game-spirit-01.webp",
+              "/media/shared/shared-game-ui-fear-01.webp"
+            ],
+            "imageDone": [
+              {
+                "f": "banshee-game-scene-01.webp",
+                "bytes": 431134,
+                "endMs": 11535
+              },
+              {
+                "f": "banshee-game-hotspot-02.webp",
+                "bytes": 43852,
+                "endMs": 5527
+              },
+              {
+                "f": "banshee-game-hotspot-04.webp",
+                "bytes": 108647,
+                "endMs": 8389
+              },
+              {
+                "f": "banshee-game-hotspot-01.webp",
+                "bytes": 115257,
+                "endMs": 8554
+              },
+              {
+                "f": "banshee-game-hotspot-05.webp",
+                "bytes": 97993,
+                "endMs": 8045
+              },
+              {
+                "f": "banshee-game-hotspot-06.webp",
+                "bytes": 103089,
+                "endMs": 8202
+              },
+              {
+                "f": "banshee-game-hotspot-03.webp",
+                "bytes": 106421,
+                "endMs": 9289
+              },
+              {
+                "f": "banshee-game-spirit-01.webp",
+                "bytes": 168042,
+                "endMs": 10935
+              },
+              {
+                "f": "shared-game-ui-fear-01.webp",
+                "bytes": 35492,
+                "endMs": 12536
+              }
+            ]
+          },
+          {
+            "url": "http://localhost:3200/game/world/banshee",
+            "scenePaintMs": 10407,
+            "fcpMs": 1736,
+            "sceneImageMs": 10341,
+            "sceneImage": "/media/banshee/game/banshee-game-scene-01.webp",
+            "sceneBytes": 431134,
+            "totalBytes": 1906353,
+            "imageBytes": 1209927,
+            "requests": 34,
+            "codeCssBytes": 518929,
+            "codeCssGzipBytes": 165958,
+            "imageUrls": [
+              "/media/banshee/game/banshee-game-scene-01.webp",
+              "/media/banshee/game/banshee-game-hotspot-02.webp",
+              "/media/banshee/game/banshee-game-hotspot-04.webp",
+              "/media/banshee/game/banshee-game-hotspot-01.webp",
+              "/media/banshee/game/banshee-game-hotspot-05.webp",
+              "/media/banshee/game/banshee-game-hotspot-06.webp",
+              "/media/banshee/game/banshee-game-hotspot-03.webp",
+              "/media/banshee/game/banshee-game-spirit-01.webp",
+              "/media/shared/shared-game-ui-fear-01.webp"
+            ],
+            "imageDone": [
+              {
+                "f": "banshee-game-scene-01.webp",
+                "bytes": 431134,
+                "endMs": 10340
+              },
+              {
+                "f": "banshee-game-hotspot-02.webp",
+                "bytes": 43852,
+                "endMs": 4326
+              },
+              {
+                "f": "banshee-game-hotspot-04.webp",
+                "bytes": 108647,
+                "endMs": 7194
+              },
+              {
+                "f": "banshee-game-hotspot-01.webp",
+                "bytes": 115257,
+                "endMs": 7351
+              },
+              {
+                "f": "banshee-game-hotspot-05.webp",
+                "bytes": 97993,
+                "endMs": 6851
+              },
+              {
+                "f": "banshee-game-hotspot-06.webp",
+                "bytes": 103089,
+                "endMs": 7009
+              },
+              {
+                "f": "banshee-game-hotspot-03.webp",
+                "bytes": 106421,
+                "endMs": 8096
+              },
+              {
+                "f": "banshee-game-spirit-01.webp",
+                "bytes": 168042,
+                "endMs": 9740
+              },
+              {
+                "f": "shared-game-ui-fear-01.webp",
+                "bytes": 35492,
+                "endMs": 11293
+              }
+            ]
+          },
+          {
+            "url": "http://localhost:3200/game/world/banshee",
+            "scenePaintMs": 10436,
+            "fcpMs": 1760,
+            "sceneImageMs": 10362,
+            "sceneImage": "/media/banshee/game/banshee-game-scene-01.webp",
+            "sceneBytes": 431134,
+            "totalBytes": 1906353,
+            "imageBytes": 1209927,
+            "requests": 34,
+            "codeCssBytes": 518929,
+            "codeCssGzipBytes": 165958,
+            "imageUrls": [
+              "/media/banshee/game/banshee-game-scene-01.webp",
+              "/media/banshee/game/banshee-game-hotspot-02.webp",
+              "/media/banshee/game/banshee-game-hotspot-04.webp",
+              "/media/banshee/game/banshee-game-hotspot-01.webp",
+              "/media/banshee/game/banshee-game-hotspot-05.webp",
+              "/media/banshee/game/banshee-game-hotspot-06.webp",
+              "/media/banshee/game/banshee-game-hotspot-03.webp",
+              "/media/banshee/game/banshee-game-spirit-01.webp",
+              "/media/shared/shared-game-ui-fear-01.webp"
+            ],
+            "imageDone": [
+              {
+                "f": "banshee-game-scene-01.webp",
+                "bytes": 431134,
+                "endMs": 10362
+              },
+              {
+                "f": "banshee-game-hotspot-02.webp",
+                "bytes": 43852,
+                "endMs": 4354
+              },
+              {
+                "f": "banshee-game-hotspot-04.webp",
+                "bytes": 108647,
+                "endMs": 7208
+              },
+              {
+                "f": "banshee-game-hotspot-01.webp",
+                "bytes": 115257,
+                "endMs": 7372
+              },
+              {
+                "f": "banshee-game-hotspot-05.webp",
+                "bytes": 97993,
+                "endMs": 6872
+              },
+              {
+                "f": "banshee-game-hotspot-06.webp",
+                "bytes": 103089,
+                "endMs": 7028
+              },
+              {
+                "f": "banshee-game-hotspot-03.webp",
+                "bytes": 106421,
+                "endMs": 8117
+              },
+              {
+                "f": "banshee-game-spirit-01.webp",
+                "bytes": 168042,
+                "endMs": 9762
+              },
+              {
+                "f": "shared-game-ui-fear-01.webp",
+                "bytes": 35492,
+                "endMs": 11328
+              }
+            ]
+          }
+        ],
+        "medianScenePaintMs": 10436
+      }
+    },
+    "timingSceneOnly": {
+      "hall": {
+        "runs": [
+          {
+            "url": "http://localhost:3200/game/",
+            "scenePaintMs": 5820,
+            "fcpMs": 1672,
+            "sceneImageMs": 5799,
+            "sceneImage": "/media/hub/hub-game-scene-01.webp",
+            "sceneBytes": 317558,
+            "totalBytes": 933261,
+            "imageBytes": 317558,
+            "requests": 20,
+            "codeCssBytes": 495749,
+            "codeCssGzipBytes": 158054,
+            "imageUrls": [
+              "/media/hub/hub-game-scene-01.webp"
+            ],
+            "imageDone": [
+              {
+                "f": "hub-game-scene-01.webp",
+                "bytes": 317558,
+                "endMs": 5799
+              }
+            ]
+          },
+          {
+            "url": "http://localhost:3200/game/",
+            "scenePaintMs": 5891,
+            "fcpMs": 1732,
+            "sceneImageMs": 5871,
+            "sceneImage": "/media/hub/hub-game-scene-01.webp",
+            "sceneBytes": 317558,
+            "totalBytes": 933261,
+            "imageBytes": 317558,
+            "requests": 20,
+            "codeCssBytes": 495749,
+            "codeCssGzipBytes": 158054,
+            "imageUrls": [
+              "/media/hub/hub-game-scene-01.webp"
+            ],
+            "imageDone": [
+              {
+                "f": "hub-game-scene-01.webp",
+                "bytes": 317558,
+                "endMs": 5870
+              }
+            ]
+          },
+          {
+            "url": "http://localhost:3200/game/",
+            "scenePaintMs": 5902,
+            "fcpMs": 1732,
+            "sceneImageMs": 5872,
+            "sceneImage": "/media/hub/hub-game-scene-01.webp",
+            "sceneBytes": 317558,
+            "totalBytes": 933261,
+            "imageBytes": 317558,
+            "requests": 20,
+            "codeCssBytes": 495749,
+            "codeCssGzipBytes": 158054,
+            "imageUrls": [
+              "/media/hub/hub-game-scene-01.webp"
+            ],
+            "imageDone": [
+              {
+                "f": "hub-game-scene-01.webp",
+                "bytes": 317558,
+                "endMs": 5872
+              }
+            ]
+          }
+        ],
+        "medianScenePaintMs": 5891
+      },
+      "tutorial": {
+        "runs": [
+          {
+            "url": "http://localhost:3200/game/tutorial",
+            "scenePaintMs": 5273,
+            "fcpMs": 1096,
+            "sceneImageMs": 5213,
+            "sceneImage": "/media/hub/tutorial-game-scene-01.webp",
+            "sceneBytes": 308672,
+            "totalBytes": 922156,
+            "imageBytes": 308672,
+            "requests": 24,
+            "codeCssBytes": 502606,
+            "codeCssGzipBytes": 160765,
+            "imageUrls": [
+              "/media/hub/tutorial-game-scene-01.webp"
+            ],
+            "imageDone": [
+              {
+                "f": "tutorial-game-scene-01.webp",
+                "bytes": 308672,
+                "endMs": 5213
+              }
+            ]
+          },
+          {
+            "url": "http://localhost:3200/game/tutorial",
+            "scenePaintMs": 4925,
+            "fcpMs": 744,
+            "sceneImageMs": 4857,
+            "sceneImage": "/media/hub/tutorial-game-scene-01.webp",
+            "sceneBytes": 308672,
+            "totalBytes": 922158,
+            "imageBytes": 308672,
+            "requests": 24,
+            "codeCssBytes": 502606,
+            "codeCssGzipBytes": 160765,
+            "imageUrls": [
+              "/media/hub/tutorial-game-scene-01.webp"
+            ],
+            "imageDone": [
+              {
+                "f": "tutorial-game-scene-01.webp",
+                "bytes": 308672,
+                "endMs": 4856
+              }
+            ]
+          },
+          {
+            "url": "http://localhost:3200/game/tutorial",
+            "scenePaintMs": 4856,
+            "fcpMs": 652,
+            "sceneImageMs": 4785,
+            "sceneImage": "/media/hub/tutorial-game-scene-01.webp",
+            "sceneBytes": 308672,
+            "totalBytes": 922156,
+            "imageBytes": 308672,
+            "requests": 24,
+            "codeCssBytes": 502606,
+            "codeCssGzipBytes": 160765,
+            "imageUrls": [
+              "/media/hub/tutorial-game-scene-01.webp"
+            ],
+            "imageDone": [
+              {
+                "f": "tutorial-game-scene-01.webp",
+                "bytes": 308672,
+                "endMs": 4784
+              }
+            ]
+          }
+        ],
+        "medianScenePaintMs": 4925
+      },
+      "banshee first scene": {
+        "runs": [
+          {
+            "url": "http://localhost:3200/game/world/banshee",
+            "scenePaintMs": 7993,
+            "fcpMs": 2908,
+            "sceneImageMs": 7937,
+            "sceneImage": "/media/banshee/game/banshee-game-scene-01.webp",
+            "sceneBytes": 431134,
+            "totalBytes": 1127560,
+            "imageBytes": 431134,
+            "requests": 26,
+            "codeCssBytes": 518929,
+            "codeCssGzipBytes": 165958,
+            "imageUrls": [
+              "/media/banshee/game/banshee-game-scene-01.webp"
+            ],
+            "imageDone": [
+              {
+                "f": "banshee-game-scene-01.webp",
+                "bytes": 431134,
+                "endMs": 7936
+              }
+            ]
+          },
+          {
+            "url": "http://localhost:3200/game/world/banshee",
+            "scenePaintMs": 6790,
+            "fcpMs": 1704,
+            "sceneImageMs": 6738,
+            "sceneImage": "/media/banshee/game/banshee-game-scene-01.webp",
+            "sceneBytes": 431134,
+            "totalBytes": 1127560,
+            "imageBytes": 431134,
+            "requests": 26,
+            "codeCssBytes": 518929,
+            "codeCssGzipBytes": 165958,
+            "imageUrls": [
+              "/media/banshee/game/banshee-game-scene-01.webp"
+            ],
+            "imageDone": [
+              {
+                "f": "banshee-game-scene-01.webp",
+                "bytes": 431134,
+                "endMs": 6737
+              }
+            ]
+          },
+          {
+            "url": "http://localhost:3200/game/world/banshee",
+            "scenePaintMs": 6838,
+            "fcpMs": 1772,
+            "sceneImageMs": 6779,
+            "sceneImage": "/media/banshee/game/banshee-game-scene-01.webp",
+            "sceneBytes": 431134,
+            "totalBytes": 1127560,
+            "imageBytes": 431134,
+            "requests": 26,
+            "codeCssBytes": 518929,
+            "codeCssGzipBytes": 165958,
+            "imageUrls": [
+              "/media/banshee/game/banshee-game-scene-01.webp"
+            ],
+            "imageDone": [
+              {
+                "f": "banshee-game-scene-01.webp",
+                "bytes": 431134,
+                "endMs": 6779
+              }
+            ]
+          }
+        ],
+        "medianScenePaintMs": 6838
+      }
+    },
+    "rtl": {
+      "dir": "rtl",
+      "lang": "ar",
+      "viewportDir": "ltr",
+      "over": 0,
+      "pan": [
+        {
+          "text": "‹Pan left",
+          "x": 16
+        },
+        {
+          "text": "Pan right›",
+          "x": 266
+        }
+      ],
+      "h1": "The Night Archive",
+      "stageOrigin": 0
+    }
+  }
+}

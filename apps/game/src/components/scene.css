@@ -1,0 +1,244 @@
+/* Scene viewer, Hotspot and scene navigation. Logical properties only. The stage is a fixed painted image, so it is
+   forced to direction: ltr and positioned from the inline start (the physical left edge); see lib/pan.ts. */
+.scene-viewer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.scene-heading {
+  font-family: var(--font-display, inherit);
+  margin-block: 0;
+}
+.scene-viewport {
+  position: relative;
+  overflow: hidden;
+  inline-size: 100%;
+  block-size: min(70vh, 36rem);
+  block-size: min(70dvh, 36rem);
+  touch-action: pan-y;
+  user-select: none;
+  direction: ltr;
+  background: var(--color-surface, #1c1620);
+  cursor: grab;
+}
+.scene-viewport:focus-visible,
+.scene-hotspot:focus-visible,
+.scene-button:focus-visible,
+.scene-heading:focus-visible {
+  outline: 3px solid var(--color-glow, #f4d58d);
+  outline-offset: 2px;
+}
+.scene-stage {
+  position: relative;
+  block-size: 100%;
+  will-change: transform;
+}
+.scene-image {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  pointer-events: none;
+}
+.scene-sprite {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.scene-sprite-img {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: contain;
+}
+.scene-sprite-half,
+.scene-sprite-right {
+  inline-size: 200%;
+  max-inline-size: none;
+}
+.scene-sprite-right {
+  transform: translateX(-50%);
+}
+.scene-hotspot {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  min-inline-size: 44px;
+  min-block-size: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 0.5rem;
+  background: transparent;
+  color: var(--color-glow, #f4d58d);
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+.scene-hotspot[data-marked='true'] {
+  border: 3px dashed var(--color-glow, #f4d58d);
+  background: color-mix(in srgb, var(--color-glow, #f4d58d) 15%, transparent);
+}
+.scene-hotspot-icon {
+  margin: 0.25rem;
+  background: var(--color-bg, #0e0b10);
+  border-radius: 50%;
+  padding: 2px;
+}
+.scene-pan {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  direction: ltr;
+}
+.scene-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+.scene-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  max-inline-size: 100%;
+  overflow-x: auto;
+  /* room for the 3px focus ring plus offset, which overflow would otherwise clip */
+  padding: 6px;
+}
+.scene-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-inline-size: 44px;
+  min-block-size: 44px;
+  padding-inline: 0.75rem;
+  border: 1px solid var(--color-accent, #e0a84b);
+  border-radius: 0.5rem;
+  background: var(--color-surface, #1c1620);
+  color: var(--color-ink, #e9e1d3);
+  font-family: var(--font-ui, inherit);
+  cursor: pointer;
+}
+.scene-button:disabled,
+.scene-button[aria-disabled='true'] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.scene-button[aria-current='true'] {
+  background: var(--color-accent, #e0a84b);
+  color: var(--color-bg, #0e0b10);
+  font-weight: 700;
+  text-decoration: underline;
+}
+/* Hall door overlays, drawn from tokens (G11): a lock for a locked door, a ring for a sign-in door. Not colour alone:
+   the state is also in the accessible name and in the panel text. */
+.scene-hotspot-badge {
+  position: absolute;
+  inset-block-start: 40%;
+  inset-inline-start: 50%;
+  translate: -50% 0;
+  inline-size: 28px;
+  block-size: 22px;
+  border-radius: 4px;
+  background: var(--color-accent, #e0a84b);
+  box-shadow: 0 0 0 2px var(--color-bg, #0e0b10);
+  pointer-events: none;
+}
+.scene-hotspot-badge[data-kind='lock']::before {
+  content: '';
+  position: absolute;
+  inset-block-end: 100%;
+  inset-inline-start: 50%;
+  translate: -50% 0;
+  inline-size: 16px;
+  block-size: 14px;
+  border: 4px solid var(--color-accent, #e0a84b);
+  border-block-end: 0;
+  border-radius: 10px 10px 0 0;
+}
+.scene-hotspot-badge[data-kind='signin'] {
+  border-radius: 50%;
+  inline-size: 26px;
+  block-size: 26px;
+  background: var(--color-bg, #0e0b10);
+  border: 4px dashed var(--color-glow, #f4d58d);
+}
+.hall-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem;
+  border: 1px solid var(--color-accent, #e0a84b);
+  border-radius: 0.5rem;
+  background: var(--color-surface, #1c1620);
+}
+.hall-panel:focus-visible,
+.hall-panel h3:focus-visible {
+  outline: 3px solid var(--color-glow, #f4d58d);
+  outline-offset: 2px;
+}
+.hall-cabinet {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.hall-cabinet-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem;
+  border: 1px solid var(--color-muted, #9c9285);
+  border-radius: 0.5rem;
+  text-align: center;
+}
+.hall-cabinet-slot img {
+  inline-size: 4rem;
+  block-size: 4rem;
+  object-fit: contain;
+}
+.hall-ending {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding: 2rem 1rem;
+  background: var(--color-bg, #0e0b10);
+}
+.hall-ending-image {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+.hall-ending-text {
+  max-inline-size: 36rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background: color-mix(in srgb, var(--color-bg, #0e0b10) 85%, transparent);
+  text-align: center;
+  font-size: 1.5rem;
+}
+/* Dev overlay for `?layout=1`: shown only when the viewer is given `outline` in a dev build. */
+.scene-outline {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  box-sizing: border-box;
+  border: 2px dashed #ff4fd8;
+  color: #ff4fd8;
+  font: 12px/1 monospace;
+  pointer-events: none;
+}
