@@ -28,7 +28,9 @@ export function atlasRouteRules(gameOrigin = GAME_PROJECT_ORIGIN): Record<string
   return {
     '/**': { headers: { ...SECURITY_HEADERS } },
     '/media/**': { headers: { 'cache-control': LONG_CACHE } },
-    '/game': { proxy: `${gameOrigin}/game` },
+    // Nitro's exact rule matches both /game and /game/; it must target the game's /game/ (with the slash), because the
+    // game answers /game with a relative 307 to /game/, which would bring the browser back here in a loop.
+    '/game': { proxy: `${gameOrigin}/game/` },
     '/game/**': { proxy: `${gameOrigin}/game/**` },
   };
 }

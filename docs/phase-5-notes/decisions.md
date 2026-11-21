@@ -580,3 +580,10 @@ All calls: project `restless-silence-44986466`, branch `br-delicate-brook-art2cr
 - Expected after deploy, to check: the atlas `/**` header rule also matches proxied `/game` responses; values are identical to the game's own, so no conflict is expected (check for duplicated `x-frame-options`).
 - Full suite after the change: skeleton 787 passed, 8 expected fail; atlas 228; game 291. Typecheck clean; secret scan clean. Local Owner servers untouched (both still 200; `VERCEL=1` builds write `.vercel/output` only).
 - Still to check after the next deploy (3.2 continues): `/game/` through the atlas, headers on `/game/`, sign-in origin (`INVALID_ORIGIN`), the stream-abort check, and the rate-limit key behind the rewrite (finding S1; stop if shared).
+
+## Task 3.2, second deploy (f4a9ff4): redirect loop on /game and /game/
+
+- **Owner's live check:** fixed: game alias `/game/` 200 with the four headers; atlas `/` and `/game/tutorial` (through the proxy) 200 with headers, each header once; functions in `pdx1` (`x-vercel-id …::pdx1::…`); `/gamebook` stays an atlas 404. Broken: atlas `/game/` and `/game` → 307 `Location: /game/`, a loop.
+- **Cause:** Nitro's exact rule compiles to `^\/game\/?$`, so it also matches `/game/`, and its target was `https://trick-or-true.vercel.app/game` (no slash). The game answers `/game` with a relative 307 to `/game/`, which the browser resolves against the atlas origin, back into the same rule.
+- **Fix:** the exact rule now targets `https://trick-or-true.vercel.app/game/` (alias `/game/` answers 200). Built atlas `config.json`: `^\/game\/?$ → …/game/`, `^\/game(/…)? → …/game/$1`.
+- **Test:** new built-config case: for `/game` and `/game/` the first matching rewrite's destination is exactly `…/game/`. Mutation (slash-less target) fails 2 tests; restored, 17 pass.

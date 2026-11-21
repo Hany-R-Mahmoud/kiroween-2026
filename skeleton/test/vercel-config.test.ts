@@ -39,7 +39,7 @@ describe('Nitro route rules (the source of production routing and headers)', () 
   it('the atlas forwards /game and everything under it to the game project', () => {
     const r = atlasRouteRules();
     expect(GAME_PROJECT_ORIGIN).toBe('https://trick-or-true.vercel.app');
-    expect(r['/game']?.proxy).toBe(`${GAME_PROJECT_ORIGIN}/game`);
+    expect(r['/game']?.proxy).toBe(`${GAME_PROJECT_ORIGIN}/game/`);
     expect(r['/game/**']?.proxy).toBe(`${GAME_PROJECT_ORIGIN}/game/**`);
   });
   it('the game sends the security headers on every response', () => {
@@ -69,6 +69,13 @@ describe.skipIf(!existsSync(`${out('atlas')}/config.json`) || !existsSync(`${out
       expect(before(rs, i), path).toBe(true);
     }
     expect(rs.some((r) => r.dest?.startsWith(GAME_PROJECT_ORIGIN) && new RegExp(r.src!).test('/gamebook'))).toBe(false);
+  });
+  it('atlas: /game and /game/ never map to a slash-less /game (the game 307s that back to /game/: a loop)', () => {
+    const rs = routes('atlas');
+    for (const path of ['/game', '/game/']) {
+      const first = rs.find((r) => r.dest !== undefined && new RegExp(r.src!).test(path));
+      expect(first?.dest, path).toBe(`${GAME_PROJECT_ORIGIN}/game/`);
+    }
   });
   it.each([['atlas', '/legends/banshee'], ['game', '/game/']])('%s: %s gets the security headers before the server', (app, path) => {
     const rs = routes(app);
