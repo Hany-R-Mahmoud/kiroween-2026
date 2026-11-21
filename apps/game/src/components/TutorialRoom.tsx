@@ -21,6 +21,7 @@ import { FearMeter } from './FearMeter.tsx';
 import { Marked } from './Marked.tsx';
 import { FearOverlay, type FearRequest } from './FearOverlay.tsx';
 import { SceneNav } from './SceneNav.tsx';
+import { ScenePaintProvider } from './ScenePaint.tsx';
 import { SceneViewer, type ViewerHotspot } from './SceneViewer.tsx';
 import { StartRetry } from './StartRetry.tsx';
 import './scene.css';
@@ -111,6 +112,7 @@ export function TutorialRoom({ view, reply, question, mediaBase, atlasOrigin, re
   const href = view?.hint2 ? tutorialHint2Href(view.hint2.anchor, atlasOrigin) : null;
 
   return (
+    <ScenePaintProvider>
     <div className="flex flex-col gap-4" aria-busy={busy} data-lit={lit ? 'true' : 'false'} data-solved={solved ? 'true' : 'false'}>
       <p className="text-muted" data-tutorial="pan-prompt">
         {t('tut.pan')}
@@ -133,7 +135,7 @@ export function TutorialRoom({ view, reply, question, mediaBase, atlasOrigin, re
       ) : failed ? (
         <StartRetry onRetry={onRetry} buttonClass="scene-button" />
       ) : (
-        <p role="status">{t('tut.loading')}</p>
+        <p role="status">{t('loading.study')}</p>
       )}
       {view && busy ? (
         <p role="status" className="text-muted" data-pending="true">
@@ -158,7 +160,7 @@ export function TutorialRoom({ view, reply, question, mediaBase, atlasOrigin, re
         ) : null}
       </div>
       {panel ? (
-        <div ref={panelRef} className="hall-panel" role="region" aria-labelledby="tutorial-panel-title" tabIndex={-1} onKeyDown={onPanelKey} data-panel={panel.kind}>
+        <div ref={panelRef} className="hall-panel mood-worn" role="region" aria-labelledby="tutorial-panel-title" tabIndex={-1} onKeyDown={onPanelKey} data-panel={panel.kind}>
           {panel.kind === 'object' ? (
             <>
               <h3 id="tutorial-panel-title" className="font-display text-xl">
@@ -184,7 +186,9 @@ export function TutorialRoom({ view, reply, question, mediaBase, atlasOrigin, re
                 <p>{t('tut.drawer.open')}</p>
               ) : (
                 <form onSubmit={submit} className="flex flex-col gap-3">
-                  <p>{question === null ? t('tut.loading') : <Marked text={question} />}</p>
+                  <div className="book-paper rounded p-3" data-testid="tutorial-question">
+                    <p>{question === null ? t('loading.study') : <Marked text={question} />}</p>
+                  </div>
                   <label className="flex flex-col gap-1" htmlFor="tutorial-code">
                     <span>{t('tut.drawer.prompt')}</span>
                     <input
@@ -218,14 +222,14 @@ export function TutorialRoom({ view, reply, question, mediaBase, atlasOrigin, re
         </div>
       ) : null}
       {solved ? (
-        <section className="hall-panel tutorial-reward" aria-labelledby="tutorial-reward-title" data-reward="true">
+        <section className="hall-panel mood-worn tutorial-reward" aria-labelledby="tutorial-reward-title" data-reward="true">
           <h3 id="tutorial-reward-title" className="font-display text-xl">
             {t('tut.reward')}
           </h3>
           <img src={mediaUrl(mediaBase, KEY_ASSET)} width={96} height={96} alt="" loading="lazy" decoding="async" />
           <ul className="hall-cabinet" aria-label={t('tut.slot.glow')}>
             <li className="hall-cabinet-slot" data-glow="true">
-              <span>{t('hub.cabinet.empty')}</span>
+              <span>{t('tut.reward.line')}</span>
             </li>
           </ul>
           <button type="button" className="scene-button" onClick={onHall}>
@@ -234,5 +238,6 @@ export function TutorialRoom({ view, reply, question, mediaBase, atlasOrigin, re
         </section>
       ) : null}
     </div>
+    </ScenePaintProvider>
   );
 }

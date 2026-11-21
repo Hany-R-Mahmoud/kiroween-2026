@@ -50,4 +50,5 @@ createServer(async (req, res) => {
   res.writeHead(response.status, headers);
   if (response.body) Readable.fromWeb(response.body).pipe(res);
   else res.end();
-}).listen(port, () => console.log(`build served on http://localhost:${port}${BASE}`));
+// localhost only: this is a local check server and must not be reachable from the network
+}).listen(port, 'localhost', () => console.log(`build served on http://localhost:${port}${BASE}`));

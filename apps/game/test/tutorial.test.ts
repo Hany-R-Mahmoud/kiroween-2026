@@ -69,10 +69,10 @@ describe('tutorial start failure', () => {
     const html = render({ view: null, failed: true });
     expect(html).toContain(en['play.startFailed']);
     expect(html).toMatch(new RegExp(`<button[^>]*>${en['play.retry']}</button>`));
-    expect(html).not.toContain(en['tut.loading']);
+    expect(html).not.toContain(en['loading.study']);
   });
   it('shows the loading line while start is running, and no retry once the room is open', () => {
-    expect(render({ view: null })).toContain(en['tut.loading']);
+    expect(render({ view: null })).toContain(en['loading.study']);
     expect(render({ failed: true })).not.toContain(en['play.startFailed']);
   });
 });
@@ -89,7 +89,7 @@ describe('tutorial room render', () => {
   });
   it('shows a loading line and no meter before the server answers', () => {
     const html = render({ view: null });
-    expect(html).toContain(en['tut.loading']);
+    expect(html).toContain(en['loading.study']);
     expect(html).not.toContain('role="meter"');
   });
   it('the drawer panel shows the server question and a code input', () => {
@@ -114,6 +114,8 @@ describe('tutorial room render', () => {
     expect(html).toContain('shared-game-ui-key-01');
     expect(html).toContain('data-glow="true"');
     expect(html).toContain(en['tut.reward']);
+    expect(html).toContain(en['tut.reward.line']);
+    expect(html).not.toContain('An empty slot');
     expect(html).toContain(en['tut.toHall']);
   });
   it('shows a pending line, aria-busy and an aria-disabled Hint 2 while a call is pending', () => {

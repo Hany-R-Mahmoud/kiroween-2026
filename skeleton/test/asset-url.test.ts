@@ -28,6 +28,21 @@ describe('assetUrl (folder rule in assets/README.md)', () => {
     expect(wrong).toEqual([]);
   });
 
+  // Built phone copies (Requirement 13.2): skipped when apps/atlas has no build, like the other built-output tests.
+  const built = fileURLToPath(new URL('../../apps/atlas/dist/client/media/', import.meta.url));
+  it.skipIf(!existsSync(built))('every built hero copy is 1000 px wide with the full image ratio', () => {
+    const wide = contentAssets.filter((a) => /-hero-/.test(a.id) && (parseAssetSize(a.size)?.width ?? 0) > 1000);
+    expect(wide.length).toBeGreaterThan(0);
+    for (const a of wide) {
+      const copy = `${built}${assetUrl(`${a.id}-w1000`).slice(MEDIA_PREFIX.length)}`;
+      expect(existsSync(copy), `${a.id} has a built copy`).toBe(true);
+      const real = webpSize(copy);
+      const full = parseAssetSize(a.size)!;
+      expect(real.width, a.id).toBe(1000);
+      expect(Math.abs(real.height - (full.height * 1000) / full.width), a.id).toBeLessThanOrEqual(1);
+    }
+  });
+
   it.each([
     ['banshee-atlas-hero-01', '/media/banshee/atlas/banshee-atlas-hero-01.webp'],
     ['flying-dutchman-game-scene-02', '/media/flying-dutchman/game/flying-dutchman-game-scene-02.webp'],

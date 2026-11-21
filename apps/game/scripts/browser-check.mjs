@@ -6,6 +6,11 @@
 // Run against built servers (the game build and the atlas build, which serves /media):
 //   node apps/game/scripts/browser-check.mjs --game http://localhost:3200 --atlas http://localhost:3201 \
 //        [--arabic http://localhost:3202] [--only keyboard,touch,motion,timing,rtl] [--shots docs/phase-4-notes/screens] [--json out.json]
+// Layout screenshots (Phase 5, task 4.4): needs a DEV server (the ?layout=1 overlay is compiled out of builds) with the database:
+//   node apps/game/scripts/browser-check.mjs --only layout [--base http://localhost:3000] [--cookie-env KW_COOKIE] [--guest-world banshee]
+// One PNG per scene in .debug/screens/ (git-ignored). Worlds other than the guest world need a signed-in user who finished the
+// tutorial: put that user's Cookie header value in an environment variable and pass its NAME with --cookie-env. The value is
+// sent as a request header and never printed. Without it, those Worlds are reported as SKIP.
 // The game server must run with ATLAS_ORIGIN set to the atlas origin. The script is a guest: it uses a fresh browser
 // context per scenario, reads only what a browser can read (page text, atlas pages) and prints no cookie or token.
 import { spawn } from 'node:child_process';
@@ -24,6 +29,10 @@ const GAME = arg('game', 'http://localhost:3200').replace(/\/+$/, '');
 const ATLAS = arg('atlas', 'http://localhost:3201').replace(/\/+$/, '');
 const ARABIC = arg('arabic', '').replace(/\/+$/, '');
 const ONLY = new Set(arg('only', 'keyboard,touch,motion,timing,rtl').split(','));
+const BASE = arg('base', 'http://localhost:3000').replace(/\/+$/, '');
+const COOKIE_ENV = arg('cookie-env', '');
+const GUEST_WORLD = arg('guest-world', 'banshee');
+const LAYOUT_DIR = join(ROOT, '.debug/screens');
 const SHOTS = join(ROOT, arg('shots', 'docs/phase-4-notes/screens'));
 const JSON_OUT = arg('json', '');
 const MAX_WORLD_RUNS = Number(arg('runs', '5'));
@@ -861,13 +870,63 @@ async function rtlCheck(cdp) {
   }
 }
 
+// ---- (6) layout screenshots (task 4.4) ----------------------------------------------------------------------------------------
+/** One PNG per scene: the whole panorama with every tap box outlined and labelled (`?layout=1`, dev server only). */
+async function layoutCheck(cdp) {
+  info(`--- (6) layout screenshots from ${BASE}, saved under .debug/screens/ ---`);
+  const cookie = COOKIE_ENV ? process.env[COOKIE_ENV] : '';
+  if (COOKIE_ENV && !cookie) info(`environment variable ${COOKIE_ENV} is empty: running as a guest`);
+  mkdirSync(LAYOUT_DIR, { recursive: true });
+  const worlds = readdirSync(join(ROOT, 'apps/game/src/layout/worlds')).filter((f) => f.endsWith('.ts')).map((f) => f.slice(0, -3)).sort();
+  const targets = [
+    { name: 'hall', path: '/game/?layout=1' },
+    { name: 'tutorial', path: '/game/tutorial?layout=1' },
+    ...worlds.map((w) => ({ name: w, path: `/game/world/${w}?layout=1`, world: w })),
+  ];
+  const p = await Page.open(cdp, { width: 1800, height: 1000, dpr: 1 });
+  try {
+    if (cookie) await p.send('Network.setExtraHTTPHeaders', { headers: { Cookie: cookie } });
+    for (const t of targets) {
+      if (t.world && !cookie && t.world !== GUEST_WORLD) {
+        info(`SKIP  ${t.name}: needs --cookie-env (signed-in user who finished the tutorial)`);
+        continue;
+      }
+      try {
+        await p.send('Page.navigate', { url: `${BASE}${t.path}` });
+        await p.waitFor(`document.querySelector('.scene-viewport') || (${JSON.stringify(!!t.world)} && !location.pathname.startsWith('/game/world/'))`, 60000, `${t.name} page`);
+        if (!(await p.ev(`!!document.querySelector('.scene-viewport')`))) {
+          info(`SKIP  ${t.name}: redirected to ${await p.ev('location.pathname')} (not allowed for this visitor)`);
+          continue;
+        }
+        const count = t.world ? await p.ev(`document.querySelectorAll('.scene-tab').length || 1`) : 1;
+        for (let i = 0; i < count; i++) {
+          if (t.world && count > 1) await p.ev(`document.querySelectorAll('.scene-tab')[${i}].click()`);
+          await p.waitFor(`(() => { const i = document.querySelector('.scene-image'); return i && i.complete && i.naturalWidth > 0 && document.querySelector('.scene-outline'); })()`, 60000, `${t.name} scene ${i + 1} outlines`);
+          await sleep(400);
+          const sceneId = await p.ev(`document.querySelector('.scene-viewport').dataset.sceneId`);
+          const fits = await p.ev(`(() => { const v = document.querySelector('.scene-viewport').getBoundingClientRect(); const s = document.querySelector('.scene-image').getBoundingClientRect(); return s.width <= v.width + 1; })()`);
+          const clip = await p.ev(`(() => { const r = document.querySelector('.scene-viewport').getBoundingClientRect(); return { x: r.x, y: r.y, width: r.width, height: r.height }; })()`);
+          const file = `${t.name}--${sceneId}.png`;
+          const { data } = await p.send('Page.captureScreenshot', { format: 'png', clip: { ...clip, x: clip.x + (await p.ev('scrollX')), y: clip.y + (await p.ev('scrollY')), scale: 1 } });
+          writeFileSync(join(LAYOUT_DIR, file), Buffer.from(data, 'base64'));
+          check(`${t.name} ${sceneId}: .debug/screens/${file}`, true, fits ? '' : 'panorama wider than the window: only part shown');
+        }
+      } catch (e) {
+        check(`${t.name}: layout screenshot`, false, String(e.message).slice(0, 200));
+      }
+    }
+  } finally {
+    await p.close();
+  }
+}
+
 // ---- main -----------------------------------------------------------------------------------------------------------------------
 const cdp = await launch();
 process.on('exit', shutdown);
 try {
   const version = await cdp.send('Browser.getVersion');
   info(`browser ${version.product}; driver: Node ${process.version} WebSocket over the DevTools protocol`);
-  const steps = { keyboard: keyboardCheck, touch: touchCheck, motion: motionCheck, timing: timingCheck, rtl: rtlCheck };
+  const steps = { keyboard: keyboardCheck, touch: touchCheck, motion: motionCheck, timing: timingCheck, rtl: rtlCheck, layout: layoutCheck };
   for (const [name, fn] of Object.entries(steps)) {
     if (!ONLY.has(name)) continue;
     try {

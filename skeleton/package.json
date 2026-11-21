@@ -7,7 +7,11 @@
   "exports": {
     ".": "./src/index.ts",
     "./client": "./src/client.ts",
-    "./design/tokens.css": "./src/design/tokens.css"
+    "./design/tokens.css": "./src/design/tokens.css",
+    "./design/mood.css": "./src/design/mood.css",
+    "./mood": "./src/design/Mood.tsx",
+    "./book": "./src/book/index.ts",
+    "./book/book.css": "./src/book/book.css"
   },
   "scripts": {
     "test": "vitest run",
@@ -18,7 +22,8 @@
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:check-models": "tsx scripts/check-models.ts",
-    "db:check-reader": "tsx scripts/check-reader-role.ts"
+    "db:check-reader": "tsx scripts/check-reader-role.ts",
+    "db:set-atlas-web-password": "tsx scripts/set-atlas-web-password.ts"
   },
   "dependencies": {
     "dotenv": "18.0.10",
@@ -29,11 +34,16 @@
   "devDependencies": {
     "@types/node": "24.19.2",
     "@types/pg": "8.23.1",
+    "@types/react": "19.3.0",
     "drizzle-kit": "0.31.11",
     "fast-check": "4.10.3",
+    "react": "19.3.1",
     "tsx": "4.23.15",
     "typescript": "6.0.3",
     "vite": "8.3.8",
     "vitest": "5.1.1"
+  },
+  "peerDependencies": {
+    "react": "19.3.1"
   }
 }

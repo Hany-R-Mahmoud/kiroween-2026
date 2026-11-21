@@ -42,3 +42,8 @@
 .spirit-caption {
   color: var(--caption-ink);
 }
+/* The spirit text sits on the shared paper (book.css), so its ink is the book's dark ink. Two classes beat the one-class
+   .spirit-caption above by specificity, so the order no longer depends on which stylesheet loads last. */
+.spirit-panel-body.spirit-caption {
+  color: var(--book-ink);
+}

@@ -134,7 +134,7 @@ describe('play service: guests', () => {
 describe('play service: tutorial', () => {
   const details: TutorialDetail[] = TUTORIAL_DETAIL_IDS.map((d) => ({ detailId: d, question: `q ${d}`, answer: '11', alsoAccept: ['eleven'] }));
   function tdeps() {
-    const { store, tokens } = setup();
+    const { store, tokens } = playSetup(legend.id, undefined, { tutorialDone: false }); // these tests read the real flag
     let n = 0;
     const deps: TutorialDeps = { store, tokens, newSeed: () => `t-${n++}`, loadTutorialDetails: async () => details };
     return { deps, store };

@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ManifestDotwebmanifestRouteImport } from './routes/manifest[.]webmanifest'
 import { Route as AnchorAnchorRouteImport } from './routes/anchor.$anchor'
 import { Route as LegendsLegendIdRouteImport } from './routes/legends.$legendId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ManifestDotwebmanifestRoute = ManifestDotwebmanifestRouteImport.update({
+  id: '/manifest.webmanifest',
+  path: '/manifest.webmanifest',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AnchorAnchorRoute = AnchorAnchorRouteImport.update({
@@ -31,30 +37,40 @@ const LegendsLegendIdRoute = LegendsLegendIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/manifest.webmanifest': typeof ManifestDotwebmanifestRoute
   '/anchor/$anchor': typeof AnchorAnchorRoute
   '/legends/$legendId': typeof LegendsLegendIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/manifest.webmanifest': typeof ManifestDotwebmanifestRoute
   '/anchor/$anchor': typeof AnchorAnchorRoute
   '/legends/$legendId': typeof LegendsLegendIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/manifest.webmanifest': typeof ManifestDotwebmanifestRoute
   '/anchor/$anchor': typeof AnchorAnchorRoute
   '/legends/$legendId': typeof LegendsLegendIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/anchor/$anchor' | '/legends/$legendId'
+  fullPaths:
+    '/' | '/manifest.webmanifest' | '/anchor/$anchor' | '/legends/$legendId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/anchor/$anchor' | '/legends/$legendId'
-  id: '__root__' | '/' | '/anchor/$anchor' | '/legends/$legendId'
+  to: '/' | '/manifest.webmanifest' | '/anchor/$anchor' | '/legends/$legendId'
+  id:
+    | '__root__'
+    | '/'
+    | '/manifest.webmanifest'
+    | '/anchor/$anchor'
+    | '/legends/$legendId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ManifestDotwebmanifestRoute: typeof ManifestDotwebmanifestRoute
   AnchorAnchorRoute: typeof AnchorAnchorRoute
   LegendsLegendIdRoute: typeof LegendsLegendIdRoute
 }
@@ -66,6 +82,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/manifest.webmanifest': {
+      id: '/manifest.webmanifest'
+      path: '/manifest.webmanifest'
+      fullPath: '/manifest.webmanifest'
+      preLoaderRoute: typeof ManifestDotwebmanifestRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/anchor/$anchor': {
@@ -87,6 +110,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ManifestDotwebmanifestRoute: ManifestDotwebmanifestRoute,
   AnchorAnchorRoute: AnchorAnchorRoute,
   LegendsLegendIdRoute: LegendsLegendIdRoute,
 }

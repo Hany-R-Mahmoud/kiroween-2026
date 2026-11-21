@@ -18,9 +18,14 @@ export const playableLegends: Legend[] = allLegends.filter((l) => {
 });
 
 /** Real service dependencies over the in-memory store. `seeds` are handed out in order, then the last one repeats. */
-export function playSetup(guestWorld: string, seeds?: string[]) {
+/**
+ * `tutorialDone` (default true): every signed-in player in these World scenarios has done the tutorial, the
+ * precondition of the Phase 5 tutorial lock. Pass false to get the real player_flags answer of the memory store.
+ */
+export function playSetup(guestWorld: string, seeds?: string[], opts: { tutorialDone?: boolean } = {}) {
   let n = 0;
-  const store = createMemoryPlayStore();
+  const memory = createMemoryPlayStore();
+  const store = opts.tutorialDone === false ? memory : { ...memory, tutorialDone: async () => true };
   const tokens = createTokenCodec({ key: randomBytes(32), now: () => 1_700_000_000_000 });
   const deps: PlayDeps = {
     store,

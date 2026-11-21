@@ -7,7 +7,7 @@
 //   kiroween.guest.tutorial.play.v1    the tutorial's own token, so a reload resumes the tutorial
 //   kiroween.guest.runs.v1             guest broken worlds (existing skeleton module), written from the server's result
 // A stored value is only ever text that the server issued. Nothing here decodes a token or trusts one.
-import { addGuestRun, atlasUrl, isLegendId, PLAY_ERROR_MESSAGES, readGuestRuns, type Action, type EndInfo, type KeyValueStore, type PlayView, type Reply } from '@kiroween/skeleton/client';
+import { addGuestRun, atlasUrl, isLegendId, PLAY_ERROR_MESSAGES, TOO_MANY_TRIES_MESSAGE, readGuestRuns, type Action, type EndInfo, type KeyValueStore, type PlayView, type Reply } from '@kiroween/skeleton/client';
 import type { PlayResponse, TutorialResponse } from '@kiroween/skeleton';
 
 export const PLAY_TOKEN_PREFIX = 'kiroween.guest.play.v1.';
@@ -72,6 +72,10 @@ export const isSessionError = (e: unknown): boolean => e instanceof Error && e.m
 
 /** True when an error is the server's 409 "the game moved on" (a `rev` mismatch that survived the server's own retry). */
 export const isConflictError = (e: unknown): boolean => e instanceof Error && e.message === PLAY_ERROR_MESSAGES.conflict;
+/** The World start was refused because this signed-in player has not done the tutorial (403, fixed text). */
+export const isTutorialRequired = (e: unknown): boolean => e instanceof Error && e.message === PLAY_ERROR_MESSAGES['tutorial-required'];
+/** The tutorial answer was refused by the rate limit (429, fixed text). */
+export const isTooManyTries = (e: unknown): boolean => e instanceof Error && e.message === TOO_MANY_TRIES_MESSAGE;
 
 // ---- views and reducers (pure) -------------------------------------------------------------------------------------
 

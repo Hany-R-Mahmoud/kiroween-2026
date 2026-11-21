@@ -1,4 +1,6 @@
 import { createRootRoute, HeadContent, Link, Outlet, Scripts, useRouter } from '@tanstack/react-router';
+import { BASE_PALETTE } from '@kiroween/skeleton/client';
+import { Mood } from '@kiroween/skeleton/mood';
 import { signOut } from '../auth/client';
 import { BASE_FONTS, fontLinks } from '../fonts';
 import { translate } from '../i18n/t';
@@ -9,8 +11,8 @@ import appCss from '../styles.css?url';
 export const Route = createRootRoute({
   loader: () => getShell(),
   head: () => ({
-    meta: [{ charSet: 'utf-8' }, { name: 'viewport', content: 'width=device-width, initial-scale=1' }, { title: translate('en', 'app.title') }],
-    links: [{ rel: 'stylesheet', href: appCss }, ...fontLinks(BASE_FONTS)],
+    meta: [{ charSet: 'utf-8' }, { name: 'viewport', content: 'width=device-width, initial-scale=1' }, { title: translate('en', 'app.title') }, { name: 'theme-color', content: BASE_PALETTE.bg }],
+    links: [{ rel: 'stylesheet', href: appCss }, { rel: 'manifest', href: '/game/manifest.webmanifest' }, { rel: 'apple-touch-icon', href: '/game/icons/apple-touch-180.png' }, ...fontLinks(BASE_FONTS)],
   }),
   component: RootComponent,
   notFoundComponent: NotFound,
@@ -45,6 +47,7 @@ function RootComponent() {
         <HeadContent />
       </head>
       <body className="min-h-screen bg-bg font-body text-ink">
+        <Mood />
         <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:start-2 focus:top-2 focus:rounded focus:bg-surface focus:p-2">
           {t('nav.skip')}
         </a>

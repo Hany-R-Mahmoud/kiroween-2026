@@ -1,6 +1,7 @@
 import tailwindcss from '@tailwindcss/vite';
 import { tanstackStart } from '@tanstack/react-start/plugin/vite';
 import viteReact from '@vitejs/plugin-react';
+import { nitro } from 'nitro/vite';
 import { fileURLToPath } from 'node:url';
 import { defineConfig, loadEnv, type Plugin } from 'vite';
 import { media } from './vite.media.ts';
@@ -25,6 +26,7 @@ export default defineConfig({
   envPrefix: 'KIROWEEN_PUBLIC_',
   server: { port: 3001 },
   resolve: { tsconfigPaths: true },
-  // the React plugin must come after Start's plugin
-  plugins: [serverEnvFromEnvDir(), media(`${repoRoot}assets`), tanstackStart(), viteReact(), tailwindcss()],
+  // the React plugin must come after Start's plugin. Nitro builds the Vercel output and runs only on Vercel (VERCEL is set
+  // there), so local builds, serve-build.mjs and the smoke scripts keep using Start's own server output.
+  plugins: [serverEnvFromEnvDir(), media(`${repoRoot}assets`), tanstackStart(), ...(process.env.VERCEL ? [nitro()] : []), viteReact(), tailwindcss()],
 });

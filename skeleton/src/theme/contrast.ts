@@ -49,7 +49,8 @@ export function resolveTheme(theme: { palette: string; displayFont: string; body
   const both: [string, string][] = [['background', p.background], ['surface', p.surface]];
   const ink = pick('ink', [['the pack ink', p.ink], ['the base ink', BASE_PALETTE.ink]], both, AA_TEXT, notes);
   const accent = pick('accent (links)', [['the pack accent', p.accent], ['the base accent', BASE_PALETTE.accent], ['the ink', ink]], both, AA_TEXT, notes);
-  const glow = pick('glow (large headings)', [['the pack glow', p.glow], ['the base glow', BASE_PALETTE.glow], ['the ink', ink]], [['background', p.background]], AA_LARGE, notes);
+  // Panel headings in the glow colour sit on the surface as well as the background, so both must reach 4.5:1 (R22.1).
+  const glow = pick('glow (headings)', [['the pack glow', p.glow], ['the base glow', BASE_PALETTE.glow], ['the ink', ink]], both, AA_TEXT, notes);
   const muted = pick('muted (secondary text)', [['the base muted', BASE_PALETTE.muted], ['the ink', ink]], both, AA_TEXT, notes);
   return {
     vars: {

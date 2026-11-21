@@ -27,3 +27,6 @@ pnpm-debug.log*
 # OS and editor
 .DS_Store
 .idea/
+
+# Debug screenshots (Phase 5)
+.debug/

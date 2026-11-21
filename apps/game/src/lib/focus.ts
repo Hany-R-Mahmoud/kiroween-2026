@@ -19,3 +19,13 @@ export function usePanelOpener(): { remember: () => void; restore: () => void } 
     restore: () => returnFocus(opener),
   };
 }
+
+/**
+ * Keys for a modal dialog whose only control is one button: Escape closes it, Tab (either direction) stays on that
+ * button so focus cannot leave until the dialog is closed.
+ */
+export function dialogKeyAction(key: string): 'close' | 'trap' | null {
+  if (key === 'Escape') return 'close';
+  if (key === 'Tab') return 'trap';
+  return null;
+}

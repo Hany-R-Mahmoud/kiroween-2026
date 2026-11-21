@@ -1,5 +1,7 @@
 import type { AtlasChapter, AtlasLegend, AtlasVersion } from '@kiroween/skeleton/client';
+import { Book } from '@kiroween/skeleton/book';
 import type { Translate } from '../i18n/t';
+import { bookLabels } from './bookLabels';
 import { Img } from './Img';
 import { MetaList } from './MetaList';
 import { InlineText, StoryText } from './StoryText';
@@ -11,13 +13,13 @@ const isWebLink = (url: string) => /^https?:\/\//i.test(url.trim());
 function Chapter({ chapter, t }: { chapter: AtlasChapter; t: Translate }) {
   const headingId = `${chapter.anchor}-title`;
   return (
-    <section id={chapter.anchor} aria-labelledby={headingId} className="measure mx-auto flex flex-col gap-5">
+    <section id={chapter.anchor} aria-labelledby={headingId} className="book-chapter measure mx-auto flex flex-col gap-5">
       <h2 id={headingId} {...headingProps} className="text-3xl text-glow">
         <span className="text-muted">{`${t('legend.chapter', { n: chapter.ordinal })}: `}</span>
         <InlineText text={chapter.title} t={t} />
       </h2>
       {chapter.plate && (
-        <figure className="plate">
+        <figure className="plate book-plate mood-torn">
           <Img image={chapter.plate} alt={t('alt.plate', { n: chapter.ordinal, title: chapter.title })} />
         </figure>
       )}
@@ -60,7 +62,7 @@ const contentsLink = 'inline-flex min-h-11 items-center';
 function LegendHeader({ legend, t }: { legend: AtlasLegend; t: Translate }) {
   return (
     <header className="flex flex-col gap-6">
-      {legend.hero && <Img image={legend.hero} alt={t('alt.hero', { title: legend.title })} priority className="aspect-video w-full object-cover" />}
+      {legend.hero && <Img image={legend.hero} hero alt={t('alt.hero', { title: legend.title })} priority className="aspect-video w-full object-cover" />}
       <div className="measure mx-auto flex w-full flex-col gap-4 px-4">
         <h1 id="legend-title" className="text-4xl text-glow sm:text-5xl">
           {legend.title}
@@ -191,17 +193,21 @@ export function LegendPage({ legend, t }: { legend: AtlasLegend; t: Translate })
     <article aria-labelledby="legend-title" className="flex flex-col gap-16 pb-16">
       <LegendHeader legend={legend} t={t} />
       <Contents legend={legend} t={t} />
-      <section aria-label={t('legend.coldOpen')} className="measure mx-auto px-4">
-        <StoryText text={legend.coldOpen} t={t} className="text-lg" />
-      </section>
-      <div className="flex flex-col gap-16 px-4">
-        {legend.chapters.map((c) => (
-          <Chapter key={c.anchor} chapter={c} t={t} />
-        ))}
-      </div>
-      <Versions legend={legend} t={t} />
-      <DocumentedTold legend={legend} t={t} />
-      <Sources legend={legend} t={t} />
+      <Book labels={bookLabels(t)}>
+        <div className="flex flex-col gap-16">
+          <section aria-label={t('legend.coldOpen')} className="measure mx-auto px-4">
+            <StoryText text={legend.coldOpen} t={t} className="text-lg" />
+          </section>
+          <div className="flex flex-col gap-16 px-4">
+            {legend.chapters.map((c) => (
+              <Chapter key={c.anchor} chapter={c} t={t} />
+            ))}
+          </div>
+          <Versions legend={legend} t={t} />
+          <DocumentedTold legend={legend} t={t} />
+          <Sources legend={legend} t={t} />
+        </div>
+      </Book>
     </article>
   );
 }

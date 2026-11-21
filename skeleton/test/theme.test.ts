@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { AA_LARGE, AA_TEXT, BASE_PALETTE, contrastRatio, resolveTheme } from '../src/theme/contrast.ts';
+import { BOOK_INK, PAPER_BASE, PAPER_FLOOR, bookColors } from '../src/book/index.ts';
 import { fontStack, parsePalette, ThemeError, themeFonts } from '../src/theme/palette.ts';
 import { allLegends, legendById } from './helpers/legends.ts';
 
@@ -53,13 +54,45 @@ describe('theme packs', () => {
     }
   });
 
+  it('book ink and accent reach 4.5:1 on the paper (floor, base and warm tint) for all twelve packs, the base theme and the Keeper\'s Note page', () => {
+    const css = readFileSync(new URL('../src/book/book.css', import.meta.url), 'utf8');
+    const tint = /--book-paper-tint:\s*(#[0-9a-f]{6})/i.exec(css)![1]!;
+    const pages: [string, Parameters<typeof bookColors>[0]][] = [
+      ...allLegends.map((l) => [l.id, resolveTheme(l.theme)] as [string, ReturnType<typeof resolveTheme>]),
+      ['base theme', BASE_PALETTE],
+      ["keeper's note page (base theme)", BASE_PALETTE],
+    ];
+    expect(pages).toHaveLength(14);
+    for (const [name, theme] of pages) {
+      const c = bookColors(theme);
+      for (const paper of [PAPER_FLOOR, PAPER_BASE, tint])
+        for (const [role, colour] of [['ink', c.ink], ['accent', c.accent]] as const)
+          expect(contrastRatio(colour, paper), `${name} ${role} ${colour} on ${paper}`).toBeGreaterThanOrEqual(AA_TEXT);
+    }
+  });
+  it('PAPER_FLOOR is no lighter than the darkest paper text can sit on (book.css layers over the texture\'s darkest 8 px patch)', () => {
+    // Patch mean measured from shared-atlas-paper-01 (512 px tile, 8 px blocks): rgb(218 202 179). Text sits at least the 1.25rem page
+    // padding (20 px) inside the edge: edge gradient 0.18 fades over 7% (about 25 px), the 3rem inset shadow (0.3) is about 0.06 at 20 px.
+    const css = readFileSync(new URL('../src/book/book.css', import.meta.url), 'utf8');
+    const tint = /--book-paper-tint:\s*#([0-9a-f]{6})/i.exec(css)![1]!.match(/../g)!.map((h) => parseInt(h, 16));
+    const mul = (c: number[], s: number[], a: number) => c.map((v, i) => (1 - a) * v + (a * v * s[i]!) / 255);
+    let c = [218, 202, 179].map((v, i) => (v * tint[i]!) / 255);
+    c = mul(c, [130, 80, 30], 0.1);
+    c = mul(c, [120, 90, 40], 0.18 * (1 - 20 / 25));
+    c = c.map((v, i) => 0.94 * v + 0.06 * [60, 40, 15][i]!);
+    const hex = `#${c.map((v) => Math.round(v).toString(16).padStart(2, '0')).join('')}`;
+    expect(contrastRatio(bookColors(BASE_PALETTE).ink, hex)).toBeGreaterThanOrEqual(AA_TEXT);
+    expect(contrastRatio(bookColors(BASE_PALETTE).accent, hex)).toBeGreaterThanOrEqual(AA_TEXT);
+    expect(contrastRatio(BOOK_INK, hex), 'the floor is the darker (safer) estimate').toBeGreaterThanOrEqual(contrastRatio(BOOK_INK, PAPER_FLOOR));
+  });
   it('falls back to the base accent exactly where the pack accent fails as a link colour', () => {
-    const withFallback = allLegends.filter((l) => resolveTheme(l.theme).fallbacks.length > 0).map((l) => l.id);
+    const withFallback = allLegends.filter((l) => resolveTheme(l.theme).fallbacks.some((f) => f.startsWith('accent'))).map((l) => l.id);
     expect(withFallback).toEqual(LINK_FALLBACKS);
     for (const id of LINK_FALLBACKS) {
       const r = resolveTheme(legendById(id).theme);
-      expect(r.fallbacks, id).toHaveLength(1);
-      expect(r.fallbacks[0], id).toMatch(/^accent \(links\): the pack accent .*using the base accent$/);
+      const accentNotes = r.fallbacks.filter((f) => f.startsWith('accent'));
+      expect(accentNotes, id).toHaveLength(1);
+      expect(accentNotes[0], id).toMatch(/^accent \(links\): the pack accent .*using the base accent$/);
       expect(r.vars['--color-accent'], id).toBe(BASE_PALETTE.accent);
     }
     expect(resolveTheme(legendById('banshee').theme).vars['--color-accent']).toBe(parsePalette(legendById('banshee').theme.palette).accent);

@@ -26,7 +26,7 @@ export function StoryText({ text, t, className = '' }: { text: string; t: Transl
   return (
     <div className={`story ${className}`}>
       {storyBlocks(text).map((block, i) => (
-        <p key={i}>
+        <p key={i} data-block="">
           <Tokens tokens={block} t={t} />
         </p>
       ))}

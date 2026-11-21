@@ -26,7 +26,7 @@ export function Hotspot({ box, label, marked, markedText, badge, scale, onActiva
   return (
     <button
       type="button"
-      className="scene-hotspot"
+      className="scene-hotspot mood-hotspot-glow"
       data-hotspot={box.id}
       data-marked={marked ? 'true' : undefined}
       data-badge={badge}

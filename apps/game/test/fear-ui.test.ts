@@ -1,12 +1,15 @@
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import fc from 'fast-check';
+import { createElement } from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
+import { ScenePaintContext } from '../src/components/ScenePaint.tsx';
 import { assetUrl } from '@kiroween/skeleton';
 import { FEAR_EVENTS } from '../src/layout/fearEvents.ts';
 import { captionFor, createFearGate, EVENT_SHOW_MS, MIN_EVENT_GAP_MS } from '../src/lib/fearPlayer.ts';
 import { isReducedMotion, MOTION_KEY, readMotion, writeMotion } from '../src/lib/motion.ts';
-import { SPIRIT_FRAME_ASSET, spiritAsset } from '../src/components/SpiritPanel.tsx';
+import { SPIRIT_FRAME_ASSET, spiritAsset, SpiritCorner, SpiritPanel } from '../src/components/SpiritPanel.tsx';
 import { clampFear, FEAR_FRAME_ASSET } from '../src/components/FearMeter.tsx';
 import { en } from '../src/i18n/en.ts';
 
@@ -136,10 +139,33 @@ describe('spirit panel at phone width (found in headless Chrome, task 11.2)', ()
     expect(css).not.toMatch(/@media\s*\(\s*(max|min)-inline-size/);
     expect(css).toMatch(/@media \(max-width: 30rem\)\s*\{\s*\.spirit-panel \{[^}]*grid-template-columns: minmax\(0, 1fr\)/);
   });
-  it('puts a theme-surface scrim behind the question text over the light parchment frame', () => {
-    expect(css).toMatch(/\.spirit-panel-body \{[^}]*background: color-mix\(in srgb, var\(--color-surface\)/);
+  it('puts the question text on the shared book paper (dark ink) over the light parchment frame', () => {
+    expect(css).not.toMatch(/\.spirit-panel-body \{[^}]*background:/);
+    expect(css).not.toMatch(/\.spirit-panel-body \{[^}]*(?<!-)color:/);
+    expect(renderToStaticMarkup(createElement(SpiritPanel, { legendId: 'banshee', mediaBase: '', children: 'Q' }))).toMatch(/class="spirit-panel-body spirit-caption book-paper"/);
   });
   it('keeps the spirit corner above the pan buttons so it does not hide their labels', () => {
     expect(css).toMatch(/\.spirit-corner \{[^}]*inset-block-end: 3\.5rem/);
+  });
+});
+
+describe('spirit figures wait for the scene image (Requirement 11)', () => {
+  const settled = { firstSceneLoaded: true, loadedSceneId: 's', onSceneSettled: () => {} };
+  const render = (value: typeof settled | undefined) => {
+    const els = [createElement(SpiritCorner, { legendId: 'banshee', mediaBase: '' }), createElement(SpiritPanel, { legendId: 'banshee', mediaBase: '', children: 'Q' })];
+    return els.map((e) => renderToStaticMarkup(value ? createElement(ScenePaintContext.Provider, { value }, e) : e));
+  };
+  it('server markup has no spirit image and no frame url', () => {
+    for (const html of render(undefined)) {
+      expect(html).not.toContain('<img');
+      expect(html).not.toContain('url(');
+    }
+  });
+  it('after the scene settles, the figures and the frame appear', () => {
+    const [corner, panel] = render(settled);
+    expect(corner).toContain(spiritAsset('banshee', 'full'));
+    expect(panel).toContain(spiritAsset('banshee', 'close'));
+    expect(panel).toContain(SPIRIT_FRAME_ASSET);
+    expect(panel).toContain('--book-paper-image:url(');
   });
 });

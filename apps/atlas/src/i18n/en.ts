@@ -1,7 +1,7 @@
 // Every string the atlas UI shows, by key (steering: i18n-rtl.md). Story text comes from Neon, not from here.
 export const en = {
   // shortcut: placeholder name (decisions: names are still open); rename here once they are chosen.
-  'app.title': 'The Atlas of the Night Archive',
+  'app.title': 'Trick or Told',
   'app.description': 'Scary legends from around the world, told as documentaries: what the records say, and what people tell.',
   'nav.skip': 'Skip to the main content',
   'nav.label': 'Atlas',
@@ -48,8 +48,15 @@ export const en = {
   'notFound.heading': 'This page is not in the atlas',
   'notFound.body': 'The link may be old, or the legend may have moved.',
   'notFound.home': 'See every legend',
+  // Loading line in the story's voice (task 6.1; new wording for owner review):
+  'loading.page': 'Turning the pages by candlelight\u2026',
   'error.title': 'The atlas could not be read',
   'error.body': 'Something went wrong while reading the archive. Please try again in a moment.',
   'error.home': 'Back to every legend',
+  'book.region': 'Story pages',
+  'book.previous': 'Previous page',
+  'book.next': 'Next page',
+  'book.pageOf': 'Page {n} of {m}',
+  'book.readAsOnePage': 'Read as one page',
 } as const;
 export type MessageKey = keyof typeof en;

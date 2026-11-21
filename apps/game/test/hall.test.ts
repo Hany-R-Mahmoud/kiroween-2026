@@ -131,7 +131,8 @@ describe('Hall render', () => {
     const html = render({ initialPanel: { kind: 'cabinet' }, broken: ['banshee'], data: { ...base, relics: [{ legendId: 'banshee', assetId: 'banshee-game-relic-01', name: 'The Silver Comb' }] } });
     expect(html.match(/hall-cabinet-slot/g)).toHaveLength(12);
     expect(html).toContain('The Silver Comb');
-    expect(html.match(/An empty slot\./g)).toHaveLength(11);
+    expect(html).not.toContain('An empty slot');
+    expect(html.match(/aria-hidden="true"/g)?.length ?? 0).toBeGreaterThanOrEqual(11);
   });
   it('decoys show the catalog sentence only', () => {
     expect(render({ initialPanel: { kind: 'decoy', id: 'hub-jars' } })).toContain(en['hub.jars']);

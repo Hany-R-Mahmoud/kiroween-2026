@@ -138,6 +138,9 @@ function guestRun(deps: PlayDeps, legend: Legend, token: string | null): { run: 
 export async function startWorld(deps: PlayDeps, visitor: Visitor, input: unknown): Promise<PlayResponse> {
   const { legendId, token } = parsePlay(startWorldSchema, input);
   requireWorld(deps, visitor, legendId);
+  // Tutorial lock (Phase 5): a signed-in player enters a World only after the tutorial, read from player_flags, before
+  // any run is read or created. Guests keep the Hall check only: their receipt lives in the browser (decisions.md 1.10).
+  if (visitor.kind === 'user' && !(await deps.store.tutorialDone(visitor.id))) throw new PlayError('tutorial-required');
   const legend = await deps.loadLegend(legendId);
 
   if (visitor.kind === 'guest') {

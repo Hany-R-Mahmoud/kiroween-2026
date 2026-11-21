@@ -1,3 +1,10 @@
 @import 'tailwindcss';
 @import '@kiroween/skeleton/design/tokens.css';
+@import '@kiroween/skeleton/design/mood.css';
+@import '@kiroween/skeleton/book/book.css';
 @import './styles/theme.css';
+
+/* The shared paper texture lives on the atlas path; the game shows the tint alone until a scene image has loaded (the panel sets the variable then). */
+:root {
+  --book-paper-image: none;
+}

@@ -7,6 +7,7 @@ import { WorldPlay } from '../components/WorldPlay';
 import { fontLinks } from '../fonts';
 import { fearEventsOf, worldLayout } from '../layout';
 import { initialWorldState, playClientFor, worldReducer, type PlayClient } from '../lib/play';
+import { isTutorialRequired } from '../lib/playClient';
 import { themeColorMeta } from '../lib/theme';
 import { atlasHref, chooseFearEvent, markedIds, reducedLineOf, triggerOf, type FearContext } from '../lib/world';
 import { getWorldInfo } from '../server/functions';
@@ -44,6 +45,7 @@ function World() {
   const [pending, setPending] = useState(0);
   const busy = pending > 0;
   const [failed, setFailed] = useState(false);
+  const [needsTutorial, setNeedsTutorial] = useState(false);
   const [fear, setFear] = useState<FearRequest | null>(null);
   const client = useRef<PlayClient | null>(null);
   const played = useRef(new Set<string>());
@@ -75,7 +77,10 @@ function World() {
       return r;
     } catch (e) {
       if (isRedirect(e)) void navigate({ to: '/sign-in' });
-      else setFailed(true);
+      else {
+        setNeedsTutorial(isTutorialRequired(e));
+        setFailed(true);
+      }
       return null;
     } finally {
       setPending((n) => n - 1);
@@ -123,6 +128,7 @@ function World() {
         busy={busy}
         failed={failed}
         onRetry={() => void run((c) => c.start(info.id))}
+        onTutorial={needsTutorial ? () => void navigate({ to: '/tutorial' }) : undefined}
         outline={import.meta.env.DEV && search.layout === 1}
         onChoose={setChosen}
         onTap={(hotspotId) => void act({ kind: 'tap', hotspotId })}

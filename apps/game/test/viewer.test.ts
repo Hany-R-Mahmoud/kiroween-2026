@@ -16,6 +16,7 @@ vi.mock('../src/i18n/useT.ts', () => ({
 
 const { Hotspot } = await import('../src/components/Hotspot.tsx');
 const { SceneViewer } = await import('../src/components/SceneViewer.tsx');
+const { ScenePaintContext } = await import('../src/components/ScenePaint.tsx');
 
 // Limit: the game vitest config has no DOM (no jsdom or happy-dom installed). These tests render static markup and call
 // the pure input functions the viewer uses. Real key, touch and drag behaviour is proven in headless Chrome (task 11.2).
@@ -23,9 +24,9 @@ const { SceneViewer } = await import('../src/components/SceneViewer.tsx');
 const box: HotspotBox = { id: 'hs-comb', x: 400, y: 300, w: 300, h: 300, sprite: { assetId: 'shared-game-ui-fear-01', x: 400, y: 300, w: 300, h: 300 } };
 const layout: SceneLayout = { sceneId: 'sc-1', assetId: 'shared-game-ui-frame-01', hotspots: [box] };
 
-function viewer(marked: boolean): string {
-  return renderToStaticMarkup(
-    createElement(SceneViewer, {
+/** `settled` renders as if the scene image had loaded; otherwise as the server renders it. */
+function viewer(marked: boolean, settled = false): string {
+  const el = createElement(SceneViewer, {
       layout,
       name: 'The attic',
       alt: 'A dim attic',
@@ -33,7 +34,9 @@ function viewer(marked: boolean): string {
       hotspots: [{ id: 'hs-comb', label: 'A bone comb', marked }],
       onActivate: () => {},
       headingId: 'h1',
-    }),
+    });
+  return renderToStaticMarkup(
+    settled ? createElement(ScenePaintContext.Provider, { value: { firstSceneLoaded: true, loadedSceneId: layout.assetId, onSceneSettled: () => {} } }, el) : el,
   );
 }
 
@@ -85,7 +88,7 @@ describe('pan keys and buttons', () => {
   it('the viewport is a focusable, named region that takes key input', () => {
     const html = viewer(false);
     expect(html).toMatch(/role="region"[^>]*aria-label="The attic"|aria-label="The attic"[^>]*role="region"/);
-    expect(html).toMatch(/class="scene-viewport"[^>]*tabindex="0"|tabindex="0"[^>]*class="scene-viewport"/);
+    expect(html).toMatch(/class="scene-viewport mood-vignette-inset"[^>]*tabindex="0"|tabindex="0"[^>]*class="scene-viewport mood-vignette-inset"/);
   });
 });
 
@@ -151,8 +154,16 @@ describe('scene images', () => {
     expect(img).not.toContain('loading="lazy"');
   });
 
-  it('sprites are lazy, decorative and sized', () => {
-    const img = /<img[^>]*scene-sprite-img[^>]*>/.exec(viewer(false))![0];
+  it('server markup has the scene src and no sprite image, but keeps the sized sprite box (Requirement 11.4, 11.6)', () => {
+    const html = viewer(false);
+    expect(html).toContain('class="scene-image"');
+    expect(html).not.toContain('scene-sprite-img');
+    expect(html).not.toContain(`/${box.sprite!.assetId}`);
+    expect(html).toContain('class="scene-sprite"');
+  });
+
+  it('after the scene settles, sprites are lazy, decorative and sized', () => {
+    const img = /<img[^>]*scene-sprite-img[^>]*>/.exec(viewer(false, true))![0];
     expect(img).toContain('loading="lazy"');
     expect(img).toContain('alt=""');
     expect(img).toContain('width="300"');

@@ -47,7 +47,8 @@ describe('server functions: source rules', () => {
   });
 
   it('every server function runs behind the auth middleware or requireUser', () => {
-    for (const c of chunks) expect(c.text, c.name).toMatch(/\.middleware\(\[(authMiddleware|requireUser)\]\)/);
+    // authMiddleware or requireUser comes first; tutorialAct adds only the rate limit after it (Phase 5)
+    for (const c of chunks) expect(c.text, c.name).toMatch(/\.middleware\(\[(authMiddleware|requireUser)(, tutorialRateLimit)?\]\)/);
   });
 
   it('functions for signed-in users only use requireUser', () => {
@@ -123,6 +124,8 @@ describe.skipIf(!built)('built output', () => {
     expect(grep(clientFiles, /aes-256-gcm/i)).toEqual([]);
     for (const word of REMOVED) expect(grep(clientFiles, new RegExp(word))).toEqual([]);
     for (const word of ['correctIndex', 'trueVersionId', 'trueLead', 'swaps']) expect(grep(clientFiles, new RegExp(`\\b${word}\\b`)), word).toEqual([]);
+    // the rate limiter and its key header are server only (Phase 5)
+    expect(grep(clientFiles, /x-forwarded-for|retryAfterSeconds/)).toEqual([]);
   });
 });
 

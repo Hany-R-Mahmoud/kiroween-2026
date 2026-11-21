@@ -1,8 +1,9 @@
 import { BASE_PALETTE, type ResolvedTheme } from '@kiroween/skeleton/client';
 import { createRootRoute, HeadContent, Link, Outlet, Scripts, useMatches } from '@tanstack/react-router';
+import { Mood } from '@kiroween/skeleton/mood';
 import type { CSSProperties, ReactNode } from 'react';
-import { AnchorFocus } from '../components/AnchorFocus';
 import { NotFound } from '../components/NotFound';
+import { BOOK_HEAD_SCRIPT } from '../bookHead';
 import { BASE_FONTS, fontLinks } from '../fonts';
 import { translate } from '../i18n/t';
 import { useT } from '../i18n/useT';
@@ -21,7 +22,8 @@ export const Route = createRootRoute({
       { property: 'og:title', content: translate('en', 'app.title') },
       { property: 'og:description', content: translate('en', 'app.description') },
     ],
-    links: [{ rel: 'stylesheet', href: appCss }, ...fontLinks(BASE_FONTS)],
+    links: [{ rel: 'stylesheet', href: appCss }, { rel: 'manifest', href: '/manifest.webmanifest' }, { rel: 'apple-touch-icon', href: '/icons/apple-touch-180.png' }, ...fontLinks(BASE_FONTS)],
+    scripts: [{ children: BOOK_HEAD_SCRIPT }],
   }),
   component: RootComponent,
   notFoundComponent: () => <NotFoundInShell />,
@@ -44,6 +46,7 @@ function Document({ lang, dir, theme, children }: { lang: string; dir: 'ltr' | '
         <HeadContent />
       </head>
       <body style={theme?.vars as CSSProperties | undefined} className="min-h-screen">
+        <Mood />
         {children}
         <Scripts />
       </body>
@@ -80,7 +83,6 @@ function Shell({ children }: { children: ReactNode }) {
           </Link>
         </p>
       </footer>
-      <AnchorFocus />
     </>
   );
 }

@@ -6,6 +6,7 @@ import { createServer } from 'node:http';
 import { extname, join, normalize } from 'node:path';
 import { Readable } from 'node:stream';
 import { fileURLToPath } from 'node:url';
+import { pipeResponse } from './pipe-response.mjs';
 const clientDir = join(fileURLToPath(new URL('../dist/', import.meta.url)), 'client');
 const { default: app } = await import(new URL('../dist/server/server.js', import.meta.url).href);
 const port = Number(process.env.PORT ?? 3001);
@@ -39,8 +40,15 @@ createServer(async (req, res) => {
     headers: Object.entries(req.headers).flatMap(([k, v]) => (Array.isArray(v) ? v.map((x) => [k, x]) : v === undefined ? [] : [[k, v]])),
     ...(hasBody ? { body: Readable.toWeb(req), duplex: 'half' } : {}),
   });
-  const response = await app.fetch(request);
+  let response;
+  try {
+    response = await app.fetch(request);
+  } catch {
+    // Fixed answer: no error text, and the local server keeps running (same as the game's serve-build.mjs).
+    res.writeHead(500, { 'content-type': 'text/plain' });
+    res.end('Server error');
+    return;
+  }
   res.writeHead(response.status, Object.fromEntries(response.headers));
-  if (response.body) Readable.fromWeb(response.body).pipe(res);
-  else res.end();
+  pipeResponse(response.body, res);
 }).listen(port, () => console.log(`build served on http://localhost:${port}/`));

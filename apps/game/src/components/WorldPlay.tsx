@@ -7,6 +7,7 @@ import { activeSlot, atlasHref, hotspotsOfScene, needsLead, puzzleKey, tapSenten
 import { FearMeter } from './FearMeter';
 import { Marked } from './Marked';
 import { SceneNav } from './SceneNav';
+import { ScenePaintProvider } from './ScenePaint';
 import { SceneViewer } from './SceneViewer';
 import { SpiritCorner, SpiritPanel } from './SpiritPanel';
 import { StartRetry } from './StartRetry';
@@ -31,6 +32,8 @@ export interface WorldPlayProps {
   failed: boolean;
   /** Runs the start call again; offered when the first start failed and there is no view yet. */
   onRetry: () => void;
+  /** Set when the server refused the start because the tutorial is not done: the screen sends the player to the study. */
+  onTutorial?: () => void;
   /** Dev only: outline every tap box with its id (`?layout=1`). */
   outline?: boolean;
   onChoose: (slotId: string) => void;
@@ -70,6 +73,7 @@ export function WorldPlay(p: WorldPlayProps) {
   };
 
   return (
+    <ScenePaintProvider>
     <div className="world-play" aria-busy={p.busy}>
       <h1 className="font-display text-3xl text-glow">{p.title}</h1>
       <SceneNav names={p.scenes.map((s) => stripMarks(s.name))} current={p.sceneIndex} onSelect={p.onScene} onHall={p.onHall} headingId={HEADING_ID} />
@@ -78,9 +82,9 @@ export function WorldPlay(p: WorldPlayProps) {
           <FearMeter value={view.fear} mediaBase={p.mediaBase} />
         </div>
       ) : p.failed ? (
-        <StartRetry onRetry={p.onRetry} buttonClass="world-button" />
+        <StartRetry onRetry={p.onRetry} onTutorial={p.onTutorial} buttonClass="world-button" />
       ) : (
-        <p role="status">{t('world.loading')}</p>
+        <p role="status">{t('loading.room')}</p>
       )}
       {view && p.busy ? (
         <p role="status" className="world-pending text-muted">
@@ -88,7 +92,7 @@ export function WorldPlay(p: WorldPlayProps) {
         </p>
       ) : null}
       {p.restartNotice ? (
-        <section ref={restartRef} tabIndex={-1} className="world-panel" role="alert" aria-labelledby="world-restart-title">
+        <section ref={restartRef} tabIndex={-1} className="world-panel mood-worn" role="alert" aria-labelledby="world-restart-title">
           <h2 id="world-restart-title" className="font-display text-xl text-glow">
             {t('restart.title')}
           </h2>
@@ -126,7 +130,7 @@ export function WorldPlay(p: WorldPlayProps) {
         <p>{t('world.noLayout')}</p>
       )}
       {tap ? (
-        <section className="world-panel" aria-label={t('world.result')} role="status">
+        <section className="world-panel mood-worn" aria-label={t('world.result')} role="status">
           <p>
             <Marked text={tap} />
           </p>
@@ -146,6 +150,7 @@ export function WorldPlay(p: WorldPlayProps) {
         </p>
       ) : null}
     </div>
+    </ScenePaintProvider>
   );
 }
 
@@ -195,7 +200,7 @@ function Question({ slot, view, legendId, mediaBase, busy, onAnswer, reply }: { 
 function Notebook({ view, origin, busy, onChoose, onHint1, onHint2 }: { view: PlayView; origin: string; busy: boolean; onChoose: WorldPlayProps['onChoose']; onHint1: WorldPlayProps['onHint1']; onHint2: WorldPlayProps['onHint2'] }) {
   const t = useT();
   return (
-    <section className="world-panel" aria-labelledby="world-notebook-title">
+    <section className="world-panel mood-worn" aria-labelledby="world-notebook-title">
       <h2 id="world-notebook-title" className="font-display text-xl text-glow">
         {t('world.notebook')}
       </h2>
@@ -242,7 +247,7 @@ function Notebook({ view, origin, busy, onChoose, onHint1, onHint2 }: { view: Pl
 function Leads({ view, origin, busy, onFollow }: { view: PlayView; origin: string; busy: boolean; onFollow: WorldPlayProps['onFollow'] }) {
   const t = useT();
   return (
-    <section className="world-panel" aria-labelledby="world-leads-title">
+    <section className="world-panel mood-worn" aria-labelledby="world-leads-title">
       <h2 id="world-leads-title" className="font-display text-xl text-glow">
         {t('world.leads')}
       </h2>

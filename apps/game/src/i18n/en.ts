@@ -1,6 +1,6 @@
 // Every string the game UI shows, by key (steering: i18n-rtl.md). Story text comes from the content store, not here.
 export const en = {
-  'app.title': 'The Night Archive',
+  'app.title': 'Trick or True',
   'nav.hall': 'Hall',
   'nav.account': 'Your progress',
   'nav.signIn': 'Sign in',
@@ -74,7 +74,6 @@ export const en = {
   'hub.ledger.fear': 'Fear: {n} of 100',
   'hub.ledger.curses': 'Curses remaining: {n}',
   'hub.ledger.seed': 'Seed of this run: {seed} (shown after a run ends)',
-  'hub.cabinet.empty': 'An empty slot.',
   'hub.door.locked': 'The door is locked. Find the key in the study.',
   'hub.door.signin': 'Sign in to open this door.',
   'hub.door.enter': 'Enter {title}',
@@ -122,7 +121,9 @@ export const en = {
   'tut.drawer.submit': 'Try the code',
   'tut.close': 'Close',
   'tut.toHall': 'Go to the hall',
-  'tut.loading': 'The study is dark. Please wait\u2026',
+  // Loading lines in the story's voice (task 6.1; new wording for owner review):
+  'loading.study': 'The study is dark. Someone is lighting a candle\u2026',
+  'tut.reward.line': 'One slot is lit. It waits for your first relic.',
   'tut.slot.glow': 'The first slot of the relic cabinet glows.',
   // Spirit (G13):
   'spirit.ask': 'The spirit asks:',
@@ -166,9 +167,11 @@ export const en = {
   'world.final': 'Break the curse',
   'settings.motion': 'Reduce motion in scares',
   'error.session': 'This game session cannot be used. Start again.',
+  // Tutorial rate limit (Phase 5; new wording for owner review). Same words as TOO_MANY_TRIES_MESSAGE in the skeleton.
+  'error.tooManyTries': 'Too many tries. Wait a moment.',
   // World play (task 7.7; new wording for owner review):
   'world.noLayout': 'This room is not ready yet. Return to the hall.',
-  'world.loading': 'The room is waking up.',
+  'loading.room': 'The room is waking up. The candle leans toward you.',
   'play.pending': 'Working on your last move\u2026',
   // Start failure (task 9.14; new wording for owner review):
   'play.startFailed': 'The room did not open. Check your connection and try again.',
@@ -198,6 +201,11 @@ export const en = {
   'puzzle.date-or-number': 'Date or number',
   'puzzle.who-said-it': 'Who said it',
   'puzzle.object-match': 'Object match',
+  'book.region': 'Story pages',
+  'book.previous': 'Previous page',
+  'book.next': 'Next page',
+  'book.pageOf': 'Page {n} of {m}',
+  'book.readAsOnePage': 'Read as one page',
 } as const;
 
 export type MessageKey = keyof typeof en;

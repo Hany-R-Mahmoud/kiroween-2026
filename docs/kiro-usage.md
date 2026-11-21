@@ -494,3 +494,40 @@ Skills used in this thread only. None started sub-agents of its own.
 - One owner-approved `db:import` on `dev-skeleton-core` for the owner's content rewrite of the twelve legends, run by the orchestrator. The boundary check (task 11.5) could not find it in the notes, which is why it is stated here.
 - Migration `0003` and the Keeper's Note import were applied to `dev-skeleton-core` only.
 - Secret handling: a boundary-check command (task 11.5) that did not exclude `.env` printed the local `GAME_TOKEN_KEY` line into a session log. The file is git-ignored and untracked, so nothing reached the repo. Recommend rotating the local `GAME_TOKEN_KEY` if that session log is stored anywhere shared. The value is not repeated here.
+
+## Phase 5 running log (launch and polish), so far
+
+Written at the end of Block A (task 9.2). The production database, deploy and production checks come later and get their own entries.
+
+### Spec
+
+- Spec `launch-and-polish` (requirements first): requirements, design and tasks, each approved by the Owner with changes. The Owner reordered the run after G1 (Block A, then one Owner stop), recorded in `docs/phase-5-notes/decisions.md`.
+- Tasks ran one at a time in one thread. G1 ran in the main thread; from task 4.1 on, most tasks ran in a `spec-task-execution` sub-agent, one at a time and alone in the tree, with the same rules (no questions to the Owner, choices in `decisions.md`, git read-only, no `.env`, nothing under `content/` or `assets/`).
+- Steering applied throughout: `tech`, `product`, `i18n-rtl` (logical CSS only, catalog strings only), `design`.
+
+### Hooks
+
+- The Phase 4 hooks stayed on (`physical-css-check`, `skeleton-tests`, `content-validate`). No hook was added.
+- Kiro's command guard blocked `node --env-file=../../.env` (task 1.5). That matches the rule never to read `.env`; local page checks that need the database moved to the Owner's terminal (Deferred runs D1 to D4).
+
+### Neon MCP
+
+- No Neon MCP call yet. The production database steps (2.1, 2.3, 2.4, 2.6) run at Stop B with the Owner present; each call will be recorded with its exact statement in `decisions.md`.
+
+### Powers
+
+- Checked the Kiro docs on 2026-11-21 (`kiro.dev/docs/powers`). The registry lists a Neon power (alongside Datadog, Dynatrace, Figma, Netlify, Postman, Supabase, Stripe, Strands SDK and AWS Aurora); no Vercel power is listed.
+- Neon power: not installed. The workspace already has the Neon MCP server configured in `.kiro/settings/mcp.json` (used since Phase 2), which provides the tools the production steps need. Installing the power would add a second copy of the same server for no new capability. Vercel: none fits; Vercel docs were read with `read-the-damn-docs` instead.
+
+### Phase 5 skills (so far)
+
+| Skill | What it found |
+|---|---|
+| read-the-damn-docs | Vercel: TanStack Start needs the Nitro Vite plugin; a production domain belongs to one project, so `/game` goes through an external rewrite; Standard Protection leaves production domains open; Vercel overwrites `x-forwarded-for` with the client IP. Nitro 3 is only a release candidate on npm. sharp 0.35.5 resize/webp. web.dev install criteria need no service worker. Kiro powers: Neon listed, no Vercel. All pages loaded. |
+| ponytail | Kept each item small: two Vercel projects and rewrites, not Services; in-memory rate limit, not a firewall rule; one Book component with CSS columns; paper class only for one-page game panels; no service worker. |
+| agent-security | G1: 4 scanner signals, all false positives. Open finding S1: what `x-forwarded-for` the game sees behind the atlas rewrite (checked after deploy; stop if shared). S2/S3 low, accepted. |
+| agent-tester | Mutation checks for every new test (rows in `docs/phase-5-notes/mutations.md`); gaps found and closed in G1 (stream error reporting, `localhost` binding). A fresh build exposed a client-bundle leak from 1.9 (fixed). Browser-only behaviour listed for D2/D3/D4. |
+| agent-guard | Removed unused re-exports (G1); flagged `heroSource` (test-only model) and the twin manifest builders (kept). |
+| impeccable | Launcher ran (`context`, `detect`): only two false-positive `broken-image` warnings on the `<Img>` component. In-thread review found the dark-theme colours on paper (glow 2.1:1, muted 1.03:1), fixed by re-pointing them inside `.book-paper`; the spirit caption colour order bug was fixed in 8.3. |
+| verify-and-stop | One proof pass per group; open items listed per group in `decisions.md`. |
+| Not used | agent-pilot, agent-superpowers, agent-gamestudio (they start their own workflows). |

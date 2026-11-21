@@ -115,11 +115,9 @@
   background-repeat: no-repeat;
 }
 .spirit-panel-body {
-  color: var(--color-ink);
-  /* The painted frame is light parchment and the ink is light: a scrim of the theme surface keeps the text readable (task 11.2 finding). */
+  /* The text sits on the shared book paper (class book-paper, book.css): dark ink on paper, readable on the light frame (task 11.2 finding, 5.6). */
   padding: 0.75rem;
   border-radius: 0.5rem;
-  background: color-mix(in srgb, var(--color-surface) 90%, transparent);
 }
 .spirit-panel-body p {
   margin-block: 0 0.5rem;

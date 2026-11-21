@@ -5,6 +5,7 @@ import { ThemeRoot } from '../components/ThemeRoot';
 import { TutorialRoom } from '../components/TutorialRoom';
 import { useT } from '../i18n/useT';
 import { initialTutorialState, playClientFor, tutorialReducer, type PlayClient } from '../lib/play';
+import { isTooManyTries } from '../lib/playClient';
 import { tutorialHint2Href } from '../lib/tutorial';
 
 export const Route = createFileRoute('/tutorial')({
@@ -26,18 +27,21 @@ function Tutorial() {
   const [pending, setPending] = useState(0);
   const busy = pending > 0;
   const [failed, setFailed] = useState(false);
+  const [tooMany, setTooMany] = useState(false);
   const client = useRef<PlayClient | null>(null);
 
   const run = async (send: Send) => {
     client.current ??= playClientFor(guest);
     setPending((n) => n + 1);
     setFailed(false);
+    setTooMany(false);
     try {
       const r = await send(client.current);
       dispatch(r);
       if (r.reply?.kind === 'drawer') setQuestion(r.reply.question);
       return r;
-    } catch {
+    } catch (e) {
+      setTooMany(isTooManyTries(e));
       setFailed(true);
       return null;
     } finally {
@@ -82,7 +86,7 @@ function Tutorial() {
       />
       {view && failed ? (
         <p role="alert" className="text-danger-ink">
-          {t('error.generic')}
+          {t(tooMany ? 'error.tooManyTries' : 'error.generic')}
         </p>
       ) : null}
       <MotionToggle reduced={reduced} onChange={setSetting} />

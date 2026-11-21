@@ -1,0 +1,410 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1.12 **STOP (Owner step): create the two Vercel projects**": [
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795229768800
+      },
+      {
+        "executionId": "9ceb9a05-a24c-4f5d-99bb-f44251a4c50f",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795266422926
+      }
+    ],
+    "4.1 Defer secondary images until the scene loads": [
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795229768898
+      },
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795230389334
+      }
+    ],
+    "4.2 Serve smaller hero copies to phones": [
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795230390593
+      },
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795230853443
+      }
+    ],
+    "4.3 Test the hero copy choice": [
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795230854373
+      },
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795231127417
+      }
+    ],
+    "4.4 Add the layout screenshot scenario": [
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795231128332
+      },
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795231682125
+      }
+    ],
+    "4.5 G4 code gates": [
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795231976311
+      }
+    ],
+    "5.1 Add the book foundations in the Skeleton": [
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795231985636
+      },
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795232457641
+      }
+    ],
+    "5.2 Test the pure book logic": [
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795232458495
+      },
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795232710715
+      }
+    ],
+    "5.3 Test and extend ink contrast": [
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795232711010
+      },
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795233135476
+      }
+    ],
+    "5.4 Build the Book component": [
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795233135842
+      },
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795233702459
+      }
+    ],
+    "5.5 Integrate the Book into the atlas": [
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795233703044
+      },
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795234125801
+      }
+    ],
+    "5.6 Integrate the Book into the game": [
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795234280755
+      },
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795234604192
+      }
+    ],
+    "5.7 Write the book markup and anchor tests": [
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795234604834
+      },
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795241323539
+      }
+    ],
+    "5.8 Write `book-check.mjs` and run `test:browser` (first run)": [
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795241329750
+      },
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795241574339
+      }
+    ],
+    "5.9 G5 gates": [
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795244387750
+      }
+    ],
+    "5. G5: Book component, anchors, toggle, ink and motion (starts after the Mid_Phase_Stop)": [
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795244387791
+      }
+    ],
+    "6.1 Build the mood layer": [
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795244395872
+      },
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795248728960
+      }
+    ],
+    "6.2 Test the mood layer": [
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795248729695
+      },
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795248844640
+      }
+    ],
+    "6.4 G6 gates": [
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795249037673
+      }
+    ],
+    "7.1 Read the install criteria": [
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795249060540
+      }
+    ],
+    "7.2 Add manifests and icon links": [
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795249066678
+      },
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795249169887
+      }
+    ],
+    "7.3 Test the manifests": [
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795249170730
+      },
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795249253825
+      }
+    ],
+    "7.4 G7 gates": [
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795249274569
+      }
+    ],
+    "7. G7: Installable apps": [
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795249274608
+      }
+    ],
+    "8.2 Fix `resolveTheme` surface contrast": [
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795249275497
+      },
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795249645901
+      }
+    ],
+    "8.3 Fix the Hall reward, spirit panel order and ending dialog": [
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795249646113
+      },
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795249780876
+      }
+    ],
+    "8.4 Add the product-name test": [
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795249781486
+      },
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795249822919
+      }
+    ],
+    "8.5 G8 gates": [
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795250007986
+      }
+    ],
+    "9.2 Write the Kiro log": [
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795250061496
+      },
+      {
+        "executionId": "9ceb9a05-a24c-4f5d-99bb-f44251a4c50f",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795266443465
+      }
+    ],
+    "10.1 Close the mutation record": [
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795250102565
+      }
+    ],
+    "10.2 Extend the smoke scripts for an https base": [
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795250109790
+      },
+      {
+        "executionId": "a9c42ba3-057e-4ff7-8470-ca7804bfa8f5",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795250429904
+      }
+    ],
+    "1. G1: Hosting config, headers, Nitro, local Vercel-style build, server fixes, rate limit, tutorial lock": [
+      {
+        "executionId": "9ceb9a05-a24c-4f5d-99bb-f44251a4c50f",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795266423004
+      }
+    ],
+    "2.1 Read Neon docs and check the empty production branch": [
+      {
+        "executionId": "9ceb9a05-a24c-4f5d-99bb-f44251a4c50f",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795266443519
+      },
+      {
+        "executionId": "9ceb9a05-a24c-4f5d-99bb-f44251a4c50f",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795266528608
+      }
+    ],
+    "2.3 Build the production database through the Neon MCP": [
+      {
+        "executionId": "9ceb9a05-a24c-4f5d-99bb-f44251a4c50f",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795266699392
+      }
+    ],
+    "2.4 Set up Neon Auth for production": [
+      {
+        "executionId": "9ceb9a05-a24c-4f5d-99bb-f44251a4c50f",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795266785622
+      }
+    ],
+    "2.5 **STOP (Owner step): all G2 Owner steps at once**": [
+      {
+        "executionId": "9ceb9a05-a24c-4f5d-99bb-f44251a4c50f",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795266823841
+      },
+      {
+        "executionId": "a55d5273-7aea-400b-bcf7-05b8339f3c87",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795268468494
+      }
+    ],
+    "2.6 Verify the production database": [
+      {
+        "executionId": "a55d5273-7aea-400b-bcf7-05b8339f3c87",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795268498831
+      },
+      {
+        "executionId": "a55d5273-7aea-400b-bcf7-05b8339f3c87",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795268522980
+      }
+    ],
+    "2.7 G2 gates": [
+      {
+        "executionId": "a55d5273-7aea-400b-bcf7-05b8339f3c87",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795272585604
+      }
+    ],
+    "2. G2: Production database, Neon Auth, Password_Script": [
+      {
+        "executionId": "a55d5273-7aea-400b-bcf7-05b8339f3c87",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795272585655
+      }
+    ],
+    "3.1 **STOP (Owner step): push to `main`**": [
+      {
+        "executionId": "a55d5273-7aea-400b-bcf7-05b8339f3c87",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795272599251
+      }
+    ]
+  }
+}

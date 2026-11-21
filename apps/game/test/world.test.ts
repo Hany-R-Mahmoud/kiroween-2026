@@ -101,12 +101,26 @@ describe('World start failure', () => {
     const html = render({ failed: true }, null);
     expect(html).toContain(en['play.startFailed']);
     expect(html).toMatch(new RegExp(`<button[^>]*>${en['play.retry']}</button>`));
-    expect(html).not.toContain(en['world.loading']);
+    expect(html).not.toContain(en['loading.room']);
     expect(html).not.toContain(en['error.generic']);
+  });
+  it('a tutorial-required refusal shows the locked-door message and a way to the study, not a retry (Phase 5 lock)', () => {
+    const html = render({ failed: true, onTutorial: noop }, null);
+    expect(html).toContain(en['hub.door.locked']);
+    expect(html).toContain(`>${en['hall.tutorial']}</button>`); // the label has brackets, so no RegExp
+    expect(html).not.toContain(en['play.retry']);
+    expect(html).not.toContain(en['play.startFailed']);
+  });
+  it('recognises the refusal by its fixed server text only', async () => {
+    const { isTutorialRequired } = await import('../src/lib/playClient.ts');
+    const { PLAY_ERROR_MESSAGES } = await import('@kiroween/skeleton/client');
+    expect(isTutorialRequired(new Error(PLAY_ERROR_MESSAGES['tutorial-required']))).toBe(true);
+    expect(isTutorialRequired(new Error(PLAY_ERROR_MESSAGES.unavailable))).toBe(false);
+    expect(isTutorialRequired('Do the tutorial first.')).toBe(false);
   });
   it('shows the loading line and no retry while start is still running', () => {
     const html = render({}, null);
-    expect(html).toContain(en['world.loading']);
+    expect(html).toContain(en['loading.room']);
     expect(html).not.toContain(en['play.startFailed']);
   });
   it('keeps the generic alert, not the retry, when a later call fails', () => {
@@ -177,12 +191,13 @@ describe('World render', () => {
     expect(buttons).toHaveLength(4);
     expect(buttons.map((b) => b.includes('disabled'))).toEqual([false, true, false, false]);
   });
-  it('shows scene navigation with the current scene marked, the spirit corner and close figure, and the fear meter text', () => {
+  it('shows scene navigation with the current scene marked, the deferred spirit figures, and the fear meter text', () => {
     const html = render();
     expect(html).toContain('aria-current="true"');
     expect(html).toContain('The ford');
-    expect(html).toContain('banshee-game-spirit-01');
-    expect(html).toContain('banshee-game-spirit-02');
+    expect(html).toContain('class="spirit-corner"');
+    // Secondary images wait for the scene image (Requirement 11.4); scene-deferral.property.test.tsx covers the settled markup.
+    expect(html).not.toContain('banshee-game-spirit-0');
     expect(html).toContain('Fear: 24 of 100');
   });
   it('Hint 1 text is shown and highlighted hotspots are marked; used Hint 2 becomes a free new-tab link', () => {

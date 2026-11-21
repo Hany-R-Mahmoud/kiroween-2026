@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useT } from '../i18n/useT';
 import './fear.css';
-import { isReducedMotion, readMotion, writeMotion, type MotionSetting } from '../lib/motion.ts';
+import { applyMotionAttribute, isReducedMotion, readMotion, writeMotion, type MotionSetting } from '../lib/motion.ts';
 
 const QUERY = '(prefers-reduced-motion: reduce)';
 
@@ -17,8 +17,10 @@ export function useReducedMotion(): { reduced: boolean; setSetting: (v: MotionSe
     mq.addEventListener('change', on);
     return () => mq.removeEventListener('change', on);
   }, []);
+  const reduced = isReducedMotion(setting, system);
+  useEffect(() => applyMotionAttribute(document.documentElement, reduced), [reduced]);
   return {
-    reduced: isReducedMotion(setting, system),
+    reduced,
     setSetting: (v) => {
       writeMotion(localStorage, v);
       setSettingState(v);

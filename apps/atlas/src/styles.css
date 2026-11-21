@@ -1,5 +1,7 @@
 @import 'tailwindcss';
 @import '@kiroween/skeleton/design/tokens.css';
+@import '@kiroween/skeleton/design/mood.css';
+@import '@kiroween/skeleton/book/book.css';
 
 /* Everything below reads the token variables, so a legend page's theme (set on <body>) restyles it. Logical properties
    only (steering: i18n-rtl.md). */

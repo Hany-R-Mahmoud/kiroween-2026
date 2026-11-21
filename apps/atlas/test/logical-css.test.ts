@@ -32,6 +32,23 @@ describe('logical CSS only', () => {
     expect(hits).toEqual([]);
   });
 
+  it('no physical-direction utility or property appears in skeleton/src/book (15.12)', () => {
+    const hits: string[] = [];
+    const book = fileURLToPath(new URL('../../../skeleton/src/book/', import.meta.url));
+    for (const f of files(book))
+      for (const [i, line] of readFileSync(f, 'utf8').split('\n').entries())
+        if (!/^\s*(?:\/\/|\/\*|\*)/.test(line)) // comment lines are prose ("right-to-left")
+          for (const re of PHYSICAL) if (re.test(line)) hits.push(`${f.slice(book.length)}:${i + 1} ${re}`);
+    expect(hits).toEqual([]);
+  });
+
+  it('no physical-direction property appears in skeleton/src/design/mood.css (19.12)', () => {
+    const f = fileURLToPath(new URL('../../../skeleton/src/design/mood.css', import.meta.url));
+    const hits: string[] = [];
+    for (const [i, line] of readFileSync(f, 'utf8').split('\n').entries())
+      if (!/^\s*(?:\/\/|\/\*|\*)/.test(line)) for (const re of PHYSICAL) if (re.test(line)) hits.push(`${i + 1} ${re}`);
+    expect(hits).toEqual([]);
+  });
   it('the scanner catches each physical form (so a clean result means something)', () => {
     for (const bad of ['ml-2', 'pr-4', '-mr-1', 'left-0', 'right-[3px]', 'text-left', 'border-l', 'rounded-r-lg', 'float-right', 'margin-left: 4px', 'right: 0', 'text-align: left'])
       expect(PHYSICAL.some((re) => re.test(` ${bad}`)), bad).toBe(true);

@@ -11,11 +11,13 @@ export { atlasUrl, AtlasLinkError, ANCHOR_RE, isAnchor, isLegendId, legendUrl } 
 export { storyBlocks, inlineMarks, stripMarks, type StoryBlock, type StoryToken } from './atlas/story.ts';
 export { atlasLegendFromModel, atlasLegendFromRows, markerOf, SHARED_ATLAS_IMAGES, type AtlasSummary, type AtlasChapter, type AtlasImage, type AtlasLegend, type AtlasRows, type AtlasSource, type AtlasVersion } from './atlas/view.ts';
 export { AssetIdError, assetUrl, MEDIA_PREFIX, parseAssetSize } from './assets/assetUrl.ts';
+export { HERO_SMALL_MEDIA, HERO_SMALL_WIDTH, hasHeroCopy, heroSmall, heroSmallId, heroSmallSize, heroSource } from './assets/heroCopy.ts';
 export { fontStack, KNOWN_FONTS, parsePalette, ThemeError, themeFonts, type FontFamily, type Palette } from './theme/palette.ts';
 export { FEAR } from './play/fear.ts';
 export { WORLD_COUNT } from './play/hall.ts';
 export { HOTSPOT_FEAR, HOTSPOT_FEAR_NONE, HOTSPOT_FEAR_STEP } from './play/fearTable.ts';
 export { PLAY_ERROR_MESSAGES } from './play/errors.ts';
+export { TOO_MANY_TRIES_MESSAGE } from './play/rateLimit.ts';
 export type { Action, EndInfo, LeadView, PlayView, Reply, RunEndStatus, SlotView } from './play/types.ts';
 export { hubContrastReport, type HubPairing } from './theme/hub.ts';
 export { AA_LARGE, AA_TEXT, BASE_PALETTE, contrastRatio, resolveTheme, type ResolvedTheme } from './theme/contrast.ts';

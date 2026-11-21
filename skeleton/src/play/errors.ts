@@ -1,7 +1,7 @@
 // Every message is fixed: it never repeats client input, other players' ids, or database details.
 // `status` is the HTTP status the server function answers with.
 
-export type PlayErrorCode = 'invalid' | 'session' | 'sign-in-required' | 'not-found' | 'conflict' | 'ended' | 'refused' | 'unavailable';
+export type PlayErrorCode = 'invalid' | 'session' | 'sign-in-required' | 'not-found' | 'conflict' | 'ended' | 'refused' | 'unavailable' | 'tutorial-required';
 
 const TABLE: Record<PlayErrorCode, { status: number; message: string }> = {
   invalid: { status: 400, message: 'That request is not valid.' },
@@ -13,6 +13,8 @@ const TABLE: Record<PlayErrorCode, { status: number; message: string }> = {
   ended: { status: 409, message: 'This run has ended.' },
   refused: { status: 422, message: 'That action is not allowed now.' },
   unavailable: { status: 503, message: 'The game cannot continue right now. Please try again.' },
+  // A signed-in player whose tutorial is not done yet (Phase 5 lock). Guests are checked in the Hall only.
+  'tutorial-required': { status: 403, message: 'Do the tutorial first.' },
 };
 
 export class PlayError extends Error {

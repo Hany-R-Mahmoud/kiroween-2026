@@ -1,6 +1,7 @@
 import { FEAR } from '@kiroween/skeleton/client';
 import { useT } from '../i18n/useT';
 import { mediaUrl } from '../lib/media.ts';
+import { useScenePaint } from './ScenePaint.tsx';
 import './fear.css';
 
 export const FEAR_FRAME_ASSET = 'shared-game-ui-fear-01';
@@ -14,6 +15,7 @@ export const clampFear = (n: number): number => (Number.isFinite(n) ? Math.min(F
  */
 export function FearMeter({ value, mediaBase }: { value: number; mediaBase: string }) {
   const t = useT();
+  const { firstSceneLoaded } = useScenePaint();
   const n = clampFear(value);
   return (
     <div className="fear-meter">
@@ -27,7 +29,7 @@ export function FearMeter({ value, mediaBase }: { value: number; mediaBase: stri
       >
         <div className="fear-meter-fill" style={{ inlineSize: `${(n / FEAR.max) * 100}%` }} />
       </div>
-      <img className="fear-meter-frame" src={mediaUrl(mediaBase, FEAR_FRAME_ASSET)} width={1024} height={256} alt="" loading="lazy" decoding="async" />
+      {firstSceneLoaded ? <img className="fear-meter-frame" src={mediaUrl(mediaBase, FEAR_FRAME_ASSET)} width={1024} height={256} alt="" loading="lazy" decoding="async" /> : null}
       <span className="fear-meter-text sr-only">{t('fear.meter', { n })}</span>
     </div>
   );

@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AccountRouteImport } from './routes/account'
+import { Route as ManifestDotwebmanifestRouteImport } from './routes/manifest[.]webmanifest'
 import { Route as SignInRouteImport } from './routes/sign-in'
 import { Route as SignUpRouteImport } from './routes/sign-up'
 import { Route as TutorialRouteImport } from './routes/tutorial'
@@ -25,6 +26,11 @@ const IndexRoute = IndexRouteImport.update({
 const AccountRoute = AccountRouteImport.update({
   id: '/account',
   path: '/account',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ManifestDotwebmanifestRoute = ManifestDotwebmanifestRouteImport.update({
+  id: '/manifest.webmanifest',
+  path: '/manifest.webmanifest',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SignInRoute = SignInRouteImport.update({
@@ -56,6 +62,7 @@ const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/account': typeof AccountRoute
+  '/manifest.webmanifest': typeof ManifestDotwebmanifestRoute
   '/sign-in': typeof SignInRoute
   '/sign-up': typeof SignUpRoute
   '/tutorial': typeof TutorialRoute
@@ -65,6 +72,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/account': typeof AccountRoute
+  '/manifest.webmanifest': typeof ManifestDotwebmanifestRoute
   '/sign-in': typeof SignInRoute
   '/sign-up': typeof SignUpRoute
   '/tutorial': typeof TutorialRoute
@@ -75,6 +83,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/account': typeof AccountRoute
+  '/manifest.webmanifest': typeof ManifestDotwebmanifestRoute
   '/sign-in': typeof SignInRoute
   '/sign-up': typeof SignUpRoute
   '/tutorial': typeof TutorialRoute
@@ -86,6 +95,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/account'
+    | '/manifest.webmanifest'
     | '/sign-in'
     | '/sign-up'
     | '/tutorial'
@@ -95,6 +105,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/account'
+    | '/manifest.webmanifest'
     | '/sign-in'
     | '/sign-up'
     | '/tutorial'
@@ -104,6 +115,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/account'
+    | '/manifest.webmanifest'
     | '/sign-in'
     | '/sign-up'
     | '/tutorial'
@@ -114,6 +126,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AccountRoute: typeof AccountRoute
+  ManifestDotwebmanifestRoute: typeof ManifestDotwebmanifestRoute
   SignInRoute: typeof SignInRoute
   SignUpRoute: typeof SignUpRoute
   TutorialRoute: typeof TutorialRoute
@@ -135,6 +148,13 @@ declare module '@tanstack/react-router' {
       path: '/account'
       fullPath: '/account'
       preLoaderRoute: typeof AccountRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/manifest.webmanifest': {
+      id: '/manifest.webmanifest'
+      path: '/manifest.webmanifest'
+      fullPath: '/manifest.webmanifest'
+      preLoaderRoute: typeof ManifestDotwebmanifestRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sign-in': {
@@ -178,6 +198,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AccountRoute: AccountRoute,
+  ManifestDotwebmanifestRoute: ManifestDotwebmanifestRoute,
   SignInRoute: SignInRoute,
   SignUpRoute: SignUpRoute,
   TutorialRoute: TutorialRoute,

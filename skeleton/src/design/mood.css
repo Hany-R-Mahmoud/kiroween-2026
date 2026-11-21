@@ -1,0 +1,162 @@
+/*
+ * Halloween mood layer (launch-and-polish 6.1, Requirement 19). CSS and DOM only: no image file, sound or library.
+ * Logical CSS only. Every overlay has pointer-events: none. Colours come from the theme tokens.
+ *
+ * Page layers (.mood-layer) sit BEHIND the page content (z-index: -1, painted over the body background), so they can
+ * never lower text contrast. The scene vignette and the fog sit on scenes, which hold no text.
+ */
+:root {
+  /* The existing shared paper texture, used only as a mask (the atlas serves /media/). Only the atlas uses .mood-torn;
+     the game's panels use .mood-worn, which has no mask and no texture request. */
+  --mood-torn-image: url('/media/shared/shared-atlas-paper-01.webp');
+  --mood-ink: #0e0b10;
+}
+
+.mood-layer {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: clip;
+}
+/* Darkness at the viewport edges, on dark surfaces. */
+.mood-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 40%, transparent 55%, rgb(0 0 0 / 0.6) 100%);
+}
+/* Candlelight: a warm glow near the top that breathes. 8 s cycle, 7 steps: a change about every 1.1 s (at most 3 a second). */
+.mood-candle {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 45% at 50% 0%, color-mix(in srgb, var(--color-accent, #e0a84b) 28%, transparent), transparent);
+  opacity: 0.5;
+  animation: mood-candle 8s ease-in-out infinite;
+}
+@keyframes mood-candle {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  14% {
+    opacity: 0.62;
+  }
+  29% {
+    opacity: 0.45;
+  }
+  43% {
+    opacity: 0.6;
+  }
+  57% {
+    opacity: 0.48;
+  }
+  71% {
+    opacity: 0.64;
+  }
+  86% {
+    opacity: 0.52;
+  }
+}
+
+/* A scene's edge vignette: on the scene viewport (an image area with no text). A faint corner shade only. */
+.mood-vignette-inset {
+  position: relative;
+}
+.mood-vignette-inset::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 50% 50%, transparent 65%, rgb(0 0 0 / 0.35) 100%);
+}
+
+/* Fog: a low band along the bottom of a scene stage. It is placed in the stage after the image and before the hotspots,
+   so hotspots paint over it; it is short and holds no text. The inner strip drifts one tile in 60 s. */
+.mood-fog {
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 0;
+  block-size: 22%;
+  max-block-size: 9rem;
+  overflow: clip;
+  pointer-events: none;
+}
+.mood-fog::before {
+  content: '';
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  inline-size: 200%;
+  background-image:
+    radial-gradient(ellipse 30% 70% at 25% 100%, color-mix(in srgb, var(--color-cold, #7fa7b5) 38%, transparent), transparent),
+    radial-gradient(ellipse 22% 55% at 75% 100%, color-mix(in srgb, var(--color-cold, #7fa7b5) 30%, transparent), transparent);
+  background-size: 50% 100%;
+  background-repeat: repeat-x;
+  animation: mood-fog-drift 60s linear infinite;
+}
+@keyframes mood-fog-drift {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(var(--book-sign, 1) * -50%));
+  }
+}
+
+/* Worn edges on image frames and panels. .mood-worn: a thin ink border and an inner shadow (also the fallback).
+   .mood-torn adds, where masks support per-layer modes, the shared paper texture as a luminance mask that roughens the
+   border band. The solid layer covers the content box, so text and images inside the padding are never masked. A mask
+   also clips an outline, so .mood-torn is only for frames that take no focus ring (atlas plates). */
+.mood-worn,
+.mood-torn {
+  border: 1px solid var(--mood-ink);
+  box-shadow: inset 0 0 0.75rem rgb(0 0 0 / 0.45);
+}
+@supports (mask-mode: luminance) {
+  .mood-torn {
+    mask-image: linear-gradient(#000 0 0), var(--mood-torn-image);
+    mask-mode: alpha, luminance;
+    mask-clip: content-box, border-box;
+    mask-repeat: no-repeat, repeat;
+    mask-size: auto, 512px 512px;
+    mask-composite: add;
+  }
+}
+
+/* Hotspots: a faint glow on hover and focus. The focus outline of the scene stays as it is. */
+.mood-hotspot-glow {
+  transition: box-shadow 200ms ease-out;
+}
+.mood-hotspot-glow:hover,
+.mood-hotspot-glow:focus-visible {
+  box-shadow: 0 0 1rem 0.2rem color-mix(in srgb, var(--color-glow, #f4d58d) 40%, transparent);
+}
+
+/* Reduced motion: no candle change, no fog movement, no flicker. Static equivalents: the glow at its mid value and the
+   fog band where it starts. */
+@media (prefers-reduced-motion: reduce) {
+  .mood-candle,
+  .mood-fog::before {
+    animation: none;
+  }
+  .mood-hotspot-glow {
+    transition: none;
+  }
+}
+html[data-motion='reduce'] .mood-candle,
+html[data-motion='reduce'] .mood-fog::before {
+  animation: none;
+}
+html[data-motion='reduce'] .mood-hotspot-glow {
+  transition: none;
+}
+
+/* Print: no overlays. */
+@media print {
+  .mood-layer,
+  .mood-fog,
+  .mood-vignette-inset::after {
+    display: none;
+  }
+}

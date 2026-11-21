@@ -216,3 +216,17 @@ Pins added for the game app (exact): `@tanstack/react-start` 1.169.5, `@tanstack
 | `pnpm --filter @kiroween/atlas test` / `typecheck` | Vitest / `tsc --noEmit` |
 | `node apps/atlas/scripts/build-geo.mjs <folder>` | rebuilds the two geo files from the Natural Earth GeoJSON |
 | `pnpm --dir skeleton exec tsx ../apps/atlas/scripts/smoke.ts [base] [--og <origin>]` | the smoke check against a running atlas |
+
+## sharp (build-time dev dependency of the atlas)
+- `sharp` 0.35.5, exact pin, `devDependencies` of `apps/atlas` (Requirement 13.1, 13.2). It makes the 1000 px phone copies of hero images at build time, so a 390 px phone does not download the 2400 px file.
+- Why: resizing a WebP needs a real image codec; the alternative is a hand-made decoder or committing second copies into `assets/` (protected). It ships prebuilt binaries, is used only in `vite.media.ts` during build and dev, and never reaches the client bundle.
+- Output goes to the build folder only.
+
+## Phase 5 pinned versions
+
+| Package | Version | Where | Why |
+|---|---|---|---|
+| `nitro` | `3.0.261103-rc` (exact) | atlas and game devDependencies | Vercel's TanStack Start guide deploys through the Nitro Vite plugin. Only version on npm `latest` (a release candidate); loaded only when `VERCEL` is set, so local builds and `serve-build.mjs` are unchanged. |
+| `sharp` | `0.35.5` (exact) | atlas devDependency | Builds the 1000 px hero copies at build time (see "sharp" above). |
+| `fast-check` | `4.10.3` (exact) | atlas devDependency (already in the game and skeleton) | Property test for the local server stream handling. |
+| `react` | `19.3.1` (peer and dev) | skeleton | The shared Book component; peer so the apps' single React copy is used. `@types/react` `19.3.0` dev. |

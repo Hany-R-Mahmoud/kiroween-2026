@@ -22,7 +22,7 @@ import { getRequest, setResponseStatus } from '@tanstack/react-start/server';
 import { legendUrl, resolveLocale, resolveTheme } from '@kiroween/skeleton/client';
 import { database, getCatalogue, getPlayStore, playDeps, runDeps, tutorialDeps } from './db';
 import { getEnv } from './env';
-import { authMiddleware, requireUser } from './middleware';
+import { authMiddleware, requireUser, tutorialRateLimit } from './middleware';
 
 /**
  * Only our fixed messages ever reach the client (Start serializes just `message`). Play and run errors carry fixed
@@ -235,10 +235,9 @@ export const startTutorial = createServerFn({ method: 'POST' })
   .validator(passThrough)
   .handler(({ data, context }) => safely(async () => startTutorialRun(tutorialDeps(), context.visitor, data)));
 
-// No rate limit on tutorial answers: the design gives none, and a wrong answer costs nothing by spec. Recorded as a
-// residual risk in docs/phase-4-notes/decisions.md.
+// Rate limited (30 answers per 60 s per visitor, Phase 5): a wrong answer costs nothing by spec, so this slows guessing.
 export const tutorialAct = createServerFn({ method: 'POST' })
-  .middleware([authMiddleware])
+  .middleware([authMiddleware, tutorialRateLimit])
   .validator(passThrough)
   .handler(({ data, context }) => safely(async () => actInTutorial(tutorialDeps(), context.visitor, data)));
 

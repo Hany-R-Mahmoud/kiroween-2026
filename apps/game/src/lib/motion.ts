@@ -27,3 +27,11 @@ export function writeMotion(storage: Pick<KeyValueStore, 'setItem'>, value: Moti
 export function isReducedMotion(setting: MotionSetting | null, systemReduces: boolean): boolean {
   return setting === null ? systemReduces : setting === 'reduce';
 }
+/**
+ * Mirrors the effective setting on the root element (`data-motion="reduce"` or absent) so the shared book.css can switch
+ * page motion off under the in-app setting as well as the system one.
+ */
+export function applyMotionAttribute(root: Pick<HTMLElement, 'dataset'>, reduced: boolean): void {
+  if (reduced) root.dataset.motion = 'reduce';
+  else delete root.dataset.motion;
+}

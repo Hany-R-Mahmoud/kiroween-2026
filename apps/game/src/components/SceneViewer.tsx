@@ -1,12 +1,14 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import type { FocusEvent, KeyboardEvent, PointerEvent as ReactPointerEvent } from 'react';
 import { stripMarks } from '@kiroween/skeleton/client';
+import { MoodFog } from '@kiroween/skeleton/mood';
 import { useT } from '../i18n/useT.ts';
 import { clampPan, panToReveal } from '../lib/pan.ts';
 import { mediaUrl } from '../lib/media.ts';
 import { buttonPan, isDrag, keyPan, lostCaptureEndsDrag } from '../lib/viewerInput.ts';
 import { MIN_TARGET_PX, SCENE_HEIGHT, SCENE_WIDTH, type SceneLayout } from '../layout/types.ts';
 import { Hotspot } from './Hotspot.tsx';
+import { useScenePaint } from './ScenePaint.tsx';
 import './scene.css';
 
 const MIN_SCALE = 0.25;
@@ -55,6 +57,14 @@ interface Drag {
  */
 export function SceneViewer({ layout, name, alt, mediaBase, hotspots, onActivate, headingId, initialPan = 0, onPanChange, onStep, outline }: SceneViewerProps) {
   const t = useT();
+  const { loadedSceneId, onSceneSettled } = useScenePaint();
+  // Dev only: the Hall and the tutorial read `?layout=1` from the address after hydration; the World screen passes `outline`.
+  const [urlOutline, setUrlOutline] = useState(false);
+  useEffect(() => {
+    if (import.meta.env.DEV) setUrlOutline(new URLSearchParams(window.location.search).get('layout') === '1');
+  }, []);
+  const showOutline = outline ?? urlOutline;
+  const imgRef = useRef<HTMLImageElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
   const dragRef = useRef<Drag | null>(null);
   const suppressClick = useRef(false);
@@ -84,6 +94,11 @@ export function SceneViewer({ layout, name, alt, mediaBase, hotspots, onActivate
     ro.observe(el);
     return () => ro.disconnect();
   }, []);
+
+  // The scene image can finish before hydration, so no load event would fire: settle once if it is already complete.
+  useEffect(() => {
+    if (imgRef.current?.complete) onSceneSettled(layout.assetId);
+  }, [layout.assetId, onSceneSettled]);
 
   // Keep the pan inside bounds when the viewport or scale changes.
   useEffect(() => {
@@ -150,7 +165,8 @@ export function SceneViewer({ layout, name, alt, mediaBase, hotspots, onActivate
       </h2>
       <div
         ref={viewportRef}
-        className="scene-viewport"
+        className="scene-viewport mood-vignette-inset"
+        data-scene-id={layout.sceneId}
         role="region"
         aria-label={stripMarks(name)}
         tabIndex={0}
@@ -172,6 +188,7 @@ export function SceneViewer({ layout, name, alt, mediaBase, hotspots, onActivate
       >
         <div className="scene-stage" style={{ inlineSize: `${sceneWidth}px`, transform: `translateX(${pan}px)` }}>
           <img
+            ref={imgRef}
             className="scene-image"
             src={mediaUrl(mediaBase, layout.assetId)}
             alt={stripMarks(alt)}
@@ -179,6 +196,8 @@ export function SceneViewer({ layout, name, alt, mediaBase, hotspots, onActivate
             height={SCENE_HEIGHT}
             fetchPriority="high"
             draggable={false}
+            onLoad={() => onSceneSettled(layout.assetId)}
+            onError={() => onSceneSettled(layout.assetId)}
           />
           {layout.hotspots.map((box) => {
             const s = box.sprite;
@@ -189,6 +208,7 @@ export function SceneViewer({ layout, name, alt, mediaBase, hotspots, onActivate
                 className="scene-sprite"
                 style={{ transform: `translate(${s.x * scale}px, ${s.y * scale}px)`, inlineSize: `${s.w * scale}px`, blockSize: `${s.h * scale}px` }}
               >
+                {loadedSceneId === layout.assetId ? (
                 <img
                   src={mediaUrl(mediaBase, s.assetId)}
                   alt=""
@@ -199,15 +219,17 @@ export function SceneViewer({ layout, name, alt, mediaBase, hotspots, onActivate
                   draggable={false}
                   className={s.crop === 'right' ? 'scene-sprite-img scene-sprite-right' : s.crop ? 'scene-sprite-img scene-sprite-half' : 'scene-sprite-img'}
                 />
+                ) : null}
               </span>
             );
           })}
+          <MoodFog />
           {layout.hotspots.map((box) => {
             const h = byId.get(box.id);
             if (!h) return null;
             return <Hotspot key={box.id} box={box} label={h.label} marked={h.marked} badge={h.badge} markedText={t('hint.mark')} scale={scale} onActivate={onActivate} />;
           })}
-          {import.meta.env.DEV && outline
+          {import.meta.env.DEV && showOutline
             ? layout.hotspots.map((box) => (
                 <span
                   key={`outline-${box.id}`}

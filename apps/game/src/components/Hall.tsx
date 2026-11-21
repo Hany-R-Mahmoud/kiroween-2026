@@ -4,8 +4,9 @@ import { HUB_SCENE } from '../layout/hub.ts';
 import { useLang, useT } from '../i18n/useT';
 import type { MessageKey } from '../i18n/en';
 import { cabinetSlots, clockKey, DECOY_RESULT, doorLegendId, hallDoorState, OBJECT_LABEL, type DoorState, type Relic } from '../lib/hall.ts';
-import { usePanelOpener } from '../lib/focus.ts';
+import { dialogKeyAction, usePanelOpener } from '../lib/focus.ts';
 import { mediaUrl } from '../lib/media.ts';
+import { ScenePaintProvider } from './ScenePaint.tsx';
 import { SceneViewer, type ViewerHotspot } from './SceneViewer.tsx';
 import './scene.css';
 
@@ -53,6 +54,7 @@ export function HallView({ data, mediaBase, tutorialDone, broken, curses, onNavi
   const panelRef = useRef<HTMLDivElement>(null);
   const endingRef = useRef<HTMLButtonElement>(null);
   const opener = usePanelOpener();
+  const endingOpener = usePanelOpener();
   const doorsById = new Map(data.doors.map((d) => [d.id, d]));
 
   const stateOf = (d: HallDoor): DoorState => hallDoorState(tutorialDone, d.open);
@@ -87,8 +89,23 @@ export function HallView({ data, mediaBase, tutorialDone, broken, curses, onNavi
   }, [panel]);
   const showEnding = curses === 0 && !endingSeen;
   useEffect(() => {
-    if (showEnding) endingRef.current?.focus();
+    if (!showEnding) return;
+    endingOpener.remember();
+    endingRef.current?.focus();
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- runs once when the dialog appears; the opener object is new each render
   }, [showEnding]);
+  const closeEnding = () => {
+    setEndingSeen(true);
+    endingOpener.restore();
+  };
+  const onEndingKey = (e: KeyboardEvent) => {
+    const action = dialogKeyAction(e.key);
+    if (action === 'close') closeEnding();
+    else if (action === 'trap') {
+      e.preventDefault();
+      endingRef.current?.focus();
+    }
+  };
 
   const closePanel = () => {
     setPanel(null);
@@ -99,10 +116,11 @@ export function HallView({ data, mediaBase, tutorialDone, broken, curses, onNavi
   };
 
   return (
+    <ScenePaintProvider>
     <div className="flex flex-col gap-4">
       <SceneViewer layout={HUB_SCENE} name={t('hall.heading')} alt={t('hub.scene.alt')} mediaBase={mediaBase} hotspots={hotspots} onActivate={activate} headingId="hall-heading" />
       {panel ? (
-        <div ref={panelRef} className="hall-panel" role="region" aria-labelledby="hall-panel-title" tabIndex={-1} onKeyDown={onPanelKey} data-panel={panel.kind}>
+        <div ref={panelRef} className="hall-panel mood-worn" role="region" aria-labelledby="hall-panel-title" tabIndex={-1} onKeyDown={onPanelKey} data-panel={panel.kind}>
           <PanelBody panel={panel} data={data} mediaBase={mediaBase} curses={curses} lang={lang} broken={broken} stateOf={stateOf} doorsById={doorsById} onNavigate={onNavigate} />
           <button type="button" className="scene-button" onClick={closePanel}>
             {t('hub.panel.close')}
@@ -124,17 +142,18 @@ export function HallView({ data, mediaBase, tutorialDone, broken, curses, onNavi
         </ul>
       </nav>
       {showEnding ? (
-        <div className="hall-ending" role="dialog" aria-modal="true" aria-labelledby="hall-ending-text" data-ending="true">
+        <div className="hall-ending" role="dialog" aria-modal="true" aria-labelledby="hall-ending-text" data-ending="true" onKeyDown={onEndingKey}>
           <img className="hall-ending-image" src={mediaUrl(mediaBase, DAWN_ASSET)} width={2400} height={1350} alt="" decoding="async" />
           <p id="hall-ending-text" className="hall-ending-text font-display">
             {t('hub.ending')}
           </p>
-          <button ref={endingRef} type="button" className="scene-button" onClick={() => setEndingSeen(true)}>
+          <button ref={endingRef} type="button" className="scene-button" onClick={closeEnding}>
             {t('hub.ending.close')}
           </button>
         </div>
       ) : null}
     </div>
+    </ScenePaintProvider>
   );
 }
 
@@ -199,15 +218,13 @@ function PanelBody({ panel, data, mediaBase, curses, lang, broken, stateOf, door
               const name = relic ? (relic.name ?? t('world.relic.fallback', { title: door?.title ?? relic.legendId })) : null;
               return (
                 // The cabinet is a fixed list of twelve slots in door order, so the index is a stable key.
-                <li key={i} className="hall-cabinet-slot" data-filled={relic ? 'true' : 'false'}>
+                <li key={i} className="hall-cabinet-slot" data-filled={relic ? 'true' : 'false'} aria-hidden={relic ? undefined : 'true'}>
                   {relic && name ? (
                     <>
                       <img src={mediaUrl(mediaBase, relic.assetId)} width={64} height={64} alt="" loading="lazy" decoding="async" />
                       <span>{name}</span>
                     </>
-                  ) : (
-                    <span>{t('hub.cabinet.empty')}</span>
-                  )}
+                  ) : null}
                 </li>
               );
             })}
