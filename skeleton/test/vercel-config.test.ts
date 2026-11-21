@@ -1,58 +1,82 @@
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
-// Reads the Vercel configuration, not responses: Vercel applies these headers at its edge, so a local build cannot show
-// them. Real responses are checked on production after the deploy (Requirement 8.5).
+import { atlasRouteRules, FUNCTION_REGIONS, GAME_PROJECT_ORIGIN, gameRouteRules, LONG_CACHE, SECURITY_HEADERS } from '../src/deploy/vercelRules.ts';
+// Production routing and headers come from Nitro route rules (skeleton/src/deploy/vercelRules.ts), which Nitro writes into
+// .vercel/output/config.json ahead of its catch-all. vercel.json keeps only the git rule, the install command and the
+// region. Real responses are checked on production after each deploy (Requirement 8.5).
 const repoRoot = fileURLToPath(new URL('../../', import.meta.url));
-type Header = { key: string; value: string };
-type Rule = { source: string; headers: Header[] };
-type VercelJson = { git?: unknown; regions?: unknown; headers?: Rule[]; rewrites?: { source: string; destination: string }[] };
+type VercelJson = Record<string, unknown>;
 const read = (rel: string): VercelJson => JSON.parse(readFileSync(`${repoRoot}${rel}`, 'utf8')) as VercelJson;
-const files = ['vercel.json', 'apps/atlas/vercel.json', 'apps/game/vercel.json'];
 const requiredGit = { deploymentEnabled: { '*': false, main: true } };
-const rule = (cfg: VercelJson, source: string): Header[] => cfg.headers?.find((r) => r.source === source)?.headers ?? [];
-const value = (hs: Header[], key: string) => hs.find((h) => h.key.toLowerCase() === key.toLowerCase())?.value;
 
 describe('vercel.json files', () => {
-  it.each(files)('%s keeps the git key exactly', (f) => {
+  it.each(['vercel.json', 'apps/atlas/vercel.json', 'apps/game/vercel.json'])('%s keeps the git key exactly', (f) => {
     expect(read(f).git).toStrictEqual(requiredGit);
   });
-
-  it.each(['apps/atlas/vercel.json', 'apps/game/vercel.json'])('%s runs functions in pdx1, next to Neon us-west-2', (f) => {
-    expect(read(f).regions).toStrictEqual(['pdx1']);
+  it.each(['apps/atlas/vercel.json', 'apps/game/vercel.json'])('%s runs functions in pdx1, next to Neon us-west-2, and holds no rule Nitro would override', (f) => {
+    const cfg = read(f);
+    expect(cfg.regions).toStrictEqual(['pdx1']);
+    expect(cfg.headers).toBeUndefined();
+    expect(cfg.rewrites).toBeUndefined();
+    expect(Object.keys(cfg).sort()).toEqual(['$schema', 'git', 'installCommand', 'regions']);
   });
+});
 
-  it.each([
-    ['apps/atlas/vercel.json', '/:path((?!game(?:/|$)).*)'],
-    ['apps/game/vercel.json', '/game/:path*'],
-  ])('%s sends the security headers on %s', (f, source) => {
-    const hs = rule(read(f), source);
-    expect(value(hs, 'X-Content-Type-Options')).toBe('nosniff');
-    expect(value(hs, 'Referrer-Policy')).toBe('strict-origin-when-cross-origin');
-    expect(value(hs, 'X-Frame-Options')).toBe('DENY');
-    expect(value(hs, 'Content-Security-Policy')).toMatch(/(^|;\s*)frame-ancestors 'none'(;|$)/);
+describe('Nitro route rules (the source of production routing and headers)', () => {
+  const sec = (h: Record<string, string> | undefined) => {
+    expect(h?.['x-content-type-options']).toBe('nosniff');
+    expect(h?.['referrer-policy']).toBe('strict-origin-when-cross-origin');
+    expect(h?.['x-frame-options']).toBe('DENY');
+    expect(h?.['content-security-policy']).toMatch(/(^|;\s*)frame-ancestors 'none'(;|$)/);
+  };
+  it('the atlas sends the security headers everywhere and caches /media for a year', () => {
+    const r = atlasRouteRules();
+    sec(r['/**']?.headers);
+    expect(r['/media/**']?.headers?.['cache-control']).toBe(LONG_CACHE);
+    expect(LONG_CACHE).toBe('public, max-age=31536000, immutable');
   });
-
-  it.each([
-    ['apps/atlas/vercel.json', '/media/:path*'],
-    ['apps/atlas/vercel.json', '/assets/:path*'],
-    ['apps/game/vercel.json', '/game/assets/:path*'],
-  ])('%s caches %s for a year', (f, source) => {
-    expect(value(rule(read(f), source), 'Cache-Control')).toBe('public, max-age=31536000, immutable');
+  it('the atlas forwards /game and everything under it to the game project', () => {
+    const r = atlasRouteRules();
+    expect(GAME_PROJECT_ORIGIN).toBe('https://trick-or-true.vercel.app');
+    expect(r['/game']?.proxy).toBe(`${GAME_PROJECT_ORIGIN}/game`);
+    expect(r['/game/**']?.proxy).toBe(`${GAME_PROJECT_ORIGIN}/game/**`);
   });
-
-  it('the atlas sends /game to the game project before anything else', () => {
-    const rw = read('apps/atlas/vercel.json').rewrites ?? [];
-    expect(rw.slice(0, 2).map((r) => r.source)).toEqual(['/game', '/game/:path*']);
-    for (const r of rw.slice(0, 2)) expect(r.destination).toMatch(/^https:\/\/[^/]+\.vercel\.app\/game/);
+  it('the game sends the security headers on every response', () => {
+    sec(gameRouteRules()['/**']?.headers);
+    expect(Object.keys(SECURITY_HEADERS)).toHaveLength(4);
   });
+  it('functions run in pdx1', () => {
+    expect(FUNCTION_REGIONS).toEqual(['pdx1']);
+  });
+  it.each(['atlas', 'game'])('the %s vite config passes the rules and the region to Nitro', (app) => {
+    const src = readFileSync(`${repoRoot}apps/${app}/vite.config.ts`, 'utf8');
+    expect(src).toContain(`routeRules: ${app}RouteRules()`);
+    expect(src).toContain('vercel: { functions: { regions: FUNCTION_REGIONS } }');
+  });
+});
 
-  it('the atlas security rule leaves /game responses to the game project', () => {
-    const re = /^\/((?!game(?:\/|$)).*)$/;
-    expect(re.test('/')).toBe(true);
-    expect(re.test('/legend/banshee')).toBe(true);
-    expect(re.test('/gamebook')).toBe(true);
-    expect(re.test('/game')).toBe(false);
-    expect(re.test('/game/tutorial')).toBe(false);
+// The Vercel build output, when a VERCEL=1 build exists (not committed): rules must come before Nitro's catch-all.
+const out = (app: string) => `${repoRoot}apps/${app}/.vercel/output`;
+describe.skipIf(!existsSync(`${out('atlas')}/config.json`) || !existsSync(`${out('game')}/config.json`))('built Vercel output', () => {
+  type Route = { src?: string; dest?: string; headers?: Record<string, string>; handle?: string };
+  const routes = (app: string) => (JSON.parse(readFileSync(`${out(app)}/config.json`, 'utf8')) as { routes: Route[] }).routes;
+  const before = (rs: Route[], i: number) => i >= 0 && i < rs.findIndex((r) => r.dest === '/__server');
+  it('atlas: /game and /game/ go to the game project before the atlas server', () => {
+    const rs = routes('atlas');
+    for (const path of ['/game', '/game/', '/game/tutorial', '/game/_serverFn/abc']) {
+      const i = rs.findIndex((r) => r.dest?.startsWith(GAME_PROJECT_ORIGIN) && new RegExp(r.src!).test(path));
+      expect(before(rs, i), path).toBe(true);
+    }
+    expect(rs.some((r) => r.dest?.startsWith(GAME_PROJECT_ORIGIN) && new RegExp(r.src!).test('/gamebook'))).toBe(false);
+  });
+  it.each([['atlas', '/legends/banshee'], ['game', '/game/']])('%s: %s gets the security headers before the server', (app, path) => {
+    const rs = routes(app);
+    const i = rs.findIndex((r) => r.headers?.['x-content-type-options'] === 'nosniff' && new RegExp(r.src!).test(path));
+    expect(before(rs, i)).toBe(true);
+  });
+  it.each(['atlas', 'game'])('%s: the function runs in pdx1', (app) => {
+    const vc = JSON.parse(readFileSync(`${out(app)}/functions/__server.func/.vc-config.json`, 'utf8')) as { regions?: string[] };
+    expect(vc.regions).toEqual(['pdx1']);
   });
 });

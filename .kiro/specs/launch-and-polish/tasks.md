@@ -117,11 +117,11 @@ Language: TypeScript (strict), as in the design. Tasks run one at a time, in the
     - _Requirements: 25.5, 26.1_
 
 - [ ] 3. G3: First deploy and early production check
-  - [-] 3.1 **STOP (Owner step): push to `main`**
+  - [x] 3.1 **STOP (Owner step): push to `main`**
     - Tell the Owner to push and to check that the game alias opens without a Vercel login. Wait for the deploy.
     - _Requirements: 3.2, 4.11_
 
-  - [ ] 3.2 Check the first deploy
+  - [-] 3.2 Check the first deploy
     - Check: `GET /game/` is not the atlas 404; one `/media` file is served; `Cache-Control` on `/media`; `Content-Encoding` on one JS file of each app; four security headers on `/` and `/game/`; abort a request mid-stream and confirm the next request succeeds. Record yes/no results only.
     - On a miss, fix the Vercel setting or config and re-check. If the rewrite or `INVALID_ORIGIN` cannot be fixed, **STOP** under Requirement 3.3 and give the Owner the Services change list from the design.
     - _Requirements: 4.4, 4.5, 4.6, 4.7, 4.12, 8.5, 9.3, 12.2, 12.3_

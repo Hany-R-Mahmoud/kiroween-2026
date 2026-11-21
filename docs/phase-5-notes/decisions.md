@@ -556,3 +556,27 @@ All calls: project `restless-silence-44986466`, branch `br-delicate-brook-art2cr
   - Dev-only `-w1000` media middleware reuses `mediaFile`'s canonical-path check; no traversal.
 - **agent-guard:** 0 fixed, 0 flagged in G2 code (`set-atlas-web-password.ts`, `smoke-prod.ts` Hall fix).
 - **verify-and-stop:** 5.1–5.10 and 6.1–6.7 met (5.8: shared Google credentials work; own-client steps recorded in 2.4). Open: D3 fix needs the Owner's atlas restart and one rerun; D2 (Owner).
+
+## Task 5.8 closed (book check after the Owner's atlas restart)
+
+- `node apps/atlas/scripts/book-check.mjs --base http://localhost:3001 --slow4g` against the restarted atlas (new bundle): **304 passed, 0 failed, 1 skipped** (RTL key swap: `FEATURE_ARABIC` off). Saved `docs/phase-5-notes/book-check-g5.json`.
+- Paper texture on Slow 4G (Requirement 18.6): start 2595 ms, end 5362 ms, duration 2767 ms, 52096 bytes. It loads after first paint and does not block text: the paper shows its CSS tint until the texture arrives.
+
+## Task 3.2, first deploy (commit 7dac05e): findings and fix (not yet deployed)
+
+**Read-only checks on production (names and yes/no only), after the Owner's check:**
+- Atlas `/` 200 with the four security headers, HTML `content-encoding: br`. Atlas JS `br`, `cache-control: public, max-age=31536000, immutable`. `/media` full hero and the new 1000 px copy: 200, the same year-long `immutable`. Game JS on the alias: `br`, year-long cache. So Vercel serves Nitro's `.vercel/output` despite the "Vite" preset (fact U5 settled), compression works (12.2), the hero copies are deployed, and `sharp` built on Vercel (U7 settled).
+- Atlas `/game/` → 404 from the atlas app (U1 failed): the atlas `vercel.json` rewrites were not applied ahead of Nitro's catch-all `"/(.*)" → "/__server"` in the Build Output `config.json`.
+- Game alias `/game/` 200 with **no** security headers (U4 / 8.1 failed for the game).
+
+**Docs read (2026-11-21):** [Nitro routing, route rules](https://nitro.build/docs/routing) (headers, `proxy` to external URLs, matched least to most specific), and the installed Nitro 3.0.261103-rc Vercel preset source (`dist/_presets.mjs`, `generateBuildConfig`): route-rule `headers` become `continue: true` routes and an external `proxy` (http(s) target, no extra options) becomes a Vercel rewrite route (`dest`), all written **before** `{ handle: "filesystem" }` and the catch-all; `vercel.functions` is merged into the function's `.vc-config.json`.
+
+**Fix (smallest that keeps one source):**
+- New `skeleton/src/deploy/vercelRules.ts` (pure data): the four security headers and CSP (unchanged values), `/media/**` year-long cache, atlas `/game` and `/game/**` proxied to `https://trick-or-true.vercel.app/game…`, game `/**` (relative to its `/game/` base) security headers, function region `pdx1`.
+- Both `vite.config.ts` pass them to Nitro, still only under `VERCEL`: `nitro({ routeRules, vercel: { functions: { regions: FUNCTION_REGIONS } } })`. The region is set here too because a prebuilt Build Output may not take `regions` from `vercel.json`.
+- Both app `vercel.json` files now hold only `$schema`, `git` (unchanged), `installCommand` and `regions: ["pdx1"]`; the `headers` and `rewrites` blocks are removed so there is one source of truth.
+- Local `VERCEL=1` builds: atlas `config.json` has the headers route, `/media`, then `^\/game\/?$ → https://trick-or-true.vercel.app/game` and `^\/game(/…)? → …/game/$1`, then `filesystem`, then the server; game `config.json` has the headers route on `^\/game(/…)?` before its server. Both functions' `.vc-config.json`: `regions: ["pdx1"]`. `/gamebook` does not match the proxy.
+- Test `skeleton/test/vercel-config.test.ts` rewritten (16 tests): `git` key exact in all three files; app `vercel.json` keys exactly `$schema, git, installCommand, regions`; the rules module values; both vite configs pass rules and region; and, when a `VERCEL=1` build exists, the built `config.json` routes `/game`, `/game/`, `/game/tutorial`, `/game/_serverFn/…` to the game before the server, sends the headers before the server, and pins `pdx1`. Two mutations recorded.
+- Expected after deploy, to check: the atlas `/**` header rule also matches proxied `/game` responses; values are identical to the game's own, so no conflict is expected (check for duplicated `x-frame-options`).
+- Full suite after the change: skeleton 787 passed, 8 expected fail; atlas 228; game 291. Typecheck clean; secret scan clean. Local Owner servers untouched (both still 200; `VERCEL=1` builds write `.vercel/output` only).
+- Still to check after the next deploy (3.2 continues): `/game/` through the atlas, headers on `/game/`, sign-in origin (`INVALID_ORIGIN`), the stream-abort check, and the rate-limit key behind the rewrite (finding S1; stop if shared).

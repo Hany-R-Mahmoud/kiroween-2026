@@ -1,9 +1,9 @@
 {
   "base": "http://localhost:3001",
-  "generatedAt": "2026-11-21T14:34:29.256Z",
+  "generatedAt": "2026-11-21T16:16:55.225Z",
   "summary": {
-    "pass": 296,
-    "fail": 8,
+    "pass": 304,
+    "fail": 0,
     "skipped": 1
   },
   "checks": [
@@ -859,12 +859,11 @@
     },
     {
       "name": "gumiho@390 every anchor lands visible and focused",
-      "result": "fail",
+      "result": "pass",
       "numbers": {
         "anchors": 18,
-        "failed": 1
-      },
-      "note": "gumiho--versions--v-ascend"
+        "failed": 0
+      }
     },
     {
       "name": "gumiho@390 buttons turn pages",
@@ -958,12 +957,11 @@
     },
     {
       "name": "gumiho@1280 every anchor lands visible and focused",
-      "result": "fail",
+      "result": "pass",
       "numbers": {
         "anchors": 18,
-        "failed": 2
-      },
-      "note": "gumiho--versions--v-bead gumiho--versions--v-ascend"
+        "failed": 0
+      }
     },
     {
       "name": "gumiho@1280 buttons turn pages",
@@ -1064,12 +1062,11 @@
     },
     {
       "name": "spring-heeled-jack@390 every anchor lands visible and focused",
-      "result": "fail",
+      "result": "pass",
       "numbers": {
         "anchors": 18,
-        "failed": 1
-      },
-      "note": "spring-heeled-jack--versions--v-street"
+        "failed": 0
+      }
     },
     {
       "name": "spring-heeled-jack@390 buttons turn pages",
@@ -1471,12 +1468,11 @@
     },
     {
       "name": "chupacabra@390 every anchor lands visible and focused",
-      "result": "fail",
+      "result": "pass",
       "numbers": {
         "anchors": 18,
-        "failed": 1
-      },
-      "note": "chupacabra--versions--v-witness"
+        "failed": 0
+      }
     },
     {
       "name": "chupacabra@390 buttons turn pages",
@@ -1570,12 +1566,11 @@
     },
     {
       "name": "chupacabra@1280 every anchor lands visible and focused",
-      "result": "fail",
+      "result": "pass",
       "numbers": {
         "anchors": 18,
-        "failed": 1
-      },
-      "note": "chupacabra--versions--v-film"
+        "failed": 0
+      }
     },
     {
       "name": "chupacabra@1280 buttons turn pages",
@@ -2082,12 +2077,11 @@
     },
     {
       "name": "vetala@390 every anchor lands visible and focused",
-      "result": "fail",
+      "result": "pass",
       "numbers": {
         "anchors": 16,
-        "failed": 2
-      },
-      "note": "vetala--versions--v-somadeva vetala--versions--v-burton"
+        "failed": 0
+      }
     },
     {
       "name": "vetala@390 buttons turn pages",
@@ -2181,12 +2175,11 @@
     },
     {
       "name": "vetala@1280 every anchor lands visible and focused",
-      "result": "fail",
+      "result": "pass",
       "numbers": {
         "anchors": 16,
-        "failed": 2
-      },
-      "note": "vetala--versions--v-hindi vetala--versions--v-later"
+        "failed": 0
+      }
     },
     {
       "name": "vetala@1280 buttons turn pages",
@@ -2287,12 +2280,11 @@
     },
     {
       "name": "yuki-onna@390 every anchor lands visible and focused",
-      "result": "fail",
+      "result": "pass",
       "numbers": {
         "anchors": 16,
-        "failed": 1
-      },
-      "note": "yuki-onna--versions--v-ojiya"
+        "failed": 0
+      }
     },
     {
       "name": "yuki-onna@390 buttons turn pages",
@@ -2675,9 +2667,9 @@
       "name": "paper texture load on Slow 4G",
       "result": "pass",
       "numbers": {
-        "start_ms": 2615,
-        "end_ms": 5399,
-        "duration_ms": 2785,
+        "start_ms": 2595,
+        "end_ms": 5362,
+        "duration_ms": 2767,
         "bytes": 52096
       }
     }

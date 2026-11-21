@@ -2,6 +2,7 @@ import tailwindcss from '@tailwindcss/vite';
 import { tanstackStart } from '@tanstack/react-start/plugin/vite';
 import viteReact from '@vitejs/plugin-react';
 import { nitro } from 'nitro/vite';
+import { FUNCTION_REGIONS, gameRouteRules } from '../../skeleton/src/deploy/vercelRules.ts';
 import { fileURLToPath } from 'node:url';
 import { defineConfig, loadEnv, type Plugin } from 'vite';
 
@@ -30,5 +31,5 @@ export default defineConfig({
   resolve: { tsconfigPaths: true },
   // the React plugin must come after Start's plugin. Nitro builds the Vercel output and runs only on Vercel (VERCEL is set
   // there), so local builds, serve-build.mjs and the smoke scripts keep using Start's own server output.
-  plugins: [serverEnvFromEnvDir(), tanstackStart({ router: { basepath: '/game' } }), ...(process.env.VERCEL ? [nitro()] : []), viteReact(), tailwindcss()],
+  plugins: [serverEnvFromEnvDir(), tanstackStart({ router: { basepath: '/game' } }), ...(process.env.VERCEL ? [nitro({ routeRules: gameRouteRules(), vercel: { functions: { regions: FUNCTION_REGIONS } } })] : []), viteReact(), tailwindcss()],
 });
