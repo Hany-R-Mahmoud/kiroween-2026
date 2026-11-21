@@ -209,15 +209,15 @@ The record is clearest where it is a page: dictionaries, a chronicle, a collecti
 
 | fact_id | Statement (as we tell it) | anchor | version_id or `all` | puzzle_types | answer | plausible wrong answers | difficulty |
 |---|---|---|---|---|---|---|---|
-| f-01 | Barros says the husk shows a mark like a nose set between two round eyes. | el-coco--ch-4 | v-barros | object-match | a nose between two round eyes | three holes in a row; a mouth under a beak; two ears | 2 |
+| f-01 | Barros says the husk shows a mark like a nose between two round eyes. | el-coco--ch-4 | v-barros | object-match | a nose between two round eyes | three holes in a row; a mouth under a beak; two ears | 2 |
 | f-02 | Barros says the name coco was put on child-scares by women. | el-coco--ch-4 | v-barros | who-said-it | women | sailors; shipwrights; physicians | 2 |
 | f-03 | The edition of Barros's Third Decade read here is dated 1563. | el-coco--ch-4 | v-barros | date-or-number | 1563 | 1611; 1712; 1799 | 3 |
 | f-04 | Oviedo, about 1526, compares the three holes to a little monkey's gesture. | el-coco--ch-4 | v-monkey | who-said-it | Oviedo | Barros; Bluteau; Rodríguez Marín | 3 |
-| f-05 | Covarrubias says the name came from the face a monkey pulls when she is angry. | el-coco--ch-4 | v-monkey | object-match | the face a monkey pulls when angry | a skull; a nose between two eyes; an owl's face | 2 |
+| f-05 | Covarrubias says the name came from the face a monkey pulls when angry. | el-coco--ch-4 | v-monkey | object-match | the face a monkey pulls when angry | a skull; a nose between two eyes; an owl's face | 2 |
 | f-06 | Covarrubias gives the monkey's sound as "ko ko". | el-coco--ch-4 | v-monkey | original-name | ko ko | cu-cu; ca-ca; coo-coo | 3 |
 | f-07 | Covarrubias printed his Tesoro in Madrid in 1611. | el-coco--ch-1 | all | date-or-number | 1611 | 1563; 1729; 1799 | 1 |
 | f-08 | Covarrubias lists the bogey sense of coco as an entry separate from the fruit. | el-coco--ch-1 | all | true-or-told | documented (in Covarrubias) | told only by later folklorists; told in a lullaby; unknown | 2 |
-| f-09 | That the Coco has a fixed face or body is not stated in any source read. | el-coco--ch-1 | all | true-or-told | told | documented by Covarrubias; documented by Bluteau; recorded by Rodríguez Marín | 2 |
+| f-09 | The Coco has a fixed face and body. | el-coco--ch-1 | all | true-or-told | told | documented by Covarrubias; documented by Bluteau; recorded by Rodríguez Marín | 2 |
 | f-10 | Goya's Coco print is plate number 3. | el-coco--ch-3 | v-goya | date-or-number | 3 | 1; 4; 25 | 1 |
 | f-11 | The Caprichos series has eighty plates. | el-coco--ch-3 | v-goya | date-or-number | eighty | sixty-four; eighty-five; a hundred | 2 |
 | f-12 | The first sale notice for the Caprichos is dated 6 February 1799. | el-coco--ch-3 | v-goya | date-or-number | 6 February 1799 | 19 February 1799; 6 January 1799; 6 February 1803 | 2 |
@@ -231,19 +231,19 @@ The record is clearest where it is a page: dictionaries, a chronicle, a collecti
 | f-20 | The Portuguese verse tells the papão to leave a roof. | el-coco--ch-2 | v-cradle | object-match | a roof | a window; a doorway; a cradle | 1 |
 | f-21 | A well-known Brazilian lullaby says that Cuca will come to get the baby. | el-coco--ch-2 | v-cradle | original-name | Cuca | Coco; Coca; Papão | 1 |
 | f-22 | Rodríguez Marín credits the Portuguese verse to F. Adolpho Coelho's journal. | el-coco--ch-2 | v-cradle | who-said-it | Adolpho Coelho | Câmara Cascudo; Leite de Vasconcelos; Covarrubias | 3 |
-| f-23 | That coco, coca and cuca are one and the same being is a folklorist's claim. | el-coco--ch-5 | all | true-or-told | told | documented by Houaiss; documented by Bluteau; proved in 1882 | 2 |
+| f-23 | Coco, coca and cuca are one and the same being. | el-coco--ch-5 | all | true-or-told | told | documented by Houaiss; documented by Bluteau; proved in 1882 | 2 |
 | f-24 | Bluteau, 1712, says the three holes of the coconut look like a skull. | el-coco--ch-4 | v-barros | object-match | a skull | a monkey; a nose between two eyes; an owl | 2 |
 | f-25 | The Diccionario de Autoridades of 1729 lists the bogey as an ugly figure or a monkey-like cry to scare children. | el-coco--ch-1 | all | who-said-it | the Diccionario de Autoridades | Covarrubias; Bluteau; Sandmann | 2 |
 | f-26 | [R] The Prado opened in 1819. | el-coco--ch-3 | all | date-or-number | 1819 | 1799; 1611; 1882 | 3 |
 | f-27 | The Prado holds Goya's preparatory drawing for plate 3. | el-coco--ch-3 | v-goya | true-or-told | documented (in the Fundación Goya catalogue) | told only by guides; told in a lullaby; unknown | 2 |
-| f-28 | That women invented the name coco to scare children is Barros's report only. | el-coco--ch-4 | v-barros | true-or-told | told | documented by an earlier chronicle; documented by Goya; proved by Bluteau | 2 |
-| f-29 | That the coconut was named for a monkey's grimace is an etymological legend in the view of Sandmann. | el-coco--ch-4 | v-monkey | true-or-told | told | documented by Barros; documented in 1882; proved by Houaiss | 2 |
-| f-30 | That Goya's Coco points to thieves in disguise is one reading, not a record. | el-coco--ch-3 | v-goya | true-or-told | told | documented in the Prado manuscript; documented by Feijóo's own words; proved | 3 |
-| f-31 | That the Coco "eats" children is the modern wording; the documented song says "carries off". | el-coco--ch-2 | v-cradle | true-or-told | told | documented in 1882; documented by Covarrubias; documented by Goya | 2 |
+| f-28 | Women invented the name coco to scare children. | el-coco--ch-4 | v-barros | true-or-told | told | documented by an earlier chronicle; documented by Goya; proved by Bluteau | 2 |
+| f-29 | The coconut was named for a monkey's grimace. | el-coco--ch-4 | v-monkey | true-or-told | told | documented by Barros; documented in 1882; proved by Houaiss | 2 |
+| f-30 | Goya's Coco points to thieves in disguise. | el-coco--ch-3 | v-goya | true-or-told | told | documented in the Prado manuscript; documented by Feijóo's own words; proved | 3 |
+| f-31 | In the old cradle song, the Coco eats children. | el-coco--ch-2 | v-cradle | true-or-told | told | documented in 1882; documented by Covarrubias; documented by Goya | 2 |
 | f-32 | Barros gives tenga as the Malabar name of the fruit. | el-coco--ch-4 | v-barros | original-name | tenga | narle; coca; cuco | 3 |
 | f-33 | Rodríguez Marín's collection of Spanish folk songs was published in 1882. | el-coco--ch-2 | v-cradle | date-or-number | 1882 | 1799; 1899; 1921 | 2 |
 | f-34 | [R] Monteiro Lobato's O Saci is dated 1921. | el-coco--ch-5 | all | date-or-number | 1921 | 1882; 1799; 1938 | 3 |
-| f-35 | Sandmann reports that the Portuguese coco was shown by hoods, masks and hollowed gourds with holes. | el-coco--ch-4 | v-barros | object-match | a hollowed gourd with holes | a straw doll; a horned wooden mask; a lead figure | 2 |
+| f-35 | Sandmann reports that the Portuguese coco was shown by hoods, masks and a hollowed gourd with holes. | el-coco--ch-4 | v-barros | object-match | a hollowed gourd with holes | a straw doll; a horned wooden mask; a lead figure | 2 |
 | f-36 | The 1882 collection prints a Spanish cradle song that names the Coco. | el-coco--ch-2 | v-cradle | true-or-told | documented (in Rodríguez Marín) | told only in modern songbooks; told in Goya's manuscripts; unknown | 2 |
 | f-37 | Bluteau, 1712, cites an author who held that children raised on cocos grow timid and cowardly. | el-coco--ch-6 | v-barros | true-or-told | documented (in Bluteau) | told only in a lullaby; told by Goya; unknown | 3 |
 
@@ -305,19 +305,19 @@ can be true when: the seed picks v-cradle
 
 | hotspot_id | scene_id | Object | Meaningful or decoy | Linked fact_ids or lead step | What happens on tap |
 |---|---|---|---|---|---|
-| h-01 | scene-nursery | Empty cradle with a folded blanket | Meaningful | f-18, f-31; lead-4 steps 1 and 3 | Asks what the song said the figure does to a child who will not sleep. |
-| h-02 | scene-nursery | Candle on a stool | Decoy | none | The flame bends and steadies; nothing hidden. |
-| h-03 | scene-nursery | Coconut on the sill | Meaningful (swappable) | f-01, f-05, f-24; lead-1 steps 1 and 3; lead-2 step 3 | Asks what the three marks look like, depending on who is telling it. |
-| h-04 | scene-nursery | Hooded shadow on the wall | Meaningful (swappable) | f-35 | Asks what the old word is said to have been shown by: a hood, a mask or something else. |
-| h-05 | scene-nursery | Wooden toy horse | Decoy | none | A plain toy; nothing hidden. |
-| h-06 | scene-street | Roof tiles above the shutters | Meaningful | f-20, f-21; lead-4 step 2 | Asks where the mother told the figure to go. |
-| h-07 | scene-street | Hollowed gourd lantern on the doorstep | Meaningful (swappable) | f-35; lead-1 step 2 | Asks what kind of object is the same shape as the empty face. |
-| h-08 | scene-street | Doorway with a heavy bolt | Decoy | none | The bolt is stuck; nothing behind it. |
+| h-01 | scene-nursery | Empty cradle with a folded blanket | Meaningful | f-18, f-31; lead-4 steps 1 and 3 | An empty cradle with a folded blanket. A cradle song is stitched along the hem. |
+| h-02 | scene-nursery | Candle on a stool | Decoy | none | The flame bends and steadies. |
+| h-03 | scene-nursery | Coconut on the sill | Meaningful (swappable) | f-01, f-05, f-24; lead-1 steps 1 and 3; lead-2 step 3 | Three dark marks on the coconut husk. |
+| h-04 | scene-nursery | Hooded shadow on the wall | Meaningful (swappable) | f-35 | A hooded shadow stretches across the wall, but nothing stands there to cast it. |
+| h-05 | scene-nursery | Wooden toy horse | Decoy | none | A plain wooden toy horse. |
+| h-06 | scene-street | Roof tiles above the shutters | Meaningful | f-20, f-21; lead-4 step 2 | A tile has slipped above the shutters, as if something sat up there. |
+| h-07 | scene-street | Hollowed gourd lantern on the doorstep | Meaningful (swappable) | f-35; lead-1 step 2 | A gourd lantern on the doorstep. Its holes look back like a face. |
+| h-08 | scene-street | Doorway with a heavy bolt | Decoy | none | The bolt is stuck fast. |
 | h-09 | scene-street | Clay water jug | Decoy | none | A dry jug; the lid rocks once. |
 | h-10 | scene-street | Iron lamp bracket | Decoy | none | A rusted bracket; nothing hangs from it. |
-| h-11 | scene-workshop | Copper plate on the bench | Meaningful | f-10, f-13, f-14, f-17; lead-3 steps 1 and 3 | Asks the plate's number and how the dark was made. |
-| h-12 | scene-workshop | Open dictionary on the lectern | Meaningful (swappable) | f-07, f-08, f-25; lead-2 steps 1 and 2 | Asks which year it was printed and what it lists on its separate entries. |
-| h-13 | scene-workshop | Drawing in red chalk | Meaningful | f-16; lead-3 step 2 | Asks the date of the drawing. |
+| h-11 | scene-workshop | Copper plate on the bench | Meaningful | f-10, f-13, f-14, f-17; lead-3 steps 1 and 3 | A copper etching plate, numbered in one corner, its dark areas grained. |
+| h-12 | scene-workshop | Open dictionary on the lectern | Meaningful (swappable) | f-07, f-08, f-25; lead-2 steps 1 and 2 | An old dictionary lies open at the word coco. |
+| h-13 | scene-workshop | Drawing in red chalk | Meaningful | f-16; lead-3 step 2 | A drawing in red chalk, dated in a small hand. |
 | h-14 | scene-workshop | Ink pot and rag | Decoy | none | Black ink; the rag is clean. |
 
 Swappable hotspots: h-03, h-04, h-07, h-12. In a run, the seed may turn one of these into a decoy and make a decoy such as h-02 or h-14 meaningful.
@@ -332,7 +332,7 @@ Swappable hotspots: h-03, h-04, h-07, h-12. In a run, the seed may turn one of t
 | p-2 What was in the room | object-match | f-01, f-05, f-13, f-20, f-24, f-35 |
 | p-3 Dates and numbers | date-or-number | f-03, f-07, f-10, f-11, f-12, f-16, f-17, f-26, f-33, f-34 |
 | p-4 Who said it | who-said-it | f-02, f-04, f-15, f-22, f-25 |
-| p-5 Told or recorded | true-or-told | f-08, f-09, f-23, f-27, f-28, f-29, f-30, f-31, f-36, f-37 |
+| p-5 | true-or-told | f-08, f-09, f-23, f-27, f-28, f-29, f-30, f-31, f-36, f-37 |
 
 **Breaking the curse:** The final puzzle is the shape's last question. The visitor chooses, from a row of four tokens (a coconut marked with a nose between two eyes, a monkey's face, a copper plate and an empty cradle), the one that matches the true account: in v-barros the coconut with the nose; in v-monkey the monkey's face; in v-goya the copper plate; in v-cradle the empty cradle. A right answer lets the hood fall softly and the shape fold into an ordinary coat on a peg. The relic earned is a small coconut-shell night-light with three punched holes that throw a warm pattern of two eyes and a mouth on the wall, harmless and bright.
 

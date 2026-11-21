@@ -245,43 +245,43 @@ The documented column is made of dates, printed books and physics. The told colu
 
 ## 5. Fact pool
 
-Tag at the end of each statement: [D] documented, [T] told.
+Documented facts start with [D]; told facts carry no tag.
 
 | fact_id | Statement (as we tell it) | anchor | version_id or `all` | puzzle_types | answer | plausible wrong answers (3+) | difficulty 1–3 |
 |---|---|---|---|---|---|---|---|
-| f-01 | The earliest known print mention of the ship is a traveller's book published in this year. [D] | flying-dutchman--ch-2 | all | date-or-number, true-or-told | 1790 | 1742; 1688; 1856; 1810 | 2 |
-| f-02 | A book credited to George Barrington, printed in this year, describes a lost Dutch warship and a phantom in full sail; scholars suspect forgery. [D] | flying-dutchman--ch-2 | v-sailors | date-or-number, true-or-told | 1795 | 1773; 1829; 1752; 1869 | 2 |
-| f-03 | The Vanderdecken story appeared in Blackwood's Edinburgh Magazine in this month and year. [D] | flying-dutchman--ch-3 | v-letters | date-or-number | May 1821 | October 1792; March 1850; June 1869; December 1802 | 2 |
-| f-04 | Wagner's opera premiered in this city. [D] | flying-dutchman--ch-5 | v-redeemer | date-or-number, true-or-told | Dresden | Vienna; Leipzig; Berlin; Hamburg | 1 |
-| f-05 | Heine's retelling, published in this year, adds a faithful woman as the way to free the captain. [D] | flying-dutchman--ch-5 | v-redeemer | date-or-number | 1834 | 1805; 1861; 1899; 1778 | 2 |
-| f-06 | The Bacchante book's journal entry about a red-lit brig is dated this day. [D] | flying-dutchman--ch-6 | v-log | date-or-number | 11 July | 3 March; 29 September; 20 January; 8 August | 2 |
-| f-07 | In the Bacchante entry, the brig was seen at about this hour. [D] | flying-dutchman--ch-6 | v-log | date-or-number | 4 a.m. | midnight; 9 p.m.; noon; 2 p.m. | 1 |
-| f-08 | In the Bacchante entry, this many people reported the sighting. [D] | flying-dutchman--ch-6 | v-log | date-or-number | thirteen | three; seven; forty; twenty-one | 1 |
-| f-09 | In the Bacchante entry, the glow around the brig was this colour. [D] | flying-dutchman--ch-6 | v-log | symbol, object-match | red | green; white; blue; yellow | 1 |
-| f-10 | In the Bacchante entry, the lookout reported the brig close off this side of the ship. [D] | flying-dutchman--ch-6 | v-log | object-match, true-or-told | port bow | starboard beam; astern; masthead; keel | 3 |
-| f-11 | The Bacchante account was printed as a book in this year. [D] | flying-dutchman--ch-6 | v-log | date-or-number | 1886 | 1851; 1902; 1869; 1840 | 2 |
-| f-12 | The captain sometimes suggested as the model for the ghost captain, said to have made fast voyages to Java, was this man. [T] | flying-dutchman--ch-4 | all | original-name, who-said-it | Bernard Fokke | Pieter de Wit; Jacob Rijkaart; Claes Bakker; Joost van Dam | 2 |
-| f-13 | In the story form, Fokke's speed led people to whisper that he had a pact with this figure. [T] | flying-dutchman--ch-4 | all | true-or-told, symbol | the devil | a sea spirit; a pilot king; a wind witch; a merchant guild | 2 |
-| f-14 | A Fata Morgana needs a temperature inversion, with this arrangement of air layers. [D] | flying-dutchman--ch-6 | all | weakness, true-or-told | warmer air over colder air | colder air over warmer air; strong wind over still air; fog over clear air | 3 |
-| f-15 | The name Fata Morgana is Italian for this figure from the King Arthur stories. [D] | flying-dutchman--ch-6 | all | original-name | Morgan le Fay | Lady of Shalott; Queen Guinevere; Isolde; Lady Nimue | 2 |
-| f-16 | In the Blackwood's story, the captain is called this. [T] | flying-dutchman--ch-3 | v-letters | original-name, who-said-it | Vanderdecken, of Amsterdam | Pieter van Straaten, of Rotterdam; Joost Falk, of Hamburg; Claes Bakker, of Haarlem | 2 |
-| f-17 | In the Blackwood's story, the captain swore to do this. [T] | flying-dutchman--ch-3 | v-letters | true-or-told, ritual-order | beat about the Cape until judgment day rather than put into the bay | find a hidden harbour; never sell his cargo; outrun the monsoon | 2 |
-| f-18 | In the Blackwood's story, the stranger on the boat holds out these objects. [T] | flying-dutchman--ch-3 | v-letters | object-match | letters | charts; lanterns; sealed barrels; coins | 1 |
-| f-19 | In the Blackwood's story, the way to stay safe is this. [T] | flying-dutchman--ch-3 | v-letters | weakness | refusal of the letters | singing at the bell; sailing due east; burning the cargo; showing a white flag | 2 |
-| f-20 | In the German Falkenberg tale, the captain plays this game with the devil. [T] | flying-dutchman--ch-4 | v-dice | object-match, symbol | dice | cards; chess; a coin toss; riddles | 1 |
-| f-21 | In the Falkenberg tale, the ship has no helm and no one in this role. [T] | flying-dutchman--ch-4 | v-dice | symbol, true-or-told | a steersman | a pump hand; a watchman; a log keeper; a lamp tender | 2 |
-| f-22 | In the Falkenberg tale, the ship roams this sea. [T] | flying-dutchman--ch-4 | v-dice | original-name, true-or-told | the North Sea | the Baltic; the Mediterranean; the Irish Sea; the Black Sea | 2 |
-| f-23 | In Heine's version, the captain may come ashore once every this many years. [T] | flying-dutchman--ch-5 | v-redeemer | date-or-number, weakness | seven | three; twelve; forty; nine | 1 |
-| f-24 | In Heine's version, this ends the curse. [T] | flying-dutchman--ch-5 | v-redeemer | weakness | a woman who stays faithful to him | a silver compass; a hundred bells; the ship's burning; a pilot's oath | 2 |
-| f-25 | Wagner first set the opera in Scotland, then moved it to this country before the premiere. [D] | flying-dutchman--ch-5 | v-redeemer | true-or-told, original-name | Norway | Iceland; Denmark; Sweden; Finland | 2 |
-| f-26 | The 1790 sailors' account says the ship could not find this. [T] | flying-dutchman--ch-2 | v-sailors | object-match, true-or-told | a pilot | fresh water; an anchor; a harbour chart; medicine | 2 |
-| f-27 | In the Barrington account, the ghost is the return of this kind of ship, seen under full sail. [T] | flying-dutchman--ch-2 | v-sailors | object-match | a Dutch warship | a merchant brig; a fishing smack; a hospital ship; a mail packet | 2 |
-| f-28 | The Dutch East India Company founded the Table Bay waystation in this year, under Jan van Riebeeck. [D] | flying-dutchman--ch-1 | all | date-or-number, who-said-it | 1652 | 1588; 1710; 1745; 1599 | 2 |
-| f-29 | Sailors treated a sighting of the ship as a sign of this. [T] | flying-dutchman--ch-1 | all | true-or-told, symbol | a storm | a rich cargo; calm weather; a safe harbour; a lucky voyage | 1 |
-| f-30 | Scott's notes of 1813 describe a crew barred from every harbour after this affliction. [T] | flying-dutchman--ch-2 | all | true-or-told | a plague | a mutiny; a fire; a famine; a mist | 2 |
-| f-31 | The Bacchante account was credited to two young men who sailed in her, one named Albert Victor and the other this. [D] | flying-dutchman--ch-6 | v-log | who-said-it | George | Edward; Henry; Arthur; William | 2 |
-| f-32 | The name Vanderdecken appears in a magazine story printed in this year, and not in the 1790, 1795 or 1813 texts. [D] | flying-dutchman--ch-3 | v-letters | date-or-number, true-or-told | 1821 | 1742; 1688; 1856; 1769 | 3 |
-| f-33 | In Heine's version, the captain comes ashore to look for this. [T] | flying-dutchman--ch-5 | v-redeemer | object-match | a wife | a pilot; fresh water; a priest; a new crew | 1 |
+| f-01 | [D] The earliest known print mention of the ship is a traveller's book published in this year. | flying-dutchman--ch-2 | all | date-or-number, true-or-told | 1790 | 1742; 1688; 1856; 1810 | 2 |
+| f-02 | [D] A book credited to George Barrington, printed in this year, describes a lost Dutch warship and a phantom in full sail; scholars suspect forgery. | flying-dutchman--ch-2 | v-sailors | date-or-number, true-or-told | 1795 | 1773; 1829; 1752; 1869 | 2 |
+| f-03 | [D] The Vanderdecken story appeared in Blackwood's Edinburgh Magazine in this month and year. | flying-dutchman--ch-3 | v-letters | date-or-number | May 1821 | October 1792; March 1850; June 1869; December 1802 | 2 |
+| f-04 | [D] Wagner's opera premiered in this city. | flying-dutchman--ch-5 | v-redeemer | date-or-number, true-or-told | Dresden | Vienna; Leipzig; Berlin; Hamburg | 1 |
+| f-05 | [D] Heine's retelling, published in this year, adds a faithful woman as the way to free the captain. | flying-dutchman--ch-5 | v-redeemer | date-or-number | 1834 | 1805; 1861; 1899; 1778 | 2 |
+| f-06 | [D] The Bacchante book's journal entry about a red-lit brig is dated this day. | flying-dutchman--ch-6 | v-log | date-or-number | 11 July | 3 March; 29 September; 20 January; 8 August | 2 |
+| f-07 | [D] In the Bacchante entry, the brig was seen at about this hour. | flying-dutchman--ch-6 | v-log | date-or-number | 4 a.m. | midnight; 9 p.m.; noon; 2 p.m. | 1 |
+| f-08 | [D] In the Bacchante entry, this many people reported the sighting. | flying-dutchman--ch-6 | v-log | date-or-number | thirteen | three; seven; forty; twenty-one | 1 |
+| f-09 | [D] In the Bacchante entry, the glow around the brig was this colour. | flying-dutchman--ch-6 | v-log | symbol, object-match | red | green; white; blue; yellow | 1 |
+| f-10 | [D] In the Bacchante entry, the lookout reported the brig close off this side of the ship. | flying-dutchman--ch-6 | v-log | object-match, true-or-told | port bow | starboard beam; astern; masthead; keel | 3 |
+| f-11 | [D] The Bacchante account was printed as a book in this year. | flying-dutchman--ch-6 | v-log | date-or-number | 1886 | 1851; 1902; 1869; 1840 | 2 |
+| f-12 | The captain sometimes suggested as the model for the ghost captain, said to have made fast voyages to Java, was this man. | flying-dutchman--ch-4 | all | original-name, who-said-it | Bernard Fokke | Pieter de Wit; Jacob Rijkaart; Claes Bakker; Joost van Dam | 2 |
+| f-13 | In the story form, Fokke's speed led people to whisper that he had a pact with this figure. | flying-dutchman--ch-4 | all | true-or-told, symbol | the devil | a sea spirit; a pilot king; a wind witch; a merchant guild | 2 |
+| f-14 | [D] A Fata Morgana needs a temperature inversion, with this arrangement of air layers. | flying-dutchman--ch-6 | all | weakness, true-or-told | warmer air over colder air | colder air over warmer air; strong wind over still air; fog over clear air | 3 |
+| f-15 | [D] The name Fata Morgana is Italian for this figure from the King Arthur stories. | flying-dutchman--ch-6 | all | original-name | Morgan le Fay | Lady of Shalott; Queen Guinevere; Isolde; Lady Nimue | 2 |
+| f-16 | In the Blackwood's story, the captain is called this. | flying-dutchman--ch-3 | v-letters | original-name, who-said-it | Vanderdecken, of Amsterdam | Pieter van Straaten, of Rotterdam; Joost Falk, of Hamburg; Claes Bakker, of Haarlem | 2 |
+| f-17 | In the Blackwood's story, the captain swore to do this. | flying-dutchman--ch-3 | v-letters | true-or-told, ritual-order | beat about the Cape until judgment day rather than put into the bay | find a hidden harbour; never sell his cargo; outrun the monsoon | 2 |
+| f-18 | In the Blackwood's story, the stranger on the boat holds out these objects. | flying-dutchman--ch-3 | v-letters | object-match | letters | charts; lanterns; sealed barrels; coins | 1 |
+| f-19 | In the Blackwood's story, the way to stay safe is this. | flying-dutchman--ch-3 | v-letters | weakness | refusal of the letters | singing at the bell; sailing due east; burning the cargo; showing a white flag | 2 |
+| f-20 | In the German Falkenberg tale, the captain plays this game with the devil. | flying-dutchman--ch-4 | v-dice | object-match, symbol | dice | cards; chess; a coin toss; riddles | 1 |
+| f-21 | In the Falkenberg tale, the ship has no helm and no one in this role. | flying-dutchman--ch-4 | v-dice | symbol, true-or-told | a steersman | a pump hand; a watchman; a log keeper; a lamp tender | 2 |
+| f-22 | In the Falkenberg tale, the ship roams this sea. | flying-dutchman--ch-4 | v-dice | original-name, true-or-told | the North Sea | the Baltic; the Mediterranean; the Irish Sea; the Black Sea | 2 |
+| f-23 | In Heine's version, the captain may come ashore once every this many years. | flying-dutchman--ch-5 | v-redeemer | date-or-number, weakness | seven | three; twelve; forty; nine | 1 |
+| f-24 | In Heine's version, this ends the curse. | flying-dutchman--ch-5 | v-redeemer | weakness | a woman who stays faithful to him | a silver compass; a hundred bells; the ship's burning; a pilot's oath | 2 |
+| f-25 | [D] Wagner first set the opera in Scotland, then moved it to this country before the premiere. | flying-dutchman--ch-5 | v-redeemer | true-or-told, original-name | Norway | Iceland; Denmark; Sweden; Finland | 2 |
+| f-26 | The 1790 sailors' account says the ship could not find this. | flying-dutchman--ch-2 | v-sailors | object-match, true-or-told | a pilot | fresh water; an anchor; a harbour chart; medicine | 2 |
+| f-27 | In the Barrington account, the ghost is the return of this kind of ship, seen under full sail. | flying-dutchman--ch-2 | v-sailors | object-match | a Dutch warship | a merchant brig; a fishing smack; a hospital ship; a mail packet | 2 |
+| f-28 | [D] The Dutch East India Company founded the Table Bay waystation in this year, under Jan van Riebeeck. | flying-dutchman--ch-1 | all | date-or-number, who-said-it | 1652 | 1588; 1710; 1745; 1599 | 2 |
+| f-29 | Sailors treated a sighting of the ship as a sign of this. | flying-dutchman--ch-1 | all | true-or-told, symbol | a storm | a rich cargo; calm weather; a safe harbour; a lucky voyage | 1 |
+| f-30 | Scott's notes of 1813 describe a crew barred from every harbour after this affliction. | flying-dutchman--ch-2 | all | true-or-told | a plague | a mutiny; a fire; a famine; a mist | 2 |
+| f-31 | [D] The Bacchante account was credited to two young men who sailed in her, one named Albert Victor and the other this. | flying-dutchman--ch-6 | v-log | who-said-it | George | Edward; Henry; Arthur; William | 2 |
+| f-32 | [D] The name Vanderdecken appears in a magazine story printed in this year, and not in the 1790, 1795 or 1813 texts. | flying-dutchman--ch-3 | v-letters | date-or-number, true-or-told | 1821 | 1742; 1688; 1856; 1769 | 3 |
+| f-33 | In Heine's version, the captain comes ashore to look for this. | flying-dutchman--ch-5 | v-redeemer | object-match | a wife | a pilot; fresh water; a priest; a new crew | 1 |
 
 Version-specific facts: f-02, f-03, f-04, f-05, f-06 to f-11, f-16 to f-27, f-31, f-32, f-33 (well over 6). Documented: f-01 to f-11, f-14, f-15, f-25, f-28, f-31, f-32. Told: f-12, f-13, f-16 to f-24, f-26, f-27, f-29, f-30, f-33.
 
@@ -295,8 +295,8 @@ starts from: v-letters
 steps:
   1. Inspect the bundle of sealed letters in the deck rack (h-03).
   2. Read the town named on the top letter, then recall who the Blackwood's story says carries them.
-  3. Ask the spirit what it swore, using f-17 and f-16.
-dead end: The addresses lead to a street that no longer exists and a person who is long gone. If the seed did not pick v-letters, the spirit shows no interest in the letters and its answer to "what did you swear?" does not match.
+  3. Ask the spirit what it swore, and by what name it was known.
+dead end: The addresses lead to a street that no longer exists and a person who is long gone.
 contradiction: f-20 and f-21, anchor flying-dutchman--ch-4 (the dice version has no letters and no oath about the Cape).
 can be true when: seed picks v-letters.
 ```
@@ -308,7 +308,7 @@ steps:
   1. Inspect the bare helm post on the deck (h-01).
   2. Pick up the dice cup on the barrel head (h-02).
   3. Check the chart on the cabin table for the sea it shows (h-09).
-dead end: The chart shows the Cape, not the North Sea, and the spirit says nothing about wagers. In a seed that picks another version, the dice are just a sailors' pastime.
+dead end: The chart shows the Cape, not the North Sea, and the spirit says nothing about wagers.
 contradiction: f-22, anchor flying-dutchman--ch-4 (Falkenberg's sea is the North Sea); f-16, anchor flying-dutchman--ch-3 (the Cape belongs to the Amsterdam captain).
 can be true when: seed picks v-dice.
 ```
@@ -319,8 +319,8 @@ starts from: v-redeemer
 steps:
   1. Inspect the painted miniature of a woman in the cabin (h-08).
   2. Count the brass tally pins on the wall board (h-11).
-  3. Recall what must happen to free the captain and how often he may try (f-23, f-24).
-dead end: The pins number fewer than the cycle requires, the miniature has no name, and the spirit does not react to talk of faithfulness. If the seed did not pick v-redeemer, the miniature is a keepsake and nothing more.
+  3. Recall what must happen to free the captain and how often he may try.
+dead end: The pins number fewer than the cycle requires, the miniature has no name, and the spirit does not react to talk of faithfulness.
 contradiction: f-02 and f-26, anchor flying-dutchman--ch-2 (the oldest accounts have no cure at all); f-25, anchor flying-dutchman--ch-5 (the opera is a later, nineteenth-century rule).
 can be true when: seed picks v-redeemer.
 ```
@@ -343,8 +343,8 @@ starts from: v-sailors
 steps:
   1. Open the pilot's flag locker in the hold (h-14).
   2. Compare the flag with the ship's forward view from the deck.
-  3. Recall what the 1790 teller says the ship could not find (f-26).
-dead end: The locker holds a pilot's flag that was never flown, and the spirit has no name or oath to give. If the seed picked a richer version, the pilot's flag matters less than the missing detail it would need.
+  3. Recall what the 1790 teller says the ship could not find.
+dead end: The locker holds a pilot's flag that was never flown, and the spirit has no name or oath to give.
 contradiction: f-16, anchor flying-dutchman--ch-3 (a named captain appears only in 1821); f-32, anchor flying-dutchman--ch-3 (the name is not in the earliest accounts).
 can be true when: seed picks v-sailors.
 ```
@@ -370,22 +370,22 @@ Swappable means the seed may switch it between meaningful and decoy.
 
 | hotspot_id | scene_id | Object | Meaningful or decoy | Linked fact_ids or lead step | What happens on tap |
 |---|---|---|---|---|---|
-| h-01 | sc-deck | Bare helm post, lines lashed | Meaningful (swappable) | f-21; lead-2 step 1 | In v-dice, the player notes there is nothing to steer with; otherwise the post is just worn wood |
-| h-02 | sc-deck | Dice cup on a barrel head | Meaningful (swappable) | f-20; lead-2 step 2 | In v-dice, the dice rattle on their own; otherwise they sit still |
-| h-03 | sc-deck | Bundle of sealed letters | Meaningful (swappable) | f-18, f-19; lead-1 | In v-letters, the top letter names a town; otherwise the seals are blank |
-| h-04 | sc-deck | Ship's bell | Decoy | none | Rings once; the sound carries and a fear tick goes up, no clue |
-| h-05 | sc-deck | Brass spyglass in a rack | Meaningful (swappable) | f-14, f-29; lead-4 step 3; lead-5 step 2 | A haze at the horizon wobbles; the player must decide if it is a mirage |
-| h-06 | sc-deck | Coil of rope | Decoy | none | A note says only "rope"; a gull cries |
-| h-07 | sc-cabin | Open logbook | Meaningful (swappable) | f-06, f-07; lead-4 step 1 | In v-log, the player reads a date and an hour; otherwise the pages are torn out |
-| h-08 | sc-cabin | Painted miniature of a woman | Meaningful (swappable) | f-24, f-33; lead-3 steps 1 and 3 | In v-redeemer, the eyes seem to follow; otherwise it is only a keepsake |
-| h-09 | sc-cabin | Chart on the table | Meaningful (swappable) | f-22, f-28; lead-2 step 3 | Shows the Cape or the North Sea depending on the seed |
-| h-10 | sc-cabin | Pewter goblet | Decoy | none | Empty; the player's reflection looks back a beat late |
-| h-11 | sc-cabin | Wall board with brass tally pins | Meaningful (swappable) | f-23; lead-3 step 2 | Pins are counted; the total matches the seed's cycle number |
-| h-12 | sc-cabin | Candle stub | Decoy | none | The flame bows toward the door; nothing happens |
-| h-13 | sc-hold | Stacked barrels | Decoy | none | Hollow sound; nothing inside |
-| h-14 | sc-hold | Locker with a pilot's flag | Meaningful (swappable) | f-26; lead-5 steps 1 and 3 | In v-sailors, the flag is clean and unused |
-| h-15 | sc-hold | Pooled rusted chain | Decoy | none | Clinks faintly; no clue |
-| h-16 | sc-hold | Hanging red lantern | Meaningful (swappable) | f-09, f-10; lead-4 step 2 | Lights red; the player checks which side of the ship it hangs on |
+| h-01 | sc-deck | Bare helm post, lines lashed | Meaningful (swappable) | f-21; lead-2 step 1 | The helm post is bare, its lines lashed tight. Nothing here steers the ship. |
+| h-02 | sc-deck | Dice cup on a barrel head | Meaningful (swappable) | f-20; lead-2 step 2 | A dice cup sits on a barrel head. |
+| h-03 | sc-deck | Bundle of sealed letters | Meaningful (swappable) | f-18, f-19; lead-1 | A bundle of sealed letters, addressed to people long dead. |
+| h-04 | sc-deck | Ship's bell | Decoy | none | The bell rings once. The sound carries far across the water. |
+| h-05 | sc-deck | Brass spyglass in a rack | Meaningful (swappable) | f-14, f-29; lead-4 step 3; lead-5 step 2 | Through the glass, a haze wobbles at the horizon. |
+| h-06 | sc-deck | Coil of rope | Decoy | none | A coil of rope. A gull cries overhead. |
+| h-07 | sc-cabin | Open logbook | Meaningful (swappable) | f-06, f-07; lead-4 step 1 | The logbook lies open at an entry with a date and an hour. |
+| h-08 | sc-cabin | Painted miniature of a woman | Meaningful (swappable) | f-24, f-33; lead-3 steps 1 and 3 | A painted miniature of a woman. Her eyes seem to follow you. |
+| h-09 | sc-cabin | Chart on the table | Meaningful (swappable) | f-22, f-28; lead-2 step 3 | A chart of rough waters, with a cape marked in ink. |
+| h-10 | sc-cabin | Pewter goblet | Decoy | none | Empty. Your reflection looks back a beat late. |
+| h-11 | sc-cabin | Wall board with brass tally pins | Meaningful (swappable) | f-23; lead-3 step 2 | Brass pins on a wall board, counting something in years. |
+| h-12 | sc-cabin | Candle stub | Decoy | none | The flame bows toward the door. |
+| h-13 | sc-hold | Stacked barrels | Decoy | none | A hollow sound. Nothing inside. |
+| h-14 | sc-hold | Locker with a pilot's flag | Meaningful (swappable) | f-26; lead-5 steps 1 and 3 | A locker holding a pilot's flag, clean and never flown. |
+| h-15 | sc-hold | Pooled rusted chain | Decoy | none | The chain clinks faintly. |
+| h-16 | sc-hold | Hanging red lantern | Meaningful (swappable) | f-09, f-10; lead-4 step 2 | The lantern glows red. It hangs on one side of the ship. |
 
 Permanent decoys: h-04, h-06, h-10, h-12, h-13, h-15 (6). Swappable: the other 10.
 

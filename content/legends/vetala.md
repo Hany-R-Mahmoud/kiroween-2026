@@ -231,14 +231,14 @@ The record is clearest where it is a book. Somadeva's tale as Tawney gave it, an
 | f-02 | The king's father is named Vikramasena. | vetala--ch-1 | v-somadeva | who-said-it | Vikramasena | Trivikramasena; Agnisvamin; Harisvamin | 2 |
 | f-03 | The king rules from Pratishthana on the Godavari. | vetala--ch-1 | v-somadeva | original-name | Pratishthana | Ujjain; Varanasi; Ujjayani | 2 |
 | f-04 | The ascetic's name is Kshantishila. | vetala--ch-1 | v-somadeva | original-name | Kshantishila | Shanta-Shil; Agnisvamin; Madanasena | 2 |
-| f-05 | The ascetic brings the king one fruit each day. | vetala--ch-1 | all | object-match | a fruit | a flower; a lamp; a coin | 1 |
+| f-05 | The ascetic brings the king a fruit each day. | vetala--ch-1 | all | object-match | a fruit | a flower; a lamp; a coin | 1 |
 | f-06 | A jewel bursts out of the fruit, and a heap of jewels lies among the rotted fruits in the treasury. | vetala--ch-1 | all | object-match | a jewel | a key; a seed; a letter | 1 |
-| f-34 | The fruit bursts open when the king gives it to a young pet monkey. | vetala--ch-1 | all | object-match | a pet monkey | a parrot; the treasurer; a palace cat | 2 |
+| f-34 | The fruit bursts open when the king gives it to a pet monkey. | vetala--ch-1 | all | object-match | a pet monkey | a parrot; the treasurer; a palace cat | 2 |
 | f-07 | The ascetic waits under a banyan tree in the burning ground. | vetala--ch-1 | v-somadeva | object-match | a banyan | an asoka; a mimosa; a simsapa | 2 |
 | f-08 | In the early chapters the body hangs from an asoka tree. | vetala--ch-2 | v-somadeva | object-match | an asoka tree | a banyan; a mimosa; a palm | 2 |
 | f-09 | In a later chapter the king returns to the simsapa (shimshapa) tree. | vetala--ch-5 | v-somadeva | object-match | a simsapa tree | an asoka; a banyan; a mimosa | 3 |
 | f-10 | The king must carry the body in silence. | vetala--ch-2 | all | weakness | silence | a song; a lit lamp; a spoken oath | 1 |
-| f-11 | The spirit leaves the king's shoulder when the king speaks. | vetala--ch-2 | v-somadeva | weakness | if the king speaks | if dawn breaks; if a fire dies; if the king stumbles | 2 |
+| f-11 | The spirit leaves the king's shoulder if the king speaks. | vetala--ch-2 | v-somadeva | weakness | if the king speaks | if dawn breaks; if a fire dies; if the king stumbles | 2 |
 | f-12 | The spirit says the head will split in a hundred pieces if the king knows and stays silent. | vetala--ch-2 | v-somadeva | date-or-number | a hundred | seven; a thousand; ten | 2 |
 | f-13 | [R] A reference summary says the head would burst in a thousand pieces. | vetala--ch-5 | v-later | date-or-number | a thousand | a hundred; seven; twenty-four | 3 |
 | f-14 | Only twenty-four tales appear in Somadeva's section; the frame is the twenty-fifth. | vetala--ch-4 | v-somadeva | date-or-number | twenty-four | twenty-five; twelve; fifty | 2 |
@@ -248,16 +248,16 @@ The record is clearest where it is a book. Somadeva's tale as Tawney gave it, an
 | f-18 | Burton's Vikram and the Vampire was published in 1870. | vetala--ch-5 | v-burton | date-or-number | 1870 | 1805; 1884; 1037 | 1 |
 | f-19 | In Burton's adaptation the king is Raja of Ujjayani. | vetala--ch-5 | v-burton | original-name | Ujjayani | Pratishthana; Varanasi; Kashmir | 2 |
 | f-20 | In Burton's adaptation the jogi is named Shanta-Shil. | vetala--ch-5 | v-burton | who-said-it | Shanta-Shil | Harisvamin; Agnisvamin; Vajramukuta | 2 |
-| f-21 | In Burton's adaptation the body hangs from a mimosa, which the spirit calls a siras tree. | vetala--ch-5 | v-burton | object-match | a mimosa tree | an asoka; a banyan; a palm | 3 |
-| f-22 | Burton's preface says he gave the old skeleton flesh and blood, so his book is an adaptation. | vetala--ch-5 | v-burton | true-or-told | documented (his preface) | told only by later critics; documented in Tawney; unknown | 2 |
+| f-21 | In Burton's adaptation the body hangs from a mimosa tree, which the spirit calls a siras tree. | vetala--ch-5 | v-burton | object-match | a mimosa tree | an asoka; a banyan; a palm | 3 |
+| f-22 | Burton's book is an adaptation that gave the old skeleton flesh and blood. | vetala--ch-5 | v-burton | true-or-told | documented (his preface) | told only by later critics; documented in Tawney; unknown | 2 |
 | f-23 | [R] A Hindustani Baital Pachisi was made in 1805 under John Gilchrist. | vetala--ch-5 | v-hindi | date-or-number | 1805 | 1870; 1037; 1884 | 2 |
 | f-24 | [R] Kshemendra's Brihatkathamanjari is dated 1037. | vetala--ch-4 | all | date-or-number | 1037 | 1070; 1805; 1870 | 3 |
 | f-25 | [R] Shivadasa and Jambhaladatta wrote recensions that hold only the Vetala tales. | vetala--ch-4 | all | who-said-it | Shivadasa and Jambhaladatta | Burton and Tawney; Somadeva and Kshemendra; Gilchrist and Surat Kabishwar | 3 |
 | f-26 | The Somadeva Vetala tales stand in Book XII of the Kathasaritsagara. | vetala--ch-1 | v-somadeva | date-or-number | Book XII | Book I; Book V; Book XVIII | 3 |
-| f-27 | The spirit's final warning, that the ascetic means the king harm, is in Tawney's last chapter. | vetala--ch-7 | v-somadeva | true-or-told | documented (Tawney's text) | told only in Burton; told by a reference site; unknown | 2 |
-| f-28 | The idea that Trivikramasena and Vikramaditya are one king is not proved. | vetala--ch-5 | all | true-or-told | told | documented in Tawney; documented by Burton; proved | 2 |
-| f-29 | The idea that the tales come from a lost older source is an inference with no surviving text. | vetala--ch-4 | all | true-or-told | told | documented in Tawney; shown in Burton's preface; proven by the 1805 version | 3 |
-| f-30 | The promise that hearing the tales frees a listener from curses is a claim inside the text. | vetala--ch-7 | all | true-or-told | told | documented fact; proved by Penzer; shown in a manuscript | 2 |
+| f-27 | The spirit's final warning is that the ascetic means the king harm. | vetala--ch-7 | v-somadeva | true-or-told | documented (Tawney's text) | told only in Burton; told by a reference site; unknown | 2 |
+| f-28 | Trivikramasena and Vikramaditya are one king. | vetala--ch-5 | all | true-or-told | told | documented in Tawney; documented by Burton; proved | 2 |
+| f-29 | The tales come from a lost older source. | vetala--ch-4 | all | true-or-told | told | documented in Tawney; shown in Burton's preface; proven by the 1805 version | 3 |
+| f-30 | Hearing the tales frees a listener from curses. | vetala--ch-7 | all | true-or-told | told | documented fact; proved by Penzer; shown in a manuscript | 2 |
 | f-31 | The idea that the legendary Vikramaditya ruled from Ujjain as a historical emperor is told. | vetala--ch-7 | v-later | true-or-told | told | documented in Tawney; documented in Somadeva's frame; recorded by Burton | 2 |
 | f-32 | [R] Tawney's translation appeared between 1880 and 1884. | vetala--ch-4 | v-somadeva | date-or-number | the 1880s | the 1870s; the 1920s; the 1800s | 3 |
 | f-33 | The ascetic brings his daily fruit for ten years before the jewel is found. | vetala--ch-1 | v-somadeva | date-or-number | ten years | one year; twenty-four days; seven years | 2 |
@@ -320,22 +320,22 @@ can be true when: the seed picks v-hindi
 
 | hotspot_id | scene_id | Object | Meaningful or decoy | Linked fact_ids or lead step | What happens on tap |
 |---|---|---|---|---|---|
-| h-01 | scene-palace | Fruit in a wooden bowl | Meaningful (swappable) | f-05 | A fruit puzzle: what the ascetic brought each day. |
-| h-02 | scene-palace | Small cut gem by the chest | Meaningful | f-06; lead-1 step 1 | Shows the gem found inside; asks where it was hidden. |
+| h-01 | scene-palace | Fruit in a wooden bowl | Meaningful (swappable) | f-05 | A wooden bowl with one ripe fruit in it. |
+| h-02 | scene-palace | Small cut gem by the chest | Meaningful | f-06; lead-1 step 1 | A small cut gem, found inside something it should not have been in. |
 | h-03 | scene-palace | Hanging cloth map | Meaningful (swappable) | f-13, f-31; lead-3 steps 1 and 3 | Names a king, a city and a count; a later summary, not an old text. |
 | h-04 | scene-palace | Palm-leaf manuscript bundle | Meaningful (swappable) | f-23, f-30; lead-4 | A date and a chain of languages; no plot. |
-| h-05 | scene-palace | Empty monkey perch with a fruit rind | Meaningful | f-34 | Asks who opened the fruit. |
+| h-05 | scene-palace | Empty monkey perch with a fruit rind | Meaningful | f-34 | An empty monkey perch, a fruit rind lying below it. |
 | h-06 | scene-palace | Oil lamp on a stand | Decoy | none | The flame bends once, then steadies. |
-| h-07 | scene-tree | Tall tree with a pale bundle | Meaningful | f-08, f-10, f-11; lead-1 steps 2 and 3 | Asks which tree it is and what rule the king keeps. |
-| h-08 | scene-tree | Rope coil | Decoy | none | A heap of rope; no answer. |
+| h-07 | scene-tree | Tall tree with a pale bundle | Meaningful | f-08, f-10, f-11; lead-1 steps 2 and 3 | A tall tree with a pale bundle hanging from it. |
+| h-08 | scene-tree | Rope coil | Decoy | none | A heap of rope. |
 | h-09 | scene-tree | Clay water jar | Decoy | none | Holds only cold water. |
-| h-10 | scene-tree | Sword on a cloth | Meaningful (swappable) | f-12; lead-3 step 2 | A number puzzle: how many pieces the warning names. |
-| h-11 | scene-tree | Distant fires and smoke | Decoy | none | Flicker; a harmless scare. |
-| h-12 | scene-road | Milestone | Meaningful (swappable) | f-03, f-19; lead-2 step 3 | Which city the road leads to, by version. |
-| h-13 | scene-road | Second tree, different leaf | Meaningful | f-09, f-21; lead-2 step 1 | Which tree, by version; the leaf is the clue. |
-| h-14 | scene-road | Signpost with painted marks | Decoy | lead-2 (false trail) | Points to Ujjain; explains nothing. |
+| h-10 | scene-tree | Sword on a cloth | Meaningful (swappable) | f-12; lead-3 step 2 | A sword on a cloth, its blade marked with notches. |
+| h-11 | scene-tree | Distant fires and smoke | Decoy | none | Distant fires flicker through the smoke. |
+| h-12 | scene-road | Milestone | Meaningful (swappable) | f-03, f-19; lead-2 step 3 | A milestone. The city name is half worn away. |
+| h-13 | scene-road | Second tree, different leaf | Meaningful | f-09, f-21; lead-2 step 1 | A second tree, with different leaves. |
+| h-14 | scene-road | Signpost with painted marks | Decoy | lead-2 (false trail) | The signpost points to Ujjain. |
 | h-15 | scene-road | Footprints in dust | Decoy | none | One set, going one way. |
-| h-16 | scene-road | Ascetic's hut door | Meaningful | f-04, f-20; lead-2 step 2 | Asks the ascetic's name, by version. |
+| h-16 | scene-road | Ascetic's hut door | Meaningful | f-04, f-20; lead-2 step 2 | The ascetic's hut door, with a name painted above it. |
 
 Swappable hotspots: h-01, h-04, h-10, h-12. In a run, the seed may turn one of these into a decoy and make a decoy such as h-14 meaningful.
 
@@ -349,7 +349,7 @@ Swappable hotspots: h-01, h-04, h-10, h-12. In a run, the seed may turn one of t
 | p-2 The one rule | weakness | f-10, f-11 |
 | p-3 Names and numbers | date-or-number | f-12, f-14, f-18, f-23, f-33, f-13 |
 | p-4 Whose tale is this | original-name | f-01, f-03, f-04, f-19, f-20, f-17 |
-| p-5 Told or recorded | true-or-told | f-22, f-27, f-28, f-29, f-30 |
+| p-5 | true-or-told | f-22, f-27, f-28, f-29, f-30 |
 
 **Breaking the curse:** The final puzzle is the spirit's last riddle. The player picks, from a row of cards, the answer that matches the true version of the walk. In v-somadeva the answer is silence plus the asoka tree; in v-burton it is the mimosa; in v-later it is a thousand pieces. A right answer lets the spirit fly back to its tree for good and earns the relic: a small oil lamp with a ribbon of pale cloth, kept dry and unlit.
 

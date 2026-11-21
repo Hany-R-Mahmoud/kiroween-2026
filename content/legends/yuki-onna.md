@@ -227,21 +227,21 @@ The record is thin where it matters most. Nobody wrote down who first imagined t
 | f-02 | The old woodcutter is named Mosaku. | yuki-onna--ch-1 | v-hearn | who-said-it | Mosaku | Minokichi; Sogi; Sekien | 1 |
 | f-03 | The young apprentice, Minokichi, is eighteen. | yuki-onna--ch-1 | v-hearn | date-or-number | eighteen | twelve; twenty-five; forty | 2 |
 | f-04 | Hearn sets the village in Musashi Province. | yuki-onna--ch-1 | v-hearn | original-name | Musashi | Echigo; Mutsu; Dewa | 2 |
-| f-05 | The men cross the river by ferry because floods wash away bridges. | yuki-onna--ch-1 | v-hearn | object-match | a ferry | a stone bridge; a rope swing; a raft of logs | 1 |
+| f-05 | The men cross the river by a ferry because floods wash away bridges. | yuki-onna--ch-1 | v-hearn | object-match | a ferry | a stone bridge; a rope swing; a raft of logs | 1 |
 | f-06 | The shelter is a hut of about two mats, with one door, no window and no fire. | yuki-onna--ch-1 | v-hearn | date-or-number | two mats | one mat; six mats; ten mats | 2 |
 | f-07 | The woman in the hut is dressed in white. | yuki-onna--ch-2 | v-hearn | symbol | white | red; black; grey | 1 |
 | f-08 | She harms the sleeping man with her breath. | yuki-onna--ch-2 | v-hearn | symbol | breath | a touch; a song; a glance | 1 |
-| f-09 | She spares Minokichi because he is young. | yuki-onna--ch-2 | v-hearn | weakness | his youth | his prayers; his lantern; his bravery | 2 |
-| f-10 | Her condition: he must tell no one, not even his mother. | yuki-onna--ch-2 | v-hearn | weakness | silence | an offering of rice; a lit fire; a bell rung at dawn | 1 |
+| f-09 | She spares Minokichi because of his youth. | yuki-onna--ch-2 | v-hearn | weakness | his youth | his prayers; his lantern; his bravery | 2 |
+| f-10 | Her one condition is silence. | yuki-onna--ch-2 | v-hearn | weakness | silence | an offering of rice; a lit fire; a bell rung at dawn | 1 |
 | f-11 | The ferryman finds Minokichi at dawn. | yuki-onna--ch-2 | v-hearn | object-match | the ferryman | his mother; a priest; Mosaku | 2 |
 | f-12 | The next winter Minokichi meets O-Yuki, who says she is going to Yedo. | yuki-onna--ch-3 | v-hearn | original-name | Yedo | Kyoto; Osaka; Echigo | 2 |
 | f-13 | The name O-Yuki means snow. | yuki-onna--ch-3 | v-hearn | original-name | snow | moon; frost; flower | 1 |
 | f-14 | O-Yuki and Minokichi have ten children. | yuki-onna--ch-3 | v-hearn | date-or-number | ten | three; seven; eighteen | 2 |
 | f-15 | Minokichi speaks while O-Yuki sews by lamplight. | yuki-onna--ch-3 | v-hearn | object-match | lamplight | moonlight; firelight; starlight | 2 |
 | f-16 | O-Yuki leaves as white mist through the smoke-hole. | yuki-onna--ch-3 | v-hearn | object-match | the smoke-hole | the door; the well; the bath | 2 |
-| f-17 | The sleeping children are the reason she does not harm him. | yuki-onna--ch-3 | v-hearn | weakness | the children | his mother; the ferryman; a promise of gold | 2 |
-| f-18 | Hearn says a farmer of Chofu told him the tale. | yuki-onna--ch-4 | v-hearn | true-or-told | documented (his introduction) | told in Sekien's book; told in a 1685 print; unknown | 2 |
-| f-19 | The idea that the farmer's story was an old village legend is not backed by a second witness. | yuki-onna--ch-4 | v-hearn | true-or-told | told | documented by Sekien; documented in Mosaku's tale; proven | 2 |
+| f-17 | She does not harm him because of the children, asleep nearby. | yuki-onna--ch-3 | v-hearn | weakness | the children | his mother; the ferryman; a promise of gold | 2 |
+| f-18 | Hearn heard the tale from a farmer of Chofu. | yuki-onna--ch-4 | v-hearn | true-or-told | documented (his introduction) | told in Sekien's book; told in a 1685 print; unknown | 2 |
+| f-19 | The farmer's story was an old village legend. | yuki-onna--ch-4 | v-hearn | true-or-told | told | documented by Sekien; documented in Mosaku's tale; proven | 2 |
 | f-20 | [R] A collection attributed to Sogi, printed in 1685, places a tall white woman in a bamboo grove in Echigo. | yuki-onna--ch-5 | v-sogi | object-match | a bamboo grove | a ferry hut; a bath house; a mountain pass | 2 |
 | f-21 | [R] The collection attributed to Sogi was printed in 1685. | yuki-onna--ch-5 | v-sogi | date-or-number | 1685 | 1502; 1776; 1904 | 2 |
 | f-22 | [R] Toriyama Sekien published his picture book of spirits in 1776. | yuki-onna--ch-5 | v-picture | date-or-number | 1776 | 1685; 1904; 1502 | 2 |
@@ -249,10 +249,10 @@ The record is thin where it matters most. Nobody wrote down who first imagined t
 | f-24 | [R] In the Ojiya tale a woman who became a wife vanishes in the bath, leaving icicles. | yuki-onna--ch-5 | v-ojiya | object-match | icicles | ashes; feathers; a white robe | 2 |
 | f-25 | [R] In Tono she takes children out to play on Little New Year. | yuki-onna--ch-5 | all | symbol | Little New Year | Obon; Setsubun; the Star Festival | 3 |
 | f-26 | [R] In Kaminoyama she warms herself at a hearth and leaves by the chimney as a whirl of snow. | yuki-onna--ch-5 | all | object-match | a hearth | a ferry; a bath; a bamboo grove | 3 |
-| f-27 | The idea that she is the ghost of someone lost in snow is an interpretation, not in Hearn's tale. | yuki-onna--ch-7 | all | true-or-told | told | documented in Hearn; documented in Sogi's collection; recorded by Sekien | 2 |
-| f-28 | The idea that she is an old mountain goddess in disguise is a reading, not a record. | yuki-onna--ch-7 | all | true-or-told | told | documented in 1904; shown in Sekien's page; stated in Hearn | 2 |
+| f-27 | She is the ghost of someone lost in snow. | yuki-onna--ch-7 | all | true-or-told | told | documented in Hearn; documented in Sogi's collection; recorded by Sekien | 2 |
+| f-28 | She is an old mountain goddess in disguise. | yuki-onna--ch-7 | all | true-or-told | told | documented in 1904; shown in Sekien's page; stated in Hearn | 2 |
 | f-29 | The claim that Hearn's tale is the first record of this story is disputed by scholars. | yuki-onna--ch-4 | v-hearn | true-or-told | told (one scholarly view) | documented in the introduction; proven by the 1685 print; shown in Sekien | 3 |
-| f-30 | Hearn wrote that he did not know whether the tale had ever been written in Japanese. | yuki-onna--ch-4 | v-hearn | true-or-told | documented (his introduction) | told only by the farmer; shown in Sekien's book; a later legend | 2 |
+| f-30 | Hearn did not know whether the tale had ever been written in Japanese. | yuki-onna--ch-4 | v-hearn | true-or-told | documented (his introduction) | told only by the farmer; shown in Sekien's book; a later legend | 2 |
 | f-31 | The atlas sums up the safe thing on a snowy night as a warm room, a lamp, and someone to share it with. | yuki-onna--ch-6 | all | weakness | a warm room | an open door; a long walk; a cold bath | 2 |
 
 Version-specific facts: f-02 to f-19, f-29, f-30 (v-hearn), f-20, f-21 (v-sogi), f-22, f-23 (v-picture), f-24 (v-ojiya). Documented side: f-01 to f-18, f-30. Reported by reference works `[R]`: f-20 to f-26. Told side: f-19, f-27, f-28, f-29.
@@ -313,22 +313,22 @@ can be true when: the seed picks v-picture
 
 | hotspot_id | scene_id | Object | Meaningful or decoy | Linked fact_ids or lead step | What happens on tap |
 |---|---|---|---|---|---|
-| h-01 | scene-landing | Ferry boat on the bank | Meaningful (swappable) | f-05 | A ferry puzzle; shows why the men could not cross. |
-| h-02 | scene-landing | Straw cloaks | Meaningful | f-02, f-03; lead-1 step 1 | Two cloaks, two sleepers: shows the pair of woodcutters. |
-| h-03 | scene-landing | Bare willow | Decoy | none | A heap of snow falls; a harmless scare. |
-| h-04 | scene-landing | Blank signpost | Decoy | none | No writing; points the way to nowhere. |
+| h-01 | scene-landing | Ferry boat on the bank | Meaningful (swappable) | f-05 | The ferry boat is tied up on the bank. No one will cross tonight. |
+| h-02 | scene-landing | Straw cloaks | Meaningful | f-02, f-03; lead-1 step 1 | Two straw cloaks, for two sleepers. |
+| h-03 | scene-landing | Bare willow | Decoy | none | A heap of snow slides off the willow. |
+| h-04 | scene-landing | Blank signpost | Decoy | none | No writing. It points the way to nowhere. |
 | h-05 | scene-landing | Stone lantern | Decoy | none | Flickers once, then steadies. |
-| h-06 | scene-hut | Paper lamp | Meaningful | f-15; lead-1 step 2 | Shows lamplight; asks where the lamp was in the tale. |
-| h-07 | scene-hut | Sleeping mats | Meaningful (swappable) | f-06 | Counts the mats to give the hut's size. |
-| h-08 | scene-hut | Low wooden door | Meaningful | f-07, f-08, f-27 | Stands open; shows the white shape and the breath. |
-| h-09 | scene-hut | Smoke-hole | Meaningful (swappable) | f-16 | A thread of mist rises; the exit puzzle. |
-| h-10 | scene-hut | Wooden bucket | Decoy | none | Holds only ice; no answer. |
+| h-06 | scene-hut | Paper lamp | Meaningful | f-15; lead-1 step 2 | A paper lamp. Its light falls on the floor near the door. |
+| h-07 | scene-hut | Sleeping mats | Meaningful (swappable) | f-06 | Sleeping mats laid out on the floor of a small hut. |
+| h-08 | scene-hut | Low wooden door | Meaningful | f-07, f-08, f-27 | The door stands open. A white shape bends low, breathing frost. |
+| h-09 | scene-hut | Smoke-hole | Meaningful (swappable) | f-16 | A thread of mist rises through the smoke-hole. |
+| h-10 | scene-hut | Wooden bucket | Decoy | none | Holds only ice. |
 | h-11 | scene-farmhouse | Painted bamboo screen | Meaningful (swappable) | f-20, f-21; lead-2 | Shows a very tall white shape in a bamboo grove; the old collection places it in Echigo. |
 | h-12 | scene-farmhouse | Wooden bath bucket | Meaningful (swappable) | f-24; lead-3 | Icicles hang from the rim; the wife who bathed here is gone. |
-| h-13 | scene-farmhouse | Ten small futons | Meaningful (swappable) | f-14, f-17 | Count the futons; the reason for mercy. |
+| h-13 | scene-farmhouse | Ten small futons | Meaningful (swappable) | f-14, f-17 | Small futons in a row, for sleeping children. |
 | h-14 | scene-farmhouse | Faded print on the post | Meaningful | f-22, f-23; lead-4 | A woman in white among snow-laden bamboo, with a name and no story. |
-| h-15 | scene-farmhouse | Brazier | Meaningful | f-10, f-31; lead-1 step 3 | A promise puzzle: what the woman asked for. |
-| h-16 | scene-farmhouse | Folded kimono in a basket | Decoy (swappable) | none | A plain winter kimono; nothing in it answers the case. |
+| h-15 | scene-farmhouse | Brazier | Meaningful | f-10, f-31; lead-1 step 3 | The brazier is cold. Someone made a promise here. |
+| h-16 | scene-farmhouse | Folded kimono in a basket | Decoy (swappable) | none | A plain winter kimono. |
 
 Swappable hotspots: h-11, h-12, h-13, with the decoy h-16 as their partner (h-01, h-07 and h-09 are marked swappable but have no decoy partner in their scene). In a run, the seed may turn one of the farmhouse hotspots into a decoy and make the folded kimono meaningful.
 
@@ -342,7 +342,7 @@ Swappable hotspots: h-11, h-12, h-13, with the decoy h-16 as their partner (h-01
 | p-2 The woman in white | symbol | f-07, f-08, f-25 |
 | p-3 What she asked | weakness | f-09, f-10, f-17, f-31 |
 | p-4 Names and numbers | date-or-number | f-03, f-14, f-01 |
-| p-5 Told or recorded | true-or-told | f-18, f-19, f-27, f-28, f-30 |
+| p-5 | true-or-told | f-18, f-19, f-27, f-28, f-30 |
 
 **Breaking the curse:** The final puzzle is her question. The player chooses what was promised from a row of cards. Silence is right in v-hearn. In other seeds the answer is the matching fact for that version (for example the bamboo grove in v-sogi, or icicles in v-ojiya). A right answer lets the snow stop and earns the relic: a small woven straw charm, a snow-dusted rain hat made for a child.
 

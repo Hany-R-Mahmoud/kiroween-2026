@@ -207,7 +207,7 @@ The record is clearest where it is a page: a book, a catalogue entry, a film lis
 |---|---|---|---|---|---|---|---|
 | f-01 | Blackman's The Fellahin of Upper Egypt was published in London by Harrap in 1927. | naddaha--ch-4 | v-blackman | date-or-number | 1927 | 1969; 1975; 1980 | 2 |
 | f-02 | In Blackman's first chapter, peasants fear the desert after dark because of hyenas and 'afarit. | naddaha--ch-4 | v-blackman | object-match | hyenas | crocodiles; wolves; scorpions | 2 |
-| f-03 | At one canal spot, no woman would fill her water-jar. | naddaha--ch-4 | v-blackman | object-match | a water-jar | a lamp; a basket; a bucket | 2 |
+| f-03 | At one canal spot, no woman would fill a water-jar. | naddaha--ch-4 | v-blackman | object-match | a water-jar | a lamp; a basket; a bucket | 2 |
 | f-04 | The canal in that report is called Bahr el-Yusuf. | naddaha--ch-4 | v-blackman | original-name | Bahr el-Yusuf | Ibrahimiya; Mahmudiyya; Bahr Shibin | 3 |
 | f-05 | A karineh called a poor widow by name three times in her sleep. | naddaha--ch-4 | v-blackman | date-or-number | three | once; seven; twelve | 2 |
 | f-06 | The karineh led her down the street and put money in her hand. | naddaha--ch-4 | v-blackman | object-match | money | bread; a key; a lamp | 2 |
@@ -216,11 +216,11 @@ The record is clearest where it is a page: a book, a catalogue entry, a film lis
 | f-09 | El-Shamy's Folktales of Egypt was published by the University of Chicago Press. | naddaha--ch-4 | all | object-match | University of Chicago Press | Harrap; Peter Owen; a Cairo newspaper | 2 |
 | f-10 | The voice calls a man by his first name. | naddaha--ch-1 | v-path | symbol | his name | a song; a bell; his father's name | 1 |
 | f-11 | The voice is soft and sleepy, yet carries far. | naddaha--ch-2 | v-path | symbol | a soft, sleepy voice | a shout; a laugh; a wail | 1 |
-| f-12 | The unaffected companion pulls the called man back. | naddaha--ch-2 | all | weakness | his companion holds him back | a lantern held high; a loud bell; a closed gate | 2 |
+| f-12 | The called man is saved when his companion holds him back. | naddaha--ch-2 | all | weakness | his companion holds him back | a lantern held high; a loud bell; a closed gate | 2 |
 | f-13 | The usual telling has two men walking together. | naddaha--ch-2 | v-path | date-or-number | two | one; three; seven | 1 |
 | f-14 | In the home telling, the called man is uneasy for several nights before he leaves late at night. | naddaha--ch-3 | v-home | date-or-number | several nights | a single hour; one evening; a full season | 2 |
 | f-15 | She is described, in rare sightings, in a loose, nearly see-through dress. | naddaha--ch-2 | v-path | object-match | a loose, nearly see-through dress | a red veil; a black cloak; a white scarf | 2 |
-| f-16 | In the home telling, the called man is at home, in a house close to the water. | naddaha--ch-3 | v-home | original-name | inside their homes | in the market; on a boat; at the waterwheel | 2 |
+| f-16 | In the home telling, the Naddaha calls men who are inside their homes, in houses close to the water. | naddaha--ch-3 | v-home | original-name | inside their homes | in the market; on a boat; at the waterwheel | 2 |
 | f-17 | [R] The name al-Naddaha is reported to mean "the one who calls". | naddaha--ch-1 | all | original-name | the one who calls | the singer; the watcher; the weaver | 2 |
 | f-18 | [R] Yusuf Idris's prose work al-Naddaha is dated 1969. | naddaha--ch-5 | v-modern | date-or-number | 1969 | 1927; 1975; 1991 | 2 |
 | f-19 | [R] A film called al-Naddaha is listed for 1975. | naddaha--ch-5 | v-modern | date-or-number | 1975 | 1969; 1927; 1980 | 2 |
@@ -233,18 +233,18 @@ The record is clearest where it is a page: a book, a catalogue entry, a film lis
 | f-27 | [R] A modern novel adds that a man who stops a called man is called next. | naddaha--ch-2 | v-modern | who-said-it | Ahmed Khaled Tawfik's novel | Blackman's book; Idris's film; El-Shamy's collection | 3 |
 | f-28 | Blackman records a double that calls a widow by name. | naddaha--ch-4 | v-blackman | true-or-told | documented (in Blackman, 1927) | told only by later novelists; told in the 1975 film; unknown | 2 |
 | f-29 | El-Shamy's Folktales of Egypt is catalogued as a 1980 book. | naddaha--ch-6 | all | true-or-told | documented (in a library catalogue) | told only in villages; told in a film; unknown | 2 |
-| f-30 | That a called man is doomed and cannot be cured is the belief as told. | naddaha--ch-3 | v-home | true-or-told | told | documented in a village register; documented in Blackman; proved by a physician | 2 |
-| f-31 | That the Naddaha leads men into the water is the belief as told. | naddaha--ch-3 | all | true-or-told | told | documented by a court record; documented in Blackman; measured | 2 |
-| f-32 | That the belief began at a known date and place is not recorded. | naddaha--ch-1 | all | true-or-told | told | documented in the 1927 book; documented in 1969; recorded by El-Shamy | 3 |
-| f-33 | That the 1975 film shows the city calling villagers is one writer's reading. | naddaha--ch-5 | v-modern | true-or-told | told | documented in the film listing; documented by Blackman; recorded in a register | 3 |
-| f-34 | That a companion can pull the called man back is the belief as told. | naddaha--ch-2 | v-path | true-or-told | told | documented in Blackman; documented in a film listing; proved | 2 |
+| f-30 | A called man is doomed and cannot be cured. | naddaha--ch-3 | v-home | true-or-told | told | documented in a village register; documented in Blackman; proved by a physician | 2 |
+| f-31 | The Naddaha leads men into the water. | naddaha--ch-3 | all | true-or-told | told | documented by a court record; documented in Blackman; measured | 2 |
+| f-32 | The belief began at a known date and place. | naddaha--ch-1 | all | true-or-told | told | documented in the 1927 book; documented in 1969; recorded by El-Shamy | 3 |
+| f-33 | The 1975 film shows the city calling villagers. | naddaha--ch-5 | v-modern | true-or-told | told | documented in the film listing; documented by Blackman; recorded in a register | 3 |
+| f-34 | A companion can pull the called man back. | naddaha--ch-2 | v-path | true-or-told | told | documented in Blackman; documented in a film listing; proved | 2 |
 | f-35 | She is told of as a beautiful woman or as an old woman. | naddaha--ch-1 | all | object-match | an old woman | a child; a fisherman; a veiled bride | 2 |
 | f-36 | [D] In Ahmad Amin's dictionary, the bogey used to frighten crying children is called Abu Rigl Maslukha. | naddaha--ch-4 | all | original-name | Abu Rigl Maslukha | al-Naddaha; karineh; Bahr el-Yusuf | 3 |
-| f-37 | [D] Amin describes that bogey as human above and donkey below. | naddaha--ch-4 | all | object-match | a donkey | a goat; a buffalo; a dog | 2 |
+| f-37 | [D] Amin describes that bogey as human above and a donkey below. | naddaha--ch-4 | all | object-match | a donkey | a goat; a buffalo; a dog | 2 |
 | f-38 | A folklorist's study, Shawqi Abdel Hakim's introduction to Arab folklore and myth, names al-Naddahat among spirit beliefs that still circulate. | naddaha--ch-5 | all | true-or-told | documented (in a folklore study) | told only in villages; told in a film; unknown | 2 |
-| f-39 | That the Naddaha descends from the Greek Lamia is one folklorist's interpretation. | naddaha--ch-5 | all | true-or-told | told | documented by Blackman; documented in a library catalogue; recorded in a film listing | 3 |
+| f-39 | The Naddaha descends from the Greek Lamia. | naddaha--ch-5 | all | true-or-told | told | documented by Blackman; documented in a library catalogue; recorded in a film listing | 3 |
 | f-40 | [D] The folklore study that names al-Naddahat is by Shawqi Abdel Hakim. | naddaha--ch-5 | all | who-said-it | Shawqi Abdel Hakim | Ahmad Amin; Hasan El-Shamy; Winifred Blackman | 3 |
-| f-41 | That the story keeps children away from the water at night is the use as told. | naddaha--ch-1 | all | true-or-told | told | documented in Amin's dictionary; documented by Blackman; recorded in a court file | 2 |
+| f-41 | The story keeps children away from the water at night. | naddaha--ch-1 | all | true-or-told | told | documented in Amin's dictionary; documented by Blackman; recorded in a court file | 2 |
 | f-42 | [D] Ahmad Amin's dictionary was published in Cairo in 1953. | naddaha--ch-4 | all | date-or-number | 1953 | 1927; 1969; 1980 | 2 |
 
 Version-specific facts: f-02 to f-07, f-28 (v-blackman); f-10, f-11, f-13, f-15, f-34 (v-path); f-14, f-16, f-30 (v-home); f-18 to f-25, f-27, f-33 (v-modern). Documented side: f-01 to f-09, f-28, f-29, f-36 to f-38, f-40, f-42. Reported `[R]`: f-17 to f-25 and f-27. Told side: f-10 to f-16, f-30 to f-35, f-39, f-41.
@@ -305,23 +305,23 @@ can be true when: the seed picks v-modern
 
 | hotspot_id | scene_id | Object | Meaningful or decoy | Linked fact_ids or lead step | What happens on tap |
 |---|---|---|---|---|---|
-| h-01 | scene-edge | Lantern on the doorway | Meaningful (swappable) | f-16; lead-2 steps 1 and 3 | Asks where a man might sit and wait for a voice. |
-| h-02 | scene-edge | Clay water-jar | Meaningful | f-03; lead-3 step 1 | Asks who would not fill it at a certain spot. |
-| h-03 | scene-edge | Wall with tally lines | Meaningful (swappable) | f-14; lead-2 step 2 | A counting puzzle: how long was the waiting. |
-| h-04 | scene-edge | Pair of worn sandals | Meaningful | f-13; lead-1 step 1 | Asks how many walked home together. |
-| h-05 | scene-edge | Sugarcane stalks | Decoy | none | A bundle of cane; nothing hidden. |
+| h-01 | scene-edge | Lantern on the doorway | Meaningful (swappable) | f-16; lead-2 steps 1 and 3 | A lantern burns in the doorway, where someone sat late into the night. |
+| h-02 | scene-edge | Clay water-jar | Meaningful | f-03; lead-3 step 1 | A clay water-jar, dry inside. |
+| h-03 | scene-edge | Wall with tally lines | Meaningful (swappable) | f-14; lead-2 step 2 | Tally lines on the wall, counting days of waiting. |
+| h-04 | scene-edge | Pair of worn sandals | Meaningful | f-13; lead-1 step 1 | A pair of worn sandals, set side by side. |
+| h-05 | scene-edge | Sugarcane stalks | Decoy | none | A bundle of cane. |
 | h-06 | scene-edge | Maize leaves | Decoy | none | Dry leaves; they rustle and settle. |
 | h-07 | scene-edge | Palm trunk | Decoy | none | Rough bark; nothing hangs from it. |
 | h-08 | scene-canal | Waterwheel (sakia) | Decoy | none | The wheel turns once and stops. |
-| h-09 | scene-canal | Folded cloth on a flat stone | Meaningful (swappable) | f-15; lead-1 step 2 | Asks what a far-off figure is said to wear. |
-| h-10 | scene-canal | Coil of rope | Meaningful | f-12; lead-1 step 3 | Asks who can hold a person back. |
-| h-11 | scene-canal | Shaduf | Decoy | lead-2 (false trail) | Points to the fields; explains nothing about the voice. |
+| h-09 | scene-canal | Folded cloth on a flat stone | Meaningful (swappable) | f-15; lead-1 step 2 | A folded cloth on a flat stone, pale as moonlight. |
+| h-10 | scene-canal | Coil of rope | Meaningful | f-12; lead-1 step 3 | A coil of rope, frayed where hands held it hard. |
+| h-11 | scene-canal | Shaduf | Decoy | lead-2 (false trail) | The shaduf dips toward the fields. |
 | h-12 | scene-canal | Tall reeds | Decoy | none | The reeds sway though the air is still. |
 | h-13 | scene-nile | Small wooden boat | Decoy | none | Empty and dry on the mud. |
-| h-14 | scene-nile | Lantern left on the ground | Meaningful (swappable) | f-10, f-11 | Asks what the voice uses and how it sounds. |
+| h-14 | scene-nile | Lantern left on the ground | Meaningful (swappable) | f-10, f-11 | A lantern left on the ground, still warm. Somewhere, a voice is calling. |
 | h-15 | scene-nile | Folded film bill pinned to a post | Meaningful (swappable) | f-19, f-20, f-21; lead-4 | A year and two names; it tells of a film, not of the old belief. |
-| h-16 | scene-nile | Flat reed mat with a few coins | Meaningful | f-06; lead-3 steps 2 and 3 | Asks what the double left in a widow's hand. |
-| h-17 | scene-nile | Pale shape among distant reeds | Meaningful | f-15, f-34 | Never moves; asks one question about what can pull a man back. |
+| h-16 | scene-nile | Flat reed mat with a few coins | Meaningful | f-06; lead-3 steps 2 and 3 | A reed mat with a few coins left on it. |
+| h-17 | scene-nile | Pale shape among distant reeds | Meaningful | f-15, f-34 | A pale shape stands among the distant reeds. It never moves. |
 | h-18 | scene-nile | Fallen palm frond | Decoy | none | A frond; the breeze moves it. |
 
 Swappable hotspots: h-01, h-03, h-09, h-14. In a run, the seed may turn one of these into a decoy and make a decoy such as h-11 or h-15 meaningful.
@@ -336,7 +336,7 @@ Swappable hotspots: h-01, h-03, h-09, h-14. In a run, the seed may turn one of t
 | p-2 What was in the picture | object-match | f-02, f-03, f-06, f-09, f-15, f-24, f-35, f-37 |
 | p-3 Numbers and years | date-or-number | f-01, f-05, f-08, f-13, f-14, f-18, f-19, f-25, f-42 |
 | p-4 What breaks the spell | weakness | f-12 |
-| p-5 Told or recorded | true-or-told | f-28, f-29, f-30, f-31, f-32, f-33, f-34, f-38, f-39, f-41 |
+| p-5 | true-or-told | f-28, f-29, f-30, f-31, f-32, f-33, f-34, f-38, f-39, f-41 |
 
 **Breaking the curse:** The final puzzle is her last question. The player chooses, from a row of small cloth tokens, the detail that matches the true account: in v-path the companion who pulls him back; in v-home the nights of waiting; in v-blackman the double that called a sleeper by name; in v-modern the film of 1975. A right answer lets the voice go quiet and the pale shape turn away from the water. The relic earned is a small tin lantern with a pierced pattern, lit and held low.
 

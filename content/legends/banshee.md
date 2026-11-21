@@ -198,30 +198,30 @@ The documented column tells us what people wrote, sang, recorded and built. The 
 | f01 | The Irish name *bean sí* means a woman of the fairy mound. | banshee--ch-1 | all | original-name | woman of the fairy mound | woman of the sea cliff; woman of the grey cloak; mourner of the hearth | 1 |
 | f02 | The Old Irish form of her name is *ben síde*. | banshee--ch-1 | all | original-name | ben síde | ben sluaigh; ben tíre; ben crainn | 2 |
 | f03 | In parts of Leinster she is called the *bean chaointe*, the keening woman. | banshee--ch-1 | v-keener | original-name | bean chaointe | bean feasa; bean ghaoithe; bean tuaithe | 2 |
-| f04 | Professional keeners wore their hair loose and often went barefoot. | banshee--ch-2 | v-keener | symbol, object-match | hair loose and barefoot | hair pinned under a cap and wooden clogs; hair plaited with ribbons and red boots; a veil and a shawl pinned at the throat | 1 |
+| f04 | Professional keeners went with their hair loose and barefoot. | banshee--ch-2 | v-keener | symbol, object-match | hair loose and barefoot | hair pinned under a cap and wooden clogs; hair plaited with ribbons and red boots; a veil and a shawl pinned at the throat | 1 |
 | f05 | Professional keeners did not keen outside a funeral; to do so was thought unlucky. | banshee--ch-2 | v-keener | true-or-told | documented: they kept it for funerals only | told: they keened every market day; documented: they kept watch at the crossroads; told: they sang at every birth | 2 |
-| f06 | In keening, the lament had three parts: salutation, dirge, then the open cry (*gol*). | banshee--ch-2 | all | ritual-order | salutation, dirge, cry | cry, salutation, dirge; dirge, cry, salutation; cry, dirge, salutation | 2 |
+| f06 | In keening, the lament came in three parts, in this order: salutation, dirge, cry. | banshee--ch-2 | all | ritual-order | salutation, dirge, cry | cry, salutation, dirge; dirge, cry, salutation; cry, dirge, salutation | 2 |
 | f07 | Gerald of Wales, in the twelfth century, wrote that the Irish mix plaintive music with their funeral wailings. | banshee--ch-2 | all | date-or-number | twelfth century | ninth century; fifteenth century; eighteenth century | 2 |
 | f08 | Patricia Lysaght suggested a woman who had been a professional keener in life might become a banshee. | banshee--ch-2 | v-keener | who-said-it | Patricia Lysaght | Ann Fanshawe; Thomas Westropp; Bríd Iarnáin | 2 |
 | f09 | Lysaght described the banshee's sound as often coming along the river toward the home. | banshee--ch-5 | all | true-or-told, who-said-it | told: the cry comes along the river toward the home | documented: the cry came from the roof; documented: the cry came from the hearth; told: the cry came from the road | 2 |
 | f10 | In one told rule, a comb found on the ground should be left where it lies. | banshee--ch-7 | v-keener | weakness | never pick up a comb from the ground | take it indoors; hang it on the door; wash it in the stream | 1 |
 | f11 | Lady Wilde wrote that she may take the form of a sweet-singing young woman of the family who died young. | banshee--ch-1 | all | who-said-it | Lady Wilde | Lady Honor O'Brien; Patricia Lysaght; Richard de Clare | 2 |
-| f12 | Fanshawe's figure was dressed in white with red hair and a pale, ghastly face. | banshee--ch-4 | v-window | symbol, object-match | white dress, red hair, pale face | yellow dress, black hair, rosy face; blue shawl, silver braids, grey face; green cloak, golden hair, freckled face | 1 |
-| f13 | Fanshawe's figure spoke one word, about a horse, three times. | banshee--ch-4 | v-window | date-or-number, object-match | three times, about a horse | once, about a boat; twice, about a candle; three times, about a name | 2 |
+| f12 | Fanshawe's figure, as she described it: white dress, red hair, pale face. | banshee--ch-4 | v-window | symbol, object-match | white dress, red hair, pale face | yellow dress, black hair, rosy face; blue shawl, silver braids, grey face; green cloak, golden hair, freckled face | 1 |
+| f13 | Fanshawe's figure spoke one word, three times, about a horse. | banshee--ch-4 | v-window | date-or-number, object-match | three times, about a horse | once, about a boat; twice, about a candle; three times, about a name | 2 |
 | f14 | In the memoir, the host's cousin died at two o'clock, one hour after the voice. | banshee--ch-4 | v-window | date-or-number | two o'clock | midnight; four o'clock; dawn | 2 |
 | f15 | The memoir was written by Ann, Lady Fanshawe, and names the host as Lady Honor O'Brien. | banshee--ch-4 | v-window | who-said-it | Ann, Lady Fanshawe | Maria Edgeworth; Lady Gregory; Elizabeth Bowen | 1 |
-| f16 | The O'Brien banshee Aibhill is said to belong to the crag of Craglea near Killaloe. | banshee--ch-3 | v-clan | object-match, original-name | Craglea, near Killaloe | Slieve Callan, near Ennistymon; Mount Brandon, near Dingle; Knocknarea, near Sligo | 2 |
+| f16 | The O'Brien banshee Aibhill is said to belong to the crag of Craglea, near Killaloe. | banshee--ch-3 | v-clan | object-match, original-name | Craglea, near Killaloe | Slieve Callan, near Ennistymon; Mount Brandon, near Dingle; Knocknarea, near Sligo | 2 |
 | f17 | Clare tradition says Aibhill ruled twenty-five other banshees. | banshee--ch-3 | v-clan | date-or-number | twenty-five | seven; twelve; forty | 2 |
 | f18 | Brian Boru is said to have been warned by Aibhill the night before a battle in this year. | banshee--ch-3 | v-clan | date-or-number | 1014 | 1041; 1064; 1104 | 2 |
 | f19 | The told washer at the River Fergus appeared before the 1318 battle with Richard de Clare. | banshee--ch-3 | v-washer | date-or-number | 1318 | 1298; 1348; 1388 | 3 |
-| f20 | The *bean nighe* washes the bloodied clothes of someone about to die. | banshee--ch-5 | v-washer | object-match, symbol | bloodied linen or grave-clothes | new wool for a wedding; sheets for a feast; nets for the harvest | 1 |
+| f20 | The *bean nighe* washes bloodied linen or grave-clothes for someone about to die. | banshee--ch-5 | v-washer | object-match, symbol | bloodied linen or grave-clothes | new wool for a wedding; sheets for a feast; nets for the harvest | 1 |
 | f21 | In Perthshire the washer is described as small and round, dressed in green. | banshee--ch-5 | v-washer | symbol | green | white; scarlet; black | 2 |
-| f22 | It is told that washers at fords are women who died in childbirth. | banshee--ch-5 | v-washer | true-or-told | told | documented in parish registers; documented in the annals; documented in a court record | 2 |
+| f22 | Washers at fords are women who died in childbirth. | banshee--ch-5 | v-washer | true-or-told | told | documented in parish registers; documented in the annals; documented in a court record | 2 |
 | f23 | A Limerick schools' account says the cry is heard immediately before a death, sometimes on three nights in a row and sometimes only once. | banshee--ch-6 | all | date-or-number, true-or-told | three nights | five nights; seven nights; one full week | 1 |
 | f24 | The same Limerick account names the Sheedy and Lyons families. | banshee--ch-6 | all | object-match | Sheedy and Lyons | Hogan and Quinn; Maloney and Shanahan; Ryan and Foley | 2 |
-| f25 | It is said that Norman settlers claimed a banshee to seem more Gaelic. | banshee--ch-1 | all | true-or-told | told: a later guess with no original record | documented in Westropp's survey; documented in the memoir; documented in the Cromadh page | 3 |
-| f26 | Westropp, after Croker, named the FitzGeralds of Kerry and Limerick among old English families with a banshee. | banshee--ch-1 | all | object-match | FitzGeralds (Geraldines) | Butlers; Plunketts; Talbots | 2 |
-| f27 | One natural explanation proposed for her cry is the low booming call of the bittern. | banshee--ch-1 | all | true-or-told | proposed: a bird, the bittern | proposed: a barn owl; proposed: a curlew; proposed: a corncrake | 2 |
+| f25 | Norman settlers claimed a banshee to seem more Gaelic. | banshee--ch-1 | all | true-or-told | told: a later guess with no original record | documented in Westropp's survey; documented in the memoir; documented in the Cromadh page | 3 |
+| f26 | Westropp, after Croker, named the FitzGeralds (Geraldines) of Kerry and Limerick among old English families with a banshee. | banshee--ch-1 | all | object-match | FitzGeralds (Geraldines) | Butlers; Plunketts; Talbots | 2 |
+| f27 | A natural source has been put forward for the banshee's cry. | banshee--ch-1 | all | true-or-told | proposed: a bird, the bittern | proposed: a barn owl; proposed: a curlew; proposed: a corncrake | 2 |
 | f28 | Lysaght described the cry as an intergenerational link offering comfort and pride. | banshee--ch-6 | all | who-said-it | Patricia Lysaght | Lady Wilde; the Earl of Thomond; Richard de Clare | 2 |
 | f29 | Donough O'Brien, the Great Earl, made Bunratty Castle his headquarters from 1583. | banshee--ch-3 | v-clan | date-or-number | 1583 | 1483; 1603; 1683 | 3 |
 | f30 | A 1949 recording of the keener Bríd Iarnáin of Inishmore survives. | banshee--ch-2 | v-keener | date-or-number | 1949 | 1929; 1969; 1989 | 2 |
@@ -234,7 +234,7 @@ Version-specific facts: f03, f04, f05, f08, f10, f12, f13, f14, f15, f16, f17, f
 lead-id: lead-1
 starts from: v-window
 steps: 1) inspect the casement in the loft and find the three-times mark scratched on the sill; 2) look at the journal page left on the chest; 3) recall the word spoken and the hour of the cousin's death
-dead end: a folded notice in the kitchen says "the window figure is the banshee of this clan, and she lives at Craglea", so the player goes to the hill map and finds no window there
+dead end: a folded notice in the kitchen says "the window figure is the banshee of this clan, and she lives at Craglea", but the hill map shows no window there
 contradiction: f15 (banshee--ch-4) and f16 (banshee--ch-3): the memoir names a host and a house, not a hill; the crag belongs to a different version
 can be true when: seed picks v-window
 ```
@@ -243,7 +243,7 @@ can be true when: seed picks v-window
 lead-id: lead-2
 starts from: v-washer
 steps: 1) examine the flat washing stone at the ford; 2) pick up the wooden beetle; 3) match the wet cloth colour to a coming death
-dead end: the player waits at the ford for a cry; the washer is silent and the kitchen clock shows no one in the house is ill, so the lead gives no warning about the household
+dead end: you wait at the ford for a cry; the washer is silent and the kitchen clock shows no one in the house is ill, so the lead gives no warning about the household
 contradiction: f20 (banshee--ch-5) and f23 (banshee--ch-6): the washer is silent and tied to battle; the household cry comes before a death at home
 can be true when: seed picks v-washer
 ```
@@ -251,8 +251,8 @@ can be true when: seed picks v-washer
 ```
 lead-id: lead-3
 starts from: v-keener
-steps: 1) take the keening shawl from the peg; 2) read the three-part order on the dresser plate; 3) apply the order of salutation, dirge, cry to the lament puzzle
-dead end: a stranger's note says a woman keened at the ford at noon, so the player seeks a living keener there; none exists
+steps: 1) take the keening shawl from the peg; 2) read the three-part order on the dresser plate; 3) remember the three parts of the lament and their order
+dead end: a stranger's note says a woman keened at the ford at noon, but no living keener is ever found there
 contradiction: f05 (banshee--ch-2): keeners kept their singing for funerals, so a "keener at a ford" is not this version
 can be true when: seed picks v-keener
 ```
@@ -261,7 +261,7 @@ can be true when: seed picks v-keener
 lead-id: lead-4
 starts from: v-clan
 steps: 1) read the family tree card on the dresser; 2) follow the stream the dresser jug points to; 3) match the number and place of Aibhill's followers
-dead end: the red-water stream seems to prove the clan version, but the same night nobody dies, so the player discards it
+dead end: the red-water stream seems to prove the clan version, but the same night nobody dies, so it proves nothing
 contradiction: f17 (banshee--ch-3): the Banshee's Brook sign was told, remembered when it hit and forgotten when it missed; it proves nothing for this seed
 can be true when: seed picks v-clan
 ```
@@ -282,22 +282,22 @@ can be true when: seed picks v-clan
 
 | hotspot_id | scene_id | Object | Meaningful or decoy | Linked fact_ids or lead step | What happens on tap |
 |---|---|---|---|---|---|
-| hs-hearth | sc-kitchen | Turf fire and crane pot | Meaningful (swappable) | f06; lead-3 step 2 | The embers flicker and reveal a carved bar on the crane showing the three-part order of a lament. |
+| hs-hearth | sc-kitchen | Turf fire and crane pot | Meaningful (swappable) | f06; lead-3 step 2 | The embers flicker and show a carved bar on the crane, marked in three parts. |
 | hs-dresser | sc-kitchen | Wall dresser with plates | Meaningful | f01, f02, f24, f26; lead-4 step 1 | A plate shows a family list; one name is circled. |
-| hs-shawl | sc-kitchen | Keening shawl on peg | Meaningful | f04; lead-3 step 1 | The shawl is bare of pins; a note about loose hair and bare feet falls out. |
+| hs-shawl | sc-kitchen | Keening shawl on peg | Meaningful | f04; lead-3 step 1 | The shawl is bare of pins. A folded note falls out of it. |
 | hs-wheel | sc-kitchen | Spinning wheel and grey wool | Meaningful (swappable) | f20; lead-2 step 3 | A thread of wet, stained wool is wound on the spindle. |
-| hs-clock | sc-kitchen | Wall clock | Decoy (swappable) | none | The clock ticks, then stops. Nothing else happens. A tiny dust puff. |
-| hs-cat | sc-kitchen | Sleeping cat on the settle | Decoy | none | The cat stretches and settles again. Fear meter drops a little. |
-| hs-washstone | sc-ford | Flat washing stone and wet linen | Meaningful | f20, f21; lead-2 step 1; lead-4 step 2 | The linen is cold and heavy; a colour clue is seen in the weave. |
-| hs-beetle | sc-ford | Wooden washing beetle | Meaningful | f17, f19, f22; lead-2 step 2; lead-4 step 3 | The beetle's handle has a notch count that matches a number puzzle. |
-| hs-stones | sc-ford | Stepping stones | Decoy (swappable) | none | The stones wobble; the player steps back. Mist curls. |
+| hs-clock | sc-kitchen | Wall clock | Decoy (swappable) | none | The clock ticks, then stops. A puff of dust drifts down. |
+| hs-cat | sc-kitchen | Sleeping cat on the settle | Decoy | none | The cat stretches and settles again. The room feels a little calmer. |
+| hs-washstone | sc-ford | Flat washing stone and wet linen | Meaningful | f20, f21; lead-2 step 1; lead-4 step 2 | The linen is cold and heavy. A colour shows in the weave. |
+| hs-beetle | sc-ford | Wooden washing beetle | Meaningful | f17, f19, f22; lead-2 step 2; lead-4 step 3 | Notches are cut into the beetle's handle. |
+| hs-stones | sc-ford | Stepping stones | Decoy (swappable) | none | The stones wobble underfoot. Mist curls around them. |
 | hs-heron | sc-ford | Heron on the rock | Decoy | f27 (flavour only) | The heron lifts away; a low boom sounds somewhere in the reeds. |
-| hs-thorn | sc-ford | Lone hawthorn | Decoy (swappable) | none | A ribbon of mist wraps the branch. No clue. |
+| hs-thorn | sc-ford | Lone hawthorn | Decoy (swappable) | none | A ribbon of mist wraps the branch. |
 | hs-casement | sc-loft | Casement window | Meaningful | f12, f13; lead-1 step 1 | The glass fogs from outside; a mark is scratched on the sill. |
-| hs-comb | sc-loft | Comb on the sill | Meaningful (swappable) | f10; lead-3 | The comb is left in place; the player may note the told rule. Taking it raises fear a little. |
+| hs-comb | sc-loft | Comb on the sill | Meaningful (swappable) | f10; lead-3 | A comb lies on the sill. Some say a comb found like this should be left where it is. The room grows colder. |
 | hs-journal | sc-loft | Bundle of papers | Meaningful | f14, f15; lead-1 steps 2 and 3 | A memoir page tells of a visit and an hour; the page is torn at the end. |
 | hs-bedstead | sc-loft | Iron bedstead | Decoy | none | The springs creak. The room is empty. |
-| hs-candle | sc-loft | Candle stub | Decoy (swappable) | none | The flame bends toward the window and recovers. No clue. |
+| hs-candle | sc-loft | Candle stub | Decoy (swappable) | none | The flame bends toward the window and recovers. |
 
 15 hotspots in total; 8 meaningful and 7 decoys at default, with the swappable ones allowed to exchange role by seed.
 

@@ -216,14 +216,14 @@ The documented column rests on newspapers and scholarly summaries. The told colu
 | f-12 | An early name for the figure was "Steel Jack". | spring-heeled-jack--ch-1 | v-press | original-name | Steel Jack | Spring John; Brass Jack; Iron Jack | 2 |
 | f-13 | The West Kent Guardian of 13 January 1838 called him "Spring John". | spring-heeled-jack--ch-3 | v-press | original-name | Spring John | Steel Jack; Spring Jack; Jumping Jack | 3 |
 | f-14 | The Times of 22 February 1838 is dated by Mackley as using the name "Spring-heeled Jack". | spring-heeled-jack--ch-3 | v-press | date-or-number | 22 February 1838 | 9 January 1838; 13 January 1838; 26 February 1838 | 3 |
-| f-15 | The Times report of 22 February 1838 describes a large helmet and a tight white oilskin-like dress. | spring-heeled-jack--ch-3 | v-press | object-match | a large helmet and a white oilskin dress | a crown and a red velvet coat; a wide hat and a black coat; an iron mask and a green cloak | 2 |
+| f-15 | The Times report of 22 February 1838 describes a large helmet and a white oilskin dress. | spring-heeled-jack--ch-3 | v-press | object-match | a large helmet and a white oilskin dress | a crown and a red velvet coat; a wide hat and a black coat; an iron mask and a green cloak | 2 |
 | f-16 | The Morning Post report of 7 March 1838 says the figure carried a lamp like a policeman's bull's-eye. | spring-heeled-jack--ch-3 | v-press | object-match | a lamp like a policeman's bull's-eye | a long staff; a bell; a rattle | 2 |
 | f-17 | A police officer said the flame could be made by blowing through a tube with spirits of wine and sulphur. | spring-heeled-jack--ch-3 | v-press | object-match | a tube with spirits of wine and sulphur | a pair of bellows; a candle in a mask; a lantern with a red lens | 2 |
 | f-18 | The first melodrama about the figure was staged at the Royal Pavilion Theatre on 26 February 1838. | spring-heeled-jack--ch-4 | all | date-or-number | 26 February 1838 | 9 January 1838; 22 February 1838; 4 April 1838 | 3 |
-| f-19 | Mayhew's Punch showman said the devil figure was commonly called "Spring-heeled Jack". | spring-heeled-jack--ch-4 | v-street | object-match | the devil figure in Punch | the crocodile; the policeman; the hangman | 2 |
+| f-19 | Mayhew's Punch showman said that the devil figure in Punch was commonly called "Spring-heeled Jack". | spring-heeled-jack--ch-4 | v-street | object-match | the devil figure in Punch | the crocodile; the policeman; the hangman | 2 |
 | f-20 | The Morning Chronicle said a similar statement from this place would probably turn out as thin as the rest. | spring-heeled-jack--ch-2 | v-press | original-name | Peckham | Barnes Common; Hammersmith; Old Ford | 3 |
 | f-21 | The serial Spring-Heel'd Jack: The Terror of London was published by the Newsagents Publishing Company. | spring-heeled-jack--ch-5 | v-dreadful | who-said-it | the Newsagents Publishing Company | the Aldine Publishing Company; the Boy's Standard; the West Kent Guardian | 3 |
-| f-22 | In the serial the cloak is reversible: black to hide, white to confront. | spring-heeled-jack--ch-5 | v-dreadful | object-match | a reversible cloak, black and white | a red hood; a bat cloak; a grey shawl | 2 |
+| f-22 | In the serial he wears a reversible cloak, black and white: black to hide, white to confront. | spring-heeled-jack--ch-5 | v-dreadful | object-match | a reversible cloak, black and white | a red hood; a bat cloak; a grey shawl | 2 |
 | f-23 | In the 1878 serial the man behind the mask is named Jack Dacre. | spring-heeled-jack--ch-5 | v-dreadful | original-name | Jack Dacre | Jack Sheppard; Jack Wraydon; Jack Turner | 3 |
 | f-24 | The 1904 Aldine serial ran for twelve parts. | spring-heeled-jack--ch-5 | v-dreadful | date-or-number | 12 | 48; 40; 6 | 3 |
 | f-25 | In March and April 1877 sentries at Aldershot reported a figure that leapt away. | spring-heeled-jack--ch-6 | v-army | date-or-number | 1877 | 1838; 1861; 1904 | 2 |
@@ -231,11 +231,11 @@ The documented column rests on newspapers and scholarly summaries. The told colu
 | f-27 | The last traditional report came from Everton, Liverpool, in September 1904. | spring-heeled-jack--ch-6 | all | original-name | Everton | Kensington; Lincoln; Peckham | 2 |
 | f-28 | Beatrix Potter's journal of 1 March 1877 describes young men called Spring-heeled Jacks near Manchester. | spring-heeled-jack--ch-6 | all | who-said-it | Beatrix Potter | Henry Mayhew; Karl Bell; Charlton Lea | 3 |
 | f-29 | [R] In autumn 1877 a picture in the Illustrated Police News showed the figure at Newport Arch, Lincoln, in a sheepskin. | spring-heeled-jack--ch-6 | v-army | object-match | a sheepskin | a bear skin; a white sheet; polished armour | 3 |
-| f-30 | The idea that the Marquess of Waterford was the leaper is an unproven later claim. | spring-heeled-jack--ch-5 | v-marquess | true-or-told | told | documented in the Times; documented by the Morning Herald; proved in 1884 | 2 |
-| f-31 | The idea that a group of aristocrats made a bet to frighten many people to death was printed without support. | spring-heeled-jack--ch-2 | v-press | true-or-told | told | documented in the Times; recorded by Mayhew; proved at Aldershot | 2 |
-| f-32 | The Clapham Common tale of October 1837 has no contemporary record. | spring-heeled-jack--ch-3 | all | true-or-told | told | documented in the Morning Chronicle; documented by the Times; recorded by Beatrix Potter | 2 |
-| f-33 | The claim that he leapt over rooftops, houses and mail coaches is a later retelling. | spring-heeled-jack--ch-4 | v-street | true-or-told | told | documented in the Times of 22 February 1838; recorded at Aldershot; proved by the Royal Pavilion play | 2 |
-| f-34 | The idea that the Duke of Wellington led a hunt for the figure has no evidence. | spring-heeled-jack--ch-2 | all | true-or-told | told | documented in the Sun; documented by Mayhew; recorded in the Morning Herald | 3 |
+| f-30 | The Marquess of Waterford was the leaper. | spring-heeled-jack--ch-5 | v-marquess | true-or-told | told | documented in the Times; documented by the Morning Herald; proved in 1884 | 2 |
+| f-31 | A group of aristocrats made a bet to frighten many people to death. | spring-heeled-jack--ch-2 | v-press | true-or-told | told | documented in the Times; recorded by Mayhew; proved at Aldershot | 2 |
+| f-32 | Spring-heeled Jack appeared on Clapham Common in October 1837. | spring-heeled-jack--ch-3 | all | true-or-told | told | documented in the Morning Chronicle; documented by the Times; recorded by Beatrix Potter | 2 |
+| f-33 | He leapt over rooftops, houses and mail coaches. | spring-heeled-jack--ch-4 | v-street | true-or-told | told | documented in the Times of 22 February 1838; recorded at Aldershot; proved by the Royal Pavilion play | 2 |
+| f-34 | The Duke of Wellington led a hunt for the figure. | spring-heeled-jack--ch-2 | all | true-or-told | told | documented in the Sun; documented by Mayhew; recorded in the Morning Herald | 3 |
 | f-35 | The rumour that he was an escaped kangaroo or an inventor with a flying machine was a street theory. | spring-heeled-jack--ch-4 | v-street | true-or-told | told | documented by the police; recorded in the Times; proved by Brewer | 3 |
 | f-36 | An 1884 article in All the Year Round said no shadow of proof supports the Waterford theory. | spring-heeled-jack--ch-5 | v-marquess | who-said-it | All the Year Round | the Sun; the Satirist; the Illustrated Police News | 3 |
 | f-37 | The Northampton Mercury of 30 December 1837 reported a figure said to appear in nine parishes. | spring-heeled-jack--ch-1 | v-press | date-or-number | nine | three; seven; twelve | 3 |
@@ -307,24 +307,24 @@ can be true when: the seed picks v-army
 
 | hotspot_id | scene_id | Object | Meaningful or decoy | Linked fact_ids or lead step | What happens on tap |
 |---|---|---|---|---|---|
-| h-01 | scene-lane | Gas lamp in fog | Decoy | none | The flame bends and steadies; nothing is learned. |
-| h-02 | scene-lane | Covered cab with shaded lamps | Meaningful (swappable) | f-05 | Asks who wrote about a gentleman in a cab with a servant. |
-| h-03 | scene-lane | Boots in the shop window | Decoy | lead-2 (false trail) | A display only; the soles are plain. |
+| h-01 | scene-lane | Gas lamp in fog | Decoy | none | The flame bends and steadies. |
+| h-02 | scene-lane | Covered cab with shaded lamps | Meaningful (swappable) | f-05 | A covered cab with shaded lamps, a servant waiting on the box. |
+| h-03 | scene-lane | Boots in the shop window | Decoy | lead-2 (false trail) | A display of boots. The soles are plain. |
 | h-04 | scene-lane | Chalk marks on a wall | Meaningful (swappable) | f-08; lead-2 step 1 | A child's chalk drawing of a leaping figure breathing flame; the tale went from town to town. |
-| h-05 | scene-lane | Playbill board with blank sheets | Meaningful | f-18 | Asks which date the first stage play was announced. |
-| h-06 | scene-lane | Dropped cloak on the railing | Meaningful (swappable) | f-15 | Asks what the early reports said he wore. |
-| h-07 | scene-mansion | Newspaper stand with blank pages | Meaningful | f-01, f-32; lead-1 step 1 | Asks which date the paper printed the letter report. |
-| h-08 | scene-mansion | Folded letter on the desk | Meaningful | f-03, f-04; lead-1 steps 2 and 3 | Asks the signature and the three disguises. |
-| h-09 | scene-mansion | Stack of letters tied with string | Meaningful (swappable) | f-05, f-06 | Asks who else wrote and which sum a paper named. |
-| h-10 | scene-mansion | Policeman's lantern | Meaningful | f-16, f-17 | Asks what lamp a report named and how flame could be made. |
+| h-05 | scene-lane | Playbill board with blank sheets | Meaningful | f-18 | A playbill board. One sheet announces a new stage play. |
+| h-06 | scene-lane | Dropped cloak on the railing | Meaningful (swappable) | f-15 | A cloak dropped on the railing, stiff and pale. |
+| h-07 | scene-mansion | Newspaper stand with blank pages | Meaningful | f-01, f-32; lead-1 step 1 | Blank pages, except for one date in the masthead. |
+| h-08 | scene-mansion | Folded letter on the desk | Meaningful | f-03, f-04; lead-1 steps 2 and 3 | A folded letter, signed, describing three disguises. |
+| h-09 | scene-mansion | Stack of letters tied with string | Meaningful (swappable) | f-05, f-06 | A stack of letters tied with string. One names a sum of money. |
+| h-10 | scene-mansion | Policeman's lantern | Meaningful | f-16, f-17 | A policeman's lantern. A lamp like this could throw out a burst of flame. |
 | h-11 | scene-mansion | Clock face with no numerals | Decoy | none | The hands do not move. |
-| h-12 | scene-mansion | Pie cart | Decoy | none | Smells of pastry; nothing here. |
+| h-12 | scene-mansion | Pie cart | Decoy | none | The cart smells of pastry. |
 | h-13 | scene-roofs | Chimney pots in a row | Meaningful | f-33; lead-2 steps 2 and 3 | Smoke drifts over the pots; the story says he leapt these roofs, but no one who saw it is named. |
 | h-14 | scene-roofs | Weathervane | Decoy | none | It swings once in the wind and stops. |
-| h-15 | scene-roofs | Sentry box beside a wall | Meaningful | f-25, f-26; lead-5 | Asks the year of the sentry reports and the second camp. |
-| h-16 | scene-roofs | Bundle of penny serials | Meaningful (swappable) | f-21 to f-24; lead-3 | Asks publisher, cloak, or name behind the mask. |
-| h-17 | scene-roofs | Punch booth | Meaningful (swappable) | f-19 | Asks which figure the showman renamed. |
-| h-18 | scene-roofs | Sheepskin on a post | Meaningful | f-29 | Asks which skin a picture of 1877 showed. |
+| h-15 | scene-roofs | Sentry box beside a wall | Meaningful | f-25, f-26; lead-5 | A sentry box beside the wall. The guard's report book lies open. |
+| h-16 | scene-roofs | Bundle of penny serials | Meaningful (swappable) | f-21 to f-24; lead-3 | A bundle of penny serials with a masked hero on the cover. |
+| h-17 | scene-roofs | Punch booth | Meaningful (swappable) | f-19 | A Punch booth. The showman calls his devil puppet by a new name. |
+| h-18 | scene-roofs | Sheepskin on a post | Meaningful | f-29 | A sheepskin hangs on a post, like a costume left behind. |
 
 Swappable hotspots: h-02, h-04, h-06, h-09, h-16, h-17. In a run, the seed may turn one of the lane hotspots into a decoy and make the boots (h-03) meaningful.
 
@@ -338,7 +338,7 @@ Swappable hotspots: h-02, h-04, h-06, h-09, h-16, h-17. In a run, the seed may t
 | p-2 Who wrote | original-name | f-02, f-03, f-12, f-13, f-20, f-08, f-23, f-26, f-27 |
 | p-3 What was seen | object-match | f-04, f-09, f-11, f-15, f-16, f-19, f-22, f-29 |
 | p-4 Who said it | who-said-it | f-05, f-21, f-28, f-36 |
-| p-5 Printed or only told | true-or-told | f-07, f-30, f-31, f-32, f-33, f-34 |
+| p-5 | true-or-told | f-07, f-30, f-31, f-32, f-33, f-34 |
 
 **Breaking the curse:** The final puzzle is the figure's last slip: the player must sort a short stack of statements into "printed" and "told" for the true version. Whichever version the seed picks, a right sort lets the silhouette rise into the fog and the lane grows quiet. The relic earned is a small brass bull's-eye lantern with a folded blank newspaper slip tied to its handle, cold and unlit.
 

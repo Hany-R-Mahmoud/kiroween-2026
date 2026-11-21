@@ -227,23 +227,23 @@ The documented column rests on one scholarly article, a university statement and
 | f-13 | The witness's sighting was about 54 km east of the livestock reports. | chupacabra--ch-3 | v-witness | date-or-number | about 54 km | about 5 km; about 540 km; about 15 km | 3 |
 | f-14 | The film Species reached Puerto Rico on 7 July 1995, according to Radford. | chupacabra--ch-4 | v-film | date-or-number | 7 July 1995 | 7 August 1995; 7 March 1995; 25 December 1995 | 3 |
 | f-15 | Radford lists more than a dozen features shared by the description and the film creature. | chupacabra--ch-4 | v-film | date-or-number | more than a dozen | two; five; none | 3 |
-| f-16 | Radford's argument is that the description matches the creature in the film Species. | chupacabra--ch-4 | v-film | who-said-it | Benjamin Radford | Scott Corrales; Mike Forstner; Silverio Pérez | 2 |
+| f-16 | Benjamin Radford argued that the description matches the creature in the film Species. | chupacabra--ch-4 | v-film | who-said-it | Benjamin Radford | Scott Corrales; Mike Forstner; Silverio Pérez | 2 |
 | f-17 | Radford set out his argument in this magazine in May and June 2011. | chupacabra--ch-4 | v-film | original-name | the Skeptical Inquirer | the Fortean Times; Popular Science; the Saturday Review | 3 |
-| f-18 | Radford wrote that the early witnesses saw wildly different things and called them all the same name. | chupacabra--ch-5 | all | who-said-it | Benjamin Radford | Silverio Pérez; John Tomeček; José Soto | 3 |
+| f-18 | Benjamin Radford wrote that the early witnesses saw wildly different things and called them all the same name. | chupacabra--ch-5 | all | who-said-it | Benjamin Radford | Silverio Pérez; John Tomeček; José Soto | 3 |
 | f-19 | The Texas form of the chupacabra was a four-legged canid reported from the mid-2000s. | chupacabra--ch-6 | v-mange | object-match | a four-legged canid | a winged bird; an upright biped; a large cat | 2 |
 | f-20 | Texas State University reported on 2 November 2007 that the Cuero animal's DNA matched a coyote. | chupacabra--ch-6 | v-mange | date-or-number | 2 November 2007 | 7 July 1995; 1 January 1996; 15 October 2024 | 3 |
 | f-21 | The Texas State biologist quoted on the result was Mike Forstner. | chupacabra--ch-6 | v-mange | who-said-it | Mike Forstner | John Tomeček; Benjamin Radford; Scott Corrales | 3 |
-| f-22 | A Texas A&M wildlife specialist links the look of the animals to late-stage mange. | chupacabra--ch-6 | v-mange | who-said-it | John Tomeček | Mike Forstner; Silverio Pérez; Scott Corrales | 3 |
+| f-22 | John Tomeček, a Texas A&M wildlife specialist, links the look of the animals to late-stage mange. | chupacabra--ch-6 | v-mange | who-said-it | John Tomeček | Mike Forstner; Silverio Pérez; Scott Corrales | 3 |
 | f-23 | The shoulder ridge is the last area to lose fur, which is linked to the reports of spines. | chupacabra--ch-6 | v-mange | symbol | the ridge between the shoulder blades | the tail; the ears; the snout | 3 |
 | f-24 | [R] A report places at least thirty sheep found dead overnight in a mountain municipality in Puebla, Mexico, in 1996. | chupacabra--ch-5 | all | date-or-number | thirty | eight; one hundred fifty; three hundred | 3 |
 | f-25 | [R] The first reports are placed in March 1995 with eight sheep found dead. | chupacabra--ch-2 | v-radio | date-or-number | eight | thirty; one hundred fifty; three | 2 |
 | f-26 | [R] The mayor of Canóvanas at the time, José Soto, recruited volunteers to hunt the creature. | chupacabra--ch-3 | v-witness | who-said-it | José Soto | Silverio Pérez; Mike Forstner; John Tomeček | 3 |
 | f-27 | [R] A report puts a one-night loss of dozens of small farm animals in a Miami neighbourhood in 1996. | chupacabra--ch-5 | all | original-name | Miami | San Antonio; Cuero; Orocovis | 3 |
 | f-28 | The earlier vampire story of 1975 came from the municipality of Moca. | chupacabra--ch-1 | all | original-name | Moca | Canóvanas; Orocovis; Cuero | 2 |
-| f-29 | The claim that the animals were drained of blood was never confirmed by necropsy. | chupacabra--ch-2 | all | true-or-told | told | documented by a necropsy; documented by Texas State; documented by Radford's film study | 2 |
-| f-30 | The idea that a secret laboratory or government programme made the creature has no record. | chupacabra--ch-7 | v-lab | true-or-told | told | documented in Puerto Rico in 1995; documented by Texas A&M; proved by DNA | 2 |
-| f-31 | The idea that the 1975 Moca vampire was the same creature as the 1995 one is a link made by later writers. | chupacabra--ch-1 | all | true-or-told | told | documented in the 1995 description; documented by Radford's film list; proved in Texas | 3 |
-| f-32 | The belief that the creature is an unknown species or an alien is not evidence. | chupacabra--ch-7 | all | true-or-told | told | documented by Texas State; documented in Canóvanas; recorded by the Species release | 2 |
+| f-29 | The animals were drained of blood. | chupacabra--ch-2 | all | true-or-told | told | documented by a necropsy; documented by Texas State; documented by Radford's film study | 2 |
+| f-30 | A secret laboratory or government programme made the creature. | chupacabra--ch-7 | v-lab | true-or-told | told | documented in Puerto Rico in 1995; documented by Texas A&M; proved by DNA | 2 |
+| f-31 | The 1975 Moca vampire was the same creature as the 1995 one. | chupacabra--ch-1 | all | true-or-told | told | documented in the 1995 description; documented by Radford's film list; proved in Texas | 3 |
+| f-32 | The creature is an unknown species or an alien. | chupacabra--ch-7 | all | true-or-told | told | documented by Texas State; documented in Canóvanas; recorded by the Species release | 2 |
 | f-33 | The Texas State DNA result matched a coyote. | chupacabra--ch-6 | v-mange | true-or-told | documented | told only on radio; told only in Mexico; told only in Miami | 2 |
 | f-34 | The description of the creature was an upright biped with spikes. | chupacabra--ch-3 | v-witness | true-or-told | documented as a description (Corrales, 1997) | documented as a photograph; proved as a real animal; told only in Texas | 3 |
 | f-35 | Radford presents the film link as his own argument about the description. | chupacabra--ch-4 | v-film | true-or-told | documented as one researcher's view | proved by the witness; proved by Texas State; told only by the radio | 3 |
@@ -317,24 +317,24 @@ can be true when: never. v-lab blames real institutions, so the seed must never 
 
 | hotspot_id | scene_id | Object | Meaningful or decoy | Linked fact_ids or lead step | What happens on tap |
 |---|---|---|---|---|---|
-| h-01 | scene-farm | Wooden farm fence | Meaningful (swappable) | f-12, f-13 | Asks where the livestock reports of 1995 were placed and how far east the sighting was. |
-| h-02 | scene-farm | Goat pen with empty straw | Meaningful (swappable) | f-25, f-29 | Asks how many animals the first reports named and whether draining was ever confirmed. |
-| h-03 | scene-farm | Feed bucket on a post | Decoy | none | Empty and rusted; nothing here. |
+| h-01 | scene-farm | Wooden farm fence | Meaningful (swappable) | f-12, f-13 | Old report forms are tacked to the fence, the place names torn away. |
+| h-02 | scene-farm | Goat pen with empty straw | Meaningful (swappable) | f-25, f-29 | The pen is empty. A tally of lost animals is scratched on the gatepost. |
+| h-03 | scene-farm | Feed bucket on a post | Decoy | none | Empty and rusted. |
 | h-04 | scene-farm | Clothesline with a faded sheet | Decoy | lead-1 (false trail) | Only a sheet moving in the wind. |
-| h-05 | scene-farm | Kitchen radio on the table | Meaningful | f-09, f-10; lead-2 | Asks who is credited with the name and whether it was new. |
-| h-06 | scene-farm | Faded drawing pinned to a post | Meaningful (swappable) | f-02 to f-06; lead-1 | Asks about height, limbs, fingers and the spikes of the description. |
-| h-07 | scene-town | Newspaper stand with blank pages | Meaningful | f-01, f-11, f-24 | Asks the month of the witness and how long the story stayed on the island. |
-| h-08 | scene-town | Blank poster board by the cinema wall | Meaningful | f-14, f-15, f-37; lead-3 | Asks the release date and how many features were listed. |
-| h-09 | scene-town | Radio shop window | Decoy | none | A row of dark sets; one hums and falls silent. |
+| h-05 | scene-farm | Kitchen radio on the table | Meaningful | f-09, f-10; lead-2 | The radio crackles with a talk show about a new word for an old dread. |
+| h-06 | scene-farm | Faded drawing pinned to a post | Meaningful (swappable) | f-02 to f-06; lead-1 | A drawing of an upright figure with spikes down its back. |
+| h-07 | scene-town | Newspaper stand with blank pages | Meaningful | f-01, f-11, f-24 | The pages are blank except for a month in one corner. |
+| h-08 | scene-town | Blank poster board by the cinema wall | Meaningful | f-14, f-15, f-37; lead-3 | A cinema board, blank except for a release date. |
+| h-09 | scene-town | Radio shop window | Decoy | none | A row of dark radio sets. One hums and falls silent. |
 | h-10 | scene-town | Wooden bench | Decoy | none | Nothing is there but a folded umbrella. |
-| h-11 | scene-town | Bicycle against the wall | Decoy | none | The bell rings once; nothing is learned. |
-| h-12 | scene-town | Bundle of unmarked newspapers | Meaningful (swappable) | f-07, f-17, f-18 | Asks who wrote the book of 1997 and who wrote the argument of 2011. |
-| h-13 | scene-road | Trail camera on a post | Meaningful | f-19, f-20; lead-4 | Asks what form the Texas animals took and the date of the DNA report. |
-| h-14 | scene-road | Rusted water trough | Meaningful (swappable) | f-21 to f-23 | Asks who spoke for the biologists and what the ridge meant. |
-| h-15 | scene-road | Mile marker with no numerals | Decoy | none | The paint is blank; nothing is here. |
+| h-11 | scene-town | Bicycle against the wall | Decoy | none | The bell rings once. |
+| h-12 | scene-town | Bundle of unmarked newspapers | Meaningful (swappable) | f-07, f-17, f-18 | Unmarked newspapers, bundled with two years written on the string tag. |
+| h-13 | scene-road | Trail camera on a post | Meaningful | f-19, f-20; lead-4 | The camera's last frame shows a thin, hairless animal. |
+| h-14 | scene-road | Rusted water trough | Meaningful (swappable) | f-21 to f-23 | Dried mud on the rim, and a folded lab report tucked under it. |
+| h-15 | scene-road | Mile marker with no numerals | Decoy | none | The paint is blank. |
 | h-16 | scene-road | Barbed wire fence | Decoy | none | A tuft of grass caught on a barb. |
 | h-17 | scene-road | Locked unmarked gate | Decoy | lead-5 (false trail) | The sign is blank and the lock is empty. |
-| h-18 | scene-town | Moth-eaten map pinned in the shop | Meaningful (swappable) | f-28, f-27 | Asks which town had the 1975 story and which city had the 1996 night. |
+| h-18 | scene-town | Moth-eaten map pinned in the shop | Meaningful (swappable) | f-28, f-27 | Two places are circled on the map, one in pencil and one in ink. |
 
 Swappable hotspots: h-01, h-02, h-06, h-12, h-14, h-18. In a run, the seed may turn one of these into a decoy and make a decoy such as h-04 or h-17 meaningful.
 
@@ -348,7 +348,7 @@ Swappable hotspots: h-01, h-02, h-06, h-12, h-14, h-18. In a run, the seed may t
 | p-2 Where | original-name | f-08, f-12, f-17, f-27, f-28 |
 | p-3 What was seen | object-match | f-03, f-05, f-19, f-36, f-37 |
 | p-4 Who said it | who-said-it | f-07, f-09, f-16, f-18, f-21, f-22 |
-| p-5 Documented or told | true-or-told | f-10, f-29, f-30, f-31, f-32, f-33, f-34, f-35 |
+| p-5 | true-or-told | f-10, f-29, f-30, f-31, f-32, f-33, f-34, f-35 |
 
 **Breaking the curse:** The final puzzle is the last radio slip: the player must sort a short stack of statements into "documented" and "told" for the true version. Whichever version the seed picks, a right sort lets the silhouette fade into the hills and the night grow quiet. The relic earned is a small battery radio with its dial set between stations and a folded blank newspaper slip tucked under its handle, warm and silent.
 

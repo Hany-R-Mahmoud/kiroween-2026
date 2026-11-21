@@ -220,7 +220,7 @@ The documented side is about names, paper and publicity. The told side is about 
 | f-02 | The Pinelands National Reserve was created by Congress in this year. | jersey-devil--ch-1 | all | date-or-number | 1978 | 1962; 1991; 1945 | 2 |
 | f-03 | The fact sheet says upland Pinelands forests are dominated by this fire-adapted tree. | jersey-devil--ch-1 | all | object-match | pitch pine | white oak; Atlantic white cedar; black walnut | 1 |
 | f-04 | The fact sheet lists swamps of this tree among Pinelands wetlands. | jersey-devil--ch-1 | all | object-match | Atlantic white cedar | pitch pine; black walnut; elm | 1 |
-| f-05 | Furnaces smelted this iron-rich deposit taken from bogs and streams. | jersey-devil--ch-1 | all | object-match | bog iron | coal; copper ore; limestone | 1 |
+| f-05 | Furnaces smelted bog iron, a deposit dug from wetland streams. | jersey-devil--ch-1 | all | object-match | bog iron | coal; copper ore; limestone | 1 |
 | f-06 | The earliest printed names for the creature carried this family surname. | jersey-devil--ch-1 | all | original-name | Leeds | Estell; Batsto; Bonaparte | 1 |
 | f-07 | Daniel Leeds, the almanac printer, died in this year. | jersey-devil--ch-2 | v-almanac-feud | date-or-number | 1720 | 1687; 1703; 1751 | 2 |
 | f-08 | Daniel Leeds' neighbors objected to his almanac because it contained this subject. | jersey-devil--ch-2 | v-almanac-feud | true-or-told | astrology | recipes; navigation; hymns | 1 |
@@ -312,22 +312,22 @@ The player stands on a pale sand road at dusk in the New Jersey pines, beside a 
 
 | hotspot_id | scene_id | Object | Meaningful or decoy | Linked fact_ids or lead step | What happens on tap |
 |---|---|---|---|---|---|
-| h-01 | scene-1 | Cradle with a hoof carved on its side | Meaningful (swappable) | lead-1 step 1; f-14 | Rocks by itself; reveals the number carved on the rim. |
-| h-02 | scene-1 | Family bible page | Meaningful (swappable) | lead-1 step 2; f-14, f-15 | Shows a list of names; asks how many. |
+| h-01 | scene-1 | Cradle with a hoof carved on its side | Meaningful (swappable) | lead-1 step 1; f-14 | The cradle rocks by itself. A number is carved on the rim. |
+| h-02 | scene-1 | Family bible page | Meaningful (swappable) | lead-1 step 2; f-14, f-15 | A family bible page with a long list of names. |
 | h-03 | scene-1 | Tracks in the snow | Meaningful (swappable) | lead-3 step 1; f-23 | Tracks end at the roof; a faint boot-heel shows. |
-| h-04 | scene-1 | Weathered signpost with no lettering | Meaningful (swappable) | lead-1 step 3; f-16 | Points both left and right; prompts the player to recall a place name. |
-| h-05 | scene-1 | Chicken coop | Decoy | none | A hen clucks. Fear meter unchanged. |
-| h-06 | scene-1 | Lantern on the porch | Decoy | none | Flickers; a harmless scare. |
-| h-07 | scene-2 | Printing press with almanac cover | Meaningful (swappable) | lead-2 step 1; f-07, f-10 | Reveals a winged crest and an empty date slot. |
-| h-08 | scene-2 | Crest stamp | Meaningful (swappable) | lead-2 step 2; f-09, f-10 | Prompts matching the crest to a year. |
+| h-04 | scene-1 | Weathered signpost with no lettering | Meaningful (swappable) | lead-1 step 3; f-16 | The signpost points both ways. Its lettering has weathered away. |
+| h-05 | scene-1 | Chicken coop | Decoy | none | A hen clucks. |
+| h-06 | scene-1 | Lantern on the porch | Decoy | none | The porch lantern flickers. |
+| h-07 | scene-2 | Printing press with almanac cover | Meaningful (swappable) | lead-2 step 1; f-07, f-10 | An almanac cover on the press shows a winged crest. The date is missing. |
+| h-08 | scene-2 | Crest stamp | Meaningful (swappable) | lead-2 step 2; f-09, f-10 | A crest stamp, inked and ready. |
 | h-09 | scene-2 | Prediction broadside | Meaningful (swappable) | lead-2 step 3; f-11, f-12 | Shows a boxed prediction with the month smudged. |
-| h-10 | scene-2 | Bog-iron pig | Decoy | f-05 (flavor only) | Heavy; the player lifts it and finds nothing hidden. |
-| h-11 | scene-2 | Stack of stove plates | Decoy | none | Clangs; a harmless noise. |
+| h-10 | scene-2 | Bog-iron pig | Decoy | f-05 (flavor only) | Heavy. Nothing is hidden under it. |
+| h-11 | scene-2 | Stack of stove plates | Decoy | none | The plates clang. |
 | h-12 | scene-3 | Pinned clipping about hoofprints | Meaningful (swappable) | lead-3 step 2; f-19, f-20 | Gives the date range and an hour. |
-| h-13 | scene-3 | Trolley schedule | Meaningful (swappable) | lead-3 step 3; f-22 | Highlights a stop; player confirms the town. |
+| h-13 | scene-3 | Trolley schedule | Meaningful (swappable) | lead-3 step 3; f-22 | A trolley schedule with one stop underlined. |
 | h-14 | scene-3 | Rolled show poster | Meaningful (swappable) | lead-4 step 1; f-25 | Unrolls to a corner of two streets. |
 | h-15 | scene-3 | Cage chain and invoice | Meaningful (swappable) | lead-4 steps 2 and 3; f-27, f-28 | Names the animal; smudges the wing material. |
-| h-16 | scene-3 | Cabinet of plaster hooves | Decoy | none | Rattles; a false "gotcha." |
+| h-16 | scene-3 | Cabinet of plaster hooves | Decoy | none | The plaster hooves rattle in the cabinet. |
 | h-17 | scene-3 | Teacup on the desk | Decoy | none | Steam rises; nothing else. |
 
 Swappable hotspots can become decoys under a seed whose true version does not use them. Decoys can be given a small flavor line but never a fact.

@@ -236,14 +236,14 @@ The record is clearest where it is a page: the sagas can be read, and the farms,
 | f-03 | Glámr is a Swede. | draugr--ch-2 | v-grettis | original-name | a Swede | a Norwegian; an Irishman; a Dane | 1 |
 | f-04 | Glámr has wolf-grey hair. | draugr--ch-2 | all | object-match | wolf-grey hair | red hair; a white beard; a black cap | 2 |
 | f-05 | Glámr goes out into a snowstorm on Yule eve and does not come back. | draugr--ch-2 | v-grettis | date-or-number | Yule eve | midsummer; the first day of harvest; a spring evening | 1 |
-| f-06 | Glámr's body is too heavy for the men to move. | draugr--ch-2 | v-grettis | symbol | weight | a cold wind; a red glow; a bell sound | 1 |
+| f-06 | The sign of Glámr's body is its weight: the men cannot move it. | draugr--ch-2 | v-grettis | symbol | weight | a cold wind; a red glow; a bell sound | 1 |
 | f-07 | Thorgaut is the second shepherd and is found dead at midwinter. | draugr--ch-2 | v-grettis | original-name | Thorgaut | Thorod; Thorir; Thord | 2 |
 | f-08 | Grettir's kinsman who warns him is Jókull at Tongue. | draugr--ch-2 | v-grettis | who-said-it | Jókull | Skapti; Arnkel; Kiartan | 2 |
-| f-09 | On the first night Glámr kills Grettir's horse. | draugr--ch-3 | v-grettis | object-match | his horse | his dog; his shield; his boat | 2 |
+| f-09 | Grettir keeps watch, and on the first night Glámr kills his horse. | draugr--ch-3 | v-grettis | object-match | his horse | his dog; his shield; his boat | 2 |
 | f-10 | Grettir and Glámr fall out of the doorway under the moon. | draugr--ch-3 | v-grettis | symbol | the moon | a fire; the dawn; lightning | 1 |
 | f-11 | Glámr's words say Grettir will always see his eyes and fear being alone. | draugr--ch-3 | v-grettis | symbol | his eyes | his hands; his hair; his voice | 2 |
 | f-12 | The saying "Glamsight" comes from this episode. | draugr--ch-3 | v-grettis | original-name | Glamsight | Moon of Weird; Halt-foot's Head; Door-doom | 3 |
-| f-13 | Thorolf Halt-foot dies in his high seat. | draugr--ch-4 | v-eyrbyggja | object-match | the high seat | the doorway; a bed; the hayloft | 2 |
+| f-13 | Thorolf Halt-foot dies sitting in the high seat. | draugr--ch-4 | v-eyrbyggja | object-match | the high seat | the doorway; a bed; the hayloft | 2 |
 | f-14 | A wall of the hall is broken open to carry Thorolf out. | draugr--ch-4 | v-eyrbyggja | object-match | a wall of the hall | the roof; the floor; the byre | 2 |
 | f-15 | Oxen draw Thorolf's body on a sledge to Thorswater-dale. | draugr--ch-4 | v-eyrbyggja | object-match | a sledge | a boat; a cart with horses; a litter | 2 |
 | f-16 | Thorolf's son is Arnkel. | draugr--ch-4 | v-eyrbyggja | who-said-it | Arnkel | Kiartan; Thorod; Hoskuld | 1 |
@@ -264,13 +264,13 @@ The record is clearest where it is a page: the sagas can be read, and the farms,
 | f-31 | [R] Haugbúi means mound-dweller. | draugr--ch-1 | all | original-name | mound-dweller | again-walker; watchman; shepherd | 2 |
 | f-32 | [R] Aptrganga is glossed as an again-walker or revenant. | draugr--ch-1 | all | original-name | again-walker | mound-dweller; troll; door-warden | 2 |
 | f-33 | [R] A 1938 play titled Fróðá draws its plot from Eyrbyggja saga. | draugr--ch-6 | all | date-or-number | 1938 | 1946; 2011; 1869 | 3 |
-| f-34 | Fróðá is ended by a door-court, a legal hearing at the door. | draugr--ch-5 | v-eyrbyggja | true-or-told | documented (in Eyrbyggja saga) | told only by modern writers; told in a folk song; unknown | 2 |
-| f-35 | Glámr's words about Grettir's fear of the dark are in Grettis saga. | draugr--ch-3 | v-grettis | true-or-told | documented (in Grettis saga) | told only by later poets; told in Laxdæla saga; unknown | 2 |
-| f-36 | That the door-court is what ended the Fróðá walking is the saga's claim only. | draugr--ch-5 | v-eyrbyggja | true-or-told | told | documented by a court record; documented by Snorri; proved | 2 |
-| f-37 | That Glámr's words caused Grettir's fear of the dark is the saga's claim only. | draugr--ch-3 | v-grettis | true-or-told | told | documented by a witness; proved in a court; measured by a physician | 2 |
-| f-38 | That Hrappr walked because of his standing burial is the saga's link. | draugr--ch-4 | v-laxdaela | true-or-told | told | documented in a record; documented in Eyrbyggja saga; proved | 2 |
-| f-39 | That the sagas record real events at real farms is not settled by the texts. | draugr--ch-7 | all | true-or-told | told | documented in each saga; proved by Skapti; recorded at the Thing | 3 |
-| f-40 | That the draugr and the haugbúi were clearly separate figures in every writer's mind is a modern convenience. | draugr--ch-1 | v-scholars | true-or-told | told | documented in all three sagas; proved by a manuscript; recorded by Olaf | 3 |
+| f-34 | In the saga, a door-court, a legal hearing at the door, is held at Fróðá. | draugr--ch-5 | v-eyrbyggja | true-or-told | documented (in Eyrbyggja saga) | told only by modern writers; told in a folk song; unknown | 2 |
+| f-35 | Glámr speaks words to Grettir about a fear of the dark. | draugr--ch-3 | v-grettis | true-or-told | documented (in Grettis saga) | told only by later poets; told in Laxdæla saga; unknown | 2 |
+| f-36 | The door-court is what ended the Fróðá walking. | draugr--ch-5 | v-eyrbyggja | true-or-told | told | documented by a court record; documented by Snorri; proved | 2 |
+| f-37 | Glámr's words caused Grettir's fear of the dark. | draugr--ch-3 | v-grettis | true-or-told | told | documented by a witness; proved in a court; measured by a physician | 2 |
+| f-38 | Hrappr walked because of his standing burial. | draugr--ch-4 | v-laxdaela | true-or-told | told | documented in a record; documented in Eyrbyggja saga; proved | 2 |
+| f-39 | The sagas record real events at real farms. | draugr--ch-7 | all | true-or-told | told | documented in each saga; proved by Skapti; recorded at the Thing | 3 |
+| f-40 | The draugr and the haugbúi were clearly separate figures in every writer's mind. | draugr--ch-1 | v-scholars | true-or-told | told | documented in all three sagas; proved by a manuscript; recorded by Olaf | 3 |
 
 Version-specific facts: f-01 to f-03, f-05 to f-12, f-35, f-37 (v-grettis); f-13 to f-22, f-34, f-36 (v-eyrbyggja); f-24 to f-28, f-38 (v-laxdaela); f-29, f-30, f-40 (v-scholars). Documented side: f-01 to f-28, f-34, f-35. Reported by reference works `[R]`: f-29 to f-33. Told side: f-36 to f-40.
 
@@ -330,23 +330,23 @@ can be true when: the seed picks v-scholars
 
 | hotspot_id | scene_id | Object | Meaningful or decoy | Linked fact_ids or lead step | What happens on tap |
 |---|---|---|---|---|---|
-| h-01 | scene-yard | Sledge by the peat | Meaningful (swappable) | f-15; lead-2 step 1 | Asks how the body was drawn to the dale. |
-| h-02 | scene-yard | Empty horse rail | Meaningful | f-09; lead-1 step 2 | Asks what was lost on the first night. |
-| h-03 | scene-yard | Notched tally stick | Meaningful (swappable) | f-22; lead-2 step 2 | A number puzzle: how many of the servants were lost. |
-| h-04 | scene-yard | Turf door under a sod roof | Meaningful | f-24, f-26; lead-3 steps 1 and 3 | Asks where a man chose to be set. |
-| h-05 | scene-yard | Peat stack | Decoy | none | A heap of fuel; nothing hidden. |
+| h-01 | scene-yard | Sledge by the peat | Meaningful (swappable) | f-15; lead-2 step 1 | A sledge, its runners scored deep, as if it once hauled something very heavy. |
+| h-02 | scene-yard | Empty horse rail | Meaningful | f-09; lead-1 step 2 | The horse rail is empty. Hoofprints end in a scuffle. |
+| h-03 | scene-yard | Notched tally stick | Meaningful (swappable) | f-22; lead-2 step 2 | A tally stick, notched once for each of the household's servants. |
+| h-04 | scene-yard | Turf door under a sod roof | Meaningful | f-24, f-26; lead-3 steps 1 and 3 | A turf door. Someone chose to be laid to rest right here. |
+| h-05 | scene-yard | Peat stack | Decoy | none | A heap of fuel. |
 | h-06 | scene-yard | Lantern at the door | Decoy | none | The flame dips once and steadies. |
-| h-07 | scene-hall | High seat with a fur | Meaningful | f-13 | Asks where the old man was found. |
-| h-08 | scene-hall | Narrow doorframe | Meaningful | f-14, f-10, f-11; lead-1 steps 1 and 3 | Asks what had to be broken, and what fell outside. |
-| h-09 | scene-hall | Hammer on a peg | Meaningful (swappable) | f-23 | Asks what rose through the floor. |
-| h-10 | scene-hall | Bundle of bed-linen | Decoy | lead-2 (false trail) | Soft cloth; points to Fróðá, explains nothing about the shepherd. |
-| h-11 | scene-hall | Wooden bowl of dried fish | Decoy | none | Dry and empty of meaning. |
+| h-07 | scene-hall | High seat with a fur | Meaningful | f-13 | A high seat with a fur thrown over it, still dented by its last sitter. |
+| h-08 | scene-hall | Narrow doorframe | Meaningful | f-14, f-10, f-11; lead-1 steps 1 and 3 | The doorframe has been broken through and patched. |
+| h-09 | scene-hall | Hammer on a peg | Meaningful (swappable) | f-23 | A hammer hangs ready, its head scarred from striking at something below the floor. |
+| h-10 | scene-hall | Bundle of bed-linen | Decoy | lead-2 (false trail) | Soft bed-linen, neatly folded. |
+| h-11 | scene-hall | Wooden bowl of dried fish | Decoy | none | A bowl of dried fish, long since dry. |
 | h-12 | scene-hall | Bench knocked askew | Decoy | none | The bench rocks and stops. |
-| h-13 | scene-fjord | Headland wall | Meaningful (swappable) | f-17, f-18 | Asks the name of the headland and what only birds can cross. |
-| h-14 | scene-fjord | Spear with a broken shaft | Meaningful | f-28; lead-3 step 2 | Asks what the lord struck with. |
-| h-15 | scene-fjord | Marker stone with painted marks | Decoy | lead-4 (false trail) | Marks with no letters; explains nothing. |
+| h-13 | scene-fjord | Headland wall | Meaningful (swappable) | f-17, f-18 | A wall across the headland. Beyond it, only birds come and go. |
+| h-14 | scene-fjord | Spear with a broken shaft | Meaningful | f-28; lead-3 step 2 | A spear with its shaft snapped in two. |
+| h-15 | scene-fjord | Marker stone with painted marks | Decoy | lead-4 (false trail) | Painted marks with no letters. |
 | h-16 | scene-fjord | Gull's feather | Decoy | none | A feather; the wind moves it. |
-| h-17 | scene-fjord | Small turf door with latch ring | Meaningful | f-20, f-34; lead-2 step 3 | Asks who brought the charge at the door. |
+| h-17 | scene-fjord | Small turf door with latch ring | Meaningful | f-20, f-34; lead-2 step 3 | A small turf door with a latch ring, worn by many hands at once. |
 | h-18 | scene-fjord | Driftwood bench with a bundle of notes | Meaningful | f-29, f-30, f-31, f-32; lead-4 | A bundle of scholars' notes tied with wool; two years are inked on the outside. |
 
 Swappable hotspots: h-01, h-03, h-09, h-13. In a run, the seed may turn one of these into a decoy and make a decoy such as h-10 or h-15 meaningful.
@@ -361,7 +361,7 @@ Swappable hotspots: h-01, h-03, h-09, h-13. In a run, the seed may turn one of t
 | p-2 What was in the room | object-match | f-04, f-09, f-13, f-14, f-15, f-18, f-23, f-24, f-28 |
 | p-3 Numbers and years | date-or-number | f-05, f-21, f-22, f-27, f-29, f-30 |
 | p-4 The sign of the walker | symbol | f-06, f-10, f-11, f-23 |
-| p-5 Told or recorded | true-or-told | f-34, f-35, f-36, f-37, f-38, f-39, f-40 |
+| p-5 | true-or-told | f-34, f-35, f-36, f-37, f-38, f-39, f-40 |
 
 **Breaking the curse:** The final puzzle is the shape's last question. The player chooses, from a row of carved tokens, the one detail that matches the true account: in v-grettis the moon and the doorway; in v-eyrbyggja the door-court; in v-laxdaela the standing burial. A right answer lets the shape turn and walk back into the dark. The relic earned is a plain iron door-latch ring on a worn leather cord, kept clean and cold.
 

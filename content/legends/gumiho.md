@@ -209,27 +209,27 @@ The record is clearest where it is a page: a Chinese classic, a Korean history e
 | f-03 | The foxes of the country of Qingqiu have four legs and nine tails. | gumiho--ch-2 | v-qingqiu | date-or-number | four legs | two legs; six legs; eight legs | 2 |
 | f-04 | The people of that country eat the five grains and wear silk. | gumiho--ch-2 | v-qingqiu | object-match | silk | fur; hemp; bark cloth | 3 |
 | f-05 | The Samguk sagi dates the foxes in the palace to the nineteenth year of King Uija of Baekje, 659. | gumiho--ch-1 | all | date-or-number | 659 | 668; 598; 1392 | 2 |
-| f-06 | One white fox sat on the desk of the highest minister. | gumiho--ch-1 | all | object-match | a minister's desk | a throne; a palace gate; a well | 2 |
-| f-07 | That the bead tale explains why people know the earth better than the sky is the tale's own explanation, not a finding. | gumiho--ch-3 | v-bead | true-or-told | told | documented in the Samguk sagi; documented in the Shanhaijing; documented by a field survey | 2 |
+| f-06 | One white fox sat on a minister's desk. | gumiho--ch-1 | all | object-match | a minister's desk | a throne; a palace gate; a well | 2 |
+| f-07 | People know the earth better than the sky because of the fox bead. | gumiho--ch-3 | v-bead | true-or-told | told | documented in the Samguk sagi; documented in the Shanhaijing; documented by a field survey | 2 |
 | f-08 | In the first type, the young man looks at the earth, not the sky. | gumiho--ch-3 | v-bead | symbol | the earth | the moon; the stars; the fox's tails | 1 |
-| f-09 | In the first type, the young man takes the bead from her mouth with his own mouth. | gumiho--ch-3 | v-bead | object-match | from her mouth, with his mouth | from her sleeve; from her hand; from a stream | 2 |
+| f-09 | In the first type, the young man takes the bead from her mouth, with his mouth. | gumiho--ch-3 | v-bead | object-match | from her mouth, with his mouth | from her sleeve; from her hand; from a stream | 2 |
 | f-10 | The fox bead tale is reported especially common in Hamgyeong, Pyeongan and Hwanghae. | gumiho--ch-3 | all | object-match | Hamgyeong, Pyeongan and Hwanghae | Jeju; Gyeongsang; Gangwon | 3 |
-| f-11 | In the second type the fox wants a hundred students to ascend to heaven. | gumiho--ch-4 | v-ascend | date-or-number | one hundred | nine; fifty; one thousand | 1 |
+| f-11 | In the second type, the fox wants one hundred students to ascend to heaven. | gumiho--ch-4 | v-ascend | date-or-number | one hundred | nine; fifty; one thousand | 1 |
 | f-12 | She reaches ninety-nine of them before one escapes. | gumiho--ch-4 | v-ascend | date-or-number | ninety-nine | one hundred; nine; ninety | 2 |
 | f-13 | The schoolmaster's advice is to swallow the bead. | gumiho--ch-4 | v-ascend | weakness | swallow the bead | burn the fox's tails; call her by name at dawn; shut the schoolhouse door | 2 |
 | f-14 | In the Andong area the bead tale is attached to Jo Mok. | gumiho--ch-4 | v-local | who-said-it | Jo Mok | Yun Seon-do; Yi Sik; Yi Hwang | 3 |
 | f-15 | In Haenam in South Jeolla the tale is attached to Yun Seon-do. | gumiho--ch-4 | v-local | who-said-it | Yun Seon-do | Jo Mok; Yi Sik; Yi Hwang | 3 |
-| f-16 | That the bead tale truly happened to a named local scholar is told, not recorded. | gumiho--ch-4 | v-local | true-or-told | told | documented in the Samguk sagi; documented by the Shanhaijing; documented by Cho Hee-woong | 2 |
+| f-16 | The bead tale truly happened to a named local scholar. | gumiho--ch-4 | v-local | true-or-told | told | documented in the Samguk sagi; documented by the Shanhaijing; documented by Cho Hee-woong | 2 |
 | f-17 | The youngest brother is the one who overcomes the fox sister. | gumiho--ch-5 | v-sister | symbol | the youngest brother | the eldest brother; the mother; a stranger | 1 |
-| f-18 | The fox sister is classed as a disguise-type transformation tale. | gumiho--ch-5 | v-sister | original-name | disguise type | possession type; dream type; rebirth type | 3 |
+| f-18 | The fox sister is classed as a disguise type of transformation tale. | gumiho--ch-5 | v-sister | original-name | disguise type | possession type; dream type; rebirth type | 3 |
 | f-19 | [R] The father in the fox sister outline has three sons. | gumiho--ch-5 | v-sister | date-or-number | three | two; four; seven | 2 |
 | f-20 | [R] At least seventy-five variants of the fox sister tale are reported. | gumiho--ch-5 | v-sister | date-or-number | seventy-five | fifteen; one hundred and fifty; seven | 3 |
 | f-21 | [R] In the outline, the cattle begin to be lost when the sister is six. | gumiho--ch-5 | v-sister | date-or-number | six | three; nine; twelve | 2 |
 | f-22 | The Korean name of the fox sister tale is yeou nuidongsaeng. | gumiho--ch-5 | v-sister | original-name | yeou nuidongsaeng | yeowu guseul; yeou gaegol; yeou ganeun gil | 2 |
 | f-23 | The Korean name of the fox bead tale is yeowu guseul. | gumiho--ch-3 | v-bead | original-name | yeowu guseul | yeou nuidongsaeng; baegyeowu; gumiho-jeon | 2 |
-| f-24 | The word gumiho joins the characters for nine, tail and fox. | gumiho--ch-1 | all | original-name | nine-tailed fox | thousand-year fox; white fox; bead fox | 1 |
-| f-25 | That a fox must stay unseen for a set number of days to become human is a popular rule, not in the sources read. | gumiho--ch-5 | all | true-or-told | told | documented in the encyclopedia; documented in the Samguk sagi; documented in the Shanhaijing | 2 |
-| f-26 | That the white fox of 659 was a nine-tailed gumiho is not in the text, which gives no tails. | gumiho--ch-1 | all | true-or-told | told | documented in the Samguk sagi; documented by the Shanhaijing; documented by Cho Hee-woong | 2 |
+| f-24 | The word gumiho means nine-tailed fox. | gumiho--ch-1 | all | original-name | nine-tailed fox | thousand-year fox; white fox; bead fox | 1 |
+| f-25 | A fox must stay unseen for a set number of days to become human. | gumiho--ch-5 | all | true-or-told | told | documented in the encyclopedia; documented in the Samguk sagi; documented in the Shanhaijing | 2 |
+| f-26 | The white fox of 659 was a nine-tailed gumiho. | gumiho--ch-1 | all | true-or-told | told | documented in the Samguk sagi; documented by the Shanhaijing; documented by Cho Hee-woong | 2 |
 | f-27 | The Shanhaijing records the nine-tailed fox on Qingqiu Mountain. | gumiho--ch-2 | v-qingqiu | true-or-told | documented (in the Shanhaijing) | told only by later novelists; told in a bead tale; unknown | 2 |
 | f-28 | The encyclopedia entry records the fox bead tale in two types. | gumiho--ch-3 | all | true-or-told | documented (in the Encyclopedia of Korean Culture) | told only in modern drama; told in the fox sister tale; unknown | 2 |
 | f-29 | The fox bead tale entry was written by Cho Hee-woong. | gumiho--ch-3 | all | who-said-it | Cho Hee-woong | Yu Jin-a; Kim Jun-hui; Guo Pu | 3 |
@@ -237,7 +237,7 @@ The record is clearest where it is a page: a Chinese classic, a Korean history e
 | f-31 | The fox bead entry was written in 1995. | gumiho--ch-3 | v-bead | date-or-number | 1995 | 2022; 2023; 659 | 3 |
 | f-32 | In the first type, the fox at first refuses to kiss him, he threatens to end it, she gives in, and he takes the bead. | gumiho--ch-3 | v-bead | ritual-order | refuses, threat, gives in, bead taken | bead taken, refuses, threat, gives in; threat, refuses, bead taken, gives in; gives in, refuses, threat, bead taken | 2 |
 | f-33 | In the second type, the fox wants to ascend to heaven, not to become human. | gumiho--ch-4 | v-ascend | true-or-told | documented (in the encyclopedia) | told only in modern drama; told in the fox sister tale; unknown | 2 |
-| f-34 | That the fox in the bead tale wishes to become human is not stated in the entry. | gumiho--ch-4 | all | true-or-told | told | documented in the entry; documented in the Samguk sagi; documented by the Shanhaijing | 2 |
+| f-34 | The fox in the bead tale wishes to become human. | gumiho--ch-4 | all | true-or-told | told | documented in the entry; documented in the Samguk sagi; documented by the Shanhaijing | 2 |
 | f-35 | [R] Guo Pu is reported to say that a fox becomes a celestial fox at a thousand years. | gumiho--ch-2 | all | date-or-number | a thousand years | a hundred years; five hundred years; nine years | 3 |
 | f-36 | [R] A reference work says a Japanese fox grows another tail after a hundred years. | gumiho--ch-6 | all | date-or-number | a hundred years | fifty years; a thousand years; nine years | 3 |
 | f-37 | [R] Korean texts name a nine-tailed fox by that count only from the Goryeo period onward. | gumiho--ch-1 | all | object-match | the Goryeo period | the Baekje period; the Joseon period; the Silla period | 3 |
@@ -311,20 +311,20 @@ can be true when: never (a version that names a real person as protagonist is on
 
 | hotspot_id | scene_id | Object | Meaningful or decoy | Linked fact_ids or lead step | What happens on tap |
 |---|---|---|---|---|---|
-| h-01 | scene-courtyard | Woman's shadow on a paper door | Meaningful (swappable) | f-17, f-24; lead-4 steps 1 to 3 | Asks what the characters of her name mean. |
-| h-02 | scene-courtyard | Hanging paper lantern | Decoy | none | The flame bends and steadies; nothing hidden. |
-| h-03 | scene-courtyard | Low writing desk with a brush | Meaningful | f-13, f-29, f-30, f-31; lead-2; lead-5 step 1 | Asks who wrote the entry and in which year. |
+| h-01 | scene-courtyard | Woman's shadow on a paper door | Meaningful (swappable) | f-17, f-24; lead-4 steps 1 to 3 | A woman's shadow on the paper door. Her name is brushed beside it. |
+| h-02 | scene-courtyard | Hanging paper lantern | Decoy | none | The flame bends and steadies. |
+| h-03 | scene-courtyard | Low writing desk with a brush | Meaningful | f-13, f-29, f-30, f-31; lead-2; lead-5 step 1 | A writing desk with the brush still wet. An entry is half finished. |
 | h-04 | scene-courtyard | Earthen jar | Decoy | none | A dry jar; the lid rocks once. |
 | h-05 | scene-courtyard | Stone step | Decoy | none | A plain step; nothing under it. |
-| h-06 | scene-bridge | Small stone bridge | Meaningful (swappable) | f-32; lead-1 step 2 | Asks the order of the kiss, the refusal and the bead. |
+| h-06 | scene-bridge | Small stone bridge | Meaningful (swappable) | f-32; lead-1 step 2 | A small stone bridge. Two figures once stood here, close together. |
 | h-07 | scene-bridge | Autumn reeds | Decoy | none | The reeds hiss; nothing in them. |
 | h-08 | scene-bridge | Stone wall stretch | Decoy | none | Cold moss; nothing hidden. |
 | h-09 | scene-bridge | Flat river stone | Decoy | none | A smooth stone; nothing under it. |
-| h-10 | scene-forest | Glowing bead above a stone | Meaningful | f-08, f-23; lead-1 steps 1 and 3 | Asks what the young man looked at and what the bead is called. |
-| h-11 | scene-forest | Full moon in the branches | Meaningful (swappable) | f-05, f-06; lead-3 step 3 | Asks which year a white fox sat at a desk. |
-| h-12 | scene-courtyard | Bamboo book box | Meaningful | f-01 to f-04, f-39; lead-3 steps 1 and 2 | Asks which mountain the old book names and what cry it gives. |
+| h-10 | scene-forest | Glowing bead above a stone | Meaningful | f-08, f-23; lead-1 steps 1 and 3 | A bead glows above the stone, warm and bright. |
+| h-11 | scene-forest | Full moon in the branches | Meaningful (swappable) | f-05, f-06; lead-3 step 3 | A full moon hangs in the branches. |
+| h-12 | scene-courtyard | Bamboo book box | Meaningful | f-01 to f-04, f-39; lead-3 steps 1 and 2 | A bamboo box holding an old book of mountains and strange beasts. |
 | h-13 | scene-forest | Trail rock | Decoy | none | A mossy rock; nothing carved. |
-| h-14 | scene-bridge | Bare pine bough | Decoy | none | A dry bough; an owl is not there. |
+| h-14 | scene-bridge | Bare pine bough | Decoy | none | A dry pine bough. |
 
 Swappable hotspots: h-01, h-06, h-11, h-12. In a run, the seed may turn one of these into a decoy and make a decoy such as h-02 or h-07 meaningful.
 
@@ -338,7 +338,7 @@ Swappable hotspots: h-01, h-06, h-11, h-12. In a run, the seed may turn one of t
 | p-2 What is in the tale | object-match | f-01, f-04, f-06, f-09, f-10, f-37 |
 | p-3 Dates and numbers | date-or-number | f-03, f-05, f-11, f-12, f-19, f-20, f-21, f-31, f-35, f-36, f-38 |
 | p-4 Who said it | who-said-it | f-14, f-15, f-29, f-30 |
-| p-5 Told or recorded | true-or-told | f-07, f-16, f-25, f-26, f-27, f-28, f-33, f-34, f-39 |
+| p-5 | true-or-told | f-07, f-16, f-25, f-26, f-27, f-28, f-33, f-34, f-39 |
 
 **Breaking the curse:** The final puzzle is the shadow's last question. The visitor chooses from a row of four tokens (a glowing bead, a ring of nine tails, a paper-door frame and a small bundle of reeds) the one that matches the true account: in v-bead the glowing bead; in v-ascend the ring of nine tails counted to ninety-nine marks; in v-sister the paper-door frame; in v-qingqiu the bundle of reeds standing for the Qingqiu text. v-local never matches. A right answer lets the shadow fold into the grain of the paper door as a single calm outline. The relic earned is a small glass bead lantern: a clear bead in a wire cradle that gives a soft jade-white light when held up to the moon.
 
