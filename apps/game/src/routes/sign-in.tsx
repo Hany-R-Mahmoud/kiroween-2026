@@ -26,7 +26,7 @@ function SignIn() {
   }
 
   return (
-    <section aria-labelledby="sign-in-heading" className="mx-auto flex max-w-sm flex-col gap-4">
+    <section aria-labelledby="sign-in-heading" className="page-narrow mx-auto flex max-w-sm flex-col gap-4">
       <h1 id="sign-in-heading" className="font-display text-3xl text-glow">
         {t('signIn.heading')}
       </h1>
@@ -41,7 +41,7 @@ function SignIn() {
       <button type="button" className={secondaryButtonClass} disabled={busy} onClick={async () => (await signInGoogle().catch(() => false)) || setError(t('error.generic'))}>
         {t('form.google')}
       </button>
-      <Link to="/sign-up" className="inline-flex min-h-11 items-center text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-glow">
+      <Link to="/sign-up" className="inline-flex min-h-11 items-center text-accent underline underline-offset-4">
         {t('form.noAccount')}
       </Link>
     </section>

@@ -28,12 +28,12 @@ export function useReducedMotion(): { reduced: boolean; setSetting: (v: MotionSe
   };
 }
 
-/** The settings-menu checkbox. Checked means reduced; the first change stores an explicit choice. */
+/** The settings-menu switch (a checkbox with role=switch, styled in fear.css). Checked means reduced; the first change stores an explicit choice. */
 export function MotionToggle({ reduced, onChange }: { reduced: boolean; onChange: (v: MotionSetting) => void }) {
   const t = useT();
   return (
     <label className="motion-toggle">
-      <input type="checkbox" checked={reduced} onChange={(e) => onChange(e.target.checked ? 'reduce' : 'full')} />
+      <input type="checkbox" role="switch" checked={reduced} onChange={(e) => onChange(e.target.checked ? 'reduce' : 'full')} />
       <span>{t('settings.motion')}</span>
     </label>
   );

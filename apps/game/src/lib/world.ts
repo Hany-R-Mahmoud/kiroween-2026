@@ -33,6 +33,9 @@ export function activeSlot(view: PlayView | null, chosen: string | null): SlotVi
   return open.find((s) => s.slotId === chosen) ?? open[0] ?? null;
 }
 
+/** Hints are offered only for an open puzzle: not hidden, locked or solved (Requirement 26.3). */
+export const isHintable = (slot: SlotView | null): boolean => !!slot && slot.state === 'open';
+
 /** True when every puzzle is solved but the Run goes on, so one thread is still to follow. */
 export const needsLead = (view: PlayView | null): boolean => !!view && view.status === 'in_progress' && view.slots.length > 0 && view.slots.every((s) => s.state === 'solved');
 
@@ -49,6 +52,13 @@ export function atlasHref(origin: string, anchor: string): string | null {
 export function tapSentence(reply: Reply | null, t: (key: MessageKey) => string): string | null {
   if (!reply || reply.kind !== 'tap') return null;
   return reply.text ?? (reply.key ? t(reply.key) : null);
+}
+
+/** The always-visible reply line: the server's text when not blank, else its key, else a fixed line. Never empty. */
+export function replyLine(reply: Reply | null, t: (key: MessageKey) => string): string {
+  if (!reply || reply.kind !== 'tap') return t('scene.reply.idle');
+  const text = reply.text?.trim() ? reply.text : reply.key ? t(reply.key) : '';
+  return text.trim() ? text : t('tap.nothing');
 }
 
 /** A decoy tap: it opened nothing and collected nothing. */

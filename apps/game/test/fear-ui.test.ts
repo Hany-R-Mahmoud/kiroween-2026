@@ -128,6 +128,11 @@ describe('meter and spirit parts', () => {
     fc.assert(fc.property(fc.double({ noNaN: true, min: -1e6, max: 1e6 }), (n) => { const c = clampFear(n); expect(c).toBeGreaterThanOrEqual(0); expect(c).toBeLessThanOrEqual(100); }));
     expect(clampFear(Number.NaN)).toBe(0);
   });
+  it('rounds fractions and treats infinities as 0 (Requirement 25.4)', () => {
+    expect(clampFear(41.6)).toBe(42);
+    expect(clampFear(-3)).toBe(0);
+    expect(clampFear(Infinity)).toBe(0);
+  });
   it('every image asset id maps through assetUrl to an existing file', () => {
     for (const id of [FEAR_FRAME_ASSET, SPIRIT_FRAME_ASSET, ...Object.keys(FEAR_EVENTS).flatMap((l) => [spiritAsset(l, 'full'), spiritAsset(l, 'close')])])
       expect(assetUrl(id), id).toMatch(/^\/media\//);
@@ -167,5 +172,34 @@ describe('spirit figures wait for the scene image (Requirement 11)', () => {
     expect(panel).toContain(spiritAsset('banshee', 'close'));
     expect(panel).toContain(SPIRIT_FRAME_ASSET);
     expect(panel).toContain('--book-paper-image:url(');
+  });
+});
+describe('fear caption placement (F4)', () => {
+  const strip = (s: string) => s.replace(/\/\*[\s\S]*?\*\//g, '');
+  const read = (rel: string) => readFileSync(new URL(rel, import.meta.url), 'utf8');
+  const fear = strip(read('../src/components/fear.css'));
+  const scene = strip(read('../src/components/scene.css'));
+  const rule = (css: string, sel: string) => new RegExp(`(?:^|\\})\\s*${sel.replace(/[.\[\]'=-]/g, '\\$&')}\\s*\\{([^}]*)\\}`).exec(css)?.[1] ?? '';
+  it('the overlay is absolute inside the stage, at its start, and never takes input', () => {
+    const o = rule(fear, '.fear-overlay');
+    expect(o).toMatch(/pointer-events:\s*none/);
+    expect(o).toMatch(/position:\s*absolute/);
+    expect(o).not.toMatch(/position:\s*fixed/);
+    expect(o).toMatch(/place-items:\s*start center/);
+  });
+  it('the caption itself is not positioned over the notebook or dock', () => {
+    const c = rule(fear, '.fear-overlay-caption');
+    expect(c).not.toMatch(/position:\s*(fixed|absolute)/);
+    expect(c).not.toMatch(/pointer-events:\s*auto/);
+  });
+  it('both scene stages are positioned, so the overlay anchors to the scene', () => {
+    expect(/\.scene-screen \.world-stage,\s*\.scene-screen \.tutorial-stage\s*\{[^}]*position:\s*relative/.test(scene)).toBe(true);
+  });
+  it('the overlay is rendered inside the stage in both rooms, not beside the dock', () => {
+    const w = read('../src/components/WorldPlay.tsx');
+    const t = read('../src/components/TutorialRoom.tsx');
+    expect(/world-stage[\s\S]*\{p\.overlay\}[\s\S]*scene-dock/.test(w)).toBe(true);
+    expect(read('../src/routes/world.$target.tsx')).toMatch(/overlay=\{<FearOverlay/);
+    expect(/tutorial-stage[\s\S]*<FearOverlay[\s\S]*scene-dock/.test(t)).toBe(true);
   });
 });

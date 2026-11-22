@@ -36,6 +36,11 @@ export function hallDoorState(tutorialDone: boolean, mayEnter: boolean): DoorSta
   return mayEnter ? 'open' : 'signin';
 }
 
+/** The catalog key of the reason a door is closed; null exactly when the door is open. Reads the state, adds no rule. */
+export function doorReasonKey(state: DoorState): MessageKey | null {
+  return state === 'locked' ? 'hub.door.reason.study' : state === 'signin' ? 'hub.door.reason.signin' : null;
+}
+
 /** Curses remaining: one per world not yet broken, counted over distinct legend ids. */
 export function cursesLeft(broken: readonly string[]): number {
   return Math.max(0, WORLD_COUNT - new Set(broken).size);

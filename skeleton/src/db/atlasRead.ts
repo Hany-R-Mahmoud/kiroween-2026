@@ -1,7 +1,7 @@
 // The atlas's reads (design 3.4). Drizzle builders only, so every value is a bound parameter. Every select names its
 // columns: the reader role may read only some columns of `legends` and `assets`, and `select *` would be refused.
 import { asc, eq, like, or } from 'drizzle-orm';
-import { atlasLegendFromRows, markerOf, type AtlasLegend, type AtlasSummary } from '../atlas/view.ts';
+import { atlasLegendFromRows, heroOf, markerOf, type AtlasLegend, type AtlasSummary } from '../atlas/view.ts';
 import type { Db } from './client.ts';
 import { anchors, assets, chapters, documentedTold, legends, sources, versions } from './schema.ts';
 
@@ -23,12 +23,11 @@ export async function listLegends(db: Db): Promise<AtlasSummary[]> {
   const markers = await db
     .select({ legendId: assets.legendId, id: assets.id, size: assets.size })
     .from(assets)
-    .where(or(like(assets.id, '%-atlas-marker-%'), like(assets.id, '%-shared-marker-%')));
-  return rows.map(({ mapLat, mapLng, ...r }) => ({
-    ...r,
-    mapPoint: { lat: mapLat, lng: mapLng },
-    marker: markerOf(r.id, markers.filter((m) => m.legendId === r.id)),
-  }));
+    .where(or(like(assets.id, '%-atlas-marker-%'), like(assets.id, '%-shared-marker-%'), like(assets.id, '%-atlas-hero-01')));
+  return rows.map(({ mapLat, mapLng, ...r }) => {
+    const own = markers.filter((m) => m.legendId === r.id);
+    return { ...r, mapPoint: { lat: mapLat, lng: mapLng }, marker: markerOf(r.id, own), hero: heroOf(r.id, own) };
+  });
 }
 
 /** One legend's page, read in one transaction so an import running at the same time is never half seen. Null if unknown. */

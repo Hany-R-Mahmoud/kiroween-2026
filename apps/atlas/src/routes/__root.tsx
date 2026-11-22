@@ -3,6 +3,7 @@ import { createRootRoute, HeadContent, Link, Outlet, Scripts, useMatches } from 
 import { Mood } from '@kiroween/skeleton/mood';
 import type { CSSProperties, ReactNode } from 'react';
 import { NotFound } from '../components/NotFound';
+import { SiteHeader } from '../components/SiteHeader';
 import { BOOK_HEAD_SCRIPT } from '../bookHead';
 import { BASE_FONTS, fontLinks } from '../fonts';
 import { translate } from '../i18n/t';
@@ -61,16 +62,7 @@ function Shell({ children }: { children: ReactNode }) {
       <a href="#main" className="sr-only rounded bg-surface p-3 focus:not-sr-only focus:absolute focus:start-3 focus:top-3 focus:z-10">
         {t('nav.skip')}
       </a>
-      <header className="border-b border-surface">
-        <nav aria-label={t('nav.label')} className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-2 px-4 py-2 font-ui text-sm">
-          <Link to="/" className="inline-flex min-h-11 items-center font-display text-lg text-glow no-underline">
-            {t('app.title')}
-          </Link>
-          <Link to="/" className="inline-flex min-h-11 items-center">
-            {t('nav.home')}
-          </Link>
-        </nav>
-      </header>
+      <SiteHeader t={t} />
       <main id="main" tabIndex={-1} className="mx-auto max-w-6xl outline-none">
         {children}
       </main>
@@ -78,7 +70,7 @@ function Shell({ children }: { children: ReactNode }) {
         <p>{t('footer.fiction')}</p>
         <p>{t('footer.map')}</p>
         <p>
-          <Link to="/legends/$legendId" params={{ legendId: 'keepers-note' }} className="inline-flex min-h-11 items-center">
+          <Link to="/legends/$legendId" params={{ legendId: 'keepers-note' }} className="nav-item inline-flex min-h-11 items-center">
             {t('footer.keepersNote')}
           </Link>
         </p>
@@ -110,7 +102,7 @@ function ErrorPage() {
       <h1 className="text-4xl text-glow">{translate('en', 'error.title')}</h1>
       <p>{translate('en', 'error.body')}</p>
       <p>
-        <a href="/">{translate('en', 'error.home')}</a>
+        <a href="/" className="link">{translate('en', 'error.home')}</a>
       </p>
     </main>
   );

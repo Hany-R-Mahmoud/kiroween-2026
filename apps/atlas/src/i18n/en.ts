@@ -6,10 +6,13 @@ export const en = {
   'nav.skip': 'Skip to the main content',
   'nav.label': 'Atlas',
   'nav.home': 'All legends',
+  'nav.play': 'Play Trick or True',
   'footer.fiction': 'The archive house around these pages is fiction. The legends are real folklore, and each one cites its sources.',
   'footer.keepersNote': "The Keeper's Note: the story of this archive",
   'footer.map': 'Map outline made with Natural Earth (public domain).',
   'home.intro': 'Each legend is told in chapters: the oldest records, the witnesses, the versions that disagree, and a last word on what is documented and what is only told.',
+  'home.mapSwipe': 'Swipe the map sideways to see every legend.',
+  'home.start': 'Start with {title}',
   'home.mapHeading': 'Where the legends are told',
   'home.mapRegion': 'World map with one marker per legend. On small screens it scrolls sideways; the list below has every legend too.',
   'home.listHeading': 'Every legend, by continent',
@@ -39,6 +42,7 @@ export const en = {
   'legend.documented': 'Documented (with source)',
   'legend.told': 'Told (folklore, no firm record)',
   'legend.sources': 'Sources',
+  'legend.sourceExternal': 'opens an external site',
   'legend.dramatization': 'Dramatization',
   'alt.hero': '{title}: hero illustration',
   'alt.plate': 'Illustration for chapter {n}: {title}',
@@ -58,5 +62,6 @@ export const en = {
   'book.next': 'Next page',
   'book.pageOf': 'Page {n} of {m}',
   'book.readAsOnePage': 'Read as one page',
+  'book.readAsBook': 'Read as a book',
 } as const;
 export type MessageKey = keyof typeof en;

@@ -82,7 +82,7 @@ describe('pan keys and buttons', () => {
     const html = viewer(false);
     expect(html).toContain(en['world.panLeft']);
     expect(html).toContain(en['world.panRight']);
-    expect(/<button[^>]*disabled=""[^>]*class="scene-button"|<button[^>]*class="scene-button"[^>]*disabled=""/.test(html)).toBe(true);
+    expect(/<button[^>]*disabled=""[^>]*class="scene-button[^"]*"|<button[^>]*class="scene-button[^"]*"[^>]*disabled=""/.test(html)).toBe(true);
   });
 
   it('the viewport is a focusable, named region that takes key input', () => {

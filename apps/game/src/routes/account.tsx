@@ -24,7 +24,7 @@ type UserData = Extract<Awaited<ReturnType<typeof getAccount>>, { signedIn: true
 function UserProgress({ data, t }: { data: UserData; t: T }) {
   const lang = useLang();
   return (
-    <section aria-labelledby="account-heading" className="flex flex-col gap-6">
+    <section aria-labelledby="account-heading" className="page-narrow flex flex-col gap-6">
       <h1 id="account-heading" className="font-display text-3xl text-glow">
         {t('account.heading')}
       </h1>
@@ -53,7 +53,7 @@ function GuestProgress({ t }: { t: T }) {
   useEffect(() => setRuns(readGuestRuns(window.localStorage)), []);
   const lang = useLang();
   return (
-    <section aria-labelledby="account-heading" className="flex flex-col gap-6">
+    <section aria-labelledby="account-heading" className="page-narrow flex flex-col gap-6">
       <h1 id="account-heading" className="font-display text-3xl text-glow">
         {t('account.guestHeading')}
       </h1>

@@ -1,10 +1,11 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { stripMarks, type PlayView, type Reply, type SlotView } from '@kiroween/skeleton/client';
 import { useT } from '../i18n/useT';
 import type { WorldLayout } from '../layout/types.ts';
 import { mediaUrl } from '../lib/media.ts';
-import { activeSlot, atlasHref, hotspotsOfScene, needsLead, puzzleKey, tapSentence, type WorldInfoHotspot, type WorldInfoScene } from '../lib/world.ts';
+import { activeSlot, atlasHref, hotspotsOfScene, isHintable, needsLead, puzzleKey, replyLine, type WorldInfoHotspot, type WorldInfoScene } from '../lib/world.ts';
 import { FearMeter } from './FearMeter';
+import { HintArea } from './HintArea';
 import { Marked } from './Marked';
 import { SceneNav } from './SceneNav';
 import { ScenePaintProvider } from './ScenePaint';
@@ -40,10 +41,14 @@ export interface WorldPlayProps {
   onTap: (hotspotId: string) => void;
   onHint1: (slotId: string) => void;
   onHint2: (slotId: string) => void;
+  /** Set after a charged Hint 2 whose tab was blocked: the slot it was for and the chapter address. */
+  blocked?: { slotId: string; href: string } | null;
   onAnswer: (slotId: string, option: 0 | 1 | 2 | 3) => void;
   onFollow: (leadId: string) => void;
   onDismissRestart: () => void;
   onHall: () => void;
+  /** Rendered inside the scene stage (the fear overlay), so it never sits over the notebook or dock. */
+  overlay?: ReactNode;
 }
 
 const HEADING_ID = 'world-scene-heading';
@@ -65,8 +70,24 @@ export function WorldPlay(p: WorldPlayProps) {
   const scene = p.scenes[p.sceneIndex] ?? null;
   const sceneLayout = scene ? (p.layout?.scenes.find((s) => s.sceneId === scene.id) ?? null) : null;
   const slot = activeSlot(view, p.chosenSlot);
-  const tap = tapSentence(p.reply, t);
+  // A solved puzzle closes its question; a keyboard focus left on the page body goes to the scene heading (task 8.3).
+  const slotId = slot?.slotId ?? null;
+  const lastSlot = useRef(slotId);
+  useEffect(() => {
+    if (slotId !== lastSlot.current && document.activeElement === document.body) document.getElementById(HEADING_ID)?.focus();
+    lastSlot.current = slotId;
+  }, [slotId]);
   const origin = p.mediaBase;
+  // The server sends Hint 1 text in the reply, not in the view, so the screen keeps it per puzzle for the sheet.
+  const [hint1Texts, setHint1Texts] = useState<Record<string, string>>({});
+  const hint1Asked = useRef<string | null>(null);
+  useEffect(() => {
+    const asked = hint1Asked.current;
+    if (p.reply?.kind !== 'hint1' || !asked) return;
+    const text = p.reply.text;
+    hint1Asked.current = null;
+    setHint1Texts((prev) => ({ ...prev, [asked]: text }));
+  }, [p.reply]);
   const step = (delta: -1 | 1) => {
     const next = p.sceneIndex + delta;
     if (next >= 0 && next < p.scenes.length) p.onScene(next);
@@ -75,36 +96,11 @@ export function WorldPlay(p: WorldPlayProps) {
   return (
     <ScenePaintProvider>
     <div className="world-play" aria-busy={p.busy}>
-      <h1 className="font-display text-3xl text-glow">{p.title}</h1>
-      <SceneNav names={p.scenes.map((s) => stripMarks(s.name))} current={p.sceneIndex} onSelect={p.onScene} onHall={p.onHall} headingId={HEADING_ID} />
-      {view ? (
-        <div className="world-fear">
-          <FearMeter value={view.fear} mediaBase={p.mediaBase} />
-        </div>
-      ) : p.failed ? (
-        <StartRetry onRetry={p.onRetry} onTutorial={p.onTutorial} buttonClass="world-button" />
-      ) : (
-        <p role="status">{t('loading.room')}</p>
-      )}
-      {view && p.busy ? (
-        <p role="status" className="world-pending text-muted">
-          {t('play.pending')}
-        </p>
-      ) : null}
-      {p.restartNotice ? (
-        <section ref={restartRef} tabIndex={-1} className="world-panel mood-worn" role="alert" aria-labelledby="world-restart-title">
-          <h2 id="world-restart-title" className="font-display text-xl text-glow">
-            {t('restart.title')}
-          </h2>
-          <p>{t('restart.body')}</p>
-          <button type="button" className="world-button" onClick={() => {
-              p.onDismissRestart();
-              document.getElementById(HEADING_ID)?.focus();
-            }}>
-            {t('restart.again')}
-          </button>
-        </section>
-      ) : null}
+      <div className="scene-screen">
+      <div className="scene-topbar">
+        <h1 className="scene-title font-display text-glow">{p.title}</h1>
+        <SceneNav names={p.scenes.map((s) => stripMarks(s.name))} current={p.sceneIndex} onSelect={p.onScene} onHall={p.onHall} headingId={HEADING_ID} />
+      </div>
       {scene && sceneLayout ? (
         <div className="world-stage">
           <SceneViewer
@@ -125,22 +121,64 @@ export function WorldPlay(p: WorldPlayProps) {
             outline={p.outline}
           />
           <SpiritCorner legendId={p.legendId} mediaBase={p.mediaBase} />
+          {p.overlay}
         </div>
       ) : (
         <p>{t('world.noLayout')}</p>
       )}
-      {tap ? (
-        <section className="world-panel mood-worn" aria-label={t('world.result')} role="status">
-          <p>
-            <Marked text={tap} />
-          </p>
+      <div className="scene-dock">
+        {view ? (
+          <div className="world-fear">
+            <FearMeter value={view.fear} mediaBase={p.mediaBase} />
+          </div>
+        ) : p.failed ? (
+          <StartRetry onRetry={p.onRetry} onTutorial={p.onTutorial} buttonClass="world-button btn btn-secondary" />
+        ) : (
+          <p role="status">{t('loading.room')}</p>
+        )}
+        <p role="status" className="scene-pending text-muted" data-pending={view && p.busy ? 'true' : undefined}>
+          {view && p.busy ? t('play.pending') : '\u00a0'}
+        </p>
+        {view && !won ? (
+          <HintArea
+            puzzle={slot ? t('world.slot', { n: slot.index, type: t(puzzleKey(slot.type)) }) : null}
+            offered={isHintable(slot)}
+            busy={p.busy}
+            hint1Text={slot ? (slot.hint1?.text ?? hint1Texts[slot.slotId] ?? null) : null}
+            hint2Href={slot?.hint2 ? atlasHref(origin, slot.hint2.anchor) : null}
+            blockedHref={slot && p.blocked?.slotId === slot.slotId ? p.blocked.href : null}
+            onHint1={() => {
+              if (!slot) return;
+              hint1Asked.current = slot.slotId;
+              p.onHint1(slot.slotId);
+            }}
+            onHint2={() => slot && p.onHint2(slot.slotId)}
+          />
+        ) : null}
+        <p role="status" className="scene-reply">
+          <Marked text={replyLine(p.reply, t)} />
+        </p>
+      </div>
+      </div>
+      {p.restartNotice ? (
+        <section ref={restartRef} tabIndex={-1} className="world-panel mood-worn" role="alert" aria-labelledby="world-restart-title">
+          <h2 id="world-restart-title" className="font-display text-xl text-glow">
+            {t('restart.title')}
+          </h2>
+          <p>{t('restart.body')}</p>
+          <button type="button" className="world-button btn btn-secondary" onClick={() => {
+              p.onDismissRestart();
+              document.getElementById(HEADING_ID)?.focus();
+            }}>
+            {t('restart.again')}
+          </button>
         </section>
       ) : null}
       {won && view ? <Ending view={view} title={p.title} relic={p.relic} mediaBase={p.mediaBase} onHall={p.onHall} /> : null}
       {slot && !won ? <Question slot={slot} view={view} legendId={p.legendId} mediaBase={p.mediaBase} busy={p.busy} onAnswer={p.onAnswer} reply={p.reply} /> : null}
       {view && !won ? (
         <>
-          <Notebook view={view} origin={origin} busy={p.busy} onChoose={p.onChoose} onHint1={p.onHint1} onHint2={p.onHint2} />
+          <Notebook view={view} onChoose={p.onChoose} />
           <Leads view={view} origin={origin} busy={p.busy} onFollow={p.onFollow} />
         </>
       ) : null}
@@ -157,6 +195,14 @@ export function WorldPlay(p: WorldPlayProps) {
 function Question({ slot, view, legendId, mediaBase, busy, onAnswer, reply }: { slot: SlotView; view: PlayView | null; legendId: string; mediaBase: string; busy: boolean; onAnswer: WorldPlayProps['onAnswer']; reply: Reply | null }) {
   const t = useT();
   const tried = new Set(slot.tried ?? []);
+  // A wrong answer disables the focused option; keyboard focus then moves to the first option still open (task 8.3).
+  const listRef = useRef<HTMLUListElement>(null);
+  const triedCount = useRef(tried.size);
+  useEffect(() => {
+    const a = document.activeElement;
+    if (tried.size !== triedCount.current && (a === document.body || (a instanceof HTMLButtonElement && a.disabled))) listRef.current?.querySelector<HTMLButtonElement>('button:not(:disabled)')?.focus();
+    triedCount.current = tried.size;
+  }, [tried.size]);
   const answered = reply && reply.kind === 'answer' && reply.slotId === slot.slotId ? reply : null;
   return (
     <SpiritPanel legendId={legendId} mediaBase={mediaBase}>
@@ -170,12 +216,12 @@ function Question({ slot, view, legendId, mediaBase, busy, onAnswer, reply }: { 
         <Marked text={slot.question ?? ''} />
       </p>
       {slot.final && needsLead(view) ? <p>{t('spirit.needLead')}</p> : null}
-      <ul className="world-options">
+      <ul ref={listRef} className="world-options">
         {(slot.options ?? []).map((text, i) => (
           <li key={i}>
             <button
               type="button"
-              className="world-button world-option"
+              className="world-button world-option btn btn-secondary"
               disabled={tried.has(i)}
               aria-disabled={busy || undefined}
               onClick={() => {
@@ -183,7 +229,11 @@ function Question({ slot, view, legendId, mediaBase, busy, onAnswer, reply }: { 
               }}
             >
               <Marked text={text} />
-              {tried.has(i) ? <span className="sr-only">{t('world.option.tried')}</span> : null}
+              {tried.has(i) ? (
+                <span className="world-tried">
+                  <span aria-hidden="true">✕</span> {t('world.option.tried')}
+                </span>
+              ) : null}
             </button>
           </li>
         ))}
@@ -197,7 +247,7 @@ function Question({ slot, view, legendId, mediaBase, busy, onAnswer, reply }: { 
   );
 }
 
-function Notebook({ view, origin, busy, onChoose, onHint1, onHint2 }: { view: PlayView; origin: string; busy: boolean; onChoose: WorldPlayProps['onChoose']; onHint1: WorldPlayProps['onHint1']; onHint2: WorldPlayProps['onHint2'] }) {
+function Notebook({ view, onChoose }: { view: PlayView; onChoose: WorldPlayProps['onChoose'] }) {
   const t = useT();
   return (
     <section className="world-panel mood-worn" aria-labelledby="world-notebook-title">
@@ -206,36 +256,15 @@ function Notebook({ view, origin, busy, onChoose, onHint1, onHint2 }: { view: Pl
       </h2>
       <ol className="world-slots">
         {view.slots.map((s) => {
-          const href = s.hint2 ? atlasHref(origin, s.hint2.anchor) : null;
-          const hintable = s.state !== 'locked' && s.state !== 'solved';
           return (
             <li key={s.slotId} className="world-slot" data-state={s.state}>
               <p className="world-slot-title">{t('world.slot', { n: s.index, type: t(puzzleKey(s.type)) })}</p>
               <p className="text-muted">{t(`world.slot.${s.state}` as 'world.slot.open')}</p>
               {s.state === 'open' ? (
-                <button type="button" className="world-button" onClick={() => onChoose(s.slotId)}>
+                <button type="button" className="world-button btn btn-secondary" onClick={() => onChoose(s.slotId)}>
                   {t('world.slot.show')}
                 </button>
               ) : null}
-              {hintable ? (
-                <div className="world-actions">
-                  <button type="button" className="world-button" aria-disabled={busy || undefined} onClick={() => !busy && onHint1(s.slotId)}>
-                    {t('hint.1')}
-                  </button>
-                  {href ? (
-                    <a className="world-button" href={href} target="_blank" rel="noopener">
-                      {t('hint.2.again')}
-                    </a>
-                  ) : (
-                    <button type="button" className="world-button" aria-disabled={busy || undefined} onClick={() => !busy && onHint2(s.slotId)}>
-                      {t('hint.2')}
-                    </button>
-                  )}
-                </div>
-              ) : null}
-              {s.hint1 ? <p className="world-hint">
-                  <Marked text={s.hint1.text} />
-                </p> : null}
             </li>
           );
         })}
@@ -265,7 +294,7 @@ function Leads({ view, origin, busy, onFollow }: { view: PlayView; origin: strin
               ))}
             </ol>
             {l.followed ? null : (
-              <button type="button" className="world-button" disabled={!l.canFollow} aria-disabled={busy || undefined} onClick={() => !busy && onFollow(l.leadId)}>
+              <button type="button" className="world-button btn btn-secondary" disabled={!l.canFollow} aria-disabled={busy || undefined} onClick={() => !busy && onFollow(l.leadId)}>
                 {t('lead.follow')}
               </button>
             )}
@@ -280,7 +309,7 @@ function Leads({ view, origin, busy, onFollow }: { view: PlayView; origin: strin
                     const href = atlasHref(origin, a);
                     return href ? (
                       <li key={a}>
-                        <a className="world-button" href={href} target="_blank" rel="noopener">
+                        <a className="world-button btn btn-secondary" href={href} target="_blank" rel="noopener">
                           {t('lead.deadProof')}
                         </a>
                       </li>
@@ -319,7 +348,7 @@ function Ending({ view, title, relic, mediaBase, onHall }: { view: PlayView; tit
       ) : null}
       {ended ? <p>{t('world.score', { n: ended.score })}</p> : null}
       {ended ? <p>{t('world.seed', { seed: ended.seed })}</p> : null}
-      <button type="button" className="world-button" onClick={onHall}>
+      <button type="button" className="world-button btn btn-secondary" onClick={onHall}>
         {t('world.hall')}
       </button>
     </section>

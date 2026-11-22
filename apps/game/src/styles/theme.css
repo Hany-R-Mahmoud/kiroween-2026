@@ -25,9 +25,11 @@
 .world-theme :is(button, input, label, nav) {
   font-family: var(--font-ui);
 }
-.hub-theme a,
-.world-theme a {
-  color: var(--color-accent);
+@layer base {
+  .hub-theme a,
+  .world-theme a {
+    color: var(--color-accent);
+  }
 }
 .hub-theme .text-muted,
 .world-theme .text-muted {

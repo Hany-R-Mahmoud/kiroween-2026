@@ -6,6 +6,10 @@ export const PAPER_BASE = '#e9e1d3';
 export const PAPER_FLOOR = '#a89368';
 export const BOOK_INK = '#2b1d12';
 export const BOOK_ACCENT = '#4a1c12';
+// Flat card fill, page tint and error ink on paper. Equal to --book-card, --book-paper-tint and --book-ember in book.css.
+export const BOOK_CARD = '#f6ecd2';
+export const BOOK_TINT = '#f0e2bc';
+export const BOOK_EMBER = '#a8431f';
 
 const HEX = /^#[0-9a-fA-F]{6}$/;
 const reaches = (colour: unknown): colour is string => typeof colour === 'string' && HEX.test(colour) && contrastRatio(colour, PAPER_FLOOR) >= AA_TEXT;

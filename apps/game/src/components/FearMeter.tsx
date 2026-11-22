@@ -18,6 +18,7 @@ export function FearMeter({ value, mediaBase }: { value: number; mediaBase: stri
   const { firstSceneLoaded } = useScenePaint();
   const n = clampFear(value);
   return (
+    <div className="fear-meter-row">
     <div className="fear-meter">
       <div
         className="fear-meter-track"
@@ -30,7 +31,8 @@ export function FearMeter({ value, mediaBase }: { value: number; mediaBase: stri
         <div className="fear-meter-fill" style={{ inlineSize: `${(n / FEAR.max) * 100}%` }} />
       </div>
       {firstSceneLoaded ? <img className="fear-meter-frame" src={mediaUrl(mediaBase, FEAR_FRAME_ASSET)} width={1024} height={256} alt="" loading="lazy" decoding="async" /> : null}
-      <span className="fear-meter-text sr-only">{t('fear.meter', { n })}</span>
+    </div>
+      <span className="fear-meter-text" aria-hidden="true">{t('fear.meter', { n })}</span>
     </div>
   );
 }

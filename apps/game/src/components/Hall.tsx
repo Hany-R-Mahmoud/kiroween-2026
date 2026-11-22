@@ -3,7 +3,7 @@ import type { KeyboardEvent } from 'react';
 import { HUB_SCENE } from '../layout/hub.ts';
 import { useLang, useT } from '../i18n/useT';
 import type { MessageKey } from '../i18n/en';
-import { cabinetSlots, clockKey, DECOY_RESULT, doorLegendId, hallDoorState, OBJECT_LABEL, type DoorState, type Relic } from '../lib/hall.ts';
+import { cabinetSlots, clockKey, DECOY_RESULT, doorLegendId, doorReasonKey, hallDoorState, OBJECT_LABEL, type DoorState, type Relic } from '../lib/hall.ts';
 import { dialogKeyAction, usePanelOpener } from '../lib/focus.ts';
 import { mediaUrl } from '../lib/media.ts';
 import { ScenePaintProvider } from './ScenePaint.tsx';
@@ -64,7 +64,8 @@ export function HallView({ data, mediaBase, tutorialDone, broken, curses, onNavi
     const door = legendId ? doorsById.get(legendId) : undefined;
     if (door) {
       const state = stateOf(door);
-      const label = state === 'open' ? t('hub.door.enter', { title: door.title }) : t('hub.door.stateNamed', { title: door.title, state: t(state === 'locked' ? 'hub.door.locked' : 'hub.door.signin') });
+      const reason = doorReasonKey(state);
+      const label = reason === null ? t('hub.door.enter', { title: door.title }) : t('hub.door.stateNamed', { title: door.title, state: t(reason) });
       return { id: box.id, label, marked: false, badge: state === 'open' ? undefined : state === 'locked' ? 'lock' : 'signin' };
     }
     return { id: box.id, label: t(OBJECT_LABEL[box.id] ?? 'hub.label.lamp'), marked: false };
@@ -76,8 +77,7 @@ export function HallView({ data, mediaBase, tutorialDone, broken, curses, onNavi
     if (legendId) {
       const door = doorsById.get(legendId);
       if (!door) return;
-      if (stateOf(door) === 'locked') onNavigate({ to: 'tutorial' });
-      else setPanel({ kind: 'door', id: legendId });
+      setPanel({ kind: 'door', id: legendId });
     } else if (id === 'hub-desk-ledger') setPanel({ kind: 'ledger' });
     else if (id === 'hub-clock') setPanel({ kind: 'clock' });
     else if (id === 'hub-cabinet') setPanel({ kind: 'cabinet' });
@@ -117,12 +117,26 @@ export function HallView({ data, mediaBase, tutorialDone, broken, curses, onNavi
 
   return (
     <ScenePaintProvider>
-    <div className="flex flex-col gap-4">
+    <div className="hall-scene flex flex-col gap-4">
+      <p>
+        <a
+          href="/game/tutorial"
+          className={tutorialDone ? 'btn btn-secondary' : 'btn btn-primary'}
+          data-hall-action={tutorialDone ? 'secondary' : 'primary'}
+          onClick={(e) => {
+            if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+            e.preventDefault();
+            onNavigate({ to: 'tutorial' });
+          }}
+        >
+          {t(tutorialDone ? 'hall.study.again' : 'hall.start')}
+        </a>
+      </p>
       <SceneViewer layout={HUB_SCENE} name={t('hall.heading')} alt={t('hub.scene.alt')} mediaBase={mediaBase} hotspots={hotspots} onActivate={activate} headingId="hall-heading" />
       {panel ? (
         <div ref={panelRef} className="hall-panel mood-worn" role="region" aria-labelledby="hall-panel-title" tabIndex={-1} onKeyDown={onPanelKey} data-panel={panel.kind}>
           <PanelBody panel={panel} data={data} mediaBase={mediaBase} curses={curses} lang={lang} broken={broken} stateOf={stateOf} doorsById={doorsById} onNavigate={onNavigate} />
-          <button type="button" className="scene-button" onClick={closePanel}>
+          <button type="button" className="scene-button btn btn-secondary" onClick={closePanel}>
             {t('hub.panel.close')}
           </button>
         </div>
@@ -131,10 +145,10 @@ export function HallView({ data, mediaBase, tutorialDone, broken, curses, onNavi
         <h2 id="hall-legends-title" className="font-display text-xl">
           {t('hub.legends')}
         </h2>
-        <ul className="flex flex-wrap gap-x-4 gap-y-1 font-ui text-sm">
+        <ul className="flex flex-wrap gap-2 font-ui text-sm">
           {data.doors.map((d) => (
             <li key={d.id}>
-              <a href={d.atlasHref} className="inline-flex min-h-11 min-w-11 items-center justify-center underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-glow" aria-label={t('hub.door.readNamed', { title: d.title })}>
+              <a href={d.atlasHref} className="btn btn-ghost" aria-label={t('hub.door.readNamed', { title: d.title })}>
                 {d.title}
               </a>
             </li>
@@ -147,7 +161,7 @@ export function HallView({ data, mediaBase, tutorialDone, broken, curses, onNavi
           <p id="hall-ending-text" className="hall-ending-text font-display">
             {t('hub.ending')}
           </p>
-          <button ref={endingRef} type="button" className="scene-button" onClick={closeEnding}>
+          <button ref={endingRef} type="button" className="scene-button btn btn-secondary" onClick={closeEnding}>
             {t('hub.ending.close')}
           </button>
         </div>
@@ -246,18 +260,23 @@ function PanelBody({ panel, data, mediaBase, curses, lang, broken, stateOf, door
       return (
         <>
           {heading(door.title)}
+          {state === 'locked' ? <p>{t('hub.door.locked')}</p> : null}
           {state === 'signin' ? <p>{t('hub.door.signin')}</p> : null}
           <div className="flex flex-wrap gap-3">
             {state === 'open' ? (
-              <button type="button" className="scene-button" onClick={() => onNavigate({ to: 'world', legendId: door.id })}>
+              <button type="button" className="scene-button btn btn-secondary" onClick={() => onNavigate({ to: 'world', legendId: door.id })}>
                 {t('hub.door.enter', { title: door.title })}
               </button>
+            ) : state === 'locked' ? (
+              <button type="button" className="scene-button btn btn-secondary" onClick={() => onNavigate({ to: 'tutorial' })}>
+                {t('hall.start')}
+              </button>
             ) : (
-              <button type="button" className="scene-button" onClick={() => onNavigate({ to: 'signin' })}>
+              <button type="button" className="scene-button btn btn-secondary" onClick={() => onNavigate({ to: 'signin' })}>
                 {t('nav.signIn')}
               </button>
             )}
-            <a href={door.atlasHref} className="scene-button" aria-label={t('hub.door.readNamed', { title: door.title })}>
+            <a href={door.atlasHref} className="scene-button btn btn-secondary" aria-label={t('hub.door.readNamed', { title: door.title })}>
               {t('hub.door.read')}
             </a>
           </div>

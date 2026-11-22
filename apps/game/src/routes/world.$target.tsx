@@ -8,6 +8,7 @@ import { fontLinks } from '../fonts';
 import { fearEventsOf, worldLayout } from '../layout';
 import { initialWorldState, playClientFor, worldReducer, type PlayClient } from '../lib/play';
 import { isTutorialRequired } from '../lib/playClient';
+import { applyHint2Reply, openBlankTab } from '../lib/hintTab';
 import { themeColorMeta } from '../lib/theme';
 import { atlasHref, chooseFearEvent, markedIds, reducedLineOf, triggerOf, type FearContext } from '../lib/world';
 import { getWorldInfo } from '../server/functions';
@@ -46,6 +47,7 @@ function World() {
   const busy = pending > 0;
   const [failed, setFailed] = useState(false);
   const [needsTutorial, setNeedsTutorial] = useState(false);
+  const [blocked, setBlocked] = useState<{ slotId: string; href: string } | null>(null);
   const [fear, setFear] = useState<FearRequest | null>(null);
   const client = useRef<PlayClient | null>(null);
   const played = useRef(new Set<string>());
@@ -99,15 +101,15 @@ function World() {
     if (state.view) play({ kind: 'scene-enter', scene: index + 1 });
   };
 
-  const onHint2 = (slotId: string) =>
+  const onHint2 = (slotId: string) => {
+    const tab = openBlankTab(); // synchronous, inside the click, before the server is asked
+    setBlocked(null);
     void act({ kind: 'hint2', slotId }).then((r) => {
-      // Open the chapter in a new tab on the first use. The link in the notebook covers a blocked pop-up and any reopening (free).
-      if (r?.reply?.kind === 'hint2' && r.reply.charged) {
-        const href = atlasHref(mediaBase, r.reply.anchor);
-        if (href) window.open(href, '_blank', 'noopener');
-      }
+      // A null reply is a failure of any cause; a reply that is not a hint counts the same.
+      const href = applyHint2Reply(tab, r?.reply, (a) => atlasHref(mediaBase, a));
+      setBlocked(href ? { slotId, href } : null);
     });
-
+  };
   return (
     <ThemeRoot theme={info.theme} className="flex flex-col gap-4">
       <WorldPlay
@@ -134,12 +136,13 @@ function World() {
         onTap={(hotspotId) => void act({ kind: 'tap', hotspotId })}
         onHint1={(slotId) => void act({ kind: 'hint1', slotId })}
         onHint2={onHint2}
+        blocked={blocked}
         onAnswer={(slotId, option) => void act({ kind: 'answer', slotId, option })}
         onFollow={(leadId) => void act({ kind: 'follow', leadId })}
         onDismissRestart={() => dispatch({ kind: 'dismiss-restart' })}
         onHall={() => void navigate({ to: '/' })}
+        overlay={<FearOverlay request={fear} reduced={reduced} />}
       />
-      <FearOverlay request={fear} reduced={reduced} />
       <MotionToggle reduced={reduced} onChange={setSetting} />
     </ThemeRoot>
   );

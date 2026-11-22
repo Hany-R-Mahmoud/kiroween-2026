@@ -10,7 +10,7 @@ export function NotFound({ t }: { t: Translate }) {
       </h1>
       <p>{t('notFound.body')}</p>
       <p>
-        <Link to="/">{t('notFound.home')}</Link>
+        <Link to="/" className="link">{t('notFound.home')}</Link>
       </p>
     </section>
   );

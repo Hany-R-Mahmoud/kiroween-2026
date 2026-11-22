@@ -1,0 +1,193 @@
+/*
+ * Shared UI layer (Phase 6). One button, link, nav item, panel, field and focus ring for both apps.
+ * Reads tokens only: no hex colour and no hex fallback. Logical properties only. Each app's styles.css starts with
+ *   @layer theme, base, components, ui, utilities;
+ * so this layer sits after legacy component rules and before Tailwind utilities. Inside .book-paper the colour
+ * variables are to be re-pointed in book.css (Phase 6 task 2.1), so these same rules read correctly on paper.
+ * Derived colours are not declared on :root: a legend theme pack sets variables on <body> or the world root.
+ */
+
+/* Motion switch: the one source of truth. 1 = motion, 0 = none. Transitions below use calc(var(--motion) * Nms). */
+:root {
+  --motion: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion: 0;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+html[data-motion='reduce'] {
+  --motion: 0;
+}
+html[data-motion='reduce'] *,
+html[data-motion='reduce'] *::before,
+html[data-motion='reduce'] *::after {
+  animation: none !important;
+  scroll-behavior: auto !important;
+}
+
+/* The one focus ring: 3 px, 3 px offset. Paper context will set --color-ring to the book ink (task 2.1); until then it falls back to glow. */
+@layer base {
+  :focus-visible {
+    outline: 3px solid var(--color-ring, var(--color-glow));
+    outline-offset: 3px;
+  }
+}
+
+@layer ui {
+  /* Button: works on <button> and <a>. One primary per view. */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    min-block-size: var(--target);
+    min-inline-size: var(--target);
+    padding-inline: var(--space-4);
+    border: 1.5px solid transparent;
+    border-radius: var(--radius-ui);
+    font-family: var(--font-ui);
+    font-size: var(--type-ui);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+      background-color calc(var(--motion) * 120ms),
+      border-color calc(var(--motion) * 120ms),
+      transform calc(var(--motion) * 80ms);
+  }
+  .btn[hidden] {
+    display: none;
+  }
+  .btn-primary {
+    background: var(--color-accent);
+    color: var(--color-bg);
+    border-color: var(--color-accent);
+    box-shadow: var(--shadow-plate);
+  }
+  .btn-primary:hover {
+    background: var(--color-glow);
+    border-color: var(--color-glow);
+  }
+  .btn-primary:active {
+    transform: translateY(1px);
+    box-shadow: none;
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--color-glow);
+    border-color: var(--color-accent);
+  }
+  .btn-secondary:hover {
+    background: color-mix(in oklab, var(--color-accent) 14%, transparent);
+  }
+  .btn-secondary:active {
+    transform: translateY(1px);
+    background: color-mix(in oklab, var(--color-accent) 24%, transparent);
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--color-ink);
+  }
+  .btn-ghost:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+  }
+  .btn-ghost:active {
+    transform: translateY(1px);
+  }
+  .btn-icon {
+    padding-inline: 0;
+    inline-size: var(--target);
+  }
+  /* direction icons (arrow, chevron) flip in a right-to-left layout */
+  [dir='rtl'] .icon-dir {
+    transform: scaleX(-1);
+  }
+  /* disabled: dashed muted outline, not reduced opacity; aria-disabled keeps keyboard focus */
+  .btn:disabled,
+  .btn[aria-disabled='true'] {
+    background: transparent;
+    border-style: dashed;
+    border-color: var(--color-muted);
+    color: var(--color-muted);
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+  }
+  .btn[aria-pressed='true'],
+  .btn[aria-current='true'] {
+    background: color-mix(in oklab, var(--color-accent) 22%, transparent);
+    border-color: var(--color-accent);
+  }
+
+  /* Link: running text only. Underline plus colour. No :visited rule on purpose: a visited link keeps its colour. */
+  .link {
+    color: var(--color-link, var(--color-glow));
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+    text-decoration-color: color-mix(in oklab, currentColor 60%, transparent);
+  }
+  .link:hover {
+    text-decoration-thickness: 2px;
+    text-decoration-color: currentColor;
+  }
+
+  /* Nav item: header, contents list, footer link. No underline; current page gets a 2 px bar plus weight. */
+  .nav-item {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: var(--target);
+    padding-inline: var(--space-3);
+    color: var(--color-ink);
+    text-decoration: none;
+    font-family: var(--font-ui);
+    font-size: var(--type-ui);
+  }
+  .nav-item:hover {
+    box-shadow: inset 0 -2px 0 var(--color-muted);
+  }
+  .nav-item[aria-current='page'] {
+    box-shadow: inset 0 -2px 0 var(--color-accent);
+    font-weight: 600;
+  }
+
+  /* Panel: the one card surface. The border is a meaningful edge, so it uses muted, not rule. */
+  .panel {
+    background: var(--color-surface);
+    color: var(--color-ink);
+    border: 1px solid var(--color-muted);
+    border-radius: var(--radius-ui);
+    padding: var(--space-4);
+  }
+  .panel-raised {
+    background: var(--color-surface-raised);
+    box-shadow: var(--shadow-lift);
+  }
+
+  /* Field: inputs and selects. The focus ring comes from the shared rule above. */
+  .field {
+    min-block-size: var(--target);
+    padding-inline: var(--space-3);
+    border: 1px solid var(--color-muted);
+    border-radius: var(--radius-ui);
+    background: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-ui);
+    font-size: var(--type-ui);
+  }
+  .field:disabled {
+    border-style: dashed;
+    color: var(--color-muted);
+  }
+}

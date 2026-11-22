@@ -7,6 +7,7 @@ import { useT } from '../i18n/useT';
 import { initialTutorialState, playClientFor, tutorialReducer, type PlayClient } from '../lib/play';
 import { isTooManyTries } from '../lib/playClient';
 import { tutorialHint2Href } from '../lib/tutorial';
+import { applyHint2Reply, openBlankTab } from '../lib/hintTab';
 
 export const Route = createFileRoute('/tutorial')({
   component: Tutorial,
@@ -28,6 +29,7 @@ function Tutorial() {
   const busy = pending > 0;
   const [failed, setFailed] = useState(false);
   const [tooMany, setTooMany] = useState(false);
+  const [blockedHref, setBlockedHref] = useState<string | null>(null);
   const client = useRef<PlayClient | null>(null);
 
   const run = async (send: Send) => {
@@ -57,19 +59,18 @@ function Tutorial() {
 
   const view = state.view;
 
-  const onHint2 = () =>
+  const onHint2 = () => {
+    const tab = openBlankTab(); // synchronous, inside the click, before the server is asked
+    setBlockedHref(null);
     void run((c) => c.actTutorial({ kind: 'hint2' })).then((r) => {
-      // Open the chapter in a new tab on the first use. The link beside the button covers a blocked pop-up.
-      if (r?.reply?.kind === 'hint2' && r.reply.charged) {
-        const href = tutorialHint2Href(r.reply.anchor, mediaBase);
-        if (href) window.open(href, '_blank', 'noopener');
-      }
+      // A null reply is a failure of any cause; a reply that is not a hint counts the same (no close() delay).
+      setBlockedHref(applyHint2Reply(tab, r?.reply, (a) => tutorialHint2Href(a, mediaBase)));
     });
-
+  };
   return (
     <ThemeRoot theme={null} className="flex flex-col gap-4">
-      <h1 className="font-display text-3xl text-glow">{t('hall.tutorial')}</h1>
       <TutorialRoom
+        heading={t('hall.tutorial')}
         view={view}
         reply={state.reply}
         question={question}
@@ -81,6 +82,7 @@ function Tutorial() {
         onRetry={() => void run((c) => c.startTutorial())}
         onDrawer={() => void run((c) => c.actTutorial({ kind: 'drawer' }))}
         onHint2={onHint2}
+        blockedHref={blockedHref}
         onAnswer={(value) => void run((c) => c.actTutorial({ kind: 'answer', value }))}
         onHall={() => void navigate({ to: '/' })}
       />

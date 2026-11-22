@@ -19,6 +19,11 @@ export function pipeResponse(body, res, onUnexpected = (err) => console.error(`r
     return;
   }
   const source = Readable.fromWeb(body);
+  // the client left before the body started: `pipeline` would throw ERR_STREAM_UNABLE_TO_PIPE synchronously
+  if (res.destroyed) {
+    source.destroy();
+    return;
+  }
   // a client that leaves early: stop reading the body so Start can clean up
   res.on('close', () => {
     if (!res.writableFinished) source.destroy();

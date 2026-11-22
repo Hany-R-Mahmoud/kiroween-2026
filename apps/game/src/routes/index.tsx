@@ -47,8 +47,9 @@ function Hall() {
 
   return (
     <ThemeRoot theme={null} className="flex flex-col gap-4">
-      <h1 className="sr-only">{t('app.title')}</h1>
-      <p className="text-muted">{data.name === null ? t('hall.guest') : t('hall.greeting', { name: data.name })}</p>
+      <h1 className="font-display text-3xl text-glow">{t('app.title')}</h1>
+      <p>{t('hall.intro')}</p>
+      <p className="text-sm text-muted">{data.name === null ? t('hall.guest') : t('hall.greeting', { name: data.name })}</p>
       <HallView
         data={{ doors: data.doors, relics: data.relics, ledger: data.ledger, current: data.current }}
         mediaBase={mediaBase}

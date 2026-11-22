@@ -1,4 +1,4 @@
-import { Book, type BookLabels } from '@kiroween/skeleton/book';
+import { Book, toggleState, type BookLabels } from '@kiroween/skeleton/book';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 import { translate } from '../src/i18n/t';
@@ -8,6 +8,7 @@ const labels = (lang: 'en' | 'ar'): BookLabels => ({
   previous: translate(lang, 'book.previous'),
   next: translate(lang, 'book.next'),
   toggle: translate(lang, 'book.readAsOnePage'),
+  toggleBook: translate(lang, 'book.readAsBook'),
   indicator: (n, m) => translate(lang, 'book.pageOf', { n, m }),
 });
 const content = (
@@ -53,5 +54,16 @@ describe('Book markup', () => {
   it('takes labels from props (an ar catalog still falls back per key)', () => {
     const h = renderToStaticMarkup(<Book labels={{ ...labels('ar'), toggle: 'TOGGLE' }}>{content}</Book>);
     expect(h).toContain('>TOGGLE</button>');
+  });
+  it('book view: toggle reads "Read as one page", aria-pressed false, and carries btn classes', () => {
+    expect(/<button type="button" class="btn btn-secondary" aria-pressed="false">Read as one page<\/button>/.test(html)).toBe(true);
+    expect(toggleState('pages', labels('en'))).toEqual({ label: 'Read as one page', pressed: false });
+    expect(html).toContain('class="btn btn-secondary btn-icon"');
+  });
+  it('scroll view: toggle reads "Read as a book" and aria-pressed is true', () => {
+    expect(toggleState('scroll', labels('en'))).toEqual({ label: 'Read as a book', pressed: true });
+  });
+  it('keeps the pinned classes', () => {
+    for (const c of ['book-controls', 'book-flow', 'book-frontispiece']) expect(html).toContain(c);
   });
 });

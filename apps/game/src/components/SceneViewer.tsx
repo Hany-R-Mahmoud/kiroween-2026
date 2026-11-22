@@ -68,8 +68,18 @@ export function SceneViewer({ layout, name, alt, mediaBase, hotspots, onActivate
   const viewportRef = useRef<HTMLDivElement>(null);
   const dragRef = useRef<Drag | null>(null);
   const suppressClick = useRef(false);
+  // A pan button that reaches the end becomes disabled and would drop keyboard focus; focus moves to the other one (task 8.3).
+  const panLeftRef = useRef<HTMLButtonElement>(null);
+  const panRightRef = useRef<HTMLButtonElement>(null);
+  const panFocus = useRef<HTMLButtonElement | null>(null);
   const [size, setSize] = useState({ width: 0, height: 0 });
   const [pan, setPanState] = useState(initialPan);
+  useEffect(() => {
+    const next = panFocus.current;
+    panFocus.current = null;
+    const a = document.activeElement;
+    if (next && (a === document.body || (a instanceof HTMLButtonElement && a.disabled))) next.focus();
+  }, [pan]);
 
   const scale = size.height > 0 ? Math.max(MIN_SCALE, size.height / SCENE_HEIGHT) : MIN_SCALE;
   const sceneWidth = SCENE_WIDTH * scale;
@@ -244,11 +254,17 @@ export function SceneViewer({ layout, name, alt, mediaBase, hotspots, onActivate
         </div>
       </div>
       <div className="scene-pan">
-        <button type="button" className="scene-button" disabled={pan >= 0} onClick={() => setPan(buttonPan(pan, 1, size.width, sceneWidth))}>
+        <button ref={panLeftRef} type="button" className="scene-button btn btn-secondary" disabled={pan >= 0} onClick={() => {
+            panFocus.current = panRightRef.current;
+            setPan(buttonPan(pan, 1, size.width, sceneWidth));
+          }}>
           <span aria-hidden="true">{'‹'}</span>
           <span>{t('world.panLeft')}</span>
         </button>
-        <button type="button" className="scene-button" disabled={pan <= minPan} onClick={() => setPan(buttonPan(pan, -1, size.width, sceneWidth))}>
+        <button ref={panRightRef} type="button" className="scene-button btn btn-secondary" disabled={pan <= minPan} onClick={() => {
+            panFocus.current = panLeftRef.current;
+            setPan(buttonPan(pan, -1, size.width, sceneWidth));
+          }}>
           <span>{t('world.panRight')}</span>
           <span aria-hidden="true">{'›'}</span>
         </button>

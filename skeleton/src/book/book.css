@@ -10,9 +10,11 @@
   --book-paper-fox: rgb(130 80 30 / 0.1);
   --book-ink: #2b1d12;
   --book-accent: #4a1c12;
+  --book-card: #f6ecd2;
+  --book-ember: #a8431f;
   --book-gutter: 2.5rem;
   --book-padding: 1.25rem;
-  --book-page-height: min(72dvh, 44rem);
+  --book-page-height: clamp(30rem, calc(100dvh - var(--app-header-h) - 9rem), 52rem);
   --book-turn-ms: 300ms;
   --book-gutter-shadow: rgb(40 25 10 / 0.28);
   --book-sign: 1;
@@ -43,6 +45,14 @@
   --color-muted: var(--book-ink);
   --color-glow: var(--book-accent);
   --color-accent: var(--book-accent);
+  /* Phase 6: surface, page, rule, link, ring and error colours follow the paper too (cards, tables, buttons, focus). */
+  --color-bg: var(--book-paper-tint);
+  --color-surface: var(--book-card);
+  --color-surface-raised: var(--book-card);
+  --color-rule: var(--book-ink);
+  --color-link: var(--book-accent);
+  --color-ring: var(--book-ink);
+  --color-danger-ink: var(--book-ember);
 }
 
 /* The viewport is a clipped window only while the pages are on (html[data-book='on']); otherwise the text scrolls with the page.
@@ -54,6 +64,15 @@ html[data-book='on'] .book-viewport {
   padding-inline: var(--book-padding);
   touch-action: pan-y;
   position: relative;
+  /* Page-turn layer is clipped to the page box, so a mid-turn frame paints nothing outside it (task 7.1). */
+  contain: paint;
+  clip-path: inset(0);
+  /* Landing on an anchor puts the page window just under the site header (task 6.15). */
+  scroll-margin-block-start: calc(var(--app-header-h, 3.5rem) + 1rem);
+}
+/* The clip above cuts the global outline ring, so the page window shows its focus ring inside its own edge (task 8.3). */
+html[data-book='on'] .book-viewport:focus-visible {
+  box-shadow: inset 0 0 0 3px var(--color-ring);
 }
 
 /* Pages: one column per page. Text that does not fit makes more columns toward the inline end; the viewport clips them. */
@@ -142,8 +161,8 @@ html[data-motion='reduce'][data-book='on'] .book-flow {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem;
-  padding-block: 0.5rem;
+  gap: var(--space-3);
+  padding-block: var(--space-2);
 }
 .book-controls[hidden] {
   display: none;
@@ -151,17 +170,12 @@ html[data-motion='reduce'][data-book='on'] .book-flow {
 .book-controls button {
   min-block-size: 2.75rem;
   min-inline-size: 2.75rem;
-  padding-inline: 0.75rem;
+  padding-inline: var(--space-3);
   cursor: pointer;
 }
 .book-controls button[aria-disabled='true'] {
   opacity: 0.45;
   cursor: default;
-}
-.book-controls button:focus-visible,
-.book-viewport:focus-visible {
-  outline: 2px solid currentColor;
-  outline-offset: 2px;
 }
 .book-chevron {
   inline-size: 1.25rem;

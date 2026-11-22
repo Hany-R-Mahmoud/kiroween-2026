@@ -5,7 +5,7 @@ import { describe, expect, it, vi } from 'vitest';
 import { en } from '../src/i18n/en.ts';
 import { translate } from '../src/i18n/t.ts';
 import { HUB_DOOR_IDS, HUB_SCENE } from '../src/layout/hub.ts';
-import { cabinetSlots, clockKey, cursesLeft, DOOR_LEGEND, doorLegendId, hallDoorState, OBJECT_LABEL } from '../src/lib/hall.ts';
+import { cabinetSlots, clockKey, cursesLeft, DOOR_LEGEND, doorLegendId, doorReasonKey, hallDoorState, OBJECT_LABEL } from '../src/lib/hall.ts';
 import { fileURLToPath } from 'node:url';
 import { loadLegends } from '@kiroween/skeleton';
 
@@ -91,7 +91,53 @@ describe('Hall render', () => {
   it('locks every door before the tutorial', () => {
     const html = render({ tutorialDone: false });
     expect(html.match(/data-badge="lock"/g)).toHaveLength(12);
+    expect(html).not.toContain('data-badge="signin"');
+    // The reason is in every door's accessible name (the old check only looked for one shared sentence).
+    for (const id of IDS) expect(html, id).toContain(translate('en', 'hub.door.stateNamed', { title: `Title ${id}`, state: en['hub.door.reason.study'] }));
+    expect(html).not.toContain('Enter Title');
+    // The long locked sentence lives in the door panel, which stays closed until a door is activated.
+    expect(html).not.toContain(en['hub.door.locked']);
+  });
+  it('a locked door opens a panel with the reason and the study action, and does not navigate', () => {
+    const onNavigate = vi.fn();
+    const html = render({ tutorialDone: false, onNavigate, initialPanel: { kind: 'door', id: 'banshee' } });
+    expect(html).toContain('data-panel="door"');
     expect(html).toContain(en['hub.door.locked']);
+    expect(html).toContain(`>${en['hall.start']}</button>`);
+    expect(html).toContain(`>${en['hub.door.read']}</a>`);
+    expect(html).not.toContain(en['hub.door.signin']);
+    expect(html).not.toContain('Enter Title banshee');
+    expect(onNavigate).not.toHaveBeenCalled();
+  });
+  it('the study action is primary before the tutorial and secondary after it', () => {
+    const before = render({ tutorialDone: false });
+    expect(before).toContain('data-hall-action="primary"');
+    expect(before).toContain('btn btn-primary');
+    expect(before).toContain(`>${en['hall.start']}</a>`);
+    expect(before.match(/btn-primary/g)).toHaveLength(1);
+    const after = render({ tutorialDone: true });
+    expect(after).toContain('data-hall-action="secondary"');
+    expect(after).not.toContain('btn-primary');
+    expect(after).toContain(`>${en['hall.study.again']}</a>`);
+    expect(before).toContain('href="/game/tutorial"');
+    expect(after).toContain('href="/game/tutorial"');
+  });
+  it('shows all three door states, read from hallDoorState, with a reason on every closed door', () => {
+    // baba-yaga is not the guest world, so its server access flag is `open` only for a signed-in player.
+    const cases = [
+      { done: false, signedIn: false, state: 'locked' as const },
+      { done: true, signedIn: false, state: 'signin' as const },
+      { done: true, signedIn: true, state: 'open' as const },
+    ];
+    for (const c of cases) {
+      const ds = doors.map((d) => ({ ...d, open: c.signedIn || d.id === 'banshee' }));
+      const html = render({ tutorialDone: c.done, data: { ...base, doors: ds } });
+      const door = ds.find((d) => d.id === 'baba-yaga');
+      expect(hallDoorState(c.done, door?.open ?? false), c.state).toBe(c.state);
+      const key = doorReasonKey(c.state);
+      if (key === null) expect(html).toContain('Enter Title baba-yaga');
+      else expect(html).toContain(translate('en', 'hub.door.stateNamed', { title: 'Title baba-yaga', state: en[key] }));
+    }
   });
   it('after the tutorial a guest opens one door and sees sign-in on eleven', () => {
     const html = render();

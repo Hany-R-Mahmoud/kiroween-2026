@@ -18,4 +18,43 @@
   --font-display: 'IM Fell English SC', 'Iowan Old Style', Georgia, serif;
   --font-body: 'Source Serif 4', 'Iowan Old Style', Georgia, serif;
   --font-ui: Inter, system-ui, sans-serif;
+
+  /* Phase 6 additions: new tokens only, no base value above changes. */
+  --color-surface-raised: #261e2b;
+  /* decorative lines only; a meaningful edge uses --color-muted */
+  --color-rule: #3a3040;
+  /* flat fills only (dead-end and "tried" marks); never body text on textured paper */
+  --color-ember: #a8431f;
+
+  /* space, 8 px grid. Named --space-* so Tailwind's own spacing namespace is untouched. */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+
+  /* type scale. Named --type-* so Tailwind's --text-* utilities are untouched. */
+  --type-kicker: 0.75rem;
+  --type-ui: 0.9375rem;
+  --type-small: 0.875rem;
+  --type-body: 1.0625rem;
+  --type-lead: 1.25rem;
+  --type-h3: 1.25rem;
+  --type-h2: clamp(1.5rem, 1.5vw + 1rem, 2rem);
+  --type-h1: clamp(2rem, 3vw + 1rem, 3rem);
+  --type-display: clamp(2.6rem, 6vw + 1rem, 4.5rem);
+
+  --radius-ui: 4px;
+
+  /* warm black shadows */
+  --shadow-plate: 0 2px 0 rgb(14 11 16 / 0.5);
+  --shadow-lift: 0 0.5rem 1.25rem -0.5rem rgb(14 11 16 / 0.55);
+  --shadow-sheet: 0 1.25rem 3rem rgb(14 11 16 / 0.55);
+
+  /* touch target (44 px) and app header height */
+  --target: 2.75rem;
+  --app-header-h: 3.5rem;
 }

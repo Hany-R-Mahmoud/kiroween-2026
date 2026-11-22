@@ -187,7 +187,7 @@ describe('World render', () => {
     expect(html).toContain('It fears ____.');
   });
   it('disables tried options and only those', () => {
-    const buttons = [...render().matchAll(/<button[^>]*class="world-button world-option"[^>]*>/g)].map((m) => m[0]);
+    const buttons = [...render().matchAll(/<button[^>]*class="world-button world-option[^"]*"[^>]*>/g)].map((m) => m[0]);
     expect(buttons).toHaveLength(4);
     expect(buttons.map((b) => b.includes('disabled'))).toEqual([false, true, false, false]);
   });
@@ -208,7 +208,32 @@ describe('World render', () => {
     expect(html).toContain('href="http://localhost:3001/legends/banshee#banshee--ch-2"');
     expect(html).toContain('target="_blank" rel="noopener"');
     expect(html).toContain('Open the chapter again (free)');
-    expect(html).toContain('Hint 2 (raises fear): opens the atlas'); // slot 2 has not used it
+    // The active puzzle used Hint 2, so its button is replaced by the link: no Hint 2 button.
+    expect(html).not.toContain('Hint 2 (raises fear): opens the atlas');
+    expect(html).toContain('Puzzle 1: Weakness');
+  });
+  it('a five-puzzle world shows exactly one Hint 1 and one Hint 2 for the active puzzle only, named in its label', () => {
+    const open = (n: number) => ({ slotId: `pz-${n}`, index: n, type: 'weakness', final: false, state: 'open', question: 'q', options: ['a', 'b', 'c', 'd'] }) as unknown as PlayView['slots'][number];
+    const view5: PlayView = { ...baseView, slots: [1, 2, 3, 4, 5].map(open) };
+    const html = render({ chosenSlot: 'pz-3' }, view5);
+    expect([...html.matchAll(/>\s*Hint 1 \(free\)</g)]).toHaveLength(1);
+    expect([...html.matchAll(/>\s*Hint 2 \(raises fear\): opens the atlas</g)]).toHaveLength(1);
+    expect(html).toContain('aria-label="Hint 1 (free), Puzzle 3: Weakness"');
+    expect(html).toContain('aria-label="Hint 2 (raises fear): opens the atlas, Puzzle 3: Weakness"');
+  });
+  it('offers no hint buttons when the active puzzle is not open, and asks to open one', () => {
+    const hidden: PlayView = { ...baseView, slots: [{ slotId: 'pz-2', index: 1, type: 'symbol', final: false, state: 'hidden' }, { slotId: 'pz-5', index: 2, type: 'date-or-number', final: true, state: 'locked' }] as PlayView['slots'] };
+    const html = render({}, hidden);
+    expect(html).not.toContain('Hint 1 (free)');
+    expect(html).not.toContain('Hint 2 (raises fear)');
+    expect(html).toContain('Open a puzzle in the notebook to ask for a hint.');
+  });
+  it('the notebook renders no hint buttons or hint text of its own', () => {
+    const html = render();
+    const notebook = html.slice(html.indexOf('world-notebook-title'), html.indexOf('world-leads-title'));
+    expect(notebook).not.toContain('Hint 1');
+    expect(notebook).not.toContain('Hint 2');
+    expect(notebook).not.toContain('Look near the hearth.');
   });
   it('lists collected steps, a dead end with its text and a proof link, and no follow button after following', () => {
     const html = render();

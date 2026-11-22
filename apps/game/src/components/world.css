@@ -1,8 +1,9 @@
 /* World screen: panels, notebook, leads, ending. Logical properties only; colours come from the theme variables. */
+@layer components {
 .world-play {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: var(--space-4);
 }
 .world-stage {
   position: relative;
@@ -10,12 +11,12 @@
 .world-panel {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  padding: 1rem;
-  border: 1px solid var(--color-accent, #e0a84b);
+  gap: var(--space-2);
+  padding: var(--space-4);
+  border: 1px solid var(--color-accent);
   border-radius: 0.5rem;
-  background: var(--color-surface, #1c1620);
-  color: var(--color-ink, #e9e1d3);
+  background: var(--color-surface);
+  color: var(--color-ink);
 }
 .world-button {
   display: inline-flex;
@@ -23,28 +24,20 @@
   justify-content: center;
   min-block-size: 44px;
   min-inline-size: 44px;
-  padding-inline: 0.75rem;
-  border: 1px solid var(--color-accent, #e0a84b);
-  border-radius: 0.5rem;
-  background: var(--color-bg, #0e0b10);
-  color: var(--color-accent, #e0a84b);
-  font-family: var(--font-ui, inherit);
+  padding-inline: var(--space-3);
   text-align: start;
   text-decoration: none;
   cursor: pointer;
 }
-.world-button:disabled,
-.world-button[aria-disabled='true'] {
-  opacity: 0.55;
-  cursor: not-allowed;
-}
-/* Only a truly unavailable choice (an option already tried) is struck through; a busy button just dims. */
-.world-button:disabled {
-  text-decoration: line-through;
-}
-.world-button:focus-visible {
-  outline: 3px solid var(--color-glow, #f4d58d);
-  outline-offset: 2px;
+/* Disabled and tried states come from .btn (dashed outline, muted ink, no opacity); a tried option also shows a mark and a word. */
+.world-tried {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin-inline-start: var(--space-3);
+  font-family: var(--font-ui, inherit);
+  font-size: var(--type-small);
+  font-weight: 600;
 }
 .world-slots,
 .world-leads,
@@ -52,7 +45,7 @@
 .world-steps {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: var(--space-2);
   margin: 0;
   padding: 0;
   list-style: none;
@@ -64,7 +57,7 @@
 .world-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: var(--space-2);
   margin: 0;
   padding: 0;
   list-style: none;
@@ -82,4 +75,17 @@
 }
 .world-ending .world-relic {
   margin: 0;
+}
+}
+
+/* On paper the options are ink on the paper tint with an ink border. Own layer block so it beats .btn-secondary (ui layer). */
+@layer ui {
+  .book-paper .world-option:not(:disabled) {
+    background: var(--color-bg);
+    color: var(--color-ink);
+    border-color: var(--color-ink);
+  }
+  .book-paper .world-option:not(:disabled):hover {
+    background: var(--color-surface);
+  }
 }

@@ -12,8 +12,10 @@ export interface BookLabels {
   region: string;
   previous: string;
   next: string;
-  /** The "Read as one page" toggle; it is a pressed/not-pressed button, so one label serves both states. */
+  /** Toggle label while the pages are on: it names the view the button switches to ("Read as one page"). */
   toggle: string;
+  /** Toggle label while the one-page view is on ("Read as a book"). */
+  toggleBook: string;
   /** The live "page n of m" text, built by the app from its catalog. */
   indicator: (page: number, total: number) => string;
 }
@@ -23,6 +25,11 @@ export interface BookProps {
   hero?: ReactNode;
   /** The reading content: chapters (marked `book-chapter`), versions, tables. Rendered once, unchanged, in both views. */
   children: ReactNode;
+}
+
+/** The toggle shows the view it switches to; aria-pressed is true in the one-page (scroll) view. */
+export function toggleState(pref: BookPref, labels: Pick<BookLabels, 'toggle' | 'toggleBook'>): { label: string; pressed: boolean } {
+  return pref === 'scroll' ? { label: labels.toggleBook, pressed: true } : { label: labels.toggle, pressed: false };
 }
 
 const LANDED_MS = 2000;
@@ -193,8 +200,11 @@ export function Book({ labels, hero, children }: BookProps) {
         return;
       }
       hashRef.current = true;
-      if (pagedRef.current) reflow();
-      else target.scrollIntoView();
+      if (pagedRef.current) {
+        reflow();
+        // The first landing may have run in the one-page layout and scrolled far down; bring the page window back into view.
+        viewportRef.current?.scrollIntoView({ block: 'start', inline: 'nearest', behavior: 'instant' });
+      } else target.scrollIntoView();
       const heading = target.querySelector<HTMLElement>('[data-anchor-heading]');
       landingRef.current = true;
       heading?.focus({ preventScroll: true });
@@ -254,6 +264,7 @@ export function Book({ labels, hero, children }: BookProps) {
     if (s) writeBookPref(s, next);
   };
 
+  const toggleOn = toggleState(pref, labels);
   const single = paged && count <= 1; // everything fits one page: no controls (the game's small panels)
   const atFirst = page <= 0;
   const atLast = page >= count - 1;
@@ -276,17 +287,17 @@ export function Book({ labels, hero, children }: BookProps) {
         </div>
       </div>
       <div className="book-controls" hidden={!supported || single}>
-        <button type="button" hidden={!paged} aria-label={labels.previous} aria-disabled={atFirst} onClick={() => !atFirst && turn(-1)}>
+        <button type="button" className="btn btn-secondary btn-icon" hidden={!paged} aria-label={labels.previous} aria-disabled={atFirst} onClick={() => !atFirst && turn(-1)}>
           <Chevron dir="previous" />
         </button>
         <span className="book-indicator" role="status" aria-live="polite" aria-atomic="true" hidden={!paged}>
           {labels.indicator(page + 1, count)}
         </span>
-        <button type="button" hidden={!paged} aria-label={labels.next} aria-disabled={atLast} onClick={() => !atLast && turn(1)}>
+        <button type="button" className="btn btn-secondary btn-icon" hidden={!paged} aria-label={labels.next} aria-disabled={atLast} onClick={() => !atLast && turn(1)}>
           <Chevron dir="next" />
         </button>
-        <button type="button" aria-pressed={pref === 'scroll'} onClick={flip}>
-          {labels.toggle}
+        <button type="button" className="btn btn-secondary" aria-pressed={toggleOn.pressed} onClick={flip}>
+          {toggleOn.label}
         </button>
       </div>
     </div>

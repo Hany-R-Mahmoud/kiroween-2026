@@ -38,7 +38,7 @@ function Version({ version, t }: { version: AtlasVersion; t: Translate }) {
     [t('legend.versionSource'), version.sourceId],
   ];
   return (
-    <article id={version.anchor} aria-labelledby={headingId} className="flex flex-col gap-3 rounded-xl bg-surface p-5">
+    <article id={version.anchor} aria-labelledby={headingId} className="panel flex flex-col gap-3 rounded-xl bg-surface p-5">
       <h3 id={headingId} {...headingProps} className="text-xl">
         <InlineText text={version.sourceType} t={t} />
       </h3>
@@ -57,12 +57,12 @@ function Version({ version, t }: { version: AtlasVersion; t: Translate }) {
   );
 }
 
-const contentsLink = 'inline-flex min-h-11 items-center';
+const contentsLink = 'nav-item contents-link';
 
 function LegendHeader({ legend, t }: { legend: AtlasLegend; t: Translate }) {
   return (
     <header className="flex flex-col gap-6">
-      {legend.hero && <Img image={legend.hero} hero alt={t('alt.hero', { title: legend.title })} priority className="aspect-video w-full object-cover" />}
+      {legend.hero && <Img image={legend.hero} hero alt={t('alt.hero', { title: legend.title })} priority className="legend-hero" />}
       <div className="measure mx-auto flex w-full flex-col gap-4 px-4">
         <h1 id="legend-title" className="text-4xl text-glow sm:text-5xl">
           {legend.title}
@@ -80,12 +80,13 @@ function Contents({ legend, t }: { legend: AtlasLegend; t: Translate }) {
       <h2 id="contents-title" className="text-xl">
         {t('legend.contents')}
       </h2>
-      <ol className="mt-3 grid font-ui text-sm sm:grid-cols-2 sm:gap-x-6">
+      <ol className="mt-3 flex flex-col font-ui text-sm">
         {legend.chapters.map((c) => (
           <li key={c.anchor}>
             <a href={`#${c.anchor}`} className={contentsLink}>
               <span>
-                {`${t('legend.chapter', { n: c.ordinal })}: `}
+                <span className="font-display">{`${t('legend.chapter', { n: c.ordinal })}`}</span>
+                {': '}
                 <InlineText text={c.title} t={t} />
               </span>
             </a>
@@ -122,8 +123,8 @@ function Versions({ legend, t }: { legend: AtlasLegend; t: Translate }) {
 }
 
 function DocumentedTold({ legend, t }: { legend: AtlasLegend; t: Translate }) {
-  const cell = 'border-b border-surface p-3';
-  const head = 'border-b border-muted p-3 text-start font-ui';
+  const cell = 'rule-b p-3';
+  const head = 'rule-b p-3 text-start font-ui';
   return (
     <section aria-labelledby="table-title" className="mx-auto flex w-full max-w-5xl flex-col gap-6 px-4">
       <div className="overflow-x-auto" tabIndex={0} role="region" aria-labelledby="table-title">
@@ -166,14 +167,16 @@ function Sources({ legend, t }: { legend: AtlasLegend; t: Translate }) {
       <h2 id="sources-title" {...headingProps} className="text-2xl">
         {t('legend.sources')}
       </h2>
-      <ol className="mt-4 flex flex-col gap-3 text-sm">
+      <ol className="mt-4 flex flex-col gap-2 text-sm">
         {legend.sources.map((s) => (
           <li key={s.id} className="flex gap-3">
             <span className="font-ui text-muted">{s.id}</span>
             <span>
               {isWebLink(s.url) ? (
-                <a href={s.url.trim()} rel="noopener noreferrer">
+                <a href={s.url.trim()} rel="noopener noreferrer" className="link source-link">
                   <InlineText text={s.title} t={t} />
+                  <span aria-hidden="true"> ↗</span>
+                  <span className="sr-only">{` (${t('legend.sourceExternal')})`}</span>
                 </a>
               ) : (
                 <InlineText text={s.title} t={t} />

@@ -1,12 +1,14 @@
 /* Fear overlay, fear meter and spirit panel. Logical properties only. The overlay never takes input. */
 .fear-overlay {
-  position: fixed;
+  /* Over the scene image only (F4): never over the notebook, dock or buttons. The stage parent is positioned. */
+  position: absolute;
   inset: 0;
   z-index: 40;
   pointer-events: none;
   display: grid;
-  place-items: end center;
-  padding-block-end: 4rem;
+  place-items: start center;
+  padding-block-start: var(--space-4);
+  overflow: hidden;
 }
 .fear-overlay-flash {
   position: absolute;
@@ -20,8 +22,8 @@
 .fear-overlay-caption {
   position: relative;
   max-inline-size: min(32rem, 90%);
-  padding-block: 0.5rem;
-  padding-inline: 1rem;
+  padding-block: var(--space-2);
+  padding-inline: var(--space-4);
   background: var(--color-surface);
   color: var(--caption-ink, var(--color-cold));
   font-family: var(--font-body);
@@ -61,7 +63,8 @@
 
 .fear-meter {
   position: relative;
-  inline-size: min(100%, 16rem);
+  inline-size: 16rem;
+  max-inline-size: 100%;
   aspect-ratio: 4 / 1;
 }
 .fear-meter-frame {
@@ -84,8 +87,16 @@
 @media (prefers-reduced-motion: reduce) {
   .fear-meter-fill { transition: none; }
 }
+html[data-motion='reduce'] .fear-meter-fill { transition: none; }
+.fear-meter-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-1) var(--space-3);
+}
 .fear-meter-text {
-  display: block;
+  font-family: var(--font-ui);
+  font-size: var(--type-ui, 0.875rem);
   color: var(--color-ink);
 }
 
@@ -107,20 +118,20 @@
   position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(5rem, 9rem);
-  gap: 1rem;
+  gap: var(--space-4);
   align-items: end;
-  padding-block: 2rem;
+  padding-block: var(--space-6);
   padding-inline: 2.5rem;
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
 .spirit-panel-body {
   /* The text sits on the shared book paper (class book-paper, book.css): dark ink on paper, readable on the light frame (task 11.2 finding, 5.6). */
-  padding: 0.75rem;
+  padding: var(--space-3);
   border-radius: 0.5rem;
 }
 .spirit-panel-body p {
-  margin-block: 0 0.5rem;
+  margin-block: 0 var(--space-2);
 }
 /* A media query has no inline-size feature; `max-inline-size` there never matched, so the figure and a 118 px text column showed at 390 px. */
 @media (max-width: 30rem) {
@@ -128,21 +139,62 @@
   .spirit-close { display: none; }
 }
 
-/* The motion setting: a 44 px target with a larger checkbox. */
+/* The motion setting: a 44 px target with a styled switch (input[role=switch], native checkbox state and keyboard). */
 .motion-toggle {
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: var(--space-3);
   min-block-size: 44px;
   font-family: var(--font-ui);
   cursor: pointer;
 }
-.motion-toggle input {
-  inline-size: 1.5rem;
+.motion-toggle input[role='switch'] {
+  appearance: none;
+  position: relative;
+  flex: none;
+  inline-size: 2.75rem;
   block-size: 1.5rem;
-  accent-color: var(--color-accent);
+  margin: 0;
+  border: 2px solid var(--color-muted);
+  border-radius: 999px;
+  background-color: var(--color-bg);
+  cursor: pointer;
+  transition:
+    background-color calc(var(--motion) * 150ms),
+    border-color calc(var(--motion) * 150ms);
 }
-.motion-toggle input:focus-visible {
-  outline: 3px solid var(--color-glow);
-  outline-offset: 2px;
+/* The thumb: muted on the page when off, page-coloured on the accent track when on. Logical offset, so RTL mirrors. */
+.motion-toggle input[role='switch']::before {
+  content: '';
+  position: absolute;
+  inset-block: 0.1875rem;
+  inset-inline-start: 0.1875rem;
+  inline-size: 0.875rem;
+  border-radius: 50%;
+  background-color: var(--color-muted);
+  transition:
+    translate calc(var(--motion) * 150ms),
+    background-color calc(var(--motion) * 150ms);
+}
+.motion-toggle input[role='switch']:checked {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+.motion-toggle input[role='switch']:checked::before {
+  background-color: var(--color-bg);
+  translate: 1.25rem 0;
+}
+[dir='rtl'] .motion-toggle input[role='switch']:checked::before {
+  translate: -1.25rem 0;
+}
+/* Reduced motion (system or in-app): the switch has no transition of its own. */
+@media (prefers-reduced-motion: reduce) {
+  .motion-toggle input[role='switch'],
+  .motion-toggle input[role='switch']::before {
+    transition: none;
+  }
+}
+html[data-motion='reduce'] .motion-toggle input[role='switch'],
+html[data-motion='reduce'] .motion-toggle input[role='switch']::before {
+  transition: none;
 }

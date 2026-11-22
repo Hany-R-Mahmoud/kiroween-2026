@@ -51,3 +51,17 @@ describe('book.css: dark-theme colours do not reach the paper', () => {
     }
   });
 });
+describe('book.css: Phase 6 re-pointed variables', () => {
+  const NEW = ['--color-bg', '--color-surface', '--color-surface-raised', '--color-rule', '--color-link', '--color-ring', '--color-danger-ink'];
+  const declared = (css: string): string[] => {
+    const rules = [...css.matchAll(/(?:^|\n)\.book-paper\s*\{([^}]*)\}/g)].map((m) => m[1]!).join('\n');
+    return NEW.filter((v) => new RegExp(`(^|[;\\s])${v}\\s*:\\s*var\\(--book-[a-z-]+\\)`).test(rules));
+  };
+  const css = readFileSync(new URL('../src/book/book.css', import.meta.url), 'utf8');
+  it('declares each of them in the plain .book-paper block, pointing at a --book-* variable', () => {
+    expect(declared(css)).toEqual(NEW);
+  });
+  it('fails when one is removed', () => {
+    for (const v of NEW) expect(declared(css.replace(new RegExp(`${v}:[^;]+;`), ''))).not.toContain(v);
+  });
+});

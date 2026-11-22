@@ -9,7 +9,7 @@
   /* The existing shared paper texture, used only as a mask (the atlas serves /media/). Only the atlas uses .mood-torn;
      the game's panels use .mood-worn, which has no mask and no texture request. */
   --mood-torn-image: url('/media/shared/shared-atlas-paper-01.webp');
-  --mood-ink: #0e0b10;
+  --mood-ink: var(--color-bg);
 }
 
 .mood-layer {
@@ -29,7 +29,7 @@
 .mood-candle {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 60% 45% at 50% 0%, color-mix(in srgb, var(--color-accent, #e0a84b) 28%, transparent), transparent);
+  background: radial-gradient(ellipse 60% 45% at 50% 0%, color-mix(in srgb, var(--color-accent) 28%, transparent), transparent);
   opacity: 0.5;
   animation: mood-candle 8s ease-in-out infinite;
 }
@@ -89,8 +89,8 @@
   inset-inline-start: 0;
   inline-size: 200%;
   background-image:
-    radial-gradient(ellipse 30% 70% at 25% 100%, color-mix(in srgb, var(--color-cold, #7fa7b5) 38%, transparent), transparent),
-    radial-gradient(ellipse 22% 55% at 75% 100%, color-mix(in srgb, var(--color-cold, #7fa7b5) 30%, transparent), transparent);
+    radial-gradient(ellipse 30% 70% at 25% 100%, color-mix(in srgb, var(--color-cold) 38%, transparent), transparent),
+    radial-gradient(ellipse 22% 55% at 75% 100%, color-mix(in srgb, var(--color-cold) 30%, transparent), transparent);
   background-size: 50% 100%;
   background-repeat: repeat-x;
   animation: mood-fog-drift 60s linear infinite;
@@ -115,7 +115,7 @@
 }
 @supports (mask-mode: luminance) {
   .mood-torn {
-    mask-image: linear-gradient(#000 0 0), var(--mood-torn-image);
+    mask-image: linear-gradient(black 0 0), var(--mood-torn-image);
     mask-mode: alpha, luminance;
     mask-clip: content-box, border-box;
     mask-repeat: no-repeat, repeat;
@@ -128,9 +128,14 @@
 .mood-hotspot-glow {
   transition: box-shadow 200ms ease-out;
 }
-.mood-hotspot-glow:hover,
+.mood-hotspot-glow:hover {
+  box-shadow: 0 0 1rem 0.2rem color-mix(in srgb, var(--color-glow) 40%, transparent);
+}
+/* Focus: a dark band on both sides of the global ring, so the ring keeps 3:1 over a pale part of the picture (task 8.3). */
 .mood-hotspot-glow:focus-visible {
-  box-shadow: 0 0 1rem 0.2rem color-mix(in srgb, var(--color-glow, #f4d58d) 40%, transparent);
+  box-shadow:
+    0 0 0 9px var(--color-bg),
+    0 0 1rem 0.8rem color-mix(in srgb, var(--color-glow) 40%, transparent);
 }
 
 /* Reduced motion: no candle change, no fog movement, no flicker. Static equivalents: the glow at its mid value and the

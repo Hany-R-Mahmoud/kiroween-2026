@@ -38,7 +38,7 @@ function SignUp() {
   }
 
   return (
-    <section aria-labelledby="sign-up-heading" className="mx-auto flex max-w-sm flex-col gap-4">
+    <section aria-labelledby="sign-up-heading" className="page-narrow mx-auto flex max-w-sm flex-col gap-4">
       <h1 id="sign-up-heading" className="font-display text-3xl text-glow">
         {t('signUp.heading')}
       </h1>
@@ -59,7 +59,7 @@ function SignUp() {
       <button type="button" className={secondaryButtonClass} disabled={busy} onClick={async () => (await signInGoogle().catch(() => false)) || setErrors({ form: t('error.generic') })}>
         {t('form.google')}
       </button>
-      <Link to="/sign-in" className="inline-flex min-h-11 items-center text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-glow">
+      <Link to="/sign-in" className="inline-flex min-h-11 items-center text-accent underline underline-offset-4">
         {t('form.haveAccount')}
       </Link>
     </section>

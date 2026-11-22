@@ -1,6 +1,7 @@
 import { createRootRoute, HeadContent, Link, Outlet, Scripts, useRouter } from '@tanstack/react-router';
 import { BASE_PALETTE } from '@kiroween/skeleton/client';
 import { Mood } from '@kiroween/skeleton/mood';
+import { GameHeader } from '../components/GameHeader';
 import { signOut } from '../auth/client';
 import { BASE_FONTS, fontLinks } from '../fonts';
 import { translate } from '../i18n/t';
@@ -21,13 +22,13 @@ export const Route = createRootRoute({
 function NotFound() {
   const t = useT();
   return (
-    <section aria-labelledby="not-found-title" className="flex flex-col gap-4">
+    <section aria-labelledby="not-found-title" className="page-narrow flex flex-col gap-4">
       <h1 id="not-found-title" className="font-display text-3xl text-glow">
         {t('notFound.heading')}
       </h1>
       <p>{t('notFound.body')}</p>
       <p>
-        <Link to="/" className="text-accent underline underline-offset-4">
+        <Link to="/" className="link">
           {t('notFound.hall')}
         </Link>
       </p>
@@ -35,10 +36,8 @@ function NotFound() {
   );
 }
 
-const navLink = 'inline-flex min-h-11 items-center rounded px-3 text-ink underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-glow';
-
 function RootComponent() {
-  const { lang, dir, name } = Route.useLoaderData();
+  const { lang, dir, name, mediaBase } = Route.useLoaderData();
   const t = useT();
   const router = useRouter();
   return (
@@ -51,37 +50,17 @@ function RootComponent() {
         <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:start-2 focus:top-2 focus:rounded focus:bg-surface focus:p-2">
           {t('nav.skip')}
         </a>
-        <header className="border-b border-surface">
-          <nav className="mx-auto flex max-w-3xl flex-wrap items-center gap-2 p-3 font-ui text-sm" aria-label={t('app.title')}>
-            <Link to="/" className={`${navLink} me-auto font-display text-lg text-glow`}>
-              {t('app.title')}
-            </Link>
-            <Link to="/" className={navLink}>
-              {t('nav.hall')}
-            </Link>
-            <Link to="/account" className={navLink}>
-              {t('nav.account')}
-            </Link>
-            {name === null ? (
-              <Link to="/sign-in" className={navLink}>
-                {t('nav.signIn')}
-              </Link>
-            ) : (
-              <button
-                type="button"
-                className={navLink}
-                onClick={async () => {
-                  await signOut();
-                  await router.invalidate();
-                  await router.navigate({ to: '/' });
-                }}
-              >
-                {t('nav.signOut')}
-              </button>
-            )}
-          </nav>
-        </header>
-        <main id="main" className="mx-auto max-w-3xl p-4">
+        <GameHeader
+          t={t}
+          name={name}
+          atlasOrigin={mediaBase}
+          onSignOut={async () => {
+            await signOut();
+            await router.invalidate();
+            await router.navigate({ to: '/' });
+          }}
+        />
+        <main id="main" className="mx-auto max-w-6xl p-4">
           <Outlet />
         </main>
         <Scripts />

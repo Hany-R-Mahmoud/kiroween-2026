@@ -67,4 +67,17 @@ describe('atlas reads (reader role: named columns, bound values, granted tables 
     expect(calls.at(-1)!.values).toEqual([ANCHOR, 1]);
     checkAll(calls);
   });
+
+  it('listLegends fills hero and marker from the one assets select', async () => {
+    const { db, calls } = recordingDb((text) => {
+      if (/from "assets"/.test(text)) return [[ID, `${ID}-atlas-hero-01`, '2400x1350'], [ID, `${ID}-atlas-marker-01`, '512x512']];
+      if (/from "legends"/.test(text)) return [LEGEND_ROW.slice(0, 9)];
+      return [];
+    });
+    const [s] = await listLegends(db);
+    expect(s?.hero).toEqual({ id: `${ID}-atlas-hero-01`, width: 2400, height: 1350 });
+    expect(s?.marker?.id).toBe(`${ID}-atlas-marker-01`);
+    expect(calls.filter((c) => /from "assets"/.test(c.text))).toHaveLength(1);
+    checkAll(calls);
+  });
 });

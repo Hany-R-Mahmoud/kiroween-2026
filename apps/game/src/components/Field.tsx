@@ -32,7 +32,7 @@ export function Field({ label, hint, error, name, type, autoComplete, value, onC
         aria-invalid={error ? true : undefined}
         aria-describedby={describedBy}
         required
-        className="min-h-11 rounded border border-muted bg-surface px-3 text-ink focus-visible:outline-2 focus-visible:outline-glow"
+        className="min-h-11 rounded border border-muted bg-surface px-3 text-ink"
       />
       {hint ? (
         <p id={hintId} className="text-sm text-muted">
@@ -49,6 +49,6 @@ export function Field({ label, hint, error, name, type, autoComplete, value, onC
 }
 
 export const buttonClass =
-  'inline-flex min-h-11 items-center justify-center rounded bg-accent px-4 font-ui font-semibold text-bg hover:bg-glow focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-glow disabled:opacity-60';
+  'btn btn-primary inline-flex min-h-11 items-center justify-center rounded bg-accent px-4 font-ui font-semibold text-bg hover:bg-glow disabled:opacity-60';
 export const secondaryButtonClass =
-  'inline-flex min-h-11 items-center justify-center rounded border border-accent px-4 font-ui text-ink hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-glow disabled:opacity-60';
+  'btn btn-secondary inline-flex min-h-11 items-center justify-center rounded border border-accent px-4 font-ui text-ink hover:bg-surface disabled:opacity-60';

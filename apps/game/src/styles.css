@@ -1,10 +1,44 @@
+@layer theme, base, components, ui, utilities;
 @import 'tailwindcss';
 @import '@kiroween/skeleton/design/tokens.css';
 @import '@kiroween/skeleton/design/mood.css';
+@import '@kiroween/skeleton/design/ui.css';
 @import '@kiroween/skeleton/book/book.css';
 @import './styles/theme.css';
 
 /* The shared paper texture lives on the atlas path; the game shows the tint alone until a scene image has loaded (the panel sets the variable then). */
 :root {
   --book-paper-image: none;
+}
+
+/* Text-only routes stay narrow inside the wider main so scenes can use the width (Req 18.5). */
+@layer components {
+  .page-narrow {
+    max-inline-size: 48rem;
+    margin-inline: auto;
+  }
+}
+
+/* Game header menu (Req 18.8). Below 40rem the UA popover rules apply and the menu is a dropdown under the header;
+   from 40rem the items sit inline in the row and the menu button is hidden. In `ui` because `.btn` and `.nav-item` are. */
+@layer ui {
+  .nav-menu:popover-open {
+    position: fixed;
+    inset-block-start: var(--app-header-h);
+    inset-inline: auto 0.75rem;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    padding: var(--space-2);
+  }
+  @media (min-width: 40rem) {
+    .nav-menu,
+    .nav-menu:not(:popover-open) {
+      display: contents;
+    }
+    .nav-menu-button {
+      display: none;
+    }
+  }
 }

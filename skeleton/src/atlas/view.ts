@@ -101,6 +101,10 @@ function image(assets: readonly { id: string; size: string }[], id: string | und
 export function markerOf(legendId: string, assets: readonly { id: string; size: string }[]): AtlasImage | null {
   return image(assets, assets.map((a) => a.id).filter((id) => isMarker(legendId, id)).sort()[0]);
 }
+/** The legend's atlas hero image, or null. */
+export function heroOf(legendId: string, assets: readonly { id: string; size: string }[]): AtlasImage | null {
+  return image(assets, heroId(legendId));
+}
 function images(legendId: string, assets: readonly { id: string; size: string }[]) {
   return { hero: image(assets, heroId(legendId)), marker: markerOf(legendId, assets), plate: (n: number) => image(assets, plateId(legendId, n)) };
 }
@@ -123,6 +127,8 @@ export interface AtlasSummary {
   oneLineHook: string;
   mapPoint: { lat: number; lng: number };
   marker: AtlasImage | null;
+  /** The legend's atlas hero, for the home card image; absent or null falls back to the marker. */
+  hero?: AtlasImage | null;
 }
 
 export function atlasLegendFromRows(r: AtlasRows): AtlasLegend {

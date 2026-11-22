@@ -7,5 +7,6 @@ export const bookLabels = (t: Translate): BookLabels => ({
   previous: t('book.previous'),
   next: t('book.next'),
   toggle: t('book.readAsOnePage'),
+  toggleBook: t('book.readAsBook'),
   indicator: (n, m) => t('book.pageOf', { n, m }),
 });

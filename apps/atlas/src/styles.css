@@ -1,6 +1,8 @@
+@layer theme, base, components, ui, utilities;
 @import 'tailwindcss';
 @import '@kiroween/skeleton/design/tokens.css';
 @import '@kiroween/skeleton/design/mood.css';
+@import '@kiroween/skeleton/design/ui.css';
 @import '@kiroween/skeleton/book/book.css';
 
 /* Everything below reads the token variables, so a legend page's theme (set on <body>) restyles it. Logical properties
@@ -21,20 +23,6 @@
   ::selection {
     background-color: var(--color-accent);
     color: var(--color-bg);
-  }
-  :focus-visible {
-    outline: 2px solid var(--color-glow);
-    outline-offset: 3px;
-    border-radius: 2px;
-  }
-  a {
-    color: var(--color-accent);
-    text-decoration-line: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 0.2em;
-  }
-  a:hover {
-    text-decoration-thickness: 2px;
   }
   h1,
   h2,
@@ -62,13 +50,143 @@
   td {
     unicode-bidi: plaintext;
   }
-  /* a landed section clears the top edge */
-  [id] {
-    scroll-margin-block-start: 1.5rem;
+  /* a landed section clears the sticky header (height + 1rem) */
+  [id],
+  [data-anchor-heading] {
+    scroll-margin-block-start: calc(var(--app-header-h) + 1rem);
+  }
+}
+
+/* The game link is a plain nav item on phones and a secondary plate from 40rem. It sits in `ui` because `.nav-item` does. */
+@layer ui {
+  @media (min-width: 40rem) {
+    .nav-play {
+      color: var(--color-glow);
+      border: 1.5px solid var(--color-accent);
+      border-radius: var(--radius-ui);
+      font-weight: 600;
+    }
+    .nav-play:hover {
+      background: color-mix(in oklab, var(--color-accent) 14%, transparent);
+      box-shadow: none;
+    }
+  }
+}
+
+/* Contents rows (R31): a nav item whose hover and focus change shows as a start-edge marker plus weight. The ring is the
+   global one. It sits in `ui` because `.nav-item` does. Logical border, so the marker mirrors in RTL. */
+@layer ui {
+  .contents-link {
+    display: flex;
+    inline-size: 100%;
+    min-block-size: 2.75rem;
+    border-inline-start: 0.25rem solid transparent;
+  }
+  .contents-link:hover,
+  .contents-link:focus-visible {
+    border-inline-start-color: var(--color-accent);
+    box-shadow: none;
+    font-weight: 600;
   }
 }
 
 @layer components {
+  /* home hero: the box has its final size and a theme-colour gradient, so first paint is never an empty black box */
+  .home-hero {
+    position: relative;
+    display: grid;
+    min-block-size: min(32rem, calc(100dvh - var(--app-header-h) - 2rem));
+  }
+  .home-hero-frame {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(var(--color-surface), var(--color-bg));
+    overflow: clip;
+  }
+  /* legend hero: capped height so the h1 and hook land on the first screen; the gradient shows until the image decodes */
+  .legend-hero {
+    display: block;
+    inline-size: 100%;
+    aspect-ratio: 16 / 9;
+    max-block-size: min(46dvh, 28rem);
+    object-fit: cover;
+    background: linear-gradient(var(--color-surface), var(--color-bg));
+  }
+  .home-hero-img {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+  }
+  .home-hero-frame::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, color-mix(in oklab, var(--color-bg) 92%, transparent), transparent 70%);
+  }
+  [dir='rtl'] .home-hero-frame::after {
+    background: linear-gradient(270deg, color-mix(in oklab, var(--color-bg) 92%, transparent), transparent 70%);
+  }
+  .home-hero-copy {
+    position: relative;
+    align-self: end;
+    display: grid;
+    gap: var(--space-3);
+    padding: var(--space-5) var(--space-4);
+    /* scrim: the painted pages behind the text are bright, so the copy sits on a near-opaque dark ground (AA at 390 and 1280) */
+    background: color-mix(in oklab, var(--color-bg) 90%, transparent);
+  }
+  /* legend cards: one link target per card (stretched ::after), no underline, fixed image ratio */
+  .legend-cards {
+    display: grid;
+    gap: var(--space-4);
+    grid-template-columns: repeat(auto-fill, minmax(min(16rem, 100%), 1fr));
+  }
+  .legend-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    overflow: clip;
+  }
+  .legend-card-img {
+    inline-size: 100%;
+    block-size: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    background: linear-gradient(var(--color-surface), var(--color-bg));
+    transition: transform calc(var(--motion) * 120ms);
+  }
+  .legend-card:hover .legend-card-img {
+    transform: translateY(-2px);
+  }
+  .legend-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    padding: var(--space-4);
+  }
+  .legend-card-link {
+    color: var(--color-ink);
+    text-decoration: none;
+  }
+  .legend-card-link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+  .legend-card:has(.legend-card-link:focus-visible) {
+    box-shadow: 0 0 0 3px var(--color-bg), 0 0 0 6px var(--color-glow);
+  }
+  /* table rules: follow the context (paper ink on paper, rule colour on dark) */
+  .rule-b {
+    border-block-end: 1px solid var(--color-rule, var(--color-muted));
+  }
+  /* source links: a 24 px tap target (R30.1) */
+  .source-link {
+    display: inline-block;
+    min-block-size: 1.5rem;
+    padding-block: 0.25rem;
+  }
   /* the reading column: 65-75 characters. `ch` is the width of "0", which is narrow in some pack fonts (Crimson Pro
      gave 86 characters), so an em cap keeps every face inside the range */
   .measure {
@@ -77,7 +195,7 @@
   .story p {
     margin-block-end: 1.1em;
     line-height: 1.7;
-    font-size: 1.0625rem;
+    font-size: var(--type-body);
     hanging-punctuation: first;
   }
   .story p:last-child {
@@ -109,7 +227,7 @@
   }
   /* the land outline is a mask, so its colour is a token and the SVG file holds no colour */
   .land {
-    background-color: color-mix(in oklab, var(--color-muted) 45%, var(--color-surface));
+    background-color: color-mix(in oklab, var(--color-muted) 66%, var(--color-bg));
     mask: url('/world-land.svg') center / 100% 100% no-repeat;
   }
   .map-card {
@@ -147,4 +265,8 @@
       outline-offset: 0.25rem;
     }
   }
+}
+/* In-app reduced motion (data-motion on the root): the pin has no hover transition, as under the system setting. */
+html[data-motion='reduce'] .map-pin {
+  transition: none;
 }

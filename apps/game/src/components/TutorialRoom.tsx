@@ -18,6 +18,7 @@ import {
   tutorialHint2Href,
 } from '../lib/tutorial.ts';
 import { FearMeter } from './FearMeter.tsx';
+import { HintArea } from './HintArea.tsx';
 import { Marked } from './Marked.tsx';
 import { FearOverlay, type FearRequest } from './FearOverlay.tsx';
 import { SceneNav } from './SceneNav.tsx';
@@ -27,7 +28,7 @@ import { StartRetry } from './StartRetry.tsx';
 import './scene.css';
 import './tutorial.css';
 
-export type TutorialPanel = { kind: 'object'; id: string } | { kind: 'drawer' } | { kind: 'hint1' };
+export type TutorialPanel = { kind: 'object'; id: string } | { kind: 'drawer' };
 
 interface TutorialRoomProps {
   /** The server's tutorial view; null while it loads. */
@@ -47,23 +48,28 @@ interface TutorialRoomProps {
   onRetry: () => void;
   onDrawer: () => void;
   onHint2: () => void;
+  /** Set after a charged Hint 2 whose tab was blocked: the chapter address. */
+  blockedHref?: string | null;
   onAnswer: (value: string) => void;
   onHall: () => void;
   /** Starting panel and candle state; used by tests. */
   initialPanel?: TutorialPanel | null;
   initialLit?: boolean;
+  /** The page heading (h1), shown in the top bar. */
+  heading?: string;
 }
 
 /**
  * The tutorial room: the pannable study with seven tap regions, the pan prompt, hints, the drawer and the reward.
  * Theme: hub (the route wraps it with `theme={null}`). Every answer is checked by the server.
  */
-export function TutorialRoom({ view, reply, question, mediaBase, atlasOrigin, reduced, busy, failed, onRetry, onDrawer, onHint2, onAnswer, onHall, initialPanel = null, initialLit = false }: TutorialRoomProps) {
+export function TutorialRoom({ view, reply, question, mediaBase, atlasOrigin, reduced, busy, failed, onRetry, onDrawer, onHint2, blockedHref = null, onAnswer, onHall, initialPanel = null, initialLit = false, heading }: TutorialRoomProps) {
   const t = useT();
   const [panel, setPanel] = useState<TutorialPanel | null>(initialPanel);
   const [lit, setLit] = useState(initialLit);
   const [hint1On, setHint1On] = useState(false);
   const [code, setCode] = useState('');
+  const [tapped, setTapped] = useState<string | null>(null);
   const [mirror, setMirror] = useState<FearRequest | null>(null);
   const mirrorCount = useRef(0);
   const panelRef = useRef<HTMLDivElement>(null);
@@ -79,6 +85,7 @@ export function TutorialRoom({ view, reply, question, mediaBase, atlasOrigin, re
 
   const activate = (id: string) => {
     opener.remember();
+    setTapped(t(TUTORIAL_TAP_TEXT[id] ?? 'tap.nothing') || t('tap.nothing'));
     if (id === TUTORIAL_DRAWER_ID) {
       setPanel({ kind: 'drawer' });
       if (!solved && question === null) onDrawer();
@@ -114,10 +121,17 @@ export function TutorialRoom({ view, reply, question, mediaBase, atlasOrigin, re
   return (
     <ScenePaintProvider>
     <div className="flex flex-col gap-4" aria-busy={busy} data-lit={lit ? 'true' : 'false'} data-solved={solved ? 'true' : 'false'}>
-      <p className="text-muted" data-tutorial="pan-prompt">
-        {t('tut.pan')}
-      </p>
-      <SceneNav names={[t('tut.heading')]} current={0} onSelect={() => {}} onHall={onHall} headingId="tutorial-heading" />
+      <div className="scene-screen">
+      <div className="scene-topbar">
+        {heading ? <h1 className="scene-title font-display text-glow">{heading}</h1> : null}
+        <SceneNav names={[t('tut.heading')]} current={0} onSelect={() => {}} onHall={onHall} headingId="tutorial-heading" />
+        <p className="scene-topbar-note" data-tutorial="goal">
+          {t('tut.goal')}
+        </p>
+        <p className="scene-topbar-note text-muted" data-tutorial="pan-prompt">
+          {t('tut.pan')}
+        </p>
+      </div>
       <div className="tutorial-stage">
         <SceneViewer
           layout={TUTORIAL_SCENE}
@@ -130,34 +144,31 @@ export function TutorialRoom({ view, reply, question, mediaBase, atlasOrigin, re
         />
         <FearOverlay request={mirror} reduced={reduced} />
       </div>
+      <div className="scene-dock">
       {view ? (
         <FearMeter value={view.fear} mediaBase={mediaBase} />
       ) : failed ? (
-        <StartRetry onRetry={onRetry} buttonClass="scene-button" />
+        <StartRetry onRetry={onRetry} buttonClass="scene-button btn btn-secondary" />
       ) : (
         <p role="status">{t('loading.study')}</p>
       )}
-      {view && busy ? (
-        <p role="status" className="text-muted" data-pending="true">
-          {t('play.pending')}
-        </p>
-      ) : null}
-      <div className="flex flex-wrap items-center gap-3">
-        <button type="button" className="scene-button" disabled={!view || solved} onClick={() => {
-            opener.remember();
-            setHint1On(true);
-            setPanel({ kind: 'hint1' });
-          }}>
-          {t('hint.1')}
-        </button>
-        <button type="button" className="scene-button" disabled={!view || solved} aria-disabled={busy || undefined} onClick={() => !busy && onHint2()}>
-          {t('hint.2')}
-        </button>
-        {href ? (
-          <a href={href} target="_blank" rel="noopener" className="scene-button" data-hint2-link="true">
-            {t('hint.2.again')}
-          </a>
-        ) : null}
+      <p role="status" className="scene-pending text-muted" data-pending={view && busy ? 'true' : undefined}>
+        {view && busy ? t('play.pending') : '\u00a0'}
+      </p>
+      <HintArea
+        puzzle={t('tut.label.drawer')}
+        offered={!!view && !solved}
+        busy={busy}
+        hint1Text={hint1On && view ? view.hint1.text : null}
+        hint2Href={href}
+        blockedHref={blockedHref}
+        onHint1={() => setHint1On(true)}
+        onHint2={onHint2}
+      />
+      <p role="status" className="scene-reply">
+        {tapped ?? t('scene.reply.idle')}
+      </p>
+      </div>
       </div>
       {panel ? (
         <div ref={panelRef} className="hall-panel mood-worn" role="region" aria-labelledby="tutorial-panel-title" tabIndex={-1} onKeyDown={onPanelKey} data-panel={panel.kind}>
@@ -167,15 +178,6 @@ export function TutorialRoom({ view, reply, question, mediaBase, atlasOrigin, re
                 {t(TUTORIAL_LABEL[panel.id] ?? 'tut.label.coat')}
               </h3>
               <p>{t(TUTORIAL_TAP_TEXT[panel.id] ?? 'tap.nothing')}</p>
-            </>
-          ) : panel.kind === 'hint1' ? (
-            <>
-              <h3 id="tutorial-panel-title" className="font-display text-xl">
-                {t('hint.1')}
-              </h3>
-              <p>
-                <Marked text={view?.hint1.text ?? ''} />
-              </p>
             </>
           ) : (
             <>
@@ -204,7 +206,7 @@ export function TutorialRoom({ view, reply, question, mediaBase, atlasOrigin, re
                       onChange={(e) => setCode(e.target.value)}
                     />
                   </label>
-                  <button type="submit" className="scene-button" disabled={question === null || answerToSend(code) === null} aria-disabled={busy || undefined}>
+                  <button type="submit" className="scene-button btn btn-secondary" disabled={question === null || answerToSend(code) === null} aria-disabled={busy || undefined}>
                     {t('tut.drawer.submit')}
                   </button>
                   {isWrongCode(reply) ? (
@@ -216,7 +218,7 @@ export function TutorialRoom({ view, reply, question, mediaBase, atlasOrigin, re
               )}
             </>
           )}
-          <button type="button" className="scene-button" onClick={closePanel}>
+          <button type="button" className="scene-button btn btn-secondary" onClick={closePanel}>
             {t('tut.close')}
           </button>
         </div>
@@ -232,7 +234,7 @@ export function TutorialRoom({ view, reply, question, mediaBase, atlasOrigin, re
               <span>{t('tut.reward.line')}</span>
             </li>
           </ul>
-          <button type="button" className="scene-button" onClick={onHall}>
+          <button type="button" className="scene-button btn btn-secondary" onClick={onHall}>
             {t('tut.toHall')}
           </button>
         </section>

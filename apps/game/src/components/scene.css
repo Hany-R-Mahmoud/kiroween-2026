@@ -1,9 +1,13 @@
 /* Scene viewer, Hotspot and scene navigation. Logical properties only. The stage is a fixed painted image, so it is
    forced to direction: ltr and positioned from the inline start (the physical left edge); see lib/pan.ts. */
+@layer components {
 .scene-viewer {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: var(--space-2);
+}
+.hall-scene {
+  --scene-h: min(52dvh, 28rem);
 }
 .scene-heading {
   font-family: var(--font-display, inherit);
@@ -14,22 +18,19 @@
   overflow: hidden;
   inline-size: 100%;
   block-size: min(70vh, 36rem);
-  block-size: min(70dvh, 36rem);
+  block-size: var(--scene-h, min(70dvh, 36rem));
   touch-action: pan-y;
   user-select: none;
   direction: ltr;
-  background: var(--color-surface, #1c1620);
+  background: var(--color-surface);
   cursor: grab;
-}
-.scene-viewport:focus-visible,
-.scene-hotspot:focus-visible,
-.scene-button:focus-visible,
-.scene-heading:focus-visible {
-  outline: 3px solid var(--color-glow, #f4d58d);
-  outline-offset: 2px;
+  /* A stage narrower than the viewer is centred by its auto margins; a wider one keeps 0 margins and pans (F3). */
+  display: flex;
 }
 .scene-stage {
   position: relative;
+  flex: none;
+  margin-inline: auto;
   block-size: 100%;
   will-change: transform;
 }
@@ -70,56 +71,89 @@
   border: 0;
   border-radius: 0.5rem;
   background: transparent;
-  color: var(--color-glow, #f4d58d);
+  color: var(--color-glow);
   cursor: pointer;
   display: flex;
   align-items: flex-start;
   justify-content: flex-end;
 }
 .scene-hotspot[data-marked='true'] {
-  border: 3px dashed var(--color-glow, #f4d58d);
-  background: color-mix(in srgb, var(--color-glow, #f4d58d) 15%, transparent);
+  border: 3px dashed var(--color-glow);
+  background: color-mix(in srgb, var(--color-glow) 15%, transparent);
+}
+/* Glint: the same candle-coloured glow dot on every hotspot, so decoys look like clues. The dot is 0.6 rem across (9.6 px, at
+   least 8 px) with a dark rim so it reads on pale parts of a painting, and a soft halo so it reads on dark parts. It is a
+   pseudo-element that takes no space and no pointer events, so the box, the 44 px target and the focus order stay as they are. */
+.hotspot-glint::before {
+  content: '';
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  inline-size: 2.25rem;
+  block-size: 2.25rem;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle closest-side,
+    var(--color-glow) 0 26%,
+    color-mix(in srgb, var(--color-bg) 92%, transparent) 26% 36%,
+    color-mix(in srgb, var(--color-glow) 45%, transparent) 36%,
+    transparent 100%
+  );
+  opacity: 0.9;
+  pointer-events: none;
+  animation: hotspot-glint 6s ease-in-out infinite;
+}
+/* Candle-only motion: opacity only, between 0.75 and 1 (the brightest step). */
+@keyframes hotspot-glint {
+  0%, 100% { opacity: 0.8; }
+  40% { opacity: 1; }
+  70% { opacity: 0.75; }
+}
+/* Reduced motion (system or in-app): static at 0.9, still fully visible. The in-app case is also covered by ui.css. */
+@media (prefers-reduced-motion: reduce) {
+  .hotspot-glint::before { animation: none; opacity: 0.9; }
+}
+html[data-motion='reduce'] .hotspot-glint::before {
+  animation: none;
+  opacity: 0.9;
 }
 .scene-hotspot-icon {
-  margin: 0.25rem;
-  background: var(--color-bg, #0e0b10);
+  margin: var(--space-1);
+  background: var(--color-bg);
   border-radius: 50%;
   padding: 2px;
 }
 .scene-pan {
   display: flex;
   justify-content: space-between;
-  gap: 0.5rem;
+  gap: var(--space-2);
   direction: ltr;
 }
 .scene-nav {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--space-2);
 }
 .scene-tabs {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: var(--space-2);
   max-inline-size: 100%;
   overflow-x: auto;
   /* room for the 3px focus ring plus offset, which overflow would otherwise clip */
   padding: 6px;
+  scroll-padding-inline: 6px;
 }
 .scene-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: var(--space-2);
   min-inline-size: 44px;
   min-block-size: 44px;
-  padding-inline: 0.75rem;
-  border: 1px solid var(--color-accent, #e0a84b);
-  border-radius: 0.5rem;
-  background: var(--color-surface, #1c1620);
-  color: var(--color-ink, #e9e1d3);
-  font-family: var(--font-ui, inherit);
+  padding-inline: var(--space-3);
   cursor: pointer;
 }
 .scene-button:disabled,
@@ -128,8 +162,6 @@
   cursor: not-allowed;
 }
 .scene-button[aria-current='true'] {
-  background: var(--color-accent, #e0a84b);
-  color: var(--color-bg, #0e0b10);
   font-weight: 700;
   text-decoration: underline;
 }
@@ -143,8 +175,8 @@
   inline-size: 28px;
   block-size: 22px;
   border-radius: 4px;
-  background: var(--color-accent, #e0a84b);
-  box-shadow: 0 0 0 2px var(--color-bg, #0e0b10);
+  background: var(--color-accent);
+  box-shadow: 0 0 0 2px var(--color-bg);
   pointer-events: none;
 }
 .scene-hotspot-badge[data-kind='lock']::before {
@@ -155,7 +187,7 @@
   translate: -50% 0;
   inline-size: 16px;
   block-size: 14px;
-  border: 4px solid var(--color-accent, #e0a84b);
+  border: 4px solid var(--color-accent);
   border-block-end: 0;
   border-radius: 10px 10px 0 0;
 }
@@ -163,27 +195,31 @@
   border-radius: 50%;
   inline-size: 26px;
   block-size: 26px;
-  background: var(--color-bg, #0e0b10);
-  border: 4px dashed var(--color-glow, #f4d58d);
+  background: var(--color-bg);
+  border: 4px dashed var(--color-glow);
 }
+/* Panels are an overlay sheet at the bottom of the screen: they cover the scene instead of pushing it. */
 .hall-panel {
+  position: fixed;
+  inset-inline: var(--space-2, 0.5rem);
+  inset-block-end: var(--space-2, 0.5rem);
+  z-index: 40;
+  max-block-size: 60dvh;
+  overflow-y: auto;
+  max-inline-size: 40rem;
+  margin-inline: auto;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  padding: 1rem;
-  border: 1px solid var(--color-accent, #e0a84b);
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: 1px solid var(--color-accent);
   border-radius: 0.5rem;
-  background: var(--color-surface, #1c1620);
-}
-.hall-panel:focus-visible,
-.hall-panel h3:focus-visible {
-  outline: 3px solid var(--color-glow, #f4d58d);
-  outline-offset: 2px;
+  background: var(--color-surface);
 }
 .hall-cabinet {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
-  gap: 0.5rem;
+  gap: var(--space-2);
   margin: 0;
   padding: 0;
   list-style: none;
@@ -192,9 +228,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.25rem;
-  padding: 0.5rem;
-  border: 1px solid var(--color-muted, #9c9285);
+  gap: var(--space-1);
+  padding: var(--space-2);
+  border: 1px solid var(--color-muted);
   border-radius: 0.5rem;
   text-align: center;
 }
@@ -211,9 +247,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  gap: 1rem;
-  padding: 2rem 1rem;
-  background: var(--color-bg, #0e0b10);
+  gap: var(--space-4);
+  padding: var(--space-6) var(--space-4);
+  background: var(--color-bg);
 }
 .hall-ending-image {
   position: absolute;
@@ -225,11 +261,202 @@
 }
 .hall-ending-text {
   max-inline-size: 36rem;
-  padding: 1rem;
+  padding: var(--space-4);
   border-radius: 0.5rem;
-  background: color-mix(in srgb, var(--color-bg, #0e0b10) 85%, transparent);
+  background: color-mix(in srgb, var(--color-bg) 85%, transparent);
   text-align: center;
   font-size: 1.5rem;
+}
+/* Scene screen (tutorial and worlds): top bar, viewer, dock in one grid that fits the first screen (Req 18). */
+.scene-screen {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: var(--space-2);
+  block-size: calc(100dvh - var(--app-header-h) - var(--space-6));
+  min-block-size: 30rem;
+}
+.scene-topbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  min-inline-size: 0;
+}
+.scene-title {
+  order: 1;
+  margin: 0;
+  font-size: var(--type-h2);
+  line-height: 1.2;
+}
+.scene-topbar-note {
+  order: 3;
+  flex: 1 1 12rem;
+  margin: 0;
+  font-size: var(--type-small);
+}
+/* The tutorial goal and the pan note each take a full row under the title; the goal reads in ink, the pan note stays muted. */
+.scene-topbar-note[data-tutorial] { flex-basis: 100%; }
+.scene-topbar-note[data-tutorial='goal'] { color: var(--color-ink); }
+/* At phone width the note takes two lines; a tighter line keeps the scene above y = 200 (Req 18.3). */
+@media (max-width: 39.99rem) {
+  .scene-topbar-note {
+    font-size: 0.8125rem;
+    line-height: 1.25;
+  }
+  /* The tutorial adds a goal line; a tighter row gap keeps the scene above y = 200 (Req 18.3, task 6.15). */
+  .scene-topbar {
+    row-gap: var(--space-1);
+  }
+  .scene-screen {
+    row-gap: var(--space-1);
+  }
+  .scene-topbar-note {
+    line-height: 1.2;
+  }
+}
+/* The nav's children join the top bar row: Hall first, then the title, then the tabs. */
+.scene-screen .scene-nav {
+  display: contents;
+}
+.scene-screen .scene-hall {
+  order: 0;
+}
+/* From 40rem the tabs take their own row under the back link and title and wrap: no scroll, no scrollbar (F1). */
+.scene-screen .scene-tabs {
+  order: 2;
+  flex: 1 1 100%;
+  flex-wrap: wrap;
+  overflow-x: visible;
+}
+/* Below 40rem one scrolling row: scrollbar hidden, a fade at the end tells the player that more tabs exist. */
+@media (max-width: 39.99rem) {
+  .scene-screen .scene-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    padding-inline-end: 2rem;
+    mask-image: linear-gradient(to right, black calc(100% - 2rem), transparent);
+  }
+  .scene-screen .scene-tabs::-webkit-scrollbar {
+    display: none;
+  }
+  /* The row starts at the right edge in RTL, so the fade sits on the left (physical gradient axis, painted mask). */
+  [dir='rtl'] .scene-screen .scene-tabs {
+    mask-image: linear-gradient(to left, black calc(100% - 2rem), transparent);
+  }
+}
+.scene-tabs > * {
+  flex: 0 0 auto;
+}
+.scene-screen .world-stage,
+.scene-screen .tutorial-stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-block-size: 0;
+}
+.scene-screen .scene-viewer {
+  flex: 1 1 0;
+  min-block-size: 0;
+}
+.scene-screen .scene-heading {
+  /* The heading stays for focus and the region name; the top bar title is the visible one. */
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.scene-screen .scene-viewport {
+  block-size: auto;
+  flex: 1 1 0;
+  min-block-size: 14rem;
+}
+/* One compact dock (F3): fear meter and reply share the first row, the hint pair sits at the inline end, and the reserved
+   pending row is the last row. Placement is by `order`, so the DOM order (and the item 19 pending row) is unchanged. A row
+   wraps when the reply would get less than 14rem: at 390 px that gives fear, reply, hints, pending. */
+.scene-dock {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-1) var(--space-3);
+  position: relative;
+}
+.scene-dock > .fear-meter-row,
+.scene-dock > .world-fear {
+  order: 1;
+  flex: 0 1 auto;
+}
+.scene-dock > .scene-reply {
+  order: 2;
+  flex: 1 1 14rem;
+}
+.scene-dock > .scene-hints {
+  order: 3;
+  /* 27rem holds the two buttons (421 px); the puzzle label wraps above them rather than pushing the hints to a new row. */
+  flex: 0 1 27rem;
+  justify-content: flex-end;
+  margin-inline-start: auto;
+}
+@media (min-width: 48rem) {
+  /* Label (1.5rem) + gap + buttons (2.75rem): the area keeps this height whether a puzzle is picked or not, so choosing one moves nothing. */
+  .scene-dock > .scene-hints {
+    min-block-size: 4.75rem;
+  }
+}
+.scene-dock > .scene-pending {
+  order: 4;
+  flex: 1 1 100%;
+}
+.hint-area {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+.hint-puzzle {
+  margin: 0;
+}
+.hint-buttons a.btn {
+  min-block-size: 44px;
+}
+.hint-blocked {
+  margin: 0;
+}
+.hint-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+/* The Hint 1 text floats over the bottom of the scene (the dock is its anchor), so opening it moves nothing. */
+.hint-sheet {
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 100%;
+  max-block-size: min(40dvh, 16rem);
+  overflow-y: auto;
+  z-index: 2;
+  padding: var(--space-3);
+  background: var(--color-surface);
+  border: 1px solid var(--color-rule, var(--color-muted));
+  border-radius: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+/* Always mounted: the busy text swaps in place, so nothing moves (no transition, so reduced motion needs no case). */
+.scene-pending {
+  min-block-size: 1.5rem;
+  margin: 0;
+}
+/* Two lines of text (2 x 1.5rem), so a longer reply does not move the dock (item 19). */
+.scene-reply {
+  min-block-size: 3rem;
+  margin: 0;
 }
 /* Dev overlay for `?layout=1`: shown only when the viewer is given `outline` in a dev build. */
 .scene-outline {
@@ -237,8 +464,9 @@
   inset-block-start: 0;
   inset-inline-start: 0;
   box-sizing: border-box;
-  border: 2px dashed #ff4fd8;
-  color: #ff4fd8;
+  border: 2px dashed var(--color-danger-ink);
+  color: var(--color-danger-ink);
   font: 12px/1 monospace;
   pointer-events: none;
+}
 }

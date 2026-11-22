@@ -7,18 +7,18 @@
 }
 .tutorial-code {
   min-block-size: 44px;
-  padding-inline: 0.75rem;
-  border: 1px solid var(--color-accent, #e0a84b);
+  padding-inline: var(--space-3);
+  border: 1px solid var(--color-accent);
   border-radius: 0.5rem;
-  background: var(--color-bg, #0e0b10);
-  color: var(--color-ink, #e9e1d3);
+  background: var(--color-bg);
+  color: var(--color-ink);
   font-family: var(--font-ui, inherit);
 }
 .tutorial-reward {
   align-items: flex-start;
 }
 .hall-cabinet-slot[data-glow='true'] {
-  border-color: var(--color-glow, #f4d58d);
-  box-shadow: 0 0 12px 2px var(--color-glow, #f4d58d);
-  outline: 2px solid var(--color-glow, #f4d58d);
+  border-color: var(--color-glow);
+  box-shadow: 0 0 12px 2px var(--color-glow);
+  outline: 2px solid var(--color-glow);
 }
