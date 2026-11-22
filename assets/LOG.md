@@ -23,3 +23,7 @@ On 2026-11-19, 5 images were generated again with muse.ai (`regenerated-assets.z
 ## Open items
 
 - `spring-heeled-jack-shared-ui-01` came out as a nearly plain paper panel without the iron railing and gas-lamp corners the prompt asked for. It works as a plain panel. Generate it again if the frame should match the other legends.
+
+## Cleaned sprite (2026-11-22)
+
+- `el-coco-game-hotspot-04`: the figure's shoulders were cut off flat at the bottom of the image, so a hard edge showed in the scene. The bottom 360 px now fade to fully transparent, and the lower side edges fade too, so the figure melts into the shadows. Same ID, size (1024×1024) and format; no layout change. Edited with sharp (alpha only, no new generated content).
