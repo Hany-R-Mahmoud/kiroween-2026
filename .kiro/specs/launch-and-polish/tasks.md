@@ -291,7 +291,7 @@ Language: TypeScript (strict), as in the design. Tasks run one at a time, in the
     - Run `pnpm -r test`, `agent-guard` and `verify-and-stop`.
     - _Requirements: 25.5, 26.1_
 
-- [ ] 10. G10: Final checks, final deploy, production smoke, handover
+- [x] 10. G10: Final checks, final deploy, production smoke, handover
   - [x] 10.1 Close the mutation record
     - Confirm `docs/phase-5-notes/mutations.md` lists mutation, file and failing test name for the tests of Requirements 26.2 to 26.9, plus the extra mutations named in the design. Run any missing one now and restore by hand.
     - _Requirements: 26.12_
@@ -308,28 +308,28 @@ Language: TypeScript (strict), as in the design. Tasks run one at a time, in the
     - Run `agent-tester`, `agent-security` (headers, rate limit, auth, secrets, tutorial lock, config) and `agent-guard`.
     - _Requirements: 25.5_
 
-  - [-] 10.5 **STOP (Owner step): final push to `main`**
+  - [x] 10.5 **STOP (Owner step): final push to `main`**
     - Tell the Owner to push and wait for the deploy.
     - _Requirements: 3.2_
 
-  - [ ] 10.6 Run the Production_Smoke
+  - [x] 10.6 Run the Production_Smoke
     - Run the smoke steps against the Production_Site and write `docs/phase-5-notes/smoke-production.md` (step and pass/fail only). The burst check passes on a 429 within the first 40 answers; no 429 is recorded as a finding (limit is per instance), not a failure. At the end delete the temporary user by exact id through the Neon MCP (`delete_auth_user`, then `run_sql` deletes from `runs` and `player_flags` by that id), confirm 0 rows left in all three places, and record the statements. Then call `update_auth_allow_localhost` to turn localhost off for production.
     - On a failed step, record cause, fix and rerun only that step when in scope.
     - _Requirements: 27.1, 27.2, 27.3, 27.4, 27.5, 27.6, 27.7, 27.8, 27.9, 27.10, 16.7_
 
-  - [ ] 10.7 Run the production browser checks
+  - [x] 10.7 Run the production browser checks
     - Against the Production_Site: keyboard-only play from the Hall to a broken curse; 390 px touch pass (Hall, Tutorial_Room, one World); Reduced_Motion pass; `test:browser` Book view at 390 px and 1280 px (save `book-check-g10.json` production result); Slow_4G timings again. Save results in `docs/phase-5-notes/browser-production.json` and `timing-production.json`; screenshots only in `.debug/`. Report the paper-texture and mood-layer timings.
     - _Requirements: 28.1, 28.2, 28.3, 28.4, 28.5, 28.6, 28.7, 28.8, 14.1, 14.2, 18.6, 19.13_
 
-  - [ ] 10.8 Final gates
+  - [x] 10.8 Final gates
     - Run `verify-and-stop` against all requirement acceptance conditions and `agent-guard` once more. Confirm secret-scan test passes and `git status` shows no `.debug/`, build output or Secret.
     - _Requirements: 2.7, 25.5, 26.1_
 
-  - [ ] 10.9 Write the Handover_File
+  - [x] 10.9 Write the Handover_File
     - Write `docs/phase-5-handover.md` with every section required by Requirement 29.2, each blocked task with reason and next step, which numbers were measured in Phase 5 and which are copied, and a section listing every new or changed Catalog key with its English text for the Owner's wording review; the Owner's actions before submission (judge account, Google sign-in check, product names before 2026-12-01, the four PNG icons in both `public/icons/` folders, final Devpost field). No Secret value. Other notes only under `docs/phase-5-notes/`.
     - _Requirements: 1.12, 29.1, 29.2, 29.3, 29.4, 29.5, 29.6_
 
-  - [ ] 10.10 **STOP (Handover): wait for the Owner**
+  - [x] 10.10 **STOP (Handover): wait for the Owner**
     - Halt after the handover file is written. Make no further change.
     - _Requirements: 3.7, 1.12_
 

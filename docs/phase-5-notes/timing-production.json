@@ -75,5 +75,32 @@
       ],
       "result": "fail"
     }
-  ]
+  ],
+  "secondRun": {
+    "deploy": "967a7cf",
+    "note": "10.7, machine load average 10-78",
+    "medians": {
+      "Hall": 4025,
+      "Tutorial_Room": 3969,
+      "Banshee scene 1": 4848
+    },
+    "runs": {
+      "Hall": [
+        3317,
+        4112,
+        4025
+      ],
+      "Tutorial_Room": [
+        4490,
+        3969,
+        3760
+      ],
+      "Banshee scene 1": [
+        4813,
+        4944,
+        4848
+      ]
+    },
+    "result": "fail"
+  }
 }

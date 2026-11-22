@@ -5,7 +5,7 @@
 //
 // Run against built servers (the game build and the atlas build, which serves /media):
 //   node apps/game/scripts/browser-check.mjs --game http://localhost:3200 --atlas http://localhost:3201 \
-//        [--arabic http://localhost:3202] [--only keyboard,touch,motion,timing,rtl] [--shots docs/phase-4-notes/screens] [--json out.json]
+//        [--arabic http://localhost:3202] [--only keyboard,touch,motion,timing,rtl] [--shots .debug/screens] [--json out.json]
 // Layout screenshots (Phase 5, task 4.4): needs a DEV server (the ?layout=1 overlay is compiled out of builds) with the database:
 //   node apps/game/scripts/browser-check.mjs --only layout [--base http://localhost:3000] [--cookie-env KW_COOKIE] [--guest-world banshee]
 // One PNG per scene in .debug/screens/ (git-ignored). Worlds other than the guest world need a signed-in user who finished the
@@ -27,13 +27,19 @@ const arg = (name, fallback) => {
 };
 const GAME = arg('game', 'http://localhost:3200').replace(/\/+$/, '');
 const ATLAS = arg('atlas', 'http://localhost:3201').replace(/\/+$/, '');
+/** An atlas page, never a game page: on production the game is served under /game on the atlas origin. */
+const isAtlasPage = (url) => url.startsWith(ATLAS) && !new URL(url).pathname.startsWith('/game');
 const ARABIC = arg('arabic', '').replace(/\/+$/, '');
 const ONLY = new Set(arg('only', 'keyboard,touch,motion,timing,rtl').split(','));
 const BASE = arg('base', 'http://localhost:3000').replace(/\/+$/, '');
 const COOKIE_ENV = arg('cookie-env', '');
+// --signup-temp: the keyboard pass runs signed in as a throw-away example.com user created inside the page (address and
+// password are generated in the page and never leave it; only the HTTP status is printed). The caller deletes the user.
+const SIGNUP_TEMP = process.argv.includes('--signup-temp');
 const GUEST_WORLD = arg('guest-world', 'banshee');
 const LAYOUT_DIR = join(ROOT, '.debug/screens');
-const SHOTS = join(ROOT, arg('shots', 'docs/phase-4-notes/screens'));
+// Screenshots are debug output: default to the git-ignored .debug/ folder, never docs/ (Phase 5 rule).
+const SHOTS = join(ROOT, arg('shots', '.debug/screens'));
 const JSON_OUT = arg('json', '');
 const MAX_WORLD_RUNS = Number(arg('runs', '5'));
 const CHROME = [process.env.CHROME_BIN, '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', '/usr/bin/google-chrome', '/usr/bin/chromium'].find((p) => p && existsSync(p));
@@ -197,6 +203,8 @@ class Page {
   }
   async shot(file, clip) {
     // a clip is in page coordinates, so add the scroll offset to a viewport rectangle
+    // headless Chrome can stall a capture of a page that is not in front (e.g. after another tab was opened and closed)
+    await this.send('Page.bringToFront').catch(() => {});
     const off = clip ? await this.ev(`({ x: scrollX, y: scrollY })`) : null;
     const { data } = await this.send('Page.captureScreenshot', { format: 'png', ...(clip ? { clip: { x: clip.x + off.x, y: clip.y + off.y, width: clip.width, height: clip.height, scale: 2 } } : {}) });
     mkdirSync(SHOTS, { recursive: true });
@@ -368,7 +376,7 @@ async function playWorldByKeyboard(p, logPrefix) {
   const out = { won: false, runs: 0, hint2: 0, wrong: 0, atlasTabs: 0, restarts: 0, problem: '' };
   const tabsSeen = new Set();
   const off = p.cdp.on((m) => {
-    if (m.method === 'Target.targetCreated' && m.params.targetInfo.type === 'page' && m.params.targetInfo.url.startsWith(ATLAS)) tabsSeen.add(m.params.targetInfo.targetId);
+    if (m.method === 'Target.targetCreated' && m.params.targetInfo.type === 'page' && isAtlasPage(m.params.targetInfo.url)) tabsSeen.add(m.params.targetInfo.targetId);
   });
   await p.cdp.send('Target.setDiscoverTargets', { discover: true });
   for (let run = 1; run <= MAX_WORLD_RUNS && !out.won; run++) {
@@ -402,7 +410,7 @@ async function playWorldByKeyboard(p, logPrefix) {
           href = await p.ev(`${li}.querySelector('a.world-button').href`);
           await sleep(2500); // let the atlas page finish streaming: closing it early left a stream open and crashed the local atlas server
           for (const ti of (await p.cdp.send('Target.getTargets')).targetInfos) {
-            if (ti.type === 'page' && ti.url.startsWith(ATLAS)) {
+            if (ti.type === 'page' && isAtlasPage(ti.url)) {
               tabsSeen.add(ti.targetId);
               await p.cdp.send('Target.closeTarget', { targetId: ti.targetId }).catch(() => {});
             }
@@ -447,7 +455,7 @@ async function playWorldByKeyboard(p, logPrefix) {
   off();
   out.atlasTabs = tabsSeen.size;
   const t = await p.cdp.send('Target.getTargets');
-  for (const ti of t.targetInfos) if (ti.type === 'page' && ti.url.startsWith(ATLAS)) await p.cdp.send('Target.closeTarget', { targetId: ti.targetId }).catch(() => {});
+  for (const ti of t.targetInfos) if (ti.type === 'page' && isAtlasPage(ti.url)) await p.cdp.send('Target.closeTarget', { targetId: ti.targetId }).catch(() => {});
   return out;
 }
 
@@ -477,9 +485,18 @@ async function shotFearMeter(p, file) {
 
 // ---- (1) keyboard only -----------------------------------------------------------------------------------------------------
 async function keyboardCheck(cdp) {
-  info('--- (1) keyboard only: hall, tutorial, hall, Banshee ---');
+  info(`--- (1) keyboard only: hall, tutorial, hall, Banshee${SIGNUP_TEMP ? ' (signed in as a temporary user)' : ''} ---`);
   const p = await Page.open(cdp, { init: MOUSE_WATCH });
   try {
+    if (SIGNUP_TEMP) {
+      await p.goto(`${GAME}/game/`); // goto() waits for a scene, so sign up from the Hall page (same origin)
+      const status = await p.ev(`(async () => {
+        const hex = (n) => [...crypto.getRandomValues(new Uint8Array(n))].map((b) => b.toString(16).padStart(2, '0')).join('');
+        const r = await fetch('/game/api/auth/sign-up/email', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ name: 'Browser Check', email: 'kw-browser-' + hex(6) + '@example.com', password: hex(16) }) });
+        return r.status;
+      })()`);
+      check('temporary example.com user signed up in the page', status === 200, `status ${status}`);
+    }
     await p.goto(`${GAME}/game/`);
     // pan with the arrow keys: Tab to the viewport itself
     await p.tabTo(`document.querySelector('.scene-viewport')`);
@@ -529,7 +546,7 @@ async function keyboardCheck(cdp) {
     await p.waitFor(`document.querySelector('[data-hint2-link]')`, 10000, 'Hint 2 link');
     const href = await p.ev(`document.querySelector('[data-hint2-link]').href`);
     await sleep(2500);
-    const tabs = (await cdp.send('Target.getTargets')).targetInfos.filter((t) => t.type === 'page' && t.url.startsWith(ATLAS));
+    const tabs = (await cdp.send('Target.getTargets')).targetInfos.filter((t) => t.type === 'page' && isAtlasPage(t.url));
     check('Hint 2 opens the atlas tab at the chapter anchor', href.startsWith(`${ATLAS}/`) && tabs.length >= 1, `${tabs.length} atlas tab(s), href path ${new URL(href).pathname}`);
     for (const t of tabs) await cdp.send('Target.closeTarget', { targetId: t.targetId }).catch(() => {});
     await p.waitFor(`document.querySelector('[aria-busy]')?.getAttribute('aria-busy') !== 'true'`, 30000);

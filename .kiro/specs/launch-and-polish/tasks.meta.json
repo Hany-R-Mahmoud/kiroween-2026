@@ -558,6 +558,73 @@
         "executionId": "23bfe6c6-b031-4a1f-ad0b-bf11d905c6ba",
         "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
         "timestamp": 1795295736063
+      },
+      {
+        "executionId": "12c25a2d-64ba-4983-a029-1f4d872ab508",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795298607987
+      }
+    ],
+    "10.6 Run the Production_Smoke": [
+      {
+        "executionId": "12c25a2d-64ba-4983-a029-1f4d872ab508",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795298691869
+      },
+      {
+        "executionId": "12c25a2d-64ba-4983-a029-1f4d872ab508",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795299456701
+      }
+    ],
+    "10.7 Run the production browser checks": [
+      {
+        "executionId": "12c25a2d-64ba-4983-a029-1f4d872ab508",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795299458948
+      },
+      {
+        "executionId": "12c25a2d-64ba-4983-a029-1f4d872ab508",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795304987481
+      }
+    ],
+    "10.8 Final gates": [
+      {
+        "executionId": "12c25a2d-64ba-4983-a029-1f4d872ab508",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795304988210
+      },
+      {
+        "executionId": "12c25a2d-64ba-4983-a029-1f4d872ab508",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795305348828
+      }
+    ],
+    "10.9 Write the Handover_File": [
+      {
+        "executionId": "12c25a2d-64ba-4983-a029-1f4d872ab508",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795305349536
+      },
+      {
+        "executionId": "12c25a2d-64ba-4983-a029-1f4d872ab508",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795305881631
+      }
+    ],
+    "10.10 **STOP (Handover): wait for the Owner**": [
+      {
+        "executionId": "12c25a2d-64ba-4983-a029-1f4d872ab508",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795305882460
+      }
+    ],
+    "10. G10: Final checks, final deploy, production smoke, handover": [
+      {
+        "executionId": "12c25a2d-64ba-4983-a029-1f4d872ab508",
+        "chatSessionId": "sess_afd8e2c5-3fca-48cf-92ec-f8a4a5c60d31",
+        "timestamp": 1795305882567
       }
     ]
   }

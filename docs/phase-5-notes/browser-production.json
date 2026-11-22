@@ -1,0 +1,65 @@
+{
+  "deploy": "967a7cf",
+  "site": "https://trick-or-told.vercel.app",
+  "date": "2026-11-21/22",
+  "keyboardGuest": {
+    "passed": 13,
+    "failed": 0,
+    "note": "Hall to tutorial to Banshee curse broken, keyboard only, no mouse/pointer/touch input; first combined run failed one step (no enabled Hint 1 button) under load, retry 13/13"
+  },
+  "keyboardSignedIn": {
+    "passed": 14,
+    "failed": 0,
+    "note": "temporary example.com user signed up in the page; tutorial solved in the page (server: tutorial_done_at set), Banshee door then open, curse broken (server: 1 won banshee run); user and rows deleted by exact id"
+  },
+  "touch390": {
+    "passed": 15,
+    "failed": 0,
+    "note": "Hall, Tutorial, Banshee: no horizontal scroll, panoramas load, hotspots >= 44x44, drag pans, drag on a hotspot does not activate, taps reach the server, spirit panel text inside its frame, dvh rule"
+  },
+  "reducedMotion": {
+    "passed": 4,
+    "failed": 0,
+    "note": "control flashes; reduced: caption shown, no flash, only the opacity fade"
+  },
+  "bookView": {
+    "passed": 292,
+    "failed": 1,
+    "skipped": 1,
+    "rerun": "draugr alone: 50 passed, 0 failed",
+    "note": "390 and 1280 px, twelve legends and the Keeper's Note; the one failure was a hydration timeout at load average 25-65; RTL skipped (FEATURE_ARABIC off)"
+  },
+  "paperTextureSlow4g": {
+    "start_ms": 1001,
+    "end_ms": 2894,
+    "duration_ms": 1893,
+    "bytes": 52096
+  },
+  "timingSlow4g": {
+    "hall": {
+      "runs": [
+        3317,
+        4112,
+        4025
+      ],
+      "median": 4025
+    },
+    "tutorial": {
+      "runs": [
+        4490,
+        3969,
+        3760
+      ],
+      "median": 3969
+    },
+    "banshee": {
+      "runs": [
+        4813,
+        4944,
+        4848
+      ],
+      "median": 4848
+    },
+    "note": "second production run under machine load (load average up to 78); 4.7 run medians 3714 / 3535 / 4521 ms; all fail the 3000 ms budget"
+  }
+}

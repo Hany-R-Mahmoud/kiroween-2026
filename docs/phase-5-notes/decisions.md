@@ -682,3 +682,37 @@ Production URLs: atlas **https://trick-or-told.vercel.app/**, game **https://tri
 - **agent-security** (headers, rate limit, auth, secrets, tutorial lock, config): scanner: 1 High, the known false positive (the quoted `'form.password': 'Password'` label in `docs/kiro-usage.md`). Fresh game build: built-output tests pass (no answer keys, no limiter or `x-forwarded-for` in client JS, no layout overlay). Headers, CSP, rate-limit key and tutorial lock verified on production in 3.2/3.3. The client fix keeps tutorial tokens in page memory only (lost on reload, as for any signed-in run; nothing written to storage). Open findings: A1 (open sign-up without verification, accepted), A2 (`allow_localhost` on until the end of 10.6). `git status --ignored`: `.env`, `.debug/`, `apps/*/.vercel/` ignored; no secret tracked.
 - **agent-guard:** 0 fixed, 0 flagged (`playClient.ts` change, layout data, README, `readme.test.ts`).
 - Tree ready for the final push (10.5).
+
+## Task 10.6 (production smoke)
+
+- Full record: `docs/phase-5-notes/smoke-production.md`. Every step passed, including the guest Banshee win, the temporary user's lock refusal, tutorial, Baba Yaga win and score row, the anchor, the leak check (88 responses), the burst (429 at answer 31) and the key step (visitor-keyed; no FINDING). One network error in the headers step passed on its rerun.
+- Cleanup by exact id and localhost sign-in turned off: MCP calls 25 to 29 in that file. Production now has 0 users, 0 runs, 0 player flags.
+
+## Task 10.7 (production browser checks, deploy 967a7cf)
+
+Data: `docs/phase-5-notes/browser-production.json`, `book-check-g10-production.json`, `timing-production.json` (second run). Screenshots only in `.debug/screens-prod/`.
+
+| Check | Result |
+|---|---|
+| Keyboard only, guest: Hall → tutorial → Hall → Banshee curse broken → back to the Hall, no mouse/pointer/touch | 13 PASS (retry; the first combined run missed an enabled Hint 1 button once under load) |
+| Keyboard only, **signed in** (temporary `example.com` user signed up in the page): locked door → tutorial solved in the page → Banshee door open → curse broken | 14 PASS; server confirms `tutorial_done_at` set and 1 won Banshee run. The signed-in tutorial fix (8.1) works end to end on production. |
+| 390 px touch: Hall, Tutorial_Room, Banshee | 15 PASS |
+| Reduced motion | 4 PASS |
+| Book view, 390 and 1280 px, twelve legends and the Keeper's Note | 292 PASS, 1 FAIL (draugr at 1280: hydration timeout at load average 25–65), 1 SKIP (RTL, flag off); draugr rerun 50 PASS, 0 FAIL |
+| Paper texture on Slow 4G (production, compressed, CDN) | 1001 → 2894 ms, 1893 ms, 52 KB |
+| Slow 4G timing (second run, load average 10–78) | Hall 4025, Tutorial 3969, Banshee 4848 ms median: all fail 3000 ms (4.7 run: 3714 / 3535 / 4521 ms) |
+| Mood layer cost (19.13) | no extra request or image; JS+CSS on the wire about 165 KB (Phase 4 about 155 KB); not separable from load noise in these runs |
+
+**Temporary browser user removed** (exact id `06ab83f8-3d82-4124-b282-3771d5c7c7f3`): `run_sql` (check: only user, `kw-browser-…@example.com`, tutorial done, 1 won Banshee run; first attempt failed with SQLSTATE 42883 because `neon_auth.user.id` is a uuid and `runs.user_id` is text, fixed with `u.id::text`), `run_sql_transaction` `DELETE FROM runs WHERE user_id = '06ab83f8-3d82-4124-b282-3771d5c7c7f3';` `DELETE FROM player_flags WHERE user_id = '06ab83f8-3d82-4124-b282-3771d5c7c7f3';`, `delete_auth_user` `06ab83f8-3d82-4124-b282-3771d5c7c7f3`, then `run_sql` counts: users 0, runs 0, flags 0.
+
+**Fixes to the Phase 4 browser-check script found here** (`apps/game/scripts/browser-check.mjs`):
+- It treated every tab on the atlas origin as an atlas tab. On production the game shares that origin, so after Hint 2 it closed its own game page and every later command waited forever. One helper `isAtlasPage` (atlas origin and not under `/game`) is now used at all four places.
+- Its default screenshot folder was `docs/phase-4-notes/screens`; the first production run wrote one file there. Moved to `.debug/screens-prod/`, the empty folder removed (it was not in git), and the default is now `.debug/screens`.
+- `shot()` brings its page to the front first.
+- New `--signup-temp` for the signed-in keyboard pass (address and password generated inside the page; only the status is printed).
+
+## Task 10.8 (final gates)
+
+- `pnpm -r --workspace-concurrency=1 test`: skeleton 60 files, 796 passed, 8 expected fail; atlas 18 files, 228 passed; game 26 files, 293 passed. Typecheck clean. Secret scan: no findings (Requirement 2.7). `git status`: no `.debug/`, build output, `.vercel/`, env file or screenshot in the tree; under `docs/` only notes and JSON results.
+- **verify-and-stop** against the requirements: met with evidence in this file, except where noted in the handover's open items: 14 (budget missed on production, cause measured, budget unchanged), 15.11/17 RTL key swap (not run, flag off), 13.3 at DPR 2/3 on a real phone (proven by test and the 390 px CSS rule, not on a device), Google click-through (Owner), icons (Owner assets).
+- **agent-guard:** last pass on `browser-check.mjs` changes: `isAtlasPage` replaces four copies of a condition; `--signup-temp` prints only a status. 0 further fixes.

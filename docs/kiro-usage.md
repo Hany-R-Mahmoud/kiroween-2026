@@ -541,3 +541,10 @@ Never called: `get_connection_string`, `create_credential`, `reset_postgres_role
 | impeccable | Launcher ran (`context`, `detect`): only two false-positive `broken-image` warnings on the `<Img>` component. In-thread review found the dark-theme colours on paper (glow 2.1:1, muted 1.03:1), fixed by re-pointing them inside `.book-paper`; the spirit caption colour order bug was fixed in 8.3. |
 | verify-and-stop | One proof pass per group; open items listed per group in `decisions.md`. |
 | Not used | agent-pilot, agent-superpowers, agent-gamestudio (they start their own workflows). |
+
+### Phase 5 close
+
+- Neon MCP calls after task 9.2: the final smoke cleanup (`run_sql`, `delete_auth_user`, `run_sql_transaction`), `update_auth_allow_localhost` (off) and `get_neon_auth_config`, and the browser-check user cleanup (`run_sql` twice, `run_sql_transaction`, `delete_auth_user`). All with exact statements in `docs/phase-5-notes/decisions.md` and `smoke-production.md`.
+- Production checks run from Kiro: the production smoke (every step passed, including the visitor-keyed rate limit behind the proxy) and the headless Chrome checks (keyboard only as guest and signed in, 390 px touch, reduced motion, the book view at 390 and 1280 px, Slow 4G timing).
+- The browser checks found two faults in the Phase 4 check script on a shared origin (it closed its own game page; its default screenshot folder was under `docs/`), both fixed.
+- Skills at the close: agent-tester (signed-in tutorial now covered end to end in a real page), agent-security (no new finding; localhost sign-in turned off), agent-guard (one helper for four copies of a condition), verify-and-stop (requirement-by-requirement proof, open items listed in `docs/phase-5-handover.md`). Summary: `docs/phase-5-handover.md`.
