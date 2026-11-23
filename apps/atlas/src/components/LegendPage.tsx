@@ -3,6 +3,7 @@ import { Book } from '@kiroween/skeleton/book';
 import type { Translate } from '../i18n/t';
 import { bookLabels } from './bookLabels';
 import { Img } from './Img';
+import { HERO_SIZES, PLATE_SIZES } from './imageSet';
 import { MetaList } from './MetaList';
 import { InlineText, StoryText } from './StoryText';
 
@@ -20,7 +21,7 @@ function Chapter({ chapter, t }: { chapter: AtlasChapter; t: Translate }) {
       </h2>
       {chapter.plate && (
         <figure className="plate book-plate mood-torn">
-          <Img image={chapter.plate} alt={t('alt.plate', { n: chapter.ordinal, title: chapter.title })} />
+          <Img image={chapter.plate} sizes={PLATE_SIZES} alt={t('alt.plate', { n: chapter.ordinal, title: chapter.title })} />
         </figure>
       )}
       <StoryText text={chapter.text} t={t} />
@@ -62,7 +63,7 @@ const contentsLink = 'nav-item contents-link';
 function LegendHeader({ legend, t }: { legend: AtlasLegend; t: Translate }) {
   return (
     <header className="flex flex-col gap-6">
-      {legend.hero && <Img image={legend.hero} hero alt={t('alt.hero', { title: legend.title })} priority className="legend-hero" />}
+      {legend.hero && <Img image={legend.hero} hero sizes={HERO_SIZES} alt={t('alt.hero', { title: legend.title })} priority className="legend-hero" />}
       <div className="measure mx-auto flex w-full flex-col gap-4 px-4">
         <h1 id="legend-title" className="text-4xl text-glow sm:text-5xl">
           {legend.title}

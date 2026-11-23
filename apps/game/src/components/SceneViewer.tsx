@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import type { FocusEvent, KeyboardEvent, PointerEvent as ReactPointerEvent } from 'react';
-import { stripMarks } from '@kiroween/skeleton/client';
+import { stripMarks, useImageBase } from '@kiroween/skeleton/client';
 import { MoodFog } from '@kiroween/skeleton/mood';
 import { useT } from '../i18n/useT.ts';
 import { clampPan, panToReveal } from '../lib/pan.ts';
-import { mediaUrl } from '../lib/media.ts';
+import { imageAttrs, mediaUrl } from '../lib/media.ts';
 import { buttonPan, isDrag, keyPan, lostCaptureEndsDrag } from '../lib/viewerInput.ts';
 import { MIN_TARGET_PX, SCENE_HEIGHT, SCENE_WIDTH, type SceneLayout } from '../layout/types.ts';
 import { Hotspot } from './Hotspot.tsx';
@@ -31,6 +31,8 @@ interface SceneViewerProps {
   alt: string;
   /** Media base: empty for same origin, or the atlas origin. */
   mediaBase: string;
+  /** CSS width of the scene image for `sizes` (its CSS height times 8/3). Defaults to the world and tutorial screens. */
+  imageSizes?: string;
   hotspots: readonly ViewerHotspot[];
   onActivate: (hotspotId: string) => void;
   /** Id for the heading, so scene navigation can move focus to it. */
@@ -55,9 +57,16 @@ interface Drag {
  * The pannable scene. Plain DOM: one wide image and absolutely placed buttons inside a clipped viewport.
  * Pan is physical x on purpose (fixed painted image; steering i18n-rtl.md exception), so the stage is `direction: ltr`.
  */
-export function SceneViewer({ layout, name, alt, mediaBase, hotspots, onActivate, headingId, initialPan = 0, onPanChange, onStep, outline }: SceneViewerProps) {
+/** Height steps of the CDN copies of a 4096x1536 scene; the width descriptors follow from the aspect ratio. */
+const SCENE_HEIGHTS = [600, 900, 1200] as const;
+/** The Hall scene is `--scene-h: min(52dvh, 28rem)` tall (scene.css), so its image is that times 4096/1536 wide. */
+export const HALL_SCENE_SIZES = 'min(138.67dvh, 74.67rem)';
+/** The world and tutorial scenes fill the space left under the top bar (scene.css `.scene-screen .scene-viewport`). */
+export const SCENE_SCREEN_SIZES = 'min(110dvh, 100rem)';
+export function SceneViewer({ layout, name, alt, mediaBase, imageSizes = SCENE_SCREEN_SIZES, hotspots, onActivate, headingId, initialPan = 0, onPanChange, onStep, outline }: SceneViewerProps) {
   const t = useT();
   const { loadedSceneId, onSceneSettled } = useScenePaint();
+  const imageBase = useImageBase();
   // Dev only: the Hall and the tutorial read `?layout=1` from the address after hydration; the World screen passes `outline`.
   const [urlOutline, setUrlOutline] = useState(false);
   useEffect(() => {
@@ -200,7 +209,7 @@ export function SceneViewer({ layout, name, alt, mediaBase, hotspots, onActivate
           <img
             ref={imgRef}
             className="scene-image"
-            src={mediaUrl(mediaBase, layout.assetId)}
+            {...imageAttrs(mediaBase, imageBase, layout.assetId, { axis: 'h', steps: SCENE_HEIGHTS, width: SCENE_WIDTH, height: SCENE_HEIGHT, sizes: imageSizes })}
             alt={stripMarks(alt)}
             width={SCENE_WIDTH}
             height={SCENE_HEIGHT}

@@ -143,6 +143,8 @@ export const darkRows = (land: LandMix): Row[] => {
     row('D21a', 'motion switch off: border and thumb on the page (non-text)', AA_LARGE, c('--color-muted'), c('--color-bg')),
     row('D21b', 'motion switch on: track against the page (non-text)', AA_LARGE, c('--color-accent'), c('--color-bg')),
     row('D21c', 'motion switch on: thumb on the track (non-text)', AA_LARGE, c('--color-bg'), c('--color-accent')),
+    // Game fear meter text (fear.css .fear-meter-text): --color-ink, --type-ui 0.9375rem (15 px), weight 400 = normal text, on the page (.hub-theme/.world-theme background --color-bg).
+    row('D22', 'fear meter text (15 px, weight 400) on the page', AA_TEXT, c('--color-ink'), c('--color-bg')),
   ];
 };
 

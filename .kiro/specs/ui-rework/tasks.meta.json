@@ -1099,6 +1099,11 @@
         "executionId": "2f868d8d-1253-42b5-abc2-1bb07c845417",
         "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
         "timestamp": 1795373620812
+      },
+      {
+        "executionId": "66b44da6-e1f5-4bfd-b34d-c46de28cb7d1",
+        "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
+        "timestamp": 1795384082104
       }
     ],
     "9.2 Production guest checks": [
@@ -1106,6 +1111,16 @@
         "executionId": "4518c848-6d0c-4333-9aa4-d751a280afd2",
         "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
         "timestamp": 1795336112627
+      },
+      {
+        "executionId": "66b44da6-e1f5-4bfd-b34d-c46de28cb7d1",
+        "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
+        "timestamp": 1795384083659
+      },
+      {
+        "executionId": "66b44da6-e1f5-4bfd-b34d-c46de28cb7d1",
+        "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
+        "timestamp": 1795385590848
       }
     ],
     "9.3 Slow 4G timings on production": [
@@ -1113,6 +1128,16 @@
         "executionId": "4518c848-6d0c-4333-9aa4-d751a280afd2",
         "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
         "timestamp": 1795336112682
+      },
+      {
+        "executionId": "66b44da6-e1f5-4bfd-b34d-c46de28cb7d1",
+        "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
+        "timestamp": 1795385592132
+      },
+      {
+        "executionId": "66b44da6-e1f5-4bfd-b34d-c46de28cb7d1",
+        "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
+        "timestamp": 1795385965667
       }
     ],
     "9.4 Guard pass for group 9": [
@@ -1120,6 +1145,16 @@
         "executionId": "4518c848-6d0c-4333-9aa4-d751a280afd2",
         "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
         "timestamp": 1795336112733
+      },
+      {
+        "executionId": "66b44da6-e1f5-4bfd-b34d-c46de28cb7d1",
+        "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
+        "timestamp": 1795385966093
+      },
+      {
+        "executionId": "66b44da6-e1f5-4bfd-b34d-c46de28cb7d1",
+        "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
+        "timestamp": 1795386049333
       }
     ],
     "9.5 Checkpoint - `pnpm -r test` green": [
@@ -1127,6 +1162,16 @@
         "executionId": "4518c848-6d0c-4333-9aa4-d751a280afd2",
         "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
         "timestamp": 1795336112786
+      },
+      {
+        "executionId": "66b44da6-e1f5-4bfd-b34d-c46de28cb7d1",
+        "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
+        "timestamp": 1795386048406
+      },
+      {
+        "executionId": "66b44da6-e1f5-4bfd-b34d-c46de28cb7d1",
+        "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
+        "timestamp": 1795386320438
       }
     ],
     "10.1 Write the Phase 6 entry in `docs/kiro-usage.md`": [
@@ -1134,6 +1179,16 @@
         "executionId": "4518c848-6d0c-4333-9aa4-d751a280afd2",
         "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
         "timestamp": 1795336112847
+      },
+      {
+        "executionId": "66b44da6-e1f5-4bfd-b34d-c46de28cb7d1",
+        "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
+        "timestamp": 1795386321428
+      },
+      {
+        "executionId": "66b44da6-e1f5-4bfd-b34d-c46de28cb7d1",
+        "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
+        "timestamp": 1795386417939
       }
     ],
     "10.2 Guard pass over the docs": [
@@ -1141,6 +1196,16 @@
         "executionId": "4518c848-6d0c-4333-9aa4-d751a280afd2",
         "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
         "timestamp": 1795336112901
+      },
+      {
+        "executionId": "66b44da6-e1f5-4bfd-b34d-c46de28cb7d1",
+        "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
+        "timestamp": 1795386417121
+      },
+      {
+        "executionId": "66b44da6-e1f5-4bfd-b34d-c46de28cb7d1",
+        "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
+        "timestamp": 1795386486231
       }
     ],
     "10.3 Final check with verify-and-stop": [
@@ -1148,6 +1213,16 @@
         "executionId": "4518c848-6d0c-4333-9aa4-d751a280afd2",
         "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
         "timestamp": 1795336112957
+      },
+      {
+        "executionId": "66b44da6-e1f5-4bfd-b34d-c46de28cb7d1",
+        "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
+        "timestamp": 1795386486707
+      },
+      {
+        "executionId": "66b44da6-e1f5-4bfd-b34d-c46de28cb7d1",
+        "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
+        "timestamp": 1795386699094
       }
     ],
     "10.4 Write `docs/phase-6-handover.md` and stop": [
@@ -1155,6 +1230,16 @@
         "executionId": "4518c848-6d0c-4333-9aa4-d751a280afd2",
         "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
         "timestamp": 1795336113001
+      },
+      {
+        "executionId": "66b44da6-e1f5-4bfd-b34d-c46de28cb7d1",
+        "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
+        "timestamp": 1795386699559
+      },
+      {
+        "executionId": "66b44da6-e1f5-4bfd-b34d-c46de28cb7d1",
+        "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
+        "timestamp": 1795386897960
       }
     ],
     "1. Group 1: shared UI layer, tokens, layer order and layer move (fix list items 1, 2)": [
@@ -1336,6 +1421,116 @@
         "executionId": "2f868d8d-1253-42b5-abc2-1bb07c845417",
         "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
         "timestamp": 1795379677495
+      }
+    ],
+    "9. Group 9: Owner push, then production checks (guest only)": [
+      {
+        "executionId": "66b44da6-e1f5-4bfd-b34d-c46de28cb7d1",
+        "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
+        "timestamp": 1795386320541
+      }
+    ],
+    "10. Group 10: Kiro usage, final check, handover": [
+      {
+        "executionId": "66b44da6-e1f5-4bfd-b34d-c46de28cb7d1",
+        "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
+        "timestamp": 1795386898079
+      }
+    ],
+    "10.F5 Atlas home hero stacks on narrow screens (Owner feedback F5)": [
+      {
+        "executionId": "ecafc7bf-7ddf-4a96-b5af-774315a5c451",
+        "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
+        "timestamp": 1795388930465
+      },
+      {
+        "executionId": "ecafc7bf-7ddf-4a96-b5af-774315a5c451",
+        "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
+        "timestamp": 1795389261798
+      }
+    ],
+    "10.F6 Atlas header on one row at 360 px (Owner feedback F6)": [
+      {
+        "executionId": "ecafc7bf-7ddf-4a96-b5af-774315a5c451",
+        "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
+        "timestamp": 1795389263061
+      },
+      {
+        "executionId": "ecafc7bf-7ddf-4a96-b5af-774315a5c451",
+        "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
+        "timestamp": 1795389551617
+      }
+    ],
+    "10.F7 Hint 1 hotspot marks (Owner feedback F7)": [
+      {
+        "executionId": "ecafc7bf-7ddf-4a96-b5af-774315a5c451",
+        "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
+        "timestamp": 1795389555421
+      },
+      {
+        "executionId": "ecafc7bf-7ddf-4a96-b5af-774315a5c451",
+        "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
+        "timestamp": 1795390898429
+      }
+    ],
+    "10.F8 Close test gaps (Owner feedback F8)": [
+      {
+        "executionId": "ecafc7bf-7ddf-4a96-b5af-774315a5c451",
+        "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
+        "timestamp": 1795390900134
+      },
+      {
+        "executionId": "ecafc7bf-7ddf-4a96-b5af-774315a5c451",
+        "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
+        "timestamp": 1795391269065
+      }
+    ],
+    "10.F9 Re-run screen checks and checkpoint": [
+      {
+        "executionId": "ecafc7bf-7ddf-4a96-b5af-774315a5c451",
+        "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
+        "timestamp": 1795391270475
+      },
+      {
+        "executionId": "ecafc7bf-7ddf-4a96-b5af-774315a5c451",
+        "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
+        "timestamp": 1795392682229
+      }
+    ],
+    "10.F11 Serve images through the ImageKit CDN with sized copies (Owner feedback F9)": [
+      {
+        "executionId": "ecafc7bf-7ddf-4a96-b5af-774315a5c451",
+        "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
+        "timestamp": 1795392691854
+      },
+      {
+        "executionId": "ecafc7bf-7ddf-4a96-b5af-774315a5c451",
+        "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
+        "timestamp": 1795395065696
+      }
+    ],
+    "10.F12 Re-run the \"After F5 to F8\" checks with F9 in place": [
+      {
+        "executionId": "ecafc7bf-7ddf-4a96-b5af-774315a5c451",
+        "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
+        "timestamp": 1795395066832
+      },
+      {
+        "executionId": "ecafc7bf-7ddf-4a96-b5af-774315a5c451",
+        "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
+        "timestamp": 1795398580311
+      }
+    ],
+    "10.F10 Update handover and verification notes, then stop": [
+      {
+        "executionId": "ecafc7bf-7ddf-4a96-b5af-774315a5c451",
+        "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
+        "timestamp": 1795398581408
+      },
+      {
+        "executionId": "ecafc7bf-7ddf-4a96-b5af-774315a5c451",
+        "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
+        "timestamp": 1795398773671
       }
     ]
   }

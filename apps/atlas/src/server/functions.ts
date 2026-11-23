@@ -7,7 +7,7 @@ import { continentOf } from '../geo/continent';
 import { placeMarkers } from '../geo/placeMarkers';
 import { resolveAnchor } from './anchor';
 import { database } from './db';
-import { getEnv } from './env';
+import { getEnv, imageBase } from './env';
 
 /**
  * Only fixed messages reach the client (Start serializes just `message`). Any other error, a database or driver error
@@ -34,7 +34,7 @@ export const getShell = createServerFn({ method: 'GET' }).handler(() => {
   const cookie = /(?:^|;\s*)lang=(\w+)/.exec(headers.get('cookie') ?? '')?.[1] ?? null;
   const env = getEnv();
   const { lang, dir } = resolveLocale(env.arabicEnabled, cookie, headers.get('accept-language'));
-  return { lang, dir, publicOrigin: env.publicOrigin };
+  return { lang, dir, publicOrigin: env.publicOrigin, imageBase: imageBase() };
 });
 
 /** Every legend with its continent and its marker position, worked out on the server (the polygons stay there). */

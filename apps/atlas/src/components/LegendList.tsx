@@ -1,8 +1,9 @@
-import { assetUrl, heroSmall, type AtlasImage } from '@kiroween/skeleton/client';
+import { assetUrl, heroSmall, useImageBase, type AtlasImage } from '@kiroween/skeleton/client';
 import { Link } from '@tanstack/react-router';
 import { CONTINENTS } from '../geo/continents';
 import type { Translate } from '../i18n/t';
 import type { HomeLegend } from './home';
+import { widthCopies } from './imageSet';
 
 /** What a card shows: the phone copy of the hero when the build made one, else the hero, else the marker (R15.11). */
 export function cardImage(l: Pick<HomeLegend, 'hero' | 'marker'>): AtlasImage | null {
@@ -15,6 +16,7 @@ const CARD_SIZES = '(min-width: 48rem) 24rem, 100vw';
 
 /** The accessible way in (R3.2): every legend, grouped by continent in a fixed order, by title inside each group. */
 export function LegendList({ legends, t }: { legends: HomeLegend[]; t: Translate }) {
+  const imageBase = useImageBase();
   const groups = CONTINENTS.map((c) => ({ continent: c, items: legends.filter((l) => l.continent === c).sort((a, b) => a.title.localeCompare(b.title)) })).filter((g) => g.items.length > 0);
   return (
     <div className="grid gap-10">
@@ -26,17 +28,17 @@ export function LegendList({ legends, t }: { legends: HomeLegend[]; t: Translate
           <ul className="legend-cards mt-4">
             {items.map((l) => {
               const img = cardImage(l);
+              const copies = l.hero ? widthCopies(l.hero, imageBase, CARD_SIZES) : null;
               return (
                 <li key={l.id} className="legend-card panel">
                   {img && (
                     <img
-                      src={assetUrl(img.id)}
-                      width={img.width}
-                      height={img.height}
+                      {...(copies ?? { src: assetUrl(img.id), sizes: CARD_SIZES })}
+                      width={copies && l.hero ? l.hero.width : img.width}
+                      height={copies && l.hero ? l.hero.height : img.height}
                       alt=""
                       loading="lazy"
                       decoding="async"
-                      sizes={CARD_SIZES}
                       className="legend-card-img"
                     />
                   )}

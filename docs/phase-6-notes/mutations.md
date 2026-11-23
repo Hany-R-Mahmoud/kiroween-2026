@@ -28,3 +28,18 @@ Task 8.1 (design 7.3). Each mutation was applied by hand to the real source, the
 | `openBlankTab` skips `opener = null` | caught (1 test: success path) |
 
 Other mutation checks made inside earlier tasks (1.8, 2.4, 2.6, 3.6, 4.7, 6.2, 6.6 to 6.13) are recorded in `decisions.md` under each task.
+| 10.F7 `hint1Marks` keeps replied ids after the slot is solved | caught (1 test: marks nothing once solved) |
+| 10.F7 drop `setHint1Highlights` in WorldPlay | caught (1 test: source pin of the storage) |
+| 10.F8 fear meter text colour changed from ink to muted in fear.css | caught (1 test: D22 CSS binding) |
+| 10.F8 ink token darkened to #4a443f (D22 and others) | caught (4 tests: matrix, 100 draws, D22 measured) |
+| 10.F8 `.btn` `min-block-size` changed from `var(--target)` to 2rem | caught (1 test: .btn 44 px) |
+| 10.F8 `.nav-item[aria-current='page']` bar changed from 2px to 1px | caught (1 test: 2 px marker) |
+| 10.F8 Hint 2 link `rel="noopener"` removed in HintArea.tsx | caught (2 tests: link pin and the older markup test) |
+| 10.F8 `.scene-button` `min-block-size` 44px to 30px | caught (1 test: Hint 2 link 44 px) |
+| 10.F11 `imageUrl` slices the path one character early (`MEDIA_PREFIX.length - 1`) | caught (3 tests: CDN property, example URL, srcset) |
+| 10.F11 `imageUrl` with no base appends `?x` to the `assetUrl` path | caught (2 tests: no-CDN equals assetUrl, example and property) |
+| 10.F11 `tr` size check weakened to `n > 0` (fractions and huge values pass) | caught (1 test: integers in range only) |
+| 10.F11 CDN preload drops `imageSrcSet` | caught (1 test: preload equals the img's src, srcset, sizes) |
+| 10.F11 CDN preload `href` set to the local `assetUrl` | caught (1 test: same) |
+| 10.F11 game `imageAttrs` returns only `src` (drops srcset and sizes) | caught (4 tests: imageAttrs, SceneViewer CDN on, Hall sizes) |
+| 10.F11 `https://ik.imagekit.io` removed from CSP `img-src` | caught (2 tests: atlas and game CSP) |

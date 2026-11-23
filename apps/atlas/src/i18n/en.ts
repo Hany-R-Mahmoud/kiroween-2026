@@ -7,6 +7,7 @@ export const en = {
   'nav.label': 'Atlas',
   'nav.home': 'All legends',
   'nav.play': 'Play Trick or True',
+  'nav.playShort': 'Play',
   'footer.fiction': 'The archive house around these pages is fiction. The legends are real folklore, and each one cites its sources.',
   'footer.keepersNote': "The Keeper's Note: the story of this archive",
   'footer.map': 'Map outline made with Natural Earth (public domain).',

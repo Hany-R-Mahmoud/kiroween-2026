@@ -46,6 +46,13 @@ describe('Nitro route rules (the source of production routing and headers)', () 
     sec(gameRouteRules()['/**']?.headers);
     expect(Object.keys(SECURITY_HEADERS)).toHaveLength(4);
   });
+  it.each([['atlas', atlasRouteRules], ['game', gameRouteRules]] as const)('the %s CSP allows images from self, data: and the ImageKit CDN only', (_app, rules) => {
+    const csp = rules()['/**']?.headers?.['content-security-policy'] ?? '';
+    expect(csp).toMatch(/(^|;\s*)img-src 'self' data: https:\/\/ik\.imagekit\.io(;|$)/);
+    // the one approved change: no other directive mentions the CDN, and nothing is widened to a wildcard
+    expect(csp.match(/imagekit/g)).toHaveLength(1);
+    expect(csp).not.toMatch(/\*/);
+  });
   it('functions run in pdx1', () => {
     expect(FUNCTION_REGIONS).toEqual(['pdx1']);
   });

@@ -8,7 +8,7 @@ const t: Translate = (key, vars) => translate('en', key, vars);
 
 /** The header's links as { text, href, tag } in document order. */
 const links = (html: string) =>
-  [...html.matchAll(/(<a\b[^>]*>)([\s\S]*?)<\/a>/g)].map((m) => ({ tag: m[1]!, text: m[2]!.replace(/<[^>]+>/g, '').trim(), href: attr(m[1]!, 'href') }));
+  [...html.matchAll(/(<a\b[^>]*>)([\s\S]*?)<\/a>/g)].map((m) => ({ tag: m[1]!, text: attr(m[1]!, 'aria-label') ?? m[2]!.replace(/<[^>]+>/g, '').trim(), inner: m[2]!, href: attr(m[1]!, 'href') }));
 
 describe('atlas header', async () => {
   const html = await renderInRouter(<SiteHeader t={t} />);
@@ -38,6 +38,23 @@ describe('atlas header', async () => {
 
   it('names the nav landmark from the catalog', () => {
     expect(html).toContain(`aria-label="${t('nav.label')}"`);
+  });
+
+  it('shows a short Play label below 40rem and keeps the full name as the accessible name (label-in-name)', () => {
+    const play = byText('nav.play')!;
+    const name = attr(play.tag, 'aria-label');
+    expect(name).toBe(t('nav.play'));
+    const short = t('nav.playShort');
+    expect(short.length).toBeLessThan(t('nav.play').length);
+    expect(name!.toLowerCase()).toContain(short.toLowerCase());
+    expect(play.inner).toMatch(new RegExp(`<span class="min-\\[40rem\\]:hidden">${short}</span>`));
+    expect(play.inner).toMatch(new RegExp(`<span class="hidden min-\\[40rem\\]:inline">${t('nav.play')}</span>`));
+    expect(classes(play.tag)).toContain('min-h-11');
+  });
+
+  it('the short-label check fails when the aria-label is removed', () => {
+    const broken = html.replace(/ aria-label="Play Trick or True"/, '');
+    expect(attr(links(broken).find((l) => l.href === '/game/')!.tag, 'aria-label')).toBeUndefined();
   });
 
   it('the duplicate-href check fails when two items share an href', () => {

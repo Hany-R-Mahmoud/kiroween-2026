@@ -7,7 +7,7 @@ import { cabinetSlots, clockKey, DECOY_RESULT, doorLegendId, doorReasonKey, hall
 import { dialogKeyAction, usePanelOpener } from '../lib/focus.ts';
 import { mediaUrl } from '../lib/media.ts';
 import { ScenePaintProvider } from './ScenePaint.tsx';
-import { SceneViewer, type ViewerHotspot } from './SceneViewer.tsx';
+import { HALL_SCENE_SIZES, SceneViewer, type ViewerHotspot } from './SceneViewer.tsx';
 import './scene.css';
 
 export interface HallDoor {
@@ -132,7 +132,7 @@ export function HallView({ data, mediaBase, tutorialDone, broken, curses, onNavi
           {t(tutorialDone ? 'hall.study.again' : 'hall.start')}
         </a>
       </p>
-      <SceneViewer layout={HUB_SCENE} name={t('hall.heading')} alt={t('hub.scene.alt')} mediaBase={mediaBase} hotspots={hotspots} onActivate={activate} headingId="hall-heading" />
+      <SceneViewer layout={HUB_SCENE} name={t('hall.heading')} alt={t('hub.scene.alt')} mediaBase={mediaBase} imageSizes={HALL_SCENE_SIZES} hotspots={hotspots} onActivate={activate} headingId="hall-heading" />
       {panel ? (
         <div ref={panelRef} className="hall-panel mood-worn" role="region" aria-labelledby="hall-panel-title" tabIndex={-1} onKeyDown={onPanelKey} data-panel={panel.kind}>
           <PanelBody panel={panel} data={data} mediaBase={mediaBase} curses={curses} lang={lang} broken={broken} stateOf={stateOf} doorsById={doorsById} onNavigate={onNavigate} />

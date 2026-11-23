@@ -3,6 +3,7 @@ import { Link } from '@tanstack/react-router';
 import type { Translate } from '../i18n/t';
 import { pickFirstLegend, type HomeLegend } from './home';
 import { Img } from './Img';
+import { HERO_SIZES } from './imageSet';
 import { LegendList } from './LegendList';
 import { WorldMap } from './WorldMap';
 
@@ -16,7 +17,7 @@ export function HomeView({ legends, t }: { legends: HomeLegend[]; t: Translate }
       <header className="home-hero">
         {/* the journal on the desk sets the scene; the heading carries the page */}
         <div className="home-hero-frame">
-          <Img image={hero} alt="" priority className="home-hero-img" />
+          <Img image={hero} alt="" priority sizes={HERO_SIZES} className="home-hero-img" />
         </div>
         <div className="home-hero-copy measure">
           <h1 className="text-4xl text-glow sm:text-5xl">{t('app.title')}</h1>

@@ -24,6 +24,16 @@ export function markedIds(view: PlayView | null): ReadonlySet<string> {
   return out;
 }
 
+/**
+ * Marks for the scene: the view's own Hint 1 highlights plus the ids the server returned in a `hint1` reply (the view
+ * does not carry them). `replied` maps a slot id to those ids; a slot that is solved, or not in the view, adds nothing.
+ * Nothing is derived from any other source.
+ */
+export function hint1Marks(view: PlayView | null, replied: Readonly<Record<string, readonly string[]>>): ReadonlySet<string> {
+  const out = new Set(markedIds(view));
+  for (const s of view?.slots ?? []) if (s.state !== 'solved') for (const id of replied[s.slotId] ?? []) out.add(id);
+  return out;
+}
 /** The catalog key of a puzzle type label. */
 export const puzzleKey = (type: string): MessageKey => `puzzle.${type}` as MessageKey;
 

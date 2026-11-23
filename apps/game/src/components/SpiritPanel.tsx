@@ -1,5 +1,6 @@
 import type { CSSProperties, ReactNode } from 'react';
-import { mediaUrl } from '../lib/media.ts';
+import { useImageBase } from '@kiroween/skeleton/client';
+import { imageAttrs, mediaUrl } from '../lib/media.ts';
 import { useScenePaint } from './ScenePaint.tsx';
 import './fear.css';
 
@@ -9,12 +10,15 @@ export const PAPER_ASSET = 'shared-atlas-paper-01';
 /** `<legend-id>-game-spirit-01` is the full figure and `-02` the close one. */
 export const spiritAsset = (legendId: string, variant: 'full' | 'close'): string => `${legendId}-game-spirit-${variant === 'full' ? '01' : '02'}`;
 
+/** The figures show at most 9rem (144 CSS px) wide, so two width copies cover 1x to 2x. */
+const copies = (sizes: string) => ({ axis: 'w', steps: [200, 400], width: 1600, height: 2400, sizes }) as const;
 /** The full figure in the scene's corner. Decorative (no spirit prose, no names). */
 export function SpiritCorner({ legendId, mediaBase }: { legendId: string; mediaBase: string }) {
   const { firstSceneLoaded } = useScenePaint();
+  const imageBase = useImageBase();
   return (
     <div className="spirit-corner">
-      {firstSceneLoaded ? <img src={mediaUrl(mediaBase, spiritAsset(legendId, 'full'))} width={1600} height={2400} alt="" loading="lazy" decoding="async" /> : null}
+      {firstSceneLoaded ? <img {...imageAttrs(mediaBase, imageBase, spiritAsset(legendId, 'full'), copies('(min-width: 50rem) 9rem, 18vw'))} width={1600} height={2400} alt="" loading="lazy" decoding="async" /> : null}
     </div>
   );
 }
@@ -25,6 +29,7 @@ export function SpiritCorner({ legendId, mediaBase }: { legendId: string; mediaB
  */
 export function SpiritPanel({ legendId, mediaBase, children }: { legendId: string; mediaBase: string; children: ReactNode }) {
   const { firstSceneLoaded } = useScenePaint();
+  const imageBase = useImageBase();
   return (
     <section className="spirit-panel" style={firstSceneLoaded ? { backgroundImage: `url("${mediaUrl(mediaBase, SPIRIT_FRAME_ASSET)}")` } : undefined}>
       <div
@@ -32,7 +37,7 @@ export function SpiritPanel({ legendId, mediaBase, children }: { legendId: strin
         style={firstSceneLoaded ? ({ '--book-paper-image': `url("${mediaUrl(mediaBase, PAPER_ASSET)}")` } as CSSProperties) : undefined}
       >{children}</div>
       <div className="spirit-close">
-        {firstSceneLoaded ? <img src={mediaUrl(mediaBase, spiritAsset(legendId, 'close'))} width={1600} height={2400} alt="" loading="lazy" decoding="async" /> : null}
+        {firstSceneLoaded ? <img {...imageAttrs(mediaBase, imageBase, spiritAsset(legendId, 'close'), copies('9rem'))} width={1600} height={2400} alt="" loading="lazy" decoding="async" /> : null}
       </div>
     </section>
   );

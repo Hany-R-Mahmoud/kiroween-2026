@@ -7,7 +7,7 @@ import { AA_LARGE, AA_TEXT, contrastRatio, resolveTheme } from '../src/theme/con
 import { parsePalette, ThemeError } from '../src/theme/palette.ts';
 import { allLegends } from './helpers/legends.ts';
 import { PAPER_FLOOR } from '../src/book/bookColors.ts';
-import { DESIGN_LAND, landRule, loadSources, measure, readSource, resolve, scopesOf, stripComments, type Sources } from './helpers/uiContrast.ts';
+import { allDecls, DESIGN_LAND, landRule, loadSources, measure, readSource, resolve, scopesOf, stripComments, type Sources } from './helpers/uiContrast.ts';
 
 const sources = loadSources();
 const base = measure(sources);
@@ -90,6 +90,31 @@ describe('Property 1: Every colour pair in the matrix meets its minimum', () => 
   });
 });
 
+describe('fear meter text pair D22 (25.5)', () => {
+  const fear = stripComments(readSource('apps/game/src/components/fear.css'));
+  const theme = stripComments(readSource('apps/game/src/styles/theme.css'));
+  const body = (css: string, selector: string): string => {
+    for (const m of css.matchAll(/([^{}]+)\{([^{}]*)\}/g)) if (m[1]!.split(',').map((x) => x.trim()).includes(selector)) return m[2]!;
+    return '';
+  };
+  it('is measured: ink on the page, normal text (15 px, weight 400), needs 4.5:1', () => {
+    const d22 = base.measured.find((m) => m.id === 'D22');
+    expect(d22?.min).toBe(AA_TEXT);
+    expect(d22!.ratio).toBeGreaterThanOrEqual(AA_TEXT);
+  });
+  it('the CSS uses the measured colours and a size that is not large text', () => {
+    const text = body(fear, '.fear-meter-text');
+    expect(text).toMatch(/color:\s*var\(--color-ink\)/);
+    expect(text).toMatch(/font-size:\s*var\(--type-ui/);
+    expect(text).not.toMatch(/font-weight/); // normal weight: the 4.5:1 minimum applies
+    expect(allDecls(readSource('skeleton/src/design/tokens.css'))['--type-ui']).toBe('0.9375rem');
+    expect(body(theme, '.world-theme')).toMatch(/background-color:\s*var\(--color-bg\)/);
+  });
+  it('fails when the page colour is too close to the ink', () => {
+    const r = measure(mutate(sources, 'tokens', '--color-bg: #0e0b10', '--color-bg: #d8d0c0'));
+    expect(r.failures.some((f) => f.includes('dark D22'))).toBe(true);
+  });
+});
 describe('ui.css reads the variables the matrix measures', () => {
   const ui = stripComments(readSource('skeleton/src/design/ui.css'));
   /** declaration value of `prop` in the first rule whose selector is exactly `selector` */

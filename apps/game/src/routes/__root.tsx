@@ -1,5 +1,5 @@
 import { createRootRoute, HeadContent, Link, Outlet, Scripts, useRouter } from '@tanstack/react-router';
-import { BASE_PALETTE } from '@kiroween/skeleton/client';
+import { BASE_PALETTE, ImageBaseContext } from '@kiroween/skeleton/client';
 import { Mood } from '@kiroween/skeleton/mood';
 import { GameHeader } from '../components/GameHeader';
 import { signOut } from '../auth/client';
@@ -37,7 +37,7 @@ function NotFound() {
 }
 
 function RootComponent() {
-  const { lang, dir, name, mediaBase } = Route.useLoaderData();
+  const { lang, dir, name, mediaBase, imageBase } = Route.useLoaderData();
   const t = useT();
   const router = useRouter();
   return (
@@ -61,7 +61,9 @@ function RootComponent() {
           }}
         />
         <main id="main" className="mx-auto max-w-6xl p-4">
-          <Outlet />
+          <ImageBaseContext.Provider value={imageBase}>
+            <Outlet />
+          </ImageBaseContext.Provider>
         </main>
         <Scripts />
       </body>

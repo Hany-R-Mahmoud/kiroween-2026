@@ -41,7 +41,7 @@ async function main() {
       pend.set(i, (x) => (x.error ? rej(new Error(`${method}: ${x.error.message}`)) : res(x.result ?? {})));
       ws.send(JSON.stringify({ id: i, method, params, ...(sessionId ? { sessionId } : {}) }));
     });
-  const SIZES = { 390: [390, 844, true], 1280: [1280, 800, false] };
+  const SIZES = { 360: [360, 780, true], 390: [390, 844, true], 1280: [1280, 800, false] };
   async function page(w) {
     const { browserContextId } = await send('Target.createBrowserContext');
     const { targetId } = await send('Target.createTarget', { url: 'about:blank', browserContextId });
@@ -85,7 +85,7 @@ async function main() {
   const hydrated = (sel) => `(()=>{const e=document.querySelector(${JSON.stringify(sel)});return !!e&&Object.keys(e).some((k)=>k.startsWith('__reactFiber')||k.startsWith('__reactProps'))})()`;
   mkdirSync(SHOTS, { recursive: true });
   try {
-    for (const w of [390, 1280]) {
+    for (const w of [360, 390, 1280]) {
       const p = await page(w);
       // ---- home
       await p.go(`${BASE}/`);

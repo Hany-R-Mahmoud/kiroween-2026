@@ -1,3 +1,5 @@
+import { readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it, vi } from 'vitest';
@@ -50,6 +52,17 @@ describe('HintArea', () => {
     expect(html).toContain('aria-label="Open the chapter again (free), Puzzle 3: Weakness"');
     expect(html).not.toContain('Hint 2 (raises fear)');
     expect(count(html, /<button[^>]*>\s*Hint 1 \(free\)</g)).toBe(1);
+  });
+  it('the Hint 2 fallback link opens in a new tab with rel="noopener" and is a 44 px target (27.4)', () => {
+    const html = render({ hint2Href: 'http://atlas.test/legends/banshee#banshee--ch-2' });
+    const tag = /<a [^>]*data-hint2-link="true"[^>]*>/.exec(html)?.[0] ?? '';
+    expect(tag).toMatch(/\btarget="_blank"/);
+    expect(tag).toMatch(/\brel="noopener"/);
+    expect(tag).toMatch(/class="[^"]*\bscene-button\b/);
+    const css = readFileSync(fileURLToPath(new URL('../src/components/scene.css', import.meta.url)), 'utf8');
+    const rule = /\n\.scene-button \{([^}]*)\}/.exec(css)?.[1] ?? '';
+    expect(rule).toMatch(/min-block-size:\s*44px/);
+    expect(rule).toMatch(/min-inline-size:\s*44px/);
   });
   it('shows the Hint 1 text in a labelled sheet with a close button, and no sheet without text', () => {
     const html = render({ hint1Text: 'Look near the hearth.' });

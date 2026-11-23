@@ -135,6 +135,24 @@
     /* scrim: the painted pages behind the text are bright, so the copy sits on a near-opaque dark ground (AA at 390 and 1280) */
     background: color-mix(in oklab, var(--color-bg) 90%, transparent);
   }
+  /* below 40rem the hero stacks (F5): the painting first at 16/9 and fully visible, then the copy on the page background with no scrim */
+  @media (max-width: 39.999rem) {
+    .home-hero {
+      display: block;
+      min-block-size: 0;
+    }
+    .home-hero-frame {
+      position: static;
+      aspect-ratio: 16 / 9;
+    }
+    .home-hero-frame::after,
+    [dir='rtl'] .home-hero-frame::after {
+      content: none;
+    }
+    .home-hero-copy {
+      background: none;
+    }
+  }
   /* legend cards: one link target per card (stretched ::after), no underline, fixed image ratio */
   .legend-cards {
     display: grid;

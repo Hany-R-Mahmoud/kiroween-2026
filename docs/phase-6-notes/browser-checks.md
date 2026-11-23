@@ -206,3 +206,95 @@ Rebuilt with `pnpm -r build`; game on 3000 and atlas on 3001 via `node --env-fil
 | `.debug/phase-6/rm-rtl-check.mjs motion` (OS and in-app, glint on tutorial and Banshee, fear meter) | 46 pass, 0 fail; control with full motion sees 25 animated styles; reduced: 0 bad styles, getAnimations 0 |
 | Real high-fear caption (screens-check) | 390: caption 36,185-322,249 inside scene 16,169-374,459, no control or text hit, pointer-events none, opacity 1; 1280: caption 481,193-767,257 inside 80,177-1200,609, no hit; notebook starts at 1285 (390) and 1185 (1280), well below. 6 pass, 0 fail |
 Not checked: RTL, signed-in, a caption held with the notebook scrolled into view (see decisions).
+
+## Task 9.2: production guest checks (Requirement 37.1, 37.4; headless Chrome, 390x844 and 1280x800)
+Targets (from `docs/phase-5-handover.md`): atlas `https://trick-or-told.vercel.app/`, game `https://trick-or-told.vercel.app/game/` (rewrite to the `trick-or-true` project). Existing scripts were pointed at these with their `--base`/`--game`/`--atlas`/`--shots` arguments; `keys-check.mjs` was copied to `.debug/phase-6/prod-keys-check.mjs` with the two base URLs and the output dir changed. No local servers were started. Screenshots and JSON: `.debug/phase-6/prod-shots/` (52 files) and `.debug/phase-6/prod-keys/` (34 files).
+**What was done on production (guest only).** No sign-up, sign-in or credentials. Page loads, plus the scripts' normal guest play in a fresh browser context: tutorial Hint 1; Banshee world, taps on hotspots, Hint 1, Hint 2 (opens the atlas chapter), deliberate wrong answers to raise fear to a full meter (restart notice), a dead end and a win (correct answers) on Banshee. This is the same play the local `screens-check.mjs` does. The guest play token lives in browser localStorage; the server calls are the normal guest play-API calls of those screens. The keys-check also did guest play in the tutorial and Banshee. The Slow 4G Scene_Paint timing table (37.2/37.3) is not part of this task and was not run.
+**New UI is live.** Atlas header has "All legends" and `Play Trick or True` (`nav-play`, href `/game/`); home also has a `Play Trick or True` button; one map (12 `map-pin`, 12 `map-card`, one SVG outline); game h1 and title "Trick or True", header with "The atlas", Hall, Your progress, Sign in; Hall has "Start in the study" and legend links to `/legends/<id>`.
+| Check | Result |
+|---|---|
+| `apps/atlas/scripts/screens-check.mjs` (home, map, Banshee Book_View and Scroll_View, references 19 sources / 19 external links, contents link, anchor `#banshee--ch-2`) | 24 pass, 0 fail |
+| `apps/atlas/scripts/ui-check.mjs` contrast (Banshee, Naddaha, pages and scroll) | 8 pass, 0 fail |
+| `apps/game/scripts/ui-check.mjs` (Banshee puzzle options) | 8 pass, 0 fail |
+| `apps/game/scripts/header-check.mjs` | 10 pass, 0 fail |
+| `apps/game/scripts/screens-check.mjs --only hall,tutorial,world,fear` (Hall, tutorial, Hint 1, Banshee, Hint 2 to `banshee#banshee--ch-1`, fear meter, high-fear caption, full meter restart) | 22 pass, 0 fail, 0 skip |
+| `screens-check.mjs --only dead,win` (first attempt: Chrome start failure, DevToolsActivePort missing; second run) | 3 pass, 0 fail, 1 skip (1280 dead end not reached, the run reached the win first; same skip as local 8.F5; 390 dead end passes) |
+| `prod-keys-check.mjs all` (keyboard pass, atlas and game) | 258 pass, 0 fail (same as local 8.F5) |
+| Image URLs on atlas home, Banshee page and Hall (34 unique files, status and content type) | 34 ok, 0 bad |
+**Production matches local.** Contrast minima are identical: Book_View 5.84 (Banshee) and 6.05 (Naddaha), Scroll_View 4.73 and 4.82, game options 12.67:1 for text, ring and border. Keys-check 258/0 equals the local total.
+**Cross links both ways.** Atlas to game: header and home links to `/game/`. Game to atlas: header "The atlas", Hall legend links, and Hint 2 (the anchor page shows `banshee--ch-1`).
+**Not run.** Only the 1280 dead end (above). No production-only defect found. Totals: 333 pass, 0 fail, 1 skip.
+## Task 9.3: Slow 4G on production (https://trick-or-told.vercel.app, guest, read-only page loads)
+Profile: 1.6 Mbps down, 750 kbps up, 150 ms RTT, CPU 4x, cache off, 390 px, headless Chrome, a fresh browser context per run (cold cache, no cookies), three runs, median, 15 s wait per run. Script `.debug/phase-6/prod-timing.mjs` (same LCP, FCP, loadEventEnd and summed encodedBodySize as `shoot.mjs timing`, plus the scene-paint probe of `apps/game/scripts/browser-check.mjs`); numbers `.debug/phase-6/prod-timing-9.3.json`. Only GET page loads: no taps, no answers, no sign-in or sign-up, no writes. Banshee scene 1 was loaded as the world route `/game/world/banshee` exactly as a guest visitor does (the route renders the world's first scene; no tap was made). The machine was under heavy load (load average 74), the same kind of condition as Phase 5 run 2.
+| Page | LCP ms (3 runs) | FCP ms | load end ms | bytes (encodedBodySize) | scene paint ms |
+|---|---|---|---|---|---|
+| Atlas home | 5580, 16900, 3836 | 1348 | 5519 | 941385 | n/a |
+| Game Hall | 3672, 3668, 3700 | 1072 | 3601 | 588225 | 3664 |
+| Game tutorial | 3820, 3604, 3688 | 1076 | 3554 | 619276 | 3652 |
+| Banshee scene 1 | 4644, 4584, 4532 | 1204 | 4497 | 1549525 | 4594 |
+Medians are the middle value of each column. Atlas run 2 is a stall (FCP 13052 ms, load 16927 ms) caused by the loaded machine; the median ignores it.
+Comparison (Phase 5 numbers: `docs/phase-5-handover.md` section 9; game metric is scene paint, median of 3; atlas home metric is LCP):
+| Page | Phase 5 (4.7, run 1) | Phase 5 (10.7, run 2, loaded machine) | Now | Change vs run 1 | Change vs run 2 | Verdict |
+|---|---|---|---|---|---|---|
+| Atlas home (before = local build, task 1.1; now = production) | 6128 (local, not Phase 5) | n/a | 5580 production (local after, 3.7: 5360) | -8.9% | n/a | Local before vs production after, NOT like for like. Gate not confirmed (see note) |
+| Game Hall | 3714 | 4025 | 3664 | -1.3% | -9.0% | PASS |
+| Game tutorial | 3535 | 3969 | 3652 | +3.3% | -8.0% | PASS against run 2; +3.3% against run 1 |
+| Banshee scene 1 | 4521 | 4848 | 4594 | +1.6% | -5.2% | PASS against run 2; +1.6% against run 1 |
+Atlas home gate note (Req 15.12, limit 6741 ms): the 6128 ms "before" is from a local production build (task 1.1, three runs, local server); the 5580 ms "after" is from the Vercel production site, measured here. Different servers, network path and caching, and the production median comes from a run set with one stall (3836, 5580, 16900; the machine was under heavy load). `docs/phase-5-handover.md` section 9 has game scene-paint figures only and no atlas home figure, so no production before exists to compare against. The like-for-like pair is local before 6128 vs local after 5360 (task 3.7, -12.5%, gate met). The production number (5580) is below the limit but is not a valid before/after comparison, and it is higher than the local after (5360). Follow-up if the Owner wants a production gate: measure the atlas home at the last Phase 5 production commit (a Vercel preview deployment of that commit, same profile and script `prod-timing.mjs`, three runs on a quiet machine) and compare with the current production median.
+Findings:
+- The 3.0 s budget is still missed by all three game screens, as in Phase 5. Cause is unchanged: the scene image (Banshee scene 1 is 430910 bytes) arrives about 3.5 to 4.6 s in. Smallest fix is outside Kiro: phone-width scene copies under new asset ids (listed in `content-and-assets-needed.md`).
+- Tutorial (+3.3%) and Banshee (+1.6%) are above Phase 5 run 1 by an amount inside the run-to-run spread of that table (run 1 to run 2 differs by 8 to 12%) and the three runs of each are within 3% of each other, so no regression is claimed. Hall, tutorial and Banshee scene paint are not worse than run 2, measured under the same kind of load.
+- Banshee transfer: 1549525 bytes of resource body now against 1250 KB total in 4.7. Extra weight is the six hotspot sprites (43 to 115 KB each) and the spirit figure (168 KB), which load after the scene paint (deferral from Phase 5), so paint is not delayed by them. If the Owner wants a smaller total: lower the sprite sizes (assets, not changed here).
+- No source, content or asset file was edited.
+
+## Re-run after F5 to F8 (task 10.F9)
+Built atlas on :3001 and game on :3000 (`node --env-file=.env`, both stopped after). Screenshots and logs only in `.debug/phase-6/f9/`. The 360 px width was added to `screens-check.mjs` (atlas and game) and to the `SIZES` table of `.debug/phase-6/keys-check.mjs`; the game `header-check.mjs` still runs at 390 and 1280 only (its header is the menu button layout; no wrap issue reported at 360).
+| Check | Widths | Result |
+|---|---|---|
+| `apps/atlas/scripts/screens-check.mjs` | 360, 390, 1280 | 36 pass, 0 fail (12 at 360) |
+| `apps/game/scripts/screens-check.mjs` | 360, 390, 1280 | 39 pass, 0 fail, 0 skip (13 at 360) |
+| `apps/atlas/scripts/header-check.mjs` | 360, 375, 390, 1280 | 24 pass, 0 fail; header 61 px at 360, one row, targets 44 px, label-in-name, Tab order logo, legends, game |
+| `apps/game/scripts/header-check.mjs` | 390, 1280 | 10 pass, 0 fail |
+| `apps/game/scripts/ui-check.mjs` | 390, 1280 | 8 pass, 0 fail (option contrast 12.67) |
+| `apps/atlas/scripts/ui-check.mjs` | 390, 1280 | 8 pass, 0 fail |
+| `keys-check.mjs atlas` (keyboard pass) | 360, 390, 1280 | 141 pass, 0 fail. Atlas home at 360: all 32 focusable controls are Tab stops, every stop has a ring of 2 px or more with 3:1 contrast, none hidden, order follows the page, no trap. This includes the short "Play" header link; its accessible name is the full label (header-check "label-in-name" and "Tab order"). |
+Fixes needed: none.
+
+## Task 10.F11: ImageKit CDN, local builds, guest
+Atlas and game rebuilt. CDN off: atlas 3001, game 3000. CDN on: atlas 3011, game 3010, with `IMAGE_CDN_URL=https://ik.imagekit.io/hrim` on the command line (`.env` not read; `ATLAS_ORIGIN=http://localhost:3001` also passed to both game servers so local sprites load). Scripts `.debug/phase-6/f11-check.mjs` (numbers `f11-check.json`, shots `f11-{off,on}-<page>-<width>.png`) and `f11-timing.mjs` (`f11-timing.json`). 390 px runs use DPR 2, 1280 px runs DPR 1. Fresh browser context per run, cache on. Servers stopped after.
+Result: 0 broken images and 0 failed requests on atlas home, Banshee legend page (also after forcing every lazy image to load), Hall, tutorial and Banshee world, at 390 and 1280. 0 images downloaded twice. Every `ik.imagekit.io` URL has `tr=w-N` or `tr=h-N` (13 on atlas home, 8 on the legend page, 1 to 2 on game pages). Markers, the paper texture, hotspot sprites and the fear frame stay on `/media/`.
+Bytes of images in the first view (KB, requests):
+| Screen | 390 off | 390 on | 1280 off | 1280 on |
+|---|---|---|---|---|
+| Atlas home | 1630 (26) | 1242 (26) | 1630 (26) | 727 (26) |
+| Banshee legend page | 138 (2) | 115 (2) | 544 (3) | 235 (3) |
+| Banshee legend page, all images loaded | 1656 (9) | 590 (9) | 1854 (9) | 646 (9) |
+| Hall | 310 (1) | 159 (1) | 310 (1) | 97 (1) |
+| Tutorial | 336 (2) | 191 (2) | 336 (2) | 131 (2) |
+| Banshee scene 1 screen | 1182 (9) | 830 (9) | 1182 (9) | 746 (9) |
+Scene file picked: Banshee scene 1 431134 B (off) to `h-900` 231262 B at 390/DPR 2 and `h-600` 144958 B at 1280/DPR 1. Target 250 KB: met at both. Hall `h-900` 162887 B and `h-600` 99312 B; tutorial 159852 B and 98383 B.
+Local Slow 4G (1.6 Mbps down, 750 kbps up, 150 ms RTT, CPU 4x, cache off, 390 px DPR 1, fresh context, 12 s wait, median of three; game metric is scene paint, atlas home is LCP). The machine was loaded (load average about 9), so absolute values are higher than in 3.7 and 9.3; compare only the pair. The CDN copies had been requested before (ImageKit cache warm).
+| Page | CDN off ms (3 runs) | median off | CDN on ms (3 runs) | median on | change |
+|---|---|---|---|---|---|
+| Hall (paint) | 7679, 8423, 7061 | 7679 | 5283, 5238, 5246 | 5246 | -31.7% |
+| Tutorial (paint) | 5405, 5307, 5285 | 5307 | 3195, 3238, 3447 | 3238 | -39.0% |
+| Banshee scene 1 (paint) | 8457, 7131, 6979 | 7131 | 5876, 4677, 4672 | 4677 | -34.4% |
+| Atlas home (LCP) | 6144, 5620, 5252 | 5620 | 3044, 2388, 2252 | 2388 | -57.5% |
+Resource bytes (encodedBodySize, median): Hall 614840 to 713740, tutorial 625736 to 723706, Banshee 703948 to 856126, atlas home 1309355 to 1053463. The three game screens rise because the local server run (cache off) also counts the CDN's own responses; the scene file itself is smaller (see above). The 3.0 s budget is still missed by Hall and Banshee scene 1 on this loaded machine; tutorial (3238) and atlas home (2388) are near or under it. A second attempt was not run: the remaining time is JavaScript, fonts and first-connection cost to a second origin, not image size.
+
+## Re-run "After F5 to F8" with F9 in place (task 10.F12)
+Built atlas and game (`pnpm -r build`, pass). Each app ran on :3001 (atlas) and :3000 (game) with `node --env-file=.env`, once with `IMAGE_CDN_URL` unset and once with `IMAGE_CDN_URL=https://ik.imagekit.io/hrim` on the command line (`.env` not opened). Servers stopped after. Logs and screenshots only in `.debug/phase-6/f12/` (git-ignored).
+| Check | Widths | CDN off | CDN on |
+|---|---|---|---|
+| atlas `screens-check.mjs` | 360, 390, 1280 | 36 pass, 0 fail | 36 pass, 0 fail |
+| game `screens-check.mjs` | 360, 390, 1280 | 38 pass, 0 fail, 1 skip (1280 dead end), re-run of `--only dead` 3 pass | 37 pass, 0 fail, 2 skip (dead end at 360 and 1280); `--only dead` re-run twice: 2 pass, 1 skip (360) |
+| atlas `header-check.mjs` | 360, 375, 390, 1280 | 24 pass, 0 fail | 24 pass, 0 fail |
+| game `header-check.mjs` | 390, 1280 | 10 pass, 0 fail | 10 pass, 0 fail |
+| atlas `ui-check.mjs` | 390, 1280 | 8 pass, 0 fail | 8 pass, 0 fail |
+| game `ui-check.mjs` | 390, 1280 | 8 pass, 0 fail | 8 pass, 0 fail |
+| `keys-check.mjs atlas` (header keyboard pass) | 360, 390, 1280 | 141 pass, 0 fail | 141 pass, 0 fail |
+Totals: 0 fail in either mode. The "dead end not reached" skips are seed-dependent (the guest's random seed lets the script follow the true lead first and win; the same screen passes at the other widths and in other runs); this is the known behaviour from 8.F5, not a failure.
+Images and CSP (CDN on, `.debug/phase-6/f12/csp-check.mjs`; 6 pages x 360/390/1280 = 18 loads: atlas home, Banshee legend, Flying Dutchman legend, Hall, tutorial, Banshee world, every `img[loading=lazy]` forced eager): 0 broken images, 0 failed image requests, 0 CSP violation events or console CSP messages. Image hosts seen: `ik.imagekit.io` and the local origins only (in production the local origins are `'self'`). Page HTML carries 21 `src="https://ik.imagekit.io` URLs on the Banshee legend page; built CSS has no external URL (only a `tailwindcss.com` comment).
+The local servers send no production CSP, and injecting it with the CDP Fetch domain did not take effect (a probe image to a blocked host was not blocked), so enforcement was not shown by a browser. The fallback check: the CSP string in `skeleton/src/deploy/vercelRules.ts` is `img-src 'self' data: https://ik.imagekit.io`, which covers every image host found above (`'self'`, `ik.imagekit.io`); `data:` covers inline images; fonts are `'self'`. The game page loads hotspot sprites from the local atlas origin :3001 in this local setup (`ATLAS_ORIGIN`/media base), which is `'self'` on the shared production domain.
+Incident: during the CDN-on run the atlas server process exited once on a Neon connection error (network timeout to the database; unhandled in the local `serve-build.mjs` process, not a code change). It was restarted with the same command and the image/CSP pass was run on the restarted server. The screens, header, ui and keys runs had all passed before that.
+Fixes needed: none.

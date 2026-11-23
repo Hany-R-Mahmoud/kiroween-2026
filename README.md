@@ -52,6 +52,8 @@ Every phase was planned as a Kiro spec (requirements, design, tasks), run task b
 
 Legend research drafts and visual assets were prepared with AI tools outside Kiro and imported and validated through Kiro hooks. All code, specs, steering and tests were built in Kiro IDE.
 
+Images are delivered through ImageKit (free plan) from our own originals; no image is added or changed there, and the apps fall back to their own `/media/` files when `IMAGE_CDN_URL` is unset.
+
 ## Credits
 
 - Fonts: all served from the app through `@fontsource` packages, licensed under the SIL Open Font License 1.1 (OFL-1.1).

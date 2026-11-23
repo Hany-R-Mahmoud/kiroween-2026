@@ -116,6 +116,17 @@ describe('atlas home', async () => {
       expect(rule).toMatch(/background:\s*color-mix\([^)]*var\(--color-bg\)\s+(8\d|9\d)%/);
     });
 
+    it('stacks below 40rem: image at 16/9 first, copy on the page background with no scrim (F5)', () => {
+      const block = /@media \(max-width:\s*39\.999rem\)\s*\{([\s\S]*?\n {2}\})/.exec(css)?.[1] ?? '';
+      const rule = (sel: string) => new RegExp(`${sel.replace(/[.[\]()]/g, '\\$&')}\\s*\\{([^}]*)\\}`).exec(block)?.[1] ?? '';
+      expect(rule('.home-hero')).toMatch(/display:\s*block/);
+      expect(rule('.home-hero')).toMatch(/min-block-size:\s*0/);
+      expect(rule('.home-hero-frame')).toMatch(/position:\s*static/);
+      expect(rule('.home-hero-frame')).toMatch(/aspect-ratio:\s*16\s*\/\s*9/);
+      expect(block).toMatch(/\.home-hero-frame::after[^{]*\{[^}]*content:\s*none/);
+      expect(rule('.home-hero-copy')).toMatch(/background:\s*none/);
+      expect(html.indexOf('home-hero-frame')).toBeLessThan(html.indexOf('home-hero-copy'));
+    });
     it('the checks fail when the hero loses its primary action or the game link', () => {
       const noPrimary = hero.replace('btn-primary', 'btn-ghost');
       expect(tags(noPrimary, 'a').filter((a) => classes(a).includes('btn-primary'))).toHaveLength(0);

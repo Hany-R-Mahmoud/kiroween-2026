@@ -11,6 +11,8 @@ export { atlasUrl, AtlasLinkError, ANCHOR_RE, isAnchor, isLegendId, legendUrl } 
 export { storyBlocks, inlineMarks, stripMarks, type StoryBlock, type StoryToken } from './atlas/story.ts';
 export { atlasLegendFromModel, atlasLegendFromRows, markerOf, SHARED_ATLAS_IMAGES, type AtlasSummary, type AtlasChapter, type AtlasImage, type AtlasLegend, type AtlasRows, type AtlasSource, type AtlasVersion } from './atlas/view.ts';
 export { AssetIdError, assetUrl, MEDIA_PREFIX, parseAssetSize } from './assets/assetUrl.ts';
+export { ImageBaseContext, useImageBase } from './assets/imageBaseContext.ts';
+export { imageUrl, parseImageBase, responsiveImage, type ImageAxis, type ResponsiveImage } from './assets/imageCdn.ts';
 export { HERO_SMALL_MEDIA, HERO_SMALL_WIDTH, hasHeroCopy, heroSmall, heroSmallId, heroSmallSize, heroSource } from './assets/heroCopy.ts';
 export { fontStack, KNOWN_FONTS, parsePalette, ThemeError, themeFonts, type FontFamily, type Palette } from './theme/palette.ts';
 export { FEAR } from './play/fear.ts';

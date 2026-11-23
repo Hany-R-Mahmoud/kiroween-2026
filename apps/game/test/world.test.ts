@@ -3,10 +3,12 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import fc from 'fast-check';
 import type { PlayView } from '@kiroween/skeleton/client';
 import { describe, expect, it, vi } from 'vitest';
+import { Hotspot } from '../src/components/Hotspot.tsx';
 import { en } from '../src/i18n/en.ts';
 import { translate } from '../src/i18n/t.ts';
 import { fearEventsOf, worldLayout } from '../src/layout/index.ts';
-import { atlasHref, chooseFearEvent, markedIds, reducedLineOf, triggerOf } from '../src/lib/world.ts';
+import { readFileSync } from 'node:fs';
+import { atlasHref, chooseFearEvent, hint1Marks, markedIds, reducedLineOf, triggerOf } from '../src/lib/world.ts';
 
 vi.mock('../src/i18n/useT.ts', () => ({
   useT: () => (key: keyof typeof en, vars?: Record<string, string | number>) => translate('en', key, vars),
@@ -130,6 +132,28 @@ describe('World start failure', () => {
   });
 });
 
+describe('Hint 1 marks from the reply (F7)', () => {
+  const noHint: PlayView = { ...baseView, slots: baseView.slots.map((x) => ({ ...x, hint1: undefined })) };
+  const open = noHint.slots.find((x) => x.state === 'open')!.slotId;
+  it('marks nothing without a reply, marks the replied ids while open, and nothing once the slot is solved', () => {
+    expect(hint1Marks(noHint, {}).size).toBe(0);
+    expect([...hint1Marks(noHint, { [open]: ['hs-cat'] })]).toEqual(['hs-cat']);
+    const solved: PlayView = { ...noHint, slots: noHint.slots.map((x) => (x.slotId === open ? { ...x, state: 'solved' as const } : x)) };
+    expect(hint1Marks(solved, { [open]: ['hs-cat'] }).size).toBe(0);
+    expect(hint1Marks(noHint, { 'other-slot': ['hs-cat'] }).size).toBe(0);
+    expect(hint1Marks(null, { [open]: ['hs-cat'] }).size).toBe(0);
+  });
+  it('the replied id renders a marked hotspot', () => {
+    const html = renderToStaticMarkup(createElement(Hotspot, { box: { id: 'hs-cat', x: 0, y: 0, w: 60, h: 60 }, label: 'A cat', marked: hint1Marks(noHint, { [open]: ['hs-cat'] }).has('hs-cat'), markedText: 'Hint: look here', scale: 1, onActivate: () => {} }));
+    expect(html).toContain('data-marked="true"');
+  });
+  it('WorldPlay keeps the reply highlight per slot and feeds it to the hotspots', () => {
+    const src = readFileSync(new URL('../src/components/WorldPlay.tsx', import.meta.url), 'utf8');
+    expect(src).toContain('setHint1Highlights((prev) => ({ ...prev, [asked]: highlight }))');
+    expect(src).toContain('hint1Marks(view, hint1Highlights)');
+    expect(src).toContain('marked: marked.has(h.id)');
+  });
+});
 describe('World pure rules', () => {
   it('marks only the highlights of unsolved slots', () => {
     const view: PlayView = { ...baseView, slots: [baseView.slots[0]!, { ...baseView.slots[1]!, state: 'solved', hint1: { text: 'x', highlight: ['hs-cat'] } }] };

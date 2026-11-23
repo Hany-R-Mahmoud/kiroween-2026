@@ -425,47 +425,85 @@ Language: TypeScript (strict), CSS, Vitest, fast-check. The design uses TypeScri
     - Task 9.1 (the stop) runs only after this task.
     - _Requirements: 34.1, 34.2_
 
-- [ ] 9. Group 9: Owner push, then production checks (guest only)
+- [x] 9. Group 9: Owner push, then production checks (guest only)
   - Skills: `agent-tester`, `agent-guard`, `verify-and-stop`.
-  - [ ] 9.1 STOP for the Owner's push
+  - [x] 9.1 STOP for the Owner's push
     - Depends on 8.F6 (and so on 8.F1 to 8.F5 and 8.8). Precondition: groups 6, 7 (P3 only if time remains) and 8, including 8.F1 to 8.F6, are finished locally, so one push carries everything. If any is unfinished, go back to it first.
     - Read `owner-feedback.md` and handle open items first. Write a short status listing what is ready to push, the blocked tasks (if any) and the P3 items skipped. Stop and wait until the Owner reports the push. Do not push, commit or touch git state. This is one of the two stops in the run.
     - _Requirements: 9.5, 37.1, 42.1_
 
-  - [~] 9.2 Production guest checks
+  - [x] 9.2 Production guest checks
     - After the Owner reports the push, run the Req 36.2 screens on production as a guest only: no sign-up, no sign-in, no writes. Record in `docs/phase-6-notes/production-checks.md`.
     - _Requirements: 37.1, 37.4, 9.2, 9.3_
 
-  - [~] 9.3 Slow 4G timings on production
+  - [x] 9.3 Slow 4G timings on production
     - Measure Scene_Paint on Slow 4G (1.6 Mbps down, 750 kbps up, 150 ms RTT, 4x CPU, cache off, 390 px, median of three) for the Hall, the tutorial and Banshee scene 1, and the atlas home before/after rows. Compare with Phase 5 production run 1 (3714 ms, 3535 ms, 4521 ms). For each timing worse than Phase 5, record the cause and a fix attempt.
     - _Requirements: 37.2, 37.3, 15.12_
 
-  - [~] 9.4 Guard pass for group 9
+  - [x] 9.4 Guard pass for group 9
     - Run `agent-guard` over the production notes and any fix made.
     - _Requirements: 34.1_
 
-  - [~] 9.5 Checkpoint - `pnpm -r test` green
+  - [x] 9.5 Checkpoint - `pnpm -r test` green
     - Run `pnpm -r test` and typecheck once more if any fix was made. Ensure all tests pass; on a failure apply the blocked-task rule and do not ask the user. Then read `docs/phase-6-notes/owner-feedback.md` and handle open items as described in the working rules, and update `progress.md`.
     - _Requirements: 34.1, 34.2_
 
-- [ ] 10. Group 10: Kiro usage, final check, handover
+- [x] 10. Group 10: Kiro usage, final check, handover
   - Skills: `agent-guard`, `verify-and-stop`, `agent-docs`.
-  - [~] 10.1 Write the Phase 6 entry in `docs/kiro-usage.md`
+  - [x] 10.1 Write the Phase 6 entry in `docs/kiro-usage.md`
     - Name this spec, the steering files used, the hooks run, the sub-agents used and what each found, and the skills used with one finding per skill (impeccable, read-the-damn-docs, ponytail, agent-tester, agent-guard, verify-and-stop).
     - _Requirements: 39.1, 39.2_
 
-  - [~] 10.2 Guard pass over the docs
+  - [x] 10.2 Guard pass over the docs
     - Run `agent-guard` (docs accuracy) over `docs/kiro-usage.md` and `docs/phase-6-notes/`.
     - _Requirements: 34.1_
 
-  - [~] 10.3 Final check with verify-and-stop
+  - [x] 10.3 Final check with verify-and-stop
     - Use `verify-and-stop` to prove acceptance without expanding scope: `pnpm -r test`, typecheck, secret scan, read-only git diff against Req 1, 2, 3 and 8, mutation file complete, screenshots present, records present (including a Needs_File that exists). Fix only failures; record anything blocked.
     - _Requirements: 34.1, 34.2, 34.3, 41.2_
 
-  - [~] 10.4 Write `docs/phase-6-handover.md` and stop
+  - [x] 10.4 Write `docs/phase-6-handover.md` and stop
     - Contents: status of items 1 to 22 (done, partly, blocked) with the test or check that proves each; status of each P3 item (not done items listed); the conflicts and their resolution; new catalog keys with English text (the table in the design plus any added); new tokens and classes; `pnpm -r test` counts; mutation summary; browser and production results; the Slow 4G table against Phase 5; Needs_File items; each blocked task with failing test, two attempts and error; steps the Owner must take before submission. No secret.
     - Then stop. Do not commit or push. This is the last of the two stops in the run.
     - _Requirements: 40.1, 40.2, 40.3, 40.4, 9.1, 9.5_
+
+  - [x] 10.F5 Atlas home hero stacks on narrow screens (Owner feedback F5)
+    - Depends on 10.4. From `docs/phase-6-notes/owner-feedback.md` item F5: below 40rem the atlas home hero stacks, with the image first at 16/9 fully visible and the copy below it on the page background with no scrim. The 1280 layout stays unchanged. No change to the image source or size.
+    - _Requirements: 15_
+
+  - [x] 10.F6 Atlas header on one row at 360 px (Owner feedback F6)
+    - Depends on 10.F5. From `docs/phase-6-notes/owner-feedback.md` item F6: the atlas header fits one row at 360 px and up. Below 40rem use a shorter visible label from a catalog key with the full accessible name kept, or tighter gaps. Add 360 px to the header browser check.
+    - _Requirements: 11, 22_
+
+  - [x] 10.F7 Hint 1 hotspot marks (Owner feedback F7)
+    - Depends on 10.F6. From `docs/phase-6-notes/owner-feedback.md` item F7: client state only. Store the highlight from the hint1 reply per slot beside `hint1Texts` in `WorldPlay` and add it to the marked set until the slot is solved. No change to the engine, views, tokens or play rules.
+    - Test with a highlight that asserts the marked render, run a mutation check, and confirm in the browser on Banshee Puzzle 1.
+    - _Requirements: 26_
+
+  - [x] 10.F8 Close test gaps (Owner feedback F8)
+    - Depends on 10.F7. Add tests for the fear meter text contrast pair, the `.btn` 44 px minimum height, the 2 px current-item marker, and the Hint 2 fallback link (44 px and `rel="noopener"`). Each test must fail when the thing it guards is broken.
+    - _Requirements: 25.5, 10.3, 11.5, 27.4_
+
+  - [x] 10.F9 Re-run screen checks and checkpoint
+    - Depends on 10.F8. Re-run the atlas and game screen checks at 360, 390 and 1280 px, and do a keyboard pass on the atlas header. Then run checkpoint 9.5: tests, typecheck and secret scan. Ensure all tests pass, ask the user if questions arise.
+    - _Requirements: 11, 15, 22, 26, 34.1_
+
+  - [x] 10.F11 Serve images through the ImageKit CDN with sized copies (Owner feedback F9)
+    - Depends on 10.F9. Follow F9 steps 1 to 8 and its Checks in `docs/phase-6-notes/owner-feedback.md` exactly.
+    - The owner approves the single CSP `img-src` change in `skeleton/src/deploy/vercelRules.ts` and its test. No other rule change.
+    - `IMAGE_CDN_URL` is read server-side only. When unset, image URLs are today's URLs byte for byte.
+    - No image files are added or changed. No API key. No AVIF. Never read `.env`; pass `IMAGE_CDN_URL` on the command line.
+    - Numbering note: the feedback file says F9 is "done in task 10.F9", but 10.F9 is the re-run task. Mark F9 "done in task 10.F11" and record the numbering in `docs/phase-6-notes/decisions.md`.
+    - _Requirements: 11, 15, 22, 26, 34.1_
+
+  - [x] 10.F12 Re-run the "After F5 to F8" checks with F9 in place
+    - Depends on 10.F11. Re-run the atlas and game screen checks at 360, 390 and 1280 px, with the CDN off and on. Do a keyboard pass on the atlas header.
+    - Then run checkpoint 9.5: full tests, typecheck, builds, secret scan, and a protected-file diff that allows only the approved CSP change. Ensure all tests pass, ask the user if questions arise.
+    - _Requirements: 11, 15, 22, 26, 34.1_
+
+  - [x] 10.F10 Update handover and verification notes, then stop
+    - Depends on 10.F12. Update `docs/phase-6-handover.md` and `docs/phase-6-notes/verification.md` with F5 to F8. Then stop with the tree ready to push. Do not commit or push.
+    - _Requirements: 40.1, 40.2, 9.5_
 
 ## Notes
 
@@ -566,7 +604,15 @@ Language: TypeScript (strict), CSS, Vitest, fast-check. The design uses TypeScri
     { "id": 79, "tasks": ["10.1"] },
     { "id": 80, "tasks": ["10.2"] },
     { "id": 81, "tasks": ["10.3"] },
-    { "id": 82, "tasks": ["10.4"] }
+    { "id": 82, "tasks": ["10.4"] },
+    { "id": 83, "tasks": ["10.F5"] },
+    { "id": 84, "tasks": ["10.F6"] },
+    { "id": 85, "tasks": ["10.F7"] },
+    { "id": 86, "tasks": ["10.F8"] },
+    { "id": 87, "tasks": ["10.F9"] },
+    { "id": 88, "tasks": ["10.F11"] },
+    { "id": 89, "tasks": ["10.F12"] },
+    { "id": 90, "tasks": ["10.F10"] }
   ]
 }
 ```

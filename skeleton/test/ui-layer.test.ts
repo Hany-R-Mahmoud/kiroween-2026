@@ -132,3 +132,17 @@ describe('one focus ring (10.2, 10.6)', () => {
     expect(/focus-visible:outline-/.test('class="focus-visible:outline-2"')).toBe(true);
   });
 });
+describe('44 px targets and the current-item marker (10.3, 11.5)', () => {
+  const rules = rulesOf(ui);
+  const bodyOf = (selector: string): string => rules.find((r) => r.selector === selector)?.body ?? '';
+  it('--target is 2.75rem (44 px at the 16 px root)', () => {
+    const tokens = stripComments(read(join(ROOT, 'skeleton/src/design/tokens.css')));
+    expect(tokens).toMatch(/--target:\s*2\.75rem\s*;/);
+  });
+  it('.btn has a block-size minimum of the 44 px target (10.3)', () => {
+    expect(bodyOf('.btn')).toMatch(/min-block-size:\s*var\(--target\)\s*;/);
+  });
+  it('.nav-item[aria-current="page"] draws a 2 px bar in the accent colour (11.5)', () => {
+    expect(bodyOf(".nav-item[aria-current='page']")).toMatch(/box-shadow:\s*inset 0 -2px 0 var\(--color-accent\)\s*;/);
+  });
+});

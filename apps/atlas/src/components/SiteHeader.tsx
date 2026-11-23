@@ -12,8 +12,10 @@ export function SiteHeader({ t }: { t: Translate }) {
         <Link to="/" hash="legends" activeOptions={{ exact: true, includeHash: true }} className="nav-item px-2 min-[40rem]:px-3 inline-flex min-h-11 items-center">
           {t('nav.home')}
         </Link>
-        <a href="/game/" className="nav-item nav-play px-2 min-[40rem]:px-3 inline-flex min-h-11 items-center">
-          {t('nav.play')}
+        {/* Short visible label on phones so the header stays on one row; the full name is the accessible name (label-in-name). */}
+        <a href="/game/" aria-label={t('nav.play')} className="nav-item nav-play px-2 min-[40rem]:px-3 inline-flex min-h-11 items-center">
+          <span className="min-[40rem]:hidden">{t('nav.playShort')}</span>
+          <span className="hidden min-[40rem]:inline">{t('nav.play')}</span>
         </a>
       </nav>
     </header>

@@ -21,7 +21,7 @@ import { createServerFn } from '@tanstack/react-start';
 import { getRequest, setResponseStatus } from '@tanstack/react-start/server';
 import { legendUrl, resolveLocale, resolveTheme } from '@kiroween/skeleton/client';
 import { database, getCatalogue, getPlayStore, playDeps, runDeps, tutorialDeps } from './db';
-import { getEnv } from './env';
+import { getEnv, imageBase } from './env';
 import { authMiddleware, requireUser, tutorialRateLimit } from './middleware';
 
 /**
@@ -59,7 +59,7 @@ export const getShell = createServerFn({ method: 'GET' })
       const cookie = /(?:^|;\s*)lang=(\w+)/.exec(headers.get('cookie') ?? '')?.[1] ?? null;
       const { lang, dir } = resolveLocale(getEnv().arabicEnabled, cookie, headers.get('accept-language'));
       // The browser never reads the variable name: images come from `mediaBase + assetUrl(id)`.
-      return { lang, dir, name: context.visitor.kind === 'user' ? context.visitor.name : null, mediaBase: getEnv().atlasOrigin };
+      return { lang, dir, name: context.visitor.kind === 'user' ? context.visitor.name : null, mediaBase: getEnv().atlasOrigin, imageBase: imageBase() };
     }),
   );
 

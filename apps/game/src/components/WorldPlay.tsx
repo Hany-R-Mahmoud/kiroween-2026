@@ -3,7 +3,7 @@ import { stripMarks, type PlayView, type Reply, type SlotView } from '@kiroween/
 import { useT } from '../i18n/useT';
 import type { WorldLayout } from '../layout/types.ts';
 import { mediaUrl } from '../lib/media.ts';
-import { activeSlot, atlasHref, hotspotsOfScene, isHintable, needsLead, puzzleKey, replyLine, type WorldInfoHotspot, type WorldInfoScene } from '../lib/world.ts';
+import { activeSlot, atlasHref, hint1Marks, hotspotsOfScene, isHintable, needsLead, puzzleKey, replyLine, type WorldInfoHotspot, type WorldInfoScene } from '../lib/world.ts';
 import { FearMeter } from './FearMeter';
 import { HintArea } from './HintArea';
 import { Marked } from './Marked';
@@ -80,14 +80,18 @@ export function WorldPlay(p: WorldPlayProps) {
   const origin = p.mediaBase;
   // The server sends Hint 1 text in the reply, not in the view, so the screen keeps it per puzzle for the sheet.
   const [hint1Texts, setHint1Texts] = useState<Record<string, string>>({});
+  // The reply's `highlight` ids are kept the same way and mark hotspots until the puzzle is solved (F7). Only server ids.
+  const [hint1Highlights, setHint1Highlights] = useState<Record<string, string[]>>({});
   const hint1Asked = useRef<string | null>(null);
   useEffect(() => {
     const asked = hint1Asked.current;
     if (p.reply?.kind !== 'hint1' || !asked) return;
-    const text = p.reply.text;
+    const { text, highlight } = p.reply;
     hint1Asked.current = null;
     setHint1Texts((prev) => ({ ...prev, [asked]: text }));
+    setHint1Highlights((prev) => ({ ...prev, [asked]: highlight }));
   }, [p.reply]);
+  const marked = hint1Marks(view, hint1Highlights);
   const step = (delta: -1 | 1) => {
     const next = p.sceneIndex + delta;
     if (next >= 0 && next < p.scenes.length) p.onScene(next);
@@ -109,7 +113,7 @@ export function WorldPlay(p: WorldPlayProps) {
             name={stripMarks(scene.name)}
             alt={stripMarks(scene.alt)}
             mediaBase={p.mediaBase}
-            hotspots={hotspotsOfScene(p.hotspots, scene.id).map((h) => ({ id: h.id, label: stripMarks(h.name), marked: p.marked.has(h.id) }))}
+            hotspots={hotspotsOfScene(p.hotspots, scene.id).map((h) => ({ id: h.id, label: stripMarks(h.name), marked: marked.has(h.id) }))}
             onActivate={(id) => {
               // Taps are not gated: the client library queues them in order, so none is dropped.
               if (!won) p.onTap(id);

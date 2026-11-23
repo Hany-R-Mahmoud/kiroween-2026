@@ -1,3 +1,4 @@
+import { parseImageBase } from '@kiroween/skeleton/client';
 // Server-only configuration. Errors name the variable and never include its value.
 
 export interface GameEnv {
@@ -78,4 +79,15 @@ let cached: GameEnv | undefined;
 export function getEnv(): GameEnv {
   cached ??= parseEnv(process.env);
   return cached;
+}
+/**
+ * Optional image CDN base (IMAGE_CDN_URL, a public URL). '' when unset or empty: images then keep today's URLs. Read on the
+ * server only and passed to the pages in the root loader data. Separate from the parsed env so that object stays as it was.
+ */
+export function imageBase(source: Source = process.env): string {
+  try {
+    return parseImageBase(source['IMAGE_CDN_URL']);
+  } catch {
+    throw new EnvError('IMAGE_CDN_URL', 'must be an https origin such as https://ik.imagekit.io/<id>');
+  }
 }

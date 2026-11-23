@@ -1,4 +1,4 @@
-import { BASE_PALETTE, type ResolvedTheme } from '@kiroween/skeleton/client';
+import { BASE_PALETTE, ImageBaseContext, type ResolvedTheme } from '@kiroween/skeleton/client';
 import { createRootRoute, HeadContent, Link, Outlet, Scripts, useMatches } from '@tanstack/react-router';
 import { Mood } from '@kiroween/skeleton/mood';
 import type { CSSProperties, ReactNode } from 'react';
@@ -80,12 +80,14 @@ function Shell({ children }: { children: ReactNode }) {
 }
 
 function RootComponent() {
-  const { lang, dir } = Route.useLoaderData();
+  const { lang, dir, imageBase } = Route.useLoaderData();
   return (
     <Document lang={lang} dir={dir} theme={useLegendTheme()}>
-      <Shell>
-        <Outlet />
-      </Shell>
+      <ImageBaseContext.Provider value={imageBase}>
+        <Shell>
+          <Outlet />
+        </Shell>
+      </ImageBaseContext.Provider>
     </Document>
   );
 }

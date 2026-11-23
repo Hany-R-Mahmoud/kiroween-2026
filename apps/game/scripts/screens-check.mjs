@@ -55,7 +55,7 @@ async function main() {
       pend.set(i, (x) => (x.error ? rej(new Error(`${method}: ${x.error.message}`)) : res(x.result ?? {})));
       ws.send(JSON.stringify({ id: i, method, params, ...(sessionId ? { sessionId } : {}) }));
     });
-  const SIZES = { 390: [390, 844, true], 1280: [1280, 800, false] };
+  const SIZES = { 360: [360, 780, true], 390: [390, 844, true], 1280: [1280, 800, false] };
   async function page(w) {
     const { browserContextId } = await send('Target.createBrowserContext');
     const { targetId } = await send('Target.createTarget', { url: 'about:blank', browserContextId });
@@ -200,7 +200,7 @@ async function main() {
   mkdirSync(SHOTS, { recursive: true });
   const how = {};
   try {
-    for (const w of [390, 1280]) {
+    for (const w of [360, 390, 1280]) {
       let p;
       if (ONLY.has('hall')) {
         p = await page(w);

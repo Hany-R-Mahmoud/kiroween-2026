@@ -1,21 +1,13 @@
-import { assetUrl, HERO_SMALL_MEDIA, heroSmall, legendUrl } from '@kiroween/skeleton/client';
+import { assetUrl, legendUrl } from '@kiroween/skeleton/client';
 import { createFileRoute } from '@tanstack/react-router';
 import { KeepersNotePage } from '../components/KeepersNotePage';
 import { LegendPage } from '../components/LegendPage';
+import { heroPreloads, imageBaseOf } from '../components/imageSet';
 import { fontLinks } from '../fonts';
 import { translate } from '../i18n/t';
 import { useT } from '../i18n/useT';
 import { getLegend } from '../server/functions';
 
-/** Preload the copy the picture will pick: the phone copy at the media query, the full image otherwise (R13.3, R13.4). */
-function heroPreloads(hero: { id: string; width: number; height: number } | null) {
-  if (!hero) return [];
-  const small = heroSmall(hero);
-  const full = { rel: 'preload', as: 'image', href: assetUrl(hero.id), fetchPriority: 'high' as const };
-  return small
-    ? [{ ...full, href: assetUrl(small.id), media: HERO_SMALL_MEDIA }, { ...full, media: `not all and ${HERO_SMALL_MEDIA}` }]
-    : [full];
-}
 export const Route = createFileRoute('/legends/$legendId')({
   loader: ({ params }) => getLegend({ data: params.legendId }),
   head: ({ loaderData, matches }) => {
@@ -39,7 +31,7 @@ export const Route = createFileRoute('/legends/$legendId')({
         ...(origin && legend.hero ? [{ property: 'og:image', content: `${origin}${assetUrl(legend.hero.id)}` }] : []),
         ...(origin ? [{ property: 'og:url', content: `${origin}${legendUrl(legend.id)}` }] : []),
       ],
-      links: [...fontLinks(theme.families), ...heroPreloads(legend.hero)],
+      links: [...fontLinks(theme.families), ...heroPreloads(legend.hero, imageBaseOf(matches), true)],
     };
   },
   component: Legend,
