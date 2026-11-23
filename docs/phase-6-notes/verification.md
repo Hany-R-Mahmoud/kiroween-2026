@@ -246,3 +246,11 @@ Counts after the re-status (criteria in Requirements 10 to 31): P1 75 met, 4 par
 - Content: F7 browser confirmation needs hotspot ids in the Banshee Hint 1 rows, or a signed-in Flying Dutchman check.
 - Owner: Banshee panorama seam, like-for-like timing, signed-in checks, production CDN timing after the push, real pop-up blocker, commit of all files.
 - Known: the 3.0 s scene-paint budget is still missed by the Hall and Banshee scene 1 (also with the CDN, locally).
+
+## F10 (task 10.F13)
+- Parser strip in `makeHint` only; diff in `skeleton/src/parser` is that one function. content/, assets/, vercel.json and play code unchanged.
+- Tests: skeleton 915 passed + 8 expected fail, atlas 302, game 399. Typecheck, builds, secret scan clean. Generator property tests 158 pass. Load-induced timeouts (1 atlas, 6 skeleton) passed on re-run alone.
+- Mutation: strip removed, 2 tests fail, restored, `cmp` identical.
+- Dev DB import done after a hostname-only check; `hint1_highlights` non-empty on 53 of 60 slots, 0 texts with an id.
+- Browser: Banshee Puzzle 1 Hint 1 marks `hs-dresser`, no id in text, 390 and 1280 (`.debug/phase-6/f13-*`).
+- Owner action: run the production `db:import` after the push.

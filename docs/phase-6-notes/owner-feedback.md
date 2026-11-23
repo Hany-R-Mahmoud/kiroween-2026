@@ -85,6 +85,16 @@ Checks: tests for every new branch (CDN on and off), the CSP test, mutation chec
 
 Status: done in task 10.F11 (numbering: 10.F9 was the re-run task). See decisions.md and browser-checks.md.
 
+## F10. Hide the "Highlight …" ids from the Hint 1 text (owner content change already made) — done in task 10.F13 (production `db:import` still to run by the owner)
+
+The owner added hotspot ids to the Hint 1 rows of the 11 other legends (48 rows, same form as Flying Dutchman: `<hint text> Highlight h-04.` or `Highlight hs-beetle and hs-journal.`). Rows whose hint names no object have no ids: baba-yaga p-5, banshee pz-5, draugr p-4, vetala p-2 and p-3, yuki-onna p-1 and p-3. The audit, the parse (0 errors) and all tests pass with the new content (skeleton 913 + 8 expected fail, game 399, atlas 302). Do not edit `content/`.
+
+Problem: `makeHint` in `skeleton/src/parser/world.ts` keeps the `Highlight …` sentence inside `hint1.text`, and the game shows that text as-is. Players already see "Highlight h-07 and h-03." on Flying Dutchman in production, and would now see raw ids in every legend.
+
+Fix: in `makeHint`, read the ids from the `Highlight …` sentence as today, but remove that trailing sentence from the returned `text` (the hint keeps its own words and final punctuation, with no stray quotes). Ids written elsewhere in the hint text keep today's behaviour. Tests: the Flying Dutchman pz-1 text equals "The logbook and the letters are different kinds of writing." with highlight `h-07`, `h-03`; no parsed Hint 1 text in any legend contains `Highlight` or an `h-`/`hs-` id token; the unknown-id error still fires (existing test); a mutation check that fails when the strip is removed. Then confirm in the browser (local, dev database) that Hint 1 on Banshee Puzzle 1 marks the dresser and the text shows no id.
+
+Database: run `db:import` once on the dev branch only, after confirming `.env` points at the dev endpoint, and check `hint1_highlights` is non-empty for those slots. Do not touch production; the owner runs the production `db:import` after the push. Mark F10 "done in task N".
+
 ## After F5 to F8
 
 Run F9 first, then: re-run the atlas and game screen checks at 360, 390 and 1280, the keyboard pass on the atlas header, and checkpoint 9.5 (tests, typecheck, secret scan). Update `docs/phase-6-handover.md` and `verification.md` with F5 to F8. Then stop and tell me the tree is ready to push.

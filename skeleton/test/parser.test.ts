@@ -177,3 +177,17 @@ describe('errors are reported with a location, never thrown', () => {
     expect(e.some((x) => x.section === '7' && /banshee--ch-8/.test(x.message))).toBe(true);
   });
 });
+
+describe('hint 1 text hides the Highlight ids (F10)', () => {
+  it('flying-dutchman pz-1 keeps its words and highlights h-07, h-03', () => {
+    const w = legendById('flying-dutchman').world;
+    const s = w.slots.find((x) => x.id.endsWith('pz-1'))!;
+    expect(s.hint1.text).toBe('The logbook and the letters are different kinds of writing.');
+    expect(s.hint1.highlight).toEqual(['flying-dutchman:h-07', 'flying-dutchman:h-03']);
+  });
+  it('no parsed Hint 1 text in any legend shows Highlight or a hotspot id token', () => {
+    for (const l of allLegends) for (const s of l.world.slots) {
+      expect(s.hint1.text, `${l.id} ${s.id}`).not.toMatch(/Highlight|\bhs?-[a-z0-9]/);
+    }
+  });
+});

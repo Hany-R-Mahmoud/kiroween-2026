@@ -351,11 +351,11 @@ Swappable hotspots: h-01, h-03, h-09, h-14. In a run, the seed may turn one of t
 
 | slot | hint 1 (free, in scene) | hint 2 (costs fear, opens atlas) |
 |---|---|---|
-| p-1 | The jar and the rope belong to the visitor's book. | Opens naddaha--ch-4. |
-| p-2 | Something pale is far away, and something soft was left in a widow's hand. | Opens naddaha--ch-2. |
-| p-3 | Count the walkers, then the nights on the wall. | Opens naddaha--ch-3. |
-| p-4 | Who is standing next to the called man? | Opens naddaha--ch-2. |
-| p-5 | A book and a belief sound alike, and a catalogue is not a promise. | Opens naddaha--ch-6. |
+| p-1 | The jar and the rope belong to the visitor's book. Highlight h-02 and h-10. | Opens naddaha--ch-4. |
+| p-2 | Something pale is far away, and something soft was left in a widow's hand. Highlight h-17 and h-09. | Opens naddaha--ch-2. |
+| p-3 | Count the walkers, then the nights on the wall. Highlight h-04 and h-03. | Opens naddaha--ch-3. |
+| p-4 | Who is standing next to the called man? Highlight h-14. | Opens naddaha--ch-2. |
+| p-5 | A book and a belief sound alike, and a catalogue is not a promise. Highlight h-15. | Opens naddaha--ch-6. |
 
 ---
 

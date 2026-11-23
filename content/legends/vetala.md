@@ -364,11 +364,11 @@ Swappable hotspots: h-01, h-04, h-10, h-12. In a run, the seed may turn one of t
 
 | slot | hint 1 (free, in scene) | hint 2 (costs fear, opens atlas) |
 |---|---|---|
-| p-1 | Look at what the visitor brought and what was hidden inside. | Opens vetala--ch-1. |
+| p-1 | Look at what the visitor brought and what was hidden inside. Highlight h-01 and h-02. | Opens vetala--ch-1. |
 | p-2 | The king's only burden besides the bundle is small. | Opens vetala--ch-2. |
 | p-3 | Count the pieces the warning names. | Opens vetala--ch-2. |
-| p-4 | The sign on the road and the name at the hut do not agree. | Opens vetala--ch-5. |
-| p-5 | A book and a promise sound alike. | Opens vetala--ch-7. |
+| p-4 | The sign on the road and the name at the hut do not agree. Highlight h-12 and h-16. | Opens vetala--ch-5. |
+| p-5 | A book and a promise sound alike. Highlight h-04. | Opens vetala--ch-7. |
 
 ---
 

@@ -103,7 +103,8 @@ function makeHint(c: Ctx, text: string, n: number): { text: string; highlight: s
     if (c.hotspotRaw.has(tk)) highlight.push(c.ns(tk));
     else c.err('7', n, `hint highlights unknown hotspot "${tk}"`);
   }
-  return { text: clean, highlight: [...new Set(highlight)] };
+  // the ids are read above; the trailing `Highlight …` sentence is not shown to the player
+  return { text: clean.replace(/\s*\bHighlight\b[\s\S]*$/, '').trim(), highlight: [...new Set(highlight)] };
 }
 
 function hint2Anchor(c: Ctx, text: string, n: number, what: string): string {

@@ -358,10 +358,10 @@ Swappable hotspots: h-11, h-12, h-13, with the decoy h-16 as their partner (h-01
 | slot | hint 1 (free, in scene) | hint 2 (costs fear, opens atlas) |
 |---|---|---|
 | p-1 | Look for the one object or place the story turns on. | Opens yuki-onna--versions. |
-| p-2 | Look at what drifts from her lips. | Opens yuki-onna--ch-2. |
+| p-2 | Look at what drifts from her lips. Highlight h-08. | Opens yuki-onna--ch-2. |
 | p-3 | Think about what keeps a person safe, or why she lets someone go. | Opens yuki-onna--versions. |
-| p-4 | Count the sleepers in the next room. | Opens yuki-onna--ch-3. |
-| p-5 | A farmer's word and a printed page sound alike. | Opens yuki-onna--ch-4. |
+| p-4 | Count the sleepers in the next room. Highlight h-02 and h-13. | Opens yuki-onna--ch-3. |
+| p-5 | A farmer's word and a printed page sound alike. Highlight h-14. | Opens yuki-onna--ch-4. |
 
 ---
 

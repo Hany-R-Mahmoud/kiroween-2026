@@ -43,3 +43,4 @@ Other mutation checks made inside earlier tasks (1.8, 2.4, 2.6, 3.6, 4.7, 6.2, 6
 | 10.F11 CDN preload `href` set to the local `assetUrl` | caught (1 test: same) |
 | 10.F11 game `imageAttrs` returns only `src` (drops srcset and sizes) | caught (4 tests: imageAttrs, SceneViewer CDN on, Hall sizes) |
 | 10.F11 `https://ik.imagekit.io` removed from CSP `img-src` | caught (2 tests: atlas and game CSP) |
+| 10.F13 `makeHint` strip of the trailing `Highlight …` sentence removed | caught (2 tests: Flying Dutchman pz-1 text, no Highlight/id token in any Hint 1 text); file restored, cmp identical |

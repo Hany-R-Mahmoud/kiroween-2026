@@ -351,10 +351,10 @@ Swappable hotspots: h-08, h-10, h-11, h-12, with the decoy h-09 as their partner
 
 | slot | hint 1 (free, in scene) | hint 2 (costs fear, opens atlas) |
 |---|---|---|
-| p-1 | The stakes of the fence all share one thing. | Opens baba-yaga--ch-1. |
-| p-2 | Look at the three posts with coloured cloths. | Opens baba-yaga--ch-4. |
-| p-3 | The bowls on the table are in a hurry. | Opens baba-yaga--ch-3. |
-| p-4 | The doll looks hungry. | Opens baba-yaga--ch-3 (doll and blessing). |
+| p-1 | The stakes of the fence all share one thing. Highlight h-01. | Opens baba-yaga--ch-1. |
+| p-2 | Look at the three posts with coloured cloths. Highlight h-04. | Opens baba-yaga--ch-4. |
+| p-3 | The bowls on the table are in a hurry. Highlight h-08. | Opens baba-yaga--ch-3. |
+| p-4 | The doll looks hungry. Highlight h-07. | Opens baba-yaga--ch-3 (doll and blessing). |
 | p-5 | A guess and a record sound alike, but one has a date. | Opens baba-yaga--ch-7. |
 
 ---

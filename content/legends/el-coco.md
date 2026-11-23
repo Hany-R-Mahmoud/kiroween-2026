@@ -347,11 +347,11 @@ Swappable hotspots: h-03, h-04, h-07, h-12. In a run, the seed may turn one of t
 
 | slot | hint 1 (free, in scene) | hint 2 (costs fear, opens atlas) |
 |---|---|---|
-| p-1 | A name can travel from a nursery to a sill. | Opens el-coco--ch-4. |
-| p-2 | The nut, the gourd and the shadow are made of the same lack. | Opens el-coco--ch-1. |
-| p-3 | Count the plate, the set and the day on the notice. | Opens el-coco--ch-3. |
-| p-4 | Some voices are in a song and some are in a book. | Opens el-coco--ch-2. |
-| p-5 | A song and a page may say different verbs. | Opens el-coco--ch-7. |
+| p-1 | A name can travel from a nursery to a sill. Highlight h-01 and h-03. | Opens el-coco--ch-4. |
+| p-2 | The nut, the gourd and the shadow are made of the same lack. Highlight h-03, h-07 and h-04. | Opens el-coco--ch-1. |
+| p-3 | Count the plate, the set and the day on the notice. Highlight h-11. | Opens el-coco--ch-3. |
+| p-4 | Some voices are in a song and some are in a book. Highlight h-01 and h-12. | Opens el-coco--ch-2. |
+| p-5 | A song and a page may say different verbs. Highlight h-01 and h-12. | Opens el-coco--ch-7. |
 
 ---
 

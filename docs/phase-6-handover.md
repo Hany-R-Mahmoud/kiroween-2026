@@ -223,6 +223,15 @@ Nothing else changes: with the variable unset the pages use the files under `/me
 
 **Re-run with F9 in place** (task 10.F12, local builds, CDN off and on, `browser-checks.md`): atlas screens 36 pass, 0 fail in both modes (360, 390, 1280); game screens 38 pass, 0 fail, 1 skip off and 37 pass, 0 fail, 2 skip on (seed-dependent dead-end skips, none failing); atlas header 24/0 and game header 10/0 in both modes; ui-check 8/0 per app in both modes; atlas keyboard pass 141/0 at 360, 390, 1280 in both modes. CDN on, 18 page loads (6 pages x 3 widths): 0 broken images, 0 CSP violation events. Local servers send no production CSP and an injected one did not take effect, so CSP enforcement was not shown by a browser; the string covers every image host seen (`'self'`, `ik.imagekit.io`; `data:` for inline images). One Neon timeout exited the local atlas server once; it was restarted and the image and CSP pass ran on the restarted server.
 
+## 6c. Owner feedback F10 (Hint 1 text hides the Highlight ids, task 10.F13)
+
+- `makeHint` in `skeleton/src/parser/world.ts` (the only parser change, owner-approved) still reads the ids from the trailing `Highlight …` sentence and now removes that sentence from `hint1.text`. Ids written elsewhere in a hint keep today's behaviour. Flying Dutchman pz-1 is now "The logbook and the letters are different kinds of writing." with highlight h-07, h-03.
+- Tests added in `skeleton/test/parser.test.ts` (Flying Dutchman pz-1; no Hint 1 text in any legend contains `Highlight` or an `h-`/`hs-` id). The unknown-id error test still passes. Mutation (strip removed): 2 tests fail; restored, `cmp` identical (`mutations.md`).
+- Dev database: host checked by name only (`ep-little-boat-arrb1poz`, the `dev-skeleton-core` endpoint); `db:import` run once on dev. Read-only check: `hint1_highlights` non-empty for 53 of 60 slots (Banshee 4 of 5; the 7 empty ones are the rows with no object), and 0 slots have `Highlight` or an id in `hint1_text`.
+- Browser (local servers, dev DB): Banshee Puzzle 1, Hint 1 shows "The dresser plate has a word on its rim; look again." and marks `hs-dresser`, at 390 and 1280. Shots: `.debug/phase-6/f13-banshee-hint1-390.png`, `-1280.png` (check script `f13-check.mjs`). Note: a Hint 1 click made right after a puzzle opens was ignored once; the check waits and retries.
+- Checkpoint 9.5 re-run: skeleton 915 passed + 8 expected fail, atlas 302, game 399; typecheck, builds and secret scan clean. Under heavy machine load (load average about 50) 1 atlas and 6 skeleton tests timed out; they passed when re-run alone.
+- **Owner action:** after the push, run the production `db:import` (production `.env` values, not the dev ones). Until then production still shows "Highlight …" in Hint 1 on every legend.
+
 ## 7. Tests
 
 Final run (task 10.F12, checkpoint 9.5 with F9 in place): `pnpm test` per package, `tsc --noEmit` clean in all three, both production builds pass, secret scan clean.

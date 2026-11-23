@@ -353,11 +353,11 @@ Swappable hotspots: h-02, h-04, h-06, h-09, h-16, h-17. In a run, the seed may t
 
 | slot | hint 1 (free, in scene) | hint 2 (costs fear, opens atlas) |
 |---|---|---|
-| p-1 | The first day of the story is printed on the paper at the stand. | Opens spring-heeled-jack--ch-2. |
-| p-2 | The answer is a name or a place that was printed at the time. | Opens spring-heeled-jack--versions. |
-| p-3 | Think about what he was said to wear, carry or look like. | Opens spring-heeled-jack--versions. |
-| p-4 | Some names belong to people who wrote letters; others to makers of serials. | Opens spring-heeled-jack--ch-5. |
-| p-5 | A tale repeated many times is not the same as a tale recorded once. | Opens spring-heeled-jack--ch-7. |
+| p-1 | The first day of the story is printed on the paper at the stand. Highlight h-07. | Opens spring-heeled-jack--ch-2. |
+| p-2 | The answer is a name or a place that was printed at the time. Highlight h-05. | Opens spring-heeled-jack--versions. |
+| p-3 | Think about what he was said to wear, carry or look like. Highlight h-06, h-10 and h-18. | Opens spring-heeled-jack--versions. |
+| p-4 | Some names belong to people who wrote letters; others to makers of serials. Highlight h-08 and h-16. | Opens spring-heeled-jack--ch-5. |
+| p-5 | A tale repeated many times is not the same as a tale recorded once. Highlight h-13. | Opens spring-heeled-jack--ch-7. |
 
 ---
 

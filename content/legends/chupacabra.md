@@ -363,11 +363,11 @@ Swappable hotspots: h-01, h-02, h-06, h-12, h-14, h-18. In a run, the seed may t
 
 | slot | hint 1 (free, in scene) | hint 2 (costs fear, opens atlas) |
 |---|---|---|
-| p-1 | The first reports and the witness are on different months; the poster board and the paper name them. | Opens chupacabra--ch-3. |
-| p-2 | Some towns hold the livestock; another holds the sighting. | Opens chupacabra--ch-2. |
-| p-3 | The drawing at the post and the camera on the road show two different shapes. | Opens chupacabra--ch-6. |
-| p-4 | Some names belong to authors and researchers; others to people on the radio. | Opens chupacabra--ch-5. |
-| p-5 | A claim repeated many times is not the same as a claim tested once. | Opens chupacabra--ch-7. |
+| p-1 | The first reports and the witness are on different months; the poster board and the paper name them. Highlight h-08 and h-07. | Opens chupacabra--ch-3. |
+| p-2 | Some towns hold the livestock; another holds the sighting. Highlight h-18. | Opens chupacabra--ch-2. |
+| p-3 | The drawing at the post and the camera on the road show two different shapes. Highlight h-06 and h-13. | Opens chupacabra--ch-6. |
+| p-4 | Some names belong to authors and researchers; others to people on the radio. Highlight h-05. | Opens chupacabra--ch-5. |
+| p-5 | A claim repeated many times is not the same as a claim tested once. Highlight h-14. | Opens chupacabra--ch-7. |
 
 ---
 

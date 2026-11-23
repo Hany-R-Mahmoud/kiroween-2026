@@ -359,11 +359,11 @@ The final puzzle asks the player to sort a set of statements into "Documented" a
 
 | puzzle slot | Hint 1 (free, in-scene) | Hint 2 (costs fear, opens atlas) |
 |---|---|---|
-| p-1 | The signpost seems to point two ways at once. | Opens `jersey-devil--ch-3` |
-| p-2 | The printing press has an empty year slot. | Opens `jersey-devil--ch-2` |
-| p-3 | One poster names the man behind the cage. | Opens `jersey-devil--ch-5` |
-| p-4 | The clipping repeats a claim without a source. | Opens `jersey-devil--ch-7` |
-| p-5 | The invoice has two smudged words. | Opens `jersey-devil--ch-5` |
+| p-1 | The signpost seems to point two ways at once. Highlight h-04. | Opens `jersey-devil--ch-3` |
+| p-2 | The printing press has an empty year slot. Highlight h-07. | Opens `jersey-devil--ch-2` |
+| p-3 | One poster names the man behind the cage. Highlight h-14 and h-15. | Opens `jersey-devil--ch-5` |
+| p-4 | The clipping repeats a claim without a source. Highlight h-12. | Opens `jersey-devil--ch-7` |
+| p-5 | The invoice has two smudged words. Highlight h-15. | Opens `jersey-devil--ch-5` |
 
 ---
 

@@ -1532,6 +1532,18 @@
         "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
         "timestamp": 1795398773671
       }
+    ],
+    "10.F13 Hide the \"Highlight …\" ids from the Hint 1 text (Owner feedback F10)": [
+      {
+        "executionId": "1c00eb9d-5fb6-459b-a312-4a0d6744868c",
+        "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
+        "timestamp": 1795419933872
+      },
+      {
+        "executionId": "1c00eb9d-5fb6-459b-a312-4a0d6744868c",
+        "chatSessionId": "sess_bb2e80c0-5a25-4244-9419-d366a37daf8f",
+        "timestamp": 1795422595058
+      }
     ]
   }
 }

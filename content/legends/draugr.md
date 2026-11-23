@@ -376,11 +376,11 @@ Swappable hotspots: h-01, h-03, h-09, h-13. In a run, the seed may turn one of t
 
 | slot | hint 1 (free, in scene) | hint 2 (costs fear, opens atlas) |
 |---|---|---|
-| p-1 | The empty rail and the notched stick belong to the first farm. | Opens draugr--ch-2. |
-| p-2 | Something large was moved through a wall, and it was not on foot. | Opens draugr--ch-4. |
-| p-3 | Count the notches, then the days the half-moon came. | Opens draugr--ch-5. |
+| p-1 | The empty rail and the notched stick belong to the first farm. Highlight h-02 and h-03. | Opens draugr--ch-2. |
+| p-2 | Something large was moved through a wall, and it was not on foot. Highlight h-08 and h-01. | Opens draugr--ch-4. |
+| p-3 | Count the notches, then the days the half-moon came. Highlight h-03. | Opens draugr--ch-5. |
 | p-4 | Look at what is in the sky when the two fall outside. | Opens draugr--ch-3. |
-| p-5 | A page and a promise sound alike, and a hearing is not a guarantee. | Opens draugr--ch-7. |
+| p-5 | A page and a promise sound alike, and a hearing is not a guarantee. Highlight h-18. | Opens draugr--ch-7. |
 
 ---
 

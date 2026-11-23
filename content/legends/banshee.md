@@ -333,10 +333,10 @@ All five are skippable, short, and replaced with a gentle fade and a subtitle wh
 
 | puzzle slot | Hint 1 (free, points inside the scene) | Hint 2 (costs fear, opens the atlas) |
 |---|---|---|
-| pz-1 | The dresser plate has a word on its rim; look again. | Opens banshee--ch-1 |
-| pz-2 | Look at the crane over the fire; it has three marks. | Opens banshee--ch-2 |
-| pz-3 | Ask who the shawl belongs to and what she was not meant to do. | Opens banshee--ch-7 |
-| pz-4 | Count the notches on the beetle and check the hour on the journal page. | Opens banshee--ch-3 (v-clan, v-washer) or banshee--ch-4 (v-window) |
+| pz-1 | The dresser plate has a word on its rim; look again. Highlight hs-dresser. | Opens banshee--ch-1 |
+| pz-2 | Look at the crane over the fire; it has three marks. Highlight hs-hearth. | Opens banshee--ch-2 |
+| pz-3 | Ask who the shawl belongs to and what she was not meant to do. Highlight hs-shawl. | Opens banshee--ch-7 |
+| pz-4 | Count the notches on the beetle and check the hour on the journal page. Highlight hs-beetle and hs-journal. | Opens banshee--ch-3 (v-clan, v-washer) or banshee--ch-4 (v-window) |
 | pz-5 | Place first what you know is written, then what is told. | Opens banshee--ch-7 |
 
 ## 8. Theme pack

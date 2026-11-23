@@ -505,6 +505,16 @@ Language: TypeScript (strict), CSS, Vitest, fast-check. The design uses TypeScri
     - Depends on 10.F12. Update `docs/phase-6-handover.md` and `docs/phase-6-notes/verification.md` with F5 to F8. Then stop with the tree ready to push. Do not commit or push.
     - _Requirements: 40.1, 40.2, 9.5_
 
+  - [x] 10.F13 Hide the "Highlight …" ids from the Hint 1 text (Owner feedback F10)
+    - Depends on 10.F10. Follow F10 in `docs/phase-6-notes/owner-feedback.md` exactly.
+    - Owner-approved exception to the "no parser change" boundary, limited to `makeHint` in `skeleton/src/parser/world.ts`: strip the trailing Highlight sentence from `text`; the ids are still parsed. No other parser change.
+    - Tests as listed in F10, plus a mutation check (revert the strip and confirm the new test fails).
+    - Run `db:import` once, on the dev branch only. First confirm the database host is the dev endpoint without printing any secret value. Never run it against production.
+    - Browser check on local servers: Banshee Puzzle 1 Hint 1 marks the dresser and shows no id in the text.
+    - Then re-run checkpoint 9.5 (tests, typecheck, secret scan). Ensure all tests pass, ask the user if questions arise.
+    - Update `docs/phase-6-handover.md` and `docs/phase-6-notes/verification.md` with F10. Mark F10 done in the feedback file. Do not commit or push.
+    - _Requirements: 34.1, 40.1, 40.2, 9.5_
+
 ## Notes
 
 - Tasks run strictly in order, one at a time; there is no parallelism, so each wave in the graph holds one task.
@@ -612,7 +622,8 @@ Language: TypeScript (strict), CSS, Vitest, fast-check. The design uses TypeScri
     { "id": 87, "tasks": ["10.F9"] },
     { "id": 88, "tasks": ["10.F11"] },
     { "id": 89, "tasks": ["10.F12"] },
-    { "id": 90, "tasks": ["10.F10"] }
+    { "id": 90, "tasks": ["10.F10"] },
+    { "id": 91, "tasks": ["10.F13"] }
   ]
 }
 ```

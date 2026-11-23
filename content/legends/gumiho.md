@@ -353,11 +353,11 @@ Swappable hotspots: h-01, h-06, h-11, h-12. In a run, the seed may turn one of t
 
 | slot | hint 1 (free, in scene) | hint 2 (costs fear, opens atlas) |
 |---|---|---|
-| p-1 | A word can name one creature or a whole family. | Opens gumiho--ch-1. |
-| p-2 | The bead, the mountain and the desk each belong to a different telling. | Opens gumiho--ch-2. |
-| p-3 | Count the sleepers, the tails and the years on the page. | Opens gumiho--ch-4. |
-| p-4 | Some names are written on the entry, and some are only borrowed by a town. | Opens gumiho--ch-3. |
-| p-5 | A tale may say a wish that the page never records. | Opens gumiho--ch-7. |
+| p-1 | A word can name one creature or a whole family. Highlight h-12. | Opens gumiho--ch-1. |
+| p-2 | The bead, the mountain and the desk each belong to a different telling. Highlight h-10, h-12 and h-03. | Opens gumiho--ch-2. |
+| p-3 | Count the sleepers, the tails and the years on the page. Highlight h-03. | Opens gumiho--ch-4. |
+| p-4 | Some names are written on the entry, and some are only borrowed by a town. Highlight h-03 and h-01. | Opens gumiho--ch-3. |
+| p-5 | A tale may say a wish that the page never records. Highlight h-03. | Opens gumiho--ch-7. |
 
 ---
 
