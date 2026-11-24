@@ -1,0 +1,158 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1. Fix: renderer starts on a cold load": [
+      {
+        "executionId": "112c3e74-dc9f-47b0-a4b0-e872a7af579a",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795549507906
+      },
+      {
+        "executionId": "112c3e74-dc9f-47b0-a4b0-e872a7af579a",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795549512785
+      },
+      {
+        "executionId": "112c3e74-dc9f-47b0-a4b0-e872a7af579a",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795549673702
+      }
+    ],
+    "2. Fix: cap the srcset": [
+      {
+        "executionId": "112c3e74-dc9f-47b0-a4b0-e872a7af579a",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795549507944
+      },
+      {
+        "executionId": "112c3e74-dc9f-47b0-a4b0-e872a7af579a",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795549680447
+      },
+      {
+        "executionId": "112c3e74-dc9f-47b0-a4b0-e872a7af579a",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795549830525
+      }
+    ],
+    "3. HoloCard props for a card pair": [
+      {
+        "executionId": "112c3e74-dc9f-47b0-a4b0-e872a7af579a",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795549508005
+      },
+      {
+        "executionId": "112c3e74-dc9f-47b0-a4b0-e872a7af579a",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795549833973
+      },
+      {
+        "executionId": "112c3e74-dc9f-47b0-a4b0-e872a7af579a",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795550131621
+      }
+    ],
+    "4. Never an empty card: Preview": [
+      {
+        "executionId": "112c3e74-dc9f-47b0-a4b0-e872a7af579a",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795549508036
+      },
+      {
+        "executionId": "112c3e74-dc9f-47b0-a4b0-e872a7af579a",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795550134788
+      },
+      {
+        "executionId": "112c3e74-dc9f-47b0-a4b0-e872a7af579a",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795550172767
+      }
+    ],
+    "5. Catalog strings": [
+      {
+        "executionId": "112c3e74-dc9f-47b0-a4b0-e872a7af579a",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795549508063
+      },
+      {
+        "executionId": "112c3e74-dc9f-47b0-a4b0-e872a7af579a",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795549513507
+      },
+      {
+        "executionId": "112c3e74-dc9f-47b0-a4b0-e872a7af579a",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795549674733
+      }
+    ],
+    "6. Hide the site chrome on `/lab/shell`": [
+      {
+        "executionId": "112c3e74-dc9f-47b0-a4b0-e872a7af579a",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795549508097
+      },
+      {
+        "executionId": "112c3e74-dc9f-47b0-a4b0-e872a7af579a",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795549514274
+      },
+      {
+        "executionId": "112c3e74-dc9f-47b0-a4b0-e872a7af579a",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795549677369
+      }
+    ],
+    "7. Entry page route": [
+      {
+        "executionId": "112c3e74-dc9f-47b0-a4b0-e872a7af579a",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795549508125
+      },
+      {
+        "executionId": "112c3e74-dc9f-47b0-a4b0-e872a7af579a",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795550177023
+      },
+      {
+        "executionId": "112c3e74-dc9f-47b0-a4b0-e872a7af579a",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795550219646
+      }
+    ],
+    "8. Page styles": [
+      {
+        "executionId": "112c3e74-dc9f-47b0-a4b0-e872a7af579a",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795549508149
+      },
+      {
+        "executionId": "112c3e74-dc9f-47b0-a4b0-e872a7af579a",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795550224065
+      },
+      {
+        "executionId": "112c3e74-dc9f-47b0-a4b0-e872a7af579a",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795550264911
+      }
+    ],
+    "9. Verify": [
+      {
+        "executionId": "112c3e74-dc9f-47b0-a4b0-e872a7af579a",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795549508174
+      },
+      {
+        "executionId": "112c3e74-dc9f-47b0-a4b0-e872a7af579a",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795550268622
+      },
+      {
+        "executionId": "112c3e74-dc9f-47b0-a4b0-e872a7af579a",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795552147305
+      }
+    ]
+  }
+}

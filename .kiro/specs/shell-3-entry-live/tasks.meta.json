@@ -1,0 +1,209 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1. Preview as a real image": [
+      {
+        "executionId": "e845d730-354c-41c6-a2a5-e2ad600ed829",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795553879006
+      },
+      {
+        "executionId": "e845d730-354c-41c6-a2a5-e2ad600ed829",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795553885281
+      },
+      {
+        "executionId": "e845d730-354c-41c6-a2a5-e2ad600ed829",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795553922032
+      }
+    ],
+    "2. Cartouche word readable or hidden": [
+      {
+        "executionId": "e845d730-354c-41c6-a2a5-e2ad600ed829",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795553879051
+      },
+      {
+        "executionId": "e845d730-354c-41c6-a2a5-e2ad600ed829",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795553929966
+      },
+      {
+        "executionId": "e845d730-354c-41c6-a2a5-e2ad600ed829",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795553988764
+      }
+    ],
+    "3. Catalog strings": [
+      {
+        "executionId": "e845d730-354c-41c6-a2a5-e2ad600ed829",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795553879106
+      },
+      {
+        "executionId": "e845d730-354c-41c6-a2a5-e2ad600ed829",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795553885490
+      },
+      {
+        "executionId": "e845d730-354c-41c6-a2a5-e2ad600ed829",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795553922987
+      }
+    ],
+    "4. Legends page route": [
+      {
+        "executionId": "e845d730-354c-41c6-a2a5-e2ad600ed829",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795553879136
+      },
+      {
+        "executionId": "e845d730-354c-41c6-a2a5-e2ad600ed829",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795553886494
+      },
+      {
+        "executionId": "e845d730-354c-41c6-a2a5-e2ad600ed829",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795553924765
+      }
+    ],
+    "5. Site header links": [
+      {
+        "executionId": "e845d730-354c-41c6-a2a5-e2ad600ed829",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795553879163
+      },
+      {
+        "executionId": "e845d730-354c-41c6-a2a5-e2ad600ed829",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795553887548
+      },
+      {
+        "executionId": "e845d730-354c-41c6-a2a5-e2ad600ed829",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795553925143
+      }
+    ],
+    "6. Game header atlas link": [
+      {
+        "executionId": "e845d730-354c-41c6-a2a5-e2ad600ed829",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795553879187
+      },
+      {
+        "executionId": "e845d730-354c-41c6-a2a5-e2ad600ed829",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795553888336
+      },
+      {
+        "executionId": "e845d730-354c-41c6-a2a5-e2ad600ed829",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795553926028
+      }
+    ],
+    "7. Entry page at `/`": [
+      {
+        "executionId": "e845d730-354c-41c6-a2a5-e2ad600ed829",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795553879221
+      },
+      {
+        "executionId": "e845d730-354c-41c6-a2a5-e2ad600ed829",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795553931126
+      },
+      {
+        "executionId": "e845d730-354c-41c6-a2a5-e2ad600ed829",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795553989737
+      }
+    ],
+    "8. Root shell and root error page": [
+      {
+        "executionId": "e845d730-354c-41c6-a2a5-e2ad600ed829",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795553879251
+      },
+      {
+        "executionId": "e845d730-354c-41c6-a2a5-e2ad600ed829",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795553932305
+      },
+      {
+        "executionId": "e845d730-354c-41c6-a2a5-e2ad600ed829",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795553990787
+      }
+    ],
+    "9. Not-found and router error links": [
+      {
+        "executionId": "e845d730-354c-41c6-a2a5-e2ad600ed829",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795553879278
+      },
+      {
+        "executionId": "e845d730-354c-41c6-a2a5-e2ad600ed829",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795553933116
+      },
+      {
+        "executionId": "e845d730-354c-41c6-a2a5-e2ad600ed829",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795553991926
+      }
+    ],
+    "10. Entry page styles": [
+      {
+        "executionId": "e845d730-354c-41c6-a2a5-e2ad600ed829",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795553879306
+      },
+      {
+        "executionId": "e845d730-354c-41c6-a2a5-e2ad600ed829",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795553995563
+      },
+      {
+        "executionId": "e845d730-354c-41c6-a2a5-e2ad600ed829",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795554058378
+      }
+    ],
+    "11. Update old pins and check scripts": [
+      {
+        "executionId": "e845d730-354c-41c6-a2a5-e2ad600ed829",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795553879328
+      },
+      {
+        "executionId": "e845d730-354c-41c6-a2a5-e2ad600ed829",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795553996402
+      },
+      {
+        "executionId": "e845d730-354c-41c6-a2a5-e2ad600ed829",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795554058958
+      }
+    ],
+    "12. Verify": [
+      {
+        "executionId": "e845d730-354c-41c6-a2a5-e2ad600ed829",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795553879381
+      },
+      {
+        "executionId": "e845d730-354c-41c6-a2a5-e2ad600ed829",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795554062976
+      },
+      {
+        "executionId": "fd5ff49c-0414-4542-a8d9-1a826ed1b33a",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795556478960
+      }
+    ]
+  }
+}

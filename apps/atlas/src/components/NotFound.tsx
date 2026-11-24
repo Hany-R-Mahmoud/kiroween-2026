@@ -9,8 +9,9 @@ export function NotFound({ t }: { t: Translate }) {
         {t('notFound.heading')}
       </h1>
       <p>{t('notFound.body')}</p>
-      <p>
-        <Link to="/" className="link">{t('notFound.home')}</Link>
+      <p className="flex flex-wrap gap-x-6 gap-y-2">
+        <Link to="/" className="link inline-flex min-h-11 items-center">{t('notFound.home')}</Link>
+        <Link to="/legends" className="link inline-flex min-h-11 items-center">{t('notFound.legends')}</Link>
       </p>
     </section>
   );

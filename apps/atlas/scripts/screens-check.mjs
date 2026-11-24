@@ -88,7 +88,7 @@ async function main() {
     for (const w of [360, 390, 1280]) {
       const p = await page(w);
       // ---- home
-      await p.go(`${BASE}/`);
+      await p.go(`${BASE}/legends`);
       const okHome = await until(p, hydrated('[role=region] button[popovertarget], button[popovertarget]'));
       await sleep(800);
       const home = JSON.parse(await p.ev(`(()=>{${R}return JSON.stringify({h1:R(document.querySelector('h1')),vh:innerHeight,hOverflow:document.documentElement.scrollWidth>innerWidth+1,cta:R(document.querySelector('h1')?.closest('section,header,div')?.querySelector('a.btn, button.btn'))})})()`));

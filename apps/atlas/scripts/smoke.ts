@@ -23,7 +23,7 @@ const ids = (html: string) => [...html.matchAll(/\sid="([^"]+)"/g)].map((m) => m
 const bodyStyle = (html: string) => /<body[^>]*style="([^"]*)"/.exec(html)?.[1] ?? '';
 const meta = (html: string, property: string) => new RegExp(`<meta[^>]*property="${property}"[^>]*content="([^"]*)"`).exec(html)?.[1];
 
-let res = await get('/');
+let res = await get('/legends');
 let html = await res.text();
 const markers = new Set([...html.matchAll(/popovertarget="card-([a-z-]+)"/gi)].map((m) => m[1]));
 const listed = new Set([...html.matchAll(/href="\/legends\/([a-z-]+)"/g)].map((m) => m[1]));

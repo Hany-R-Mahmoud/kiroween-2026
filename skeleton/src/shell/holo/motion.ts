@@ -156,10 +156,12 @@ export interface MotionOptions {
   reduced: boolean;
   /** Called only when the spin returns to rest, with the face that is now settled. */
   onSettle: (face: Face) => void;
+  /** Called when a drag passes the threshold and on every `turnTo` / `turnBy`. */
+  onInteract?: () => void;
 }
 
 export function createMotion(options: MotionOptions): MotionController {
-  const { scene, tilt, flip, onSettle } = options;
+  const { scene, tilt, flip, onSettle, onInteract } = options;
 
   let state: TiltState = { x: 0, y: 0, vx: 0, vy: 0 };
   const spin: SpinState = { angle: 0, velocity: 0, mode: 'rest', target: 0 };
@@ -388,6 +390,7 @@ export function createMotion(options: MotionOptions): MotionController {
       if (!dragged) {
         if (Math.hypot(event.clientX - pressX, event.clientY - pressY) > DRAG_THRESHOLD_PX) {
           dragged = true;
+          onInteract?.();
           if (!reduced) {
             // Start without a jump: the angle is measured from where the threshold was crossed.
             const rect = scene.getBoundingClientRect();
@@ -482,6 +485,7 @@ export function createMotion(options: MotionOptions): MotionController {
 
   const turnTo = (index: number): void => {
     if (destroyed || spin.mode === 'drag') return;
+    onInteract?.();
     if (reduced) {
       // No rotation: change the settled face at once. The report comes on the next frame for the crossfade.
       spin.angle = index * 180;

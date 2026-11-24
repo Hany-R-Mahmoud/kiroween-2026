@@ -9,7 +9,7 @@ export function SiteHeader({ t }: { t: Translate }) {
         <Link to="/" activeOptions={{ exact: true }} className="nav-item me-auto min-w-0 truncate px-2 min-[40rem]:px-3 inline-flex min-h-11 items-center font-display text-lg text-glow no-underline">
           {t('app.title')}
         </Link>
-        <Link to="/" hash="legends" activeOptions={{ exact: true, includeHash: true }} className="nav-item px-2 min-[40rem]:px-3 inline-flex min-h-11 items-center">
+        <Link to="/legends" activeOptions={{ exact: true }} className="nav-item px-2 min-[40rem]:px-3 inline-flex min-h-11 items-center">
           {t('nav.home')}
         </Link>
         {/* Short visible label on phones so the header stays on one row; the full name is the accessible name (label-in-name). */}

@@ -25,6 +25,26 @@ export const STAGE_ASPECT = `${OUTLINE_SIZE.w} / ${OUTLINE_SIZE.h}`;
 /** Width steps requested from the image CDN. */
 export const HOLO_STEPS = [360, 420, 480, 560, 640, 800, 1000, 1200] as const;
 
+/** Widest shown art box in CSS px: the HOLO_SIZES cap, 30.8rem at a 16 px root. */
+export const HOLO_MAX_SHOWN_PX = 493;
+
+/** Renderer DPR cap on fine pointers. Requests stop at this multiple of the shown width. */
+export const HOLO_REQUEST_FACTOR = 1.5;
+
+/**
+ * Keeps every step up to and including the smallest step that is at least
+ * `shownPx * factor`. When no step is large enough, returns all steps.
+ */
+export function capSteps(steps: readonly number[], shownPx: number, factor: number): number[] {
+  const need = shownPx * factor;
+  const sorted = [...steps].sort((a, b) => a - b);
+  const idx = sorted.findIndex((s) => s >= need);
+  return idx === -1 ? sorted : sorted.slice(0, idx + 1);
+}
+
+/** HOLO_STEPS capped for the widest shown art box: 360 to 800. */
+export const HOLO_STEPS_CAPPED: number[] = capSteps(HOLO_STEPS, HOLO_MAX_SHOWN_PX, HOLO_REQUEST_FACTOR);
+
 /**
  * `sizes` attribute for layer images: the art box is about 1.1 times the stage
  * width, and the stage is capped at 28rem.

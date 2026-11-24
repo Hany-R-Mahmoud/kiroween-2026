@@ -1,16 +1,19 @@
 import {
   useCallback,
   useEffect,
+  useImperativeHandle,
   useRef,
   useState,
   type ImgHTMLAttributes,
   type KeyboardEvent,
+  type Ref,
   type TransitionEvent,
 } from 'react';
 import { assetUrl } from '../assets/assetUrl.ts';
 import { useImageBase } from '../assets/imageBaseContext.ts';
 import { imageUrl, responsiveImage } from '../assets/imageCdn.ts';
-import { ART, BG_ART, HOLO_SIZES, HOLO_STEPS } from './holo/geometry.ts';
+import { ART, BG_ART, HOLO_SIZES, HOLO_STEPS_CAPPED } from './holo/geometry.ts';
+import { waitForImage } from './holo/imageReady.ts';
 import { createMotion, type Face, type MotionController } from './holo/motion.ts';
 import type { HoloRenderer } from './holo/renderer.ts';
 import { useReducedMotion } from './holo/useReducedMotion.ts';
@@ -38,6 +41,19 @@ export interface HoloCardProps {
   strings: HoloCardStrings;
   href: string;
   className?: string;
+  /** Called when the settled face changes. */
+  onFaceChange?: (face: Face) => void;
+  /** Called once per mount, on the first drag start or the first flip. */
+  onInteract?: () => void;
+  /** Filled with the card handle. */
+  handleRef?: Ref<HoloCardHandle>;
+  /** Delay in ms before the one-time sweep. Default 0. */
+  sweepDelayMs?: number;
+}
+
+export interface HoloCardHandle {
+  /** Turns to the front. `quiet` leaves keyboard focus where it is. No-op when already on the front. */
+  turnToFront(options?: { quiet?: boolean }): void;
 }
 
 /** Longest wait for `transitionend` before focus moves anyway. */
@@ -54,7 +70,7 @@ function layerAttrs(id: string, base: string, size: { w: number; h: number }): I
     id,
     base,
     axis: 'w',
-    steps: HOLO_STEPS,
+    steps: HOLO_STEPS_CAPPED,
     width: size.w,
     height: size.h,
     sizes: HOLO_SIZES,
@@ -77,7 +93,16 @@ function layerAttrs(id: string, base: string, size: { w: number; h: number }): I
   };
 }
 
-export function HoloCard({ layers, strings, href, className }: HoloCardProps) {
+export function HoloCard({
+  layers,
+  strings,
+  href,
+  className,
+  onFaceChange,
+  onInteract,
+  handleRef,
+  sweepDelayMs,
+}: HoloCardProps) {
   const base = useImageBase();
   const reduced = useReducedMotion();
 
@@ -104,6 +129,29 @@ export function HoloCard({ layers, strings, href, className }: HoloCardProps) {
   const reducedRef = useRef(reduced);
   reducedRef.current = reduced;
 
+  // Latest callbacks, read from effects that run once.
+  const onFaceChangeRef = useRef(onFaceChange);
+  onFaceChangeRef.current = onFaceChange;
+  const onInteractRef = useRef(onInteract);
+  onInteractRef.current = onInteract;
+  const sweepDelayRef = useRef(sweepDelayMs);
+  sweepDelayRef.current = sweepDelayMs;
+  // Set by turnToFront({ quiet }): the next settle skips one focus() call.
+  const quietNext = useRef(false);
+  const interacted = useRef(false);
+
+  useImperativeHandle(
+    handleRef,
+    () => ({
+      turnToFront(opts) {
+        if (settledFace.current !== 'back') return;
+        if (opts?.quiet) quietNext.current = true;
+        motionRef.current?.turnBy(-1);
+      },
+    }),
+    [],
+  );
+
   // Motion controller: created after hydration, destroyed on unmount.
   useEffect(() => {
     const scene = sceneRef.current;
@@ -121,6 +169,12 @@ export function HoloCard({ layers, strings, href, className }: HoloCardProps) {
         settledFace.current = next;
         pendingFocus.current = next;
         setFace(next);
+        onFaceChangeRef.current?.(next);
+      },
+      onInteract: () => {
+        if (interacted.current) return;
+        interacted.current = true;
+        onInteractRef.current?.();
       },
     });
     motionRef.current = motion;
@@ -145,36 +199,11 @@ export function HoloCard({ layers, strings, href, className }: HoloCardProps) {
     let idleIsCallback = false;
     const cleanups: Array<() => void> = [];
 
-    const ready = (img: HTMLImageElement): Promise<void> =>
-      new Promise<void>((resolve, reject) => {
-        const settle = (): void => {
-          if (img.naturalWidth === 0) {
-            reject(new Error('image failed'));
-            return;
-          }
-          // decode() can reject for an already-usable image; the load is what matters.
-          img.decode().then(resolve, resolve);
-        };
-        if (img.complete) {
-          settle();
-          return;
-        }
-        const onLoad = (): void => {
-          cleanup();
-          settle();
-        };
-        const onError = (): void => {
-          cleanup();
-          reject(new Error('image failed'));
-        };
-        const cleanup = (): void => {
-          img.removeEventListener('load', onLoad);
-          img.removeEventListener('error', onError);
-        };
-        img.addEventListener('load', onLoad);
-        img.addEventListener('error', onError);
-        cleanups.push(cleanup);
-      });
+    const ready = (img: HTMLImageElement): Promise<void> => {
+      const wait = waitForImage(img);
+      cleanups.push(wait.cancel);
+      return wait.promise;
+    };
 
     const start = async (): Promise<void> => {
       const motion = motionRef.current;
@@ -187,6 +216,7 @@ export function HoloCard({ layers, strings, href, className }: HoloCardProps) {
         images: { background, subject, frame },
         motion,
         reduced: reducedRef.current,
+        sweepDelayMs: sweepDelayRef.current,
         onFailure: () => {
           rendererRef.current = null;
         },
@@ -245,6 +275,8 @@ export function HoloCard({ layers, strings, href, className }: HoloCardProps) {
         mark();
         continue;
       }
+      // Not yet drawable (including complete with naturalWidth 0 on a cold load): stay hidden and keep
+      // the load listener until unmount, with no timeout, so a late image still shows.
       const onLoad = (): void => {
         // decode() can reject for a usable image; the load is what matters.
         img.decode().then(mark, mark);
@@ -275,6 +307,10 @@ export function HoloCard({ layers, strings, href, className }: HoloCardProps) {
     if (!target) return;
     pendingFocus.current = null;
     window.clearTimeout(focusTimer.current);
+    if (quietNext.current) {
+      quietNext.current = false;
+      return;
+    }
     (target === 'back' ? linkRef.current : frontRef.current)?.focus();
   }, []);
 
@@ -334,6 +370,19 @@ export function HoloCard({ layers, strings, href, className }: HoloCardProps) {
             onClick={() => motionRef.current?.turnBy(1)}
           >
             <span className="holo-art" aria-hidden="true">
+              {base ? (
+                <img
+                  className="holo-preview"
+                  src={imageUrl(layers.background, base, { axis: 'w', n: 32 })}
+                  alt=""
+                  aria-hidden="true"
+                  decoding="async"
+                  fetchPriority="high"
+                  draggable={false}
+                />
+              ) : (
+                <span className="holo-preview" aria-hidden="true" />
+              )}
               <img
                 ref={bgImgRef}
                 className="holo-layer holo-layer-bg"

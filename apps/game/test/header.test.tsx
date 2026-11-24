@@ -22,14 +22,14 @@ const attr = (tag: string, name: string) => new RegExp(`\\s${name}="([^"]*)"`, '
 describe('game header', () => {
   it('links the atlas by href, same origin when ATLAS_ORIGIN is unset', async () => {
     const html = await header(null);
-    expect(tags(html, 'a').some((a) => attr(a, 'href') === '/')).toBe(true);
+    expect(tags(html, 'a').some((a) => attr(a, 'href') === '/legends')).toBe(true);
     const atlas = [...html.matchAll(/<a\b[^>]*>([^<]*)<\/a>/g)].find((m) => m[1] === t('nav.atlas'));
-    expect(atlas && attr(atlas[0], 'href')).toBe('/');
+    expect(atlas && attr(atlas[0], 'href')).toBe('/legends');
   });
   it('uses the configured atlas origin', async () => {
     const html = await header(null, 'https://atlas.example');
-    expect(html).toContain('href="https://atlas.example/"');
-    expect(atlasHome('https://atlas.example/')).toBe('https://atlas.example/');
+    expect(html).toContain('href="https://atlas.example/legends"');
+    expect(atlasHome('https://atlas.example/')).toBe('https://atlas.example/legends');
   });
   it('fails the atlas lookup when the link is removed', async () => {
     const html = (await header(null)).replace(new RegExp(`<a\\b[^>]*>${t('nav.atlas')}</a>`), '');

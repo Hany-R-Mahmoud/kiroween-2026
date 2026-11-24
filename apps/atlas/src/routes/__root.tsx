@@ -1,5 +1,5 @@
 import { BASE_PALETTE, ImageBaseContext, type ResolvedTheme } from '@kiroween/skeleton/client';
-import { createRootRoute, HeadContent, Link, Outlet, Scripts, useMatches } from '@tanstack/react-router';
+import { createRootRoute, HeadContent, Link, Outlet, Scripts, useMatches, useRouterState } from '@tanstack/react-router';
 import { Mood } from '@kiroween/skeleton/mood';
 import type { CSSProperties, ReactNode } from 'react';
 import { NotFound } from '../components/NotFound';
@@ -55,13 +55,30 @@ function Document({ lang, dir, theme, children }: { lang: string; dir: 'ltr' | '
   );
 }
 
+/** The entry page (`/`) draws its own full-bleed layout: no site header, footer or width cap. Matched on the exact pathname. */
+
 function Shell({ children }: { children: ReactNode }) {
   const t = useT();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const chromeless = pathname === '/';
+  const skipLink = (
+    <a href="#main" className="sr-only rounded bg-surface p-3 focus:not-sr-only focus:absolute focus:start-3 focus:top-3 focus:z-10">
+      {t('nav.skip')}
+    </a>
+  );
+  if (chromeless) {
+    return (
+      <>
+        {skipLink}
+        <main id="main" tabIndex={-1} className="outline-none">
+          {children}
+        </main>
+      </>
+    );
+  }
   return (
     <>
-      <a href="#main" className="sr-only rounded bg-surface p-3 focus:not-sr-only focus:absolute focus:start-3 focus:top-3 focus:z-10">
-        {t('nav.skip')}
-      </a>
+      {skipLink}
       <SiteHeader t={t} />
       <main id="main" tabIndex={-1} className="mx-auto max-w-6xl outline-none">
         {children}
@@ -103,8 +120,9 @@ function ErrorPage() {
     <main id="main" className="measure mx-auto flex flex-col gap-4 px-4 py-16">
       <h1 className="text-4xl text-glow">{translate('en', 'error.title')}</h1>
       <p>{translate('en', 'error.body')}</p>
-      <p>
-        <a href="/" className="link">{translate('en', 'error.home')}</a>
+      <p className="flex flex-wrap gap-x-4">
+        <a href="/" className="link inline-flex min-h-11 items-center">{translate('en', 'error.home')}</a>
+        <a href="/legends" className="link inline-flex min-h-11 items-center">{translate('en', 'error.legends')}</a>
       </p>
     </main>
   );

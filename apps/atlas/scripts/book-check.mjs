@@ -2,7 +2,7 @@
 //
 // Same approach as apps/game/scripts/browser-check.mjs: the DevTools protocol over Node's built-in WebSocket, no new dependency.
 // Chrome is found on the usual macOS/Linux paths or in CHROME_BIN. It needs a RUNNING atlas (built or dev, with its database
-// env); the script itself never touches the database. Legend ids come from the atlas home page, anchors from the legend page's own
+// env); the script itself never touches the database. Legend ids come from the atlas legend list (/legends), anchors from the legend page's own
 // element ids.
 //
 //   pnpm --filter @kiroween/atlas test:browser -- [--base http://localhost:3001] [--out docs/phase-5-notes/book-check-g5.json]
@@ -257,10 +257,10 @@ async function main() {
 
   let legends = opts.legends;
   if (!legends.length) {
-    const html = await fetch(`${opts.base}/`).then((r) => r.text());
+    const html = await fetch(`${opts.base}/legends`).then((r) => r.text());
     legends = legendIdsFromHrefs([...html.matchAll(/href="([^"]+)"/g)].map((m) => m[1]));
   }
-  record('legend list', legends.length === 12 || opts.legends.length > 0, { legends: legends.length }, legends.length === 12 ? '' : 'expected 12 legends from the home page');
+  record('legend list', legends.length === 12 || opts.legends.length > 0, { legends: legends.length }, legends.length === 12 ? '' : 'expected 12 legends from /legends');
   const targets = [...legends, KEEPERS_NOTE];
 
   const { proc, userDir } = launchChrome();

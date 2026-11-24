@@ -56,7 +56,7 @@ function imageProblems(card: string, expectSmallCopy: boolean): string[] {
 describe('atlas home', async () => {
   const html = await renderInRouter(<HomeView legends={legends} t={t} />);
 
-  // Requirement 23.2: "All legends" (/#legends) lands on a section whose own heading is in view.
+  // Requirement 23.2: "All legends" (/legends) lands on a section whose own heading is in view.
   describe('the #legends target', () => {
     it('is a section labelled by its visible heading, and the id appears once', () => {
       expect(html.match(/\sid="legends"/g)).toHaveLength(1);

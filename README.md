@@ -12,7 +12,7 @@ The atlas is open to everyone. In the game a guest can play the tutorial and one
 ## How it fits together
 
 - `skeleton/`: the shared lore engine: content parsing, seeded randomness, the puzzle generator, gated hints, deep links into story chapters, theme packs, the book reader, the mood layer, auth and progress.
-- `apps/atlas/`: the public legends atlas (TanStack Start, React, Tailwind). Owns `/` and `/media`.
+- `apps/atlas/`: the public legends atlas (TanStack Start, React, Tailwind). Owns `/`, `/legends` and `/media`.
 - `apps/game/`: the investigation game. Owns `/game` and is reached through the atlas domain.
 - `content/` holds the legend texts and `assets/` the images; both reach the apps through an import into Neon Postgres, not from app code.
 - Each run has its own seed. The seed picks the facts, puzzle types, wrong answers, hotspot roles and which story version is the true lead. Every puzzle answer exists only in a legend chapter, and Hint 2 opens the atlas at that chapter.

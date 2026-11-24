@@ -88,6 +88,32 @@
     inset: 0;
     display: block;
   }
+  /* Preview: the card's own blurred background (CDN on) or a palette gradient (CDN off), under the layers.
+     No transition, so reduced motion has nothing to switch off. The face clips the blur edge. */
+  .holo-preview {
+    position: absolute;
+    inset: 0;
+    display: block;
+    background-color: var(--color-surface);
+    background-image: linear-gradient(
+      160deg,
+      var(--color-surface),
+      color-mix(in oklab, var(--color-accent) 8%, var(--color-bg)) 60%,
+      var(--color-bg)
+    );
+    background-size: cover;
+    background-position: center;
+    filter: blur(calc(6 * var(--u)));
+    transform: scale(1.2);
+    pointer-events: none;
+  }
+  /* CDN on: the Preview is a real 32 px image, so it is fetched early and sized like the art. */
+  img.holo-preview {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+    max-inline-size: none;
+  }
   .holo-layer {
     position: absolute;
     inset-inline-start: -2.3013%;
@@ -148,7 +174,8 @@
     pointer-events: none;
   }
   /* Once WebGL has drawn its first frame the HTML art is hidden but kept, so it can return after context loss. */
-  .holo-scene[data-renderer='webgl'] .holo-art {
+  .holo-scene[data-renderer='webgl'] .holo-art,
+  .holo-scene[data-renderer='webgl'] .holo-preview {
     visibility: hidden;
   }
 
@@ -181,6 +208,19 @@
     color: var(--color-bg);
     text-shadow: 0 calc(1.2 * var(--u)) 0 color-mix(in oklab, var(--color-glow) 55%, transparent);
     pointer-events: none;
+  }
+  /* Small cards: give the word slack so the last letter is not clipped. Thresholds measured in shell-3 Verify: the word never clips (box slack is about 25% at every size); below about 220px it is under 11px and unreadable, so it is hidden. */
+  @container (max-inline-size: 320px) {
+    .holo-title {
+      letter-spacing: 0.08em;
+      padding-inline-start: 0.08em;
+    }
+  }
+  /* Very small cards: the word cannot be read, so hide it. The button's aria-label still names the card. */
+  @container (max-inline-size: 220px) {
+    .holo-title {
+      display: none;
+    }
   }
 
   /* Back face */

@@ -2,12 +2,13 @@ import { createMemoryHistory, createRootRoute, createRoute, createRouter, Router
 import type { ReactElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 
-/** Renders `ui` under a real router (memory history, the two routes the home links to), so `Link` builds real hrefs. */
+/** Renders `ui` under a real router (memory history, the routes the header and home link to), so `Link` builds real hrefs. */
 export async function renderInRouter(ui: ReactElement, url = '/'): Promise<string> {
   const root = createRootRoute({ component: () => ui });
   const index = createRoute({ getParentRoute: () => root, path: '/' });
+  const legends = createRoute({ getParentRoute: () => root, path: '/legends' });
   const legend = createRoute({ getParentRoute: () => root, path: '/legends/$legendId' });
-  const router = createRouter({ routeTree: root.addChildren([index, legend]), history: createMemoryHistory({ initialEntries: [url] }) });
+  const router = createRouter({ routeTree: root.addChildren([index, legends, legend]), history: createMemoryHistory({ initialEntries: [url] }) });
   await router.load();
   return renderToStaticMarkup(<RouterProvider router={router} />);
 }

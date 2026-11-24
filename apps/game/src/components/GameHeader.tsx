@@ -1,9 +1,9 @@
 import { Link } from '@tanstack/react-router';
 import type { MessageKey } from '../i18n/en';
 
-/** The atlas home. `ATLAS_ORIGIN` unset (empty) means same origin, so the href is `/` (Req 22.4). */
+/** The atlas legend list. `ATLAS_ORIGIN` unset (empty) means same origin, so the href is `/legends`. */
 export function atlasHome(atlasOrigin: string): string {
-  return `${atlasOrigin.replace(/\/+$/, '')}/`;
+  return `${atlasOrigin.replace(/\/+$/, '')}/legends`;
 }
 
 /**

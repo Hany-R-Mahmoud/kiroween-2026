@@ -45,7 +45,7 @@ try {
   await send('Runtime.enable');
   for (const w of [360, 375, 390, 1280]) {
     await send('Emulation.setDeviceMetricsOverride', { width: w, height: 800, deviceScaleFactor: 1, mobile: w < 600 });
-    await send('Page.navigate', { url: `${BASE}/` });
+    await send('Page.navigate', { url: `${BASE}/legends` });
     for (let i = 0; i < 100 && !(await ev(`!!document.querySelector('header nav a.nav-play')`)); i++) await sleep(200);
     await sleep(800);
     const m = await ev(`(() => { const r = (e) => e.getBoundingClientRect(); const nav = document.querySelector('header nav'); const header = document.querySelector('header');
@@ -66,7 +66,7 @@ try {
       if (hit) order.push(hit);
     }
     // skip link may come first; the nav links must be in the order logo, legends, game
-    check(`${w}: Tab order logo, legends, game`, JSON.stringify(order.slice(0, 3)) === JSON.stringify(['/', '/#legends', '/game/']), JSON.stringify(order));
+    check(`${w}: Tab order logo, legends, game`, JSON.stringify(order.slice(0, 3)) === JSON.stringify(['/', '/legends', '/game/']), JSON.stringify(order));
     console.log(`${w}: header ${m.headerH} px, tops ${m.tops}, heights ${m.heights}`);
     await send('Page.captureScreenshot', { format: 'png' }).then((r) => writeFileSync(join(SHOTS, `f6-header-${w}-after.png`), Buffer.from(r.data, 'base64')));
   }

@@ -20,9 +20,9 @@ describe('atlas header', async () => {
     for (const l of all) expect(classes(l.tag), l.text).toContain('nav-item');
   });
 
-  it('points the logo at /, the legend list at /#legends and the game at /game/', () => {
+  it('points the logo at /, the legend list at /legends and the game at /game/', () => {
     expect(byText('app.title')?.href).toBe('/');
-    expect(byText('nav.home')?.href).toBe('/#legends');
+    expect(byText('nav.home')?.href).toBe('/legends');
     expect(byText('nav.play')?.href).toBe('/game/');
   });
 
@@ -58,7 +58,7 @@ describe('atlas header', async () => {
   });
 
   it('the duplicate-href check fails when two items share an href', () => {
-    const broken = html.replace('href="/#legends"', 'href="/game/"');
+    const broken = html.replace('href="/legends"', 'href="/game/"');
     const hrefs = links(broken).map((l) => l.href);
     expect(new Set(hrefs).size).not.toBe(hrefs.length);
   });

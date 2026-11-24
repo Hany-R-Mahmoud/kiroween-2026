@@ -24,6 +24,8 @@ export interface HoloRendererOptions {
   images: { background: HTMLImageElement; subject: HTMLImageElement; frame: HTMLImageElement };
   motion: MotionController;
   reduced: boolean;
+  /** Delay in ms before the one-time sweep starts. Default 0. */
+  sweepDelayMs?: number | undefined;
   /** Called once if the renderer is destroyed by an error or by context loss. */
   onFailure?: (reason: 'context-lost' | 'error') => void;
 }
@@ -208,6 +210,7 @@ export function createHoloRenderer(options: HoloRendererOptions): HoloRenderer |
   let rafB = 0;
   let waitingVisible = false;
   let sweepElapsed = 0;
+  let sweepDelayLeft = Math.max(0, options.sweepDelayMs ?? 0) / 1000;
   let sweepDone = reduced;
   let lastTime: number | null = null;
 
@@ -317,10 +320,15 @@ export function createHoloRenderer(options: HoloRendererOptions): HoloRenderer |
 
       let sweep = 0;
       if (!reduced && !sweepDone) {
-        sweepElapsed += dt;
-        const t = sweepElapsed / SWEEP_SECONDS;
-        if (t >= 1) sweepDone = true;
-        else sweep = (smooth(t) * 2 - 1) * SWEEP_RANGE;
+        if (sweepDelayLeft > 0) {
+          sweepDelayLeft -= dt;
+          sweep = -SWEEP_RANGE; // same off-card start value the sweep has at t = 0
+        } else {
+          sweepElapsed += dt;
+          const t = sweepElapsed / SWEEP_SECONDS;
+          if (t >= 1) sweepDone = true;
+          else sweep = (smooth(t) * 2 - 1) * SWEEP_RANGE;
+        }
       }
 
       gl.uniform1f(locations.uTime, reduced ? 0 : time);

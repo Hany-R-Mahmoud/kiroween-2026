@@ -497,29 +497,180 @@ html[data-motion='reduce'] .map-pin {
   }
 }
 
-/* Hidden card page (/lab/card): the card is centred on the hub background and sized so the whole card fits the first screen.
-   The block size left under the header (minus the padding) times the card's 956/1319 ratio caps the inline size, and the
-   available inline size caps it too, so 390x844 and 1280x800 both fit with no horizontal scroll. Logical properties only.
-   In the ui layer because holoCard.css (ui layer) sets the scene's inline-size and a components rule would lose. */
+/* Entry page (/): two cards on the hub background, site chrome hidden. In the ui layer so these rules beat holoCard.css
+   (it sets .holo-scene inline-size). Cards are sized by the smaller of the width share and the height share; a clear gap of at
+   least 24px stays under them. Logical properties and tokens only. */
 @layer ui {
-  .lab-card-page {
-    --lab-pad: var(--space-4);
-    /* Clear gap kept under the card (R20): 2rem, never under 24px. Taken off the height the card may use, so the card
-       shrinks by height first (1024x768) and the gap stays at 1280x800 and 390x844. */
-    --lab-gap: max(var(--space-6), 24px);
-    --lab-avail-block: calc(100dvh - var(--app-header-h) - 2 * var(--lab-pad) - var(--lab-gap));
-    display: grid;
-    place-items: center;
+  .shell-page {
+    --shell-pad: var(--space-4);
+    --shell-gap: var(--space-4);
+    --shell-under: max(var(--space-6), 24px);
+    --shell-head-h: 6.5rem;
+    --shell-peek: 4.5rem;
+    --shell-hint: 2.75rem;
+    --shell-links: calc(var(--target) + var(--space-1)); /* Link_Row height with its top margin */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     box-sizing: border-box;
     inline-size: 100%;
-    min-block-size: calc(100dvh - var(--app-header-h));
-    padding: var(--lab-pad);
-    padding-block-end: calc(var(--lab-pad) + var(--lab-gap));
+    min-block-size: 100dvh;
+    padding: var(--shell-pad);
+    padding-block-end: var(--shell-under);
     background-color: var(--color-bg);
+    color: var(--color-ink);
     overflow-x: clip;
   }
-  .lab-card-page .holo-scene {
-    inline-size: min(100%, calc(var(--lab-avail-block) * 956 / 1319));
+  .shell-head {
+    display: grid;
+    gap: var(--space-1);
+    justify-items: center;
+    min-block-size: var(--shell-head-h);
+    padding-block: var(--space-2);
+    text-align: center;
+  }
+  .shell-name {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: var(--type-h2, 1.5rem);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: var(--color-ink);
+  }
+  .shell-tagline {
+    margin: 0;
+    max-inline-size: 48ch;
+    font-family: var(--font-body);
+    font-size: var(--type-small);
+    color: var(--color-muted);
+    text-wrap: balance;
+  }
+  .shell-cards {
+    --shell-avail-block: calc(100dvh - var(--shell-head-h) - 2 * var(--shell-pad) - var(--shell-under));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--shell-gap);
+    inline-size: 100%;
+  }
+  .shell-slot {
+    /* Stacked: the first card fits the first screen with a peek of the second. */
+    --shell-card: min(100%, calc((var(--shell-avail-block) - var(--shell-peek)) * 956 / 1319));
+    inline-size: var(--shell-card);
     max-inline-size: 100%;
+  }
+  .shell-slot .holo-scene {
+    inline-size: 100%;
+    max-inline-size: 100%;
+  }
+  .shell-hint {
+    margin: var(--space-2) 0 0;
+    min-block-size: 2.25rem; /* text only, not a target; 2.75rem with the margin = --shell-hint */
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-family: var(--font-ui);
+    font-size: var(--type-small);
+    color: var(--color-muted);
+  }
+  .shell-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-4);
+    margin-block-start: var(--space-1);
+  }
+  .shell-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-block-size: var(--target);
+    min-inline-size: var(--target);
+    padding-inline: var(--space-3);
+    font-family: var(--font-ui);
+    font-size: var(--type-small);
+    color: var(--color-muted);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+  .shell-link:hover {
+    color: var(--color-ink);
+  }
+  .shell-hint-touch {
+    display: none;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .shell-hint-touch {
+      display: none;
+    }
+  }
+  @media not ((hover: hover) and (pointer: fine)) {
+    .shell-hint-pointer {
+      display: none;
+    }
+    .shell-hint-touch {
+      display: flex;
+    }
+  }
+
+  @media (min-width: 700px), (orientation: landscape) {
+    .shell-cards {
+      flex-direction: row;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    .shell-slot {
+      /* Side by side the Hint sits under the cards inside the first screen, so its height comes off the card height. */
+      --shell-card: min(
+        calc((100% - var(--shell-gap)) / 2),
+        calc((var(--shell-avail-block) - var(--shell-hint) - var(--shell-links)) * 956 / 1319)
+      );
+    }
+  }
+  /* Short landscape (667x375): compact head so the cards fit with no vertical scroll. */
+  @media (orientation: landscape) and (max-height: 520px) {
+    .shell-page {
+      --shell-pad: var(--space-2);
+      --shell-under: var(--space-2);
+      --shell-head-h: 2.25rem;
+      --shell-hint: 0px;
+    }
+    .shell-head {
+      padding-block: 0;
+    }
+    .shell-tagline {
+      display: none;
+    }
+    .shell-name {
+      font-size: var(--type-body, 1rem);
+    }
+    .shell-hint {
+      display: none;
+    }
+  }
+
+  @keyframes shell-rise {
+    from {
+      opacity: 0;
+      transform: translateY(1.5rem);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  .shell-slot[data-enter] {
+    animation: shell-rise 700ms cubic-bezier(0.2, 0.7, 0.2, 1);
+    animation-delay: var(--enter-delay, 0ms);
+    animation-fill-mode: both;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .shell-slot[data-enter] {
+      animation: none;
+    }
+  }
+  html[data-motion='reduce'] .shell-slot[data-enter] {
+    animation: none;
   }
 }
