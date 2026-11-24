@@ -6,6 +6,7 @@ import {
   useState,
   type ImgHTMLAttributes,
   type KeyboardEvent,
+  type MouseEvent,
   type Ref,
   type TransitionEvent,
 } from 'react';
@@ -25,7 +26,6 @@ export interface HoloCardStrings {
   link: string;
   /** Accessible name of the front button. */
   name: string;
-  turnBack: string;
 }
 
 /** Asset ids of the four card layers. */
@@ -338,6 +338,12 @@ export function HoloCard({
     }
   };
 
+  // A click after a drag never gets here: motion.ts swallows it in the capture phase.
+  const onBackClick = (event: MouseEvent<HTMLDivElement>): void => {
+    if ((event.target as Element).closest('a')) return; // the link follows itself and does not flip
+    motionRef.current?.turnBy(-1);
+  };
+
   const arm = (): void => {
     if (!armed) setArmed(true);
   };
@@ -413,7 +419,7 @@ export function HoloCard({
               {strings.title}
             </span>
           </button>
-          <div className="holo-back holo-face" inert={face === 'front'}>
+          <div className="holo-back holo-face" inert={face === 'front'} onClick={onBackClick}>
             <img
               ref={backImgRef}
               className="holo-back-img"
@@ -430,9 +436,6 @@ export function HoloCard({
                   <a ref={linkRef} className="btn btn-primary" href={href}>
                     {strings.link}
                   </a>
-                  <button type="button" className="btn" onClick={() => motionRef.current?.turnBy(-1)}>
-                    {strings.turnBack}
-                  </button>
                 </div>
               </div>
             </div>

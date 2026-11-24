@@ -1,4 +1,4 @@
-import { SHARED_ATLAS_IMAGES } from '@kiroween/skeleton/client';
+import { SHARED_ATLAS_IMAGES, shareTags } from '@kiroween/skeleton/client';
 import { createFileRoute } from '@tanstack/react-router';
 import { HomeView } from '../components/HomeView';
 import { heroPreloads, imageBaseOf } from '../components/imageSet';
@@ -21,6 +21,7 @@ export const Route = createFileRoute('/legends/')({
         { name: 'description', content: description },
         { property: 'og:title', content: title },
         { property: 'og:description', content: description },
+        ...shareTags({ origin, title, description, imageAlt: translate('en', 'share.image.alt'), siteName: translate('en', 'app.title') }),
         ...(origin ? [{ property: 'og:url', content: `${origin}/legends` }] : []),
       ],
       links: [{ rel: 'canonical', href: `${origin}/legends` }, ...heroPreloads(hero, imageBaseOf(matches), false)],

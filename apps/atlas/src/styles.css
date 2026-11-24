@@ -193,7 +193,7 @@
       background: none;
     }
   }
-  /* home body: map and list stacked on phone and tablet, side by side from 64rem */
+  /* home body: map above the list at every width */
   .home-page {
     display: flex;
     flex-direction: column;
@@ -205,18 +205,10 @@
     gap: var(--space-6);
     padding-inline: var(--space-4);
   }
-  @media (min-width: 64rem) {
-    .home-split {
-      display: grid;
-      grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
-      gap: var(--space-5);
-      align-items: start;
-    }
-    .home-list-scroll {
-      max-block-size: calc(100dvh - var(--app-header-h) - var(--space-8));
-      overflow-y: auto;
-      overscroll-behavior: contain;
-    }
+  .home-map {
+    inline-size: 100%;
+    max-inline-size: 46rem;
+    margin-inline: auto;
   }
   /* hint banner: a slim sticky bar at the top of the book area, so it stays visible wherever the anchor jump lands. The control
      row sticks right below it (--book-controls-top). A close-failed note hangs below the bar instead of growing it. */
@@ -266,9 +258,20 @@
   .legend-cards {
     display: grid;
     gap: var(--space-4);
-    grid-template-columns: repeat(auto-fill, minmax(min(16rem, 100%), 1fr));
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  @media (min-width: 40rem) {
+    .legend-cards {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (min-width: 64rem) {
+    .legend-cards {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
   }
   .legend-card {
+    min-inline-size: 0;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -287,10 +290,16 @@
     transform: translateY(-2px);
   }
   .legend-card-body {
+    min-inline-size: 0;
     display: flex;
     flex-direction: column;
     gap: var(--space-1);
     padding: var(--space-4);
+  }
+  .legend-card-body > p:first-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   .legend-card-link {
     color: var(--color-ink);
@@ -397,56 +406,7 @@
 html[data-motion='reduce'] .map-pin {
   transition: none;
 }
-/* Home list rows on desktop: one column, no image, no hook line. Layer order is theme, base, components, ui, utilities, so this
-   sits in `utilities` to beat `.panel` (ui) and the Tailwind classes in LegendList. */
 @layer utilities {
-  @media (min-width: 64rem) {
-    .home-list-scroll .legend-cards {
-      grid-template-columns: 1fr;
-      gap: var(--space-2);
-    }
-    .home-list-scroll .legend-card-img,
-    .home-list-scroll .legend-card-body > p.text-sm {
-      display: none;
-    }
-    /* `.panel` (ui layer) pads the row, and the region line wraps in a narrow column: pad once, keep region on one line */
-    .home-list-scroll .legend-card.panel {
-      min-block-size: 2.75rem;
-      padding: 0;
-    }
-    .home-list-scroll .legend-card-body {
-      justify-content: center;
-      gap: 0;
-      min-block-size: 2.75rem;
-      padding-block: var(--space-1);
-      padding-inline: var(--space-3);
-    }
-    .home-list-scroll .legend-card-body > p {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-    .home-list-scroll > div {
-      gap: var(--space-5);
-    }
-    .home-list-scroll .legend-cards {
-      margin-block-start: var(--space-2);
-    }
-  }
-}
-/* List rows: the grid tracks must not grow to the nowrap region line (min-content), or the cards run past the column and the
-   scroll box clips their end border. `minmax(0, 1fr)` lets the line shrink so the ellipsis applies. */
-@layer utilities {
-  @media (min-width: 64rem) {
-    .home-list-scroll > div,
-    .home-list-scroll .legend-cards {
-      grid-template-columns: minmax(0, 1fr);
-    }
-    .home-list-scroll .legend-card,
-    .home-list-scroll .legend-card-body {
-      min-inline-size: 0;
-    }
-  }
   /* Map: from 48rem the column is wide enough to show the whole map, so it fits the column instead of panning (pins are
      percentages of the box). The padding is half a 44px pin, so an edge pin sits inside the scroll box and is not clipped. */
   @media (min-width: 48rem) {
@@ -508,7 +468,6 @@ html[data-motion='reduce'] .map-pin {
     --shell-head-h: 6.5rem;
     --shell-peek: 4.5rem;
     --shell-hint: 2.75rem;
-    --shell-links: calc(var(--target) + var(--space-1)); /* Link_Row height with its top margin */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -545,6 +504,14 @@ html[data-motion='reduce'] .map-pin {
     color: var(--color-muted);
     text-wrap: balance;
   }
+  /* The cap was the cause, not a parent: the line is longer than 48ch, so it wrapped at 48ch and balance narrowed it to
+     about 215px. From 40rem up the cap goes and the line stays on one row (the head is as wide as the page there). */
+  @media (min-width: 40rem) {
+    .shell-tagline {
+      max-inline-size: none;
+      text-wrap: nowrap;
+    }
+  }
   .shell-cards {
     --shell-avail-block: calc(100dvh - var(--shell-head-h) - 2 * var(--shell-pad) - var(--shell-under));
     display: flex;
@@ -573,30 +540,6 @@ html[data-motion='reduce'] .map-pin {
     font-size: var(--type-small);
     color: var(--color-muted);
   }
-  .shell-links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: var(--space-4);
-    margin-block-start: var(--space-1);
-  }
-  .shell-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-block-size: var(--target);
-    min-inline-size: var(--target);
-    padding-inline: var(--space-3);
-    font-family: var(--font-ui);
-    font-size: var(--type-small);
-    color: var(--color-muted);
-    text-decoration: underline;
-    text-underline-offset: 0.2em;
-  }
-  .shell-link:hover {
-    color: var(--color-ink);
-  }
   .shell-hint-touch {
     display: none;
   }
@@ -624,7 +567,7 @@ html[data-motion='reduce'] .map-pin {
       /* Side by side the Hint sits under the cards inside the first screen, so its height comes off the card height. */
       --shell-card: min(
         calc((100% - var(--shell-gap)) / 2),
-        calc((var(--shell-avail-block) - var(--shell-hint) - var(--shell-links)) * 956 / 1319)
+        calc((var(--shell-avail-block) - var(--shell-hint)) * 956 / 1319)
       );
     }
   }

@@ -5,7 +5,7 @@ import { signInGoogle, signUpEmail } from '../auth/client';
 import { buttonClass, Field, secondaryButtonClass } from '../components/Field';
 import { useT } from '../i18n/useT';
 
-export const Route = createFileRoute('/sign-up')({ component: SignUp });
+export const Route = createFileRoute('/sign-up')({ head: () => ({ meta: [{ name: 'robots', content: 'noindex' }] }), component: SignUp });
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 

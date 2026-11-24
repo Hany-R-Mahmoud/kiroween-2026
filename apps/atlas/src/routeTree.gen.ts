@@ -11,6 +11,8 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ManifestDotwebmanifestRouteImport } from './routes/manifest[.]webmanifest'
+import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as AnchorAnchorRouteImport } from './routes/anchor.$anchor'
 import { Route as LegendsIndexRouteImport } from './routes/legends.index'
 import { Route as LegendsLegendIdRouteImport } from './routes/legends.$legendId'
@@ -23,6 +25,16 @@ const IndexRoute = IndexRouteImport.update({
 const ManifestDotwebmanifestRoute = ManifestDotwebmanifestRouteImport.update({
   id: '/manifest.webmanifest',
   path: '/manifest.webmanifest',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
+  id: '/robots.txt',
+  path: '/robots.txt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AnchorAnchorRoute = AnchorAnchorRouteImport.update({
@@ -44,6 +56,8 @@ const LegendsLegendIdRoute = LegendsLegendIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/manifest.webmanifest': typeof ManifestDotwebmanifestRoute
+  '/robots.txt': typeof RobotsDottxtRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/anchor/$anchor': typeof AnchorAnchorRoute
   '/legends/$legendId': typeof LegendsLegendIdRoute
   '/legends/': typeof LegendsIndexRoute
@@ -51,6 +65,8 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/manifest.webmanifest': typeof ManifestDotwebmanifestRoute
+  '/robots.txt': typeof RobotsDottxtRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/anchor/$anchor': typeof AnchorAnchorRoute
   '/legends/$legendId': typeof LegendsLegendIdRoute
   '/legends': typeof LegendsIndexRoute
@@ -59,6 +75,8 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/manifest.webmanifest': typeof ManifestDotwebmanifestRoute
+  '/robots.txt': typeof RobotsDottxtRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/anchor/$anchor': typeof AnchorAnchorRoute
   '/legends/$legendId': typeof LegendsLegendIdRoute
   '/legends/': typeof LegendsIndexRoute
@@ -68,6 +86,8 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/manifest.webmanifest'
+    | '/robots.txt'
+    | '/sitemap.xml'
     | '/anchor/$anchor'
     | '/legends/$legendId'
     | '/legends/'
@@ -75,6 +95,8 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/manifest.webmanifest'
+    | '/robots.txt'
+    | '/sitemap.xml'
     | '/anchor/$anchor'
     | '/legends/$legendId'
     | '/legends'
@@ -82,6 +104,8 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/manifest.webmanifest'
+    | '/robots.txt'
+    | '/sitemap.xml'
     | '/anchor/$anchor'
     | '/legends/$legendId'
     | '/legends/'
@@ -90,6 +114,8 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ManifestDotwebmanifestRoute: typeof ManifestDotwebmanifestRoute
+  RobotsDottxtRoute: typeof RobotsDottxtRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   AnchorAnchorRoute: typeof AnchorAnchorRoute
   LegendsLegendIdRoute: typeof LegendsLegendIdRoute
   LegendsIndexRoute: typeof LegendsIndexRoute
@@ -109,6 +135,20 @@ declare module '@tanstack/react-router' {
       path: '/manifest.webmanifest'
       fullPath: '/manifest.webmanifest'
       preLoaderRoute: typeof ManifestDotwebmanifestRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/robots.txt': {
+      id: '/robots.txt'
+      path: '/robots.txt'
+      fullPath: '/robots.txt'
+      preLoaderRoute: typeof RobotsDottxtRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/anchor/$anchor': {
@@ -138,6 +178,8 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ManifestDotwebmanifestRoute: ManifestDotwebmanifestRoute,
+  RobotsDottxtRoute: RobotsDottxtRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   AnchorAnchorRoute: AnchorAnchorRoute,
   LegendsLegendIdRoute: LegendsLegendIdRoute,
   LegendsIndexRoute: LegendsIndexRoute,

@@ -77,10 +77,11 @@ describe('preload matches the img', () => {
     expect(imageBaseOf([{ loaderData: {} }])).toBe('');
     expect(imageBaseOf([])).toBe('');
   });
-  it('og:image stays the original absolute URL (route source still uses assetUrl)', async () => {
+  it('legend route no longer sets a hero og:image (the shared share image is used)', async () => {
     const { readFileSync } = await import('node:fs');
     const src = readFileSync(new URL('../src/routes/legends.$legendId.tsx', import.meta.url), 'utf8');
-    expect(src).toContain("property: 'og:image', content: `${origin}${assetUrl(legend.hero.id)}`");
+    expect(src).not.toContain("property: 'og:image', content: `${origin}${assetUrl(legend.hero.id)}`");
+    expect(src).toContain('shareTags(');
   });
 });
 
@@ -101,7 +102,7 @@ describe('legend cards', () => {
   it('CDN on: width copies of the hero with its intrinsic size', async () => {
     const img = await card(BASE);
     expect(attr(img, 'srcset')).toContain(`${imageUrl(legendImage.id, BASE, { axis: 'w', n: 400 })} 400w`);
-    expect(attr(img, 'sizes')).toBe('(min-width: 48rem) 24rem, 100vw');
+    expect(attr(img, 'sizes')).toBe('(min-width: 64rem) 22rem, (min-width: 40rem) 50vw, 100vw');
     expect(attr(img, 'width')).toBe('2400');
     expect(attr(img, 'height')).toBe('1350');
   });

@@ -23,7 +23,7 @@ export const Route = createRootRoute({
       { property: 'og:title', content: translate('en', 'app.title') },
       { property: 'og:description', content: translate('en', 'app.description') },
     ],
-    links: [{ rel: 'stylesheet', href: appCss }, { rel: 'manifest', href: '/manifest.webmanifest' }, { rel: 'apple-touch-icon', href: '/icons/apple-touch-180.png' }, ...fontLinks(BASE_FONTS)],
+    links: [{ rel: 'stylesheet', href: appCss }, { rel: 'manifest', href: '/manifest.webmanifest' }, { rel: 'icon', href: '/favicon.ico', sizes: '48x48' }, { rel: 'icon', href: '/icons/favicon-32.png', type: 'image/png', sizes: '32x32' }, { rel: 'apple-touch-icon', href: '/icons/apple-touch-180.png' }, ...fontLinks(BASE_FONTS)],
     scripts: [{ children: BOOK_HEAD_SCRIPT }],
   }),
   component: RootComponent,

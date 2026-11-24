@@ -6,6 +6,7 @@ import { useLang, useT } from '../i18n/useT';
 import { getAccount } from '../server/functions';
 
 export const Route = createFileRoute('/account')({
+  head: () => ({ meta: [{ name: 'robots', content: 'noindex' }] }),
   loader: () => getAccount(),
   component: Account,
 });

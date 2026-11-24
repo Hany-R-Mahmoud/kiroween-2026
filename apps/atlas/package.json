@@ -6,7 +6,7 @@
   "description": "Worldwide legends atlas built on the skeleton.",
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build",
+    "build": "node scripts/gen-legend-ids.mjs && vite build",
     "start": "node scripts/serve-build.mjs",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",

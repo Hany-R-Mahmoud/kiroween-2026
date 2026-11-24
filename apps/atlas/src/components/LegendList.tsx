@@ -11,8 +11,8 @@ export function cardImage(l: Pick<HomeLegend, 'hero' | 'marker'>): AtlasImage | 
   return l.marker;
 }
 
-/** Cards are at most about 24rem wide on desktop and fill the width on a phone. */
-const CARD_SIZES = '(min-width: 48rem) 24rem, 100vw';
+/** One column on a phone, two from 40rem, three from 64rem. */
+const CARD_SIZES = '(min-width: 64rem) 22rem, (min-width: 40rem) 50vw, 100vw';
 
 /** The accessible way in (R3.2): every legend, grouped by continent in a fixed order, by title inside each group. */
 export function LegendList({ legends, t }: { legends: HomeLegend[]; t: Translate }) {

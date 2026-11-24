@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import { createFileRoute, Link } from '@tanstack/react-router';
+import { createFileRoute } from '@tanstack/react-router';
 import { HoloCard, type HoloCardHandle } from '@kiroween/skeleton/shell';
+import { shareTags } from '@kiroween/skeleton/client';
 import { translate } from '../i18n/t';
 import { useT } from '../i18n/useT';
 
@@ -18,6 +19,13 @@ export const Route = createFileRoute('/')({
         { property: 'og:title', content: title },
         { property: 'og:description', content: description },
         ...(origin ? [{ property: 'og:url', content: `${origin}/` }] : []),
+        ...shareTags({
+          origin,
+          title,
+          description,
+          imageAlt: translate('en', 'share.image.alt'),
+          siteName: translate('en', 'app.title'),
+        }),
       ],
       links: [{ rel: 'canonical', href: origin ? `${origin}/` : '/' }],
     };
@@ -62,7 +70,6 @@ function EntryPage() {
               line: t('shell.card.told.line'),
               link: t('shell.card.told.link'),
               name: t('shell.card.told.name'),
-              turnBack: t('shell.card.turnBack'),
             }}
             href="/legends"
             handleRef={toldRef}
@@ -81,7 +88,6 @@ function EntryPage() {
               line: t('shell.card.true.line'),
               link: t('shell.card.true.link'),
               name: t('shell.card.true.name'),
-              turnBack: t('shell.card.turnBack'),
             }}
             href="/game/"
             handleRef={trueRef}
@@ -99,14 +105,6 @@ function EntryPage() {
           <p className="shell-hint shell-hint-touch">{t('shell.entry.hint.touch')}</p>
         </>
       )}
-      <nav className="shell-links" aria-label={t('shell.entry.links')}>
-        <Link to="/legends" className="shell-link">
-          {t('nav.home')}
-        </Link>
-        <a href="/game/" className="shell-link" aria-label={t('nav.play')}>
-          {t('nav.playShort')}
-        </a>
-      </nav>
     </section>
   );
 }

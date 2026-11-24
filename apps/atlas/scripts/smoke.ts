@@ -45,7 +45,7 @@ for (const id of ['banshee', 'naddaha', 'baba-yaga']) {
   check(`/legends/${id}: its own theme on <body>${id === 'baba-yaga' ? ' (links fall back to the base accent)' : ''}`, style.includes(`--color-bg:${pack.background}`) && style.includes(`--color-accent:${accent}`));
   const image = meta(html, 'og:image');
   const url = meta(html, 'og:url');
-  if (og) check(`/legends/${id}: og:image and og:url built from PUBLIC_ORIGIN`, image === `${og}/media/${id}/atlas/${id}-atlas-hero-01.webp` && url === `${og}/legends/${id}`, `${image ?? 'none'}`);
+  if (og) check(`/legends/${id}: og:image (the share image) and og:url built from PUBLIC_ORIGIN`, image === `${og}/og/trick-or-told-1200x630.jpg` && url === `${og}/legends/${id}`, `${image ?? 'none'}`);
   else check(`/legends/${id}: no og:image and no og:url without PUBLIC_ORIGIN`, image === undefined && url === undefined);
 }
 

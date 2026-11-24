@@ -70,6 +70,7 @@
   }
   .holo-back {
     transform: rotateY(180deg);
+    cursor: pointer;
   }
 
   /* Front face is the button: the whole card is the target (well over 44px). */
@@ -279,11 +280,6 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: var(--space-3);
-  }
-  .holo-back-actions .btn {
-    text-shadow: none; /* the plate's glow smudged the button label */
-    min-block-size: var(--target);
-    min-inline-size: var(--target);
   }
 }
 

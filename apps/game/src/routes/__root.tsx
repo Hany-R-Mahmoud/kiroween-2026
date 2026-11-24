@@ -14,7 +14,10 @@ export const Route = createRootRoute({
   loader: () => getShell(),
   head: () => ({
     meta: [{ charSet: 'utf-8' }, { name: 'viewport', content: 'width=device-width, initial-scale=1' }, { title: translate('en', 'app.title') }, { name: 'theme-color', content: BASE_PALETTE.bg }],
-    links: [{ rel: 'stylesheet', href: appCss }, { rel: 'manifest', href: '/game/manifest.webmanifest' }, { rel: 'apple-touch-icon', href: '/game/icons/apple-touch-180.png' }, ...fontLinks(BASE_FONTS)],
+    links: [{ rel: 'stylesheet', href: appCss },
+      { rel: 'icon', href: '/favicon.ico', sizes: '48x48' },
+      { rel: 'icon', href: '/icons/favicon-32.png', type: 'image/png', sizes: '32x32' },
+       { rel: 'manifest', href: '/game/manifest.webmanifest' }, { rel: 'apple-touch-icon', href: '/game/icons/apple-touch-180.png' }, ...fontLinks(BASE_FONTS)],
   }),
   component: RootComponent,
   errorComponent: RootError,
@@ -60,6 +63,7 @@ function NotFound() {
   const t = useT();
   return (
     <section aria-labelledby="not-found-title" className="page-narrow flex flex-col gap-4">
+      <meta name="robots" content="noindex" />
       <h1 id="not-found-title" className="font-display text-3xl text-glow">
         {t('notFound.heading')}
       </h1>

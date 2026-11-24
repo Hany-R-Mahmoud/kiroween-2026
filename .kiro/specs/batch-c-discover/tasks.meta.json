@@ -1,0 +1,236 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1. Atlas Catalog strings": [
+      {
+        "executionId": "a9a9cfba-1f78-4934-b7cc-6097dbdbd455",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795559256894
+      },
+      {
+        "executionId": "a9a9cfba-1f78-4934-b7cc-6097dbdbd455",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795559262842
+      },
+      {
+        "executionId": "a9a9cfba-1f78-4934-b7cc-6097dbdbd455",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795559421560
+      }
+    ],
+    "2. Shared share-tag function in the skeleton": [
+      {
+        "executionId": "a9a9cfba-1f78-4934-b7cc-6097dbdbd455",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795559256960
+      },
+      {
+        "executionId": "a9a9cfba-1f78-4934-b7cc-6097dbdbd455",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795559263003
+      },
+      {
+        "executionId": "a9a9cfba-1f78-4934-b7cc-6097dbdbd455",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795559422316
+      }
+    ],
+    "3. HoloCard: click anywhere on the back turns it back": [
+      {
+        "executionId": "a9a9cfba-1f78-4934-b7cc-6097dbdbd455",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795559256989
+      },
+      {
+        "executionId": "a9a9cfba-1f78-4934-b7cc-6097dbdbd455",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795559263960
+      },
+      {
+        "executionId": "a9a9cfba-1f78-4934-b7cc-6097dbdbd455",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795559423369
+      }
+    ],
+    "4. Favicon and share image scripts, and their outputs": [
+      {
+        "executionId": "a9a9cfba-1f78-4934-b7cc-6097dbdbd455",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795559257023
+      },
+      {
+        "executionId": "a9a9cfba-1f78-4934-b7cc-6097dbdbd455",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795559265001
+      },
+      {
+        "executionId": "a9a9cfba-1f78-4934-b7cc-6097dbdbd455",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795559424471
+      }
+    ],
+    "5. Entry page: no link row, share tags": [
+      {
+        "executionId": "a9a9cfba-1f78-4934-b7cc-6097dbdbd455",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795559257051
+      },
+      {
+        "executionId": "a9a9cfba-1f78-4934-b7cc-6097dbdbd455",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795559460740
+      },
+      {
+        "executionId": "a9a9cfba-1f78-4934-b7cc-6097dbdbd455",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795559503732
+      }
+    ],
+    "6. Legends page layout and entry page styles": [
+      {
+        "executionId": "a9a9cfba-1f78-4934-b7cc-6097dbdbd455",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795559257119
+      },
+      {
+        "executionId": "a9a9cfba-1f78-4934-b7cc-6097dbdbd455",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795559266405
+      },
+      {
+        "executionId": "a9a9cfba-1f78-4934-b7cc-6097dbdbd455",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795559425272
+      }
+    ],
+    "7. Sitemap and robots routes": [
+      {
+        "executionId": "a9a9cfba-1f78-4934-b7cc-6097dbdbd455",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795559257148
+      },
+      {
+        "executionId": "a9a9cfba-1f78-4934-b7cc-6097dbdbd455",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795559266617
+      },
+      {
+        "executionId": "a9a9cfba-1f78-4934-b7cc-6097dbdbd455",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795559459726
+      }
+    ],
+    "8. Atlas heads: icons, share tags, canonical, 404 noindex": [
+      {
+        "executionId": "a9a9cfba-1f78-4934-b7cc-6097dbdbd455",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795559257173
+      },
+      {
+        "executionId": "a9a9cfba-1f78-4934-b7cc-6097dbdbd455",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795559461889
+      },
+      {
+        "executionId": "a9a9cfba-1f78-4934-b7cc-6097dbdbd455",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795559505648
+      }
+    ],
+    "9. Game heads: icons, share tags, canonical, noindex": [
+      {
+        "executionId": "a9a9cfba-1f78-4934-b7cc-6097dbdbd455",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795559257199
+      },
+      {
+        "executionId": "a9a9cfba-1f78-4934-b7cc-6097dbdbd455",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795559462698
+      },
+      {
+        "executionId": "a9a9cfba-1f78-4934-b7cc-6097dbdbd455",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795559504618
+      }
+    ],
+    "10. Update existing pins": [
+      {
+        "executionId": "a9a9cfba-1f78-4934-b7cc-6097dbdbd455",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795559257223
+      },
+      {
+        "executionId": "a9a9cfba-1f78-4934-b7cc-6097dbdbd455",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795559509710
+      },
+      {
+        "executionId": "a9a9cfba-1f78-4934-b7cc-6097dbdbd455",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795559565119
+      }
+    ],
+    "11. Verify": [
+      {
+        "executionId": "a9a9cfba-1f78-4934-b7cc-6097dbdbd455",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795559257273
+      },
+      {
+        "executionId": "a9a9cfba-1f78-4934-b7cc-6097dbdbd455",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795559565842
+      },
+      {
+        "executionId": "a9a9cfba-1f78-4934-b7cc-6097dbdbd455",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795561278545
+      }
+    ],
+    "12. robots.txt: remove the Disallow lines": [
+      {
+        "executionId": "523d520e-8a11-425b-8884-9c73014ed66e",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795561888592
+      },
+      {
+        "executionId": "523d520e-8a11-425b-8884-9c73014ed66e",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795561893906
+      },
+      {
+        "executionId": "523d520e-8a11-425b-8884-9c73014ed66e",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795561931380
+      }
+    ],
+    "13. Tagline on one line": [
+      {
+        "executionId": "523d520e-8a11-425b-8884-9c73014ed66e",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795561888700
+      },
+      {
+        "executionId": "523d520e-8a11-425b-8884-9c73014ed66e",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795561894010
+      },
+      {
+        "executionId": "523d520e-8a11-425b-8884-9c73014ed66e",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795561932224
+      },
+      {
+        "executionId": "523d520e-8a11-425b-8884-9c73014ed66e",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795561939715
+      },
+      {
+        "executionId": "523d520e-8a11-425b-8884-9c73014ed66e",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795562299046
+      }
+    ]
+  }
+}

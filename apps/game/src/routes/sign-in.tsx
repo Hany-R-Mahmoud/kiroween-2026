@@ -5,6 +5,7 @@ import { buttonClass, Field, secondaryButtonClass } from '../components/Field';
 import { useT } from '../i18n/useT';
 
 export const Route = createFileRoute('/sign-in')({
+  head: () => ({ meta: [{ name: 'robots', content: 'noindex' }] }),
   // Only `reason=world` is kept; anything else is dropped.
   validateSearch: (search: Record<string, unknown>): { reason?: 'world' } => (search.reason === 'world' ? { reason: 'world' } : {}),
   component: SignIn,

@@ -5,6 +5,7 @@ import type { Translate } from '../i18n/t';
 export function NotFound({ t }: { t: Translate }) {
   return (
     <section aria-labelledby="not-found-title" className="measure mx-auto flex flex-col gap-4 px-4 py-16">
+      <meta name="robots" content="noindex" />
       <h1 id="not-found-title" className="text-4xl text-glow">
         {t('notFound.heading')}
       </h1>

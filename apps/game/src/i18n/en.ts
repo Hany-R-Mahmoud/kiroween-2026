@@ -11,6 +11,8 @@ export const en = {
   'nav.skip': 'Skip to the main content',
   'hall.heading': 'The archive hall',
   'hall.intro': 'Each door holds one legend. Open it to enter its world.',
+  'hall.description': 'A point-and-click investigation game. Search haunted rooms, read the legends in the atlas, and find the true story.',
+  'share.image.alt': 'The Told and True cards side by side under the title Trick or Told.',
   'hall.start': 'Start in the study',
   'hall.study.again': 'Visit the study again',
   'hall.greeting': 'Welcome back, {name}.',

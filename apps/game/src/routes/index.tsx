@@ -1,5 +1,7 @@
 import { createFileRoute, getRouteApi, Link, useNavigate, useRouter } from '@tanstack/react-router';
 import { useEffect, useState } from 'react';
+import { shareTags } from '@kiroween/skeleton/client';
+import { translate } from '../i18n/t';
 import { HallView, type HallTarget } from '../components/Hall';
 import { ThemeRoot } from '../components/ThemeRoot';
 import { useT } from '../i18n/useT';
@@ -8,6 +10,21 @@ import { guestHallState, playClientFor } from '../lib/play';
 import { getHall } from '../server/functions';
 
 export const Route = createFileRoute('/')({
+  head: ({ matches }) => {
+    const origin = (matches[0]?.loaderData as { mediaBase?: string } | undefined)?.mediaBase ?? '';
+    const title = translate('en', 'app.title');
+    const description = translate('en', 'hall.description');
+    return {
+      meta: [
+        { title },
+        { name: 'description', content: description },
+        { property: 'og:title', content: title },
+        { property: 'og:description', content: description },
+        ...shareTags({ origin, title, description, imageAlt: translate('en', 'share.image.alt'), siteName: title }),
+      ],
+      links: [{ rel: 'canonical', href: `${origin}/game/` }],
+    };
+  },
   loader: () => getHall(),
   component: Hall,
 });

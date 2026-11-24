@@ -24,3 +24,4 @@ export type { Action, EndInfo, LeadView, PlayView, Reply, RunEndStatus, SlotView
 export { hubContrastReport, type HubPairing } from './theme/hub.ts';
 export { AA_LARGE, AA_TEXT, BASE_PALETTE, contrastRatio, resolveTheme, type ResolvedTheme } from './theme/contrast.ts';
 export { isKeepersNoteId, type KeepersNoteView } from './keepers/read.ts';
+export { shareTags, SHARE_IMAGE_PATH, SHARE_IMAGE_SIZE, type MetaTag, type ShareInput } from './seo/share.ts';

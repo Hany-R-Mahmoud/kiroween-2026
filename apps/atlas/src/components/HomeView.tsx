@@ -47,9 +47,7 @@ export function HomeView({ legends, t }: { legends: HomeLegend[]; t: Translate }
           <h2 id="list-title" className="text-3xl">
             {t('home.listHeading')}
           </h2>
-          <div className="home-list-scroll" tabIndex={0} role="region" aria-label={t('home.listRegion')}>
-            <LegendList legends={legends} t={t} />
-          </div>
+          <LegendList legends={legends} t={t} />
         </section>
       </div>
     </div>
