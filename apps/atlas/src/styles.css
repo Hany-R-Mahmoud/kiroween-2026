@@ -3,6 +3,7 @@
 @import '@kiroween/skeleton/design/tokens.css';
 @import '@kiroween/skeleton/design/mood.css';
 @import '@kiroween/skeleton/design/ui.css';
+@import '@kiroween/skeleton/shell/holo-card.css';
 @import '@kiroween/skeleton/book/book.css';
 
 /* Everything below reads the token variables, so a legend page's theme (set on <body>) restyles it. Logical properties
@@ -493,5 +494,32 @@ html[data-motion='reduce'] .map-pin {
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: var(--type-small);
+  }
+}
+
+/* Hidden card page (/lab/card): the card is centred on the hub background and sized so the whole card fits the first screen.
+   The block size left under the header (minus the padding) times the card's 956/1319 ratio caps the inline size, and the
+   available inline size caps it too, so 390x844 and 1280x800 both fit with no horizontal scroll. Logical properties only.
+   In the ui layer because holoCard.css (ui layer) sets the scene's inline-size and a components rule would lose. */
+@layer ui {
+  .lab-card-page {
+    --lab-pad: var(--space-4);
+    /* Clear gap kept under the card (R20): 2rem, never under 24px. Taken off the height the card may use, so the card
+       shrinks by height first (1024x768) and the gap stays at 1280x800 and 390x844. */
+    --lab-gap: max(var(--space-6), 24px);
+    --lab-avail-block: calc(100dvh - var(--app-header-h) - 2 * var(--lab-pad) - var(--lab-gap));
+    display: grid;
+    place-items: center;
+    box-sizing: border-box;
+    inline-size: 100%;
+    min-block-size: calc(100dvh - var(--app-header-h));
+    padding: var(--lab-pad);
+    padding-block-end: calc(var(--lab-pad) + var(--lab-gap));
+    background-color: var(--color-bg);
+    overflow-x: clip;
+  }
+  .lab-card-page .holo-scene {
+    inline-size: min(100%, calc(var(--lab-avail-block) * 956 / 1319));
+    max-inline-size: 100%;
   }
 }

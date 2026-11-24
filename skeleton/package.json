@@ -13,7 +13,8 @@
     "./mood": "./src/design/Mood.tsx",
     "./book": "./src/book/index.ts",
     "./book/book.css": "./src/book/book.css",
-    "./shell": "./src/shell/index.ts"
+    "./shell": "./src/shell/index.ts",
+    "./shell/holo-card.css": "./src/shell/holoCard.css"
   },
   "scripts": {
     "test": "vitest run",

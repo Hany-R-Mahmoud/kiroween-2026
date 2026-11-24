@@ -1,0 +1,413 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1.1 Add the `shell-` branch to `assetUrl`": [
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795525724251
+      },
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795525731557
+      },
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795525894929
+      }
+    ],
+    "2.1 Create `skeleton/src/shell/holo/geometry.ts`": [
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795525724337
+      },
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795525731764
+      },
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795525895063
+      }
+    ],
+    "2.2 Create `skeleton/src/shell/holo/useReducedMotion.ts`": [
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795525724368
+      },
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795525732571
+      },
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795525895764
+      }
+    ],
+    "2.3 Create `skeleton/src/shell/holo/motion.ts`": [
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795525724403
+      },
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795525899990
+      },
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795526117598
+      }
+    ],
+    "3.1 Create `skeleton/src/shell/holoCard.css`": [
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795525724462
+      },
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795525901041
+      },
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795526116980
+      }
+    ],
+    "3.2 Add the CSS export to `skeleton/package.json`": [
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795525724493
+      },
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795525733834
+      },
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795525896288
+      }
+    ],
+    "4.1 Create `skeleton/src/shell/HoloCard.tsx`": [
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795525724521
+      },
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795526120784
+      },
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795526326174
+      }
+    ],
+    "4.2 Export `HoloCard` from `skeleton/src/shell/index.ts`": [
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795525724594
+      },
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795526330395
+      },
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795526471076
+      }
+    ],
+    "5.1 Create `skeleton/src/shell/holo/shader.ts`": [
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795525724619
+      },
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795525901709
+      },
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795526116298
+      }
+    ],
+    "5.2 Create `skeleton/src/shell/holo/renderer.ts`": [
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795525724643
+      },
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795526121332
+      },
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795526326273
+      }
+    ],
+    "6.1 Load the renderer from `HoloCard`": [
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795525724663
+      },
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795526330456
+      },
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795526471677
+      }
+    ],
+    "7.1 Add the card strings to `apps/atlas/src/i18n/en.ts`": [
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795525724686
+      },
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795525734048
+      },
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795525897009
+      }
+    ],
+    "7.2 Create `apps/atlas/src/routes/lab.card.tsx`": [
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795525724707
+      },
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795526475062
+      },
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795526508562
+      }
+    ],
+    "7.3 Update `apps/atlas/src/styles.css`": [
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795525724735
+      },
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795526475818
+      },
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795526509219
+      }
+    ],
+    "8. Verify": [
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795525724759
+      },
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795526512543
+      }
+    ],
+    "1. Serve shell layers through the asset resolver": [
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795525894978
+      }
+    ],
+    "3. Styles and package export": [
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795526117038
+      }
+    ],
+    "2. Shared card geometry and motion code": [
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795526117664
+      }
+    ],
+    "5. WebGL renderer chunk": [
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795526326379
+      }
+    ],
+    "4. HoloCard component with the HTML renderer": [
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795526471131
+      }
+    ],
+    "6. Lazy WebGL upgrade wiring": [
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795526471735
+      }
+    ],
+    "7. Hidden atlas page": [
+      {
+        "executionId": "7a00f861-8486-4e1c-9c4d-89c540dd7a5f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795526509272
+      }
+    ],
+    "8. Free drag rotation, inertia and keyboard spin": [
+      {
+        "executionId": "eb366ffc-2b01-41c3-b7ba-78d028901bba",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795527044022
+      },
+      {
+        "executionId": "eb366ffc-2b01-41c3-b7ba-78d028901bba",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795527513105
+      }
+    ],
+    "9. Verify": [
+      {
+        "executionId": "eb366ffc-2b01-41c3-b7ba-78d028901bba",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795527516546
+      },
+      {
+        "executionId": "eb366ffc-2b01-41c3-b7ba-78d028901bba",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795528974210
+      }
+    ],
+    "10. Back face: keep the gold border clear": [
+      {
+        "executionId": "63e60ba4-a19a-4a83-b2e2-97ce17be18ae",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795531920959
+      },
+      {
+        "executionId": "63e60ba4-a19a-4a83-b2e2-97ce17be18ae",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795531924520
+      },
+      {
+        "executionId": "63e60ba4-a19a-4a83-b2e2-97ce17be18ae",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795531967852
+      }
+    ],
+    "11. Cartouche word reads as TRUE": [
+      {
+        "executionId": "63e60ba4-a19a-4a83-b2e2-97ce17be18ae",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795531921023
+      },
+      {
+        "executionId": "63e60ba4-a19a-4a83-b2e2-97ce17be18ae",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795531968962
+      },
+      {
+        "executionId": "63e60ba4-a19a-4a83-b2e2-97ce17be18ae",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795532009106
+      }
+    ],
+    "12. Never show an empty card": [
+      {
+        "executionId": "63e60ba4-a19a-4a83-b2e2-97ce17be18ae",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795531921107
+      },
+      {
+        "executionId": "63e60ba4-a19a-4a83-b2e2-97ce17be18ae",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795532012421
+      },
+      {
+        "executionId": "63e60ba4-a19a-4a83-b2e2-97ce17be18ae",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795532205272
+      }
+    ],
+    "13. Fit at 1024×768": [
+      {
+        "executionId": "63e60ba4-a19a-4a83-b2e2-97ce17be18ae",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795531921158
+      },
+      {
+        "executionId": "63e60ba4-a19a-4a83-b2e2-97ce17be18ae",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795532205323
+      },
+      {
+        "executionId": "63e60ba4-a19a-4a83-b2e2-97ce17be18ae",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795532233582
+      }
+    ],
+    "14. Verify fixes": [
+      {
+        "executionId": "63e60ba4-a19a-4a83-b2e2-97ce17be18ae",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795531921188
+      },
+      {
+        "executionId": "63e60ba4-a19a-4a83-b2e2-97ce17be18ae",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795532234522
+      },
+      {
+        "executionId": "63e60ba4-a19a-4a83-b2e2-97ce17be18ae",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795547299774
+      }
+    ]
+  }
+}

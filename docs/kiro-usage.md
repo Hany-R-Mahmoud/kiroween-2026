@@ -603,3 +603,9 @@ Spec: `.kiro/specs/phase-7-batch-b/` (requirements, design, tasks), made in that
 - **Verify task**: first run found old-layout test pins, one check-script selector and a Chapters control below the fold at 390x844. A fix pass followed (hint banner made sticky, Banshee one-page height, atlas home list). Final: `pnpm -r typecheck` clean; skeleton 915 (+8 expected fail), atlas 305, game 401; browser check 303 passed, 0 failed, 2 skipped. 88 screenshots at four sizes under `.debug/phase-7b/`.
 - **Tests**: only two new unit tests (`win-screen.test.tsx`, `hint-marker.test.ts`); existing pins were updated for new layout and copy.
 - **Not claimed**: no hooks or skill loads are recorded in these notes. Open items (signed-in Hall screenshot, RTL and popover keyboard checks) are listed in the handover.
+## Shell phase 1 (True card)
+Spec: `.kiro/specs/shell-1-holo-card/` (requirements, design, tasks). Handover: `docs/shell-1-handover.md`.
+- **Spec workflow**: tasks 1 to 8 built the card; task 9 (Verify) was run by a spec task execution sub-agent.
+- **Verify task**: `pnpm -r typecheck` clean; `pnpm -r test` green (skeleton 916 + 8 expected fail, atlas 305, game 401). One fix: the `/lab/card` size rule sat in `@layer components` and lost to the card's own `ui` layer rule, so the card was 1120 px wide at 1280x800; moved to `@layer ui`. Throwaway Playwright script and 50 screenshots and 2 videos under `.debug/shell-1/`.
+- **Numbers**: 60 fps on a real GPU at both sizes and 4x CPU throttle; software GL misses the target. Lazy chunk 4.5 KB gzip. Image budgets need a CDN deployment to judge.
+- **Not claimed**: no hooks or skill loads are recorded in these notes. No tests were written.

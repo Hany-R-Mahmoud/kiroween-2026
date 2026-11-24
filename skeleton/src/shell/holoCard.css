@@ -1,0 +1,334 @@
+/*
+ * HoloCard styles (shell-1). Tokens only: no hex colour. Logical properties only.
+ * Physical x/y is used in exactly one place, on purpose: the parallax pan in the layer transforms. The card is a fixed
+ * painted image and never mirrors in RTL, so its pan and tilt axes stay physical.
+ * Import after ui.css. The card reads --tx and --ty (each -1 to 1) written on .holo-tilt by motion.ts.
+ */
+@layer ui {
+  /* Scene: the container. --u is one outline unit (the opaque frame outline is 956 units wide). */
+  .holo-scene {
+    --holo-radius: calc(var(--radius-ui) * 2);
+    --u: calc(100cqw / 956);
+    container-type: inline-size;
+    position: relative;
+    inline-size: 100%;
+    aspect-ratio: 956 / 1319;
+    perspective: 1400px;
+    perspective-origin: 50% 50%;
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  .holo-scene[data-spinning='true'] {
+    cursor: grabbing;
+  }
+
+  .holo-tilt {
+    --tx: 0;
+    --ty: 0;
+    position: absolute;
+    inset: 0;
+    transform-style: preserve-3d;
+    transform: rotateX(calc(var(--ty) * -12deg)) rotateY(calc(var(--tx) * 12deg));
+    will-change: transform;
+  }
+
+  /* Separate sibling: drop-shadow or box-shadow on a parent of a preserve-3d element would flatten the flip. */
+  .holo-shadow {
+    position: absolute;
+    inset: 0;
+    border-radius: var(--holo-radius);
+    box-shadow: var(--shadow-sheet);
+    pointer-events: none;
+  }
+
+  /* JavaScript writes --spin every frame, so there is no transition. Multiples of 360deg show the front. */
+  .holo-flip {
+    position: absolute;
+    inset: 0;
+    transform-style: preserve-3d;
+    transform: rotateY(var(--spin, 0deg));
+  }
+
+  /* Both faces fill the stage. The clip sits on the face, so the focus ring on the button is not cut. */
+  .holo-face {
+    position: absolute;
+    inset: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: var(--holo-radius);
+    overflow: hidden;
+    background-color: var(--color-surface);
+    color: var(--color-ink);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    touch-action: none; /* only a touch that starts on the card is kept from scrolling the page */
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  .holo-back {
+    transform: rotateY(180deg);
+  }
+
+  /* Front face is the button: the whole card is the target (well over 44px). */
+  .holo-front {
+    display: block;
+    min-block-size: var(--target);
+    min-inline-size: var(--target);
+    font: inherit;
+    cursor: inherit;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Art box: layers are larger than the stage and clipped by the face. Offsets are symmetric, so RTL is identical. */
+  .holo-art {
+    position: absolute;
+    inset: 0;
+    display: block;
+  }
+  .holo-layer {
+    position: absolute;
+    inset-inline-start: -2.3013%;
+    inline-size: 104.6025%;
+    inset-block-start: -3.1085%;
+    block-size: 106.1410%;
+    max-inline-size: none;
+    object-fit: fill;
+    user-select: none;
+    -webkit-user-select: none;
+    pointer-events: none;
+  }
+  /* Never empty: a layer shows as soon as its image has decoded (data-ready), with a short fade. */
+  /* The hiding is gated on data-js (set by script at hydration), so the art stays visible with JavaScript off. */
+  .holo-scene[data-js] .holo-layer:not([data-ready]),
+  .holo-scene[data-js] .holo-back-img:not([data-ready]) {
+    opacity: 0;
+  }
+  .holo-layer,
+  .holo-back-img {
+    transition: opacity 160ms linear;
+  }
+  /* The word belongs to the cartouche: do not show it floating over the art before the frame has loaded. */
+  .holo-scene[data-js]:has(.holo-layer-frame:not([data-ready])) .holo-title {
+    opacity: 0;
+  }
+  /* Parallax pan: physical x/y on purpose (see header). Background scaled so the pan never shows an edge. */
+  .holo-layer-bg {
+    transform: translate(calc(var(--px, 0) * -3.5cqw), calc(var(--py, 0) * -3.5cqw)) scale(1.08);
+  }
+  .holo-layer-subject {
+    transform: translate(calc(var(--px, 0) * 1cqw), calc(var(--py, 0) * 1cqw));
+  }
+  /* Frame has no transform. Its drop-shadow falls inward through the transparent window: the inner shadow. */
+  .holo-layer-frame {
+    filter: drop-shadow(
+      0 calc(0.6 * var(--u)) calc(1.4 * var(--u)) color-mix(in oklab, var(--color-bg) 70%, transparent)
+    );
+  }
+  /* Fixed soft vignette for the HTML renderer. The WebGL renderer draws its own. */
+  .holo-fx {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(
+      120% 120% at 50% 50%,
+      transparent 60%,
+      color-mix(in oklab, var(--color-bg) 22%, transparent) 100%
+    );
+  }
+
+  .holo-canvas {
+    position: absolute;
+    inset: 0;
+    inline-size: 100%;
+    block-size: 100%;
+    display: block;
+    pointer-events: none;
+  }
+  /* Once WebGL has drawn its first frame the HTML art is hidden but kept, so it can return after context loss. */
+  .holo-scene[data-renderer='webgl'] .holo-art {
+    visibility: hidden;
+  }
+
+  /* Engraved title over the cartouche (art units x 410-590, y 1215-1300). Text is always HTML. */
+  .holo-title {
+    position: absolute;
+    inset-inline-start: calc(-2.3013% + 104.6025% * 0.41);
+    inline-size: calc(104.6025% * 0.18);
+    inset-block-start: calc(-3.1085% + 106.141% * 0.8679);
+    block-size: calc(106.141% * 0.0607);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Body serif in small caps: the display face's swash T reads as "I". */
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-variant-caps: all-small-caps;
+    text-transform: none;
+    font-size: calc(50 * var(--u));
+    letter-spacing: 0.18em;
+    /* Trailing letter space is added after the last glyph; pad the start to keep the word centred. */
+    padding-inline-start: 0.18em;
+    /* The cartouche's visual centre sits a little below its box centre: nudge the word down 8 units. */
+    padding-block-start: calc(16 * var(--u));
+    box-sizing: border-box;
+    overflow: hidden;
+    text-align: center;
+    line-height: 1;
+    white-space: nowrap;
+    color: var(--color-bg);
+    text-shadow: 0 calc(1.2 * var(--u)) 0 color-mix(in oklab, var(--color-glow) 55%, transparent);
+    pointer-events: none;
+  }
+
+  /* Back face */
+  .holo-back-img {
+    position: absolute;
+    inset: 0;
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  /* One centred block in the empty lower half, inset (in --u) from the art so it stays inside the gold border. */
+  .holo-back-body {
+    position: absolute;
+    inset-inline: calc(96 * var(--u));
+    /* Bottom corner ornaments reach up to about 22% of the card height: keep the block above them. */
+    inset-block-end: calc(300 * var(--u));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  /* No background on anything card-wide: a soft dark glow behind the block keeps text above 4.5:1. */
+  .holo-back-plate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+    padding-block: var(--space-4);
+    padding-inline: var(--space-4);
+    color: var(--color-ink);
+    background: radial-gradient(
+      closest-side,
+      color-mix(in oklab, var(--color-bg) 88%, transparent) 55%,
+      transparent
+    );
+    text-shadow: 0 0 calc(6 * var(--u)) color-mix(in oklab, var(--color-bg) 90%, transparent);
+  }
+  .holo-back-title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: var(--type-lead);
+    line-height: 1.1;
+    color: var(--color-ink);
+  }
+  .holo-back-line {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: var(--type-small);
+    line-height: 1.45;
+    color: var(--color-ink);
+  }
+  .holo-back-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3);
+  }
+  .holo-back-actions .btn {
+    text-shadow: none; /* the plate's glow smudged the button label */
+    min-block-size: var(--target);
+    min-inline-size: var(--target);
+  }
+}
+
+/*
+ * Reduced motion: no rotation, no tilt, no parallax. The faces stack and the shown face fades in (plain 200 ms
+ * opacity, not scaled by --motion, which is 0 here and the crossfade must still happen). Two sources, same rules:
+ * the system setting and html[data-motion='reduce'].
+ */
+@layer ui {
+  @media (prefers-reduced-motion: reduce) {
+    .holo-tilt {
+      transform: none;
+      will-change: auto;
+    }
+    .holo-layer-bg {
+      transform: scale(1.08);
+    }
+    .holo-layer-subject {
+      transform: none;
+    }
+    .holo-flip {
+      transform: none;
+    }
+    .holo-scene {
+      cursor: auto;
+    }
+    .holo-front {
+      cursor: pointer;
+    }
+    .holo-back {
+      transform: none;
+    }
+    .holo-face {
+      transition: opacity 200ms linear;
+    }
+    .holo-layer,
+    .holo-back-img {
+      transition: none;
+    }
+    .holo-flip[data-face='front'] .holo-back,
+    .holo-flip[data-face='back'] .holo-front {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .holo-flip[data-face='front'] .holo-front,
+    .holo-flip[data-face='back'] .holo-back {
+      opacity: 1;
+    }
+  }
+  html[data-motion='reduce'] .holo-tilt {
+    transform: none;
+    will-change: auto;
+  }
+  html[data-motion='reduce'] .holo-layer-bg {
+    transform: scale(1.08);
+  }
+  html[data-motion='reduce'] .holo-layer-subject {
+    transform: none;
+  }
+  html[data-motion='reduce'] .holo-flip {
+    transform: none;
+  }
+  html[data-motion='reduce'] .holo-scene {
+    cursor: auto;
+  }
+  html[data-motion='reduce'] .holo-front {
+    cursor: pointer;
+  }
+  html[data-motion='reduce'] .holo-back {
+    transform: none;
+  }
+  html[data-motion='reduce'] .holo-face {
+    transition: opacity 200ms linear;
+  }
+  html[data-motion='reduce'] .holo-layer,
+  html[data-motion='reduce'] .holo-back-img {
+    transition: none;
+  }
+  html[data-motion='reduce'] .holo-flip[data-face='front'] .holo-back,
+  html[data-motion='reduce'] .holo-flip[data-face='back'] .holo-front {
+    opacity: 0;
+    pointer-events: none;
+  }
+  html[data-motion='reduce'] .holo-flip[data-face='front'] .holo-front,
+  html[data-motion='reduce'] .holo-flip[data-face='back'] .holo-back {
+    opacity: 1;
+  }
+}

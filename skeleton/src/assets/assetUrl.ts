@@ -10,6 +10,7 @@ export class AssetIdError extends Error {
 }
 /**
  * `shared-*` -> /media/shared/<id>.webp; `hub-*` and `tutorial-*` -> /media/hub/<id>.webp;
+ * `shell-*` -> /media/shell/<id>.webp (checked before the legend rule, so shell ids are never read as a legend id);
  * `<legend-id>-<surface>-<kind>-<nn>` -> /media/<legend-id>/<surface>/<id>.webp, where the surface is the first
  * `-atlas-`, `-game-` or `-shared-` after a non-empty legend prefix. Throws on anything else.
  */
@@ -17,6 +18,7 @@ export function assetUrl(id: string): string {
   if (id.length > 100 || !ASSET_ID.test(id)) throw new AssetIdError();
   if (id.startsWith('shared-')) return `${MEDIA_PREFIX}shared/${id}.webp`;
   if (id.startsWith('hub-') || id.startsWith('tutorial-')) return `${MEDIA_PREFIX}hub/${id}.webp`;
+  if (id.startsWith('shell-')) return `${MEDIA_PREFIX}shell/${id}.webp`;
   const m = /^(.+?)-(atlas|game|shared)-./.exec(id);
   if (!m) throw new AssetIdError();
   return `${MEDIA_PREFIX}${m[1]}/${m[2]}/${id}.webp`;
