@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import type { FormEvent, KeyboardEvent } from 'react';
 import type { TutorialResponse } from '@kiroween/skeleton';
+import { FEAR } from '@kiroween/skeleton/client';
 import { TUTORIAL_SCENE } from '../layout/tutorial.ts';
 import { useT } from '../i18n/useT';
 import { usePanelOpener } from '../lib/focus.ts';
@@ -157,6 +158,7 @@ export function TutorialRoom({ view, reply, question, mediaBase, atlasOrigin, re
       </p>
       <HintArea
         puzzle={t('tut.label.drawer')}
+        fear={FEAR.tutorialHint2}
         offered={!!view && !solved}
         busy={busy}
         hint1Text={hint1On && view ? view.hint1.text : null}

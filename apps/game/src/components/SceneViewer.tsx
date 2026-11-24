@@ -20,7 +20,7 @@ export interface ViewerHotspot {
   label: string;
   marked: boolean;
   /** Drawn overlay on the Hotspot (Hall doors). */
-  badge?: 'lock' | 'signin';
+  badge?: 'lock' | 'signin' | 'free';
 }
 
 interface SceneViewerProps {

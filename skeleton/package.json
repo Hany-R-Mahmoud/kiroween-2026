@@ -12,7 +12,8 @@
     "./design/ui.css": "./src/design/ui.css",
     "./mood": "./src/design/Mood.tsx",
     "./book": "./src/book/index.ts",
-    "./book/book.css": "./src/book/book.css"
+    "./book/book.css": "./src/book/book.css",
+    "./shell": "./src/shell/index.ts"
   },
   "scripts": {
     "test": "vitest run",

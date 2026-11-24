@@ -1,9 +1,11 @@
-import { useEffect, useRef, useState, type ReactNode } from 'react';
-import { stripMarks, type PlayView, type Reply, type SlotView } from '@kiroween/skeleton/client';
+import { useEffect, useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
+import { FEAR, legendUrl, stripMarks, type PlayView, type Reply, type SlotView } from '@kiroween/skeleton/client';
 import { useT } from '../i18n/useT';
 import type { WorldLayout } from '../layout/types.ts';
 import { mediaUrl } from '../lib/media.ts';
-import { activeSlot, atlasHref, hint1Marks, hotspotsOfScene, isHintable, needsLead, puzzleKey, replyLine, type WorldInfoHotspot, type WorldInfoScene } from '../lib/world.ts';
+import { activeSlot, atlasHref, emptyHint1, hint1For, hintHref, hint1Marks, hotspotsOfScene, isHintable, needsLead, puzzleKey, replyLine, type WorldInfoHotspot, type WorldInfoScene } from '../lib/world.ts';
+import { dialogKeyAction } from '../lib/focus.ts';
+import { useDesktop } from '../lib/useMediaQuery.ts';
 import { FearMeter } from './FearMeter';
 import { HintArea } from './HintArea';
 import { Marked } from './Marked';
@@ -12,6 +14,7 @@ import { ScenePaintProvider } from './ScenePaint';
 import { SceneViewer } from './SceneViewer';
 import { SpiritCorner, SpiritPanel } from './SpiritPanel';
 import { StartRetry } from './StartRetry';
+import { WorldTabs, worldPanelId, worldTabId, type WorldTab } from './WorldTabs';
 import './world.css';
 
 export interface WorldPlayProps {
@@ -33,10 +36,14 @@ export interface WorldPlayProps {
   failed: boolean;
   /** Runs the start call again; offered when the first start failed and there is no view yet. */
   onRetry: () => void;
+  /** Replays the player's last action; offered in the dock when an action failed after the room opened. */
+  onRetryAction?: () => void;
   /** Set when the server refused the start because the tutorial is not done: the screen sends the player to the study. */
   onTutorial?: () => void;
   /** Dev only: outline every tap box with its id (`?layout=1`). */
   outline?: boolean;
+  /** The Run number; it changes on a fear restart so per-Run screen memory (Hint 1) starts empty. */
+  run: number;
   onChoose: (slotId: string) => void;
   onTap: (hotspotId: string) => void;
   onHint1: (slotId: string) => void;
@@ -49,8 +56,11 @@ export interface WorldPlayProps {
   onHall: () => void;
   /** Rendered inside the scene stage (the fear overlay), so it never sits over the notebook or dock. */
   overlay?: ReactNode;
+  /** Rendered at the end of the top bar (the motion toggle). */
+  motion?: ReactNode;
 }
 
+const PANELS: readonly WorldTab[] = ['question', 'notebook', 'leads'];
 const HEADING_ID = 'world-scene-heading';
 
 /**
@@ -60,12 +70,38 @@ const HEADING_ID = 'world-scene-heading';
 export function WorldPlay(p: WorldPlayProps) {
   const t = useT();
   const pans = useRef(new Map<number, number>());
-  const restartRef = useRef<HTMLElement>(null);
+  const restartRef = useRef<HTMLButtonElement>(null);
   useEffect(() => {
-    // The notice replaces the room the player was in, so focus moves to it; dismissing it hands focus back to the scene heading.
-    if (p.restartNotice) restartRef.current?.focus();
+    // The overlay's button takes focus without scrolling; dismissing it hands focus back to the scene heading.
+    if (p.restartNotice) restartRef.current?.focus({ preventScroll: true });
   }, [p.restartNotice]);
+  const onRestartKey = (e: KeyboardEvent) => {
+    // Escape is ignored on purpose: the only exit is the button.
+    if (dialogKeyAction(e.key) === 'trap') {
+      e.preventDefault();
+      restartRef.current?.focus({ preventScroll: true });
+    }
+  };
   const { view } = p;
+  const desktop = useDesktop();
+  const [tab, setTab] = useState<WorldTab>('scene');
+  const shown: WorldTab = desktop && tab === 'scene' ? 'question' : tab;
+  // The sheet (below 64rem) takes focus when it opens.
+  const lastShown = useRef<WorldTab>(shown);
+  useEffect(() => {
+    if (shown !== lastShown.current && shown !== 'scene' && !desktop) document.getElementById(worldPanelId(shown))?.focus();
+    lastShown.current = shown;
+  }, [shown, desktop]);
+  const closeSheet = () => {
+    setTab('scene');
+    document.getElementById(worldTabId(shown))?.focus();
+  };
+  const sheetKey = (e: KeyboardEvent<HTMLElement>) => {
+    if (e.key === 'Escape' && !desktop) {
+      e.stopPropagation();
+      closeSheet();
+    }
+  };
   const won = view?.status === 'won';
   const scene = p.scenes[p.sceneIndex] ?? null;
   const sceneLayout = scene ? (p.layout?.scenes.find((s) => s.sceneId === scene.id) ?? null) : null;
@@ -79,19 +115,32 @@ export function WorldPlay(p: WorldPlayProps) {
   }, [slotId]);
   const origin = p.mediaBase;
   // The server sends Hint 1 text in the reply, not in the view, so the screen keeps it per puzzle for the sheet.
-  const [hint1Texts, setHint1Texts] = useState<Record<string, string>>({});
   // The reply's `highlight` ids are kept the same way and mark hotspots until the puzzle is solved (F7). Only server ids.
-  const [hint1Highlights, setHint1Highlights] = useState<Record<string, string[]>>({});
+  // Both are keyed by Run: a restart is a new Run with the same slot ids, so the old Run's text and marks must not show.
+  const [store, setStore] = useState(() => emptyHint1(p.run));
+  const hint1 = hint1For(store, p.run);
   const hint1Asked = useRef<string | null>(null);
+  useEffect(() => {
+    // A request still in flight for the old Run cannot be written into the new one.
+    hint1Asked.current = null;
+  }, [p.run]);
   useEffect(() => {
     const asked = hint1Asked.current;
     if (p.reply?.kind !== 'hint1' || !asked) return;
     const { text, highlight } = p.reply;
     hint1Asked.current = null;
-    setHint1Texts((prev) => ({ ...prev, [asked]: text }));
-    setHint1Highlights((prev) => ({ ...prev, [asked]: highlight }));
+    setStore((prev) => {
+      const cur = hint1For(prev, p.run);
+      return { ...cur, texts: { ...cur.texts, [asked]: text }, highlights: { ...cur.highlights, [asked]: highlight } };
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [p.reply]);
-  const marked = hint1Marks(view, hint1Highlights);
+  const ended = view?.status === 'won' || p.restartNotice;
+  useEffect(() => {
+    // A win or a fear restart puts the player back on the scene.
+    if (ended) setTab('scene');
+  }, [ended]);
+  const marked = hint1Marks(view, hint1.highlights);
   const step = (delta: -1 | 1) => {
     const next = p.sceneIndex + delta;
     if (next >= 0 && next < p.scenes.length) p.onScene(next);
@@ -100,13 +149,14 @@ export function WorldPlay(p: WorldPlayProps) {
   return (
     <ScenePaintProvider>
     <div className="world-play" aria-busy={p.busy}>
-      <div className="scene-screen">
+      <div className="scene-screen world-grid">
       <div className="scene-topbar">
         <h1 className="scene-title font-display text-glow">{p.title}</h1>
         <SceneNav names={p.scenes.map((s) => stripMarks(s.name))} current={p.sceneIndex} onSelect={p.onScene} onHall={p.onHall} headingId={HEADING_ID} />
+        {p.motion ? <div className="world-motion">{p.motion}</div> : null}
       </div>
       {scene && sceneLayout ? (
-        <div className="world-stage">
+        <div className="world-stage" id={worldPanelId('scene')}>
           <SceneViewer
             key={scene.id}
             layout={sceneLayout}
@@ -148,8 +198,9 @@ export function WorldPlay(p: WorldPlayProps) {
             puzzle={slot ? t('world.slot', { n: slot.index, type: t(puzzleKey(slot.type)) }) : null}
             offered={isHintable(slot)}
             busy={p.busy}
-            hint1Text={slot ? (slot.hint1?.text ?? hint1Texts[slot.slotId] ?? null) : null}
-            hint2Href={slot?.hint2 ? atlasHref(origin, slot.hint2.anchor) : null}
+            fear={FEAR.hint2}
+            hint1Text={slot ? (slot.hint1?.text ?? hint1.texts[slot.slotId] ?? null) : null}
+            hint2Href={slot?.hint2 ? hintHref(origin, slot.hint2.anchor) : null}
             blockedHref={slot && p.blocked?.slotId === slot.slotId ? p.blocked.href : null}
             onHint1={() => {
               if (!slot) return;
@@ -162,35 +213,62 @@ export function WorldPlay(p: WorldPlayProps) {
         <p role="status" className="scene-reply">
           <Marked text={replyLine(p.reply, t)} />
         </p>
+        {view && p.failed ? (
+          <div role="alert" className="scene-error">
+            <p className="text-danger-ink">{t('error.generic')}</p>
+            <button type="button" className="world-button btn btn-secondary" onClick={p.onRetryAction}>
+              {t('play.retry')}
+            </button>
+          </div>
+        ) : null}
       </div>
+      {view && !won ? (
+        <div className="world-rail">
+          <WorldTabs tab={shown} onSelect={setTab} />
+          {PANELS.map((id) => (
+            <div key={id} id={worldPanelId(id)} role="tabpanel" aria-labelledby={worldTabId(id)} tabIndex={-1} hidden={shown !== id} className="hall-panel world-sheet mood-worn" onKeyDown={sheetKey}>
+              <button type="button" className="world-button btn btn-secondary world-sheet-close" onClick={closeSheet}>
+                {t('world.sheet.close')}
+              </button>
+              {id === 'question' ? (
+                slot ? (
+                  <Question slot={slot} view={view} legendId={p.legendId} mediaBase={p.mediaBase} busy={p.busy} onAnswer={p.onAnswer} reply={p.reply} />
+                ) : (
+                  <p className="text-muted">{t('world.question.none')}</p>
+                )
+              ) : id === 'notebook' ? (
+                <Notebook
+                  view={view}
+                  onChoose={(slotId) => {
+                    p.onChoose(slotId);
+                    setTab('question');
+                  }}
+                />
+              ) : (
+                <Leads view={view} origin={origin} busy={p.busy} onFollow={p.onFollow} />
+              )}
+            </div>
+          ))}
+        </div>
+      ) : null}
       </div>
       {p.restartNotice ? (
-        <section ref={restartRef} tabIndex={-1} className="world-panel mood-worn" role="alert" aria-labelledby="world-restart-title">
-          <h2 id="world-restart-title" className="font-display text-xl text-glow">
-            {t('restart.title')}
-          </h2>
-          <p>{t('restart.body')}</p>
-          <button type="button" className="world-button btn btn-secondary" onClick={() => {
-              p.onDismissRestart();
-              document.getElementById(HEADING_ID)?.focus();
-            }}>
-            {t('restart.again')}
-          </button>
-        </section>
+        <div className="hall-ending world-overlay" role="alertdialog" aria-modal="true" aria-labelledby="world-restart-title" aria-describedby="world-restart-body" onKeyDown={onRestartKey}>
+          <section className="world-panel mood-worn">
+            <h2 id="world-restart-title" className="font-display text-xl text-glow">
+              {t('restart.title')}
+            </h2>
+            <p id="world-restart-body">{t('restart.body')}</p>
+            <button ref={restartRef} type="button" className="world-button btn btn-primary" onClick={() => {
+                p.onDismissRestart();
+                document.getElementById(HEADING_ID)?.focus();
+              }}>
+              {t('restart.again')}
+            </button>
+          </section>
+        </div>
       ) : null}
-      {won && view ? <Ending view={view} title={p.title} relic={p.relic} mediaBase={p.mediaBase} onHall={p.onHall} /> : null}
-      {slot && !won ? <Question slot={slot} view={view} legendId={p.legendId} mediaBase={p.mediaBase} busy={p.busy} onAnswer={p.onAnswer} reply={p.reply} /> : null}
-      {view && !won ? (
-        <>
-          <Notebook view={view} onChoose={p.onChoose} />
-          <Leads view={view} origin={origin} busy={p.busy} onFollow={p.onFollow} />
-        </>
-      ) : null}
-      {view && p.failed ? (
-        <p role="alert" className="text-danger-ink">
-          {t('error.generic')}
-        </p>
-      ) : null}
+      {won && view ? <Ending view={view} title={p.title} relic={p.relic} legendId={p.legendId} mediaBase={p.mediaBase} onHall={p.onHall} /> : null}
     </div>
     </ScenePaintProvider>
   );
@@ -254,8 +332,8 @@ function Question({ slot, view, legendId, mediaBase, busy, onAnswer, reply }: { 
 function Notebook({ view, onChoose }: { view: PlayView; onChoose: WorldPlayProps['onChoose'] }) {
   const t = useT();
   return (
-    <section className="world-panel mood-worn" aria-labelledby="world-notebook-title">
-      <h2 id="world-notebook-title" className="font-display text-xl text-glow">
+    <>
+      <h2 className="font-display text-xl text-glow">
         {t('world.notebook')}
       </h2>
       <ol className="world-slots">
@@ -273,15 +351,15 @@ function Notebook({ view, onChoose }: { view: PlayView; onChoose: WorldPlayProps
           );
         })}
       </ol>
-    </section>
+    </>
   );
 }
 
 function Leads({ view, origin, busy, onFollow }: { view: PlayView; origin: string; busy: boolean; onFollow: WorldPlayProps['onFollow'] }) {
   const t = useT();
   return (
-    <section className="world-panel mood-worn" aria-labelledby="world-leads-title">
-      <h2 id="world-leads-title" className="font-display text-xl text-glow">
+    <>
+      <h2 className="font-display text-xl text-glow">
         {t('world.leads')}
       </h2>
       {view.leads.length === 0 ? <p className="text-muted">{t('world.leads.none')}</p> : null}
@@ -326,24 +404,33 @@ function Leads({ view, origin, busy, onFollow }: { view: PlayView; origin: strin
           </li>
         ))}
       </ul>
-    </section>
+    </>
   );
 }
 
-function Ending({ view, title, relic, mediaBase, onHall }: { view: PlayView; title: string; relic: WorldPlayProps['relic']; mediaBase: string; onHall: () => void }) {
+export function Ending({ view, title, relic, legendId, mediaBase, onHall }: { view: PlayView; title: string; relic: WorldPlayProps['relic']; legendId: string; mediaBase: string; onHall: () => void }) {
   const t = useT();
   const ended = view.ended;
-  const ref = useRef<HTMLElement>(null);
-  useEffect(() => ref.current?.focus(), []);
+  const ref = useRef<HTMLButtonElement>(null);
+  const linkRef = useRef<HTMLAnchorElement>(null);
+  useEffect(() => ref.current?.focus({ preventScroll: true }), []);
+  const legendHref = mediaBase.replace(/\/+$/, '') + legendUrl(legendId);
+  const onKey = (e: KeyboardEvent) => {
+    // Escape is ignored on purpose: the exits are the two controls. Tab and Shift+Tab cycle between them.
+    if (dialogKeyAction(e.key) === 'trap') {
+      e.preventDefault();
+      const other = document.activeElement === ref.current ? linkRef.current : ref.current;
+      other?.focus({ preventScroll: true });
+    }
+  };
   const name = relic ? stripMarks(relic.name ?? t('world.relic.fallback', { title })) : null;
   return (
-    <section ref={ref} tabIndex={-1} className="world-panel world-ending" aria-labelledby="world-win-title">
+    <div className="hall-ending world-overlay" role="dialog" aria-modal="true" aria-labelledby="world-win-title" onKeyDown={onKey}>
+    <section className="world-panel world-ending">
       <h2 id="world-win-title" className="font-display text-2xl text-glow">
         {t('world.win')}
       </h2>
-      {ended?.curseText ? <p className="world-curse">
-          <Marked text={ended.curseText} />
-        </p> : null}
+      <p>{t('world.win.line')}</p>
       {relic && name ? (
         <figure className="world-relic">
           <img src={mediaUrl(mediaBase, relic.assetId)} width={256} height={256} alt={t('world.relic.alt')} loading="lazy" decoding="async" />
@@ -352,9 +439,15 @@ function Ending({ view, title, relic, mediaBase, onHall }: { view: PlayView; tit
       ) : null}
       {ended ? <p>{t('world.score', { n: ended.score })}</p> : null}
       {ended ? <p>{t('world.seed', { seed: ended.seed })}</p> : null}
-      <button type="button" className="world-button btn btn-secondary" onClick={onHall}>
-        {t('world.hall')}
-      </button>
+      <div className="flex flex-wrap items-center gap-3">
+        <button ref={ref} type="button" className="world-button btn btn-primary" onClick={onHall}>
+          {t('world.hall')}
+        </button>
+        <a ref={linkRef} className="btn btn-ghost" href={legendHref}>
+          {t('world.win.read')}
+        </a>
+      </div>
     </section>
+    </div>
   );
 }

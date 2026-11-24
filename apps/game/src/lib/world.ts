@@ -34,6 +34,17 @@ export function hint1Marks(view: PlayView | null, replied: Readonly<Record<strin
   for (const s of view?.slots ?? []) if (s.state !== 'solved') for (const id of replied[s.slotId] ?? []) out.add(id);
   return out;
 }
+
+/** What the screen remembers from Hint 1 replies, for one Run. */
+export interface Hint1Store {
+  run: number;
+  texts: Readonly<Record<string, string>>;
+  highlights: Readonly<Record<string, readonly string[]>>;
+}
+export const emptyHint1 = (run: number): Hint1Store => ({ run, texts: {}, highlights: {} });
+/** The store to read for `run`: the given one if it is for that Run, otherwise an empty one. */
+export const hint1For = (store: Hint1Store, run: number): Hint1Store => (store.run === run ? store : emptyHint1(run));
+
 /** The catalog key of a puzzle type label. */
 export const puzzleKey = (type: string): MessageKey => `puzzle.${type}` as MessageKey;
 
@@ -56,6 +67,14 @@ export function atlasHref(origin: string, anchor: string): string | null {
   } catch {
     return null;
   }
+}
+
+/** The atlas address of a chapter for Hint 2: `atlasHref` with `?hint=1` before the `#`, so the atlas can show its way-back banner. Null when the anchor is malformed. */
+export function hintHref(origin: string, anchor: string): string | null {
+  const href = atlasHref(origin, anchor);
+  if (href === null) return null;
+  const i = href.indexOf('#');
+  return i === -1 ? `${href}?hint=1` : `${href.slice(0, i)}?hint=1${href.slice(i)}`;
 }
 
 /** The sentence a tap shows: the content text when the server sent it, else the catalog key. */

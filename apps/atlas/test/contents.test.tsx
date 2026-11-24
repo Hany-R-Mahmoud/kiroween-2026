@@ -14,7 +14,7 @@ const REM = 16;
 const model = allLegends.find((l) => l.id === 'banshee') ?? allLegends[0]!;
 const legend = atlasLegendFromModel(model);
 const html = renderToStaticMarkup(<LegendPage legend={legend} t={t} />);
-const nav = /<nav aria-labelledby="contents-title"[\s\S]*?<\/nav>/.exec(html)?.[0] ?? '';
+const nav = /<nav aria-label="Contents"[\s\S]*?<\/nav>/.exec(html)?.[0] ?? '';
 const links = [...nav.matchAll(/<a\b([^>]*)>/g)].map((m) => m[1] ?? '');
 const hrefs = links.map((a) => /href="([^"]*)"/.exec(a)?.[1]);
 

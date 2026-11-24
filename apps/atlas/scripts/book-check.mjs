@@ -455,7 +455,7 @@ async function checkPage(cdp, opts, root, id, width, record) {
         const col = (s) => s && getComputedStyle(s).color;
         const vp = document.querySelector('.book-viewport');
         return { paper: getComputedStyle(vp).backgroundColor, body: col(document.querySelector('.book [data-block]')),
-          heading: col(document.querySelector('.book h2, .book h3')), link: col(document.querySelector('.book a')) };
+          heading: col(document.querySelector('.book h2, .book h3')), link: col(document.querySelector('.book a:not(.contents-link):not(.btn)')) };
       })()`);
       const floor = PAPER_FLOOR;
       const nums = {};

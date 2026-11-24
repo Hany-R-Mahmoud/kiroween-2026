@@ -46,7 +46,7 @@ describe('book page height (Requirement 21.1)', () => {
   });
 
   it('stays inside the clamp on a short and a very tall viewport', () => {
-    expect(evalPageHeight(rule ?? '', 400, headerPx)).toBe(30 * REM);
+    expect(evalPageHeight(rule ?? '', 400, headerPx)).toBe(14 * REM);
     expect(evalPageHeight(rule ?? '', 4000, headerPx)).toBe(52 * REM);
   });
 

@@ -28,8 +28,8 @@ const count = (html: string, re: RegExp): number => [...html.matchAll(re)].lengt
 describe('HintArea', () => {
   it('shows exactly one Hint 1 and one Hint 2 button, each named with the puzzle', () => {
     const html = render();
-    expect(count(html, /<button[^>]*>\s*Hint 1 \(free\)</g)).toBe(1);
-    expect(count(html, /<button[^>]*>\s*Hint 2 \(raises fear\): opens the atlas</g)).toBe(1);
+    expect(count(html, /<button[^>]*>\s*<span class=\"hint-label\">Hint 1<\/span><span class=\"hint-cost text-muted\">Free</g)).toBe(1);
+    expect(count(html, /<button[^>]*>\s*<span class=\"hint-label\">Hint 2<\/span><span class=\"hint-cost text-muted\">Raises fear</g)).toBe(1);
     expect(html).toContain('aria-label="Hint 1 (free), Puzzle 3: Weakness"');
     expect(html).toContain('aria-label="Hint 2 (raises fear): opens the atlas, Puzzle 3: Weakness"');
     expect(html).toContain('Puzzle 3: Weakness');
@@ -51,7 +51,7 @@ describe('HintArea', () => {
     expect(html).toContain('Open the chapter again (free)');
     expect(html).toContain('aria-label="Open the chapter again (free), Puzzle 3: Weakness"');
     expect(html).not.toContain('Hint 2 (raises fear)');
-    expect(count(html, /<button[^>]*>\s*Hint 1 \(free\)</g)).toBe(1);
+    expect(count(html, /<button[^>]*>\s*<span class=\"hint-label\">Hint 1<\/span><span class=\"hint-cost text-muted\">Free</g)).toBe(1);
   });
   it('the Hint 2 fallback link opens in a new tab with rel="noopener" and is a 44 px target (27.4)', () => {
     const html = render({ hint2Href: 'http://atlas.test/legends/banshee#banshee--ch-2' });
@@ -84,7 +84,7 @@ describe('HintArea', () => {
   });
   it('fails the one-pair rule when the markup repeats a pair (failing-input check)', () => {
     const twice = render() + render();
-    expect(count(twice, /<button[^>]*>\s*Hint 1 \(free\)</g)).not.toBe(1);
+    expect(count(twice, /<button[^>]*>\s*<span class=\"hint-label\">Hint 1<\/span><span class=\"hint-cost text-muted\">Free</g)).not.toBe(1);
   });
   it('isHintable is true only for an open puzzle (Requirement 26.3)', () => {
     for (const state of ['hidden', 'locked', 'solved'] as const) expect(isHintable({ state } as never)).toBe(false);

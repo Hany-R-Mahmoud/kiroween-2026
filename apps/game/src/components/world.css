@@ -1,12 +1,134 @@
 /* World screen: panels, notebook, leads, ending. Logical properties only; colours come from the theme variables. */
 @layer components {
+/* The world screen is exactly one viewport high: header + main padding + root = 100dvh, so the page does not scroll. */
+.world-root {
+  block-size: calc(100dvh - var(--app-header-h) - 2 * var(--game-pad));
+  min-block-size: 0;
+}
 .world-play {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
+  position: relative;
+  block-size: 100%;
+  min-block-size: 0;
+}
+/* Below 64rem: one column; the sheet and the tab strip are placed by area. From 64rem: scene left, rail right. */
+.scene-screen.world-grid {
+  block-size: 100%;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr) auto auto;
+  grid-template-areas:
+    'top'
+    'stage'
+    'dock'
+    'tabs';
+}
+.world-grid > .scene-topbar { grid-area: top; }
+.world-grid > .world-stage { grid-area: stage; }
+.world-grid > .scene-dock { grid-area: dock; }
+.world-rail { display: contents; }
+/* Top bar: Back, title right after it, motion switch at the end of that row; the scene buttons take the next row as one line
+   that scrolls sideways when it must (it never wraps to a second row). */
+.world-motion { margin-inline-start: auto; order: 2; flex: none; }
+.world-grid .scene-title { flex: 0 1 auto; min-inline-size: 0; }
+.scene-screen.world-grid .scene-tabs {
+  order: 3;
+  flex: 1 1 100%;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding-block: 2px;
+  padding-inline: 2px;
+  gap: var(--space-2);
+  scrollbar-width: thin;
+}
+.scene-screen.world-grid .scene-tabs .scene-button { white-space: nowrap; }
+.world-sheet-close { align-self: flex-end; }
+@media (min-width: 64rem) { .world-sheet-close { display: none; } }
+.world-grid .world-tabs { grid-area: tabs; }
+/* The sheet: the .hall-panel look, held inside the stage cell instead of fixed to the viewport. */
+.hall-panel.world-sheet {
+  position: relative;
+  inset: auto;
+  grid-area: stage;
+  z-index: 41;
+  max-block-size: none;
+  max-inline-size: none;
+  min-block-size: 0;
+  margin: 0;
+  overflow-y: auto;
+}
+.world-sheet[hidden] { display: none; }
+@media (min-width: 64rem) {
+  .scene-screen.world-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(18rem, 26rem);
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    grid-template-areas:
+      'top rail'
+      'stage rail'
+      'dock rail';
+  }
+  .world-rail {
+    grid-area: rail;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    min-block-size: 0;
+    min-inline-size: 0;
+  }
+  .world-grid .world-tabs { grid-area: auto; flex: none; }
+  .world-rail .hall-panel.world-sheet {
+    grid-area: auto;
+    flex: 1 1 0;
+    z-index: auto;
+    overflow-y: auto;
+  }
+}
+/* Short landscape (667x375): everything shares rows, reserved reply rows shrink to one line. */
+@media (max-height: 30rem) {
+  .scene-screen.world-grid { gap: var(--space-1); }
+  .world-grid .scene-reply { min-block-size: 1.5rem; }
+  .world-grid .scene-pending { min-block-size: 0; }
+  .world-grid .fear-meter { inline-size: 8rem; }
+  .hall-panel.world-sheet { padding: var(--space-2); gap: var(--space-2); }
+}
+/* Landscape phone: one column cannot hold top bar, scene, pan row, dock and tab strip in 375 px. The scene takes the inline
+   start, the dock and the tab strip share the inline end, and the dock scrolls by itself if it must. */
+@media (max-height: 30rem) and (max-width: 63.99rem) {
+  .scene-screen.world-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    grid-template-areas:
+      'top top'
+      'stage dock'
+      'stage tabs';
+  }
+  /* One row: Back, title, motion switch. The scene buttons scroll sideways in their own row below. */
+  .world-grid > .scene-topbar { flex-wrap: wrap; row-gap: 0; }
+  .world-grid .scene-title { flex: 0 1 auto; min-inline-size: 0; font-size: var(--type-h3, 1.25rem); white-space: nowrap; }
+  .world-grid .scene-tabs { padding: 4px; scrollbar-width: thin; }
+  .world-grid .scene-tabs .scene-button { white-space: nowrap; }
+  /* The switch alone: the label stays in the DOM (the accessible name) but is not drawn. */
+  .world-motion .motion-toggle > span {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .world-motion .motion-toggle { position: relative; gap: 0; min-inline-size: 44px; justify-content: center; }
+  .world-grid .world-tabs { min-inline-size: 0; }
+  .world-tabs .world-tab { white-space: nowrap; overflow: hidden; text-overflow: clip; }
+  .world-stage .spirit-corner { inline-size: 3.5rem; inset-block-end: 0.25rem; }
+  .world-grid .scene-dock { min-block-size: 0; overflow-y: auto; align-content: flex-start; row-gap: 0; font-size: var(--type-small); line-height: 1.25; scrollbar-width: thin; }
+  .world-grid .fear-meter { inline-size: 5rem; }
+  .world-grid .scene-dock p { margin-block: 0; }
+  .world-grid .scene-dock > .scene-reply,
+  .world-grid .scene-dock > .scene-hints { flex-basis: 100%; min-block-size: 0; margin-inline-start: 0; justify-content: flex-start; }
+  .scene-screen.world-grid .scene-tabs { flex: 1 1 auto; flex-wrap: nowrap; overflow-x: auto; }
 }
 .world-stage {
   position: relative;
+  /* Sprites, the spirit figure and the fear overlay never draw outside the scene box. */
+  overflow: clip;
 }
 .world-panel {
   display: flex;
@@ -76,6 +198,42 @@
 .world-ending .world-relic {
   margin: 0;
 }
+/* The relic gives way first, so the card and its only exit fit a short phone screen. */
+.world-ending .world-relic img {
+  inline-size: auto;
+  block-size: auto;
+  max-block-size: min(16rem, 16dvh);
+  max-inline-size: 100%;
+  object-fit: contain;
+}
+}
+
+/* The tab strip. In `ui` so it beats .btn (same layer, higher specificity). */
+@layer ui {
+  .world-tabs {
+    display: flex;
+    gap: var(--space-1);
+  }
+  .world-tabs .world-tab {
+    flex: 1 1 0;
+    min-inline-size: 44px;
+    min-block-size: 44px;
+    padding-inline: var(--space-2);
+    justify-content: center;
+    text-align: center;
+  }
+  .world-tabs .world-tab[aria-selected='true'] {
+    background: var(--color-accent);
+    color: var(--color-bg);
+    border-color: var(--color-accent);
+  }
+  @media (max-height: 30rem) and (max-width: 63.99rem) {
+    .world-tabs .world-tab { padding-inline: var(--space-1); font-size: 0.8125rem; min-inline-size: 0; }
+  }
+  @media (min-width: 64rem) {
+    .world-sheet .world-sheet-close { display: none; }
+    .world-tabs .world-tab.world-tab-scene { display: none; }
+  }
 }
 
 /* On paper the options are ink on the paper tint with an ink border. Own layer block so it beats .btn-secondary (ui layer). */

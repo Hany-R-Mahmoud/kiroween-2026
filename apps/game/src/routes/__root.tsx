@@ -1,5 +1,6 @@
-import { createRootRoute, HeadContent, Link, Outlet, Scripts, useRouter } from '@tanstack/react-router';
+import { createRootRoute, HeadContent, Link, Outlet, Scripts, useRouter, type ErrorComponentProps } from '@tanstack/react-router';
 import { BASE_PALETTE, ImageBaseContext } from '@kiroween/skeleton/client';
+import { ErrorView } from '@kiroween/skeleton/shell';
 import { Mood } from '@kiroween/skeleton/mood';
 import { GameHeader } from '../components/GameHeader';
 import { signOut } from '../auth/client';
@@ -16,8 +17,44 @@ export const Route = createRootRoute({
     links: [{ rel: 'stylesheet', href: appCss }, { rel: 'manifest', href: '/game/manifest.webmanifest' }, { rel: 'apple-touch-icon', href: '/game/icons/apple-touch-180.png' }, ...fontLinks(BASE_FONTS)],
   }),
   component: RootComponent,
+  errorComponent: RootError,
   notFoundComponent: NotFound,
 });
+
+/**
+ * Shown when the root itself fails (its loader `getShell`). The root component, which normally supplies the document, is what failed,
+ * so this renders a minimal one. It reads no loader data and no `useT`, and fixes `lang`/`dir` to en/ltr. No error text is shown.
+ */
+function RootError({ reset }: ErrorComponentProps) {
+  const router = useRouter();
+  return (
+    <html lang="en" dir="ltr">
+      <head>
+        <HeadContent />
+      </head>
+      <body className="app-shell bg-bg font-body text-ink">
+        <main id="main" className="mx-auto max-w-6xl p-[var(--game-pad)]">
+          <ErrorView
+            title={translate('en', 'error.view.title')}
+            body={translate('en', 'error.view.body')}
+            retryLabel={translate('en', 'error.view.retry')}
+            onRetry={() => {
+              // `reset` can be undefined for a loader error, so guard it.
+              (reset as (() => void) | undefined)?.();
+              void router.invalidate();
+            }}
+            home={
+              <Link to="/" className="link">
+                {translate('en', 'notFound.hall')}
+              </Link>
+            }
+          />
+        </main>
+        <Scripts />
+      </body>
+    </html>
+  );
+}
 /** Shown inside the shell for any unknown path under /game (Phase 3: the dev log warned the root had none). */
 function NotFound() {
   const t = useT();
@@ -45,7 +82,7 @@ function RootComponent() {
       <head>
         <HeadContent />
       </head>
-      <body className="min-h-screen bg-bg font-body text-ink">
+      <body className="app-shell bg-bg font-body text-ink">
         <Mood />
         <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:start-2 focus:top-2 focus:rounded focus:bg-surface focus:p-2">
           {t('nav.skip')}
@@ -60,7 +97,7 @@ function RootComponent() {
             await router.navigate({ to: '/' });
           }}
         />
-        <main id="main" className="mx-auto max-w-6xl p-4">
+        <main id="main" className="mx-auto max-w-6xl p-[var(--game-pad)]">
           <ImageBaseContext.Provider value={imageBase}>
             <Outlet />
           </ImageBaseContext.Provider>

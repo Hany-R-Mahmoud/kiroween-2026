@@ -50,7 +50,7 @@
   td {
     unicode-bidi: plaintext;
   }
-  /* a landed section clears the sticky header (height + 1rem) */
+  /* a landed section clears the header (height + 1rem) */
   [id],
   [data-anchor-heading] {
     scroll-margin-block-start: calc(var(--app-header-h) + 1rem);
@@ -91,15 +91,44 @@
 }
 
 @layer components {
+  /* legend page: page-level section gap (Spacing_Step) and the Chapters popover panel. Logical properties only, so it mirrors in RTL. */
+  .legend-page {
+    --legend-gap: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--legend-gap);
+    padding-block-end: var(--legend-gap);
+  }
+  /* below 40rem the two short facts (scare level, reading time) share one row so the control row reaches the first screen at 390x844 */
+  @media (width < 40rem) {
+    .legend-page .meta-list {
+      grid-template-columns: 1fr 1fr;
+      column-gap: var(--space-4);
+    }
+    .legend-page .meta-list > div:nth-child(-n + 2) {
+      grid-column: 1 / -1;
+    }
+  }
+  .chapters-panel {
+    margin: 0;
+    inset-block-start: var(--space-4);
+    inset-inline-start: var(--space-3);
+    inset-inline-end: auto;
+    max-inline-size: min(26rem, calc(100vw - 2 * var(--space-3)));
+    max-block-size: min(70dvh, 32rem);
+    overflow-y: auto;
+    padding: var(--space-2);
+  }
   /* home hero: the box has its final size and a theme-colour gradient, so first paint is never an empty black box */
   .home-hero {
     position: relative;
     display: grid;
-    min-block-size: min(32rem, calc(100dvh - var(--app-header-h) - 2rem));
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    align-items: center;
   }
   .home-hero-frame {
-    position: absolute;
-    inset: 0;
+    position: static;
+    aspect-ratio: 16 / 9;
     background: linear-gradient(var(--color-surface), var(--color-bg));
     overflow: clip;
   }
@@ -112,28 +141,38 @@
     object-fit: cover;
     background: linear-gradient(var(--color-surface), var(--color-bg));
   }
+  /* wide screens: painting whole in the larger column, copy beside it */
+  @media (min-width: 64rem) {
+    .legend-header {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      align-items: center;
+      gap: var(--space-6);
+      padding-inline: var(--space-4);
+    }
+    .legend-header .legend-hero {
+      max-block-size: none;
+      object-fit: contain;
+    }
+    .legend-header .legend-intro {
+      margin-inline: 0;
+      padding-inline: 0;
+      max-inline-size: none;
+    }
+  }
   .home-hero-img {
     inline-size: 100%;
     block-size: 100%;
     object-fit: cover;
   }
-  .home-hero-frame::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, color-mix(in oklab, var(--color-bg) 92%, transparent), transparent 70%);
-  }
-  [dir='rtl'] .home-hero-frame::after {
-    background: linear-gradient(270deg, color-mix(in oklab, var(--color-bg) 92%, transparent), transparent 70%);
-  }
+  /* copy sits on the plain page background (ink on bg), beside the whole painting */
   .home-hero-copy {
     position: relative;
-    align-self: end;
+    align-self: center;
     display: grid;
     gap: var(--space-3);
-    padding: var(--space-5) var(--space-4);
-    /* scrim: the painted pages behind the text are bright, so the copy sits on a near-opaque dark ground (AA at 390 and 1280) */
-    background: color-mix(in oklab, var(--color-bg) 90%, transparent);
+    padding-block: var(--space-5);
+    padding-inline: var(--space-4);
   }
   /* below 40rem the hero stacks (F5): the painting first at 16/9 and fully visible, then the copy on the page background with no scrim */
   @media (max-width: 39.999rem) {
@@ -152,6 +191,75 @@
     .home-hero-copy {
       background: none;
     }
+  }
+  /* home body: map and list stacked on phone and tablet, side by side from 64rem */
+  .home-page {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+  .home-split {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    padding-inline: var(--space-4);
+  }
+  @media (min-width: 64rem) {
+    .home-split {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+      gap: var(--space-5);
+      align-items: start;
+    }
+    .home-list-scroll {
+      max-block-size: calc(100dvh - var(--app-header-h) - var(--space-8));
+      overflow-y: auto;
+      overscroll-behavior: contain;
+    }
+  }
+  /* hint banner: a slim sticky bar at the top of the book area, so it stays visible wherever the anchor jump lands. The control
+     row sticks right below it (--book-controls-top). A close-failed note hangs below the bar instead of growing it. */
+  .book {
+    --hint-banner-h: 3.25rem;
+  }
+  .book:has(> .hint-banner) {
+    --book-controls-top: var(--hint-banner-h);
+  }
+  .book:has(> .hint-banner) :is(.book-viewport, [id], [data-anchor-heading]) {
+    scroll-margin-block-start: calc(var(--app-header-h) + var(--hint-banner-h) + 1rem);
+  }
+  .hint-banner {
+    position: sticky;
+    inset-block-start: 0;
+    z-index: 6;
+    box-sizing: border-box;
+    block-size: var(--hint-banner-h);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding-inline: var(--space-4);
+    background: var(--color-surface);
+    border-block-end: 1px solid var(--color-rule, var(--color-muted));
+    font-size: var(--type-small);
+  }
+  .hint-banner-text {
+    margin: 0;
+    min-inline-size: 0;
+  }
+  .hint-banner-btn {
+    flex: none;
+    min-block-size: 2.75rem;
+    min-inline-size: 2.75rem;
+  }
+  .hint-banner-status {
+    position: absolute;
+    inset-block-start: 100%;
+    inset-inline: 0;
+    margin: 0;
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-surface);
+    color: var(--color-muted);
   }
   /* legend cards: one link target per card (stretched ::after), no underline, fixed image ratio */
   .legend-cards {
@@ -211,7 +319,7 @@
     max-inline-size: min(68ch, 34em);
   }
   .story p {
-    margin-block-end: 1.1em;
+    margin-block-end: 0.65em;
     line-height: 1.7;
     font-size: var(--type-body);
     hanging-punctuation: first;
@@ -287,4 +395,103 @@
 /* In-app reduced motion (data-motion on the root): the pin has no hover transition, as under the system setting. */
 html[data-motion='reduce'] .map-pin {
   transition: none;
+}
+/* Home list rows on desktop: one column, no image, no hook line. Layer order is theme, base, components, ui, utilities, so this
+   sits in `utilities` to beat `.panel` (ui) and the Tailwind classes in LegendList. */
+@layer utilities {
+  @media (min-width: 64rem) {
+    .home-list-scroll .legend-cards {
+      grid-template-columns: 1fr;
+      gap: var(--space-2);
+    }
+    .home-list-scroll .legend-card-img,
+    .home-list-scroll .legend-card-body > p.text-sm {
+      display: none;
+    }
+    /* `.panel` (ui layer) pads the row, and the region line wraps in a narrow column: pad once, keep region on one line */
+    .home-list-scroll .legend-card.panel {
+      min-block-size: 2.75rem;
+      padding: 0;
+    }
+    .home-list-scroll .legend-card-body {
+      justify-content: center;
+      gap: 0;
+      min-block-size: 2.75rem;
+      padding-block: var(--space-1);
+      padding-inline: var(--space-3);
+    }
+    .home-list-scroll .legend-card-body > p {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .home-list-scroll > div {
+      gap: var(--space-5);
+    }
+    .home-list-scroll .legend-cards {
+      margin-block-start: var(--space-2);
+    }
+  }
+}
+/* List rows: the grid tracks must not grow to the nowrap region line (min-content), or the cards run past the column and the
+   scroll box clips their end border. `minmax(0, 1fr)` lets the line shrink so the ellipsis applies. */
+@layer utilities {
+  @media (min-width: 64rem) {
+    .home-list-scroll > div,
+    .home-list-scroll .legend-cards {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .home-list-scroll .legend-card,
+    .home-list-scroll .legend-card-body {
+      min-inline-size: 0;
+    }
+  }
+  /* Map: from 48rem the column is wide enough to show the whole map, so it fits the column instead of panning (pins are
+     percentages of the box). The padding is half a 44px pin, so an edge pin sits inside the scroll box and is not clipped. */
+  @media (min-width: 48rem) {
+    .home-map > p {
+      display: none;
+    }
+    .home-map [role='region'] {
+      padding: 1.375rem;
+    }
+    .home-map [role='region'] > div {
+      min-inline-size: 0 !important;
+    }
+  }
+}
+
+/* Book control row below 40rem (unlayered, like book.css it overrides, and so it beats `.btn` in `ui`): one line. The quiet "Play this legend" is hidden (the primary one ends the book); the
+   controls shrink and the labels truncate instead of wrapping. Targets stay 44px high. */
+@media (max-width: 39.99rem) {
+  .book-controls .play-link-quiet {
+    display: none;
+  }
+  .book-controls {
+    flex-wrap: nowrap;
+    gap: var(--space-1);
+    padding-inline: var(--space-1);
+  }
+  .book-controls > * {
+    min-inline-size: 0;
+    flex: 0 1 auto;
+  }
+  .book-controls button {
+    padding-inline: var(--space-1);
+    font-size: var(--type-small);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .book-controls .btn-icon {
+    flex: none;
+  }
+  .book-controls .book-indicator {
+    flex: none;
+    min-inline-size: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: var(--type-small);
+  }
 }

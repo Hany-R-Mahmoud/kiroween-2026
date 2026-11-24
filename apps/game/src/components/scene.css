@@ -198,6 +198,12 @@ html[data-motion='reduce'] .hotspot-glint::before {
   background: var(--color-bg);
   border: 4px dashed var(--color-glow);
 }
+.scene-hotspot-badge[data-kind='free'] {
+  border-radius: 50%;
+  inline-size: 22px;
+  block-size: 22px;
+  background: var(--color-glow);
+}
 /* Panels are an overlay sheet at the bottom of the screen: they cover the scene instead of pushing it. */
 .hall-panel {
   position: fixed;
@@ -251,6 +257,16 @@ html[data-motion='reduce'] .hotspot-glint::before {
   padding: var(--space-6) var(--space-4);
   background: var(--color-bg);
 }
+/* Win and fear-restart overlays: fixed over the scene, so the page never grows. No animation. */
+.world-overlay {
+  justify-content: center;
+  overflow: hidden;
+}
+.world-overlay > .world-panel {
+  max-inline-size: 36rem;
+  max-block-size: 100%;
+  overflow-y: auto;
+}
 .hall-ending-image {
   position: absolute;
   inset: 0;
@@ -274,7 +290,7 @@ html[data-motion='reduce'] .hotspot-glint::before {
   grid-template-rows: auto minmax(0, 1fr) auto;
   gap: var(--space-2);
   block-size: calc(100dvh - var(--app-header-h) - var(--space-6));
-  min-block-size: 30rem;
+  min-block-size: 0;
 }
 .scene-topbar {
   display: flex;
@@ -373,7 +389,7 @@ html[data-motion='reduce'] .hotspot-glint::before {
 .scene-screen .scene-viewport {
   block-size: auto;
   flex: 1 1 0;
-  min-block-size: 14rem;
+  min-block-size: 8rem;
 }
 /* One compact dock (F3): fear meter and reply share the first row, the hint pair sits at the inline end, and the reserved
    pending row is the last row. Placement is by `order`, so the DOM order (and the item 19 pending row) is unchanged. A row
@@ -384,6 +400,14 @@ html[data-motion='reduce'] .hotspot-glint::before {
   align-items: center;
   gap: var(--space-1) var(--space-3);
   position: relative;
+}
+.scene-dock > .scene-error {
+  order: 0;
+  flex: 1 1 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
 }
 .scene-dock > .fear-meter-row,
 .scene-dock > .world-fear {
@@ -430,6 +454,15 @@ html[data-motion='reduce'] .hotspot-glint::before {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
+}
+.hint-buttons .btn {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  white-space: nowrap;
+}
+.hint-cost {
+  font-size: var(--type-small, 0.8125rem);
 }
 /* The Hint 1 text floats over the bottom of the scene (the dock is its anchor), so opening it moves nothing. */
 .hint-sheet {

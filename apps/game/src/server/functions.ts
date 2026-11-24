@@ -35,7 +35,7 @@ async function safely<T>(work: () => Promise<T>): Promise<T> {
   } catch (e) {
     if (isRedirect(e) || isNotFound(e)) throw e;
     if (e instanceof PlayError) {
-      if (e.code === 'sign-in-required') throw redirect({ to: '/sign-in' }); // no world data, same as `enterWorld`
+      if (e.code === 'sign-in-required') throw redirect({ to: '/sign-in', search: { reason: 'world' } }); // no world data, same as `enterWorld`
       setResponseStatus(e.status);
       throw new Error(e.message);
     }
@@ -153,7 +153,10 @@ async function requireAccess(id: string, visitor: Visitor): Promise<{ id: string
   const legend = (await getCatalogue()).find((l) => l.id === id);
   if (!legend) throw notFound();
   const target: Target = { kind: 'legend', id };
-  if (!canEnter(target, visitor, getEnv().guestWorld)) throw redirect({ to: visitor.kind === 'user' ? '/' : '/sign-in' });
+  if (!canEnter(target, visitor, getEnv().guestWorld)) {
+    if (visitor.kind === 'user') throw redirect({ to: '/' });
+    throw redirect({ to: '/sign-in', search: { reason: 'world' } });
+  }
   return { id: legend.id, title: legend.title };
 }
 

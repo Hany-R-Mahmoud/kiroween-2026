@@ -72,9 +72,9 @@ describe('server functions: source rules', () => {
   });
 
   it('a guest refused at a world gets the sign-in redirect and the fixed error path, never a raw error', () => {
-    expect(src).toMatch(/e\.code === 'sign-in-required'\) throw redirect\(\{ to: '\/sign-in' \}\)/);
+    expect(src).toMatch(/e\.code === 'sign-in-required'\) throw redirect\(\{ to: '\/sign-in', search: \{ reason: 'world' \} \}\)/);
     expect(src).toMatch(/new PlayError\('unavailable'\)/); // unknown errors become the one fixed message
-    expect(src).toMatch(/canEnter\(target, visitor, getEnv\(\)\.guestWorld\)\) throw redirect\(/);
+    expect(src).toMatch(/canEnter\(target, visitor, getEnv\(\)\.guestWorld\)\) \{[\s\S]*?throw redirect\(\{ to: '\/sign-in', search: \{ reason: 'world' \} \}\)/);
   });
 
   it('keeps the CSRF middleware on server functions (start.ts)', () => {

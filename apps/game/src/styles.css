@@ -9,6 +9,13 @@
 /* The shared paper texture lives on the atlas path; the game shows the tint alone until a scene image has loaded (the panel sets the variable then). */
 :root {
   --book-paper-image: none;
+  /* Padding of the game main; the world screen subtracts it twice from its block size. */
+  --game-pad: var(--space-4);
+}
+@media (max-height: 30rem) {
+  :root {
+    --game-pad: var(--space-2);
+  }
 }
 
 /* Text-only routes stay narrow inside the wider main so scenes can use the width (Req 18.5). */

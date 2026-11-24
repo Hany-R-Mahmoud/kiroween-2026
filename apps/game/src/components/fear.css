@@ -60,6 +60,16 @@
 @media (prefers-reduced-motion: reduce) {
   .fear-overlay-flash { animation: none; opacity: 0; }
 }
+/* Static visible state: ui.css turns animations off (system setting and in-app toggle), so the base opacity 0 would hide the caption for good. */
+.fear-overlay[data-motion='reduced'] .fear-overlay-caption {
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .fear-overlay-caption { opacity: 1; }
+}
+html[data-motion='reduce'] .fear-overlay-caption {
+  opacity: 1;
+}
 
 .fear-meter {
   position: relative;
@@ -137,6 +147,16 @@ html[data-motion='reduce'] .fear-meter-fill { transition: none; }
 @media (max-width: 30rem) {
   .spirit-panel { grid-template-columns: minmax(0, 1fr); padding-inline: 1.5rem; }
   .spirit-close { display: none; }
+}
+/* In the rail and the sheet the container is narrow whatever the viewport: one column, no close button. */
+.world-rail .spirit-panel,
+.world-sheet .spirit-panel {
+  grid-template-columns: minmax(0, 1fr);
+  padding-inline: 1.5rem;
+}
+.world-rail .spirit-close,
+.world-sheet .spirit-close {
+  display: none;
 }
 
 /* The motion setting: a 44 px target with a styled switch (input[role=switch], native checkbox state and keyboard). */

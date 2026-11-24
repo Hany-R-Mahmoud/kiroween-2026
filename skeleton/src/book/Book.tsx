@@ -23,6 +23,12 @@ export interface BookProps {
   labels: BookLabels;
   /** The hero image (or any frontispiece): shown alone on the first page or spread, before chapter 1. */
   hero?: ReactNode;
+  /** Rendered first in the control row (inline start). */
+  controlsStart?: ReactNode;
+  /** Rendered last in the control row (inline end). */
+  controlsEnd?: ReactNode;
+  /** Rendered above the control row, inside the Book. */
+  banner?: ReactNode;
   /** The reading content: chapters (marked `book-chapter`), versions, tables. Rendered once, unchanged, in both views. */
   children: ReactNode;
 }
@@ -55,7 +61,7 @@ function localStore(): Storage | null {
 }
 const clamp = (n: number, last: number) => Math.max(0, Math.min(last, n));
 
-export function Book({ labels, hero, children }: BookProps) {
+export function Book({ labels, hero, controlsStart, controlsEnd, banner, children }: BookProps) {
   const rootRef = useRef<HTMLDivElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
   const flowRef = useRef<HTMLDivElement>(null);
@@ -266,10 +272,28 @@ export function Book({ labels, hero, children }: BookProps) {
 
   const toggleOn = toggleState(pref, labels);
   const single = paged && count <= 1; // everything fits one page: no controls (the game's small panels)
+  const hasSlots = Boolean(controlsStart || controlsEnd);
   const atFirst = page <= 0;
   const atLast = page >= count - 1;
   return (
     <div ref={rootRef} className="book" data-view={paged ? 'pages' : 'scroll'} onKeyDown={onKeyDown}>
+      {banner}
+      <div className="book-controls" hidden={!hasSlots && (!supported || single)}>
+        {controlsStart}
+        <button type="button" className="btn btn-secondary btn-icon" hidden={!paged} aria-label={labels.previous} aria-disabled={atFirst} onClick={() => !atFirst && turn(-1)}>
+          <Chevron dir="previous" />
+        </button>
+        <span className="book-indicator" role="status" aria-live="polite" aria-atomic="true" hidden={!paged}>
+          {labels.indicator(page + 1, count)}
+        </span>
+        <button type="button" className="btn btn-secondary btn-icon" hidden={!paged} aria-label={labels.next} aria-disabled={atLast} onClick={() => !atLast && turn(1)}>
+          <Chevron dir="next" />
+        </button>
+        <button type="button" className="btn btn-secondary" hidden={!supported || single} aria-pressed={toggleOn.pressed} onClick={flip}>
+          {toggleOn.label}
+        </button>
+        {controlsEnd}
+      </div>
       <div
         ref={viewportRef}
         className={paged ? 'book-viewport book-paper' : 'book-viewport'}
@@ -285,20 +309,6 @@ export function Book({ labels, hero, children }: BookProps) {
           {hero ? <div className="book-frontispiece">{hero}</div> : null}
           {children}
         </div>
-      </div>
-      <div className="book-controls" hidden={!supported || single}>
-        <button type="button" className="btn btn-secondary btn-icon" hidden={!paged} aria-label={labels.previous} aria-disabled={atFirst} onClick={() => !atFirst && turn(-1)}>
-          <Chevron dir="previous" />
-        </button>
-        <span className="book-indicator" role="status" aria-live="polite" aria-atomic="true" hidden={!paged}>
-          {labels.indicator(page + 1, count)}
-        </span>
-        <button type="button" className="btn btn-secondary btn-icon" hidden={!paged} aria-label={labels.next} aria-disabled={atLast} onClick={() => !atLast && turn(1)}>
-          <Chevron dir="next" />
-        </button>
-        <button type="button" className="btn btn-secondary" aria-pressed={toggleOn.pressed} onClick={flip}>
-          {toggleOn.label}
-        </button>
       </div>
     </div>
   );

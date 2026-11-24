@@ -40,8 +40,8 @@ const render = (p: Partial<Props> = {}): string =>
 
 describe('tutorial helpers', () => {
   it('Hint 2 opens the Keeper\u2019s Note chapter on the atlas origin', () => {
-    expect(tutorialHint2Href('keepers-note--ch-1', 'http://atlas.test/')).toBe('http://atlas.test/legends/keepers-note#keepers-note--ch-1');
-    expect(tutorialHint2Href('keepers-note--ch-1', '')).toBe('/legends/keepers-note#keepers-note--ch-1');
+    expect(tutorialHint2Href('keepers-note--ch-1', 'http://atlas.test/')).toBe('http://atlas.test/legends/keepers-note?hint=1#keepers-note--ch-1');
+    expect(tutorialHint2Href('keepers-note--ch-1', '')).toBe('/legends/keepers-note?hint=1#keepers-note--ch-1');
     expect(tutorialHint2Href('not an anchor', '')).toBeNull();
   });
   it('answers are trimmed and limited to 40 characters', () => {
@@ -104,7 +104,7 @@ describe('tutorial room render', () => {
   });
   it('Hint 2 gives a new-tab link with rel noopener once used', () => {
     const html = render({ view: { ...view, fear: 10, hint2: { anchor: 'keepers-note--ch-1' } } });
-    expect(html).toContain('href="http://atlas.test/legends/keepers-note#keepers-note--ch-1"');
+    expect(html).toContain('href="http://atlas.test/legends/keepers-note?hint=1#keepers-note--ch-1"');
     expect(html).toContain('target="_blank"');
     expect(html).toContain('rel="noopener"');
     expect(render()).not.toContain('data-hint2-link');

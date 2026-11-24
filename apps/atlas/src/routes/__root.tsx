@@ -46,7 +46,7 @@ function Document({ lang, dir, theme, children }: { lang: string; dir: 'ltr' | '
       <head>
         <HeadContent />
       </head>
-      <body style={theme?.vars as CSSProperties | undefined} className="min-h-screen">
+      <body style={theme?.vars as CSSProperties | undefined} className="app-shell">
         <Mood />
         {children}
         <Scripts />

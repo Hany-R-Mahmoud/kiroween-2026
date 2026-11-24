@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import type { KeyboardEvent } from 'react';
-import { useT } from '../i18n/useT';
+import { useLang, useT } from '../i18n/useT';
 import { Marked } from './Marked';
 
 export interface HintAreaProps {
@@ -15,6 +15,8 @@ export interface HintAreaProps {
   hint2Href: string | null;
   /** Set only after a charged Hint 2 whose tab the browser blocked: the sentence and the chapter link show. */
   blockedHref?: string | null;
+  /** The fear Hint 2 adds. When undefined the cost line reads "Raises fear". */
+  fear?: number;
   onHint1: () => void;
   onHint2: () => void;
 }
@@ -23,8 +25,10 @@ export interface HintAreaProps {
  * The one hint area of a puzzle set: one Hint 1 and one Hint 2 for the active puzzle. Busy uses `aria-disabled`
  * (never `disabled`) so keyboard focus is kept. The Hint 1 text opens in a sheet over the scene and does not push the page.
  */
-export function HintArea({ puzzle, offered, busy, hint1Text, hint2Href, blockedHref = null, onHint1, onHint2 }: HintAreaProps) {
+export function HintArea({ puzzle, offered, busy, hint1Text, hint2Href, blockedHref = null, fear, onHint1, onHint2 }: HintAreaProps) {
   const t = useT();
+  const lang = useLang();
+  const hint2Cost = fear === undefined ? t('hint.cost.raises') : t('hint.cost.fear', { n: new Intl.NumberFormat(lang).format(fear) });
   // The sheet is open while there is text and the player has not closed that text for this puzzle.
   const sheetKey = `${puzzle ?? ''}\u0000${hint1Text ?? ''}`;
   const [closedKey, setClosedKey] = useState<string | null>(null);
@@ -65,7 +69,8 @@ export function HintArea({ puzzle, offered, busy, hint1Text, hint2Href, blockedH
             onHint1();
           }}
         >
-          {t('hint.1')}
+          <span className="hint-label">{t('hint.1')}</span>
+          <span className="hint-cost text-muted">{t('hint.cost.free')}</span>
         </button>
         {link ? (
           <a ref={linkRef} href={link} target="_blank" rel="noopener" className="scene-button btn btn-secondary" data-hint2-link="true" aria-label={t('hint.2.again.named', { puzzle })}>
@@ -73,7 +78,8 @@ export function HintArea({ puzzle, offered, busy, hint1Text, hint2Href, blockedH
           </a>
         ) : (
           <button type="button" className="scene-button btn btn-secondary" aria-label={t('hint.2.named', { puzzle })} aria-disabled={busy || undefined} onClick={() => !busy && onHint2()}>
-            {t('hint.2')}
+            <span className="hint-label">{t('hint.2')}</span>
+            <span className="hint-cost text-muted">{hint2Cost}</span>
           </button>
         )}
       </div>

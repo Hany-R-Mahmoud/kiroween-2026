@@ -1,0 +1,428 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1.1 Add the shared shell class in the skeleton": [
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479480311
+      },
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479485653
+      },
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479504249
+      }
+    ],
+    "1.2 Apply the shell to both apps and fix both headers to the token height": [
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479480400
+      },
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479506853
+      },
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479536971
+      }
+    ],
+    "2.1 Add the desktop media-query hook and catalog keys": [
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479480434
+      },
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479541204
+      },
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479564957
+      }
+    ],
+    "2.2 Create the tab strip component": [
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479480472
+      },
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479565546
+      },
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479605279
+      }
+    ],
+    "2.3 Write the grid, rail, sheet and sizing CSS": [
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479480504
+      },
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479606043
+      },
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479678464
+      }
+    ],
+    "2.4 Restructure WorldPlay and the route onto the grid": [
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479480529
+      },
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479679427
+      },
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479741954
+      }
+    ],
+    "3.1 Turn the ending and the restart notice into overlays": [
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479480552
+      },
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479744072
+      },
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479794479
+      }
+    ],
+    "4.1 Move the controls before the book content": [
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479480577
+      },
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479795158
+      },
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479814821
+      }
+    ],
+    "4.2 Make the controls sticky, shorten the page floor and fix print": [
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479480601
+      },
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479815534
+      },
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479844013
+      }
+    ],
+    "5.1 Two-column legend hero from 64rem": [
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479480666
+      },
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479844904
+      },
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479870734
+      }
+    ],
+    "5.2 Two-column home hero with no scrim above 40rem": [
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479480692
+      },
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479871375
+      },
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479895571
+      }
+    ],
+    "6.1 Add the static visible state for the caption": [
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479480717
+      },
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479896395
+      },
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479917058
+      }
+    ],
+    "7.1 Add the pure Hint 1 store helper": [
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479480739
+      },
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479917900
+      },
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479941785
+      }
+    ],
+    "7.2 Key the Hint 1 state by Run in WorldPlay and the route": [
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479480762
+      },
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479942668
+      },
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795480007041
+      }
+    ],
+    "7.3 Add the A7 unit test and update the pins it affects": [
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479480788
+      },
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795480007850
+      },
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795480046398
+      }
+    ],
+    "8. Verify": [
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479480814
+      },
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795480046898
+      },
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795483016095
+      }
+    ],
+    "9. Handover": [
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479480849
+      },
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795483018949
+      },
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795483065651
+      }
+    ],
+    "1. A1: Shell owns the viewport": [
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479537057
+      }
+    ],
+    "2. A2: World screen fits the viewport": [
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479742054
+      }
+    ],
+    "3. A3: Win and fear restart over the scene": [
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479794544
+      }
+    ],
+    "4. A4: Book controls on top and sticky": [
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479844157
+      }
+    ],
+    "5. A5: Show hero images whole": [
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479895648
+      }
+    ],
+    "6. A6: Fear caption visible with reduced motion": [
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795479917208
+      }
+    ],
+    "7. A7: Hint 1 state does not survive a fear restart": [
+      {
+        "executionId": "c6ecd0af-0746-429e-aad1-b150b468310e",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795480046533
+      }
+    ],
+    "10. Fix the world screen at 667x375": [
+      {
+        "executionId": "c1d1f709-c60a-4122-a987-8eeaa246db4c",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795483428389
+      },
+      {
+        "executionId": "c1d1f709-c60a-4122-a987-8eeaa246db4c",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795483432001
+      },
+      {
+        "executionId": "c1d1f709-c60a-4122-a987-8eeaa246db4c",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795483803257
+      }
+    ],
+    "11. Tidy the world top bar at 1280x800": [
+      {
+        "executionId": "c1d1f709-c60a-4122-a987-8eeaa246db4c",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795483428484
+      },
+      {
+        "executionId": "c1d1f709-c60a-4122-a987-8eeaa246db4c",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795483804440
+      },
+      {
+        "executionId": "c1d1f709-c60a-4122-a987-8eeaa246db4c",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795484001925
+      }
+    ],
+    "12. Check the win and restart overlays (R3)": [
+      {
+        "executionId": "c1d1f709-c60a-4122-a987-8eeaa246db4c",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795483428606
+      },
+      {
+        "executionId": "c1d1f709-c60a-4122-a987-8eeaa246db4c",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795484002657
+      },
+      {
+        "executionId": "c1d1f709-c60a-4122-a987-8eeaa246db4c",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795486262818
+      }
+    ],
+    "13. Check there is no sideways scroll anywhere": [
+      {
+        "executionId": "c1d1f709-c60a-4122-a987-8eeaa246db4c",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795483428668
+      },
+      {
+        "executionId": "c1d1f709-c60a-4122-a987-8eeaa246db4c",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795486263570
+      },
+      {
+        "executionId": "c1d1f709-c60a-4122-a987-8eeaa246db4c",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795487101407
+      }
+    ],
+    "14. Finish: checks, screenshots and handover fixes": [
+      {
+        "executionId": "c1d1f709-c60a-4122-a987-8eeaa246db4c",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795483428707
+      },
+      {
+        "executionId": "c1d1f709-c60a-4122-a987-8eeaa246db4c",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795487100459
+      },
+      {
+        "executionId": "c1d1f709-c60a-4122-a987-8eeaa246db4c",
+        "chatSessionId": "sess_70470577-3c88-4234-8404-cdfe31366404",
+        "timestamp": 1795487297912
+      }
+    ]
+  }
+}

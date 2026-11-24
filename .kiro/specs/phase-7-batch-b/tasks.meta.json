@@ -1,0 +1,411 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1.1 Rework `Ending` in `apps/game/src/components/WorldPlay.tsx`": [
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795501159640
+      },
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795501167659
+      },
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795501267759
+      }
+    ],
+    "1.2 Write the win-screen unit test": [
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795501159706
+      },
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795501272261
+      },
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795501323989
+      }
+    ],
+    "2.1 Add control-row slots to `Book` in `skeleton/src/book/Book.tsx`": [
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795501159743
+      },
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795501327937
+      },
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795501370422
+      }
+    ],
+    "2.2 Replace the Contents list with `ChaptersControl` on the legend page": [
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795501159773
+      },
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795501374447
+      },
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795501446735
+      }
+    ],
+    "3.1 Split the Home view into map and list columns": [
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795501159802
+      },
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795501451151
+      },
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795501494018
+      }
+    ],
+    "4.1 Add `PlayLink` and place it on the legend page": [
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795501160075
+      },
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795501494612
+      },
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795501543900
+      }
+    ],
+    "5.1 Hall notice and door labels": [
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795501160141
+      },
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795501544439
+      },
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795501623835
+      }
+    ],
+    "5.2 Redirect guests with a reason and show the sign-in line": [
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795501160186
+      },
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795501624701
+      },
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795501670389
+      }
+    ],
+    "6.1 Shared `PendingView` and `ErrorView` in the skeleton": [
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795501160234
+      },
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795501670572
+      },
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795501833731
+      }
+    ],
+    "6.2 Router defaults in both apps": [
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795501160284
+      },
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795501833932
+      },
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795501900289
+      }
+    ],
+    "6.3 Dock error with Retry": [
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795501160332
+      },
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795501900884
+      },
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795501966558
+      }
+    ],
+    "7.1 Hint labels with a cost line": [
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795501160375
+      },
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795501967242
+      },
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795502040992
+      }
+    ],
+    "7.2 Add the hint marker to Hint 2 URLs": [
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795501160418
+      },
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795502040378
+      },
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795502092255
+      }
+    ],
+    "7.3 Hint banner on the atlas chapter": [
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795501160452
+      },
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795502092435
+      },
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795502157903
+      }
+    ],
+    "7.4 Write the URL marker parser unit test": [
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795501160483
+      },
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795502158573
+      },
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795502186281
+      }
+    ],
+    "8. Verify": [
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795501160519
+      },
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795502186770
+      },
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795509665237
+      }
+    ],
+    "9. Handover and Kiro usage entry": [
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795501160558
+      },
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795509666220
+      },
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795509752834
+      }
+    ],
+    "1. B0: Win screen without design notes": [
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795501324045
+      }
+    ],
+    "2. B1: Legend page reaches the story faster": [
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795501446807
+      }
+    ],
+    "3. B2: Atlas home is shorter": [
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795501494061
+      }
+    ],
+    "4. B3: Play this legend from the atlas": [
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795501543939
+      }
+    ],
+    "5. B4: Guests know which world is free": [
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795501670441
+      }
+    ],
+    "6. B5: Loading and error states": [
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795501966590
+      }
+    ],
+    "7. B6: Hint 2 shows its cost and a way back": [
+      {
+        "executionId": "c7dc5dd4-0c27-4b78-85f7-5b13278e2789",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795502186332
+      }
+    ],
+    "10. Fix atlas home desktop clipping": [
+      {
+        "executionId": "6baecdef-1b06-46c2-858f-34f1678d3ab3",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795510960857
+      },
+      {
+        "executionId": "6baecdef-1b06-46c2-858f-34f1678d3ab3",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795510965361
+      },
+      {
+        "executionId": "6baecdef-1b06-46c2-858f-34f1678d3ab3",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795511101808
+      }
+    ],
+    "11. Book control row on one line below 40rem": [
+      {
+        "executionId": "6baecdef-1b06-46c2-858f-34f1678d3ab3",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795510960979
+      },
+      {
+        "executionId": "6baecdef-1b06-46c2-858f-34f1678d3ab3",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795511102437
+      },
+      {
+        "executionId": "6baecdef-1b06-46c2-858f-34f1678d3ab3",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795511478756
+      }
+    ],
+    "12. Hint marker on tutorial Hint 2": [
+      {
+        "executionId": "6baecdef-1b06-46c2-858f-34f1678d3ab3",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795510961055
+      },
+      {
+        "executionId": "6baecdef-1b06-46c2-858f-34f1678d3ab3",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795511479461
+      },
+      {
+        "executionId": "6baecdef-1b06-46c2-858f-34f1678d3ab3",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795511507316
+      }
+    ],
+    "13. Reason on the sign-in-required redirect, then finish": [
+      {
+        "executionId": "6baecdef-1b06-46c2-858f-34f1678d3ab3",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795510961176
+      },
+      {
+        "executionId": "6baecdef-1b06-46c2-858f-34f1678d3ab3",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795511508006
+      },
+      {
+        "executionId": "6baecdef-1b06-46c2-858f-34f1678d3ab3",
+        "chatSessionId": "sess_ab88542f-55d9-4042-a329-473902780e85",
+        "timestamp": 1795512087571
+      }
+    ]
+  }
+}

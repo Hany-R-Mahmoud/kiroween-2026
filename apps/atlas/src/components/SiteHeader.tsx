@@ -5,8 +5,8 @@ import type { Translate } from '../i18n/t';
 export function SiteHeader({ t }: { t: Translate }) {
   return (
     <header className="border-b border-surface">
-      <nav aria-label={t('nav.label')} className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-1 px-2 min-[40rem]:gap-x-2 min-[40rem]:px-4 py-2 font-ui text-sm">
-        <Link to="/" activeOptions={{ exact: true }} className="nav-item me-auto px-2 min-[40rem]:px-3 inline-flex min-h-11 items-center font-display text-lg text-glow no-underline">
+      <nav aria-label={t('nav.label')} className="mx-auto flex h-full max-w-6xl flex-nowrap items-center justify-between gap-x-1 px-2 min-[40rem]:gap-x-2 min-[40rem]:px-4 font-ui text-sm">
+        <Link to="/" activeOptions={{ exact: true }} className="nav-item me-auto min-w-0 truncate px-2 min-[40rem]:px-3 inline-flex min-h-11 items-center font-display text-lg text-glow no-underline">
           {t('app.title')}
         </Link>
         <Link to="/" hash="legends" activeOptions={{ exact: true, includeHash: true }} className="nav-item px-2 min-[40rem]:px-3 inline-flex min-h-11 items-center">

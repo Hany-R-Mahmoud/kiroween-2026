@@ -1,9 +1,9 @@
-import { createFileRoute, getRouteApi, useNavigate, useRouter } from '@tanstack/react-router';
+import { createFileRoute, getRouteApi, Link, useNavigate, useRouter } from '@tanstack/react-router';
 import { useEffect, useState } from 'react';
 import { HallView, type HallTarget } from '../components/Hall';
 import { ThemeRoot } from '../components/ThemeRoot';
 import { useT } from '../i18n/useT';
-import { cursesLeft, mergeBroken } from '../lib/hall';
+import { cursesLeft, hallNotice, mergeBroken } from '../lib/hall';
 import { guestHallState, playClientFor } from '../lib/play';
 import { getHall } from '../server/functions';
 
@@ -38,6 +38,7 @@ function Hall() {
   const tutorialDone = signedIn ? data.tutorialDone === true : guest.tutorialDone;
   const broken = mergeBroken(data.brokenWorlds, signedIn ? [] : guest.brokenWorlds);
   const curses = cursesLeft(broken);
+  const notice = hallNotice(signedIn, tutorialDone, data.doors);
 
   const onNavigate = (target: HallTarget) => {
     if (target.to === 'tutorial') void navigate({ to: '/tutorial' });
@@ -49,13 +50,23 @@ function Hall() {
     <ThemeRoot theme={null} className="flex flex-col gap-4">
       <h1 className="font-display text-3xl text-glow">{t('app.title')}</h1>
       <p>{t('hall.intro')}</p>
-      <p className="text-sm text-muted">{data.name === null ? t('hall.guest') : t('hall.greeting', { name: data.name })}</p>
+      {data.name !== null ? <p className="text-sm text-muted">{t('hall.greeting', { name: data.name })}</p> : null}
+      {notice?.kind === 'study' ? <p>{t('hall.study.line')}</p> : null}
+      {notice?.kind === 'guest' ? (
+        <div className="flex flex-wrap items-center gap-3">
+          <p>{t('hall.guest.line', { title: notice.freeTitle })}</p>
+          <Link to="/sign-in" className="btn btn-secondary">
+            {t('nav.signIn')}
+          </Link>
+        </div>
+      ) : null}
       <HallView
         data={{ doors: data.doors, relics: data.relics, ledger: data.ledger, current: data.current }}
         mediaBase={mediaBase}
         tutorialDone={tutorialDone}
         broken={broken}
         curses={curses}
+        guest={!signedIn}
         onNavigate={onNavigate}
       />
     </ThemeRoot>

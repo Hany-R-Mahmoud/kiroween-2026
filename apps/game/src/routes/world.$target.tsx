@@ -10,7 +10,7 @@ import { initialWorldState, playClientFor, worldReducer, type PlayClient } from 
 import { isTutorialRequired } from '../lib/playClient';
 import { applyHint2Reply, openBlankTab } from '../lib/hintTab';
 import { themeColorMeta } from '../lib/theme';
-import { atlasHref, chooseFearEvent, markedIds, reducedLineOf, triggerOf, type FearContext } from '../lib/world';
+import { chooseFearEvent, hintHref, markedIds, reducedLineOf, triggerOf, type FearContext } from '../lib/world';
 import { getWorldInfo } from '../server/functions';
 import type { Action } from '@kiroween/skeleton/client';
 
@@ -52,6 +52,8 @@ function World() {
   const client = useRef<PlayClient | null>(null);
   const played = useRef(new Set<string>());
   const runNo = useRef(0);
+  // The Run number as state, so WorldPlay can key what it remembers (Hint 1) by Run.
+  const [runState, setRunState] = useState(0);
   const entries = fearEventsOf(info.id);
 
   const play = (ctx: FearContext) => {
@@ -71,6 +73,7 @@ function World() {
       if (r.ended?.status === 'restarted') {
         // A new Seed: the room starts over, so its events and chosen puzzle start over too.
         runNo.current += 1;
+        setRunState(runNo.current);
         played.current = new Set();
         setChosen(null);
       }
@@ -78,7 +81,7 @@ function World() {
       if (ctx) play(ctx);
       return r;
     } catch (e) {
-      if (isRedirect(e)) void navigate({ to: '/sign-in' });
+      if (isRedirect(e)) void navigate({ to: '/sign-in', search: { reason: 'world' } });
       else {
         setNeedsTutorial(isTutorialRequired(e));
         setFailed(true);
@@ -88,7 +91,12 @@ function World() {
       setPending((n) => n - 1);
     }
   };
-  const act = (action: Action) => run((c) => c.act(info.id, action));
+  // The last action, so the dock's Retry can replay it. Hint 2 sets its own entry (below) so a retry opens a new tab in the click.
+  const last = useRef<(() => void) | null>(null);
+  const act = (action: Action) => {
+    last.current = () => void act(action);
+    return run((c) => c.act(info.id, action));
+  };
 
   useEffect(() => {
     // One start per visit: a signed-in player resumes from the server, a guest from the token in this browser.
@@ -106,12 +114,13 @@ function World() {
     setBlocked(null);
     void act({ kind: 'hint2', slotId }).then((r) => {
       // A null reply is a failure of any cause; a reply that is not a hint counts the same.
-      const href = applyHint2Reply(tab, r?.reply, (a) => atlasHref(mediaBase, a));
+      const href = applyHint2Reply(tab, r?.reply, (a) => hintHref(mediaBase, a));
       setBlocked(href ? { slotId, href } : null);
     });
+    last.current = () => onHint2(slotId);
   };
   return (
-    <ThemeRoot theme={info.theme} className="flex flex-col gap-4">
+    <ThemeRoot theme={info.theme} className="world-root">
       <WorldPlay
         legendId={info.id}
         title={info.title}
@@ -119,6 +128,7 @@ function World() {
         scenes={info.scenes}
         hotspots={info.hotspots}
         layout={worldLayout(info.id)}
+        run={runState}
         sceneIndex={sceneIndex}
         onScene={onScene}
         view={state.view}
@@ -130,6 +140,7 @@ function World() {
         busy={busy}
         failed={failed}
         onRetry={() => void run((c) => c.start(info.id))}
+        onRetryAction={() => last.current?.()}
         onTutorial={needsTutorial ? () => void navigate({ to: '/tutorial' }) : undefined}
         outline={import.meta.env.DEV && search.layout === 1}
         onChoose={setChosen}
@@ -142,8 +153,8 @@ function World() {
         onDismissRestart={() => dispatch({ kind: 'dismiss-restart' })}
         onHall={() => void navigate({ to: '/' })}
         overlay={<FearOverlay request={fear} reduced={reduced} />}
+        motion={<MotionToggle reduced={reduced} onChange={setSetting} />}
       />
-      <MotionToggle reduced={reduced} onChange={setSetting} />
     </ThemeRoot>
   );
 }

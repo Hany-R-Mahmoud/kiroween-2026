@@ -41,12 +41,14 @@ interface HallViewProps {
   onNavigate: (target: HallTarget) => void;
   /** Starting panel; used by tests. */
   initialPanel?: HallPanel | null;
+  /** A guest visitor: the free door reads "Free for guests". */
+  guest?: boolean;
 }
 
 const DAWN_ASSET = 'shared-game-ui-dawn-01';
 
 /** The Hall: the pannable hub scene with its tap regions, the panels they open, and the ending screen. Theme: hub (null). */
-export function HallView({ data, mediaBase, tutorialDone, broken, curses, onNavigate, initialPanel = null }: HallViewProps) {
+export function HallView({ data, mediaBase, tutorialDone, broken, curses, onNavigate, initialPanel = null, guest = false }: HallViewProps) {
   const t = useT();
   const lang = useLang();
   const [panel, setPanel] = useState<HallPanel | null>(initialPanel);
@@ -64,9 +66,9 @@ export function HallView({ data, mediaBase, tutorialDone, broken, curses, onNavi
     const door = legendId ? doorsById.get(legendId) : undefined;
     if (door) {
       const state = stateOf(door);
-      const reason = doorReasonKey(state);
+      const reason = doorReasonKey(state, guest);
       const label = reason === null ? t('hub.door.enter', { title: door.title }) : t('hub.door.stateNamed', { title: door.title, state: t(reason) });
-      return { id: box.id, label, marked: false, badge: state === 'open' ? undefined : state === 'locked' ? 'lock' : 'signin' };
+      return { id: box.id, label, marked: false, badge: state === 'open' ? (guest ? 'free' : undefined) : state === 'locked' ? 'lock' : 'signin' };
     }
     return { id: box.id, label: t(OBJECT_LABEL[box.id] ?? 'hub.label.lamp'), marked: false };
   });
@@ -135,7 +137,7 @@ export function HallView({ data, mediaBase, tutorialDone, broken, curses, onNavi
       <SceneViewer layout={HUB_SCENE} name={t('hall.heading')} alt={t('hub.scene.alt')} mediaBase={mediaBase} imageSizes={HALL_SCENE_SIZES} hotspots={hotspots} onActivate={activate} headingId="hall-heading" />
       {panel ? (
         <div ref={panelRef} className="hall-panel mood-worn" role="region" aria-labelledby="hall-panel-title" tabIndex={-1} onKeyDown={onPanelKey} data-panel={panel.kind}>
-          <PanelBody panel={panel} data={data} mediaBase={mediaBase} curses={curses} lang={lang} broken={broken} stateOf={stateOf} doorsById={doorsById} onNavigate={onNavigate} />
+          <PanelBody panel={panel} data={data} mediaBase={mediaBase} curses={curses} lang={lang} broken={broken} stateOf={stateOf} doorsById={doorsById} guest={guest} onNavigate={onNavigate} />
           <button type="button" className="scene-button btn btn-secondary" onClick={closePanel}>
             {t('hub.panel.close')}
           </button>
@@ -180,10 +182,11 @@ interface BodyProps {
   broken: readonly string[];
   stateOf: (d: HallDoor) => DoorState;
   doorsById: ReadonlyMap<string, HallDoor>;
+  guest: boolean;
   onNavigate: (target: HallTarget) => void;
 }
 
-function PanelBody({ panel, data, mediaBase, curses, lang, broken, stateOf, doorsById, onNavigate }: BodyProps) {
+function PanelBody({ panel, data, mediaBase, curses, lang, broken, stateOf, doorsById, guest, onNavigate }: BodyProps) {
   const t = useT();
   const heading = (text: string) => (
     <h3 id="hall-panel-title" className="font-display text-xl">
@@ -262,6 +265,7 @@ function PanelBody({ panel, data, mediaBase, curses, lang, broken, stateOf, door
           {heading(door.title)}
           {state === 'locked' ? <p>{t('hub.door.locked')}</p> : null}
           {state === 'signin' ? <p>{t('hub.door.signin')}</p> : null}
+          {state === 'open' && guest ? <p>{t('hub.door.reason.free')}</p> : null}
           <div className="flex flex-wrap gap-3">
             {state === 'open' ? (
               <button type="button" className="scene-button btn btn-secondary" onClick={() => onNavigate({ to: 'world', legendId: door.id })}>

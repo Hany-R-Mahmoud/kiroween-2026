@@ -589,3 +589,17 @@ Written at task 10.1 from `docs/phase-6-notes/progress.md` and `decisions.md`. O
 | Not used | Skills that start their own workflows or sub-agents (agent-pilot, agent-superpowers, agent-orchestrator) are not recorded in Phase 6. |
 
 Images are delivered through ImageKit (free plan) from our own originals (task 10.F11); the apps use their own `/media/` files when `IMAGE_CDN_URL` is unset.
+
+## Phase 7 Batch A (UI fixes)
+Spec: `.kiro/specs/phase-7-batch-a/` (requirements, design, tasks), approved before code. Handover: `docs/phase-7-batch-a-handover.md`.
+- **Spec workflow**: tasks A1 to A7, then a Verify task and a handover task, run one at a time by the orchestrator.
+- **Verify task**: `pnpm -r typecheck` clean; `pnpm -r test` green after five test pins were updated (skeleton 915 + 8 expected fail, atlas 302, game 400); browser check 303 passed, 0 failed, 2 skipped. 58 screenshots at four viewport sizes under `.debug/phase-7/`.
+- **Found in verify**: an invalid media feature (`max-block-size`), fixed to `max-height`; the 667x375 world layout was built as two columns instead of the design's fallback.
+- **Not claimed**: no sub-agents, hooks or skill loads are recorded in these notes. The restart and win overlays (R3) were not captured visually.
+## Phase 7 Batch B (UI changes)
+Spec: `.kiro/specs/phase-7-batch-b/` (requirements, design, tasks), made in that order and approved before code. Handover: `docs/phase-7-batch-b-handover.md`.
+- **Spec workflow**: tasks B0 to B6, then one Verify task and a handover task, run one at a time by the orchestrator. The Owner added a game `RootError` (error view for a failed root load) to task 6.2.
+- **Sub-agents**: each task B0 to B6 was executed by a spec task execution sub-agent.
+- **Verify task**: first run found old-layout test pins, one check-script selector and a Chapters control below the fold at 390x844. A fix pass followed (hint banner made sticky, Banshee one-page height, atlas home list). Final: `pnpm -r typecheck` clean; skeleton 915 (+8 expected fail), atlas 305, game 401; browser check 303 passed, 0 failed, 2 skipped. 88 screenshots at four sizes under `.debug/phase-7b/`.
+- **Tests**: only two new unit tests (`win-screen.test.tsx`, `hint-marker.test.ts`); existing pins were updated for new layout and copy.
+- **Not claimed**: no hooks or skill loads are recorded in these notes. Open items (signed-in Hall screenshot, RTL and popover keyboard checks) are listed in the handover.

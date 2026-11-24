@@ -41,6 +41,26 @@ html[data-motion='reduce'] *::after {
 }
 
 @layer ui {
+  /* App shell: the body owns the viewport. Header row is fixed to the token
+     height; main fills the rest. Both apps use this class, do not copy it. */
+  .app-shell {
+    display: flex;
+    flex-direction: column;
+    min-block-size: 100dvh;
+  }
+  .app-shell > header {
+    flex: none;
+    box-sizing: border-box;
+    block-size: var(--app-header-h);
+  }
+  .app-shell > main {
+    flex: 1 0 auto;
+  }
+  /* In a column flex container, margin-inline: auto would shrink these. */
+  .app-shell > :is(main, footer) {
+    inline-size: 100%;
+  }
+
   /* Button: works on <button> and <a>. One primary per view. */
   .btn {
     display: inline-flex;
@@ -189,5 +209,51 @@ html[data-motion='reduce'] *::after {
   .field:disabled {
     border-style: dashed;
     color: var(--color-muted);
+  }
+
+  /* State view: pending and error. A centred column. Retry is a .btn, so it keeps the 44px target. */
+  .state-view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+    min-block-size: 40dvh;
+    padding: var(--space-6) var(--space-4);
+    text-align: center;
+    color: var(--color-ink);
+  }
+  .state-view-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-4);
+  }
+  .state-view-actions .btn {
+    min-block-size: 44px;
+    min-inline-size: 44px;
+  }
+  /* The candle dot. Reduced motion removes the animation above, leaving a static dot. */
+  .state-view-mark {
+    display: block;
+    inline-size: 12px;
+    block-size: 12px;
+    border-radius: 50%;
+    background: var(--color-glow);
+    box-shadow: 0 0 12px 2px color-mix(in oklab, var(--color-glow) 60%, transparent);
+    animation: state-pulse calc(var(--motion) * 1400ms) ease-in-out infinite;
+  }
+}
+
+@keyframes state-pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
   }
 }

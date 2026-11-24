@@ -13,7 +13,7 @@ const { hero } = SHARED_ATLAS_IMAGES;
 export function HomeView({ legends, t }: { legends: HomeLegend[]; t: Translate }) {
   const first = pickFirstLegend(legends);
   return (
-    <div className="flex flex-col gap-14 pb-8">
+    <div className="home-page pb-8">
       <header className="home-hero">
         {/* the journal on the desk sets the scene; the heading carries the page */}
         <div className="home-hero-frame">
@@ -35,19 +35,23 @@ export function HomeView({ legends, t }: { legends: HomeLegend[]; t: Translate }
         </div>
       </header>
 
-      <section aria-labelledby="map-title" className="flex flex-col gap-4 px-4">
-        <h2 id="map-title" className="text-3xl">
-          {t('home.mapHeading')}
-        </h2>
-        <WorldMap legends={legends} t={t} />
-      </section>
+      <div className="home-split">
+        <section aria-labelledby="map-title" className="home-map flex flex-col gap-4">
+          <h2 id="map-title" className="text-3xl">
+            {t('home.mapHeading')}
+          </h2>
+          <WorldMap legends={legends} t={t} />
+        </section>
 
-      <section id="legends" aria-labelledby="list-title" className="flex flex-col gap-6 px-4">
-        <h2 id="list-title" className="text-3xl">
-          {t('home.listHeading')}
-        </h2>
-        <LegendList legends={legends} t={t} />
-      </section>
+        <section id="legends" aria-labelledby="list-title" className="home-list flex flex-col gap-6">
+          <h2 id="list-title" className="text-3xl">
+            {t('home.listHeading')}
+          </h2>
+          <div className="home-list-scroll" tabIndex={0} role="region" aria-label={t('home.listRegion')}>
+            <LegendList legends={legends} t={t} />
+          </div>
+        </section>
+      </div>
     </div>
   );
 }

@@ -30,7 +30,7 @@ const html = renderToStaticMarkup(
     {content}
   </Book>,
 );
-const flow = (h: string) => /<div class="book-flow"[^>]*>([\s\S]*)<\/div><\/div><div class="book-controls"/.exec(h)![1]!;
+const flow = (h: string) => /<div class="book-flow"[^>]*>([\s\S]*)<\/div><\/div><\/div>$/.exec(h)![1]!;
 describe('Book markup', () => {
   it('renders the content subtree identically with or without a hero, and each anchor once', () => {
     const plain = renderToStaticMarkup(<Book labels={labels('en')}>{content}</Book>);
@@ -56,7 +56,7 @@ describe('Book markup', () => {
     expect(h).toContain('>TOGGLE</button>');
   });
   it('book view: toggle reads "Read as one page", aria-pressed false, and carries btn classes', () => {
-    expect(/<button type="button" class="btn btn-secondary" aria-pressed="false">Read as one page<\/button>/.test(html)).toBe(true);
+    expect(/<button type="button" class="btn btn-secondary"(?: hidden="")? aria-pressed="false">Read as one page<\/button>/.test(html)).toBe(true);
     expect(toggleState('pages', labels('en'))).toEqual({ label: 'Read as one page', pressed: false });
     expect(html).toContain('class="btn btn-secondary btn-icon"');
   });

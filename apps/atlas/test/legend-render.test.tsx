@@ -51,7 +51,7 @@ describe.each(pages.map((p) => [p.l.id, p] as const))('legend page %s', (_id, { 
   });
 
   it('links sources out only over http(s), with rel="noopener noreferrer"', () => {
-    const links = tags(html, 'a').filter((a) => !a.includes('href="#'));
+    const links = tags(html, 'a').filter((a) => !a.includes('href="#') && !a.includes(`href="/game/world/${l.id}"`));
     expect(links.length).toBeGreaterThan(0);
     for (const a of links) {
       expect(a, a).toMatch(/href="https?:\/\//);
@@ -63,7 +63,7 @@ describe.each(pages.map((p) => [p.l.id, p] as const))('legend page %s', (_id, { 
     const v = atlasLegendFromModel(l);
     const unsafe = { ...v, sources: [{ ...v.sources[0]!, url: 'javascript:alert(1)' }, { ...v.sources[0]!, id: 'S99', url: '' }] };
     const out = renderToStaticMarkup(<LegendPage legend={unsafe} t={t} />);
-    expect(tags(out, 'a').filter((a) => !a.includes('href="#'))).toEqual([]);
+    expect(tags(out, 'a').filter((a) => !a.includes('href="#') && !a.includes(`href="/game/world/${l.id}"`))).toEqual([]);
     expect(out).not.toContain('javascript:');
   });
 

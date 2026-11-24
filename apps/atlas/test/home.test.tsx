@@ -111,9 +111,9 @@ describe('atlas home', async () => {
       expect(classes(game[0]!)).not.toContain('btn-primary');
     });
 
-    it('puts the hero copy on a dark scrim, because the painted pages behind it are bright (AA, measured in the browser)', () => {
+    it('puts the hero copy on the plain page background, with no scrim, so the painting shows whole (A5)', () => {
       const rule = /\.home-hero-copy\s*\{([^}]*)\}/.exec(css)?.[1] ?? '';
-      expect(rule).toMatch(/background:\s*color-mix\([^)]*var\(--color-bg\)\s+(8\d|9\d)%/);
+      expect(rule).not.toMatch(/background/);
     });
 
     it('stacks below 40rem: image at 16/9 first, copy on the page background with no scrim (F5)', () => {

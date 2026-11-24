@@ -37,8 +37,19 @@ export function hallDoorState(tutorialDone: boolean, mayEnter: boolean): DoorSta
 }
 
 /** The catalog key of the reason a door is closed; null exactly when the door is open. Reads the state, adds no rule. */
-export function doorReasonKey(state: DoorState): MessageKey | null {
-  return state === 'locked' ? 'hub.door.reason.study' : state === 'signin' ? 'hub.door.reason.signin' : null;
+export function doorReasonKey(state: DoorState, guest = false): MessageKey | null {
+  if (state === 'open') return guest ? 'hub.door.reason.free' : null;
+  return state === 'locked' ? 'hub.door.reason.study' : 'hub.door.reason.signin';
+}
+
+export type HallNotice = { kind: 'study' } | { kind: 'guest'; freeTitle: string } | null;
+
+/** The one state line under the Hall heading. Reads the same inputs as `hallDoorState`; adds no access rule. */
+export function hallNotice(signedIn: boolean, tutorialDone: boolean, doors: readonly { title: string; open: boolean }[]): HallNotice {
+  if (!tutorialDone) return { kind: 'study' };
+  if (signedIn) return null;
+  const free = doors.find((d) => d.open);
+  return free ? { kind: 'guest', freeTitle: free.title } : null;
 }
 
 /** Curses remaining: one per world not yet broken, counted over distinct legend ids. */

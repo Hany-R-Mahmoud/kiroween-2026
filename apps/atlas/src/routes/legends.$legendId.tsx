@@ -6,9 +6,11 @@ import { heroPreloads, imageBaseOf } from '../components/imageSet';
 import { fontLinks } from '../fonts';
 import { translate } from '../i18n/t';
 import { useT } from '../i18n/useT';
+import { parseHintSearch } from '../lib/hintMarker';
 import { getLegend } from '../server/functions';
 
 export const Route = createFileRoute('/legends/$legendId')({
+  validateSearch: parseHintSearch,
   loader: ({ params }) => getLegend({ data: params.legendId }),
   head: ({ loaderData, matches }) => {
     if (!loaderData) return {};
@@ -40,5 +42,6 @@ export const Route = createFileRoute('/legends/$legendId')({
 function Legend() {
   const data = Route.useLoaderData();
   const t = useT();
-  return data.kind === 'note' ? <KeepersNotePage note={data.note} t={t} /> : <LegendPage legend={data.legend} t={t} />;
+  const { hint } = Route.useSearch();
+  return data.kind === 'note' ? <KeepersNotePage note={data.note} t={t} /> : <LegendPage legend={data.legend} t={t} showHintBanner={hint === 1} />;
 }

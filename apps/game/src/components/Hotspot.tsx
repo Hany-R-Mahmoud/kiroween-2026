@@ -11,7 +11,7 @@ interface HotspotProps {
   /** Catalog text for the hidden marker, e.g. "Hint: look here". */
   markedText: string;
   /** A drawn overlay for the Hall doors: a lock, or a sign-in ring. Decorative: the state is in the label. */
-  badge?: 'lock' | 'signin';
+  badge?: 'lock' | 'signin' | 'free';
   /** Scene pixels to screen pixels. */
   scale: number;
   onActivate: (id: string) => void;

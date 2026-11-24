@@ -14,7 +14,7 @@
   --book-ember: #a8431f;
   --book-gutter: 2.5rem;
   --book-padding: 1.25rem;
-  --book-page-height: clamp(30rem, calc(100dvh - var(--app-header-h) - 9rem), 52rem);
+  --book-page-height: clamp(14rem, calc(100dvh - var(--app-header-h) - 9rem), 52rem);
   --book-turn-ms: 300ms;
   --book-gutter-shadow: rgb(40 25 10 / 0.28);
   --book-sign: 1;
@@ -125,38 +125,15 @@ html[data-motion='reduce'][data-book='on'] .book-flow {
   transition: none;
 }
 
-/* Print: always the plain scrolling page. */
-@media print {
-  html[data-book='on'] .book-viewport {
-    overflow: visible;
-    block-size: auto;
-    padding-inline: 0;
-  }
-  html[data-book='on'] .book-flow {
-    block-size: auto;
-    column-count: auto;
-    transform: none;
-    transition: none;
-  }
-  html[data-book='on'] .book-chapter,
-  html[data-book='on'] .book-frontispiece {
-    break-before: auto;
-    break-after: auto;
-  }
-  html[data-book='on'] .book-viewport::after {
-    display: none;
-  }
-  .book-controls {
-    display: none;
-  }
-  .book-paper {
-    background: none;
-    box-shadow: none;
-    color: inherit;
-  }
-}
-/* Controls: one row that follows the UI direction. Targets are at least 44 px; focus is always visible. */
+/* Controls: one row that follows the UI direction, sticky at the top of the scrolling area. The offset defaults to 0 because the
+   Atlas header scrolls away; a host with a fixed header may set --book-controls-top. These rules sit above the print block so the
+   print rule hides the controls. Targets are at least 44 px; focus is always visible. */
 .book-controls {
+  position: sticky;
+  inset-block-start: var(--book-controls-top, 0);
+  z-index: 5;
+  background: var(--color-bg);
+  border-block-end: 1px solid var(--color-rule, var(--color-muted));
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -187,4 +164,35 @@ html[data-motion='reduce'][data-book='on'] .book-flow {
 .book-indicator {
   min-inline-size: 6rem;
   text-align: center;
+}
+
+/* Print: always the plain scrolling page. */
+@media print {
+  html[data-book='on'] .book-viewport {
+    overflow: visible;
+    block-size: auto;
+    padding-inline: 0;
+  }
+  html[data-book='on'] .book-flow {
+    block-size: auto;
+    column-count: auto;
+    transform: none;
+    transition: none;
+  }
+  html[data-book='on'] .book-chapter,
+  html[data-book='on'] .book-frontispiece {
+    break-before: auto;
+    break-after: auto;
+  }
+  html[data-book='on'] .book-viewport::after {
+    display: none;
+  }
+  .book-controls {
+    display: none;
+  }
+  .book-paper {
+    background: none;
+    box-shadow: none;
+    color: inherit;
+  }
 }

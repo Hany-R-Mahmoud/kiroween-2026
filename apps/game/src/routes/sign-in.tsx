@@ -4,10 +4,15 @@ import { signInEmail, signInGoogle } from '../auth/client';
 import { buttonClass, Field, secondaryButtonClass } from '../components/Field';
 import { useT } from '../i18n/useT';
 
-export const Route = createFileRoute('/sign-in')({ component: SignIn });
+export const Route = createFileRoute('/sign-in')({
+  // Only `reason=world` is kept; anything else is dropped.
+  validateSearch: (search: Record<string, unknown>): { reason?: 'world' } => (search.reason === 'world' ? { reason: 'world' } : {}),
+  component: SignIn,
+});
 
 function SignIn() {
   const t = useT();
+  const { reason } = Route.useSearch();
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -30,6 +35,7 @@ function SignIn() {
       <h1 id="sign-in-heading" className="font-display text-3xl text-glow">
         {t('signIn.heading')}
       </h1>
+      {reason === 'world' ? <p role="note">{t('signIn.reason')}</p> : null}
       <form onSubmit={submit} className="flex flex-col gap-4" noValidate>
         <Field label={t('form.email')} name="email" type="email" autoComplete="email" value={email} onChange={setEmail} />
         <Field label={t('form.password')} name="password" type="password" autoComplete="current-password" value={password} onChange={setPassword} error={error} />

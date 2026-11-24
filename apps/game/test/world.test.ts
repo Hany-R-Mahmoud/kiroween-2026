@@ -8,7 +8,7 @@ import { en } from '../src/i18n/en.ts';
 import { translate } from '../src/i18n/t.ts';
 import { fearEventsOf, worldLayout } from '../src/layout/index.ts';
 import { readFileSync } from 'node:fs';
-import { atlasHref, chooseFearEvent, hint1Marks, markedIds, reducedLineOf, triggerOf } from '../src/lib/world.ts';
+import { atlasHref, chooseFearEvent, emptyHint1, hint1For, hint1Marks, markedIds, reducedLineOf, triggerOf } from '../src/lib/world.ts';
 
 vi.mock('../src/i18n/useT.ts', () => ({
   useT: () => (key: keyof typeof en, vars?: Record<string, string | number>) => translate('en', key, vars),
@@ -72,6 +72,7 @@ function render(over: Record<string, unknown> = {}, view: PlayView | null = base
       onDismissRestart: noop,
       onHall: noop,
       onRetry: noop,
+      run: 0,
       ...over,
     }),
   );
@@ -82,7 +83,7 @@ describe('World pending state', () => {
     const html = render({ busy: true });
     expect(html).toContain('aria-busy="true"');
     expect(html).toContain('Working on your last move');
-    const hint1 = [...html.matchAll(/<button([^>]*)>\s*Hint 1/g)].map((m) => m[1]!);
+    const hint1 = [...html.matchAll(/<button([^>]*)>\s*<span class=\"hint-label\">Hint 1/g)].map((m) => m[1]!);
     expect(hint1.length).toBeGreaterThan(0);
     // A real `disabled` attribute would drop keyboard focus.
     for (const attrs of hint1) {
@@ -149,9 +150,19 @@ describe('Hint 1 marks from the reply (F7)', () => {
   });
   it('WorldPlay keeps the reply highlight per slot and feeds it to the hotspots', () => {
     const src = readFileSync(new URL('../src/components/WorldPlay.tsx', import.meta.url), 'utf8');
-    expect(src).toContain('setHint1Highlights((prev) => ({ ...prev, [asked]: highlight }))');
-    expect(src).toContain('hint1Marks(view, hint1Highlights)');
+    expect(src).toContain('const cur = hint1For(prev, p.run);');
+    expect(src).toContain('highlights: { ...cur.highlights, [asked]: highlight }');
+    expect(src).toContain('hint1Marks(view, hint1.highlights)');
     expect(src).toContain('marked: marked.has(h.id)');
+  });
+  it('a Hint 1 store filled in Run 0 is empty for Run 1 and still readable for Run 0', () => {
+    const slotId = noHint.slots[0]!.slotId;
+    const store = { ...emptyHint1(0), texts: { [slotId]: 'look at the cat' }, highlights: { [slotId]: ['hs-cat'] } };
+    const next = hint1For(store, 1);
+    expect(next.texts).toEqual({});
+    expect(next.highlights).toEqual({});
+    expect(hint1Marks(noHint, next.highlights).size).toBe(0);
+    expect(hint1For(store, 0).texts[slotId]).toBe('look at the cat');
   });
 });
 describe('World pure rules', () => {
@@ -229,7 +240,7 @@ describe('World render', () => {
     expect(html).toContain('Look near the hearth.');
     expect(html).toContain('data-marked="true"');
     expect(html).toContain('Hint: look here');
-    expect(html).toContain('href="http://localhost:3001/legends/banshee#banshee--ch-2"');
+    expect(html).toContain('href="http://localhost:3001/legends/banshee?hint=1#banshee--ch-2"');
     expect(html).toContain('target="_blank" rel="noopener"');
     expect(html).toContain('Open the chapter again (free)');
     // The active puzzle used Hint 2, so its button is replaced by the link: no Hint 2 button.
@@ -240,8 +251,8 @@ describe('World render', () => {
     const open = (n: number) => ({ slotId: `pz-${n}`, index: n, type: 'weakness', final: false, state: 'open', question: 'q', options: ['a', 'b', 'c', 'd'] }) as unknown as PlayView['slots'][number];
     const view5: PlayView = { ...baseView, slots: [1, 2, 3, 4, 5].map(open) };
     const html = render({ chosenSlot: 'pz-3' }, view5);
-    expect([...html.matchAll(/>\s*Hint 1 \(free\)</g)]).toHaveLength(1);
-    expect([...html.matchAll(/>\s*Hint 2 \(raises fear\): opens the atlas</g)]).toHaveLength(1);
+    expect([...html.matchAll(/>Hint 1<\/span><span class=\"hint-cost text-muted\">Free</g)]).toHaveLength(1);
+    expect([...html.matchAll(/>Hint 2<\/span><span class=\"hint-cost text-muted\">(?:Adds \d+ fear|Raises fear)</g)]).toHaveLength(1);
     expect(html).toContain('aria-label="Hint 1 (free), Puzzle 3: Weakness"');
     expect(html).toContain('aria-label="Hint 2 (raises fear): opens the atlas, Puzzle 3: Weakness"');
   });
@@ -277,7 +288,7 @@ describe('World render', () => {
   });
   it('shows the restart notice and a button to dismiss it', () => {
     const html = render({ restartNotice: true });
-    expect(html).toContain('role="alert"');
+    expect(html).toContain('role="alertdialog"');
     expect(html).toContain('The fear is too much.');
     expect(html).toContain('The room starts over with new details.');
     expect(html).toContain('Try again');
@@ -287,7 +298,7 @@ describe('World render', () => {
     const won: PlayView = { ...baseView, status: 'won', ended: { status: 'won', score: 740, slotsSolved: 5, seed: 'seed-abc', curseText: 'The song is sung.' } };
     const html = render({ relic: { assetId: 'banshee-game-relic-01', name: 'The silver comb' } }, won);
     expect(html).toContain('The curse is broken.');
-    expect(html).toContain('The song is sung.');
+    expect(html).not.toContain('The song is sung.'); // design notes are not shown on the win screen (Batch B, B0)
     expect(html).toContain('banshee-game-relic-01');
     expect(html).toContain('You take The silver comb.');
     expect(html).toContain('Score: 740');

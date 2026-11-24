@@ -9,9 +9,9 @@ export function MetaList({ legend, t }: { legend: { region: string; era: string;
     [t('meta.reading'), t('meta.readingValue', { n: legend.readingTimeMin })],
   ];
   return (
-    <dl className="grid gap-x-4 gap-y-1 text-sm sm:grid-cols-[max-content_1fr]">
+    <dl className="meta-list grid gap-x-4 gap-y-1 text-sm sm:grid-cols-[max-content_1fr]">
       {rows.map(([label, value]) => (
-        <div key={label} className="contents">
+        <div key={label} className="block sm:contents">
           <dt className="font-ui text-muted">{label}</dt>
           <dd className="mb-2 sm:mb-0">{value}</dd>
         </div>

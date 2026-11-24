@@ -36,10 +36,12 @@ export const TUTORIAL_TAP_TEXT: Readonly<Record<string, MessageKey>> = {
 /** The mirror's Fear_Event: a figure behind the player, then gone (a sight). */
 export const MIRROR_EVENT: FearEventEntry = { id: 'fe-1', trigger: 'decoy-tap', caption: 'sight' };
 
-/** The atlas address of the chapter Hint 2 opens, or null when the anchor is malformed. */
+/** The atlas address of the chapter Hint 2 opens, with `?hint=1` before the `#` (same shape as `hintHref` in world.ts), or null when the anchor is malformed. */
 export function tutorialHint2Href(anchor: string, atlasOrigin: string): string | null {
   try {
-    return atlasOrigin.replace(/\/+$/, '') + atlasUrl(anchor);
+    const href = atlasOrigin.replace(/\/+$/, '') + atlasUrl(anchor);
+    const i = href.indexOf('#');
+    return i === -1 ? `${href}?hint=1` : `${href.slice(0, i)}?hint=1${href.slice(i)}`;
   } catch {
     return null;
   }

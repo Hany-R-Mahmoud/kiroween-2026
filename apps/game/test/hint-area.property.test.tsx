@@ -51,7 +51,7 @@ function render(view: PlayView, chosenSlot: string | null): string {
       legendId: 'banshee', title: 'The Banshee', mediaBase: 'http://localhost:3001', scenes, hotspots, layout: worldLayout('banshee'),
       sceneIndex: 0, onScene: noop, view, reply: null, marked: markedIds(view), relic: null, restartNotice: false, chosenSlot,
       busy: false, failed: false, onChoose: noop, onTap: noop, onHint1: noop, onHint2: noop, onAnswer: noop, onFollow: noop,
-      onDismissRestart: noop, onHall: noop, onRetry: noop,
+      onDismissRestart: noop, onHall: noop, onRetry: noop, run: 0,
     }),
   );
 }
