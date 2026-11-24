@@ -231,6 +231,23 @@
         "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
         "timestamp": 1795562299046
       }
+    ],
+    "14. Game hall: share image and canonical from PUBLIC_ORIGIN": [
+      {
+        "executionId": "0aacab41-3301-47a5-b5d2-43d03caad2c6",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795562705366
+      },
+      {
+        "executionId": "0aacab41-3301-47a5-b5d2-43d03caad2c6",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795562709143
+      },
+      {
+        "executionId": "0aacab41-3301-47a5-b5d2-43d03caad2c6",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795562812067
+      }
     ]
   }
 }

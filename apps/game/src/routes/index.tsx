@@ -11,7 +11,7 @@ import { getHall } from '../server/functions';
 
 export const Route = createFileRoute('/')({
   head: ({ matches }) => {
-    const origin = (matches[0]?.loaderData as { mediaBase?: string } | undefined)?.mediaBase ?? '';
+    const origin = (matches[0]?.loaderData as { siteOrigin?: string } | undefined)?.siteOrigin ?? '';
     const title = translate('en', 'app.title');
     const description = translate('en', 'hall.description');
     return {
@@ -22,7 +22,8 @@ export const Route = createFileRoute('/')({
         { property: 'og:description', content: description },
         ...shareTags({ origin, title, description, imageAlt: translate('en', 'share.image.alt'), siteName: title }),
       ],
-      links: [{ rel: 'canonical', href: `${origin}/game/` }],
+      // Absolute only: without PUBLIC_ORIGIN there is no canonical link, never a relative one.
+      links: origin ? [{ rel: 'canonical', href: `${origin}/game/` }] : [],
     };
   },
   loader: () => getHall(),

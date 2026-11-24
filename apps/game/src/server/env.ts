@@ -9,6 +9,8 @@ export interface GameEnv {
   arabicEnabled: boolean;
   /** Put in front of atlas links only. '' on the shared domain (production); http://localhost:3001 locally. */
   atlasOrigin: string;
+  /** '' when unset: then the hall carries no share image and no canonical link. */
+  publicOrigin: string;
   /** AES-256-GCM key for run tokens: 32 bytes decoded from base64. Never log or serialize. */
   tokenKey: Buffer;
 }
@@ -57,7 +59,24 @@ export function parseEnv(source: Source): GameEnv {
   if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(guestWorld)) throw new EnvError('GUEST_WORLD', 'must be a legend id such as banshee');
   const flag = source['FEATURE_ARABIC']?.trim().toLowerCase();
   if (flag !== undefined && flag !== '' && flag !== 'true' && flag !== 'false') throw new EnvError('FEATURE_ARABIC', 'must be true or false');
-  return { databaseUrl, authBaseUrl, cookieSecret, guestWorld, arabicEnabled: flag === 'true', atlasOrigin: atlasOrigin(source), tokenKey };
+  return { databaseUrl, authBaseUrl, cookieSecret, guestWorld, arabicEnabled: flag === 'true', atlasOrigin: atlasOrigin(source), publicOrigin: publicOrigin(source), tokenKey };
+}
+/**
+ * Optional. An https origin, or http://localhost with an optional port, with no path, query, fragment or trailing
+ * slash. Never taken from the request: the Host header is client-controlled.
+ */
+function publicOrigin(source: Source): string {
+  const v = source['PUBLIC_ORIGIN']?.trim() ?? '';
+  if (!v) return '';
+  let parsed: URL;
+  try {
+    parsed = new URL(v);
+  } catch {
+    throw new EnvError('PUBLIC_ORIGIN', 'is not a valid URL');
+  }
+  const allowed = parsed.protocol === 'https:' || (parsed.protocol === 'http:' && parsed.hostname === 'localhost');
+  if (!allowed || parsed.origin !== v) throw new EnvError('PUBLIC_ORIGIN', 'must be an https origin, or http://localhost with an optional port, with no path');
+  return v;
 }
 /** Optional: an http(s) origin with no path, query, fragment or trailing slash (Phase 3, owner decision 3). */
 function atlasOrigin(source: Source): string {

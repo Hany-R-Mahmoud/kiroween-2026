@@ -59,7 +59,7 @@ export const getShell = createServerFn({ method: 'GET' })
       const cookie = /(?:^|;\s*)lang=(\w+)/.exec(headers.get('cookie') ?? '')?.[1] ?? null;
       const { lang, dir } = resolveLocale(getEnv().arabicEnabled, cookie, headers.get('accept-language'));
       // The browser never reads the variable name: images come from `mediaBase + assetUrl(id)`.
-      return { lang, dir, name: context.visitor.kind === 'user' ? context.visitor.name : null, mediaBase: getEnv().atlasOrigin, imageBase: imageBase() };
+      return { lang, dir, name: context.visitor.kind === 'user' ? context.visitor.name : null, mediaBase: getEnv().atlasOrigin, siteOrigin: getEnv().publicOrigin, imageBase: imageBase() };
     }),
   );
 

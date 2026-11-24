@@ -43,3 +43,6 @@ File: `apps/atlas/public/og/trick-or-told-1200x630.jpg`. Both cards whole, title
 - Legend images 404 in the CDN stand-in (it serves only `assets/shell/`), so screenshots of `/legends` show broken image boxes; the layout, not the pictures, was checked. Real ImageKit and production were not tested.
 - Not driven: Arabic and RTL, a signed-in session, and the sitemap URL list against the live domain.
 - `sitemap.xml` lists 15 URLs and leaves out `/legends/keepers-note`, which `/legends` links to, as the spec's list says.
+
+## Follow-up
+- The game hall now reads `PUBLIC_ORIGIN` (same rule as the atlas) through a new root loader field `siteOrigin`; `mediaBase` is unchanged. This replaces the `ATLAS_ORIGIN` fallback in the weak points above. With `PUBLIC_ORIGIN` set, `/game/` has absolute `og:image`, `twitter:image` and a canonical `<origin>/game/`. Unset, it has no image tags and no canonical link. Checked on a local build of the game only (set and unset); the atlas and production were not rechecked.

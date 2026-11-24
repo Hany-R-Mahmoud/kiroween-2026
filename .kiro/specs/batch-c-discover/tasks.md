@@ -99,6 +99,14 @@ Boundaries: do not touch game logic, the puzzle generator, the RNG, the play eng
   - Logical properties and tokens only
   - _Requirements: 3.1, 3.5_
 
+- [x] 14. Game hall: share image and canonical from PUBLIC_ORIGIN
+  - In `apps/game/src/server/env.ts` add an optional `PUBLIC_ORIGIN`, validated exactly like the atlas's (https origin, or `http://localhost` with an optional port, no path; empty allowed)
+  - Return it from the game root loader as a new field `siteOrigin` next to `mediaBase`; do not change `mediaBase` or any place that uses it
+  - In `apps/game/src/routes/index.tsx` the hall `head` uses `siteOrigin` for `shareTags` and the canonical; when empty, leave out the image tags and the canonical link (never a relative one)
+  - Add `PUBLIC_ORIGIN=` (no value) to the game section of `.env.example` and one line in the README env table if there is one
+  - Touch no game logic, `vercel.json`, `git.deploymentEnabled`, `content/`, `assets/` or the database; add no test file
+  - _Requirements: 7.1, 7.3, 7.8, 10.1_
+
 ## Notes
 
 - There are no test-writing tasks and no optional tasks. The design has no Correctness Properties section, so no property tests apply.
@@ -117,7 +125,8 @@ Boundaries: do not touch game logic, the puzzle generator, the RNG, the play eng
     { "id": 2, "tasks": ["10"] },
     { "id": 3, "tasks": ["11"] },
     { "id": 4, "tasks": ["12"] },
-    { "id": 5, "tasks": ["13"] }
+    { "id": 5, "tasks": ["13"] },
+    { "id": 6, "tasks": ["14"] }
   ]
 }
 ```
