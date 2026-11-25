@@ -63,6 +63,7 @@ export const en = {
   'legend.told': 'Told (folklore, no firm record)',
   'legend.sources': 'Sources',
   'legend.sourceExternal': 'opens an external site',
+  'legend.sourceCodeName': 'Source {n}: {title}',
   'legend.dramatization': 'Dramatization',
   'alt.hero': '{title}: hero illustration',
   'alt.plate': 'Illustration for chapter {n}: {title}',

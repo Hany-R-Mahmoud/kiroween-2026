@@ -150,10 +150,6 @@ html[data-motion='reduce'][data-book='on'] .book-flow {
   padding-inline: var(--space-3);
   cursor: pointer;
 }
-.book-controls button[aria-disabled='true'] {
-  opacity: 0.45;
-  cursor: default;
-}
 .book-chevron {
   inline-size: 1.25rem;
   block-size: 1.25rem;

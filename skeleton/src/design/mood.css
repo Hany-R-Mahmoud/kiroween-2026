@@ -128,7 +128,12 @@
 .mood-hotspot-glow {
   transition: box-shadow 200ms ease-out;
 }
-.mood-hotspot-glow:hover {
+@media (hover: hover) and (pointer: fine) {
+  .mood-hotspot-glow:hover {
+    box-shadow: 0 0 1rem 0.2rem color-mix(in srgb, var(--color-glow) 40%, transparent);
+  }
+}
+.mood-hotspot-glow:active {
   box-shadow: 0 0 1rem 0.2rem color-mix(in srgb, var(--color-glow) 40%, transparent);
 }
 /* Focus: a dark band on both sides of the global ring, so the ring keeps 3:1 over a pale part of the picture (task 8.3). */

@@ -26,12 +26,50 @@
   }
 }
 
+/* Account run history. Below 40rem each run stacks into one block: title first, then labelled status, score, date. */
+@layer components {
+  @media (max-width: 39.999rem) {
+    .run-table,
+    .run-table tbody,
+    .run-table tr,
+    .run-table td {
+      display: block;
+    }
+    .run-table thead {
+      position: absolute;
+      inline-size: 1px;
+      block-size: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+    .run-table tr {
+      display: grid;
+      padding-block: var(--space-2);
+    }
+    .run-table td {
+      padding-block: 0.125rem;
+      text-align: start;
+      min-inline-size: 0;
+      overflow-wrap: anywhere;
+    }
+    .run-table td:first-child {
+      font-weight: 600;
+    }
+    .run-table td:not(:first-child)::before {
+      content: attr(data-label);
+      color: var(--color-muted);
+      margin-inline-end: var(--space-2);
+    }
+  }
+}
+
 /* Game header menu (Req 18.8). Below 40rem the UA popover rules apply and the menu is a dropdown under the header;
    from 40rem the items sit inline in the row and the menu button is hidden. In `ui` because `.btn` and `.nav-item` are. */
 @layer ui {
   .nav-menu:popover-open {
     position: fixed;
-    inset-block-start: var(--app-header-h);
+    inset-block-start: var(--game-header-h, var(--app-header-h));
     inset-inline: auto 0.75rem;
     margin: 0;
     display: flex;

@@ -1,0 +1,243 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1. Atlas: source codes become links (D1)": [
+      {
+        "executionId": "1943f204-21c8-4b1d-bbc4-2a85b98df5d0",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795563914783
+      },
+      {
+        "executionId": "1943f204-21c8-4b1d-bbc4-2a85b98df5d0",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795563920605
+      },
+      {
+        "executionId": "1943f204-21c8-4b1d-bbc4-2a85b98df5d0",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795564041061
+      }
+    ],
+    "2. Game catalog strings": [
+      {
+        "executionId": "1943f204-21c8-4b1d-bbc4-2a85b98df5d0",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795563914850
+      },
+      {
+        "executionId": "1943f204-21c8-4b1d-bbc4-2a85b98df5d0",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795563921025
+      },
+      {
+        "executionId": "1943f204-21c8-4b1d-bbc4-2a85b98df5d0",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795564041369
+      }
+    ],
+    "3. Shared UI layer: hover gate and pressed state (D7)": [
+      {
+        "executionId": "1943f204-21c8-4b1d-bbc4-2a85b98df5d0",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795563914939
+      },
+      {
+        "executionId": "1943f204-21c8-4b1d-bbc4-2a85b98df5d0",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795563922008
+      },
+      {
+        "executionId": "1943f204-21c8-4b1d-bbc4-2a85b98df5d0",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795564042420
+      }
+    ],
+    "4. Book controls: one disabled look (D8, book part)": [
+      {
+        "executionId": "1943f204-21c8-4b1d-bbc4-2a85b98df5d0",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795563914973
+      },
+      {
+        "executionId": "1943f204-21c8-4b1d-bbc4-2a85b98df5d0",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795563923112
+      },
+      {
+        "executionId": "1943f204-21c8-4b1d-bbc4-2a85b98df5d0",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795564043461
+      }
+    ],
+    "5. Server functions: read-only data for the Ending and the account page (D2, D10)": [
+      {
+        "executionId": "1943f204-21c8-4b1d-bbc4-2a85b98df5d0",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795563915012
+      },
+      {
+        "executionId": "1943f204-21c8-4b1d-bbc4-2a85b98df5d0",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795563924532
+      },
+      {
+        "executionId": "1943f204-21c8-4b1d-bbc4-2a85b98df5d0",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795564044552
+      }
+    ],
+    "6. Scene CSS, viewer and tabs (D4, D5 styles, D8 scene part, D9)": [
+      {
+        "executionId": "1943f204-21c8-4b1d-bbc4-2a85b98df5d0",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795563915048
+      },
+      {
+        "executionId": "1943f204-21c8-4b1d-bbc4-2a85b98df5d0",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795564045437
+      },
+      {
+        "executionId": "1943f204-21c8-4b1d-bbc4-2a85b98df5d0",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795564104460
+      }
+    ],
+    "7. Hall: heading, rows and door names (D5, D9)": [
+      {
+        "executionId": "1943f204-21c8-4b1d-bbc4-2a85b98df5d0",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795563915079
+      },
+      {
+        "executionId": "1943f204-21c8-4b1d-bbc4-2a85b98df5d0",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795564105585
+      },
+      {
+        "executionId": "1943f204-21c8-4b1d-bbc4-2a85b98df5d0",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795564193115
+      }
+    ],
+    "8. Ending: next legend, best score, score line (D2)": [
+      {
+        "executionId": "1943f204-21c8-4b1d-bbc4-2a85b98df5d0",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795563915107
+      },
+      {
+        "executionId": "1943f204-21c8-4b1d-bbc4-2a85b98df5d0",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795564106511
+      },
+      {
+        "executionId": "1943f204-21c8-4b1d-bbc4-2a85b98df5d0",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795564194143
+      }
+    ],
+    "9. Header menu and account page (D3, D10)": [
+      {
+        "executionId": "1943f204-21c8-4b1d-bbc4-2a85b98df5d0",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795563915153
+      },
+      {
+        "executionId": "1943f204-21c8-4b1d-bbc4-2a85b98df5d0",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795564107601
+      },
+      {
+        "executionId": "1943f204-21c8-4b1d-bbc4-2a85b98df5d0",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795564195126
+      }
+    ],
+    "10. Auth forms on the shared UI layer (D6)": [
+      {
+        "executionId": "1943f204-21c8-4b1d-bbc4-2a85b98df5d0",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795563915232
+      },
+      {
+        "executionId": "1943f204-21c8-4b1d-bbc4-2a85b98df5d0",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795564108409
+      },
+      {
+        "executionId": "1943f204-21c8-4b1d-bbc4-2a85b98df5d0",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795564196599
+      }
+    ],
+    "11. Update existing pins": [
+      {
+        "executionId": "1943f204-21c8-4b1d-bbc4-2a85b98df5d0",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795563915269
+      },
+      {
+        "executionId": "1943f204-21c8-4b1d-bbc4-2a85b98df5d0",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795564197224
+      },
+      {
+        "executionId": "1943f204-21c8-4b1d-bbc4-2a85b98df5d0",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795564294694
+      }
+    ],
+    "12. Verify": [
+      {
+        "executionId": "1943f204-21c8-4b1d-bbc4-2a85b98df5d0",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795563915519
+      },
+      {
+        "executionId": "1943f204-21c8-4b1d-bbc4-2a85b98df5d0",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795564295510
+      },
+      {
+        "executionId": "1a66f7ec-57a6-41b0-827e-8887a43fd19f",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795568397863
+      }
+    ],
+    "13. Win overlay render check and Hall copy": [
+      {
+        "executionId": "e5b44d0e-d9ba-403b-a5c7-08bc81352684",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795569006296
+      },
+      {
+        "executionId": "e5b44d0e-d9ba-403b-a5c7-08bc81352684",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795569010644
+      },
+      {
+        "executionId": "e5b44d0e-d9ba-403b-a5c7-08bc81352684",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795569821237
+      }
+    ],
+    "14. Score line copy": [
+      {
+        "executionId": "3628089d-e60c-4664-b45e-732bc828602e",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795592115632
+      },
+      {
+        "executionId": "3628089d-e60c-4664-b45e-732bc828602e",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795592121763
+      },
+      {
+        "executionId": "3628089d-e60c-4664-b45e-732bc828602e",
+        "chatSessionId": "sess_c767d59d-595c-4995-8c5e-d89a1263b470",
+        "timestamp": 1795592169101
+      }
+    ]
+  }
+}

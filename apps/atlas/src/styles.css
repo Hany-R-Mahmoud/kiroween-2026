@@ -323,6 +323,20 @@
     min-block-size: 1.5rem;
     padding-block: 0.25rem;
   }
+  /* source codes in the text: a 24 px hit area, no hover-only style */
+  .source-code {
+    display: inline-block;
+    min-block-size: 1.5rem;
+    padding-inline: 0.15rem;
+  }
+  /* the Sources entry a code points to: a border, not colour alone */
+  .source-entry {
+    scroll-margin-block-start: calc(var(--app-header-h) + var(--space-3));
+  }
+  .source-entry:target {
+    border-inline-start: 3px solid var(--color-accent);
+    padding-inline-start: var(--space-2);
+  }
   /* the reading column: 65-75 characters. `ch` is the width of "0", which is narrow in some pack fonts (Crimson Pro
      gave 86 characters), so an em cap keeps every face inside the range */
   .measure {

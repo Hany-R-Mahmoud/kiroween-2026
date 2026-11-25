@@ -11,8 +11,9 @@ import { isTutorialRequired } from '../lib/playClient';
 import { applyHint2Reply, openBlankTab } from '../lib/hintTab';
 import { themeColorMeta } from '../lib/theme';
 import { chooseFearEvent, hintHref, markedIds, reducedLineOf, triggerOf, type FearContext } from '../lib/world';
-import { getWorldInfo } from '../server/functions';
-import type { Action } from '@kiroween/skeleton/client';
+import { bestOf, nextDoor } from '../lib/ending';
+import { getAccount, getWorldInfo } from '../server/functions';
+import { readGuestRuns, type Action } from '@kiroween/skeleton/client';
 
 export const Route = createFileRoute('/world/$target')({
   // `?layout=1` shows the tap boxes in a dev build only (the overlay code is dead in production).
@@ -55,6 +56,32 @@ function World() {
   // The Run number as state, so WorldPlay can key what it remembers (Hint 1) by Run.
   const [runState, setRunState] = useState(0);
   const entries = fearEventsOf(info.id);
+
+  // Ending extras (read only): the best score of this world, read once when the run is won.
+  const won = state.view?.ended?.status === 'won';
+  const signedIn = name !== null;
+  const [best, setBest] = useState<number | null>(null);
+  useEffect(() => {
+    if (!won) return;
+    let live = true;
+    if (signedIn) {
+      getAccount()
+        .then((a) => {
+          if (live && a.signedIn) setBest(a.completed.find((c) => c.legendId === info.id)?.bestScore ?? null);
+        })
+        .catch(() => undefined);
+    } else {
+      try {
+        setBest(bestOf(readGuestRuns(window.localStorage), info.id));
+      } catch {
+        // storage unreadable: no best line
+      }
+    }
+    return () => {
+      live = false;
+    };
+  }, [won, signedIn, info.id]);
+  const next = won ? nextDoor(info.doors, info.id, signedIn) : null;
 
   const play = (ctx: FearContext) => {
     const entry = chooseFearEvent(entries, ctx, played.current);
@@ -152,6 +179,13 @@ function World() {
         onFollow={(leadId) => void act({ kind: 'follow', leadId })}
         onDismissRestart={() => dispatch({ kind: 'dismiss-restart' })}
         onHall={() => void navigate({ to: '/' })}
+        best={won ? best : null}
+        next={next}
+        onNext={() => {
+          if (!next) return;
+          if (next.kind === 'world') void navigate({ to: '/world/$target', params: { target: next.legendId } });
+          else void navigate({ to: '/sign-in', search: { reason: 'world' } });
+        }}
         overlay={<FearOverlay request={fear} reduced={reduced} />}
         motion={<MotionToggle reduced={reduced} onChange={setSetting} />}
       />

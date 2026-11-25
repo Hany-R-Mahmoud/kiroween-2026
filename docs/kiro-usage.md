@@ -626,3 +626,8 @@ Spec: `.kiro/specs/batch-c-discover/` (requirements, design, tasks). Handover: `
 - **Spec workflow**: tasks 1 to 10 changed the strings, a shared `shareTags()`, `HoloCard` back-face click, the legend card grid, favicon and share image scripts, sitemap and robots routes, heads and old test pins; task 11 (Verify) was run by a spec task execution sub-agent.
 - **Verify task**: typecheck clean; skeleton 916 (+8 expected fail), atlas 305, game 401; browser check 303 passed, 0 failed, 2 skipped. The first test run found two old pins in `image-cdn.test.tsx` that task 10 missed; fixed. Throwaway Playwright script, results and screenshots under `.debug/batch-c/`. `.env` was loaded into the shell only, never printed. The CDN was a local stand-in.
 - **Not claimed**: no hooks or skill loads are recorded in these notes. No new tests were written.
+## Batch D (polish)
+Spec: `.kiro/specs/batch-d-polish/` (requirements, design, tasks). Handover: `docs/batch-d-handover.md`.
+- **Spec workflow**: tasks 1 to 11 made ten presentation fixes (D1 to D10), one task per file group; task 12 (Verify) ran the checks and wrote the handover.
+- **Verify task**: typecheck clean; skeleton 916 (+8 expected fail), atlas 305, game 401; atlas book check 303 passed, 0 failed, 2 skipped. One old pin updated (`image-cdn.test.tsx`). Verify found nested links in the Sources list (a source code inside an external link) and fixed them.
+- **Not claimed**: the win overlay was not reached in a browser, so the Ending was not checked visually. No hooks or skill loads are recorded in these notes. No new tests were written.

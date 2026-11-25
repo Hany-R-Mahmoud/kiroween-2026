@@ -178,9 +178,17 @@ export const getWorldInfo = createServerFn({ method: 'GET' })
       if (!legend) throw notFound();
       const theme = resolveTheme(legend.theme);
       const relic = relicOf(legend);
+      const guestWorld = getEnv().guestWorld;
+      // Same doors, same order and same access rule as getHall. Read only: no answer, role or run field.
+      const doors = (await getCatalogue()).map((l) => ({
+        id: l.id,
+        title: l.title,
+        open: canEnter({ kind: 'legend', id: l.id }, context.visitor, guestWorld),
+      }));
       return {
         id,
         title,
+        doors,
         scenes: legend.world.scenes.map((s) => ({ id: stripPrefix(id, s.id), name: s.name, alt: s.description })),
         // Only the optional reduced-motion line of each Fear_Event; the event text stays on the server (the caption is catalog text).
         fearEvents: legend.world.fearEvents.map((e) => ({ id: stripPrefix(id, e.id), reducedMotion: e.reducedMotion })),
@@ -196,9 +204,12 @@ export const getAccount = createServerFn({ method: 'GET' })
   .handler(({ context }) =>
     safely(async () => {
       const { visitor } = context;
-      if (visitor.kind !== 'user') return { signedIn: false as const };
-      const deps = await runDeps();
       const titles = new Map((await getCatalogue()).map((c) => [c.id, c.title]));
+      if (visitor.kind !== 'user') {
+        // Read only: catalogue id to title, so a guest's local run list can show names.
+        return { signedIn: false as const, titles: Object.fromEntries(titles) as Record<string, string> };
+      }
+      const deps = await runDeps();
       const [runs, completed] = await Promise.all([listMyRuns(deps, visitor), myCompletedWorlds(deps, visitor)]);
       return {
         signedIn: true as const,

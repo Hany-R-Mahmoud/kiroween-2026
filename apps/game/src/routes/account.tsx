@@ -1,5 +1,5 @@
 import { readGuestRuns, type GuestRun } from '@kiroween/skeleton/client';
-import { createFileRoute } from '@tanstack/react-router';
+import { createFileRoute, Link } from '@tanstack/react-router';
 import { useEffect, useState } from 'react';
 import type { MessageKey } from '../i18n/en';
 import { useLang, useT } from '../i18n/useT';
@@ -16,7 +16,7 @@ const dateFmt = (iso: string, lang: string) => new Intl.DateTimeFormat(lang, { d
 function Account() {
   const data = Route.useLoaderData();
   const t = useT();
-  return data.signedIn ? <UserProgress data={data} t={t} /> : <GuestProgress t={t} />;
+  return data.signedIn ? <UserProgress data={data} t={t} /> : <GuestProgress t={t} titles={data.titles} />;
 }
 
 type T = ReturnType<typeof useT>;
@@ -48,7 +48,7 @@ function UserProgress({ data, t }: { data: UserData; t: T }) {
   );
 }
 
-function GuestProgress({ t }: { t: T }) {
+function GuestProgress({ t, titles }: { t: T; titles: Record<string, string> }) {
   // localStorage exists only in the browser, so read it after the first render
   const [runs, setRuns] = useState<GuestRun[] | null>(null);
   useEffect(() => setRuns(readGuestRuns(window.localStorage)), []);
@@ -59,7 +59,12 @@ function GuestProgress({ t }: { t: T }) {
         {t('account.guestHeading')}
       </h1>
       <p className="text-muted">{t('account.guestNote')}</p>
-      {runs === null ? null : <RunTable t={t} rows={runs.map((r, i) => ({ key: String(i), title: r.legendId, status: r.status, score: r.score, date: dateFmt(r.finishedAt, lang) }))} />}
+      <div>
+        <Link to="/sign-in" className="btn btn-primary">
+          {t('nav.signIn')}
+        </Link>
+      </div>
+      {runs === null ? null : <RunTable t={t} rows={runs.map((r, i) => ({ key: String(i), title: titles[r.legendId] ?? r.legendId, status: r.status, score: r.score, date: dateFmt(r.finishedAt, lang) }))} />}
     </section>
   );
 }
@@ -71,22 +76,22 @@ function RunTable({ t, rows }: { t: T; rows: { key: string; title: string; statu
       {rows.length === 0 ? (
         <p className="text-muted">{t('account.none')}</p>
       ) : (
-        <table className="w-full text-start">
+        <table className="run-table w-full text-start">
           <thead className="font-ui text-sm text-muted">
             <tr>
               <th scope="col" className="py-2 text-start">{t('account.colWorld')}</th>
               <th scope="col" className="py-2 text-start">{t('account.colStatus')}</th>
-              <th scope="col" className="py-2 text-end">{t('account.colScore')}</th>
-              <th scope="col" className="py-2 text-end">{t('account.colDate')}</th>
+              <th scope="col" className="py-2 sm:text-end">{t('account.colScore')}</th>
+              <th scope="col" className="py-2 sm:text-end">{t('account.colDate')}</th>
             </tr>
           </thead>
           <tbody>
             {rows.map((r) => (
               <tr key={r.key} className="border-t border-surface">
                 <td className="py-2">{r.title}</td>
-                <td className="py-2">{t(`status.${r.status}` as MessageKey)}</td>
-                <td className="py-2 text-end">{r.score}</td>
-                <td className="py-2 text-end">{r.date}</td>
+                <td className="py-2" data-label={t('account.colStatus')}>{t(`status.${r.status}` as MessageKey)}</td>
+                <td className="py-2 sm:text-end" data-label={t('account.colScore')}>{r.score}</td>
+                <td className="py-2 sm:text-end" data-label={t('account.colDate')}>{r.date}</td>
               </tr>
             ))}
           </tbody>

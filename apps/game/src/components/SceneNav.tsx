@@ -63,9 +63,10 @@ export function SceneNav({ names, current, onSelect, onHall, headingId }: SceneN
               type="button"
               className="scene-button scene-tab btn btn-secondary"
               aria-current={i === current ? 'true' : undefined}
+              title={stripMarks(name)}
               onClick={() => onSelect(i)}
             >
-              {stripMarks(name)}
+              <span className="scene-tab-name">{stripMarks(name)}</span>
             </button>
           ))}
           <button type="button" className="scene-button btn btn-secondary" disabled={current >= total - 1} onClick={() => onSelect(current + 1)}>

@@ -1,4 +1,5 @@
 import { Link } from '@tanstack/react-router';
+import { useLayoutEffect, useRef, type MouseEvent } from 'react';
 import type { MessageKey } from '../i18n/en';
 
 /** The atlas legend list. `ATLAS_ORIGIN` unset (empty) means same origin, so the href is `/legends`. */
@@ -12,8 +13,31 @@ export function atlasHome(atlasOrigin: string): string {
  * (see `.nav-menu` in styles.css). Decision recorded in docs/phase-6-notes/decisions.md (Req 18.8).
  */
 export function GameHeader({ name, atlasOrigin, onSignOut, t }: { name: string | null; atlasOrigin: string; onSignOut: () => void; t: (key: MessageKey) => string }) {
+  const headerRef = useRef<HTMLElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  // Publish the real header height so the open menu sits right under it. Without a measurement the CSS falls back to --app-header-h.
+  useLayoutEffect(() => {
+    const el = headerRef.current;
+    if (!el) return;
+    const root = document.documentElement;
+    const measure = () => root.style.setProperty('--game-header-h', `${el.getBoundingClientRect().height}px`);
+    measure();
+    if (typeof ResizeObserver === 'undefined') return () => root.style.removeProperty('--game-header-h');
+    const ro = new ResizeObserver(measure);
+    ro.observe(el);
+    return () => {
+      ro.disconnect();
+      root.style.removeProperty('--game-header-h');
+    };
+  }, []);
+
+  const closeMenu = (e: MouseEvent<HTMLDivElement>) => {
+    if ((e.target as Element).closest('a, button')) menuRef.current?.hidePopover?.();
+  };
+
   return (
-    <header className="border-b border-surface">
+    <header ref={headerRef} className="border-b border-surface">
       <nav className="mx-auto flex max-w-6xl items-center gap-1 px-3" aria-label={t('app.title')}>
         <Link to="/" className="nav-item me-auto font-display text-lg text-glow">
           {t('app.title')}
@@ -24,7 +48,9 @@ export function GameHeader({ name, atlasOrigin, onSignOut, t }: { name: string |
         <button type="button" className="btn btn-ghost nav-menu-button" popoverTarget="app-menu">
           {t('nav.menu')}
         </button>
-        <div id="app-menu" popover="auto" className="nav-menu panel panel-raised">
+        {/* Click on a link or button inside closes the popover; the handler only delegates. */}
+        {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events */}
+        <div id="app-menu" ref={menuRef} popover="auto" className="nav-menu panel panel-raised" onClick={closeMenu}>
           <Link to="/" className="nav-item">
             {t('nav.hall')}
           </Link>

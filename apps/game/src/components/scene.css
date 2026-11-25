@@ -7,7 +7,25 @@
   gap: var(--space-2);
 }
 .hall-scene {
-  --scene-h: min(52dvh, 28rem);
+  --scene-h: clamp(18rem, 64dvh, 40rem);
+}
+.hall-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-4);
+}
+.hall-lines {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin: 0;
+  color: var(--color-muted);
+  font-size: var(--type-small, 0.8125rem);
+}
+.hall-lines > * {
+  margin: 0;
 }
 .scene-heading {
   font-family: var(--font-display, inherit);
@@ -33,6 +51,10 @@
   margin-inline: auto;
   block-size: 100%;
   will-change: transform;
+  transition: transform calc(var(--motion) * 250ms) ease-out;
+}
+.scene-viewport[data-dragging='true'] > .scene-stage {
+  transition: none;
 }
 .scene-image {
   display: block;
@@ -158,8 +180,22 @@ html[data-motion='reduce'] .hotspot-glint::before {
 }
 .scene-button:disabled,
 .scene-button[aria-disabled='true'] {
-  opacity: 0.5;
   cursor: not-allowed;
+}
+.scene-tab {
+  max-inline-size: 14rem;
+}
+.scene-tab-name {
+  min-inline-size: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.hall-door-link {
+  max-inline-size: 100%;
+  min-inline-size: 0;
+  overflow-wrap: anywhere;
+  text-align: start;
 }
 .scene-button[aria-current='true'] {
   font-weight: 700;
@@ -179,15 +215,21 @@ html[data-motion='reduce'] .hotspot-glint::before {
   box-shadow: 0 0 0 2px var(--color-bg);
   pointer-events: none;
 }
+.scene-hotspot-badge[data-kind='lock'] {
+  inline-size: 18px;
+  block-size: 14px;
+  background: color-mix(in srgb, var(--color-accent) 55%, var(--color-bg));
+  box-shadow: none;
+}
 .scene-hotspot-badge[data-kind='lock']::before {
   content: '';
   position: absolute;
   inset-block-end: 100%;
   inset-inline-start: 50%;
   translate: -50% 0;
-  inline-size: 16px;
-  block-size: 14px;
-  border: 4px solid var(--color-accent);
+  inline-size: 10px;
+  block-size: 9px;
+  border: 3px solid color-mix(in srgb, var(--color-accent) 55%, var(--color-bg));
   border-block-end: 0;
   border-radius: 10px 10px 0 0;
 }
@@ -302,6 +344,8 @@ html[data-motion='reduce'] .hotspot-glint::before {
 .scene-title {
   order: 1;
   margin: 0;
+  min-inline-size: 0;
+  overflow-wrap: anywhere;
   font-size: var(--type-h2);
   line-height: 1.2;
 }
@@ -377,8 +421,9 @@ html[data-motion='reduce'] .hotspot-glint::before {
   flex: 1 1 0;
   min-block-size: 0;
 }
-.scene-screen .scene-heading {
-  /* The heading stays for focus and the region name; the top bar title is the visible one. */
+.scene-screen .scene-heading,
+.hall-scene .scene-heading {
+  /* The heading stays for focus and the region name; the top bar title (or the Hall's own h1) is the visible one. */
   position: absolute;
   inline-size: 1px;
   block-size: 1px;

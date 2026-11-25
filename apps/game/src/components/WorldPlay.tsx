@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
-import { FEAR, legendUrl, stripMarks, type PlayView, type Reply, type SlotView } from '@kiroween/skeleton/client';
+import { FEAR, legendUrl, SCORE, stripMarks, type PlayView, type Reply, type SlotView } from '@kiroween/skeleton/client';
 import { useT } from '../i18n/useT';
 import type { WorldLayout } from '../layout/types.ts';
 import { mediaUrl } from '../lib/media.ts';
 import { activeSlot, atlasHref, emptyHint1, hint1For, hintHref, hint1Marks, hotspotsOfScene, isHintable, needsLead, puzzleKey, replyLine, type WorldInfoHotspot, type WorldInfoScene } from '../lib/world.ts';
 import { dialogKeyAction } from '../lib/focus.ts';
+import type { EndingNext } from '../lib/ending.ts';
 import { useDesktop } from '../lib/useMediaQuery.ts';
 import { FearMeter } from './FearMeter';
 import { HintArea } from './HintArea';
@@ -54,6 +55,11 @@ export interface WorldPlayProps {
   onFollow: (leadId: string) => void;
   onDismissRestart: () => void;
   onHall: () => void;
+  /** The next legend after a win (null or missing: no button). */
+  next?: EndingNext | null;
+  /** The best score of this world, when known. */
+  best?: number | null;
+  onNext?: () => void;
   /** Rendered inside the scene stage (the fear overlay), so it never sits over the notebook or dock. */
   overlay?: ReactNode;
   /** Rendered at the end of the top bar (the motion toggle). */
@@ -268,7 +274,7 @@ export function WorldPlay(p: WorldPlayProps) {
           </section>
         </div>
       ) : null}
-      {won && view ? <Ending view={view} title={p.title} relic={p.relic} legendId={p.legendId} mediaBase={p.mediaBase} onHall={p.onHall} /> : null}
+      {won && view ? <Ending view={view} title={p.title} relic={p.relic} legendId={p.legendId} mediaBase={p.mediaBase} onHall={p.onHall} next={p.next} best={p.best} onNext={p.onNext} /> : null}
     </div>
     </ScenePaintProvider>
   );
@@ -408,19 +414,25 @@ function Leads({ view, origin, busy, onFollow }: { view: PlayView; origin: strin
   );
 }
 
-export function Ending({ view, title, relic, legendId, mediaBase, onHall }: { view: PlayView; title: string; relic: WorldPlayProps['relic']; legendId: string; mediaBase: string; onHall: () => void }) {
+export function Ending({ view, title, relic, legendId, mediaBase, onHall, next = null, best = null, onNext }: { view: PlayView; title: string; relic: WorldPlayProps['relic']; legendId: string; mediaBase: string; onHall: () => void; next?: EndingNext | null; best?: number | null; onNext?: () => void }) {
   const t = useT();
   const ended = view.ended;
   const ref = useRef<HTMLButtonElement>(null);
+  const nextRef = useRef<HTMLButtonElement>(null);
   const linkRef = useRef<HTMLAnchorElement>(null);
   useEffect(() => ref.current?.focus({ preventScroll: true }), []);
   const legendHref = mediaBase.replace(/\/+$/, '') + legendUrl(legendId);
+  const showNext = next !== null && onNext !== undefined;
   const onKey = (e: KeyboardEvent) => {
-    // Escape is ignored on purpose: the exits are the two controls. Tab and Shift+Tab cycle between them.
+    // Escape is ignored on purpose: the exits are the rendered controls. Tab and Shift+Tab cycle through them in order.
     if (dialogKeyAction(e.key) === 'trap') {
       e.preventDefault();
-      const other = document.activeElement === ref.current ? linkRef.current : ref.current;
-      other?.focus({ preventScroll: true });
+      const order = [ref.current, showNext ? nextRef.current : null, linkRef.current].filter((el): el is HTMLButtonElement | HTMLAnchorElement => el !== null);
+      if (order.length === 0) return;
+      const at = order.findIndex((el) => el === document.activeElement);
+      const step = e.shiftKey ? -1 : 1;
+      const to = at < 0 ? (e.shiftKey ? order.length - 1 : 0) : (at + step + order.length) % order.length;
+      order[to]?.focus({ preventScroll: true });
     }
   };
   const name = relic ? stripMarks(relic.name ?? t('world.relic.fallback', { title })) : null;
@@ -438,11 +450,18 @@ export function Ending({ view, title, relic, legendId, mediaBase, onHall }: { vi
         </figure>
       ) : null}
       {ended ? <p>{t('world.score', { n: ended.score })}</p> : null}
+      {best !== null ? <p>{t('account.bestScore', { score: best })}</p> : null}
+      <p className="text-muted">{t('world.score.how', { slot: SCORE.perSlot, curse: SCORE.curse, hint: SCORE.perHint2, wrong: SCORE.perWrongAnswer })}</p>
       {ended ? <p>{t('world.seed', { seed: ended.seed })}</p> : null}
       <div className="flex flex-wrap items-center gap-3">
         <button ref={ref} type="button" className="world-button btn btn-primary" onClick={onHall}>
           {t('world.hall')}
         </button>
+        {showNext ? (
+          <button ref={nextRef} type="button" className="world-button btn btn-secondary" onClick={onNext}>
+            {t('world.nextLegend')}
+          </button>
+        ) : null}
         <a ref={linkRef} className="btn btn-ghost" href={legendHref}>
           {t('world.win.read')}
         </a>

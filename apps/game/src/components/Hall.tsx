@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import type { KeyboardEvent } from 'react';
+import type { KeyboardEvent, ReactNode } from 'react';
 import { HUB_SCENE } from '../layout/hub.ts';
 import { useLang, useT } from '../i18n/useT';
 import type { MessageKey } from '../i18n/en';
@@ -43,12 +43,14 @@ interface HallViewProps {
   initialPanel?: HallPanel | null;
   /** A guest visitor: the free door reads "Free for guests". */
   guest?: boolean;
+  /** The short `.hall-lines` block shown under the heading bar. */
+  lines?: ReactNode;
 }
 
 const DAWN_ASSET = 'shared-game-ui-dawn-01';
 
 /** The Hall: the pannable hub scene with its tap regions, the panels they open, and the ending screen. Theme: hub (null). */
-export function HallView({ data, mediaBase, tutorialDone, broken, curses, onNavigate, initialPanel = null, guest = false }: HallViewProps) {
+export function HallView({ data, mediaBase, tutorialDone, broken, curses, onNavigate, initialPanel = null, guest = false, lines = null }: HallViewProps) {
   const t = useT();
   const lang = useLang();
   const [panel, setPanel] = useState<HallPanel | null>(initialPanel);
@@ -120,7 +122,10 @@ export function HallView({ data, mediaBase, tutorialDone, broken, curses, onNavi
   return (
     <ScenePaintProvider>
     <div className="hall-scene flex flex-col gap-4">
-      <p>
+      <div className="hall-bar">
+        <h1 className="font-display text-glow" style={{ fontSize: 'var(--type-h1)', margin: 0 }}>
+          {t('hall.heading')}
+        </h1>
         <a
           href="/game/tutorial"
           className={tutorialDone ? 'btn btn-secondary' : 'btn btn-primary'}
@@ -133,7 +138,8 @@ export function HallView({ data, mediaBase, tutorialDone, broken, curses, onNavi
         >
           {t(tutorialDone ? 'hall.study.again' : 'hall.start')}
         </a>
-      </p>
+      </div>
+      {lines}
       <SceneViewer layout={HUB_SCENE} name={t('hall.heading')} alt={t('hub.scene.alt')} mediaBase={mediaBase} imageSizes={HALL_SCENE_SIZES} hotspots={hotspots} onActivate={activate} headingId="hall-heading" />
       {panel ? (
         <div ref={panelRef} className="hall-panel mood-worn" role="region" aria-labelledby="hall-panel-title" tabIndex={-1} onKeyDown={onPanelKey} data-panel={panel.kind}>
@@ -144,13 +150,13 @@ export function HallView({ data, mediaBase, tutorialDone, broken, curses, onNavi
         </div>
       ) : null}
       <nav aria-labelledby="hall-legends-title" className="flex flex-col gap-2">
-        <h2 id="hall-legends-title" className="font-display text-xl">
+        <h2 id="hall-legends-title" className="font-display" style={{ fontSize: 'var(--type-h2)', margin: 0 }}>
           {t('hub.legends')}
         </h2>
         <ul className="flex flex-wrap gap-2 font-ui text-sm">
           {data.doors.map((d) => (
             <li key={d.id}>
-              <a href={d.atlasHref} className="btn btn-ghost" aria-label={t('hub.door.readNamed', { title: d.title })}>
+              <a href={d.atlasHref} className="btn btn-ghost hall-door-link" title={d.title} aria-label={t('hub.door.readNamed', { title: d.title })}>
                 {d.title}
               </a>
             </li>

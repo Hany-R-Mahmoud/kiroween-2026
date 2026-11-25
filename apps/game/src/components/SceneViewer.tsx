@@ -59,8 +59,8 @@ interface Drag {
  */
 /** Height steps of the CDN copies of a 4096x1536 scene; the width descriptors follow from the aspect ratio. */
 const SCENE_HEIGHTS = [600, 900, 1200] as const;
-/** The Hall scene is `--scene-h: min(52dvh, 28rem)` tall (scene.css), so its image is that times 4096/1536 wide. */
-export const HALL_SCENE_SIZES = 'min(138.67dvh, 74.67rem)';
+/** The Hall scene is `--scene-h: clamp(18rem, 64dvh, 40rem)` tall (scene.css), so its image is that times 4096/1536 wide. */
+export const HALL_SCENE_SIZES = 'clamp(48rem, 170.67dvh, 106.67rem)';
 /** The world and tutorial scenes fill the space left under the top bar (scene.css `.scene-screen .scene-viewport`). */
 export const SCENE_SCREEN_SIZES = 'min(110dvh, 100rem)';
 export function SceneViewer({ layout, name, alt, mediaBase, imageSizes = SCENE_SCREEN_SIZES, hotspots, onActivate, headingId, initialPan = 0, onPanChange, onStep, outline }: SceneViewerProps) {
@@ -83,6 +83,7 @@ export function SceneViewer({ layout, name, alt, mediaBase, imageSizes = SCENE_S
   const panFocus = useRef<HTMLButtonElement | null>(null);
   const [size, setSize] = useState({ width: 0, height: 0 });
   const [pan, setPanState] = useState(initialPan);
+  const [dragging, setDragging] = useState(false);
   useEffect(() => {
     const next = panFocus.current;
     panFocus.current = null;
@@ -129,6 +130,7 @@ export function SceneViewer({ layout, name, alt, mediaBase, imageSizes = SCENE_S
     if (!d || d.pointerId !== e.pointerId) return;
     dragRef.current = null;
     if (d.active) {
+      setDragging(false);
       suppressClick.current = true;
       setTimeout(() => {
         suppressClick.current = false;
@@ -150,6 +152,7 @@ export function SceneViewer({ layout, name, alt, mediaBase, imageSizes = SCENE_S
       if (!isDrag(dx)) return;
       // Capture only after the threshold, so a plain tap still reaches the Hotspot button.
       d.active = true;
+      setDragging(true);
       e.currentTarget.setPointerCapture(e.pointerId);
     }
     setPan(d.startPan + dx);
@@ -186,6 +189,7 @@ export function SceneViewer({ layout, name, alt, mediaBase, imageSizes = SCENE_S
         ref={viewportRef}
         className="scene-viewport mood-vignette-inset"
         data-scene-id={layout.sceneId}
+        data-dragging={dragging || undefined}
         role="region"
         aria-label={stripMarks(name)}
         tabIndex={0}

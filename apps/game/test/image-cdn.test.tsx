@@ -58,8 +58,8 @@ describe('SceneViewer image', () => {
     expect(attr(tag, 'height')).toBe('1536');
     expect(attr(tag, 'src')).not.toContain('atlas.test');
   });
-  it('the Hall passes its own sizes (scene height is min(52dvh, 28rem), width is 8/3 of it)', () => {
-    expect(attr(img(scene(BASE, { imageSizes: HALL_SCENE_SIZES }), 'scene-image'), 'sizes')).toBe('min(138.67dvh, 74.67rem)');
+  it('the Hall passes its own sizes (scene height is clamp(18rem, 64dvh, 40rem), width is 8/3 of it)', () => {
+    expect(attr(img(scene(BASE, { imageSizes: HALL_SCENE_SIZES }), 'scene-image'), 'sizes')).toBe('clamp(48rem, 170.67dvh, 106.67rem)');
   });
 });
 
