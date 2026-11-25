@@ -144,10 +144,14 @@ describe('Property 14: A player who reads only the atlas wins', () => {
       '',
       '## Reading of the findings',
       '',
-      '- Legends listed above are the **known content findings**. The test keeps their win test as `it.fails` and asserts the exact set, so a newly failing or newly fixed legend is noticed. The constants, the fear budget and the player were not loosened to hide them.',
-      '- The wrong answers cluster on `true-or-told` slots (the last slot, `p-5`/`pz-5`, in most legends). That puzzle type is exempt from "the answer is written in the linked text" (`TEXT_EXEMPT` in `generator/audit.ts`), and its options ("told", "documented by ...") are mostly not sentences in the chapter. A player who reads only the atlas has nothing to match, so it guesses and pays fear. `date-or-number`, `object-match`, `original-name` and `who-said-it` slots add the rest when the chapter paraphrases the statement.',
-      '- The reader has two layers: the design rules (statement sentence in the chapter; option within 80 characters of the longest matching part) and, below them, a word-overlap reading for paraphrased statements. The "design-rule reader only" column shows the win rate without the overlap layer. See docs/phase-4-notes/decisions.md.',
-      '- Owner decision needed (content, not code): add the answer wording to the chapter for `true-or-told` slots, or accept that this slot type is a guess under the budget.',
+      ...(KNOWN_CONTENT_FINDINGS.length === 0
+        ? ['All legends win every seed. The slot table lists only wrong answers the player recovered from.']
+        : [
+            '- Legends listed above are the **known content findings**. The test keeps their win test as `it.fails` and asserts the exact set, so a newly failing or newly fixed legend is noticed. The constants, the fear budget and the player were not loosened to hide them.',
+            '- The wrong answers cluster on `true-or-told` slots (the last slot, `p-5`/`pz-5`, in most legends). That puzzle type is exempt from "the answer is written in the linked text" (`TEXT_EXEMPT` in `generator/audit.ts`), and its options ("told", "documented by ...") are mostly not sentences in the chapter. A player who reads only the atlas has nothing to match, so it guesses and pays fear. `date-or-number`, `object-match`, `original-name` and `who-said-it` slots add the rest when the chapter paraphrases the statement.',
+            '- The reader has two layers: the design rules (statement sentence in the chapter; option within 80 characters of the longest matching part) and, below them, a word-overlap reading for paraphrased statements. The "design-rule reader only" column shows the win rate without the overlap layer. See docs/phase-4-notes/decisions.md.',
+            '- Owner decision needed (content, not code): add the answer wording to the chapter for `true-or-told` slots, or accept that this slot type is a guess under the budget.',
+          ]),
       '',
       '## Slots where the player paid a wrong answer (seeds out of ' + SEEDS.length + ')',
       '',

@@ -1,0 +1,210 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1.1 Add the label and run the content check": [
+      {
+        "executionId": "360c6b23-932c-479b-8fc7-8ee932406e5d",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795642977477
+      },
+      {
+        "executionId": "360c6b23-932c-479b-8fc7-8ee932406e5d",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795642985551
+      },
+      {
+        "executionId": "360c6b23-932c-479b-8fc7-8ee932406e5d",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795643022508
+      }
+    ],
+    "2.1 Make the \"Reading of the findings\" template depend on Known_Findings": [
+      {
+        "executionId": "360c6b23-932c-479b-8fc7-8ee932406e5d",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795642977634
+      },
+      {
+        "executionId": "360c6b23-932c-479b-8fc7-8ee932406e5d",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795643023309
+      },
+      {
+        "executionId": "360c6b23-932c-479b-8fc7-8ee932406e5d",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795643065620
+      }
+    ],
+    "2.2 Regenerate the fairness report": [
+      {
+        "executionId": "360c6b23-932c-479b-8fc7-8ee932406e5d",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795642977677
+      },
+      {
+        "executionId": "360c6b23-932c-479b-8fc7-8ee932406e5d",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795643066374
+      },
+      {
+        "executionId": "360c6b23-932c-479b-8fc7-8ee932406e5d",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795644108214
+      }
+    ],
+    "3.1 Hall_Check: establish the intended height": [
+      {
+        "executionId": "360c6b23-932c-479b-8fc7-8ee932406e5d",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795642977720
+      },
+      {
+        "executionId": "360c6b23-932c-479b-8fc7-8ee932406e5d",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795644108697
+      },
+      {
+        "executionId": "360c6b23-932c-479b-8fc7-8ee932406e5d",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795644221632
+      }
+    ],
+    "3.2 Motion_Check: list animations under reduced motion": [
+      {
+        "executionId": "360c6b23-932c-479b-8fc7-8ee932406e5d",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795642977783
+      },
+      {
+        "executionId": "360c6b23-932c-479b-8fc7-8ee932406e5d",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795644220877
+      },
+      {
+        "executionId": "360c6b23-932c-479b-8fc7-8ee932406e5d",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795644284339
+      }
+    ],
+    "4. Checkpoint - Ensure all tests pass": [
+      {
+        "executionId": "360c6b23-932c-479b-8fc7-8ee932406e5d",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795642977874
+      },
+      {
+        "executionId": "360c6b23-932c-479b-8fc7-8ee932406e5d",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795644284564
+      },
+      {
+        "executionId": "360c6b23-932c-479b-8fc7-8ee932406e5d",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795644306663
+      }
+    ],
+    "5.1 Typecheck, tests and audit": [
+      {
+        "executionId": "360c6b23-932c-479b-8fc7-8ee932406e5d",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795642978006
+      },
+      {
+        "executionId": "360c6b23-932c-479b-8fc7-8ee932406e5d",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795644307384
+      },
+      {
+        "executionId": "360c6b23-932c-479b-8fc7-8ee932406e5d",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795644875206
+      }
+    ],
+    "5.2 Build, serve and run the game browser check": [
+      {
+        "executionId": "360c6b23-932c-479b-8fc7-8ee932406e5d",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795642978070
+      },
+      {
+        "executionId": "360c6b23-932c-479b-8fc7-8ee932406e5d",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795644874542
+      },
+      {
+        "executionId": "360c6b23-932c-479b-8fc7-8ee932406e5d",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795645081738
+      }
+    ],
+    "5.3 Dev import and local label check": [
+      {
+        "executionId": "360c6b23-932c-479b-8fc7-8ee932406e5d",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795642978137
+      },
+      {
+        "executionId": "360c6b23-932c-479b-8fc7-8ee932406e5d",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795645082186
+      },
+      {
+        "executionId": "360c6b23-932c-479b-8fc7-8ee932406e5d",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795645226022
+      }
+    ],
+    "6.1 Write the handover and the usage entry": [
+      {
+        "executionId": "360c6b23-932c-479b-8fc7-8ee932406e5d",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795642978355
+      },
+      {
+        "executionId": "360c6b23-932c-479b-8fc7-8ee932406e5d",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795645225279
+      },
+      {
+        "executionId": "360c6b23-932c-479b-8fc7-8ee932406e5d",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795645272781
+      }
+    ],
+    "1. Yuki-onna dramatization label": [
+      {
+        "executionId": "360c6b23-932c-479b-8fc7-8ee932406e5d",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795643022840
+      }
+    ],
+    "2. Result-aware fairness text": [
+      {
+        "executionId": "360c6b23-932c-479b-8fc7-8ee932406e5d",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795644108304
+      }
+    ],
+    "3. Two old game browser checks": [
+      {
+        "executionId": "360c6b23-932c-479b-8fc7-8ee932406e5d",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795644284389
+      }
+    ],
+    "5. Final checks": [
+      {
+        "executionId": "360c6b23-932c-479b-8fc7-8ee932406e5d",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795645226540
+      }
+    ],
+    "6. Handover": [
+      {
+        "executionId": "360c6b23-932c-479b-8fc7-8ee932406e5d",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795645272879
+      }
+    ]
+  }
+}

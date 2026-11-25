@@ -20,7 +20,7 @@
 
 ## 1. Cold open
 
-The ferryman has gone home and left his boat on the far bank. Two woodcutters stand in the dark, snow driving sideways, and the only roof in sight is a hut the size of a cupboard. No fire. One door. The old man lies down and falls asleep at once. The young one stays awake, listening to the storm lean on the walls. Then the door opens, though nobody has touched it. White light, or white cloth, fills the doorway. Someone small and pale stands in the room, and the cold in the air is suddenly very still. She bends toward the sleeper. She breathes out, a thin white thread. And then she turns and looks at the boy who is only pretending to sleep.
+[Dramatization] The ferryman has gone home and left his boat on the far bank. Two woodcutters stand in the dark, snow driving sideways, and the only roof in sight is a hut the size of a cupboard. No fire. One door. The old man lies down and falls asleep at once. The young one stays awake, listening to the storm lean on the walls. Then the door opens, though nobody has touched it. White light, or white cloth, fills the doorway. Someone small and pale stands in the room, and the cold in the air is suddenly very still. She bends toward the sleeper. She breathes out, a thin white thread. And then she turns and looks at the boy who is only pretending to sleep.
 
 ---
 

@@ -664,8 +664,9 @@ async function touchCheck(cdp) {
     await p.ev(`window.scrollTo(0, 0)`);
     await p.shot('hall-390.png');
     // dvh
-    const dvh = await p.ev(`(() => { let found = false; for (const sh of document.styleSheets) { try { for (const r of sh.cssRules) if (/dvh/.test(r.cssText) && /scene-viewport/.test(r.cssText)) found = true; } catch {} } const h = document.querySelector('.scene-viewport').getBoundingClientRect().height; return { found, h, inner: innerHeight, expected: Math.min(0.7 * innerHeight, 36 * parseFloat(getComputedStyle(document.documentElement).fontSize)) }; })()`);
-    check('hall: the scene height follows the dynamic viewport (dvh rule present, height = min(70dvh, 36rem))', dvh.found && Math.abs(dvh.h - dvh.expected) < 1.5, JSON.stringify(dvh));
+    // Expected height is computed from the Hall rule in scene.css: `.hall-scene { --scene-h: clamp(Arem, Bdvh, Crem) }` (Batch D, 54d5af4).
+    const dvh = await p.ev(`(() => { let found = false; let rule = null; const walk = (rules) => { for (const r of rules) { if (r.cssRules) walk(r.cssRules); if (/dvh/.test(r.cssText) && /scene-viewport/.test(r.cssText)) found = true; if (r.selectorText === '.hall-scene') { const v = r.style.getPropertyValue('--scene-h'); if (v) rule = v.trim(); } } }; for (const sh of document.styleSheets) { try { walk(sh.cssRules); } catch {} } const h = document.querySelector('.scene-viewport').getBoundingClientRect().height; const rem = parseFloat(getComputedStyle(document.documentElement).fontSize); const m = rule && rule.match(/^clamp\\(\\s*([\\d.]+)rem\\s*,\\s*([\\d.]+)dvh\\s*,\\s*([\\d.]+)rem\\s*\\)$/); const expected = m ? Math.min(Math.max(+m[1] * rem, (+m[2] / 100) * innerHeight), +m[3] * rem) : null; return { found, rule, h, inner: innerHeight, expected }; })()`);
+    check('hall: the scene height follows the dynamic viewport (dvh rule present, height = clamp(18rem, 64dvh, 40rem) read from .hall-scene)', dvh.found && dvh.expected !== null && Math.abs(dvh.h - dvh.expected) < 1.5, JSON.stringify(dvh));
     numbers.hotspotsHall = await p.ev(`[...document.querySelectorAll('button[data-hotspot]')].map((e) => { const r = e.getBoundingClientRect(); return { id: e.dataset.hotspot, w: Math.round(r.width), h: Math.round(r.height) }; })`);
 
     // tutorial
@@ -749,14 +750,15 @@ async function motionPass(cdp, reduced) {
     const t0 = Date.now();
     while (Date.now() - t0 < 1800) {
       samples.push(
-        await p.ev(`(() => { const f = document.querySelector('.fear-look'); const c = document.querySelector('.fear-overlay-caption'); return { t: Math.round(performance.now()), flash: f ? +getComputedStyle(f).opacity : null, flashAnim: f ? getComputedStyle(f).animationName : null, capAnim: c ? getComputedStyle(c).animationName : null, cap: c ? c.textContent.trim().slice(0, 60) : null, mode: document.querySelector('.fear-overlay').dataset.motion, running: document.getAnimations().map((a) => a.animationName || a.constructor.name) }; })()`),
+        await p.ev(`(() => { const f = document.querySelector('.fear-look'); const c = document.querySelector('.fear-overlay-caption'); return { t: Math.round(performance.now()), flash: f ? +getComputedStyle(f).opacity : null, flashAnim: f ? getComputedStyle(f).animationName : null, capAnim: c ? getComputedStyle(c).animationName : null, cap: c ? c.textContent.trim().slice(0, 60) : null, mode: document.querySelector('.fear-overlay').dataset.motion, running: document.getAnimations().map((a) => a.animationName || a.constructor.name), props: document.getAnimations().flatMap((a) => (a.effect && a.effect.getKeyframes ? a.effect.getKeyframes() : []).flatMap((k) => Object.keys(k).filter((x) => !['offset', 'easing', 'composite', 'computedOffset'].includes(x)))) }; })()`),
       );
       await sleep(50);
     }
     const flashMax = Math.max(...samples.map((s) => s.flash ?? 0));
     const names = [...new Set(samples.flatMap((s) => s.running))].filter((n) => /^fear-/.test(n));
     const cap = samples.find((s) => s.cap)?.cap ?? null;
-    return { mode: samples[0].mode, flashMax, flashAnim: [...new Set(samples.map((s) => s.flashAnim))], capAnim: [...new Set(samples.map((s) => s.capAnim).filter(Boolean))], fearAnimations: names, caption: cap, samples: samples.length };
+    const animatedProps = [...new Set(samples.flatMap((s) => s.props))];
+    return { animatedProps, anyRunning: [...new Set(samples.flatMap((s) => s.running))], mode: samples[0].mode, flashMax, flashAnim: [...new Set(samples.map((s) => s.flashAnim))], capAnim: [...new Set(samples.map((s) => s.capAnim).filter(Boolean))], fearAnimations: names, caption: cap, samples: samples.length };
   } finally {
     await p.close();
   }
@@ -769,7 +771,10 @@ async function motionCheck(cdp) {
   check('control (motion allowed): the event flashes and runs the flash keyframes', full.mode === 'full' && full.flashMax > 0.1 && full.fearAnimations.includes('fear-flash'), JSON.stringify(full));
   check('reduced motion: the overlay is in reduced mode and a caption shows', red.mode === 'reduced' && !!red.caption, `caption "${red.caption}"`);
   check('reduced motion: no flash runs on a fear event (flash opacity stays 0, no fear-flash animation)', red.flashMax === 0 && !red.fearAnimations.includes('fear-flash') && !red.flashAnim.includes('fear-flash'), JSON.stringify({ flashMax: red.flashMax, flashAnim: red.flashAnim, running: red.fearAnimations }));
-  check('reduced motion: only the opacity fade runs', red.fearAnimations.every((n) => n === 'fear-fade') && red.fearAnimations.includes('fear-fade'), JSON.stringify(red.fearAnimations));
+  // ui.css switches every CSS animation off under reduced motion (system setting and in-app toggle), so an empty list is the expected result.
+  // Anything that does run must change opacity or colour only: no transform, translate, scale, rotate or filter.
+  const MOVES = /^(transform|translate|scale|rotate|filter|offset|top|left|right|bottom|inset|margin|width|height|backgroundPosition)/i;
+  check('reduced motion: no movement or scale animation runs (anything running changes opacity or colour only)', red.animatedProps.every((k) => !MOVES.test(k)) && red.anyRunning.every((n) => !/^fear-(flash|tighten|rise|caption-full)$/.test(n)), JSON.stringify({ running: red.anyRunning, props: red.animatedProps }));
 }
 
 // ---- (4) Slow 4G first view ------------------------------------------------------------------------------------------------------
