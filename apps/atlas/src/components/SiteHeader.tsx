@@ -6,8 +6,9 @@ export function SiteHeader({ t }: { t: Translate }) {
   return (
     <header className="border-b border-surface">
       <nav aria-label={t('nav.label')} className="mx-auto flex h-full max-w-6xl flex-nowrap items-center justify-between gap-x-1 px-2 min-[40rem]:gap-x-2 min-[40rem]:px-4 font-ui text-sm">
-        <Link to="/" activeOptions={{ exact: true }} className="nav-item me-auto min-w-0 truncate px-2 min-[40rem]:px-3 inline-flex min-h-11 items-center font-display text-lg text-glow no-underline">
-          {t('app.title')}
+        <Link to="/" activeOptions={{ exact: true }} className="nav-item me-auto min-w-0 px-2 min-[40rem]:px-3 inline-flex min-h-11 items-center no-underline">
+          {/* The wordmark is the home link's content; alt carries the accessible name. 2rem keeps the row at its 44px target height. */}
+          <img src="/brand/wordmark-gold.svg" alt={t('app.title')} className="block h-8 w-auto" />
         </Link>
         <Link to="/legends" activeOptions={{ exact: true }} className="nav-item px-2 min-[40rem]:px-3 inline-flex min-h-11 items-center">
           {t('nav.home')}

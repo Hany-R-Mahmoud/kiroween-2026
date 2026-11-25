@@ -8,7 +8,7 @@ const t: Translate = (key, vars) => translate('en', key, vars);
 
 /** The header's links as { text, href, tag } in document order. */
 const links = (html: string) =>
-  [...html.matchAll(/(<a\b[^>]*>)([\s\S]*?)<\/a>/g)].map((m) => ({ tag: m[1]!, text: attr(m[1]!, 'aria-label') ?? m[2]!.replace(/<[^>]+>/g, '').trim(), inner: m[2]!, href: attr(m[1]!, 'href') }));
+  [...html.matchAll(/(<a\b[^>]*>)([\s\S]*?)<\/a>/g)].map((m) => ({ tag: m[1]!, text: attr(m[1]!, 'aria-label') ?? attr(m[2]!.match(/<img\b[^>]*>/)?.[0] ?? '', 'alt') ?? m[2]!.replace(/<[^>]+>/g, '').trim(), inner: m[2]!, href: attr(m[1]!, 'href') }));
 
 describe('atlas header', async () => {
   const html = await renderInRouter(<SiteHeader t={t} />);

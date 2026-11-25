@@ -371,6 +371,15 @@ const stateOf = (p) =>
     };
   })()`);
 
+/** Selects a World tab with the keyboard: Tab to the selected tab, then the arrow keys (the tabs pattern selects as focus moves). */
+async function showTab(p, id) {
+  const sel = `document.getElementById('world-tab-${id}')?.getAttribute('aria-selected') === 'true'`;
+  if (await p.ev(sel)) return;
+  await p.tabTo(`document.querySelector('[role="tab"][aria-selected="true"]')`);
+  for (let i = 0; i < 4 && !(await p.ev(sel)); i++) await p.key('ArrowRight');
+  await sleep(100);
+}
+
 /** Plays one World with the keyboard only, from the first scene to a broken curse. Returns what happened. */
 async function playWorldByKeyboard(p, logPrefix) {
   const out = { won: false, runs: 0, hint2: 0, wrong: 0, atlasTabs: 0, restarts: 0, problem: '' };
@@ -400,14 +409,15 @@ async function playWorldByKeyboard(p, logPrefix) {
       const openIdx = st.states.indexOf('open');
       if (openIdx >= 0) {
         stuck = 0;
-        const li = `document.querySelectorAll('li.world-slot')[${openIdx}]`;
-        let href = await p.ev(`${li}.querySelector('a.world-button')?.href ?? null`);
+        // The one hint area serves the active puzzle, which is the first open slot (`activeSlot`), i.e. openIdx.
+        const area = `document.querySelector('.hint-area')`;
+        let href = await p.ev(`${area}?.querySelector('a[data-hint2-link]')?.href ?? null`);
         if (!href) {
-          await p.tabTo(BTN(/Hint 2/i, li));
+          await p.tabTo(BTN(/Hint 2/i, area));
           await p.key('Enter');
           out.hint2 += 1;
-          await p.waitFor(`${li}?.querySelector('a.world-button')`, 20000, 'Hint 2 link');
-          href = await p.ev(`${li}.querySelector('a.world-button').href`);
+          await p.waitFor(`${area}?.querySelector('a[data-hint2-link]')`, 20000, 'Hint 2 link');
+          href = await p.ev(`${area}.querySelector('a[data-hint2-link]').href`);
           await sleep(2500); // let the atlas page finish streaming: closing it early left a stream open and crashed the local atlas server
           for (const ti of (await p.cdp.send('Target.getTargets')).targetInfos) {
             if (ti.type === 'page' && isAtlasPage(ti.url)) {
@@ -416,6 +426,7 @@ async function playWorldByKeyboard(p, logPrefix) {
             }
           }
         }
+        await showTab(p, 'question');
         const text = await atlasSectionText(href);
         const q = await p.ev(`({ question: document.querySelector('.world-question').textContent, options: [...document.querySelectorAll('.world-option')].map((b) => { const c = b.cloneNode(true); c.querySelectorAll('.sr-only').forEach((x) => x.remove()); return c.textContent; }) })`);
         let solved = false;
@@ -437,6 +448,7 @@ async function playWorldByKeyboard(p, logPrefix) {
       }
       if (st.follow > 0) {
         stuck = 0;
+        await showTab(p, 'leads');
         const n = Math.floor(Math.random() * st.follow);
         await p.tabTo(`[...document.querySelectorAll('.world-lead button')].filter((b) => !b.disabled && /\\S/.test(b.textContent))[${n}]`);
         await p.key('Enter');
@@ -515,8 +527,11 @@ async function keyboardCheck(cdp) {
     numbers.focusRing = ring;
     await p.shot('focus-ring-hall.png');
     await p.key('Enter');
+    await p.waitFor(`!!([...document.querySelectorAll('[data-panel="door"] button')].find((e) => e.textContent.trim() === 'Start in the study'))`, 10000, 'door panel link');
+    await p.tabTo(`([...document.querySelectorAll('[data-panel="door"] button')].find((e) => e.textContent.trim() === 'Start in the study'))`);
+    await p.key('Enter');
     await p.waitFor(`location.pathname.endsWith('/tutorial')`, 20000, 'tutorial route');
-    check('Enter on a locked hall door opens the tutorial', true);
+    check('Enter on a locked hall door opens the door panel, and its "Start in the study" link opens the tutorial', true);
     await p.waitFor(`document.querySelector('.scene-viewport') && Object.keys(document.querySelector('.scene-viewport')).some((k) => k.startsWith('__reactFiber'))`);
     await p.waitFor(`document.querySelector('[data-tutorial="pan-prompt"]') && !document.querySelector('[role="status"]')?.textContent?.includes('oading')`, 30000, 'tutorial view');
     await sleep(500);
@@ -529,8 +544,8 @@ async function keyboardCheck(cdp) {
     check('Escape closes the panel and returns focus to the hotspot', await p.ev(`document.activeElement?.dataset?.hotspot === 'tut-candle'`));
     await p.tabTo(BTN(/Hint 1/));
     await p.key('Enter');
-    await p.waitFor(`document.querySelector('[data-panel="hint1"]')`);
-    check('Hint 1 by keyboard shows its text in a panel', await p.ev(`document.querySelector('[data-panel="hint1"] p')?.textContent.trim().length > 0`));
+    await p.waitFor(`document.querySelector('.hint-area .hint-sheet')`);
+    check('Hint 1 by keyboard shows its text in the hint sheet', await p.ev(`document.querySelector('.hint-area .hint-sheet p')?.textContent.trim().length > 0`));
     await p.key('Escape');
     await p.tabTo(HOTSPOT('tut-drawer'));
     await p.key('Enter');
@@ -596,7 +611,8 @@ async function keyboardCheck(cdp) {
     check('Banshee: curse broken with the keyboard alone', w.won, `${w.runs} run(s), ${w.restarts} restart(s), ${w.hint2} Hint 2 use(s), ${w.wrong} wrong answer(s), ${w.atlasTabs} atlas tab(s)${w.problem ? `, ${w.problem}` : ''}`);
     numbers.keyboardWorld = w;
     if (w.won) {
-      await p.tabTo(BTN(/Back to the hall/));
+      // The ending is a modal dialog that traps Tab; the scene top bar has a button with the same label behind it.
+      await p.tabTo(BTN(/Back to the hall/, `document.querySelector('.world-ending')`));
       await p.key('Enter');
       await p.waitFor(`location.pathname.replace(/\\/$/, '').endsWith('/game')`, 20000, 'hall again');
       check('Back to the hall from the ending, by keyboard', true);
@@ -660,9 +676,10 @@ async function touchCheck(cdp) {
     check('tutorial: no horizontal page scroll at 390 px', o.doc <= o.inner && o.body <= o.inner, JSON.stringify(o));
     check('tutorial: the panorama loaded', await loaded(p));
     await targetAudit(p, 'tutorial');
+    const tvp = await p.ev(`(() => { const r = document.querySelector('.scene-viewport').getBoundingClientRect(); return { x: r.x, y: r.y, w: r.width, h: r.height }; })()`);
     for (let i = 0; i < 6 && !(await p.ev(`(() => { const r = document.querySelector('button[data-hotspot="tut-candle"]').getBoundingClientRect(); return r.x >= 8 && r.right <= innerWidth - 8; })()`)); i++) {
       const r = await p.ev(`document.querySelector('button[data-hotspot="tut-candle"]').getBoundingClientRect().x`);
-      await p.drag(vp.x + vp.w / 2, vp.y + vp.h - 20, vp.x + vp.w / 2 + (r > 195 ? -140 : 140));
+      await p.drag(tvp.x + tvp.w / 2, tvp.y + tvp.h - 20, tvp.x + tvp.w / 2 + (r > 195 ? -140 : 140));
     }
     const tc = await p.ev(`(() => { const r = document.querySelector('button[data-hotspot="tut-candle"]').getBoundingClientRect(); return { x: r.x + r.width / 2, y: r.y + r.height / 2 }; })()`);
     await p.tap(tc.x, tc.y);

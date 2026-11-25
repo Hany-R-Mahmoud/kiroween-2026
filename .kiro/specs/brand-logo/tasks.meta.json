@@ -1,0 +1,275 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1.1 Replace the atlas icons": [
+      {
+        "executionId": "9b0086ac-6cbe-4f2e-a396-5aefb1e3b03f",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795612305955
+      },
+      {
+        "executionId": "9b0086ac-6cbe-4f2e-a396-5aefb1e3b03f",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795612311771
+      },
+      {
+        "executionId": "9b0086ac-6cbe-4f2e-a396-5aefb1e3b03f",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795612364768
+      }
+    ],
+    "1.2 Replace the game icons": [
+      {
+        "executionId": "9b0086ac-6cbe-4f2e-a396-5aefb1e3b03f",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795612306004
+      },
+      {
+        "executionId": "9b0086ac-6cbe-4f2e-a396-5aefb1e3b03f",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795612312356
+      },
+      {
+        "executionId": "9b0086ac-6cbe-4f2e-a396-5aefb1e3b03f",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795612365580
+      }
+    ],
+    "2.1 Copy the SVG masters and write the README": [
+      {
+        "executionId": "9b0086ac-6cbe-4f2e-a396-5aefb1e3b03f",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795612306041
+      },
+      {
+        "executionId": "9b0086ac-6cbe-4f2e-a396-5aefb1e3b03f",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795612313155
+      },
+      {
+        "executionId": "9b0086ac-6cbe-4f2e-a396-5aefb1e3b03f",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795612366268
+      }
+    ],
+    "3.1 Add the wordmark file and use it in the header": [
+      {
+        "executionId": "9b0086ac-6cbe-4f2e-a396-5aefb1e3b03f",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795612306075
+      },
+      {
+        "executionId": "9b0086ac-6cbe-4f2e-a396-5aefb1e3b03f",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795612369573
+      },
+      {
+        "executionId": "9b0086ac-6cbe-4f2e-a396-5aefb1e3b03f",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795612412036
+      }
+    ],
+    "4.1 Add the gold-only small icon to the game header": [
+      {
+        "executionId": "9b0086ac-6cbe-4f2e-a396-5aefb1e3b03f",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795612306106
+      },
+      {
+        "executionId": "9b0086ac-6cbe-4f2e-a396-5aefb1e3b03f",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795612370250
+      },
+      {
+        "executionId": "9b0086ac-6cbe-4f2e-a396-5aefb1e3b03f",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795612413017
+      }
+    ],
+    "5.1 Reproduce both failures by hand": [
+      {
+        "executionId": "9b0086ac-6cbe-4f2e-a396-5aefb1e3b03f",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795612306134
+      },
+      {
+        "executionId": "9b0086ac-6cbe-4f2e-a396-5aefb1e3b03f",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795612413686
+      },
+      {
+        "executionId": "9b0086ac-6cbe-4f2e-a396-5aefb1e3b03f",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795612617974
+      }
+    ],
+    "5.2 Fix the app or update the check": [
+      {
+        "executionId": "9b0086ac-6cbe-4f2e-a396-5aefb1e3b03f",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795612306159
+      },
+      {
+        "executionId": "9b0086ac-6cbe-4f2e-a396-5aefb1e3b03f",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795612618576
+      },
+      {
+        "executionId": "9b0086ac-6cbe-4f2e-a396-5aefb1e3b03f",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795613565339
+      }
+    ],
+    "6. Checkpoint - Ensure all tests pass": [
+      {
+        "executionId": "9b0086ac-6cbe-4f2e-a396-5aefb1e3b03f",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795612306228
+      },
+      {
+        "executionId": "9b0086ac-6cbe-4f2e-a396-5aefb1e3b03f",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795613565966
+      },
+      {
+        "executionId": "9b0086ac-6cbe-4f2e-a396-5aefb1e3b03f",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795613591317
+      }
+    ],
+    "7.1 Typecheck and unit tests": [
+      {
+        "executionId": "9b0086ac-6cbe-4f2e-a396-5aefb1e3b03f",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795612306257
+      },
+      {
+        "executionId": "9b0086ac-6cbe-4f2e-a396-5aefb1e3b03f",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795613591396
+      },
+      {
+        "executionId": "9b0086ac-6cbe-4f2e-a396-5aefb1e3b03f",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795613903491
+      }
+    ],
+    "7.2 Build, serve and capture screenshots": [
+      {
+        "executionId": "9b0086ac-6cbe-4f2e-a396-5aefb1e3b03f",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795612306286
+      },
+      {
+        "executionId": "9b0086ac-6cbe-4f2e-a396-5aefb1e3b03f",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795613904040
+      },
+      {
+        "executionId": "9b0086ac-6cbe-4f2e-a396-5aefb1e3b03f",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795614049731
+      }
+    ],
+    "7.3 Run the game browser check": [
+      {
+        "executionId": "9b0086ac-6cbe-4f2e-a396-5aefb1e3b03f",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795612306323
+      },
+      {
+        "executionId": "9b0086ac-6cbe-4f2e-a396-5aefb1e3b03f",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795614050071
+      },
+      {
+        "executionId": "9b0086ac-6cbe-4f2e-a396-5aefb1e3b03f",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795614336588
+      }
+    ],
+    "7.4 Fetch the assets and stop the servers": [
+      {
+        "executionId": "9b0086ac-6cbe-4f2e-a396-5aefb1e3b03f",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795612306351
+      },
+      {
+        "executionId": "9b0086ac-6cbe-4f2e-a396-5aefb1e3b03f",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795614337766
+      },
+      {
+        "executionId": "9b0086ac-6cbe-4f2e-a396-5aefb1e3b03f",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795614380530
+      }
+    ],
+    "8.1 Write the handover and the usage entry": [
+      {
+        "executionId": "9b0086ac-6cbe-4f2e-a396-5aefb1e3b03f",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795612306376
+      },
+      {
+        "executionId": "9b0086ac-6cbe-4f2e-a396-5aefb1e3b03f",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795614381048
+      },
+      {
+        "executionId": "9b0086ac-6cbe-4f2e-a396-5aefb1e3b03f",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795614425216
+      }
+    ],
+    "1. Icons": [
+      {
+        "executionId": "9b0086ac-6cbe-4f2e-a396-5aefb1e3b03f",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795612365624
+      }
+    ],
+    "2. Masters": [
+      {
+        "executionId": "9b0086ac-6cbe-4f2e-a396-5aefb1e3b03f",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795612366306
+      }
+    ],
+    "3. Atlas header logo": [
+      {
+        "executionId": "9b0086ac-6cbe-4f2e-a396-5aefb1e3b03f",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795612412068
+      }
+    ],
+    "4. Game header icon": [
+      {
+        "executionId": "9b0086ac-6cbe-4f2e-a396-5aefb1e3b03f",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795612413078
+      }
+    ],
+    "5. Tutorial tap and keyboard checks": [
+      {
+        "executionId": "9b0086ac-6cbe-4f2e-a396-5aefb1e3b03f",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795613565404
+      }
+    ],
+    "7. Verify": [
+      {
+        "executionId": "9b0086ac-6cbe-4f2e-a396-5aefb1e3b03f",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795614380676
+      }
+    ],
+    "8. Handover": [
+      {
+        "executionId": "9b0086ac-6cbe-4f2e-a396-5aefb1e3b03f",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795614425560
+      }
+    ]
+  }
+}

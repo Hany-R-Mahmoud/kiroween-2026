@@ -40,6 +40,7 @@ export function GameHeader({ name, atlasOrigin, onSignOut, t }: { name: string |
     <header ref={headerRef} className="border-b border-surface">
       <nav className="mx-auto flex max-w-6xl items-center gap-1 px-3" aria-label={t('app.title')}>
         <Link to="/" className="nav-item me-auto font-display text-lg text-glow">
+          <img src="/game/brand/icon-small-gold.svg" alt="" aria-hidden="true" width={20} height={20} className="me-2 h-5 w-5 shrink-0" />
           {t('app.title')}
         </Link>
         <a href={atlasHome(atlasOrigin)} className="nav-item">
