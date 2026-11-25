@@ -37,9 +37,9 @@ Next comes the old woman herself. She does not walk to her home. She arrives tra
 
 The hut on its legs became her trademark. It turns to face visitors, and the phrase that makes it turn can be read in the printed tales. In Afanasyev's tale "Baba-Yaga" (number 102), a man brings his stepdaughter to the hut and says, in short, "Hut, hut, stand with your back to the forest and your front to me." The hut then turns and lets him in. "Vasilisa the Beautiful" does not use the phrase at all, so it belongs to this other tale. Another tale, "The Maiden Tsar," describes a hut that turns on chicken legs in an open field, without any spoken phrase. What the tales share is the picture: a house that stands, and turns, and decides whether to let you in.
 
-Why does it matter that the house is a creature? Because in this world, the first test is not a riddle. It is how you behave in front of something frightening. Vasilisa does not scream. She does not run. She stays, and she is polite. That behaviour is the key to the entire legend, and the old woman pays attention to it.
+Why does it matter that the house is a creature? Because in this world, the first test is how you behave in front of something frightening. Vasilisa does not scream. She does not run. She stays, and she is polite. That behaviour is the key to the entire legend, and the old woman pays attention to it.
 
-Notice also what the fence is made of, and what it is not. The tales never say who the bones belonged to. They are decoration, a warning, and a promise: this house takes its work seriously. A careful reader should not decide the tale is a murder story. It is a threshold story. You cross from the world of villages into a place with different rules, and the bones are the sign on the gate.
+The tales never say who the bones belonged to. They are decoration, a warning, and a promise: this house takes its work seriously. A careful reader should not decide the tale is a murder story. It is a threshold story. You cross from the world of villages into a place with different rules, and the bones are the sign on the gate.
 
 Light matters too. Vasilisa lights a splinter from one of the skulls to get fire into the oven. The skulls are both the warning and the thing the visitor came for. The fence guards the fire. The fire is what everyone wants.
 
@@ -56,7 +56,7 @@ For that, the world waited for collectors. Alexander Afanasyev, a Russian folklo
 
 A word on ambiguity. The scholar Andreas Johns, in his 2004 book Baba Yaga: The Ambiguous Mother and Witch of the Russian Folktale (Peter Lang), sorts the tales into three kinds, according to a published review of the book: the Baba Yaga who gives gifts, the ambiguous one, and the evil one. In the first she is a donor. In the last she is a villain. In the middle, she is both at once, which is where the best stories live. The same review says Johns reads the evil kind as a stand-in for the mother-in-law. Another scholar, Vladimir Propp, observed that her appearances across tales do not add up to one coherent picture. In other words, there was never a single, official Baba Yaga. There were many tellers, and each shaped her to the story at hand.
 
-That is what makes her frightening. A villain you can predict. A tester who sometimes helps and sometimes threatens must be read carefully before you answer her, because you cannot tell at the gate which Baba Yaga you have met.
+This ambiguity makes her frightening. A villain you can predict. A tester who sometimes helps and sometimes threatens must be read carefully before you answer her, because you cannot tell at the gate which Baba Yaga you have met.
 
 She has relatives, too. Westward, the Czech and Slovak Ježibaba and Polish Baba Jaga are related names. In South Slavic lands, a figure called Roga is used to frighten children. These are neighbours, not copies, and the atlas will not claim they are the same being.
 
@@ -77,7 +77,7 @@ The second day, the old woman comes back, inspects the work, and is annoyed she 
 
 Count the tasks the way this telling gives them, not the way a summary does. There is a first list on day one (sweep, cook, wash, sift oats), a second job (clean the hay of soil and grain), and a third (poppy oil). Other translations change the grain, reorder the days, or fold two tasks into one. This atlas follows Leonard Magnus's 1916 English translation, and every detail here comes from it.
 
-What is the task for? That is the whole question. Is Baba Yaga cruel, or is she checking whether the girl can do what she cannot do alone? The tale lets you decide. The old woman is never praised in it. But she is also never defeated. She sets rules, watches, and keeps them.
+What is the task for? Is Baba Yaga cruel, or is she checking whether the girl can do what she cannot do alone? The tale lets you decide. The old woman is never praised in it. But she is also never defeated. She sets rules, watches, and keeps them.
 
 Look at what the girl actually does. She is given work that cannot be done by force. She feeds her helper, rests, and trusts that morning is wiser than evening. Those are quiet, patient acts. In Baba Yaga's house, patience is a kind of courage.
 
@@ -88,13 +88,13 @@ anchor: baba-yaga--ch-4
 sources: S5, S4
 At supper, the girl, who has stayed quiet through it all, asks about the three riders she met on the road. Baba Yaga explains. The white rider is the bright day, the red rider is the red sun, the black rider is the dark night. She calls all three her faithful servants. Translations differ in the wording; one gives "Bright Dawn," "Round Sun," and "Dark Night," another uses Day, Sun, Night. The colours and the order are the stable part of the picture.
 
-Look at what this does to our understanding of her. A woman who commands day, sun and night is not a petty witch in a hut. She is something larger, a keeper of time. Yet she lives in a clearing, sweeps with a broom, and cooks soup. The legend refuses to choose between the grand and the homely. That is exactly what Johns calls ambiguity.
+Look at what this does to our understanding of her. A woman who commands day, sun and night is not a petty witch in a hut. She is something larger, a keeper of time. Yet she lives in a clearing, sweeps with a broom, and cooks soup. The legend refuses to choose between the grand and the homely. Johns calls this ambiguity.
 
-The riders pass the girl in order as she walks: the white one brings daylight, the red one brings the sunrise, and the black one arrives at the hut as night falls. One summary says the skulls' eyes then glow in the dark, lighting the clearing. Notice how this ties the whole story to a single day and night. The fence lights up only after the black rider passes.
+The riders pass the girl in order as she walks: the white one brings daylight, the red one brings the sunrise, and the black one arrives at the hut as night falls. One summary says the skulls' eyes then glow in the dark, lighting the clearing. This ties the whole story to a single day and night. The fence lights up only after the black rider passes.
 
-Then comes the surprise. The girl thinks of the three pairs of invisible hands, but says nothing about them. Baba Yaga warns that she eats anyone who is too curious. That is the tale's small, sharp lesson in what to ask and what to keep silent. Some questions are allowed. Some are dangerous. The girl chose well.
+Then comes the surprise. The girl thinks of the three pairs of invisible hands, but says nothing about them. Baba Yaga warns that she eats anyone who is too curious. The tale draws a small, sharp lesson about what to ask and what to keep silent. Some questions are allowed. Some are dangerous. The girl chose well.
 
-And then the question that matters: how did you do the work? Vasilisa answers that it was her mother's blessing. The old woman's reply is one of the strangest lines in folklore. Nobody who is blessed can stay with her. She pushes the girl out through the gate and gives her a skull on a staff, to carry home as fire.
+And then the question that matters: how did you do the work? Vasilisa answers that it was her mother's blessing. The old woman's reply is one of the oddest lines in folklore. Nobody who is blessed can stay with her. She pushes the girl out through the gate and gives her a skull on a staff, to carry home as fire.
 
 The skull lights the way through the forest and fades at dawn. Back at the stepmother's house, it speaks, and its fiery eyes follow the stepmother and her daughters until they burn to cinders. We keep that outcome as the tale tells it: told once, not described, and never made graphic. The girl buries the skull and goes into town.
 
@@ -117,7 +117,7 @@ There is a third source of confusion: pictures. In the late seventeenth and earl
 
 What about her relatives across the region? The atlas keeps this short and honest. West Slavic lands have Ježibaba and Baba Jaga, related names. South Slavic lands have a frightening figure, Roga, used to scare children in several countries. Ukrainian and Belarusian tellers have their own names and habits for her, and this atlas does not guess at them. We say only that the folk culture she belongs to is East Slavic, a family of Russian, Ukrainian and Belarusian traditions, and that the surviving written tales we cite are Russian collections.
 
-Why do the sisters matter? Because they change the rule. With one old woman, the tasks are a test. With three, a visit might be a trap, a loan, or a gift, depending on which sister opens the door. The first question a visitor should ask is not "what does she want?" but "which one is she?"
+Why do the sisters matter? Because they change the rule. With one old woman, the tasks are a test. With three, a visit might be a trap, a loan, or a gift, depending on which sister opens the door. The first question a visitor should ask is "which one is she?"
 
 The three-ness also repeats across the legend. Three riders. Three pairs of hands. Three sisters. Three horns. Three days of tasks. Threes are common in folktales everywhere, and the atlas does not claim a hidden meaning behind them. They are a storyteller's rhythm, the beat that tells a listener something is about to change.
 
@@ -140,12 +140,12 @@ For readers who feel the story pulls them in: she is a folklore figure, studied 
 
 And so the legend arrives at its last page. One question is left: how much of all this can be traced to paper, and how much lives only in the telling?
 
-Hook: Which parts of the legend can you point to in a printed source, and which ones only live in the telling?
+Hook: Some parts of the legend can be pointed to in a printed source. The rest live only in the telling.
 
 #### ch-7 · What Is Documented, and What Is Told
 anchor: baba-yaga--ch-7
 sources: S1, S8, S10, S4, S5, S11
-Every legend reaches a point where the storyteller has to step back and the record has to speak. This is that point.
+Every legend reaches a point where the storyteller has to step back and the record has to speak.
 
 Start with what is solid. Afanasyev's tales are in print, and the Russian text of "Baba-Yaga" (number 102) has the visitor ask the hut to turn. "Vasilisa the Beautiful" has a recorded plot: the doll, the fence, the three riders, the tasks, the question about the blessing, and the skull. "The Maiden Tsar" has three Baba Yaga sisters, a youngest one who sharpens her teeth, three trumpets and a firebird. A published review confirms that Andreas Johns, in 2004, sorted the tales into the donor, the ambiguous and the evil Baba Yaga. Hartmann died in 1873, Mussorgsky wrote his suite in 1874, and Ravel orchestrated it in 1922. These are dates and works you can check.
 
@@ -157,7 +157,7 @@ The rule this atlas follows is simple: if a claim has no firm record behind it, 
 
 One more point on method. When two sources disagree, the atlas says so. The publication span of Afanasyev's collection is given in different ways, from 1863 to 1867. The wording of Baba Yaga's explanation of the riders differs by translation. The order of the three tasks differs between summaries. We tell the version we cite, and we say which one it is.
 
-Notice, too, how much of the documented side is about people who wrote her down, set her to music, or argued about her, and how little is about her. A grammarian, a collector, a composer, a painter, a scholar. The record is a record of listeners. She herself never signs anything.
+Much of the documented side is about people who wrote her down, set her to music, or argued about her, and little is about her. A grammarian, a collector, a composer, a painter, a scholar. The record is a record of listeners. She herself never signs anything.
 
 What survives, in the end, is not a single old woman but a habit of telling: a hut that turns, a fence that glows, a list of chores, and a question at the door. The details shift. The question stays.
 

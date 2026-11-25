@@ -641,3 +641,8 @@ Spec: `.kiro/specs/brand-logo/` (requirements, design, tasks). Handover: `docs/b
 - **Spec workflow**: tasks replaced the atlas and game icons, added the brand masters under `docs/brand/`, and put the logo in both headers (atlas wordmark image, game small gold icon); the last task wrote the handover.
 - **Verify**: typecheck clean; skeleton 916 (+8 expected fail), atlas 306, game 401. Header height is 56px after (measured, both apps, both sizes). Game browser check: 35 passed, 2 failed (last run 23/4, not like-for-like). Two stale checks were fixed in `apps/game/scripts/browser-check.mjs`; the two remaining failures look like out-of-date checks (Hall scene height, reduced motion), not confirmed. Screenshots under `.debug/brand-logo/`, only some viewed.
 - **Not claimed**: no hooks or skill loads are recorded in these notes. The staged Batch E work is mixed into the index with these edits, so stage selectively. No commits or pushes.
+## Content pass
+Spec: `.kiro/specs/content-pass/` (requirements, design, tasks). Handover: `docs/content-pass-handover.md`.
+- **Spec workflow**: tasks edited `content/legends/*.md` only: puzzle-slot sentences in eight legends so the atlas-only player no longer pays wrong answers, and prose patterns removed in all twelve. One test edit: `KNOWN_CONTENT_FINDINGS` emptied.
+- **Verify**: audit zeros, typecheck clean; skeleton 924, atlas 306, game 401. Fairness 12 of 12 legends win 40 of 40 seeds (before: eight legends between 31 and 39). Dev import done (12 legends, 83 chapters, 60 slots); production import left to the owner.
+- **Not claimed**: no hooks or skill loads are recorded in these notes. Seven slots in five legends still cost a wrong answer; added sentences were not re-read against sources. No commits or pushes.

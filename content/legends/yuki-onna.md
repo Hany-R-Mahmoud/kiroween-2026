@@ -39,11 +39,11 @@ The old man and the boy do the sensible thing. They close the door, put their st
 
 Something wakes him. A fine snow is blowing across his face, and the door, which he closed, stands open. A woman in white is in the room.
 
-Keep that picture in mind, because everything in the legend grows from it. She is not a monster with fangs. She is not horned or hideous. The scare is the stillness: a person who is where nobody should be, and does not hurry.
+Keep that picture in mind, because everything in the legend grows from it. The scare is the stillness: a person who is where nobody should be, and does not hurry.
 
 Why a hut at a river, and not a mountain pass or a snowy field? A river crossing is an edge. It is the place between the village and the work, and between safety and the dark. Many of the oldest ghost stories happen at edges like this: bridges, fords, doorways, crossroads. The Snow Woman arrives where the human road runs out.
 
-Notice also how plain the setting is. There are no shrines, no ruins, no cursed sites. The legend does not need them. A storm, a hut, two tired men, and a long night are enough. Winter itself does the work of a haunted house, and the cold does the frightening.
+The setting is plain. There are no shrines, no ruins, no cursed sites. The legend does not need them. A storm, a hut, two tired men, and a long night are enough. Winter itself does the work of a haunted house, and the cold does the frightening.
 
 Hook: The woman bends over the old man. What does she do, and what does she say to the boy who is watching?
 
@@ -60,7 +60,7 @@ Mark the reason. She does not spare him from kindness in general, or because he 
 
 Then comes the condition. She tells him that if he ever speaks of this night, to anyone, even to his own mother, she will know, and she will come to him. The tale is firm about the reach of this promise: it covers every person, with the mother named as the closest one. Silence is the whole price. No gold, no oath on a sword, no ritual of any kind. Only a secret.
 
-After saying this, she turns and goes out through the door. Minokichi springs up and closes it, and he looks for her in the snow, but she is gone. He turns to the old man. Mosaku does not answer, and the boy understands. The tale states the loss once, quietly, and moves on.
+After saying this, she turns and goes out through the door. Minokichi springs up and closes it, and he looks for her in the snow, but she is gone. He turns to the old man. Mosaku does not answer, and the boy understands. The tale states the loss once and moves on.
 
 At dawn the ferryman arrives and finds Minokichi lying nearby, weak with cold and unable to speak. The boy is taken care of and slowly recovers. When he is well, he says nothing about the woman in white. He lives with the shock, but he keeps his word, and he goes back to the woods alone.
 
@@ -77,7 +77,7 @@ The next winter, Minokichi is walking home from work when he meets a tall, slend
 
 She tells him her parents have died, and that she is on her way to Yedo, where she has some relatives who might help her find a place as a servant. Minokichi is taken with her. They walk on together, talking. By the time they reach his village they have grown fond of each other, and he invites her to rest at his home. She agrees, and she stays.
 
-His mother likes her at once. She persuades the girl to remain a little longer, and then longer still, and the plan for Yedo is quietly dropped. In time O-Yuki becomes Minokichi's wife. The tale calls her an excellent daughter-in-law. When Minokichi's mother dies, about five years later, her last words are praise for the young woman.
+His mother likes her at once. She persuades the girl to remain a little longer, and then longer still, and the plan for Yedo is dropped. In time O-Yuki becomes Minokichi's wife. The tale calls her an excellent daughter-in-law. When Minokichi's mother dies, about five years later, her last words are praise for the young woman.
 
 The couple have ten children, boys and girls, all fair of skin. The villagers find this a wonder, and they find another one too: O-Yuki seems not to age. She looks as young as the day she came, and the neighbours remark that she is not like other women. The tale lets this detail sit without comment.
 
@@ -87,11 +87,11 @@ O-Yuki puts down her sewing and stands over him. She says it was she. She remind
 
 Then her voice grows thin, like the sound of wind. She turns into a white mist that rises to the roof beams and escapes through the smoke-hole. She is never seen again.
 
-Notice three things about this ending. The children are the reason for mercy, which matches the first mercy: youth. She is never cruel on the page, only strict. And the home is left intact, a household with ten children and a missing mother. The story is sad, not violent.
+The ending shows three things. The children are the reason for mercy, which matches the first mercy: youth. She is never cruel on the page, only strict. And the home is left intact, a household with ten children and a missing mother. The story is sad, not violent.
 
 It is worth saying plainly that the story does not call her evil or good. It does not explain whether she knew who he was on the road. It does not say whether her years in the village were a trick, a kindness, or a long, odd experiment in being human. The reader decides.
 
-Hook: Where did Hearn hear this story? He says a farmer told it to him, in a place called Chofu. What is known about that claim?
+Hook: Hearn says a farmer told him this story, in a place called Chofu. The record on that claim is thin.
 
 #### ch-4 · A Farmer from Chofu
 anchor: yuki-onna--ch-4
@@ -125,11 +125,11 @@ Then come the regional tellings. Reference works record a number of them, and th
 
 Look at the range. She lives in a bamboo grove, a hearth, a bath, a field. She is tall and fearsome, or domestic, or childlike, or a stranded princess. In some tellings she kills travellers, in some she spares them, and in some she marries and leaves. Reference works say Hearn's version has a sharper edge than many of the others; how much weight to give that is for scholars to argue.
 
-What the tellings share is the season, the colour white, and the cold. Snow is a thing that arrives quietly and covers everything. A figure made of it is quiet too.
+What the tellings share is the season, the colour white, and the cold. Snow arrives without a sound and covers everything. A figure made of it is quiet too.
 
 These tellings are not one tradition. A woman who warms herself at a hearth and a woman who steals up on sleepers in a hut share a name and a season, nothing more. The same name, used in many valleys, grew many stories. The careful reader asks of each one: where, and who tells it?
 
-Hook: Hearn's hut, Sogi's grove, Ojiya's bath. Which Snow Woman is the real one, and where does the record place them?
+Hook: Hearn's hut, Sogi's grove, Ojiya's bath. Each is a different Snow Woman, and the record places each in a different place.
 
 #### ch-6 · The Snow Woman Today
 anchor: yuki-onna--ch-6
@@ -146,16 +146,16 @@ There is also a note on taste. The tale says that the old man does not wake, and
 
 For readers who feel the story creep up on them in a quiet room: she is a character in folklore, studied by scholars and loved by storytellers. She is not a practice or a belief to follow. There is no instruction for calling or meeting her, because there is nothing to call. On a snowy night the safe thing is the sensible one: a warm room, a lamp, and someone to share it with.
 
-There is one more reason she lasts, and it is not fear. It is that her story is about a promise, and everyone knows how heavy a kept secret can be. Minokichi does not break his word out of malice. He breaks it by accident, on an easy evening, in front of a warm lamp, with someone he loves. The scare is how ordinary the mistake is.
+There is one more reason she lasts: her story is about a promise, and everyone knows how heavy a kept secret can be. Minokichi does not break his word out of malice. He breaks it by accident, on an easy evening, in front of a warm lamp, with someone he loves. The scare is how ordinary the mistake is.
 
 And so the legend reaches its last page. How much of this can be pointed to on paper, and how much lives only in the telling?
 
-Hook: Which parts of the Snow Woman can you find in a printed source, and which parts only live in the telling?
+Hook: Some parts of the Snow Woman can be found in a printed source. Others live only in the telling.
 
 #### ch-7 · What Is Documented, and What Is Told
 anchor: yuki-onna--ch-7
 sources: S1, S2, S3, S4, S5, S6
-Every legend reaches a point where the storyteller must step back and let the record speak. This is that point.
+Every legend reaches a point where the storyteller must step back and let the record speak, and this chapter is that point.
 
 Start with what is solid. Hearn's Kwaidan was published in 1904, and the tale "Yuki-Onna" in it can be read in full. It names the old woodcutter Mosaku and his apprentice Minokichi, aged eighteen. It places them in Musashi Province, with a ferry because floods wash out bridges, and a hut of about two mats. A woman in white breathes on the old man. She spares the boy for his youth and forbids him to speak of it, even to his mother. Next winter a girl named O-Yuki joins his household, becomes his wife, and bears ten children. One night he speaks, she reveals herself, and she leaves through the smoke-hole, never seen again. Hearn's introduction states that a farmer of Chofu in Musashi told him the tale.
 
@@ -167,9 +167,9 @@ The rule is simple. If a claim has no firm record that can be read, it is told, 
 
 One more note on method. When sources disagree, the account says so. The collection attributed to Sogi bears the name of a poet who died long before its printing. The year of Sekien's book is given as 1776 in some places and later in others. Hearn's own words about his source are one man's report of another man's words. Each version is given with its source.
 
-Notice how much of the documented side is about people who wrote her down, painted her, or argued about her: a poet's name on a book, an artist, a writer, a farmer whose name was not kept. The record is a record of listeners. She herself signs nothing.
+Much of the documented side is about people who wrote her down, painted her, or argued about her: a poet's name on a book, an artist, a writer, a farmer whose name was not kept. The record is a record of listeners. She herself signs nothing.
 
-What survives is not one woman but a habit of telling: a storm, a small hut, a white figure at the door, a promise to keep, and a lamp-lit evening when someone says too much. The details move from valley to valley. The cold stays the same.
+What survives is a habit of telling: a storm, a small hut, a white figure at the door, a promise to keep, and a lamp-lit evening when someone says too much. The details move from valley to valley. The cold stays the same.
 
 Hook: Outside, snow is still falling on a ferry landing, and a small hut waits with its door closed for the next traveller caught on the wrong bank.
 

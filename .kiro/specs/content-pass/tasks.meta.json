@@ -1,0 +1,353 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1.1 Run the fairness test and count the prose patterns": [
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795617032647
+      },
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795617038467
+      },
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795617833730
+      }
+    ],
+    "2.1 banshee": [
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795617032949
+      },
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795617876373
+      },
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795618178803
+      }
+    ],
+    "2.2 chupacabra": [
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795617033021
+      },
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795618179332
+      },
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795618322684
+      }
+    ],
+    "2.3 draugr": [
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795617033075
+      },
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795618322885
+      },
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795618644058
+      }
+    ],
+    "2.4 el-coco": [
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795617033114
+      },
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795618644180
+      },
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795618874121
+      }
+    ],
+    "2.5 gumiho": [
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795617033148
+      },
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795618873535
+      },
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795619291187
+      }
+    ],
+    "2.6 naddaha": [
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795617033198
+      },
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795619291439
+      },
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795619514708
+      }
+    ],
+    "2.7 spring-heeled-jack": [
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795617033345
+      },
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795619515352
+      },
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795619871675
+      }
+    ],
+    "2.8 vetala": [
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795617033384
+      },
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795619871933
+      },
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795620108295
+      }
+    ],
+    "3.1 Rerun the fairness test and update Known_Findings": [
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795617033442
+      },
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795620108749
+      },
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795620717793
+      }
+    ],
+    "4.1 First remaining legend": [
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795617033500
+      },
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795620723110
+      },
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795620784334
+      }
+    ],
+    "4.2 Second remaining legend": [
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795617033540
+      },
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795620785158
+      },
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795620852117
+      }
+    ],
+    "4.3 Third remaining legend": [
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795617033593
+      },
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795620851783
+      },
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795620919992
+      }
+    ],
+    "4.4 Fourth remaining legend": [
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795617033636
+      },
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795620919784
+      },
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795620996607
+      }
+    ],
+    "5. Checkpoint - Ensure all tests pass": [
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795617033676
+      },
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795620996790
+      },
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795621037780
+      }
+    ],
+    "6.1 Run audit, typecheck, tests and fairness": [
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795617033743
+      },
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795621037897
+      },
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795621476817
+      }
+    ],
+    "6.2 Dev import and atlas check": [
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795617033792
+      },
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795621477576
+      },
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795622067102
+      }
+    ],
+    "7.1 Write the handover and the usage entry": [
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795617033837
+      },
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795622067742
+      },
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795622122101
+      }
+    ],
+    "1. Baseline": [
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795617841885
+      }
+    ],
+    "2. Eight legends with a fairness fix and a prose pass": [
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795620108443
+      }
+    ],
+    "3. Fairness result for the eight legends": [
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795620718216
+      }
+    ],
+    "4. Four legends with the prose pass only": [
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795620996698
+      }
+    ],
+    "6. Final checks": [
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795622067247
+      }
+    ],
+    "7. Handover": [
+      {
+        "executionId": "d5d24c32-a20c-413b-b5dd-59d228d692e0",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795622122284
+      }
+    ]
+  }
+}

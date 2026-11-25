@@ -37,7 +37,7 @@ The visitor is a wandering ascetic named Kshantishila. Every day he comes to the
 
 This goes on day after day for ten years, and the routine is the point. Nothing happens, and the man simply keeps arriving with a fruit. [Dramatization] A court can grow used to anything if it is repeated, and a mild habit is a good disguise.
 
-Then, one day, the king hands the fruit to a young pet monkey that has slipped away from its keepers. As the monkey eats, the fruit bursts open and a splendid jewel falls out. The king sends for the treasurer and asks where all the old fruits went. The treasurer has been tossing them through a window into the treasury without opening the door. When he looks, the fruits have rotted away, and among them lies a heap of shining jewels. The king is amazed and asks the ascetic what he wants in return for such gifts.
+Then, one day, the fruit bursts open when the king gives it to a pet monkey, a young one that has slipped away from its keepers. As the monkey eats, a splendid jewel falls out. The king sends for the treasurer and asks where all the old fruits went. The treasurer has been tossing them through a window into the treasury without opening the door. When he looks, the fruits have rotted away, and among them lies a heap of shining jewels. The king is amazed and asks the ascetic what he wants in return for such gifts.
 
 The ascetic does not answer at once. He asks the king to meet him alone, at night, in a great burning ground outside the city, where he waits under a banyan tree. The text calls the place a cemetery. The ascetic says he needs the help of a brave man for a rite, and he will give no further detail. The king agrees to come.
 
@@ -45,7 +45,7 @@ Note how little the ascetic asks for. He does not ask for gold, an army or a thr
 
 The king goes alone, as asked. He finds the ascetic under the banyan tree, and they speak briefly. Then the ascetic points the way south, through the dark, to a tree where something hangs.
 
-Every part of the picture so far is plain: a king, a daily fruit, a jewel, a promise to help. The strangeness is all in the second half of the story, on a road at night.
+Every part of the picture so far is plain: a king, a daily fruit, a jewel, a promise to help. The odd part comes in the second half of the story, on a road at night.
 
 Hook: The king walks south to the far tree. What does he find hanging there, and what does it say when he lifts it down?
 
@@ -56,7 +56,7 @@ The king crosses the burning ground alone. In the Tawney translation the scene i
 
 He finds the tree to the south, and in this early chapter the text names it an asoka tree (S1, S2). A body hangs from it, wrapped as a bundle. The king takes it down. Here the story turns, because the bundle is not what it seems. A spirit called a vetala is inside it. The text uses a single word for the thing, vetala, and never explains its nature beyond that.
 
-The king ties the bundle across his shoulder and starts back, and the ascetic's instruction goes with him: carry it in silence. The oldest text states the rule plainly. If the king speaks, the vetala will leave and go back to the tree.
+The king ties the bundle across his shoulder and starts back, and the ascetic's instruction goes with him: carry it in silence. The oldest text states the rule plainly: the spirit leaves the king's shoulder if the king speaks, and goes back to the tree.
 
 So the king walks without a word, and the vetala begins to speak. It says that the road is long and a story will make it shorter. It tells him a tale. The tale ends in a question, and the vetala adds the stake. If the king knows the answer and does not say it, his head will break into a hundred pieces. The wording in Tawney's translation is "split in a hundred pieces" (S1). The warning is a spoken threat, not something the story ever shows. It sits there like a hand on the king's shoulder.
 
@@ -68,11 +68,11 @@ This is the mechanism of the whole book. Each trip is a tale and a question, and
 
 Why does the frame work so well? A road at night is a good place for talk. A tired listener is a good listener. And a riddle is a very old way to keep a person awake and thinking. Storytellers across many cultures have used this same engine: a long road, a voice, a question to be solved before dawn.
 
-Notice also what the story does not do. It does not make the vetala a villain. It is fond of its riddles. The tension comes from the rule and the repetition, not from any fight.
+The story does not make the vetala a villain. It is fond of its riddles. The tension comes from the rule and the repetition, not from any fight.
 
 The spirit tells its tales in the voice of a companion. It keeps to its end of the bargain, and each answer is taken seriously.
 
-Hook: The vetala's first riddles are about love, promises and fairness. What kind of question can keep a king walking for twenty-four nights?
+Hook: The vetala's first riddles are about love, promises and fairness. Questions of that kind keep a king walking for twenty-four nights.
 
 #### ch-3 · Three Riddle-Tales
 anchor: vetala--ch-3
@@ -81,19 +81,19 @@ The tales are short, self-contained and gentle in the oldest text. Three of them
 
 The first tale in Tawney's translation is about a prince of Varanasi, Vajramukuta, who glimpses a maiden at a lake and falls in love without knowing who she is (S1). A clever minister's son reads the small signs she gave, works out her home city, and helps the couple meet and marry in secret. The tale ends by asking who bears the blame for what follows. It is a question about the weight of one decision against another. The king reasons through it and answers.
 
-The third tale is smaller still. A parrot and a maina bird quarrel about whether males or females are the worse (S2). They bring the quarrel to the king of the tale, who does not like either answer. The vetala puts the question to Trivikramasena: which are worse? In the translation the king answers that women are, since a man may be wicked now and then while women are so as a rule. That is the old text's answer. Today it reads as a stock joke of its period, and the tale is useful because it shows how a riddle can carry an opinion the teller expects to be argued with. After the king answers, the vetala slips from his shoulder and returns to its tree. He turns around and starts back for it.
+The third tale is smaller still. A parrot and a maina bird quarrel about whether males or females are the worse (S2). They bring the quarrel to the king of the tale, who does not like either answer. The vetala puts the question to Trivikramasena: which are worse? In the translation the king answers that women are, since a man may be wicked now and then while women are so as a rule. The old text gives that answer. Today it reads as a stock joke of its period, and the tale is useful because it shows how a riddle can carry an opinion the teller expects to be argued with. After the king answers, the vetala slips from his shoulder and returns to its tree. He turns around and starts back for it.
 
 The tenth tale is the clearest one for the idea of who did the greater deed (S3). A merchant's daughter, Madanasena, has promised to visit a former suitor before she weds. Her husband, hearing this, lets her go because he feels bound by duty. On the road she meets a thief, tells him her story, and he lets her pass unharmed. The former suitor, whose passion has cooled, also releases her from the promise. The vetala asks the king which of the three men was the most generous. The king chooses the thief. The husband acted from duty, and the suitor gave up what he no longer wanted. The thief gave up a prize he had no reason to forgo.
 
 Each of the three has a shape. A situation is set, three or four people are given a claim, and the question asks who is owed the thing. The king always reasons aloud from a principle: the one who bore the cost, the one who acted from a free choice, the one who gave without being asked. That reasoning is the real subject. The tales are about how a ruler weighs claims.
 
-Notice what the tales leave out. They have no gods as story drivers in the riddles summarised here, no spells and no battles. A promise, a road, a choice. The questions are small human questions that could be asked in any century, and the king takes them seriously every time.
+The tales leave out much. They have no gods as story drivers in the riddles summarised here, no spells and no battles. A promise, a road, a choice. The questions are small human questions that could be asked in any century, and the king takes them seriously every time.
 
 The collection gains much of its charm from this range. Some riddles are tender, some are sharp, some are funny, and a few are hard enough that modern readers disagree with the king. The text welcomes the disagreement. The king's answer is the text's answer, but a listener is free to argue.
 
 There are twenty-five items in the title. The count is less simple than the title suggests.
 
-Hook: The title says twenty-five. How many tales are actually told, and which recensions agree on the number?
+Hook: The title says twenty-five, but the oldest text delivers twenty-four tales and a frame.
 
 #### ch-4 · The Count of Twenty-Five
 anchor: vetala--ch-4
@@ -110,26 +110,26 @@ Why do counts and recensions matter? Because the tales are a living collection. 
 
 A reader who finds a version with twenty-five tales and another with twenty-four has not found a mistake. The title promises twenty-five and the oldest text delivers twenty-four plus a frame. The numbers are part of the story's history.
 
-It is useful to separate three layers. First, the original lost material that Somadeva and Kshemendra are thought to have drawn on, which has not survived and cannot be quoted. Second, the surviving Sanskrit recensions, which differ in details. Third, the later retellings and translations, which each reshape the frame.
+That the tales come from a lost older source is told: it is a scholarly inference, and no surviving text shows it. It is useful to separate three layers. First, the original lost material that Somadeva and Kshemendra are thought to have drawn on, which has not survived and cannot be quoted. Second, the surviving Sanskrit recensions, which differ in details. Third, the later retellings and translations, which each reshape the frame.
 
 The most important change between the layers is the king himself. In Somadeva he is Trivikramasena of Pratishthana. In later tellings he is a different, more famous king.
 
-Hook: Why does the king in later tellings have a different name and a different city?
+Hook: In later tellings the king has a different name and a different city.
 
 #### ch-5 · Two Kings, Many Trees
 anchor: vetala--ch-5
 sources: S1, S5, S6, S7, S9
-The king who carries the vetala has two main names. In Somadeva's text, as translated by Tawney, he is Trivikramasena, king of Pratishthana on the Godavari, son of Vikramasena (S1). In later tellings he is Vikramaditya, or Vikram, a legendary king whose capital is Ujjain (S7, S9). A reference source says Ujjain appears in several stories as his capital. The two names are not proven to be one person. They may be one tradition's old name and a later, more famous one.
+The king who carries the vetala has two main names. In Somadeva's text, as translated by Tawney, he is Trivikramasena, king of Pratishthana on the Godavari, son of Vikramasena (S1). In later tellings he is Vikramaditya, or Vikram, a legendary king whose capital is Ujjain (S7, S9). A reference source says Ujjain appears in several stories as his capital. That Trivikramasena and Vikramaditya are one king is told: no source here proves it. They may be one tradition's old name and a later, more famous one.
 
 The ascetic's name changes too. Tawney gives Kshantishila (S1). Richard Burton, writing in 1870, calls him Shanta-Shil, a jogi who keeps rites at a cemetery on the Godavari (S6). The Godavari survives in Burton's version even though his king has moved to Ujjayani, his spelling of Ujjain. A reference source describes the ascetic in later tellings as a naked ascetic or a sorcerer. The record for these later descriptions is thin.
 
 Even the tree is not fixed. In Tawney's early chapters the body hangs from an asoka tree, and the ascetic waits under a banyan (S1, S2). In a later chapter of the same translation, as reproduced in the Penzer edition online, the king returns to the shimshapa tree, in Sanskrit simsapa (S5). Burton has a mimosa tree, which the vetala calls a siras tree (S6). A reader who expects one tree finds three. The disagreement is real and easy to check.
 
-Burton's book was published in 1870 as Vikram and the Vampire, or Tales of Hindu Devilry (S6). It is not a translation. Burton says in his preface that he has tried to remedy the brevity of the old tales and give the skeleton flesh and blood. In other words, he added narrative. He also called the vetala a vampire, a Western word that fits the fashion of his age but not the old Sanskrit idea. The tales in his hands are fuller and more colourful, and some of the reasoning is his own.
+Burton's book was published in 1870 as Vikram and the Vampire, or Tales of Hindu Devilry (S6). It is not a translation. Burton says in his preface that he has tried to remedy the brevity of the old tales and give the skeleton flesh and blood. Burton's book is an adaptation that gave the old skeleton flesh and blood. Its status is documented (his preface, S6). In other words, he added narrative. He also called the vetala a vampire, a Western word that fits the fashion of his age but not the old Sanskrit idea. The tales in his hands are fuller and more colourful, and some of the reasoning is his own.
 
 A Hindi form of the collection has its own history. A reference source reports that a Hindustani version, called Buetal Pucheesee in the record, was made in 1805 under the direction of John Gilchrist. It was translated from a Braj Bhasha telling by a writer called Surat Kabishwar, dated to the 18th century (S7). The same source describes it as an early influence on literary Hindi. These facts come from a reference work only and are reported.
 
-So the frame has travelled through Sanskrit, a Braj Bhasha retelling, a Hindustani rendering, and Burton's English adaptation. At every stop something changed: the king's name, the ascetic's name, the tree, the number of pieces a head might break into. In Tawney's translation the number is a hundred. One reference summary gives a thousand.
+So the frame has travelled through Sanskrit, a Braj Bhasha retelling, a Hindustani rendering, and Burton's English adaptation. At every stop something changed: the king's name, the ascetic's name, the tree, the number of pieces a head might break into. In Tawney's translation the number is a hundred. A reference summary says the head would burst in a thousand pieces (S7).
 
 None of this lowers the tale. A frame story is built to be carried, and every carrier leaves a mark.
 
@@ -154,24 +154,24 @@ A note on taste. The tales are folklore and literature, in the same family as th
 
 There is one more reason it lasts: a riddle is a small, fair contest. The question has an answer, the answer can be argued, and the talk goes on long after the book is closed.
 
-Hook: How much of all this can be pointed to on a page, and how much lives only in the telling?
+Hook: Some of all this can be pointed to on a page, and some lives only in the telling.
 
 #### ch-7 · What Is Documented, and What Is Told
 anchor: vetala--ch-7
 sources: S1, S2, S3, S4, S5, S6, S7
 Every frame story reaches a point where the teller steps back and lets the record speak. This is that point.
 
-Start with the solid side. Tawney's English translation of Somadeva can be read in full online (S1 to S4). In it the king is Trivikramasena of Pratishthana, son of Vikramasena. The ascetic is Kshantishila, who brings a fruit each day until one of the fruits is found to hold a jewel. The ascetic waits under a banyan tree in a burning ground, and a body hangs from an asoka tree to the south. The king must carry it in silence. The spirit inside tells a tale, then asks a question, and warns that the king's head will split in a hundred pieces if he knows the answer and stays silent. If the king speaks, the spirit goes back to its tree. The editor notes that only twenty-four stories appear in this version, and in the last chapter the king asks, as his boon, that the twenty-five tales be famous (S4). Burton's 1870 book exists, and its preface says it is an adaptation with added flesh and blood (S6). In it the king is Vikram of Ujjayani, and the jogi is Shanta-Shil.
+Start with the solid side. Tawney's English translation of Somadeva can be read in full online (S1 to S4). In it the king is Trivikramasena of Pratishthana, son of Vikramasena. The ascetic is Kshantishila, who brings a fruit each day until one of the fruits is found to hold a jewel. The ascetic waits under a banyan tree in a burning ground, and a body hangs from an asoka tree to the south. The king must carry it in silence. The spirit inside tells a tale, then asks a question, and warns that the king's head will split in a hundred pieces if he knows the answer and stays silent. If the king speaks, the spirit goes back to its tree. The editor notes that only twenty-four stories appear in this version, and in the last chapter the king asks, as his boon, that the twenty-five tales be famous (S4). Burton's 1870 book exists, and its preface says it is an adaptation with added flesh and blood (S6). The spirit's final warning that the ascetic means the king harm is documented in Tawney's text (S4). In it the king is Vikram of Ujjayani, and the jogi is Shanta-Shil.
 
 Some things sit between the columns. The recensions of Kshemendra, Shivadasa and Jambhaladatta, the Hindustani version of 1805, the dates of Somadeva's collection and the 1924 to 1928 span of the Penzer volumes come from reference works and have not been traced to a title page. They are reported (S7, S8).
 
-Now the told side. That Trivikramasena and Vikramaditya are the same king under two names is told: nobody has proved it. That the legendary Vikramaditya ruled from Ujjain as a historical emperor is told as well, since the sources here show only that stories say so. That the collection rests on a lost older source is a scholarly inference. That hearing the tales frees a listener from curses is a claim made inside the text itself, and it is a promise, not a fact.
+Now the told side. That Trivikramasena and Vikramaditya are the same king under two names is told: nobody has proved it. That the legendary Vikramaditya ruled from Ujjain as a historical emperor is told as well, since the sources here show only that stories say so. That the collection rests on a lost older source is a scholarly inference. That hearing the tales frees a listener from curses is told: the claim is made inside the text itself, and it is a promise, not a fact.
 
 The rule is simple. If a claim cannot be read on a page or checked against one, it is told, however often it is repeated.
 
 One more note on method. The tree changes between sources, from an asoka to a simsapa to a mimosa. The number of pieces a head may break into changes too. Where sources disagree, each account is given with its source, and none is called the correct one.
 
-Notice how much of the documented side concerns the people who wrote the tales down: a translator in Calcutta, an editor who added notes, an adapter who said he had changed the text. The spirit signs nothing.
+Much of the documented side concerns the people who wrote the tales down: a translator in Calcutta, an editor who added notes, an adapter who said he had changed the text. The spirit signs nothing.
 
 What survives is a habit of telling: a road at night, a bundle on a shoulder, a voice that tells a story and then a question. The names move from book to book. The question stays the same.
 

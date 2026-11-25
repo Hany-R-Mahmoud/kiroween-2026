@@ -17,7 +17,7 @@ const SEEDS = Array.from({ length: 40 }, (_, i) => `fair-${i}`);
  * the real fear budget. The constants and the player are not loosened. The exact set is asserted, so a legend that starts
  * failing, or one that is fixed, fails the test below and must be noticed. Details: docs/phase-4-notes/fairness.md.
  */
-const KNOWN_CONTENT_FINDINGS: readonly string[] = ['banshee', 'chupacabra', 'draugr', 'el-coco', 'gumiho', 'naddaha', 'spring-heeled-jack', 'vetala'];
+const KNOWN_CONTENT_FINDINGS: readonly string[] = [];
 
 const results = new Map<string, PlayerResult[]>();
 async function resultsFor(id: string): Promise<PlayerResult[]> {

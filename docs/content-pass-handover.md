@@ -1,0 +1,80 @@
+# Content pass handover
+
+Spec: `.kiro/specs/content-pass/` (requirements, design, tasks). Nothing is committed or pushed.
+
+## What changed, per legend
+
+All edits are in `content/legends/*.md`: 171 lines added and 171 removed across 12 files (`git diff --stat content/`). Puzzle-slot edits aim at making the wrong-answer cost go away for the atlas-only player. Prose edits remove the five AI-sounding patterns and thin out question Hooks.
+
+| Legend | Lines changed | Scope |
+|---|---|---|
+| banshee | 30 | Ritual-order and true-or-told sentences; prose patterns |
+| chupacabra | 36 | Puzzle-slot sentences; prose patterns |
+| draugr | 26 | Puzzle-slot sentences; prose patterns |
+| el-coco | 34 | Puzzle-slot sentences; prose patterns |
+| gumiho | 30 | Puzzle-slot sentences; prose patterns |
+| naddaha | 28 | Puzzle-slot sentences (incl. ch-3); prose patterns |
+| spring-heeled-jack | 30 | Puzzle-slot sentences; prose patterns |
+| vetala | 34 | Puzzle-slot sentences; prose patterns |
+| baba-yaga | 24 | Prose only |
+| flying-dutchman | 22 | Prose only |
+| jersey-devil | 22 | Prose only |
+| yuki-onna | 26 | Prose only |
+
+## Before and after
+
+Seeds won out of 40 per legend, and pattern counts in chapter text and Hook lines. Source: `.debug/content-pass/before.md`, `after-fairness.md`, `final.md`. Cells are before → after.
+
+| Legend | Won of 40 | not-A-is-B | Notice what | strange | quietly | Here is / That is the | Question Hooks |
+|---|---|---|---|---|---|---|---|
+| baba-yaga | 40 → 40 | 1 → 0 | 0 → 0 | 1 → 0 | 0 → 0 | 2 → 0 | 3/7 → 2/7 |
+| banshee | 39 → 40 | 1 → 0 | 1 → 0 | 1 → 0 | 3 → 0 | 2 → 0 | 4/7 → 1/7 |
+| chupacabra | 32 → 40 | 0 → 0 | 0 → 0 | 5 → 1 | 0 → 0 | 0 → 0 | 6/7 → 2/7 |
+| draugr | 39 → 40 | 1 → 0 | 0 → 0 | 2 → 1 | 0 → 0 | 2 → 0 | 5/7 → 2/7 |
+| el-coco | 31 → 40 | 2 → 0 | 0 → 0 | 0 → 0 | 0 → 0 | 0 → 0 | 3/7 → 2/7 |
+| flying-dutchman | 40 → 40 | 0 → 0 | 2 → 0 | 7 → 0 | 0 → 0 | 3 → 0 | 1/7 → 1/7 |
+| gumiho | 38 → 40 | 1 → 0 | 0 → 0 | 1 → 1 | 0 → 0 | 0 → 0 | 6/7 → 2/7 |
+| jersey-devil | 40 → 40 | 0 → 0 | 1 → 0 | 5 → 1 | 1 → 0 | 3 → 0 | 2/7 → 2/7 |
+| naddaha | 39 → 40 | 0 → 0 | 1 → 0 | 3 → 1 | 0 → 0 | 1 → 0 | 5/6 → 2/6 |
+| spring-heeled-jack | 36 → 40 | 0 → 0 | 0 → 0 | 0 → 0 | 0 → 0 | 0 → 0 | 6/7 → 2/7 |
+| vetala | 36 → 40 | 0 → 0 | 1 → 0 | 2 → 1 | 0 → 0 | 1 → 0 | 6/7 → 2/7 |
+| yuki-onna | 40 → 40 | 1 → 0 | 0 → 0 | 1 → 1 | 3 → 0 | 0 → 0 | 5/7 → 2/7 |
+
+## The one test edit
+
+`skeleton/test/play-atlas-player.property.test.ts`: `KNOWN_CONTENT_FINDINGS` went from eight legend ids (banshee, chupacabra, draugr, el-coco, gumiho, naddaha, spring-heeled-jack, vetala) to an empty array. No other test, constant or generator code changed.
+
+## Verify results
+
+- Content audit: `answersNotFound`, `slotsNoHotspot`, `leadStepsNoHotspot` and `versionsFailing` are 0 for the legends in `.debug/content-pass/final-audit.log` (the tail shows jersey-devil, naddaha, spring-heeled-jack, vetala, yuki-onna at zero).
+- Typecheck: skeleton, atlas and game clean.
+- Tests: skeleton 924, atlas 306, game 401.
+- Fairness: 12 of 12 legends win 40 of 40 seeds with `KNOWN_CONTENT_FINDINGS` empty.
+
+## Import
+
+- Dev import done: 12 legends, 83 chapters, 60 puzzle slots.
+- Chapter text confirmed in the local atlas.
+- Production import is left to the owner, after the push.
+
+## Open items
+
+1. **Costly slots remain** (a wrong answer is still paid, the run is still won): baba-yaga p-5 (25 seeds), banshee pz-3 (4), chupacabra p-1 (1), flying-dutchman pz-5 (13), jersey-devil p-5 (2) and p-2 (2), yuki-onna p-5 (39). Outside the spec's scope or small.
+2. **Stale fairness text.** The "Reading of the findings" section of `docs/phase-4-notes/fairness.md` still describes eight failing legends. It is generated from a template inside the test file, so fixing it is a second test edit beyond the one allowed.
+3. **yuki-onna cold open has no `[Dramatization]` label.** Pre-existing; `check:content` does not enforce it.
+4. **Owner to verify against sources.** Added wording: "no checked case is on record" and "no dated case is on record" (naddaha ch-3), and "no evidence for it has been found" (spring-heeled-jack).
+5. **Fairness probes are stricter than play.** They use `rankOptions`, which is stricter than the seeded play, so some "costly" counts overstate what a player meets.
+6. **"strange" is left once** in seven legends (chupacabra, draugr, gumiho, jersey-devil, naddaha, vetala, yuki-onna). Some are inside quotes, titles or fact text.
+7. **Banshee ch-6:** "Quietly." was changed to "Less often.". Check that this was prose and not a puzzle answer.
+8. **Fixes were verified by the fairness run, not by a re-read against sources.**
+
+No secrets, tokens or connection strings are in this document or the changed files.
+
+## Changed files (`git status`)
+
+- `content/legends/`: baba-yaga, banshee, chupacabra, draugr, el-coco, flying-dutchman, gumiho, jersey-devil, naddaha, spring-heeled-jack, vetala, yuki-onna (`.md`)
+- `docs/phase-4-notes/fairness.md` (regenerated by the fairness run)
+- `skeleton/test/play-atlas-player.property.test.ts`
+- `.kiro/specs/content-pass/` (new)
+- `docs/content-pass-handover.md` (new, this file)
+- `docs/kiro-usage.md` (entry appended)

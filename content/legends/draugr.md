@@ -33,7 +33,7 @@ A farmhouse in the Icelandic sagas is a plain thing: a long low building of turf
 
 The word for that somebody is draugr. In Old Norse it was an old word with more than one sense. A reference page traces it to a very early root meaning something like a delusion or a deceiving appearance, and adds that the same word could name a dry tree trunk and, in poetry, a warrior (S5). Those details are reported from a reference work and not checked in a dictionary. What matters for the sagas is the use: a dead man who is back among the living, strong and cold, and a danger to a household.
 
-Two other terms sit beside it. Aptrganga is glossed as an again-walker, a revenant, the one who walks again after death. Haugbúi means mound-dweller (S5). A common modern account says the mound-dweller stays near its grave and troubles those who intrude, while the draugr leaves the grave and troubles the living. That tidy line is a convenience of later scholars. The same reference page records that Nora K. Chadwick, in "Norse Ghosts: A Study in the Draugr and the Haugbúi", Folklore 57, no. 2 (1946), treated the two as one group (S5, S6). The article itself is cited here from a bibliographic listing and has not been read in full.
+Two other terms sit beside it. Aptrganga is glossed as an again-walker or revenant, the one who walks again after death. A common modern account says the mound-dweller stays near its grave and troubles those who intrude, while the draugr leaves the grave and troubles the living. That the draugr and the haugbúi were clearly separate figures in every writer's mind is told: it is a tidy convenience of later scholars. Haugbúi means mound-dweller (S5). The same reference page records that Nora K. Chadwick, in "Norse Ghosts: A Study in the Draugr and the Haugbúi", Folklore 57, no. 2 (1946), treated the two as one group (S5, S6). The article itself is cited here from a bibliographic listing and has not been read in full.
 
 The debate goes further. Ármann Jakobsson argued in a 2011 article that two usual ways of studying the Icelandic undead are flawed. One leans on nineteenth-century definitions made by folktale collectors. The other counts every use of the word draugr in medieval texts and studies the vocabulary. He proposed sorting the creatures by what they do instead (S7). A reference page adds that the sagas often do not use the word draugr at all, preferring aptrganga for a revenant, and that Glámr, the best-known case, is called a troll in his own saga and not a draugr (S5). The label, then, is partly a modern one. This account uses it as scholars do, for a dead man who walks.
 
@@ -43,7 +43,7 @@ The sagas treat a walking dead man much as they treat a feud. There is a cause, 
 
 The best place to begin is a winter valley, a rich farmer who cannot keep a shepherd, and the stranger the lawman sent.
 
-Hook: Why does a farmer who cannot keep a shepherd take the one man the lawman sends him?
+Hook: A rich farmer who cannot keep a shepherd takes the one man the lawman sends him.
 
 #### ch-2 · The Shepherd in Shady-vale
 anchor: draugr--ch-2
@@ -79,17 +79,17 @@ On the second night Grettir waits, awake, in the hall (S1). Glámr comes. First 
 
 The fight moves to the door. Grettir drives Glámr outward and the two of them go through the doorway together. They fall outside, and Glámr falls under the moonlight (S1).
 
-That is the centre of the episode, and it is quiet. A ghost that has terrified a valley is brought down in the open air, under the moon, in the snow. The saga allows Glámr to speak at that moment. He tells Grettir that his strength will not grow any further, that he will become an outlaw, and that Glámr's eyes will stay with him. The words say also that Grettir will dread being left alone (S1). The speech is a prophecy and a curse at once, and it is told as the saga's own claim, not as a fact the narrator vouches for.
+The centre of the episode is quiet. A ghost that has terrified a valley is brought down in the open air, under the moon, in the snow. The saga allows Glámr to speak at that moment. He tells Grettir that his strength will not grow any further, that he will become an outlaw, and that Glámr's eyes will stay with him. The words say also that Grettir will dread being left alone (S1). Glámr speaks words to Grettir about a fear of the dark, which is documented in Grettis saga (S1). The speech is a prophecy and a curse at once, and it is told as the saga's own claim, not as a fact the narrator vouches for.
 
 Then the saga ends the haunting in one plain clause: the body was burned and the ashes buried away from pasture and path (S1).
 
-The curse does not end with the body. Grettir is, from then on, afraid of the dark. The saga says he cannot bear to be alone at night and sees things in the dark (S1, S2). The English text records a saying drawn from this: a person who sees terrors in the dark is said to have "Glamsight" (S1). Whether Grettir's fear is the ghost's doing or only the memory of a hard night is left open by the way the story is told. The saga lets the reader choose.
+The curse does not end with the body. Grettir is, from then on, afraid of the dark. The saga says he cannot bear to be alone at night and sees things in the dark (S1, S2). The English text records a saying drawn from this: a person who sees terrors in the dark is said to have "Glamsight" (S1). Whether Grettir's fear is the ghost's doing or only the memory of a hard night is left open by the way the story is told. The saga lets the reader choose. That Glámr's words caused Grettir's fear of the dark is told, the saga's own claim (S1).
 
 This is why the Glámr story has lasted. It has a heavy dead man, a roof, a door, a moon and a hero who wins but pays. It has no sword-play to describe and no mystery about who is to blame. The cost is a feeling: a man who once feared nothing now fears the dark.
 
 The next story is of an older kind of ghost, one with a family, a farm and a long argument over where to bury him.
 
-Hook: What do you do with a dead man who is too heavy to carry and will not stay where he was put?
+Hook: The next dead man is too heavy to carry and will not stay where he was put.
 
 #### ch-4 · The Man Who Was Moved Twice
 anchor: draugr--ch-4
@@ -100,9 +100,9 @@ Arnkel prepares the body himself. The hall door is too narrow to carry the dead 
 
 Then Thorolf walks. Cattle yoked to the sledge go mad. Animals near the mound die. The herdsman of Hvamm is found dead near the howe, and later the goodwife of the farm dies of the troubles. The walking spreads across the dale and drives people away. Arnkel gives shelter to those who stay with him, and Thorolf does not reach them (S3).
 
-In spring Arnkel asks the sons of Thorbrand for help. They open the howe, and the body has not decayed. They try to carry it to Vadils-head, but the oxen go mad and die, and the body proves too heavy to carry further. It is buried again on a nearby headland, which from then on is called Halt-foot's Head. Arnkel builds a high wall across the headland, so high that only birds can cross it. Thorolf stays quiet as long as Arnkel lives (S3).
+In spring Arnkel asks the sons of Thorbrand for help. They open the howe, and the body has not decayed. They try to carry it to Vadils-head, but the oxen go mad and die, and the body proves too heavy to carry further. It is buried again on a nearby headland, and the second burial place is called Halt-foot's Head from then on. Arnkel builds a high wall across the headland, so high that only birds can cross it. Thorolf stays quiet as long as Arnkel lives (S3).
 
-Here is the second pattern the sagas use: not one fight, but a long property question. Where should the dead be buried, and how far? Each move is a practical solution that works for a time. The sagas treat a walker as a problem of land and labour.
+The second pattern the sagas use is a long property question, not one fight. Where should the dead be buried, and how far? Each move is a practical solution that works for a time. The sagas treat a walker as a problem of land and labour.
 
 After Arnkel's death, the trouble returns. Thorolf walks again at Lairstead and later at Ulfar's-fell, killing men and livestock. Thorod Thorbrandson gathers house-carles and neighbours, raises the body from the headland and ends the matter: the body was burned and the ashes were cast into the sea (S3). The saga shows that the end comes only after the person who had held the walker in check was gone.
 
@@ -112,7 +112,7 @@ Hrappr's ghost then walks. It kills servants and terrorises the district until H
 
 It returns in a later generation. When Olaf buys the land at Hrappstead from Trefill for three marks of silver and builds the new farm Herdholt, a house-carle meets Hrappr at the door of the fold. Olaf strikes at the figure with his spear. Hrappr wrenches it aside, snaps the shaft, and vanishes. The next day Olaf has the grave opened, and the body was burned and the ashes were scattered at sea (S4).
 
-Both stories turn on a door. Thorolf's wall was broken to get him out; Hrappr asked to be buried in his own doorway. In Hrappr's case the saga links the odd burial to the walking that follows, and that link is the saga's own, not a rule it states.
+Both stories turn on a door. Thorolf's wall was broken to get him out; Hrappr asked to be buried in his own doorway. That Hrappr walked because of his standing burial is told: the saga links the odd burial to the walking that follows, and that link is the saga's own, not a rule it states.
 
 Hook: At a farm on the same peninsula, the dead come in a group, and the walkers are not ended by a wall or a fire but by a hearing.
 
@@ -125,17 +125,17 @@ The wonders come in a run. A dark cloud passes over, and its rain falls only on 
 
 For a week, a half-moon is seen circling the hall each evening at the time of the fires. Thorir Wooden-leg names it the Moon of Weird and says that it foretells deaths (S3). The shepherd becomes withdrawn and dies. Then he is seen with Thorir. Thorir himself dies after a confrontation outside the door, and six more die (S3).
 
-Strange things happen in the household. A heap of stock-fish is torn apart with no living thing found. A seal's head rises through the floor of the fire hall, toward Thorgunna's bed-gear, and Kiartan beats it down with a sledgehammer until it sinks through the floor (S3).
+Odd things happen in the household. A heap of stock-fish is torn apart with no living thing found. A seal's head rises through the floor of the fire hall, toward Thorgunna's bed-gear, and Kiartan beats it down with a sledgehammer until it sinks through the floor (S3).
 
-Then Thorod and his crew are drowned off Enni, and their bodies are never found. At the funeral feast Thorod and his men walk into the hall dripping wet and sit by the fire, and they come back each evening. Thorir and his followers appear too. A great tail rises from the stock-fish heap and slips out of the hands that try to hold it. Thorgrima dies and is seen with Thorir. By harvest, of thirty servants, eighteen are dead, five have fled, and seven remain (S3).
+Then Thorod and his crew are drowned off Enni, and their bodies are never found. At the funeral feast Thorod and his men walk into the hall dripping wet and sit by the fire, and they come back each evening. Thorir and his followers appear too. A great tail rises from the stock-fish heap and slips out of the hands that try to hold it. Thorgrima dies and is seen with Thorir. Of thirty servants at Fróðá, eighteen are dead by harvest, five have fled, and seven remain (S3).
 
 Kiartan asks his uncle Snorri for advice. Snorri sends his son Thord Kausi and six men to Fróðá. They burn Thorgunna's bed-gear and summon all the walkers to a door-court, a hearing held at the door of the hall (S3).
 
 The procedure is the part to notice. Those who had sat by the fires are summoned from the nearby farms. Kiartan brings charges against Thorir Wooden-leg, and Thord Kausi brings charges against Thorod, for entering the household without leave and for taking men's life and luck. The case is heard in the manner of the assembly called the Thing: testimony is given, verdicts are read, sentence is passed (S3). As each sentence falls, the one it names gets up and leaves, unwillingly. When the last has gone, the walking is over, and Thurid recovers from her sickness (S3).
 
-The saga turns a haunting into a lawsuit. The dead are treated as trespassers with a legal duty to leave, and the household as the injured party. The ending is not a fight and not a charm. It is a hearing at a door, with a summons, a plea and a judgment, the way an Icelandic farm settled a dispute with a neighbour.
+The saga turns a haunting into a lawsuit. The dead are treated as trespassers with a legal duty to leave, and the household as the injured party. The ending is a hearing at a door, with a summons, a plea and a judgment, the way an Icelandic farm settled a dispute with a neighbour.
 
-The saga does not explain why the court works. It says only that it did.
+The saga does not explain why the court works. It says only that it did: that the door-court is what ended the Fróðá walking is told, the saga's own claim (S3).
 
 Hook: Is the draugr a ghost, a monster, a legal problem, or only a word the later scholars gave to all three?
 
@@ -160,7 +160,7 @@ Strip the retellings away and the saga figure is plain: a huge dark shape agains
 
 The last chapter sorts what can be pointed to on a page from what is only told.
 
-Hook: Which parts of the draugr stand on a page, and which only in the telling?
+Hook: Some parts of the draugr stand on a page, and others only in the telling.
 
 #### ch-7 · What Is Documented, and What Is Told
 anchor: draugr--ch-7
