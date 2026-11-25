@@ -1,0 +1,360 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1.1 Remove the placeholder comment and add the names line to the Entry_Page": [
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795596303579
+      },
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795596310507
+      },
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795596363108
+      }
+    ],
+    "2.1 Update the game copy": [
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795596303766
+      },
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795596310670
+      },
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795596363813
+      }
+    ],
+    "2.2 Add the Shared_Line to the atlas footer": [
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795596303818
+      },
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795596371470
+      },
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795596455712
+      }
+    ],
+    "2.3 Add the Shared_Line to the bottom of the Hall": [
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795596303857
+      },
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795596371611
+      },
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795596455792
+      }
+    ],
+    "3.1 Add the stable look rule and the request field": [
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795596303904
+      },
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795596311311
+      },
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795596364677
+      }
+    ],
+    "3.2 Set `look` in both producers": [
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795596303957
+      },
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795596371687
+      },
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795596456412
+      }
+    ],
+    "3.3 Draw the three looks and restyle the caption": [
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795596304014
+      },
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795596371760
+      },
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795596457242
+      }
+    ],
+    "4.1 Start the Turn_Shade from the Book": [
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795596304072
+      },
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795596311869
+      },
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795596365527
+      }
+    ],
+    "4.2 Paint the Turn_Shade in `book.css`": [
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795596304133
+      },
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795596372447
+      },
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795596458320
+      }
+    ],
+    "5.1 Write the pure builder": [
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795596304192
+      },
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795596312537
+      },
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795596366000
+      }
+    ],
+    "5.2 Add the route": [
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795596304241
+      },
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795596459119
+      },
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795596498498
+      }
+    ],
+    "5.3 Write the single new test": [
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795596304306
+      },
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795596499086
+      },
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795596523020
+      }
+    ],
+    "5.4 Update existing tests pinned to changed text or markup": [
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795596304359
+      },
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795596523640
+      },
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795597061029
+      }
+    ],
+    "6.1 Run the type check and the test suite once": [
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795596304441
+      },
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795597061502
+      },
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795597977478
+      }
+    ],
+    "6.2 Run the existing browser checks": [
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795596304531
+      },
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795597978428
+      },
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795599376027
+      }
+    ],
+    "6.3 Capture screenshots, fear frames, reduced-motion and llms.txt evidence": [
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795596304643
+      },
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795599376578
+      },
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795599732591
+      }
+    ],
+    "7.1 Write `docs/batch-e-handover.md`": [
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795596304706
+      },
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795599733053
+      },
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795599783978
+      }
+    ],
+    "7.2 Add a short entry to `docs/kiro-usage.md`": [
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795596304779
+      },
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795599783659
+      },
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795610025117
+      }
+    ],
+    "1. E1: Settle the names": [
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795596363166
+      }
+    ],
+    "2. E2: State the hook in the product": [
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795596455842
+      }
+    ],
+    "3. E3: Fear events with distinct looks": [
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795596457326
+      }
+    ],
+    "4. E4: Book page turn feels like paper": [
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795596458363
+      }
+    ],
+    "5. E5: llms.txt, the one new test, and test pins": [
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795597061098
+      }
+    ],
+    "6. Verify": [
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795599732781
+      }
+    ],
+    "7. Handover docs": [
+      {
+        "executionId": "44bff8a9-40a2-4b39-946e-9cf96f78eee6",
+        "chatSessionId": "sess_6fa13801-961a-442f-b476-556af6993b3d",
+        "timestamp": 1795610025243
+      }
+    ]
+  }
+}

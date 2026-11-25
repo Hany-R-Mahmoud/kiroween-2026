@@ -115,6 +115,43 @@ html[data-book='on'] .book-plate {
   }
 }
 
+/* Turn_Shade: a brief shadow over the page box while the reader turns a page. Idle opacity is 0, so nothing shows at rest.
+   The gradient is mirrored by scaleX(--turn-flip), so previous turns and RTL need no separate gradient. */
+html[data-book='on'] .book-viewport::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  background:
+    linear-gradient(90deg, rgb(40 25 10 / 0.3), transparent 35%),
+    linear-gradient(rgb(40 25 10 / 0.07), rgb(40 25 10 / 0.07));
+}
+html[data-book='on'] .book-viewport[data-turn='next'] {
+  --turn-flip: var(--book-sign);
+}
+html[data-book='on'] .book-viewport[data-turn='prev'] {
+  --turn-flip: calc(var(--book-sign) * -1);
+}
+html[data-book='on'] .book-viewport[data-turn]::before {
+  animation: book-turn-shade var(--book-turn-ms) ease-out 1;
+}
+@keyframes book-turn-shade {
+  0% {
+    opacity: 0;
+    transform: scaleX(var(--turn-flip, 1)) translateX(0);
+  }
+  40% {
+    opacity: 1;
+    transform: scaleX(var(--turn-flip, 1)) translateX(-0.5rem);
+  }
+  100% {
+    opacity: 0;
+    transform: scaleX(var(--turn-flip, 1)) translateX(-1rem);
+  }
+}
+
 /* Reduced motion: no page animation (system setting or the game's own motion setting on the root element). */
 @media (prefers-reduced-motion: reduce) {
   html[data-book='on'] .book-flow {
@@ -123,6 +160,15 @@ html[data-book='on'] .book-plate {
 }
 html[data-motion='reduce'][data-book='on'] .book-flow {
   transition: none;
+}
+/* Reduced motion: no Turn_Shade at all (separate block so the one above stays as pinned). */
+@media (prefers-reduced-motion: reduce) {
+  html[data-book='on'] .book-viewport::before {
+    content: none;
+  }
+}
+html[data-motion='reduce'][data-book='on'] .book-viewport::before {
+  content: none;
 }
 
 /* Controls: one row that follows the UI direction, sticky at the top of the scrolling area. The offset defaults to 0 because the

@@ -1,6 +1,5 @@
 // Every string the atlas UI shows, by key (steering: i18n-rtl.md). Story text comes from Neon, not from here.
 export const en = {
-  // shortcut: placeholder name (decisions: names are still open); rename here once they are chosen.
   'app.title': 'Trick or Told',
   'app.description': 'Scary legends from around the world, told as documentaries: what the records say, and what people tell.',
   'nav.skip': 'Skip to the main content',
@@ -14,6 +13,7 @@ export const en = {
   'shell.card.told.name': 'Told: read the legends',
   'shell.entry.title': 'Trick or Told',
   'shell.entry.tagline': 'Twelve legends from around the world. Read them, or play them.',
+  'shell.entry.names': 'Told is the atlas. True is the game.',
   'shell.entry.description': 'Twelve scary legends from around the world. Read them in the atlas, or play them in the investigation game.',
   'share.image.alt': 'The Told and True cards side by side under the title Trick or Told.',
   'shell.entry.hint.pointer': 'Drag or click a card to turn it.',
@@ -23,6 +23,10 @@ export const en = {
   'shell.card.true.link': 'Play the game',
   'shell.card.true.name': 'True: play the game',
   'footer.fiction': 'The archive house around these pages is fiction. The legends are real folklore, and each one cites its sources.',
+  'shared.line.before': 'Two apps, one skeleton: the atlas and the game are built from ',
+  'shared.line.engine': 'the same engine',
+  'shared.line.after': '.',
+  'shared.line.href': 'https://github.com/Hany-R-Mahmoud/kiroween-2026#how-it-fits-together',
   'footer.keepersNote': "The Keeper's Note: the story of this archive",
   'footer.map': 'Map outline made with Natural Earth (public domain).',
   'home.intro': 'Each legend is told in chapters: the oldest records, the witnesses, the versions that disagree, and a last word on what is documented and what is only told.',

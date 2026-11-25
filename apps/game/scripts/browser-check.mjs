@@ -732,7 +732,7 @@ async function motionPass(cdp, reduced) {
     const t0 = Date.now();
     while (Date.now() - t0 < 1800) {
       samples.push(
-        await p.ev(`(() => { const f = document.querySelector('.fear-overlay-flash'); const c = document.querySelector('.fear-overlay-caption'); return { t: Math.round(performance.now()), flash: f ? +getComputedStyle(f).opacity : null, flashAnim: f ? getComputedStyle(f).animationName : null, capAnim: c ? getComputedStyle(c).animationName : null, cap: c ? c.textContent.trim().slice(0, 60) : null, mode: document.querySelector('.fear-overlay').dataset.motion, running: document.getAnimations().map((a) => a.animationName || a.constructor.name) }; })()`),
+        await p.ev(`(() => { const f = document.querySelector('.fear-look'); const c = document.querySelector('.fear-overlay-caption'); return { t: Math.round(performance.now()), flash: f ? +getComputedStyle(f).opacity : null, flashAnim: f ? getComputedStyle(f).animationName : null, capAnim: c ? getComputedStyle(c).animationName : null, cap: c ? c.textContent.trim().slice(0, 60) : null, mode: document.querySelector('.fear-overlay').dataset.motion, running: document.getAnimations().map((a) => a.animationName || a.constructor.name) }; })()`),
       );
       await sleep(50);
     }

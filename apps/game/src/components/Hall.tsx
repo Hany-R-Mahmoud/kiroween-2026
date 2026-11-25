@@ -163,6 +163,15 @@ export function HallView({ data, mediaBase, tutorialDone, broken, curses, onNavi
           ))}
         </ul>
       </nav>
+      <p className="text-sm text-muted" data-shared-line="true">
+        {t('shared.line.before')}
+        <a href={t('shared.line.href')} rel="noopener noreferrer" className="link inline-flex min-h-11 items-center">
+          {t('shared.line.engine')}
+          <span aria-hidden="true"> ↗</span>
+          <span className="sr-only"> ({t('shared.line.external')})</span>
+        </a>
+        {t('shared.line.after')}
+      </p>
       {showEnding ? (
         <div className="hall-ending" role="dialog" aria-modal="true" aria-labelledby="hall-ending-text" data-ending="true" onKeyDown={onEndingKey}>
           <img className="hall-ending-image" src={mediaUrl(mediaBase, DAWN_ASSET)} width={2400} height={1350} alt="" decoding="async" />

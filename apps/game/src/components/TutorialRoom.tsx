@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import type { FormEvent, KeyboardEvent } from 'react';
 import type { TutorialResponse } from '@kiroween/skeleton';
 import { FEAR } from '@kiroween/skeleton/client';
+import { fearLookOf } from '../layout/fearEvents.ts';
 import { TUTORIAL_SCENE } from '../layout/tutorial.ts';
 import { useT } from '../i18n/useT';
 import { usePanelOpener } from '../lib/focus.ts';
@@ -95,7 +96,7 @@ export function TutorialRoom({ view, reply, question, mediaBase, atlasOrigin, re
     if (id === TUTORIAL_CANDLE_ID) setLit(true);
     if (id === TUTORIAL_MIRROR_ID) {
       mirrorCount.current += 1;
-      setMirror({ key: `tut-mirror-${mirrorCount.current}`, entry: MIRROR_EVENT, reducedMotionLine: null });
+      setMirror({ key: `tut-mirror-${mirrorCount.current}`, entry: MIRROR_EVENT, look: fearLookOf(null, MIRROR_EVENT.id), reducedMotionLine: null });
     }
     setPanel({ kind: 'object', id });
   };

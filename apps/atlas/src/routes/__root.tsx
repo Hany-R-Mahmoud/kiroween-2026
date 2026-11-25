@@ -91,6 +91,15 @@ function Shell({ children }: { children: ReactNode }) {
             {t('footer.keepersNote')}
           </Link>
         </p>
+        <p>
+          {t('shared.line.before')}
+          <a href={t('shared.line.href')} rel="noopener noreferrer" className="link inline-flex min-h-11 items-center">
+            {t('shared.line.engine')}
+            <span aria-hidden="true"> ↗</span>
+            <span className="sr-only">{` (${t('legend.sourceExternal')})`}</span>
+          </a>
+          {t('shared.line.after')}
+        </p>
       </footer>
     </>
   );

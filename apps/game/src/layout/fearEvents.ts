@@ -51,6 +51,17 @@ export const FEAR_EVENTS = {
 
 export type FearLegendId = keyof typeof FEAR_EVENTS;
 
+export type FearLook = 'cold' | 'fog' | 'dim';
+const LOOKS: readonly FearLook[] = ['cold', 'fog', 'dim'];
+// New legends must be appended to FEAR_EVENTS. Reordering (or inserting before the end) changes every later legend's looks.
+const LEGEND_ORDER = Object.keys(FEAR_EVENTS);
+
+/** Same legend and event id always give the same look. `null` (the tutorial) uses offset 0. Pure: no RNG, no clock. */
+export function fearLookOf(legendId: string | null, id: FearEventId): FearLook {
+  const offset = legendId === null ? 0 : Math.max(0, LEGEND_ORDER.indexOf(legendId));
+  return LOOKS[(offset + Number(id.slice(3)) - 1) % 3]!;
+}
+
 export function fearEventsOf(legendId: string): readonly FearEventEntry[] | null {
   return Object.hasOwn(FEAR_EVENTS, legendId) ? FEAR_EVENTS[legendId as FearLegendId] : null;
 }

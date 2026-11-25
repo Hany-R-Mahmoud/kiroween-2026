@@ -10,39 +10,59 @@
   padding-block-start: var(--space-4);
   overflow: hidden;
 }
-.fear-overlay-flash {
+/* Fear_Look layers: opacity, transform and filter only. One luminance change per event (fear-flash: one rise, one fall). */
+.fear-look {
   position: absolute;
   inset: 0;
-  background: #000;
   opacity: 0;
+  animation: fear-flash 3000ms ease-out 1 both;
 }
-.fear-overlay[data-motion='full'] .fear-overlay-flash {
-  animation: fear-flash 1200ms ease-out 1 both;
+.fear-overlay .fear-look-layer {
+  position: absolute;
+  inset: 0;
+}
+.fear-look-cold .fear-look-layer {
+  animation: fear-tighten 3000ms ease-out 1 both;
+}
+.fear-look-fog .fear-look-layer {
+  inset-block-end: 3.5rem;
+  animation: fear-rise 3000ms ease-out 1 both;
+}
+.fear-look-dim .fear-look-layer {
+  background: rgb(0 0 0 / 0.55);
 }
 .fear-overlay-caption {
   position: relative;
   max-inline-size: min(32rem, 90%);
   padding-block: var(--space-2);
-  padding-inline: var(--space-4);
-  background: var(--color-surface);
+  padding-inline: var(--space-8, 3rem);
+  background: radial-gradient(ellipse at center, rgb(0 0 0 / 0.8) 0 60%, transparent 100%);
+  text-shadow: 0 1px 3px rgb(0 0 0 / 0.9);
   color: var(--caption-ink, var(--color-cold));
   font-family: var(--font-body);
   text-align: center;
   opacity: 0;
 }
 .fear-overlay[data-motion='full'] .fear-overlay-caption {
-  animation: fear-caption-full 3000ms ease-in-out 1 both;
+  animation: fear-caption-full 2600ms ease-in-out 400ms 1 both;
 }
 .fear-overlay[data-motion='reduced'] .fear-overlay-caption {
   animation: fear-fade 3000ms linear 1 both;
 }
-/* One lighting change = one flash. Two dips in 1.2 s is under 2 per second. */
+/* One lighting change per event: one rise (about 420 ms) and one fall. */
 @keyframes fear-flash {
   0% { opacity: 0; }
-  10% { opacity: 0.55; }
-  40% { opacity: 0; }
-  60% { opacity: 0.35; }
+  14% { opacity: 1; }
+  45% { opacity: 1; }
   100% { opacity: 0; }
+}
+@keyframes fear-tighten {
+  from { transform: scale(1.08); }
+  to { transform: scale(1); }
+}
+@keyframes fear-rise {
+  from { transform: translateY(1rem); }
+  to { transform: translateY(0); }
 }
 @keyframes fear-caption-full {
   0% { opacity: 0; }
@@ -58,7 +78,10 @@
   100% { opacity: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .fear-overlay-flash { animation: none; opacity: 0; }
+  .fear-look { display: none; }
+}
+html[data-motion='reduce'] .fear-look {
+  display: none;
 }
 /* Static visible state: ui.css turns animations off (system setting and in-app toggle), so the base opacity 0 would hide the caption for good. */
 .fear-overlay[data-motion='reduced'] .fear-overlay-caption {

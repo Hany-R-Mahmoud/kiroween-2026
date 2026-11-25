@@ -479,7 +479,7 @@ html[data-motion='reduce'] .map-pin {
     --shell-pad: var(--space-4);
     --shell-gap: var(--space-4);
     --shell-under: max(var(--space-6), 24px);
-    --shell-head-h: 6.5rem;
+    --shell-head-h: 7.75rem; /* title, tagline (up to two lines) and the names line */
     --shell-peek: 4.5rem;
     --shell-hint: 2.75rem;
     display: flex;
@@ -511,6 +511,14 @@ html[data-motion='reduce'] .map-pin {
     color: var(--color-ink);
   }
   .shell-tagline {
+    margin: 0;
+    max-inline-size: 48ch;
+    font-family: var(--font-body);
+    font-size: var(--type-small);
+    color: var(--color-muted);
+    text-wrap: balance;
+  }
+  .shell-names {
     margin: 0;
     max-inline-size: 48ch;
     font-family: var(--font-body);
@@ -596,7 +604,8 @@ html[data-motion='reduce'] .map-pin {
     .shell-head {
       padding-block: 0;
     }
-    .shell-tagline {
+    .shell-tagline,
+    .shell-names {
       display: none;
     }
     .shell-name {

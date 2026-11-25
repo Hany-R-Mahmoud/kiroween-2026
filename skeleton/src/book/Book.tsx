@@ -60,6 +60,14 @@ function localStore(): Storage | null {
   }
 }
 const clamp = (n: number, last: number) => Math.max(0, Math.min(last, n));
+/** The `--book-turn-ms` duration in ms ("300ms" or "0.3s"); 300 when unreadable. */
+function turnMs(el: HTMLElement | null): number {
+  if (!el) return 300;
+  const raw = getComputedStyle(el).getPropertyValue('--book-turn-ms').trim();
+  const n = Number.parseFloat(raw);
+  if (!Number.isFinite(n) || n < 0) return 300;
+  return raw.endsWith('ms') ? n : raw.endsWith('s') ? n * 1000 : 300;
+}
 
 export function Book({ labels, hero, controlsStart, controlsEnd, banner, children }: BookProps) {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -79,6 +87,10 @@ export function Book({ labels, hero, controlsStart, controlsEnd, banner, childre
   const landingRef = useRef(false); // focus is being moved by the hash landing, not by the reader
   const pendingRef = useRef<number | null>(null); // block to keep when the toggle flips the view
   const touchRef = useRef<{ x: number; y: number } | null>(null);
+
+  const [turnDir, setTurnDir] = useState<'next' | 'prev' | null>(null);
+  const turnTimerRef = useRef<number | undefined>(undefined);
+  useEffect(() => () => window.clearTimeout(turnTimerRef.current), []);
 
   const blocks = useCallback(() => Array.from(flowRef.current?.querySelectorAll<HTMLElement>(BLOCKS) ?? []), []);
   const metrics = useCallback((): Metrics | null => {
@@ -128,6 +140,12 @@ export function Book({ labels, hero, controlsStart, controlsEnd, banner, childre
     (p: number, byReader: boolean) => {
       const next = clamp(p, countRef.current - 1);
       if (byReader) hashRef.current = false;
+      // Turn_Shade: only for a reader's turn that changes the page in the paged view. Reset the timer on each turn.
+      if (byReader && pagedRef.current && next !== pageRef.current) {
+        setTurnDir(next > pageRef.current ? 'next' : 'prev');
+        window.clearTimeout(turnTimerRef.current);
+        turnTimerRef.current = window.setTimeout(() => setTurnDir(null), turnMs(viewportRef.current) + 50);
+      }
       show(next);
       trackBlock(next);
     },
@@ -300,6 +318,7 @@ export function Book({ labels, hero, controlsStart, controlsEnd, banner, childre
         role="region"
         aria-label={labels.region}
         tabIndex={paged ? 0 : undefined}
+        data-turn={turnDir ?? undefined}
         onPointerDown={onPointerDown}
         onPointerUp={onPointerUp}
         onPointerCancel={() => (touchRef.current = null)}

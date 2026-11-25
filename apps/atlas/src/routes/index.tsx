@@ -60,6 +60,7 @@ function EntryPage() {
       <header className="shell-head">
         <h1 className="shell-name">{t('shell.entry.title')}</h1>
         <p className="shell-tagline">{t('shell.entry.tagline')}</p>
+        <p className="shell-names">{t('shell.entry.names')}</p>
       </header>
       <div className="shell-cards">
         <div className="shell-slot" data-enter={enter ? '' : undefined} style={enter ? { ['--enter-delay' as string]: '0ms' } : undefined}>

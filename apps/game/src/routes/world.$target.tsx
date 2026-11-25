@@ -6,6 +6,7 @@ import { ThemeRoot } from '../components/ThemeRoot';
 import { WorldPlay } from '../components/WorldPlay';
 import { fontLinks } from '../fonts';
 import { fearEventsOf, worldLayout } from '../layout';
+import { fearLookOf } from '../layout/fearEvents';
 import { initialWorldState, playClientFor, worldReducer, type PlayClient } from '../lib/play';
 import { isTutorialRequired } from '../lib/playClient';
 import { applyHint2Reply, openBlankTab } from '../lib/hintTab';
@@ -87,7 +88,7 @@ function World() {
     const entry = chooseFearEvent(entries, ctx, played.current);
     if (!entry) return;
     played.current.add(entry.id);
-    setFear({ key: `${runNo.current}:${entry.id}`, entry, reducedMotionLine: reducedLineOf(info.fearEvents, entry) });
+    setFear({ key: `${runNo.current}:${entry.id}`, entry, look: fearLookOf(info.id, entry.id), reducedMotionLine: reducedLineOf(info.fearEvents, entry) });
   };
 
   const run = async (send: Send) => {
