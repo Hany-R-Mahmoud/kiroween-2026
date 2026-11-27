@@ -29,6 +29,14 @@ export async function signInGoogle(): Promise<boolean> {
   return true;
 }
 
+/**
+ * Finishes a Google sign-in done with Google's own button (Google Identity Services): sends the ID token and the nonce
+ * this page view gave Google to Neon, which checks both and sets the session cookies. True when Neon accepted it. The
+ * token is never logged or shown, and nothing from the response is read.
+ */
+export async function signInGoogleIdToken(credential: string, nonce: string): Promise<boolean> {
+  return (await post('sign-in/social', { provider: 'google', idToken: { token: credential, nonce } })).ok;
+}
 export async function signOut(): Promise<void> {
   await post('sign-out', {});
 }

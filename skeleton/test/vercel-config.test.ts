@@ -1,7 +1,7 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
-import { atlasRouteRules, FUNCTION_REGIONS, GAME_PROJECT_ORIGIN, gameRouteRules, LONG_CACHE, SECURITY_HEADERS } from '../src/deploy/vercelRules.ts';
+import { atlasRouteRules, FUNCTION_REGIONS, GAME_PROJECT_ORIGIN, GAME_SECURITY_HEADERS, gameRouteRules, GSI, LONG_CACHE, SECURITY_HEADERS } from '../src/deploy/vercelRules.ts';
 // Production routing and headers come from Nitro route rules (skeleton/src/deploy/vercelRules.ts), which Nitro writes into
 // .vercel/output/config.json ahead of its catch-all. vercel.json keeps only the git rule, the install command and the
 // region. Real responses are checked on production after each deploy (Requirement 8.5).
@@ -46,6 +46,40 @@ describe('Nitro route rules (the source of production routing and headers)', () 
     sec(gameRouteRules()['/**']?.headers);
     expect(Object.keys(SECURITY_HEADERS)).toHaveLength(4);
   });
+  describe("Google's sign-in button (Google Identity Services) CSP", () => {
+    const directives = (csp: string) => Object.fromEntries(csp.split('; ').map((d) => [d.split(' ')[0], d.split(' ').slice(1)]));
+    const game = () => directives(gameRouteRules()['/**']?.headers?.['content-security-policy'] ?? '');
+    const atlas = () => directives(atlasRouteRules()['/**']?.headers?.['content-security-policy'] ?? '');
+    it('the game allows exactly the four sources Google lists, each in its own directive', () => {
+      const g = game();
+      expect(g['script-src']).toEqual(["'self'", "'unsafe-inline'", 'https://accounts.google.com/gsi/client']);
+      expect(g['style-src']).toEqual(["'self'", "'unsafe-inline'", 'https://accounts.google.com/gsi/style']);
+      expect(g['connect-src']).toEqual(["'self'", 'https://accounts.google.com/gsi/']);
+      expect(g['frame-src']).toEqual(['https://accounts.google.com/gsi/']);
+      expect(GSI).toEqual({ script: 'https://accounts.google.com/gsi/client', frame: 'https://accounts.google.com/gsi/', connect: 'https://accounts.google.com/gsi/', style: 'https://accounts.google.com/gsi/style' });
+    });
+    it('every other game directive is the atlas one, and frame-ancestors stays none', () => {
+      const { 'script-src': _s, 'style-src': _y, 'connect-src': _c, 'frame-src': _f, ...gameRest } = game();
+      const { 'script-src': _s2, 'style-src': _y2, 'connect-src': _c2, ...atlasRest } = atlas();
+      expect(gameRest).toEqual(atlasRest);
+      expect(game()['frame-ancestors']).toEqual(["'none'"]);
+    });
+    it('no other host appears, and nothing is widened', () => {
+      const csp = GAME_SECURITY_HEADERS['content-security-policy'] ?? '';
+      expect([...new Set(csp.match(/https:\/\/[a-z.]+/g))].sort()).toEqual(['https://accounts.google.com', 'https://ik.imagekit.io']);
+      expect(csp).not.toMatch(/\*/);
+    });
+    it('the atlas pages stay strict: no Google source, no frame-src', () => {
+      expect(JSON.stringify(atlas())).not.toContain('google');
+      expect(atlas()['frame-src']).toBeUndefined();
+    });
+    it('the atlas gives the proxied /game paths the same headers as the game project', () => {
+      const r = atlasRouteRules();
+      expect(r['/game']?.headers).toEqual(gameRouteRules()['/**']?.headers);
+      expect(r['/game/**']?.headers).toEqual(gameRouteRules()['/**']?.headers);
+      expect(r['/game/**']?.proxy).toBe(`${GAME_PROJECT_ORIGIN}/game/**`);
+    });
+  });
   it.each([['atlas', atlasRouteRules], ['game', gameRouteRules]] as const)('the %s CSP allows images from self, data: and the ImageKit CDN only', (_app, rules) => {
     const csp = rules()['/**']?.headers?.['content-security-policy'] ?? '';
     expect(csp).toMatch(/(^|;\s*)img-src 'self' data: https:\/\/ik\.imagekit\.io(;|$)/);
@@ -88,6 +122,16 @@ describe.skipIf(!existsSync(`${out('atlas')}/config.json`) || !existsSync(`${out
     const rs = routes(app);
     const i = rs.findIndex((r) => r.headers?.['x-content-type-options'] === 'nosniff' && new RegExp(r.src!).test(path));
     expect(before(rs, i)).toBe(true);
+  });
+  it('atlas: the proxied /game/ route carries the game CSP (Google sources) after the strict atlas one, and /legends keeps the strict one', () => {
+    const rs = routes('atlas');
+    const csp = (r: Route | undefined) => r?.headers?.['content-security-policy'] ?? '';
+    const strict = rs.findIndex((r) => csp(r) !== '' && !csp(r).includes('google') && new RegExp(r.src!).test('/game/'));
+    const game = rs.findIndex((r) => r.dest?.startsWith(GAME_PROJECT_ORIGIN) && new RegExp(r.src!).test('/game/'));
+    expect(csp(rs[game])).toBe(GAME_SECURITY_HEADERS['content-security-policy']);
+    expect(strict).toBeGreaterThanOrEqual(0);
+    expect(strict).toBeLessThan(game);
+    expect(rs.some((r) => csp(r).includes('google') && new RegExp(r.src!).test('/legends/banshee'))).toBe(false);
   });
   it.each(['atlas', 'game'])('%s: the function runs in pdx1', (app) => {
     const vc = JSON.parse(readFileSync(`${out(app)}/functions/__server.func/.vc-config.json`, 'utf8')) as { regions?: string[] };

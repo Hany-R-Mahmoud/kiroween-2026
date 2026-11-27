@@ -1,7 +1,8 @@
 import { createFileRoute, Link, useRouter } from '@tanstack/react-router';
 import { useEffect, useRef, useState } from 'react';
-import { signInEmail, signInGoogle } from '../auth/client';
-import { buttonClass, Field, secondaryButtonClass } from '../components/Field';
+import { signInEmail } from '../auth/client';
+import { buttonClass, Field } from '../components/Field';
+import { GoogleSignIn } from '../components/GoogleSignIn';
 import { useT } from '../i18n/useT';
 
 export const Route = createFileRoute('/sign-in')({
@@ -70,9 +71,7 @@ function SignIn() {
         </button>
       </form>
       <p className="text-center text-muted">{t('form.or')}</p>
-      <button type="button" className={secondaryButtonClass} disabled={busy} onClick={async () => (await signInGoogle().catch(() => false)) || fail({ form: t('error.generic') })}>
-        {t('form.google')}
-      </button>
+      <GoogleSignIn busy={busy} onBusy={setBusy} onError={() => fail({ form: t('error.generic') })} />
       <Link to="/sign-up" className="link inline-flex min-h-11 items-center">
         {t('form.noAccount')}
       </Link>
