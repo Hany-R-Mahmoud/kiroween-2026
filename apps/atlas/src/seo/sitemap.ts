@@ -1,6 +1,6 @@
-/** Paths listed in the sitemap: entry page, legends index, each legend page and the game hall. */
+/** Paths listed in the sitemap: entry page, legends index, each legend page, the privacy page and the game hall. */
 export function sitemapPaths(ids: readonly string[]): string[] {
-  return ['/', '/legends', ...ids.map((id) => `/legends/${id}`), '/game/'];
+  return ['/', '/legends', ...ids.map((id) => `/legends/${id}`), '/privacy', '/game/'];
 }
 
 const escapeXml = (s: string): string =>

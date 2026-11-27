@@ -48,6 +48,7 @@ export const en = {
   'form.or': 'or',
   'form.haveAccount': 'Already have an account? Sign in.',
   'form.noAccount': 'No account yet? Create one.',
+  'form.privacy': 'Privacy',
   'form.busy': 'Please wait…',
   'form.showPassword': 'Show password',
   'form.hidePassword': 'Hide password',

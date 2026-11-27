@@ -77,6 +77,10 @@ function SignUp() {
       <Link to="/sign-in" className="link inline-flex min-h-11 items-center">
         {t('form.haveAccount')}
       </Link>
+      {/* plain anchor: /privacy is an atlas page, outside this app's /game base path */}
+      <a href="/privacy" className="link inline-flex min-h-11 items-center text-sm">
+        {t('form.privacy')}
+      </a>
     </section>
   );
 }
